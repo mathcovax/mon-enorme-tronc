@@ -4,8 +4,8 @@ import duploRoutesDirectory, { matchScriptFile } from "@duplojs/routes-directory
 import duploSwagger from "@duplojs/swagger";
 import duploWhatWasSent from "@duplojs/what-was-sent";
 import { ZodAccelerator } from "@duplojs/zod-accelerator";
-import "./env";
 import duploTypeGenerator from "@duplojs/to/plugin";
+import "./env";
 
 declare global {
     const duplo: typeof import("./main.js")["default"];
@@ -40,14 +40,18 @@ duplo.use(
 
 duplo.use(duploTypeGenerator, {outputFile: undefined});
 
-duplo.use(
-	duploRoutesDirectory, 
-	{
-		path: __dirname + "/routes",
-		matchs: [matchScriptFile]
-	}
-).then(() => {
-	duplo.launch(() => { 
-		console.log(`Ready on ${ENV.ENVIRONMENT}:${ENV.HOST}:${ENV.PORT}`); 
+Promise.all([
+	duplo.use(
+		duploRoutesDirectory, 
+		{
+			path: __dirname + "/routes",
+			matchs: [matchScriptFile]
+		}
+	),
+	import("@services/mongoose").then(({awaiting}) => awaiting),
+])
+	.then(() => {
+		duplo.launch(() => { 
+			console.log(`Ready on ${ENV.ENVIRONMENT}:${ENV.HOST}:${ENV.PORT}`); 
+		});
 	});
-});

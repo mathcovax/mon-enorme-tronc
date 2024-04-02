@@ -9,7 +9,11 @@
     "dev:vue": "npm -w vue run dev",
     "dev": "docker compose up"
   },
+  "prisma": {
+    "schema": "duplo/src/prisma/schema.prisma"
+  },
   "dependencies": {
-    "@duplojs/to": "^1.0.1"
+    "@duplojs/to": "^1.0.1",
+    "@prisma/client": "^5.12.0"
   }
 }
