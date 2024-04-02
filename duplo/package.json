@@ -1,0 +1,28 @@
+{
+  "name": "duplojs-project",
+  "scripts": {
+    "dev": "ENVIRONMENT=DEV tsx --watch src/main --swagger",
+    "start": "ENVIRONMENT=PROD tsx src/main",
+    "lint": "eslint .",
+    "test:types": "tsc --noEmit",
+    "generate:swagger": "tsx src/main --swagger --only-generate",
+    "generate:types": "tsx src/main --generate-types"
+  },
+  "dependencies": {
+    "@duplojs/duplojs": "^1.2.13",
+    "@duplojs/http-exception": "^1.0.1",
+    "@duplojs/routes-directory": "^1.1.0",
+    "@duplojs/swagger": "^1.0.1",
+    "@duplojs/type-input": "^1.0.0",
+    "@duplojs/what-was-sent": "^1.2.1",
+    "@duplojs/zod-accelerator": "^1.1.5",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "eslint": "^8.57.0",
+    "tsx": "^4.7.1",
+    "typescript": "^5.4.2",
+    "typescript-eslint": "^7.3.1"
+  }
+}

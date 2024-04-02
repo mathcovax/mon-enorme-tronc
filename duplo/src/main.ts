@@ -1,0 +1,53 @@
+import Duplo from "@duplojs/duplojs";
+import duploHttpException from "@duplojs/http-exception";
+import duploRoutesDirectory, { matchScriptFile } from "@duplojs/routes-directory";
+import duploSwagger from "@duplojs/swagger";
+import duploWhatWasSent from "@duplojs/what-was-sent";
+import { ZodAccelerator } from "@duplojs/zod-accelerator";
+import "./env";
+import duploTypeGenerator from "@duplojs/to/plugin";
+
+declare global {
+    const duplo: typeof import("./main.js")["default"];
+}
+
+export default Duplo({
+	port: ENV.PORT,
+	host: ENV.HOST,
+	environment: ENV.ENVIRONMENT,
+	globals: true,
+});
+
+duplo.use(
+	duploSwagger,
+	{
+		disabledDoc: ENV.ENVIRONMENT !== "DEV",
+		globals: true,
+	}
+);
+
+duplo.use(duploWhatWasSent, {globals: true});
+
+duplo.use(duploHttpException,{globals: true});
+
+duplo.use(
+	ZodAccelerator.duplojs,
+	{
+		DEV: true,
+		PROD: true
+	}
+);
+
+duplo.use(duploTypeGenerator, {outputFile: undefined});
+
+duplo.use(
+	duploRoutesDirectory, 
+	{
+		path: __dirname + "/routes",
+		matchs: [matchScriptFile]
+	}
+).then(() => {
+	duplo.launch(() => { 
+		console.log(`Ready on ${ENV.ENVIRONMENT}:${ENV.HOST}:${ENV.PORT}`); 
+	});
+});

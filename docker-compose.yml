@@ -1,0 +1,47 @@
+version: "3.7"
+services:
+  project-installer:
+    image: node:20.11.1
+    volumes:
+      - ./:/home/node/project
+    environment:
+      npm_config_cache: /home/node/cache
+    working_dir: /home/node/project
+    user: 1000:1000
+    command: npm i
+  
+  duplo:
+    image: node:20.11.1
+    volumes:
+      - ./:/home/node/project
+    environment:
+      npm_config_cache: /home/node/cache
+    working_dir: /home/node/project
+    user: 1000:1000
+    command: npm run dev:duplo
+    depends_on:
+      project-installer:
+        condition: service_completed_successfully
+
+  vue:
+    image: node:20.11.1
+    volumes:
+      - ./:/home/node/project
+    environment:
+      npm_config_cache: /home/node/cache
+    working_dir: /home/node/project
+    user: 1000:1000
+    command: npm run dev:vue
+    depends_on:
+      project-installer:
+        condition: service_completed_successfully
+
+  nginx:
+    image: nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - 1506:80
+    depends_on:
+      - vue
+      - duplo

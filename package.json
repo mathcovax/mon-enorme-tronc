@@ -1,0 +1,15 @@
+{
+  "name": "mon-enorme-tronc",
+  "workspaces": [
+    "vue",
+    "duplo"
+  ],
+  "scripts": {
+    "dev:duplo": "npm -w duplo run dev",
+    "dev:vue": "npm -w vue run dev",
+    "dev": "docker compose up"
+  },
+  "dependencies": {
+    "@duplojs/to": "^1.0.1"
+  }
+}
