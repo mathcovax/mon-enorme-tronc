@@ -40,18 +40,14 @@ duplo.use(
 
 duplo.use(duploTypeGenerator, {outputFile: undefined});
 
-Promise.all([
-	duplo.use(
-		duploRoutesDirectory, 
-		{
-			path: __dirname + "/routes",
-			matchs: [matchScriptFile]
-		}
-	),
-	import("@services/mongoose").then(({awaiting}) => awaiting),
-])
-	.then(() => {
-		duplo.launch(() => { 
-			console.log(`Ready on ${ENV.ENVIRONMENT}:${ENV.HOST}:${ENV.PORT}`); 
-		});
+duplo.use(
+	duploRoutesDirectory, 
+	{
+		path: __dirname + "/routes",
+		matchs: [matchScriptFile]
+	}
+).then(() => {
+	duplo.launch(() => { 
+		console.log(`Ready on ${ENV.ENVIRONMENT}:${ENV.HOST}:${ENV.PORT}`); 
 	});
+});
