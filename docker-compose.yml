@@ -1,6 +1,6 @@
 version: "3.7"
 services:
-  project-installer:
+  node-installer:
     image: node:20.11.1
     volumes:
       - ./:/home/node/project
@@ -9,7 +9,7 @@ services:
     working_dir: /home/node/project
     user: 1000:1000
     command: npm i
-  
+
   duplo:
     image: node:20.11.1
     volumes:
@@ -45,3 +45,11 @@ services:
     depends_on:
       - vue
       - duplo
+
+  postgres:
+    image: postgres:16.2
+    env_file: ./duplo/.env
+
+  mongo:
+    image: mongo
+    env_file: ./duplo/.env
