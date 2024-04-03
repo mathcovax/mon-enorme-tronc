@@ -9,7 +9,8 @@
     "generate:types": "tsx src/main --generate-types"
   },
   "dependencies": {
-    "@duplojs/duplojs": "^1.2.13",
+    "@duplojs/duplojs": "^1.3.13",
+    "@duplojs/editor-tools": "^1.2.4",
     "@duplojs/http-exception": "^1.0.1",
     "@duplojs/routes-directory": "^1.1.0",
     "@duplojs/swagger": "^1.0.1",

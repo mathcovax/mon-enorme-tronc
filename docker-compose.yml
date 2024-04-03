@@ -20,7 +20,7 @@ services:
     user: 1000:1000
     command: npm run dev:duplo
     depends_on:
-      project-installer:
+      node-installer:
         condition: service_completed_successfully
 
   vue:
@@ -33,7 +33,7 @@ services:
     user: 1000:1000
     command: npm run dev:vue
     depends_on:
-      project-installer:
+      node-installer:
         condition: service_completed_successfully
 
   nginx:

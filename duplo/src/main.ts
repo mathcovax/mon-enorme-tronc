@@ -25,11 +25,8 @@ duplo.use(
 		globals: true,
 	}
 );
-
 duplo.use(duploWhatWasSent, {globals: true});
-
 duplo.use(duploHttpException,{globals: true});
-
 duplo.use(
 	ZodAccelerator.duplojs,
 	{
@@ -37,15 +34,18 @@ duplo.use(
 		PROD: true
 	}
 );
-
 duplo.use(duploTypeGenerator, {outputFile: undefined});
 
-duplo.use(
-	duploRoutesDirectory, 
-	{
-		path: __dirname + "/routes",
-		matchs: [matchScriptFile]
-	}
+Promise.all(
+	["/routes", "/providers"].map(path => 
+		duplo.use(
+			duploRoutesDirectory, 
+			{
+				path: __dirname + path,
+				matchs: [matchScriptFile]
+			}
+		)
+	)
 ).then(() => {
 	duplo.launch(() => { 
 		console.log(`Ready on ${ENV.ENVIRONMENT}:${ENV.HOST}:${ENV.PORT}`); 
