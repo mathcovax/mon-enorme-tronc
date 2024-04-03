@@ -6,6 +6,7 @@ import duploWhatWasSent from "@duplojs/what-was-sent";
 import { ZodAccelerator } from "@duplojs/zod-accelerator";
 import duploTypeGenerator from "@duplojs/to/plugin";
 import "./env";
+import { CacheFolder } from "@duplojs/editor-tools";
 
 declare global {
     const duplo: typeof import("./main.js")["default"];
@@ -34,7 +35,7 @@ duplo.use(
 		PROD: true
 	}
 );
-duplo.use(duploTypeGenerator, {outputFile: undefined});
+duplo.use(duploTypeGenerator, {outputFile: CacheFolder.create("client") + "/EnrichedDuploTo.d.ts"});
 
 Promise.all(
 	["/routes", "/providers"].map(path => 
