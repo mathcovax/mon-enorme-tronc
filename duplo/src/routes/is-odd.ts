@@ -7,7 +7,7 @@ export const GET = (method: methods, path: string) => hasRoleSecurity({options: 
 	.declareRoute(method, path)
 	.extract({
 		query: {
-			number: zod.coerce.number()
+			number: zod.coerce.number(),
 		}
 	})
 	.check(
