@@ -1,16 +1,21 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-import home from "@/domains/edito/router";
+import edito, {notFound} from "@/domains/edito/router";
+import auth from "@/domains/auth/router";
+import product from "@/domains/product/router";
 
 export default createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
 	routes: [
 		{
 			path: "/",
-			component: () => import("@/layouts/TheBase.vue"),
+			component: () => import("@/layouts/BaseLayout.vue"),
 			children: [
-				home()
+				...edito(),
+				...product(),
 			]
 		},
+		...auth(),
+		notFound(),
 	]
 });
