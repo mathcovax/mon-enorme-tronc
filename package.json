@@ -7,9 +7,15 @@
   "scripts": {
     "dev:duplo": "npm -w duplo run dev",
     "dev:vue": "npm -w vue run dev",
-    "dev": "docker compose up"
+    "dev": "docker compose up",
+	"generate:types": "npm -w duplo run generate:types",
+	"generate:prisma": "npx prisma generate"
+  },
+  "prisma": {
+    "schema": "duplo/src/prisma/schema.prisma"
   },
   "dependencies": {
-    "@duplojs/to": "^1.0.1"
+    "@duplojs/to": "^1.0.1",
+    "@prisma/client": "^5.12.0"
   }
 }

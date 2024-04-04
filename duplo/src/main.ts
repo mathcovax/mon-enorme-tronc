@@ -4,8 +4,9 @@ import duploRoutesDirectory, { matchScriptFile } from "@duplojs/routes-directory
 import duploSwagger from "@duplojs/swagger";
 import duploWhatWasSent from "@duplojs/what-was-sent";
 import { ZodAccelerator } from "@duplojs/zod-accelerator";
-import "./env";
 import duploTypeGenerator from "@duplojs/to/plugin";
+import "./env";
+import { CacheFolder } from "@duplojs/editor-tools";
 
 declare global {
     const duplo: typeof import("./main.js")["default"];
@@ -25,11 +26,8 @@ duplo.use(
 		globals: true,
 	}
 );
-
 duplo.use(duploWhatWasSent, {globals: true});
-
 duplo.use(duploHttpException,{globals: true});
-
 duplo.use(
 	ZodAccelerator.duplojs,
 	{
@@ -37,15 +35,18 @@ duplo.use(
 		PROD: true
 	}
 );
+duplo.use(duploTypeGenerator, {outputFile: CacheFolder.create("client") + "/EnrichedDuploTo.d.ts"});
 
-duplo.use(duploTypeGenerator, {outputFile: undefined});
-
-duplo.use(
-	duploRoutesDirectory, 
-	{
-		path: __dirname + "/routes",
-		matchs: [matchScriptFile]
-	}
+Promise.all(
+	["/routes", "/providers"].map(path => 
+		duplo.use(
+			duploRoutesDirectory, 
+			{
+				path: __dirname + path,
+				matchs: [matchScriptFile]
+			}
+		)
+	)
 ).then(() => {
 	duplo.launch(() => { 
 		console.log(`Ready on ${ENV.ENVIRONMENT}:${ENV.HOST}:${ENV.PORT}`); 

@@ -11,7 +11,7 @@ export default tseslint.config(
 			"no-extra-semi": "error",
 			"quotes": ["error", "double"],
 			"indent": ["error", "tab"],
-			"max-len": ["error", { "code": 120 }],
+			"max-len": ["error", { "code": 150 }],
 		}
 	},
 );

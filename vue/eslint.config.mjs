@@ -9,7 +9,7 @@ const rules = {
 	"no-extra-semi": "error",
 	"quotes": ["error", "double"],
 	"indent": ["error", "tab"],
-	"max-len": ["error", { "code": 120 }],
+	"max-len": ["error", { "code": 150 }],
 };
 
 export default tseslint.config(
@@ -32,6 +32,7 @@ export default tseslint.config(
 		},
 		rules: {
 			...rules,
+			"vue/require-default-prop": "off"
 		},
 	},
 );
