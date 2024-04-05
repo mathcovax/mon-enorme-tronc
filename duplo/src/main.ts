@@ -1,4 +1,4 @@
-import Duplo from "@duplojs/duplojs";
+import Duplo, {methods} from "@duplojs/duplojs";
 import duploHttpException from "@duplojs/http-exception";
 import duploRoutesDirectory, { matchScriptFile } from "@duplojs/routes-directory";
 import duploSwagger from "@duplojs/swagger";
@@ -10,6 +10,7 @@ import { CacheFolder } from "@duplojs/editor-tools";
 
 declare global {
     const duplo: typeof import("./main.js")["default"];
+	type Methods = methods;
 }
 
 export default Duplo({

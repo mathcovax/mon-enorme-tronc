@@ -8,9 +8,6 @@ interface InterceptorParams {
 export const duploTo = new DuploTo<
 	InterceptorParams, 
 	EnrichedDuplojsTo<InterceptorParams>
->();
-
-duploTo.enriched.get("/is-odd", {query: {number: 1}})
-	.s((data) => {
-		data;
-	});
+>({
+	prefix: "api"
+});

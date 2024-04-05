@@ -1,12 +1,12 @@
 {
   "name": "duplojs-project",
   "scripts": {
-    "dev": "ENVIRONMENT=DEV tsx --watch src/main --swagger",
+    "dev": "ENVIRONMENT=DEV tsx --watch src/main --swagger --generate-types",
     "start": "ENVIRONMENT=PROD tsx src/main",
     "lint": "eslint .",
     "test:types": "tsc --noEmit",
     "generate:swagger": "tsx src/main --swagger --only-generate",
-    "generate:types": "tsx src/main --generate-types"
+    "generate:types": "tsx src/main --generate-types --only-generate"
   },
   "dependencies": {
     "@duplojs/duplojs": "^1.4.14",
