@@ -12,7 +12,7 @@
     "@duplojs/duplojs": "^1.4.14",
     "@duplojs/editor-tools": "^1.2.4",
     "@duplojs/http-exception": "^1.0.1",
-    "@duplojs/routes-directory": "^1.1.0",
+    "@duplojs/routes-directory": "^1.2.2",
     "@duplojs/swagger": "^1.0.1",
     "@duplojs/type-input": "^1.0.0",
     "@duplojs/what-was-sent": "^1.2.1",

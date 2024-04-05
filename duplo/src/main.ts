@@ -38,16 +38,12 @@ duplo.use(
 );
 duplo.use(duploTypeGenerator, {outputFile: CacheFolder.create("client") + "/EnrichedDuploTo.d.ts"});
 
-Promise.all(
-	["/routes", "/providers"].map(path => 
-		duplo.use(
-			duploRoutesDirectory, 
-			{
-				path: __dirname + path,
-				matchs: [matchScriptFile]
-			}
-		)
-	)
+duplo.use(
+	duploRoutesDirectory, 
+	{
+		path: ["routes", "providers"].map((path) => `${__dirname}/${path}`),
+		matchs: [matchScriptFile]
+	}
 ).then(() => {
 	duplo.launch(() => { 
 		console.log(`Ready on ${ENV.ENVIRONMENT}:${ENV.HOST}:${ENV.PORT}`); 
