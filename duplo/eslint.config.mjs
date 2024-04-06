@@ -12,6 +12,7 @@ export default tseslint.config(
 			"quotes": ["error", "double"],
 			"indent": ["error", "tab"],
 			"max-len": ["error", { "code": 150 }],
+			"@typescript-eslint/no-extraneous-class": "off",
 		}
 	},
 );

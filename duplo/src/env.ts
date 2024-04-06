@@ -20,6 +20,8 @@ export default global.ENV = zod
 		ENVIRONMENT: zod.enum(["DEV", "PROD"]).default("DEV"),
 		MONGO_DATABASE_URL: zod.string(),
 		FIREBASE_CREDENTIAL_PATH: zod.string(),
+		JWT_KEY: zod.string(),
+		JWT_TIME: zod.string(),
 	})
 	.readonly()
 	.parse(process.env);

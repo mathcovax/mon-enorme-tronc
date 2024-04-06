@@ -1,4 +1,4 @@
-import Duplo, {methods, zod} from "@duplojs/duplojs";
+import Duplo, {HttpMethods, zod} from "@duplojs/duplojs";
 import duploHttpException from "@duplojs/http-exception";
 import duploRoutesDirectory, { matchScriptFile } from "@duplojs/routes-directory";
 import duploSwagger from "@duplojs/swagger";
@@ -11,7 +11,7 @@ import "./env";
 declare global {
     const duplo: typeof import("./main.js")["default"];
 	const zod: typeof import("./main.js")["zod"];
-	type Methods = methods;
+	type Methods = HttpMethods;
 }
 
 export default Duplo({
