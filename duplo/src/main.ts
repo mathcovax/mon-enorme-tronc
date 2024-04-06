@@ -1,15 +1,16 @@
-import Duplo, {methods} from "@duplojs/duplojs";
+import Duplo, {methods, zod} from "@duplojs/duplojs";
 import duploHttpException from "@duplojs/http-exception";
 import duploRoutesDirectory, { matchScriptFile } from "@duplojs/routes-directory";
 import duploSwagger from "@duplojs/swagger";
 import duploWhatWasSent from "@duplojs/what-was-sent";
 import { ZodAccelerator } from "@duplojs/zod-accelerator";
 import duploTypeGenerator from "@duplojs/to/plugin";
-import "./env";
 import { CacheFolder } from "@duplojs/editor-tools";
+import "./env";
 
 declare global {
     const duplo: typeof import("./main.js")["default"];
+	const zod: typeof import("./main.js")["zod"];
 	type Methods = methods;
 }
 
@@ -20,10 +21,23 @@ export default Duplo({
 	globals: true,
 });
 
+//@ts-expect-error var 'global' cause type error.
+global.zod = zod;
+export {
+	zod
+};
+
 duplo.use(
 	duploSwagger,
 	{
 		disabledDoc: ENV.ENVIRONMENT !== "DEV",
+		swaggerSpec: {
+			basePath: "/api",
+			consumes: [
+				"application/json",
+				"text/plain",
+			]
+		},
 		globals: true,
 	}
 );

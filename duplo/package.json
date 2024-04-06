@@ -9,7 +9,7 @@
     "generate:types": "tsx src/main --generate-types --only-generate"
   },
   "dependencies": {
-    "@duplojs/duplojs": "^1.4.14",
+    "@duplojs/duplojs": "^1.4.15",
     "@duplojs/editor-tools": "^1.2.4",
     "@duplojs/http-exception": "^1.0.1",
     "@duplojs/routes-directory": "^1.2.2",
