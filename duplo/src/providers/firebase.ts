@@ -1,4 +1,4 @@
-import admin, { ServiceAccount } from "firebase-admin";
+import firebaseAdmin, { ServiceAccount } from "firebase-admin";
 import { existsSync, readFileSync } from "fs";
 
 if(!existsSync(ENV.FIREBASE_CREDENTIAL_PATH)){
@@ -9,6 +9,12 @@ const credential: ServiceAccount = JSON.parse(
 	readFileSync(ENV.FIREBASE_CREDENTIAL_PATH, "utf-8")
 );
 
-export const app = admin.initializeApp({
-	credential: admin.credential.cert(credential)
+firebaseAdmin.initializeApp({
+	credential: firebaseAdmin.credential.cert(credential)
+});
+
+export const firebaseAuth = firebaseAdmin.auth();
+
+duplo.addHook("beforeListenHttpServer", async () => {
+	await firebaseAuth.getUsers([{email: "campani.mathieu@gmail.com"}]);
 });
