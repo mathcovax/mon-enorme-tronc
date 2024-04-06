@@ -17,10 +17,12 @@
     "@duplojs/type-input": "^1.0.0",
     "@duplojs/what-was-sent": "^1.2.1",
     "@duplojs/zod-accelerator": "^1.1.5",
+    "@types/jsonwebtoken": "^9.0.6",
     "dotenv": "^16.4.5",
     "dotenv-expand": "^11.0.6",
     "firebase-admin": "^12.0.0",
     "i": "^0.3.7",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.2.4",
     "prisma": "^5.12.0"
   },
