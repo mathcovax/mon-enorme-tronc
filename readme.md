@@ -21,3 +21,13 @@
 - Le dossier `src/stores` contient uniquement des stores global. Ils ont pour but d'être flexible et de pouvoir être utilisé à plusieurs endroits. Si vous souhaitez créer un store qui sera utilisés dans un seul domain, vous devez le créer dans le dossier `stores` d'un domaine. Exemple de location du dossier stores d'un domaine: `src/domains/product/stores`.
 
 - Les noms des fichier `typescript` doivent être en `camelCase`.
+
+### Obtenir les Credentials Firebase
+
+- Aller sur [ici](https://console.firebase.google.com/u/0/project/mon-enorme-tronc).
+
+- Une fois connecter, allez dans `⚙️` > `Paramètres du projet` > `Comptes de service`.
+
+- Cliquer sur `Générer une nouvelle clé privée`, (cela vous téléchargera un fichier json).
+
+- Placer le fichier json a `duplo/firebase.credential.json`.
