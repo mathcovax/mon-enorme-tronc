@@ -36,7 +36,7 @@ duplo.use(
 			consumes: [
 				"application/json",
 				"text/plain",
-			]
+			],
 		},
 		globals: true,
 	}
