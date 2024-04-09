@@ -30,5 +30,6 @@ declare module 'vue' {
     TheCardTitle: typeof import('./src/components/ui/card/TheCardTitle.vue')['default']
     TheFooter: typeof import('./src/components/TheFooter.vue')['default']
     TheHeader: typeof import('./src/components/TheHeader.vue')['default']
+    TheIcon: typeof import('./src/components/TheIcon.vue')['default']
   }
 }

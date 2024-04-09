@@ -34,13 +34,13 @@ const handleIsActive = (value: boolean) => {
 			</div>
 			<div class="flex gap-3 items-center">
 				<button>
-					<span class="block lg:hidden mdi mdi-magnify text-2xl"></span>
+					<TheIcon icon="magnify" size="2xl" />
 				</button>
 				<RouterLink to="/cart">
-					<span class="mdi mdi-cart-outline text-2xl"></span>
+					<TheIcon icon="cart-outline" size="2xl" />
 				</RouterLink>
 				<RouterLink to="/account">
-					<span class="mdi mdi-account-circle-outline text-2xl"></span>
+					<TheIcon icon="account-circle-outline" size="2xl" />
 				</RouterLink>
 			</div>
 		</div>

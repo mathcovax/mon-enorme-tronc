@@ -13,17 +13,22 @@
 						<ul class="flex gap-3">
 							<li>
 								<RouterLink to="#">
-									<span class="mdi mdi-twitter text-3xl"></span>
+									<TheIcon icon="twitter" size="3xl" />
 								</RouterLink>
 							</li>
 							<li>
 								<RouterLink to="#">
-									<span class="mdi mdi-facebook text-3xl"></span>
+									<TheIcon icon="facebook" size="3xl" />
 								</RouterLink>
 							</li>
 							<li>
 								<RouterLink to="#">
-									<span class="mdi mdi-instagram text-3xl"></span>
+									<TheIcon icon="instagram" size="3xl" />
+								</RouterLink>
+							</li>
+							<li>
+								<RouterLink to="#">
+									<TheIcon icon="youtube" size="3xl" />
 								</RouterLink>
 							</li>
 						</ul>
