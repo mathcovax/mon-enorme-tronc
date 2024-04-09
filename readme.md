@@ -44,6 +44,8 @@
 
 - Les noms des fichiers `typescript` doivent être en `camelCase`.
 
+- Quand une fonction est bind a un event de component, la fonction doit être une `function`.
+
 ### Obtenir les Credentials Firebase
 
 - Aller sur [cette page](https://console.firebase.google.com/u/0/project/mon-enorme-tronc).
