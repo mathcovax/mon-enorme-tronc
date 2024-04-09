@@ -7,6 +7,8 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    BurgerButton: typeof import('./src/components/BurgerButton.vue')['default']
+    copy: typeof import('./src/components/BurgerButton.vue')['default']
     PrimaryButton: typeof import('./src/components/PrimaryButton.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

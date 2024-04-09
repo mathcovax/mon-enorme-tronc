@@ -3,9 +3,7 @@
 </script>
 
 <template>
-	<div>
-		<TheHeader />
-		<RouterView />
-		<TheFooter />
-	</div>
+	<TheHeader />
+	<RouterView />
+	<TheFooter />
 </template>
