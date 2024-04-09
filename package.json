@@ -15,7 +15,7 @@
     "schema": "duplo/src/prisma/schema.prisma"
   },
   "dependencies": {
-    "@duplojs/to": "^1.3.3",
+    "@duplojs/to": "^1.3.4",
     "@prisma/client": "^5.12.0"
   }
 }

@@ -9,11 +9,11 @@
     "generate:types": "tsx src/main --generate-types --only-generate"
   },
   "dependencies": {
-    "@duplojs/duplojs": "^1.4.15",
+    "@duplojs/duplojs": "^1.5.16",
     "@duplojs/editor-tools": "^1.2.4",
     "@duplojs/http-exception": "^1.0.1",
     "@duplojs/routes-directory": "^1.2.2",
-    "@duplojs/swagger": "^1.0.3",
+    "@duplojs/swagger": "^1.0.4",
     "@duplojs/type-input": "^1.0.0",
     "@duplojs/what-was-sent": "^1.2.1",
     "@duplojs/zod-accelerator": "^1.1.5",

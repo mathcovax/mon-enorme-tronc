@@ -21,8 +21,6 @@ export default Duplo({
 	globals: true,
 });
 
-//@ts-expect-error var 'global' cause type error.
-global.zod = zod;
 export {
 	zod
 };
