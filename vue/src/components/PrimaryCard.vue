@@ -20,7 +20,8 @@ const props = defineProps<{
 	<TheCard class="w-72 border-0">
 		<RouterLink :to="product.url">
 			<TheCardHeader>
-				<img src="https://via.placeholder.com/250" alt="placeholder" width="250" height="250" />
+				<img src="https://via.placeholder.com/250" alt="placeholder" width="250" height="250"
+					class="rounded-2xl" />
 			</TheCardHeader>
 			<TheCardContent>
 				<TheCardTitle class="mb-3">

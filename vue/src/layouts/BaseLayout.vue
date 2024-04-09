@@ -4,6 +4,8 @@
 
 <template>
 	<TheHeader />
-	<RouterView />
+	<main>
+		<RouterView />
+	</main>
 	<TheFooter />
 </template>

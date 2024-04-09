@@ -19,6 +19,8 @@ declare module 'vue' {
     PrimaryCard: typeof import('./src/components/PrimaryCard.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    ScrollArea: typeof import('./src/components/ui/scroll-area/ScrollArea.vue')['default']
+    ScrollBar: typeof import('./src/components/ui/scroll-area/ScrollBar.vue')['default']
     TheButton: typeof import('./src/components/ui/button/TheButton.vue')['default']
     TheCard: typeof import('./src/components/ui/card/TheCard.vue')['default']
     TheCardContent: typeof import('./src/components/ui/card/TheCardContent.vue')['default']

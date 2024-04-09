@@ -15,9 +15,6 @@ module.exports = {
 	],
 
 	theme: {
-		maxWidth: {
-			"144": "36rem",
-		},
 		container: {
 			center: true,
 			padding: "2rem",
@@ -26,6 +23,15 @@ module.exports = {
 			},
 		},
 		extend: {
+			maxWidth: {
+				"144": "36rem",
+				"192": "48rem",
+				"240": "60rem",
+			},
+			height: {
+				"192": "48rem",
+				"screen-no-header": "calc(100vh - 6rem)",
+			},
 			colors: {
 				border: "hsl(var(--border))",
 				input: "hsl(var(--input))",

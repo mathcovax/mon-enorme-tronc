@@ -8,7 +8,7 @@ const handleIsActive = (value: boolean) => {
 };
 </script>
 
-<template class="relative">
+<template>
 	<header class="sticky top-0 z-50 h-24 p-6 flex items-center bg-white">
 		<div class="container flex gap-10 justify-between lg:justify-center items-center">
 			<div class="flex gap-3 items-center">
