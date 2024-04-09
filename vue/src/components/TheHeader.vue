@@ -3,9 +3,9 @@ import { ref } from 'vue';
 
 const displayNav = ref(false);
 
-const handleIsActive = (value: boolean) => {
+function handleIsActive(value: boolean) {
 	displayNav.value = value;
-};
+}
 </script>
 
 <template>
