@@ -4,6 +4,7 @@
     "dev": "ENVIRONMENT=DEV tsx --watch src/main --swagger --generate-types",
     "start": "ENVIRONMENT=PROD tsx src/main",
     "lint": "eslint .",
+    "test:tu": "vitest --coverage",
     "test:types": "tsc --noEmit",
     "generate:swagger": "tsx src/main --swagger --only-generate",
     "generate:types": "tsx src/main --generate-types --only-generate"
@@ -27,9 +28,12 @@
   },
   "devDependencies": {
     "@types/node": "^20.11.30",
+    "@vitest/coverage-istanbul": "^1.4.0",
     "eslint": "^8.57.0",
     "tsx": "^4.7.1",
     "typescript": "^5.4.2",
-    "typescript-eslint": "^7.3.1"
+    "typescript-eslint": "^7.3.1",
+    "vite-tsconfig-paths": "^4.3.2",
+    "vitest": "^1.4.0"
   }
 }

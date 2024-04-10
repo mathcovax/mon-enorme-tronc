@@ -33,10 +33,12 @@
       "@security/*": ["./src/security/*"],
       "@checkers/*": ["./src/checkers/*"],
       "@services/*": ["./src/services/*"],
+      "@test/*": ["./test/*"],
     },                                      /* Specify a set of entries that re-map imports to additional lookup locations. */
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */
     "types": [
+	  "vitest/globals",
       "@duplojs/swagger/globals",
       "@duplojs/what-was-sent/globals",
       "@duplojs/http-exception/globals"
@@ -114,5 +116,5 @@
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts", "test/**/*.ts"]
 }
