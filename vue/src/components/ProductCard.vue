@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import CardContent from "./ui/card/CardContent.vue";
-import CardDescription from "./ui/card/CardDescription.vue";
-import CardTitle from "./ui/card/CardTitle.vue";
-
 export interface Product {
 	image: string;
 	title: string;

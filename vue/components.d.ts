@@ -30,7 +30,7 @@ declare module 'vue' {
     TheCardFooter: typeof import('./src/components/ui/card/TheCardFooter.vue')['default']
     TheCardHeader: typeof import('./src/components/ui/card/TheCardHeader.vue')['default']
     TheCardTitle: typeof import('./src/components/ui/card/TheCardTitle.vue')['default']
-    TheFooter: typeof import('./src/components/TheFooter.vue')['default']
+    TheFooter: typeof import('./src/domains/navigation/components/TheFooter.vue')['default']
     TheHeader: typeof import('./src/components/TheHeader.vue')['default']
     TheIcon: typeof import('./src/components/TheIcon.vue')['default']
     TheInput: typeof import('./src/components/ui/input/TheInput.vue')['default']
