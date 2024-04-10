@@ -7,28 +7,45 @@
 		<div>
 			<div class="container flex flex-col lg:flex-row gap-16 lg:gap-0 justify-around">
 				<div class="flex flex-col gap-6">
-					<RouterLink to="/" class="text-2xl font-bold">MET</RouterLink>
+					<RouterLink
+						to="/"
+						class="text-2xl font-bold"
+					>
+						MET
+					</RouterLink>
 					<p>Le plaisir au naturel.</p>
 					<nav>
 						<ul class="flex gap-3">
 							<li>
 								<RouterLink to="#">
-									<TheIcon icon="twitter" size="3xl" />
+									<TheIcon
+										icon="twitter"
+										size="3xl"
+									/>
 								</RouterLink>
 							</li>
 							<li>
 								<RouterLink to="#">
-									<TheIcon icon="facebook" size="3xl" />
+									<TheIcon
+										icon="facebook"
+										size="3xl"
+									/>
 								</RouterLink>
 							</li>
 							<li>
 								<RouterLink to="#">
-									<TheIcon icon="instagram" size="3xl" />
+									<TheIcon
+										icon="instagram"
+										size="3xl"
+									/>
 								</RouterLink>
 							</li>
 							<li>
 								<RouterLink to="#">
-									<TheIcon icon="youtube" size="3xl" />
+									<TheIcon
+										icon="youtube"
+										size="3xl"
+									/>
 								</RouterLink>
 							</li>
 						</ul>
@@ -36,7 +53,9 @@
 				</div>
 				<div class="flex flex-col lg:flex-row gap-16">
 					<div class="flex flex-col gap-6">
-						<h6 class="text-lg font-semibold">AIDE</h6>
+						<h6 class="text-lg font-semibold">
+							AIDE
+						</h6>
 						<nav>
 							<ul class="flex flex-col gap-6 opacity-60">
 								<li>
@@ -63,7 +82,9 @@
 						</nav>
 					</div>
 					<div class="flex flex-col gap-6">
-						<h6 class="text-lg font-semibold">FAQ</h6>
+						<h6 class="text-lg font-semibold">
+							FAQ
+						</h6>
 						<nav>
 							<ul class="flex flex-col gap-6 opacity-60">
 								<li>
@@ -90,7 +111,9 @@
 						</nav>
 					</div>
 					<div class="flex flex-col gap-6">
-						<h6 class="text-lg font-semibold">Pages</h6>
+						<h6 class="text-lg font-semibold">
+							Pages
+						</h6>
 						<nav>
 							<ul class="flex flex-col gap-6 opacity-60">
 								<li>

@@ -19,7 +19,7 @@ export default createRouter({
 		...auth(),
 		notFound(),
 	],
-	scrollBehavior(to, from, savedPosition) {
-		return { top: 0 }
+	scrollBehavior() {
+		return { top: 0 };
 	},
 });

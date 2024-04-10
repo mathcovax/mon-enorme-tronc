@@ -3,8 +3,8 @@
 </script>
 
 <template>
-  <div>
-    accountant layout
-    <RouterView />
-  </div>
+	<div>
+		accountant layout
+		<RouterView />
+	</div>
 </template>

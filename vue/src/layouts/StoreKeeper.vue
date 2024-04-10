@@ -3,8 +3,8 @@
 </script>
 
 <template>
-  <div>
-    store keeper layout
-    <RouterView />
-  </div>
+	<div>
+		store keeper layout
+		<RouterView />
+	</div>
 </template>

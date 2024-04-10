@@ -24,4 +24,4 @@ export const customersAuthRoutes = (): RouteRecordRaw => (
 		path: "/login",
 		component: () => import("./pages/LoginPage.vue"),
 	}
-)
+);

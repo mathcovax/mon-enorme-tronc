@@ -10,7 +10,10 @@
 		<p class="mt-4 text-base lg:text-lg font-medium opacity-50">
 			La page que vous cherchez n'existe pas.
 		</p>
-		<TheButton size="lg" class="mt-8 w-min">
+		<TheButton
+			size="lg"
+			class="mt-8 w-min"
+		>
 			Retourner à l'accueil
 		</TheButton>
 	</section>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = defineProps<{
+defineProps<{
 	icon: string;
 	size?: string;
 	color?: string;
@@ -7,5 +7,5 @@ const props = defineProps<{
 </script>
 
 <template>
-	<span :class="`mdi mdi-${icon} text-${color || 'black'} text-${size || 'base'}`"></span>
+	<span :class="`mdi mdi-${icon} text-${color || 'black'} text-${size || 'base'}`" />
 </template>
