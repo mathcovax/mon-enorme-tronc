@@ -33,7 +33,9 @@ export default tseslint.config(
 		},
 		rules: {
 			...rules,
-			"vue/require-default-prop": "off"
+			"vue/require-default-prop": "off",
+			"vue/html-indent": ["error", "tab"],
+			'no-undef': 'off',
 		},
 	},
 );
