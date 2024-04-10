@@ -4,6 +4,12 @@
 
 - Générer le client prisma `npm run generate:prisma`.
 
+### convention pour GIT
+
+- Les noms des commit doivent être semblabe a : `feat(${issueNumber}): subject`, `fix(${issueNumber}): subject`, `docs(${issueNumber}): subject` ...
+
+- Les noms des brache doivent être semblabe a : `feat/${issueNumber}`, `fix/${issueNumber}`, `docs/${issueNumber}` ...
+
 ### Convention pour DUPLO
 
 - Tous les checker doivent être créer dans le dossier `src/checkers`. Si vous impotez un checker il faut utiliser le path `@checkers`.
