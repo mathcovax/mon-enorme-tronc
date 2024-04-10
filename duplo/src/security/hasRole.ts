@@ -13,6 +13,8 @@ export const hasRoleSecurity = duplo
 			if(pickup("role") !== pickup("options").role){
 				throw new UnauthorizedHttpException("role.wrong");
 			}
+
+			return {};
 		},
 		undefined,
 		new IHaveSentThis(UnauthorizedHttpException.code, "role.wrong")
