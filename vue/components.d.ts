@@ -17,7 +17,6 @@ declare module 'vue' {
     copy: typeof import('./src/components/BurgerButton.vue')['default']
     Input: typeof import('./src/components/ui/input/Input.vue')['default']
     PrimaryButton: typeof import('./src/components/PrimaryButton.vue')['default']
-    PrimaryCard: typeof import('./src/components/PrimaryCard.vue')['default']
     ProductCard: typeof import('./src/components/ProductCard.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

@@ -10,13 +10,15 @@ const formData = ref({
 
 <template>
 	<TheCard class="w-80 border-0">
-		<TheCardHeader>
-			<TheCardTitle>Connexion</TheCardTitle>
-		</TheCardHeader>
-		<TheCardContent>
-			<TheCardDescription class="mb-6">
+		<CardHeader>
+			<CardTitle class="text-center">
+				Connexion
+			</CardTitle>
+		</CardHeader>
+		<CardContent>
+			<CardDescription class="mb-6">
 				Connectez-vous pour accéder à votre compte.
-			</TheCardDescription>
+			</CardDescription>
 			<form class="flex flex-col gap-4">
 				<TheInput
 					v-model="formData.email"
@@ -35,14 +37,14 @@ const formData = ref({
 					Connexion
 				</TheButton>
 			</form>
-		</TheCardContent>
-		<TheCardFooter>
+		</CardContent>
+		<CardFooter>
 			<RouterLink
 				to="/register"
 				class="text-blue-500 hover:underline"
 			>
 				Pas encore de compte ? Inscrivez-vous
 			</RouterLink>
-		</TheCardFooter>
+		</CardFooter>
 	</TheCard>
 </template>

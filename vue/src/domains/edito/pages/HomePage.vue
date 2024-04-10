@@ -66,7 +66,7 @@ const products = ref([
 			</h2>
 			<ScrollArea class="w-full">
 				<div class="flex justify-center">
-					<PrimaryCard
+					<ProductCard
 						v-for="product in products"
 						:key="product.title"
 						:product="product"
@@ -91,7 +91,7 @@ const products = ref([
 			</h2>
 			<ScrollArea class="w-full">
 				<div class="flex justify-center">
-					<PrimaryCard
+					<ProductCard
 						v-for="product in products"
 						:key="product.title"
 						:product="product"

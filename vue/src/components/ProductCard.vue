@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import TheCardContent from "./ui/card/CardContent.vue";
-import TheCardDescription from "./ui/card/CardDescription.vue";
-import TheCardTitle from "./ui/card/CardTitle.vue";
+import CardContent from "./ui/card/CardContent.vue";
+import CardDescription from "./ui/card/CardDescription.vue";
+import CardTitle from "./ui/card/CardTitle.vue";
 
 export interface Product {
 	image: string;
@@ -19,7 +19,7 @@ defineProps<{
 <template>
 	<TheCard class="w-72 border-0">
 		<RouterLink :to="product.url">
-			<TheCardHeader>
+			<CardHeader>
 				<img
 					src="https://via.placeholder.com/250"
 					alt="placeholder"
@@ -27,18 +27,18 @@ defineProps<{
 					height="250"
 					class="rounded-2xl"
 				>
-			</TheCardHeader>
-			<TheCardContent>
-				<TheCardTitle class="mb-3">
+			</CardHeader>
+			<CardContent>
+				<CardTitle class="mb-3">
 					{{ product.title }}
-				</TheCardTitle>
-				<TheCardDescription>
+				</CardTitle>
+				<CardDescription>
 					{{ product.description }}
-				</TheCardDescription>
-			</TheCardContent>
-			<TheCardFooter>
+				</CardDescription>
+			</CardContent>
+			<CardFooter>
 				<span>{{ product.price }}</span>
-			</TheCardFooter>
+			</CardFooter>
 		</RouterLink>
 	</TheCard>
 </template>
