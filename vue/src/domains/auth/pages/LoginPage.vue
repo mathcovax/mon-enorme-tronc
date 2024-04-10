@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import LoginCard from '../components/LoginCard.vue';
+
 
 </script>
 
 <template>
-  <div>
-    login
-  </div>
+	<section class="h-screen-no-header flex justify-center items-center">
+		<LoginCard />
+	</section>
 </template>

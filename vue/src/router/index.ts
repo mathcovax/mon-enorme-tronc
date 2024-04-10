@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import edito, { notFound } from "@/domains/edito/router";
-import auth from "@/domains/auth/router";
+import auth, { customersAuthRoutes } from "@/domains/auth/router";
 import product from "@/domains/product/router";
 
 export default createRouter({
@@ -13,6 +13,7 @@ export default createRouter({
 			children: [
 				...edito(),
 				...product(),
+				customersAuthRoutes(),
 			]
 		},
 		...auth(),

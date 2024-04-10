@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TheCardContent from './ui/card/TheCardContent.vue';
+import TheCardContent from './ui/card/CardContent.vue';
 import TheCardDescription from './ui/card/TheCardDescription.vue';
 import TheCardTitle from './ui/card/TheCardTitle.vue';
 
