@@ -5,7 +5,7 @@ const emit = defineEmits(["isActive"]);
 
 const isActive = ref(false);
 
-const toggleMenu = () => {
+function toggleMenu() {
 	isActive.value = !isActive.value;
 	emit("isActive", isActive.value);
 };
