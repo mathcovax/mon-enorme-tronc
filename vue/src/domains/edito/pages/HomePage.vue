@@ -64,6 +64,7 @@ const products = ref([
 			</TheButton>
 		</div>
 	</section>
+	<hr class="max-w-screen-xl h-px mx-auto my-16 border-0 bg-black opacity-10">
 	<section>
 		<div class="container mb-12 lg:mb-16 flex flex-col gap-8 lg:gap-12 items-center">
 			<h2 class="text-2xl lg:text-3xl font-bold">Meilleures ventes</h2>

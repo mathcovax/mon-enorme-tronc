@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-import edito, {notFound} from "@/domains/edito/router";
+import edito, { notFound } from "@/domains/edito/router";
 import auth from "@/domains/auth/router";
 import product from "@/domains/product/router";
 
@@ -17,5 +17,8 @@ export default createRouter({
 		},
 		...auth(),
 		notFound(),
-	]
+	],
+	scrollBehavior(to, from, savedPosition) {
+		return { top: 0 }
+	},
 });
