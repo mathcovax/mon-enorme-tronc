@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ref } from "vue";
-
 const emit = defineEmits(["isActive"]);
 
 const isActive = ref(false);
@@ -8,7 +6,7 @@ const isActive = ref(false);
 function toggleMenu() {
 	isActive.value = !isActive.value;
 	emit("isActive", isActive.value);
-};
+}
 </script>
 
 <template>

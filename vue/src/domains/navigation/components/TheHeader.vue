@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ref } from "vue";
-
 const displayNav = ref(false);
 
 function handleIsActive(value: boolean) {

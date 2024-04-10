@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ref } from "vue";
-
 const products = ref([
 	{
 		image: "https://via.placeholder.com/250",

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-
+const currentYear = ref(new Date().getFullYear());
 </script>
 
 <template>
@@ -139,7 +139,7 @@
 
 			<hr class="h-px my-6 border-0 bg-black opacity-10">
 
-			<span class="opacity-60">Mon Énorme Tronc &#169; 2024-{{ new Date().getFullYear() }}. Tous droits
+			<span class="opacity-60">Mon Énorme Tronc &#169; 2024-{{ currentYear }}. Tous droits
 				réservés.</span>
 		</div>
 	</footer>
