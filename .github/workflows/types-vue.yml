@@ -3,7 +3,7 @@ name: types-vue
 on: [pull_request]
 
 jobs:
-  types:
+  types-vue:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

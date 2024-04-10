@@ -3,7 +3,7 @@ name: lint-duplo
 on: [pull_request]
 
 jobs:
-  lint:
+  lint-duplo:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
