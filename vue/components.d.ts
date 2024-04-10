@@ -15,8 +15,10 @@ declare module 'vue' {
     CardHeader: typeof import('./src/components/ui/card/CardHeader.vue')['default']
     CardTitle: typeof import('./src/components/ui/card/CardTitle.vue')['default']
     copy: typeof import('./src/components/BurgerButton.vue')['default']
+    Input: typeof import('./src/components/ui/input/Input.vue')['default']
     PrimaryButton: typeof import('./src/components/PrimaryButton.vue')['default']
     PrimaryCard: typeof import('./src/components/PrimaryCard.vue')['default']
+    ProductCard: typeof import('./src/components/ProductCard.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     ScrollArea: typeof import('./src/components/ui/scroll-area/ScrollArea.vue')['default']
@@ -31,5 +33,6 @@ declare module 'vue' {
     TheFooter: typeof import('./src/components/TheFooter.vue')['default']
     TheHeader: typeof import('./src/components/TheHeader.vue')['default']
     TheIcon: typeof import('./src/components/TheIcon.vue')['default']
+    TheInput: typeof import('./src/components/TheInput.vue')['default']
   }
 }
