@@ -45,7 +45,7 @@ function handleIsActive(value: boolean) {
 				>
 			</div>
 			<div class="flex gap-3 items-center">
-				<button>
+				<button class="lg:hidden">
 					<TheIcon
 						icon="magnify"
 						size="2xl"
