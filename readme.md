@@ -4,7 +4,7 @@
 
 - Générer le client prisma `npm run generate:prisma`.
 
-### convention pour GIT
+### Convention pour GIT
 
 - Les noms des commits doivent être semblables à : `feat(${issueNumber}): subject`, `fix(${issueNumber}): subject`, `docs(${issueNumber}): subject` ...
 
