@@ -6,17 +6,17 @@
 
 ### convention pour GIT
 
-- Les noms des commit doivent être semblabe a : `feat(${issueNumber}): subject`, `fix(${issueNumber}): subject`, `docs(${issueNumber}): subject` ...
+- Les noms des commits doivent être semblables à : `feat(${issueNumber}): subject`, `fix(${issueNumber}): subject`, `docs(${issueNumber}): subject` ...
 
-- Les noms des brache doivent être semblabe a : `feat/${issueNumber}`, `fix/${issueNumber}`, `docs/${issueNumber}` ...
+- Les noms des branches doivent être semblables à : `feat/${issueNumber}`, `fix/${issueNumber}`, `docs/${issueNumber}` ...
 
 ### Convention pour DUPLO
 
-- Tous les checker doivent être créer dans le dossier `src/checkers`. Si vous impotez un checker il faut utiliser le path `@checkers`.
+- Tous les checkers doivent être créés dans le dossier `src/checkers`. Si vous importez un checker il faut utiliser le path `@checkers`.
 
-- Toutes les `absractRoutes` et les `proccesses` concernant la sécurité (connexion, vérification supplémentaire...) doivent être crées dans le dossier `src/security`. Si vous impotez depuis ce dossier, il faut utiliser le path `@security`.
+- Toutes les `absractRoutes` et les `proccesses` concernant la sécurité (connexion, vérification supplémentaire...) doivent être créées dans le dossier `src/security`. Si vous importez depuis ce dossier, il faut utiliser le path `@security`.
 
-- Si vous souhaitez créer un service, vous devez créer le fichier dans le dossier `src/security`. Les services doivent être des class avec des methods static. Si vous impotez depuis ce dossier, il faut utiliser le path `@services`.
+- Si vous souhaitez créer un service, vous devez créer le fichier dans le dossier `src/security`. Les services doivent être des class avec des methods static. Si vous importez depuis ce dossier, il faut utiliser le path `@services`.
 
 - Les noms des fichiers et des dossiers dans le dossier `src/routes` doivent être en `kebab-case`.
 
