@@ -36,42 +36,28 @@ export class MockFirebaseAuth{
 type PrismaEntityKey = Exclude<keyof PrismaClient, `$${string}` | symbol>
 
 export class MockPrisma{
-	private static prismaMethods = {} as PrismaClient[PrismaEntityKey];
+	private static prisma = {} as PrismaClient[PrismaEntityKey];
 
-	static set(key: keyof PrismaClient[PrismaEntityKey], value: any){
-		this.prismaMethods[key] = value;
+	static set(entity: PrismaEntityKey, key: keyof PrismaClient[PrismaEntityKey], value: any){
+		if(!this.prisma[entity]){
+			this.prisma[entity] = {}
+		}
+		this.prisma[entity][key] = value;
 	}
 
-	static resest(key?: keyof PrismaClient[PrismaEntityKey]){
-		if(key){
-			this.prismaMethods[key] = undefined;
+	static resest(entity?: PrismaEntityKey, key?: keyof PrismaClient[PrismaEntityKey]){
+		if(entity && key){
+			this.prisma[entity][key] = undefined;
+		}
+		else if(entity){
+			this.prisma[entity] = undefined;
 		}
 		else {
-			Object.keys(this.prismaMethods).forEach((key) => this.prismaMethods[key] = undefined);
+			Object.keys(this.prisma).forEach((key) => this.prisma[key] = undefined);
 		}
 	}
 
 	static {
-		const methodsProxy = new Proxy(
-			this.prismaMethods,
-			{
-				get(target, prop: keyof Auth){
-					if(!target[prop]){
-						throw new Error(`Missing mocks prisma methods '${prop}'`);
-					}
-					return target[prop];
-				}
-			}
-		);
-
-		global.prisma = new Proxy(
-			{}, 
-			{
-				get(){
-					return methodsProxy
-				}
-			}
-		)
-		
+		global.prisma = this.prisma
 	}
 }

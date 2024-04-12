@@ -39,7 +39,13 @@ duplo.use(
 		globals: true,
 	}
 );
-duplo.use(duploWhatWasSent, {globals: true});
+duplo.use(
+	duploWhatWasSent, 
+	{
+		globals: true, 
+		enabled: ENV.ENVIRONMENT === "DEV"
+	}
+);
 duplo.use(duploHttpException,{globals: true});
 duplo.use(
 	ZodAccelerator.duplojs,
@@ -54,7 +60,8 @@ duplo.use(
 	duploRoutesDirectory, 
 	{
 		path: ["routes", "providers"].map((path) => `${__dirname}/${path}`),
-		matchs: [matchScriptFile]
+		matchs: [matchScriptFile],
+		ignores: ["**.test.ts"]
 	}
 ).then(() => {
 	duplo.launch(() => { 
