@@ -1,5 +1,5 @@
 import DuploTo from "@duplojs/to";
-import type {EnrichedDuplojsTo} from ".duplojs/client/EnrichedDuploTo";
+import type {EnrichedDuploTo} from ".duplojs/client/EnrichedDuploTo";
 
 interface InterceptorParams {
 	disabledLoader?: boolean
@@ -7,7 +7,7 @@ interface InterceptorParams {
 
 export const duploTo = new DuploTo<
 	InterceptorParams, 
-	EnrichedDuplojsTo<InterceptorParams>
+	EnrichedDuploTo<InterceptorParams>
 >({
 	prefix: "api"
 });
