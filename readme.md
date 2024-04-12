@@ -4,6 +4,10 @@
 
 - Générer le client prisma `npm run generate:prisma`.
 
+- Faire une migration Primas en DEV :
+  - `npm run dev`
+  - `npm run migrate:dev`
+
 ### Convention pour GIT
 
 - Les noms des commits doivent être semblables à : `feat(${issueNumber}): subject`, `fix(${issueNumber}): subject`, `docs(${issueNumber}): subject` ...

@@ -3,3 +3,4 @@ node_modules
 swagger.json
 firebase.credential.json
 coverage
+migrations

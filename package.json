@@ -10,6 +10,7 @@
     "dev": "docker compose up",
     "generate:types": "npm -w duplo run generate:types",
     "generate:prisma": "npx prisma generate",
+    "migrate:dev": "docker compose exec duplo npm -w duplo run migrate:dev",
     "prepare": "husky"
   },
   "prisma": {

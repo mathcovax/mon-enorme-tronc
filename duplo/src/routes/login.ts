@@ -40,19 +40,25 @@ export const POST = (method: Methods, path: string) => duplo
 				user = await prisma.user.create({
 					data: {email}
 				});
+
+				return {
+					user,
+					register: true
+				};
 			}
 
 			return {
 				user
 			};
 		},
-		["user"]
+		["user", "register"]
 	)
 	.handler(
 		({pickup}) => {
 			const {id, email} = pickup("user");
 			const accessToken = AccessToken.generate({id, email});
-			throw new OkHttpException("user.login", accessToken);
+
+			throw new OkHttpException(pickup("register") ? "user.register" : "user.login", accessToken);
 		},
-		new IHaveSentThis(OkHttpException.code, "user.login", zod.string())
+		new IHaveSentThis(OkHttpException.code, ["user.login", "user.register"], zod.string())
 	);
