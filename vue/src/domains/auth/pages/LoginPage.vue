@@ -5,10 +5,10 @@ import { duploTo as dt } from "@/lib/duploTo";
 
 const provider = new GoogleAuthProvider();
 const auth = getAuth(firebaseApp);
-const formData = ref({
-	email: "",
-	password: "",
-});
+// const formData = ref({
+// 	email: "",
+// 	password: "",
+// });
 
 async function googleSign(){
 	try {
@@ -43,7 +43,7 @@ async function googleSign(){
 						</p>
 					</div>
 					<div class="grid gap-4">
-						<div class="grid gap-2">
+						<!-- <div class="grid gap-2">
 							<Label for="email">Email</Label>
 							<TheInput
 								v-model="formData.email"
@@ -72,10 +72,9 @@ async function googleSign(){
 							class="w-full"
 						>
 							Se connecter
-						</TheButton>
+						</TheButton> -->
 						<TheButton
 							@click="googleSign"
-							variant="outline"
 							class="w-full"
 						>
 							Se connecter avec Google
