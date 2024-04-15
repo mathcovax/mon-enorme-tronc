@@ -30,7 +30,7 @@ async function googleSign(){
 				<div class="mx-auto grid w-[350px] gap-6">
 					<div class="grid gap-2 text-center">
 						<h1 class="text-3xl font-bold">
-							Connexion
+							Connexion / Inscription
 						</h1>
 						<p class="text-balance text-muted-foreground">
 							Connectez-vous pour accéder à votre compte.
