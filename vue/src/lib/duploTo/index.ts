@@ -1,5 +1,5 @@
 import DuploTo from "@duplojs/to";
-import type {EnrichedDuploTo} from ".duplojs/client/EnrichedDuploTo";
+import type { EnrichedDuploTo } from ".duplojs/client/EnrichedDuploTo";
 
 interface InterceptorParams {
 	disabledLoader?: boolean

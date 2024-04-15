@@ -55,8 +55,8 @@ export const POST = (method: Methods, path: string) => duplo
 	)
 	.handler(
 		({pickup}) => {
-			const {id, email} = pickup("user");
-			const accessToken = AccessToken.generate({id, email});
+			const { id, email } = pickup("user");
+			const accessToken = AccessToken.generate({ id, email });
 
 			throw new OkHttpException(pickup("register") ? "user.register" : "user.login", accessToken);
 		},

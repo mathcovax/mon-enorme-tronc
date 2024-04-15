@@ -108,13 +108,13 @@ const products = ref([
 	</section>
 	<section class="mb-12 lg:mb-16">
 		<div
-			class="container max-w-240 h-192 px-6 lg:px-16 py-10 lg:py-20 flex flex-col gap-8 lg:gap-12 items-center bg-whiteless rounded-3xl"
+			class="container max-w-240 lg:h-192 px-6 lg:px-16 py-10 lg:py-20 flex flex-col gap-8 lg:gap-12 items-center bg-whiteless rounded-3xl"
 		>
 			<h2 class="text-2xl lg:text-3xl font-bold">
 				Notre pack Plaisir
 			</h2>
 			<div
-				class="w-full h-[calc(100vh-11.25rem)] lg:h-[calc(100%-5.25rem)] grid grid-cols-6 grid-rows-12 lg:grid-rows-6 gap-5"
+				class="w-full h-192 lg:h-[calc(100%-5.25rem)] grid grid-cols-6 grid-rows-12 lg:grid-rows-6 gap-5"
 			>
 				<div class="col-span-6 lg:col-span-4 row-span-3">
 					<img
