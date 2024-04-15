@@ -13,7 +13,7 @@ export const userExistCheck = duplo
 		
 		if(name === "id"){
 			where = {
-				id: value
+				uid: value
 			};
 		}
 		else if(name === "email"){
