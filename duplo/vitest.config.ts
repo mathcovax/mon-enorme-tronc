@@ -16,6 +16,6 @@ export default defineConfig({
 			reportsDirectory: "coverage",
 			exclude: ["test/**", "src/*.ts", "src/providers/**", "src/prisma/**"]
 		},
-		cache: {dir: "../node_modules/.vite/vitest"}
 	},
+	cacheDir: "../node_modules/.vite/vitest"
 });

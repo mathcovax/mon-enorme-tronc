@@ -14,7 +14,6 @@
 		"source.fixAll": "explicit"
 	},
 	"eslint.experimental.useFlatConfig": true,
-	"editor.formatOnSave": true,
 	"eslint.validate": ["javascript", "vue"],
 
 	"eslint.workingDirectories": ["./vue", "./duplo"]
