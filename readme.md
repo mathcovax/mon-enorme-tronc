@@ -31,6 +31,7 @@
 - Les variables d'ENV sont des valeurs "sensibles" (mdp d'un compte ou autre). Définissez les dans le fichier `.env.local` qui est ignore par git.
 
 ### Convention pour VUE
+- Le texte doit **impérativement** passer par i18n et non directement dans le markup.
 
 - Les noms des composants doivent être en `PascalCase` et être minimum composés de 2 mots. Si vous n'en trouvez qu'un seul, vous pouvez le prefixer par `The`. Exemple : `Button` -> `TheButton`.
 

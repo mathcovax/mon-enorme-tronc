@@ -30,10 +30,10 @@ async function googleSign(){
 				<div class="mx-auto grid w-[350px] gap-6">
 					<div class="grid gap-2 text-center">
 						<h1 class="text-3xl font-bold">
-							Connexion / Inscription
+							{{ $t("page.login.title") }}
 						</h1>
 						<p class="text-balance text-muted-foreground">
-							Connectez-vous pour accéder à votre compte.
+							{{ $t("page.login.subtitle") }}
 						</p>
 					</div>
 					<div class="grid gap-4">
@@ -41,7 +41,7 @@ async function googleSign(){
 							@click="googleSign"
 							class="w-full"
 						>
-							Se connecter avec Google
+							{{ $t("page.login.buttonText") }}
 						</TheButton>
 					</div>
 				</div>
