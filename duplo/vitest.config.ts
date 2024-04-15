@@ -14,7 +14,9 @@ export default defineConfig({
 				"text", "json", "html", "json-summary"
 			],
 			reportsDirectory: "coverage",
-			exclude: ["test/**", "src/*.ts", "src/providers/**", "src/prisma/**"]
+			exclude: [
+				"test/**", "src/*.ts", "src/providers/**", "src/prisma/**"
+			]
 		},
 	},
 	cacheDir: "../node_modules/.vite/vitest"

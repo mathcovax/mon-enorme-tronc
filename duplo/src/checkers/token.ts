@@ -6,13 +6,13 @@ export const firebaseTokenCheck = duplo
 		try {
 			const decodedIdToken = await firebaseAuth.verifyIdToken(token);
 
-			const {email} = decodedIdToken;
+			const { email } = decodedIdToken;
 
 			if(!email){
 				throw new Error("Missing Email");
 			}
 			
-			return output("firebase.token.valide", {...decodedIdToken, email});
+			return output("firebase.token.valide", { ...decodedIdToken, email });
 		} catch {
 			return output("firebase.token.invalide", null);
 		}

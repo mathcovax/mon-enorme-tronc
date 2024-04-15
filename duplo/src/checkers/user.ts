@@ -8,7 +8,7 @@ export const inputUser = createTypeInput()
 
 export const userExistCheck = duplo
 	.createChecker("userExist")
-	.handler(async ({name, value}: GetTypeInput<typeof inputUser>, output) => {
+	.handler(async ({ name, value }: GetTypeInput<typeof inputUser>, output) => {
 		let where: Prisma.UserFindFirstArgs["where"];
 		
 		if(name === "id"){

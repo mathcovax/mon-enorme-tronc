@@ -7,18 +7,18 @@ export interface AccessTokenContent{
 
 export class AccessToken{
 	static generate(content: AccessTokenContent){
-		const tokenContent = {content};
+		const tokenContent = { content };
 
 		return jwt.sign(
 			tokenContent,
 			ENV.JWT_KEY,
-			{expiresIn: ENV.JWT_TIME}
+			{ expiresIn: ENV.JWT_TIME }
 		);
 	}
 
 	static check(token: string){
 		try {
-			const {content} = jwt.verify(
+			const { content } = jwt.verify(
 				token,
 				ENV.JWT_KEY,
 			) as jwt.JwtPayload;

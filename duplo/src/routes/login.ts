@@ -31,14 +31,14 @@ export const POST = (method: Methods, path: string) => duplo
 		}
 	)
 	.cut(
-		async ({pickup}) => {
+		async ({ pickup }) => {
 			let user = pickup("user");
 			
 			if(!user){
 				const email = pickup("decodedIdToken").email;
 
 				user = await prisma.user.create({
-					data: {email}
+					data: { email }
 				});
 
 				return {
@@ -54,7 +54,7 @@ export const POST = (method: Methods, path: string) => duplo
 		["user", "register"]
 	)
 	.handler(
-		({pickup}) => {
+		({ pickup }) => {
 			const { id, email } = pickup("user");
 			const accessToken = AccessToken.generate({ id, email });
 

@@ -24,5 +24,5 @@ duplo.addHook("beforeListenHttpServer", async () => {
 	//@ts-expect-error var 'global' cause type error.
 	firebaseAuth = global.firebaseAuth = firebaseAdmin.auth();
 
-	await firebaseAuth.getUsers([{email: "campani.mathieu@gmail.com"}]);
+	await firebaseAuth.getUsers([{ email: "campani.mathieu@gmail.com" }]);
 });

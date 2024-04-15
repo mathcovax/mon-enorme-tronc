@@ -9,7 +9,7 @@ export const hasRoleSecurity = duplo
 		},
 	})
 	.cut(   
-		({pickup}) => {
+		({ pickup }) => {
 			if(pickup("role") !== pickup("options").role){
 				throw new UnauthorizedHttpException("role.wrong");
 			}

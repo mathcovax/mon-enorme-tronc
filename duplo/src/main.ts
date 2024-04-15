@@ -1,4 +1,4 @@
-import Duplo, {HttpMethods, zod} from "@duplojs/duplojs";
+import Duplo, { HttpMethods, zod } from "@duplojs/duplojs";
 import duploHttpException from "@duplojs/http-exception";
 import duploRoutesDirectory, { matchScriptFile } from "@duplojs/routes-directory";
 import duploSwagger from "@duplojs/swagger";
@@ -46,7 +46,7 @@ duplo.use(
 		enabled: ENV.ENVIRONMENT === "DEV"
 	}
 );
-duplo.use(duploHttpException,{globals: true});
+duplo.use(duploHttpException, { globals: true });
 duplo.use(
 	ZodAccelerator.duplojs,
 	{
@@ -54,7 +54,7 @@ duplo.use(
 		PROD: true
 	}
 );
-duplo.use(duploTypeGenerator, {outputFile: CacheFolder.create("client") + "/EnrichedDuploTo.d.ts"});
+duplo.use(duploTypeGenerator, { outputFile: CacheFolder.create("client") + "/EnrichedDuploTo.d.ts" });
 
 duplo.use(
 	duploRoutesDirectory, 

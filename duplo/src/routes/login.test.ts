@@ -9,16 +9,16 @@ describe("POST /login", () => {
 	it("user login", async () => {
 		const res = await duplo
 			.testRoute(POST("POST", ""))
-			.setDefaultFloorValue({body: "test"})
+			.setDefaultFloorValue({ body: "test" })
 			.mockChecker(
 				"firebaseToken", 
-				{info: "firebase.token.valide", data: {email: "test"}},
-				{passCatch: true}
+				{ info: "firebase.token.valide", data: { email: "test" } },
+				{ passCatch: true }
 			)
 			.mockChecker(
 				"userExist",
-				{info: "", data: {email: "test", id: "1234"}},
-				{passCatch: true}
+				{ info: "", data: { email: "test", id: "1234" } },
+				{ passCatch: true }
 			)
 			.launch();
 
@@ -26,18 +26,18 @@ describe("POST /login", () => {
 	});
 
 	it("user register", async () => {
-		MockPrisma.set("user", "create", () => ({email: "test", id: "1234"}));
+		MockPrisma.set("user", "create", () => ({ email: "test", id: "1234" }));
 
 		const res = await duplo
 			.testRoute(POST("POST", ""))
-			.setDefaultFloorValue({body: "test"})
+			.setDefaultFloorValue({ body: "test" })
 			.mockChecker(
 				"firebaseToken", 
-				{info: "firebase.token.valide", data: {email: "test"}}
+				{ info: "firebase.token.valide", data: { email: "test" } }
 			)
 			.mockChecker(
 				"userExist",
-				{info: "", data: null}
+				{ info: "", data: null }
 			)
 			.launch();
 

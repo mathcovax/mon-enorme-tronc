@@ -6,7 +6,7 @@ vi.mock("@services/token");
 
 describe("token service", () => {
 	it("valide firebase token", async () => {
-		MockFirebaseAuth.set("verifyIdToken", () => ({email: "eee"}));
+		MockFirebaseAuth.set("verifyIdToken", () => ({ email: "eee" }));
 
 		const result = await duplo.testChecker(firebaseTokenCheck, "");
 

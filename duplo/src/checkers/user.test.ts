@@ -8,7 +8,7 @@ describe("token service", () => {
 
 		const result = await duplo.testChecker(userExistCheck, inputUser.id("12212"));
 
-		expect(spy).lastCalledWith({where: {id: "12212"}});
+		expect(spy).lastCalledWith({ where: { id: "12212" } });
 		expect(result.info).toBe("user.exist");
 	});
 
@@ -18,7 +18,7 @@ describe("token service", () => {
 
 		const result = await duplo.testChecker(userExistCheck, inputUser.email("12212"));
 
-		expect(spy).lastCalledWith({where: {email: "12212"}});
+		expect(spy).lastCalledWith({ where: { email: "12212" } });
 		expect(result.info).toBe("user.exist");
 	});
 

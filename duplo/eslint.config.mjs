@@ -11,8 +11,22 @@ export default tseslint.config(
 			"no-extra-semi": "error",
 			"quotes": ["error", "double"],
 			"indent": ["error", "tab"],
-			"max-len": ["error", { "code": 150 }],
+			"max-len": ["error", { "code": 120, "ignoreStrings": true, "ignoreTemplateLiterals": true }],
 			"@typescript-eslint/no-extraneous-class": "off",
+			"object-curly-newline": [
+				"error", 
+				{
+					"ObjectExpression": { 
+						"consistent": true, 
+						"multiline": true, 
+						"minProperties": 4 
+					}
+				}
+			],
+			"object-curly-spacing": ["error", "always"],
+			"array-bracket-newline": ["error", { "multiline": true, "minItems": 4 }],
+			"array-bracket-spacing": ["error", "never"],
+			"key-spacing": ["error", { "beforeColon": false }],
 		}
 	},
 );

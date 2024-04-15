@@ -9,8 +9,21 @@ const rules = {
 	"no-extra-semi": "error",
 	"quotes": ["error", "double"],
 	"indent": ["error", "tab"],
-	"max-len": ["error", { "code": 150 }],
-	"@typescript-eslint/no-extraneous-class": "off",
+	"max-len": ["error", { "code": 120, "ignoreStrings": true, "ignoreTemplateLiterals": true }],
+	"object-curly-newline": [
+		"error", 
+		{
+			"ObjectExpression": { 
+				"consistent": true, 
+				"multiline": true, 
+				"minProperties": 4 
+			}
+		}
+	],
+	"object-curly-spacing": ["error", "always"],
+	"array-bracket-newline": ["error", { "multiline": true, "minItems": 4 }],
+	"array-bracket-spacing": ["error", "never"],
+	"key-spacing": ["error", { "beforeColon": false }],
 };
 
 export default tseslint.config(
@@ -36,6 +49,11 @@ export default tseslint.config(
 			"vue/require-default-prop": "off",
 			"vue/html-indent": ["error", "tab"],
 			'no-undef': 'off',
+			"max-len": "off",
+			"vue/max-len": ["error", {
+				"code": 120,
+				"template": 1000
+			}]
 		},
 	},
 );

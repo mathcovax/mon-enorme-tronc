@@ -1,5 +1,5 @@
 import { config as importEnvFile } from "dotenv";
-import {expand as expandEnv} from "dotenv-expand";
+import { expand as expandEnv } from "dotenv-expand";
 import { zod } from "@duplojs/duplojs";
 
 declare global {
