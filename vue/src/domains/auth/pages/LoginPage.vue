@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { app as firebaseApp } from "@/lib/firebase";
-import { duploTo as dt } from "@/lib/duploTo";
 
 const provider = new GoogleAuthProvider();
 const auth = getAuth(firebaseApp);
@@ -11,8 +10,8 @@ async function googleSign(){
 		const result = await signInWithPopup(auth, provider);
 		const googleIdToken = await result.user.getIdToken();
 
-		await dt.enriched.post("/login", googleIdToken)
-			.code(200, accessToken => {
+		await duploTo.enriched.post("/login", googleIdToken)
+			.info("user.login", accessToken => {
 				console.log(accessToken);
 			})
 			.result;	

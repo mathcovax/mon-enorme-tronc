@@ -12,7 +12,7 @@ export default defineConfig({
     vue(),
 	AutoImport({
 		dirs: [
-			"./src/duploTo/**",
+			"./src/lib/duploTo/**",
 		],
 		imports: [
 			"vue",

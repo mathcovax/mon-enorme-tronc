@@ -1,5 +1,6 @@
 import { MockPrisma } from "@test/mocks/providers";
 import { POST } from "./login";
+import { duploTesting } from "@test/setup";
 
 describe("POST /login", () => {
 	beforeEach(() => {
@@ -7,7 +8,7 @@ describe("POST /login", () => {
 	});
 
 	it("user login", async () => {
-		const res = await duplo
+		const res = await duploTesting
 			.testRoute(POST("POST", ""))
 			.setDefaultFloorValue({ body: "test" })
 			.mockChecker(
@@ -28,7 +29,7 @@ describe("POST /login", () => {
 	it("user register", async () => {
 		MockPrisma.set("user", "create", () => ({ email: "test", id: "1234" }));
 
-		const res = await duplo
+		const res = await duploTesting
 			.testRoute(POST("POST", ""))
 			.setDefaultFloorValue({ body: "test" })
 			.mockChecker(

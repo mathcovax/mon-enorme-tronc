@@ -5,7 +5,6 @@ import duploSwagger from "@duplojs/swagger";
 import duploWhatWasSent from "@duplojs/what-was-sent";
 import { ZodAccelerator } from "@duplojs/zod-accelerator";
 import duploTypeGenerator from "@duplojs/to/plugin";
-import { CacheFolder } from "@duplojs/editor-tools";
 import "./env";
 
 declare global {
@@ -54,7 +53,7 @@ duplo.use(
 		PROD: true
 	}
 );
-duplo.use(duploTypeGenerator, { outputFile: CacheFolder.create("client") + "/EnrichedDuploTo.d.ts" });
+duplo.use(duploTypeGenerator, { outputFile: "../vue/src/lib/duploTo/EnrichedDuploTo.d.ts" });
 
 duplo.use(
 	duploRoutesDirectory, 
