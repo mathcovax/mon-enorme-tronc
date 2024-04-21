@@ -1,9 +1,9 @@
-name: tu-duplo
+name: duplo
 
 on: [pull_request]
 
 jobs:
-  tu-duplo:
+  tu:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -18,3 +18,23 @@ jobs:
         with:
           json-summary-path: "./duplo/coverage/coverage-summary.json"
           json-final-path: "./duplo/coverage/coverage-final.json"
+
+  types:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+      - run: npm ci
+      - run: npm -w duplo run test:types
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+      - run: npm ci
+      - run: npm -w duplo run lint

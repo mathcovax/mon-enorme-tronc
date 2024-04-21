@@ -16,7 +16,13 @@ export default defineConfig({
 			reportsDirectory: "coverage",
 			exclude: [
 				"test/**", "src/*.ts", "src/providers/**", "src/prisma/**"
-			]
+			],
+			thresholds: {
+				lines: 80,
+				functions: 80,
+				statements: 80,
+				branches: 50,
+			}
 		},
 	},
 	cacheDir: "../node_modules/.vite/vitest"

@@ -1,0 +1,14 @@
+{
+    "LABEL": {
+        "name": "wrong title",
+        "color": "f00020"
+    },
+    "CHECKS": {
+		"regexp": "^(feat|fix|docs)\\([0-9]+\\): "
+    },
+    "MESSAGES": {
+      "success": "All OK",
+      "failure": "Failing CI test",
+      "notice": "Only prefix '[feat | fix | docs]({issue number}): {PR subject}' is accepted."
+    }
+}
