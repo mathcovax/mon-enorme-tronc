@@ -1,0 +1,14 @@
+duplo:
+  - "duplo"
+
+vue:
+  - "vue"
+
+package: 
+  - "package.json"
+
+ci:
+  - ".github/**/*"
+  
+docs:
+  - "readme.md"
