@@ -13,6 +13,7 @@ export default defineConfig({
 	AutoImport({
 		dirs: [
 			"./src/lib/duploTo/**",
+			"./src/composables/**"
 		],
 		imports: [
 			"vue",

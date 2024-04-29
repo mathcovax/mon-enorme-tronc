@@ -1,53 +1,28 @@
 <script setup lang="ts">
 import TheToaster from "@/components/ui/toast/TheToaster.vue";
-import { useToast } from "@/components/ui/toast/use-toast";
 
-const toasts = ref([ // TODO: This is an exemple. Remove this when toasts are implemented.
-	{
-		type: "success",
-		title: "Success",
-		description: "This is a success message."
-	},
-	{
-		type: "info",
-		title: "Info",
-		description: "This is an informational message."
-	},
-	{
-		type: "error",
-		title: "Error",
-		description: "This is an error message.",
-		action: true
-	}
-]);
-const { toast } = useToast();
+const toasts = ref([]);
 
 const showToast = () => {
-	toasts.value.forEach((t, index) => {
-		setTimeout(() => {
-			toast({
-				title: t.title,
-				description: t.description,
-				variant: t.type === "error" ? "destructive" : t.type === "success" ? "success" : "default",
-				action: t.action ? 
-					h("button", { 
-						onClick: () => {
-							console.log("Action");
-						},
-						altText: "Try again"
-					},
-					{
-						default: () => "Try again",
-					}) 
-					: undefined,
-				duration: 10000
-			});
-		}, 5000 * (index + 1));
+	toasts.value.forEach((toast) => {
+		let toastFunction;
+
+		if ((toast as { type: string }).type === "success") {
+			toastFunction = useSuccessToast();
+		} else if ((toast as { type: string }).type === "info") {
+			toastFunction = useDefaultToast();
+		} else if ((toast as { type: string }).type === "error") {
+			toastFunction = useErrorToast();
+		} else {
+			toastFunction = useDefaultToast();
+		}
+
+		toastFunction((toast as { description: string }).description);
 	});
 };
 
 onMounted(() => {
-	showToast();
+	watch(() => toasts.value, showToast, { immediate: true });
 });
 </script>
 
