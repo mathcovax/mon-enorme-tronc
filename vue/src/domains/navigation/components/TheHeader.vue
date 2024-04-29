@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const displayNav = ref(false);
 
-function handleIsActive(value: boolean) {
+function handleBurgerButtonToggle(value: boolean) {
 	displayNav.value = value;
 }
 </script>
@@ -10,7 +10,7 @@ function handleIsActive(value: boolean) {
 	<header class="sticky top-0 z-50 h-24 p-6 flex items-center bg-white">
 		<div class="container flex gap-10 justify-between lg:justify-center items-center">
 			<div class="flex gap-3 items-center">
-				<BurgerButton @is-active="handleIsActive" />
+				<BurgerButton @on-toggle="handleBurgerButtonToggle" />
 				<RouterLink
 					to="/"
 					class="text-2xl font-bold"

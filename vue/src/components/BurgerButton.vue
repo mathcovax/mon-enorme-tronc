@@ -1,11 +1,11 @@
 <script setup lang="ts">
-const emit = defineEmits(["isActive"]);
+const emit = defineEmits<{ onToggle: [isActive: boolean] }>();
 
 const isActive = ref(false);
 
 function toggleMenu() {
 	isActive.value = !isActive.value;
-	emit("isActive", isActive.value);
+	emit("onToggle", isActive.value);
 }
 </script>
 

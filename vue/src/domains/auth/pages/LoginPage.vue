@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { app as firebaseApp } from "@/lib/firebase";
+import { effect } from "vue";
 
 const provider = new GoogleAuthProvider();
 const auth = getAuth(firebaseApp);
@@ -20,6 +21,43 @@ async function googleSign(){
 		// Handle error
 	}
 }
+
+const test = ref("test");
+
+const { values, Form: SignForm, checkForm } = useFormBuilder([
+	{
+		type: "string",
+		name: "test",
+		defaultValue: "toto",
+		zodSchema: zod.string().transform((v) => [v]),
+		label: computed(() => test.value),
+		clos: 6,
+	},
+	{
+		type: "string",
+		name: "te",
+		defaultValue: "22",
+		zodSchema: zod.string({ message: "n'est pas une string" }),
+		clos: 6,
+	},
+	{
+		type: "number",
+		name: "num",
+		defaultValue: 1,
+		zodSchema: zod.number({ message: "n'est pas un nombre" }),
+		clos: 6,
+	},
+]);
+
+setTimeout(async () => {
+	console.log(await checkForm());
+}, 1000);
+
+effect(() => {
+	console.log(
+		values.test.value, values.te.value, values.num.value
+	);
+});
 </script>
 
 <template>
@@ -53,5 +91,7 @@ async function googleSign(){
 				>
 			</div>
 		</div>
+
+		<SignForm />
 	</section>
 </template>

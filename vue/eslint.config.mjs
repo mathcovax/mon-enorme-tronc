@@ -24,6 +24,16 @@ const rules = {
 	"array-bracket-newline": ["error", { "multiline": true, "minItems": 4 }],
 	"array-bracket-spacing": ["error", "never"],
 	"key-spacing": ["error", { "beforeColon": false }],
+	"@typescript-eslint/no-unused-vars": [
+		"error",
+		{
+			"argsIgnorePattern": "^_",
+			"caughtErrorsIgnorePattern": "^_",
+			"destructuredArrayIgnorePattern": "^_",
+			"varsIgnorePattern": "^_",
+			"ignoreRestSiblings": true
+		}
+	]
 };
 
 export default tseslint.config(
