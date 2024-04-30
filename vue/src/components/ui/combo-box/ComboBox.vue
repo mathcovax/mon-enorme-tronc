@@ -44,13 +44,16 @@ const value = ref("");
 				<ChevronsUpDown class="ml-2 h-4 w-4 shrink-0 opacity-50" />
 			</TheButton>
 		</PopoverTrigger>
+
 		<PopoverContent class="w-[200px] p-0">
 			<TheCommand>
 				<CommandInput
 					class="h-9"
 					placeholder="Search framework..."
 				/>
+
 				<CommandEmpty>No framework found.</CommandEmpty>
+
 				<CommandList>
 					<CommandGroup>
 						<CommandItem

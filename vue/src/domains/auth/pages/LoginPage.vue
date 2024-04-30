@@ -69,10 +69,12 @@ effect(() => {
 						<h1 class="text-3xl font-bold">
 							{{ $t("page.login.title") }}
 						</h1>
+
 						<p class="text-balance text-muted-foreground">
 							{{ $t("page.login.subtitle") }}
 						</p>
 					</div>
+
 					<div class="grid gap-4">
 						<TheButton
 							@click="googleSign"
@@ -83,6 +85,7 @@ effect(() => {
 					</div>
 				</div>
 			</div>
+
 			<div class="hidden bg-muted lg:block">
 				<img
 					src="https://via.placeholder.com/250"
@@ -93,5 +96,7 @@ effect(() => {
 		</div>
 
 		<SignForm />
+
+		<ComboBox />
 	</section>
 </template>

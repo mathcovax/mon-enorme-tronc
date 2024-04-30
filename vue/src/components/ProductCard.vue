@@ -24,14 +24,17 @@ defineProps<{
 					class="rounded-2xl"
 				>
 			</CardHeader>
+
 			<CardContent>
 				<CardTitle class="mb-3">
 					{{ product.title }}
 				</CardTitle>
+
 				<CardDescription>
 					{{ product.description }}
 				</CardDescription>
 			</CardContent>
+
 			<CardFooter>
 				<span>{{ product.price }}</span>
 			</CardFooter>

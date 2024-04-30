@@ -63,7 +63,10 @@ export default tseslint.config(
 			"vue/max-len": ["error", {
 				"code": 120,
 				"template": 1000
-			}]
+			}],
+			"vue/padding-line-between-tags": ["error", [
+				{ "blankLine": "always", "prev": "*", "next": "*" }
+			]],
 		},
 	},
 );

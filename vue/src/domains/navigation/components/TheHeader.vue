@@ -11,6 +11,7 @@ function handleBurgerButtonToggle(value: boolean) {
 		<div class="container flex gap-10 justify-between lg:justify-center items-center">
 			<div class="flex gap-3 items-center">
 				<BurgerButton @on-toggle="handleBurgerButtonToggle" />
+
 				<RouterLink
 					to="/"
 					class="text-2xl font-bold"
@@ -18,6 +19,7 @@ function handleBurgerButtonToggle(value: boolean) {
 					MET
 				</RouterLink>
 			</div>
+
 			<nav>
 				<ul class="hidden lg:flex gap-6">
 					<li>
@@ -25,11 +27,13 @@ function handleBurgerButtonToggle(value: boolean) {
 							Meilleures ventes
 						</RouterLink>
 					</li>
+
 					<li>
 						<RouterLink to="#">
 							Nouveautés
 						</RouterLink>
 					</li>
+
 					<li>
 						<RouterLink to="#">
 							Produits
@@ -37,6 +41,7 @@ function handleBurgerButtonToggle(value: boolean) {
 					</li>
 				</ul>
 			</nav>
+
 			<div class="hidden lg:block grow max-w-144">
 				<input
 					type="text"
@@ -44,6 +49,7 @@ function handleBurgerButtonToggle(value: boolean) {
 					class="w-full px-4 py-3 bg-whiteless rounded-full"
 				>
 			</div>
+
 			<div class="flex gap-3 items-center">
 				<button class="lg:hidden">
 					<TheIcon
@@ -51,12 +57,14 @@ function handleBurgerButtonToggle(value: boolean) {
 						size="2xl"
 					/>
 				</button>
+
 				<RouterLink to="/cart">
 					<TheIcon
 						icon="cart-outline"
 						size="2xl"
 					/>
 				</RouterLink>
+
 				<RouterLink to="/account">
 					<TheIcon
 						icon="account-circle-outline"
@@ -66,6 +74,7 @@ function handleBurgerButtonToggle(value: boolean) {
 			</div>
 		</div>
 	</header>
+
 	<nav
 		class="fixed z-40 w-72 h-[calc(100vh-6rem)] bg-white transition-transform duration-300"
 		:class="{ '-translate-x-72': !displayNav }"
@@ -76,11 +85,13 @@ function handleBurgerButtonToggle(value: boolean) {
 					Meilleures ventes
 				</RouterLink>
 			</li>
+
 			<li>
 				<RouterLink to="#">
 					Nouveautés
 				</RouterLink>
 			</li>
+
 			<li>
 				<RouterLink to="#">
 					Produits

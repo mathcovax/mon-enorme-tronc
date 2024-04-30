@@ -27,6 +27,7 @@ const delegatedProps = computed(() => {
 		>
 			{{ heading }}
 		</ComboboxLabel>
+
 		<slot />
 	</ComboboxGroup>
 </template>

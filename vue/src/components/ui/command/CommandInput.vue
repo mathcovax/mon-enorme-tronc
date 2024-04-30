@@ -27,6 +27,7 @@ const forwardedProps = useForwardProps(delegatedProps);
 		cmdk-input-wrapper
 	>
 		<Search class="mr-2 h-4 w-4 shrink-0 opacity-50" />
+
 		<ComboboxInput
 			v-bind="{ ...forwardedProps, ...$attrs }"
 			auto-focus

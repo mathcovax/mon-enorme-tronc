@@ -17,18 +17,23 @@ const { toasts } = useToast();
 				<ToastTitle v-if="toast.title">
 					{{ toast.title }}
 				</ToastTitle>
+
 				<template v-if="toast.description">
 					<ToastDescription v-if="isVNode(toast.description)">
 						<component :is="toast.description" />
 					</ToastDescription>
+
 					<ToastDescription v-else>
 						{{ toast.description }}
 					</ToastDescription>
 				</template>
+
 				<ToastClose />
 			</div>
+
 			<component :is="toast.action" />
 		</TheToast>
+
 		<ToastViewport />
 	</ToastProvider>
 </template>
