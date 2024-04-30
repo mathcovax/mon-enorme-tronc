@@ -6,7 +6,7 @@ export type NumberInputProps = InputProps<number>;
 
 export type NumberInputDef<
 	inputName extends string,
-> = BaseInput<inputName, "number", number>
+> = BaseInput<inputName, "number", number | undefined>
 
 export const NumberInput = defineComponent({
 	props: [
@@ -55,7 +55,7 @@ export const NumberInput = defineComponent({
 						"label", 
 						{
 							class: "",
-							name: props.name,
+							for: props.name,
 						},
 						props.label
 					)
@@ -65,6 +65,7 @@ export const NumberInput = defineComponent({
 					{
 						type: "number",
 						name: props.name,
+						id: props.name,
 						modelValue: props.modelValue,
 						"onUpdate:modelValue": (value: unknown) => {
 							emit("update:modelValue", Number(value));

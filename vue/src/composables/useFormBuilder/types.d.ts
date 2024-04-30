@@ -3,6 +3,7 @@ import type { Ref } from "vue";
 
 import type { TextInputDef } from "./_inputs/TextInput";
 import type { NumberInputDef } from "./_inputs/NumberInput";
+import type { ComboBoxInputDef } from "./_inputs/ComboBoxInput";
 
 export interface BaseInput<
 	inputName extends string,
@@ -12,7 +13,7 @@ export interface BaseInput<
 	name: inputName
 	type: inputType
 	defaultValue: 
-		valueType extends string | number 
+		valueType extends string | number | undefined | null
 			? valueType
 			: (() => valueType)
 	label?: string | Ref<string>
@@ -32,6 +33,7 @@ export type FormInput<
 > = 
 	| TextInputDef<inputName>
 	| NumberInputDef<inputName>
+	| ComboBoxInputDef<inputName>
 
 
 export type FormInputToRecordRef<

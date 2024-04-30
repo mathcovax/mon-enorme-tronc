@@ -6,7 +6,7 @@ export type TextInputProps = InputProps<string>;
 
 export type TextInputDef<
 	inputName extends string,
-> = BaseInput<inputName, "string", string>
+> = BaseInput<inputName, "string", string | undefined>
 
 export const TextInput = defineComponent({
 	props: [
@@ -55,7 +55,7 @@ export const TextInput = defineComponent({
 						"label", 
 						{
 							class: "",
-							name: props.name
+							for: props.name
 						},
 						props.label
 					)

@@ -24,6 +24,14 @@ async function googleSign(){
 
 const test = ref("test");
 
+const frameworks = [
+	{ identifier: "next.js", label: "Next.js" },
+	{ identifier: "sveltekit", label: "SvelteKit" },
+	{ identifier: "nuxt.js", label: "Nuxt.js" },
+	{ identifier: "remix", label: "Remix" },
+	{ identifier: "astro", label: "Astro" },
+];
+
 const { values, Form: SignForm, checkForm } = useFormBuilder([
 	{
 		type: "string",
@@ -31,27 +39,33 @@ const { values, Form: SignForm, checkForm } = useFormBuilder([
 		defaultValue: "toto",
 		zodSchema: zod.string().transform((v) => [v]),
 		label: computed(() => test.value),
-		clos: 6,
 	},
 	{
 		type: "string",
 		name: "te",
 		defaultValue: "22",
 		zodSchema: zod.string({ message: "n'est pas une string" }),
-		clos: 6,
 	},
 	{
 		type: "number",
 		name: "num",
 		defaultValue: 1,
 		zodSchema: zod.number({ message: "n'est pas un nombre" }),
-		clos: 6,
+	},
+	{
+		type: "combo",
+		name: "framework",
+		defaultValue: undefined,
+		items: frameworks,
+		placeholder: "tata",
+		defaultLabel: "eeee",
+		emptyLabel: "zizi"
 	},
 ]);
 
 setTimeout(async () => {
 	console.log(await checkForm());
-}, 1000);
+}, 4000);
 
 effect(() => {
 	console.log(
@@ -96,7 +110,5 @@ effect(() => {
 		</div>
 
 		<SignForm />
-
-		<ComboBox />
 	</section>
 </template>

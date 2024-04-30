@@ -5,6 +5,7 @@ import type { FormInput, FormInputToRecordRef, ResultCheckForm } from "./types";
 const inputMapper = {
 	string: TextInput,
 	number: NumberInput,
+	combo: ComboBoxInput,
 };
 
 export function useFormBuilder<
@@ -15,7 +16,14 @@ export function useFormBuilder<
 )
 {
 	const values = Object.fromEntries(
-		formInputs.map(input => [input.name, ref<unknown>(input.defaultValue)])
+		formInputs.map(input => [
+			input.name, 
+			ref<unknown>(
+				typeof input.defaultValue === "function" 
+					? input.defaultValue() 
+					: input.defaultValue
+			)
+		])
 	);
 	
 	let inputRefs: VNode[] = [];

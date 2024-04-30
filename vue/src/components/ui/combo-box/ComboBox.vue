@@ -1,6 +1,5 @@
-<script setup lang="ts">
+<script setup lang="ts" generic="T extends string | Record<string, unknown>">
 import { Check, ChevronsUpDown } from "lucide-vue-next";
-
 import { cn } from "@/lib/utils";
 import TheButton from "@/components/ui/button/TheButton.vue";
 import {
@@ -17,16 +16,28 @@ import {
 	PopoverTrigger,
 } from "@/components/ui/popover";
 
-const frameworks = [
-	{ value: "next.js", label: "Next.js" },
-	{ value: "sveltekit", label: "SvelteKit" },
-	{ value: "nuxt.js", label: "Nuxt.js" },
-	{ value: "remix", label: "Remix" },
-	{ value: "astro", label: "Astro" },
-];
+interface Props {
+	items: T[]
+	getLabel: (item: T) => string
+	getIdentifier: (item: T) => string | number
+	defaultLabel: string
+	placeholder: string
+	emptyLabel: string
+	modelValue?: unknown
+}
+
+defineProps<Props>();
+
+const emit = defineEmits<{
+	"update:modelValue": [value: T | undefined]
+}>();
 
 const open = ref(false);
-const value = ref("");
+
+function onSelect(value: T){
+	emit("update:modelValue", value);
+	open.value = false;
+}
 </script>
 
 <template>
@@ -38,9 +49,7 @@ const value = ref("");
 				:aria-expanded="open"
 				class="w-[200px] justify-between"
 			>
-				{{ value
-					? frameworks.find((framework) => framework.value === value)?.label
-					: "Select framework..." }}
+				{{ modelValue ? getLabel(modelValue as T) : defaultLabel }}
 				<ChevronsUpDown class="ml-2 h-4 w-4 shrink-0 opacity-50" />
 			</TheButton>
 		</PopoverTrigger>
@@ -49,29 +58,24 @@ const value = ref("");
 			<TheCommand>
 				<CommandInput
 					class="h-9"
-					placeholder="Search framework..."
+					:placeholder="placeholder"
 				/>
 
-				<CommandEmpty>No framework found.</CommandEmpty>
+				<CommandEmpty>{{ emptyLabel }}</CommandEmpty>
 
 				<CommandList>
 					<CommandGroup>
 						<CommandItem
-							v-for="framework in frameworks"
-							:key="framework.value"
-							:value="framework.value"
-							@select="(ev) => {
-								if (typeof ev.detail.value === 'string') {
-									value = ev.detail.value
-								}
-								open = false
-							}"
+							v-for="item in items"
+							:key="getIdentifier(item)"
+							:value="getIdentifier(item)"
+							@select="onSelect(item)"
 						>
-							{{ framework.label }}
+							{{ getLabel(item) }}
 							<Check
 								:class="cn(
 									'ml-auto h-4 w-4',
-									value === framework.value ? 'opacity-100' : 'opacity-0',
+									modelValue && getIdentifier(modelValue as T) === getIdentifier(item) ? 'opacity-100' : 'opacity-0',
 								)"
 							/>
 						</CommandItem>
