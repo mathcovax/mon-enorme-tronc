@@ -3,20 +3,12 @@ import type { Ref } from "vue";
 
 import type { TextInputDef } from "./_inputs/TextInput";
 import type { NumberInputDef } from "./_inputs/NumberInput";
-import type { ComboBoxInputDef } from "./_inputs/ComboBoxInput";
+import type { ComboBoxInputDef, ItemsComboBox } from "./_inputs/ComboBoxInput";
 
-export interface BaseInput<
-	inputName extends string,
-	inputType extends string,
-	valueType,
-> {
-	name: inputName
-	type: inputType
-	defaultValue: 
-		valueType extends string | number | undefined | null
-			? valueType
-			: (() => valueType)
-	label?: string | Ref<string>
+export interface BaseInputDef {
+	type: string
+	defaultValue?: unknown
+	label?: string
 	zodSchema?: ZodType
 	clos?: number
 }
@@ -28,29 +20,35 @@ export interface InputProps<modelValueInput = unknown> {
 	name: string
 }
 
-export type FormInput<
-	inputName extends string = string,
-> = 
-	| TextInputDef<inputName>
-	| NumberInputDef<inputName>
-	| ComboBoxInputDef<inputName>
+export type FormInputDef = 
+	| TextInputDef
+	| NumberInputDef
+	| ComboBoxInputDef
 
+
+type GetValue<ref> = ref extends Ref<infer value> ? value : ref
 
 export type FormInputToRecordRef<
-	baseInput extends BaseInput<string, string>
+	formInputs extends Record<string, FormInputDef | Ref<FormInputDef>>
 > = {
-	[input in baseInput as input["name"]]: Ref<
-		input extends BaseInput<unknown, unknown, infer valueType> 
-			? valueType | undefined
-			: undefined
+	[name in keyof formInputs as name]: Ref<
+		(
+			GetValue<formInputs[name]>["type"] extends "string"
+				? string 
+			: GetValue<formInputs[name]>["type"] extends "number" 
+				? number
+			: GetValue<formInputs[name]>["type"] extends "combo"
+				? ItemsComboBox
+			: never
+		) | undefined
 	>
 }
 
 export type ResultCheckForm<
-	baseInput extends BaseInput<string, string>
+	formInputs extends Record<string, FormInputDef | Ref<FormInputDef>>
 > = {
-	[input in baseInput as input["name"]]: 
-		input["zodSchema"] extends ZodType
-			? ZodInfer<input["zodSchema"]>
-			: undefined
+	[name in keyof formInputs as name]: 
+		GetValue<formInputs[name]>["zodSchema"] extends ZodType
+			? ZodInfer<GetValue<formInputs[name]>["zodSchema"]>
+			: unknown
 }

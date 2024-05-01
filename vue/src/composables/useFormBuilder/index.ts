@@ -1,6 +1,6 @@
-import type { FunctionalComponent, VNode } from "vue";
+import type { FunctionalComponent, VNode, Ref } from "vue";
 import { TextInput } from "./_inputs/TextInput";
-import type { FormInput, FormInputToRecordRef, ResultCheckForm } from "./types";
+import type { FormInputDef, FormInputToRecordRef, ResultCheckForm } from "./types";
 
 const inputMapper = {
 	string: TextInput,
@@ -9,29 +9,35 @@ const inputMapper = {
 };
 
 export function useFormBuilder<
-	inputName extends string,
-	input extends FormInput<inputName>
+	inputDef extends Record<string, FormInputDef | Ref<FormInputDef>>,
 >(
-	formInputs: input[]
+	formInputs: inputDef
 )
 {
 	const values = Object.fromEntries(
-		formInputs.map(input => [
-			input.name, 
-			ref<unknown>(
-				typeof input.defaultValue === "function" 
-					? input.defaultValue() 
-					: input.defaultValue
-			)
-		])
+		Object.entries(formInputs).map(([name, input]) => {
+			input = isRef(input) ? input.value : input;
+			
+			return [
+				name, 
+				ref<unknown>(
+					typeof input.defaultValue === "function" 
+						? input.defaultValue() 
+						: input.defaultValue
+				)
+			];
+		})
 	);
 	
 	let inputRefs: VNode[] = [];
 
 	const childInput = () => {
 		inputRefs = [];
-		return formInputs.map(
-			({ type, name, label, zodSchema, clos, ...reste }) => {
+		return Object.entries(formInputs).map(
+			([name, input]) => {
+				input = isRef(input) ? input.value : input;
+				const { type, label, zodSchema, clos, ...reste } = input;
+
 				const component = h(
 					inputMapper[type],
 					{
@@ -44,11 +50,9 @@ export function useFormBuilder<
 						"onUpdate:modelValue": (value: unknown) => {
 							values[name].value = value;
 						},
-						label: !label || typeof label === "string"
-							? label
-							: label.value,
-						zodSchema: zodSchema,
-						name: name,
+						label,
+						zodSchema,
+						name,
 						key: name,
 						...reste
 					}
@@ -81,7 +85,7 @@ export function useFormBuilder<
 		}
 
 		return valid 
-			? resultValue as ResultCheckForm<input>
+			? resultValue as ResultCheckForm<inputDef>
 			: null;
 	}
 
@@ -99,7 +103,7 @@ export function useFormBuilder<
 
 	return {
 		Form,
-		values: values as FormInputToRecordRef<input>,
+		values: values as FormInputToRecordRef<inputDef>,
 		inputRefs,
 		checkForm,
 	};

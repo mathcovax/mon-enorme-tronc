@@ -24,9 +24,10 @@ interface Props {
 	placeholder: string
 	emptyLabel: string
 	modelValue?: unknown
+	class?: string
 }
 
-defineProps<Props>();
+const props = defineProps<Props>();
 
 const emit = defineEmits<{
 	"update:modelValue": [value: T | undefined]
@@ -47,14 +48,14 @@ function onSelect(value: T){
 				variant="outline"
 				role="combobox"
 				:aria-expanded="open"
-				class="w-[200px] justify-between"
+				:class="`${props.class} justify-between`"
 			>
 				{{ modelValue ? getLabel(modelValue as T) : defaultLabel }}
 				<ChevronsUpDown class="ml-2 h-4 w-4 shrink-0 opacity-50" />
 			</TheButton>
 		</PopoverTrigger>
 
-		<PopoverContent class="w-[200px] p-0">
+		<PopoverContent class="p-0">
 			<TheCommand>
 				<CommandInput
 					class="h-9"

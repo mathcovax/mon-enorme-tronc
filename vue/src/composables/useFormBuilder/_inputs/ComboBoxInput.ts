@@ -1,8 +1,8 @@
 import { effect } from "vue";
-import type { BaseInput, InputProps } from "../types";
+import type { BaseInputDef, InputProps } from "../types";
 import ComboBox from "@/components/ui/combo-box/ComboBox.vue";
 
-interface ItemsComboBox {
+export interface ItemsComboBox {
 	label: string
 	identifier: number | string
 }
@@ -14,7 +14,9 @@ export interface ComboBoxInputProps extends InputProps<ItemsComboBox> {
 	emptyLabel: string
 }
 
-export interface ComboBoxInputDef<inputName extends string> extends BaseInput<inputName, "combo", ItemsComboBox | undefined> {
+export interface ComboBoxInputDef extends BaseInputDef {
+	type: "combo"
+	defaultValue?: () => ItemsComboBox
 	items: ItemsComboBox[]
 	defaultLabel: string
 	placeholder: string
@@ -46,7 +48,7 @@ export const ComboBoxInput = defineComponent({
 		expose({ submit });
 
 		effect(async () => {
-			if(toValidated && props.zodSchema){
+			if(toValidated.value && props.zodSchema){
 				const result = await props.zodSchema.safeParseAsync(props.modelValue);
 				if(!result.success){
 					errorMessage.value = result.error.issues[0].message;
@@ -76,7 +78,6 @@ export const ComboBoxInput = defineComponent({
 				h(
 					ComboBox, 
 					{
-						id: props.name,
 						items: props.items as {[P in keyof ItemsComboBox]: ItemsComboBox[P]}[],
 						getLabel: (i: unknown) => (i as ItemsComboBox).label,
 						getIdentifier: (i: unknown) => (i as ItemsComboBox).identifier,

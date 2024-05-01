@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { app as firebaseApp } from "@/lib/firebase";
-import { effect } from "vue";
 
 const provider = new GoogleAuthProvider();
 const auth = getAuth(firebaseApp);
@@ -21,57 +20,6 @@ async function googleSign(){
 		// Handle error
 	}
 }
-
-const test = ref("test");
-
-const frameworks = [
-	{ identifier: "next.js", label: "Next.js" },
-	{ identifier: "sveltekit", label: "SvelteKit" },
-	{ identifier: "nuxt.js", label: "Nuxt.js" },
-	{ identifier: "remix", label: "Remix" },
-	{ identifier: "astro", label: "Astro" },
-];
-
-const { values, Form: SignForm, checkForm } = useFormBuilder([
-	{
-		type: "string",
-		name: "test",
-		defaultValue: "toto",
-		zodSchema: zod.string().transform((v) => [v]),
-		label: computed(() => test.value),
-	},
-	{
-		type: "string",
-		name: "te",
-		defaultValue: "22",
-		zodSchema: zod.string({ message: "n'est pas une string" }),
-	},
-	{
-		type: "number",
-		name: "num",
-		defaultValue: 1,
-		zodSchema: zod.number({ message: "n'est pas un nombre" }),
-	},
-	{
-		type: "combo",
-		name: "framework",
-		defaultValue: undefined,
-		items: frameworks,
-		placeholder: "tata",
-		defaultLabel: "eeee",
-		emptyLabel: "zizi"
-	},
-]);
-
-setTimeout(async () => {
-	console.log(await checkForm());
-}, 4000);
-
-effect(() => {
-	console.log(
-		values.test.value, values.te.value, values.num.value
-	);
-});
 </script>
 
 <template>
@@ -108,7 +56,5 @@ effect(() => {
 				>
 			</div>
 		</div>
-
-		<SignForm />
 	</section>
 </template>

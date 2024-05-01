@@ -1,12 +1,13 @@
 import { effect } from "vue";
-import type { BaseInput, InputProps } from "../types";
+import type { BaseInputDef, InputProps } from "../types";
 import PrimaryInput from "@/components/PrimaryInput.vue";
 
 export type NumberInputProps = InputProps<number>;
 
-export type NumberInputDef<
-	inputName extends string,
-> = BaseInput<inputName, "number", number | undefined>
+export interface NumberInputDef extends BaseInputDef {
+	type: "number"
+	defaultValue?: number
+}
 
 export const NumberInput = defineComponent({
 	props: [
@@ -33,7 +34,7 @@ export const NumberInput = defineComponent({
 		expose({ submit });
 
 		effect(async () => {
-			if(toValidated && props.zodSchema){
+			if(toValidated.value && props.zodSchema){
 				const result = await props.zodSchema.safeParseAsync(props.modelValue);
 				if(!result.success){
 					errorMessage.value = result.error.issues[0].message;
