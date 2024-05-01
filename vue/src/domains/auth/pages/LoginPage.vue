@@ -4,6 +4,7 @@ import { app as firebaseApp } from "@/lib/firebase";
 
 const provider = new GoogleAuthProvider();
 const auth = getAuth(firebaseApp);
+const router = useRouter();
 
 async function googleSign(){
 	try {
@@ -13,6 +14,10 @@ async function googleSign(){
 		await duploTo.enriched.post("/login", googleIdToken)
 			.info("user.logged", accessToken => {
 				console.log(accessToken);
+				router.push({ name: "customer-register" });
+			})
+			.info("user.register", () => {
+				console.log("Redirect to register page");
 			})
 			.result;	
 	}
