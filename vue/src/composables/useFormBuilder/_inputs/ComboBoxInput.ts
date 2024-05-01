@@ -9,6 +9,7 @@ export interface ItemsComboBox {
 
 export interface ComboBoxInputProps extends InputProps<ItemsComboBox> {
 	items: ItemsComboBox[]
+	onUpdateSearchTerm?: (value: string) => void
 	defaultLabel: string
 	placeholder: string
 	emptyLabel: string
@@ -17,6 +18,7 @@ export interface ComboBoxInputProps extends InputProps<ItemsComboBox> {
 export interface ComboBoxInputDef extends BaseInputDef {
 	type: "combo"
 	defaultValue?: () => ItemsComboBox
+	onUpdateSearchTerm?: (value: string) => void
 	items: ItemsComboBox[]
 	defaultLabel: string
 	placeholder: string
@@ -25,7 +27,7 @@ export interface ComboBoxInputDef extends BaseInputDef {
 
 export const ComboBoxInput = defineComponent({
 	props: [
-		"label", "modelValue", "zodSchema", "name", "defaultLabel", "placeholder", "emptyLabel", "items"
+		"label", "modelValue", "zodSchema", "name", "defaultLabel", "placeholder", "emptyLabel", "items", "onUpdateSearchTerm"
 	],
 	setup(props: ComboBoxInputProps, { expose, emit }){
 		const toValidated = ref(false);
@@ -88,6 +90,7 @@ export const ComboBoxInput = defineComponent({
 						"onUpdate:modelValue": (value: unknown) => {
 							emit("update:modelValue", value);
 						},
+						"onUpdate:searchTerm": props.onUpdateSearchTerm,
 					}
 				),
 				props.zodSchema

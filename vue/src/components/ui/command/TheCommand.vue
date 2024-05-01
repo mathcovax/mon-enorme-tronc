@@ -9,7 +9,7 @@ const props = withDefaults(defineProps<ComboboxRootProps & { class?: HTMLAttribu
 	modelValue: "",
 });
 
-const emits = defineEmits<ComboboxRootEmits>();
+const emit = defineEmits<ComboboxRootEmits>();
 
 const delegatedProps = computed(() => {
 	const { class: _, ...delegated } = props;
@@ -17,7 +17,7 @@ const delegatedProps = computed(() => {
 	return delegated;
 });
 
-const forwarded = useForwardPropsEmits(delegatedProps, emits);
+const forwarded = useForwardPropsEmits(delegatedProps, emit);
 </script>
 
 <template>
