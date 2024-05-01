@@ -13,7 +13,7 @@ const router = createRouter({
 			children: [
 				...edito(),
 				...product(),
-				customersAuthRoutes(),
+				...customersAuthRoutes(),
 			]
 		},
 		...admin(),
