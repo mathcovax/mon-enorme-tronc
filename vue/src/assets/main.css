@@ -37,6 +37,8 @@
     --ring: 0 0% 3.9%;
  
     --radius: 0.5rem;
+
+	--invalide: red;
   }
  
   .dark {

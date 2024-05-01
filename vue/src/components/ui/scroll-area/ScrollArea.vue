@@ -28,7 +28,9 @@ const delegatedProps = computed(() => {
 		<ScrollAreaViewport class="h-full w-full rounded-[inherit]">
 			<slot />
 		</ScrollAreaViewport>
+
 		<ScrollBar />
+
 		<ScrollAreaCorner />
 	</ScrollAreaRoot>
 </template>

@@ -13,16 +13,18 @@ export default defineConfig({
 	AutoImport({
 		dirs: [
 			"./src/lib/duploTo/**",
-			"./src/composables/**"
+			"./src/lib/zod/**",
+			"./src/composables/**",
 		],
 		imports: [
 			"vue",
 			"vue-router",
 			"vue-i18n",
 		],
+		ignore: ["_**"]
 	}),
 	Components({
-		dirs: ["./src/components/**"]
+		dirs: ["src/components"]
 	}),
 	dynamicImportVars({
 		include: ["./src/lib/i18n/languages/**"]

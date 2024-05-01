@@ -5,5 +5,6 @@ import TheToaster from "@/components/ui/toast/TheToaster.vue";
 
 <template>
 	<RouterView />
+
 	<TheToaster />
 </template>

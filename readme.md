@@ -20,7 +20,7 @@
 
 - Toutes les `absractRoutes` et les `proccesses` concernant la sécurité (connexion, vérification supplémentaire...) doivent être créées dans le dossier `src/security`. Si vous importez depuis ce dossier, il faut utiliser le path `@security`.
 
-- Si vous souhaitez créer un service, vous devez créer le fichier dans le dossier `src/security`. Les services doivent être des class avec des methods static. Si vous importez depuis ce dossier, il faut utiliser le path `@services`.
+- Si vous souhaitez créer un service, vous devez créer le fichier dans le dossier `src/services`. Les services doivent être des class avec des methods static. Si vous importez depuis ce dossier, il faut utiliser le path `@services`.
 
 - Les noms des fichiers et des dossiers dans le dossier `src/routes` doivent être en `kebab-case`.
 

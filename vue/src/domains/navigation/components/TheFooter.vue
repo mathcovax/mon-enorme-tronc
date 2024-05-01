@@ -13,7 +13,9 @@ const currentYear = ref(new Date().getFullYear());
 					>
 						MET
 					</RouterLink>
+
 					<p>Le plaisir au naturel.</p>
+
 					<nav>
 						<ul class="flex gap-3">
 							<li>
@@ -24,6 +26,7 @@ const currentYear = ref(new Date().getFullYear());
 									/>
 								</RouterLink>
 							</li>
+
 							<li>
 								<RouterLink to="#">
 									<TheIcon
@@ -32,6 +35,7 @@ const currentYear = ref(new Date().getFullYear());
 									/>
 								</RouterLink>
 							</li>
+
 							<li>
 								<RouterLink to="#">
 									<TheIcon
@@ -40,6 +44,7 @@ const currentYear = ref(new Date().getFullYear());
 									/>
 								</RouterLink>
 							</li>
+
 							<li>
 								<RouterLink to="#">
 									<TheIcon
@@ -51,11 +56,13 @@ const currentYear = ref(new Date().getFullYear());
 						</ul>
 					</nav>
 				</div>
+
 				<div class="flex flex-col lg:flex-row gap-16">
 					<div class="flex flex-col gap-6">
 						<h6 class="text-lg font-semibold">
 							AIDE
 						</h6>
+
 						<nav>
 							<ul class="flex flex-col gap-6 opacity-60">
 								<li>
@@ -63,16 +70,19 @@ const currentYear = ref(new Date().getFullYear());
 										Support client
 									</RouterLink>
 								</li>
+
 								<li>
 									<RouterLink to="#">
 										Détails de livraison
 									</RouterLink>
 								</li>
+
 								<li>
 									<RouterLink to="#">
 										Conditions générales
 									</RouterLink>
 								</li>
+
 								<li>
 									<RouterLink to="#">
 										Confidentialité
@@ -81,10 +91,12 @@ const currentYear = ref(new Date().getFullYear());
 							</ul>
 						</nav>
 					</div>
+
 					<div class="flex flex-col gap-6">
 						<h6 class="text-lg font-semibold">
 							FAQ
 						</h6>
+
 						<nav>
 							<ul class="flex flex-col gap-6 opacity-60">
 								<li>
@@ -92,16 +104,19 @@ const currentYear = ref(new Date().getFullYear());
 										Compte
 									</RouterLink>
 								</li>
+
 								<li>
 									<RouterLink to="#">
 										Détails de livraison
 									</RouterLink>
 								</li>
+
 								<li>
 									<RouterLink to="#">
 										Commandes
 									</RouterLink>
 								</li>
+
 								<li>
 									<RouterLink to="#">
 										Payements
@@ -110,10 +125,12 @@ const currentYear = ref(new Date().getFullYear());
 							</ul>
 						</nav>
 					</div>
+
 					<div class="flex flex-col gap-6">
 						<h6 class="text-lg font-semibold">
 							Pages
 						</h6>
+
 						<nav>
 							<ul class="flex flex-col gap-6 opacity-60">
 								<li>
@@ -121,11 +138,13 @@ const currentYear = ref(new Date().getFullYear());
 										Meilleures ventes
 									</RouterLink>
 								</li>
+
 								<li>
 									<RouterLink to="#">
 										Nouveautés
 									</RouterLink>
 								</li>
+
 								<li>
 									<RouterLink to="#">
 										Produits

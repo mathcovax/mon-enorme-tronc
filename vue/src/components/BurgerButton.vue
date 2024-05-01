@@ -1,11 +1,11 @@
 <script setup lang="ts">
-const emit = defineEmits(["isActive"]);
+const emit = defineEmits<{ onToggle: [isActive: boolean] }>();
 
 const isActive = ref(false);
 
 function toggleMenu() {
 	isActive.value = !isActive.value;
-	emit("isActive", isActive.value);
+	emit("onToggle", isActive.value);
 }
 </script>
 
@@ -21,10 +21,12 @@ function toggleMenu() {
 				class="bg-black h-1 w-7 transform transition-all duration-300 origin-left"
 				:class="{ 'translate-x-10': isActive }"
 			/>
+
 			<div
 				class="bg-black h-1 w-7 rounded transform transition-all duration-300 delay-75"
 				:class="{ 'translate-x-10': isActive }"
 			/>
+
 			<div
 				class="bg-black h-1 w-7 transform transition-all duration-300 origin-left delay-150"
 				:class="{ 'translate-x-10': isActive }"
@@ -38,6 +40,7 @@ function toggleMenu() {
 					class="absolute bg-black h-1 w-7 transform transition-all duration-500 rotate-0 delay-300"
 					:class="{ 'rotate-45': isActive }"
 				/>
+
 				<div
 					class="absolute bg-black h-1 w-7 transform transition-all duration-500 -rotate-0 delay-300"
 					:class="{ '-rotate-45': isActive }"
