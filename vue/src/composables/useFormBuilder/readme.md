@@ -30,7 +30,8 @@ const { values, Form: SignForm, checkForm } = useFormBuilder({
 		placeholder: "tata",
 		defaultLabel: "eeee",
 		emptyLabel: "zizi",
-		zodSchema: zod.string().array()
+		zodSchema: zod.string().array(),
+		onUpdateSearchTerm: console.log,
 	}))
 });
 

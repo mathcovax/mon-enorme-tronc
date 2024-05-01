@@ -25,12 +25,14 @@ interface Props {
 	emptyLabel: string
 	modelValue?: unknown
 	class?: string
+	searchTerm?: string
 }
 
 const props = defineProps<Props>();
 
 const emit = defineEmits<{
 	"update:modelValue": [value: T | undefined]
+	"update:searchTerm": [value: string]
 }>();
 
 const open = ref(false);
@@ -56,7 +58,10 @@ function onSelect(value: T){
 		</PopoverTrigger>
 
 		<PopoverContent class="p-0">
-			<TheCommand>
+			<TheCommand
+				@update:search-term="(value) => emit('update:searchTerm', value)"
+				:search-term="searchTerm"
+			>
 				<CommandInput
 					class="h-9"
 					:placeholder="placeholder"
