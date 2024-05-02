@@ -12,12 +12,12 @@ const frameworks = computed(() => [
 
 const { values, Form: SignForm, checkForm } = useFormBuilder({
 	test: computed(() => ({
-		type: "string",
+		type: "text",
 		zodSchema: zod.string().transform((v) => [v]),
 		label: test.value,
 	})),
 	te: {
-		type: "string",
+		type: "text",
 		zodSchema: zod.string({ message: "n'est pas une string" }),
 	},
 	num: {

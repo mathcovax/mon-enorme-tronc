@@ -3,9 +3,12 @@ import { TextInput } from "./_inputs/TextInput";
 import type { FormInputDef, FormInputToRecordRef, ResultCheckForm } from "./types";
 
 const inputMapper = {
-	string: TextInput,
+	text: TextInput,
 	number: NumberInput,
 	combo: ComboBoxInput,
+	checkbox: CheckboxInput,
+	select: SelectInput,
+	textarea: TextareaInput,
 };
 
 export function useFormBuilder<
@@ -36,14 +39,14 @@ export function useFormBuilder<
 		return Object.entries(formInputs).map(
 			([name, input]) => {
 				input = isRef(input) ? input.value : input;
-				const { type, label, zodSchema, clos, ...reste } = input;
+				const { type, label, zodSchema, clo, ...reste } = input;
 
 				const component = h(
 					inputMapper[type],
 					{
 						style: {
-							"grid-column": clos 
-								? `span ${clos} / span ${clos}` 
+							"grid-column": clo 
+								? `span ${clo} / span ${clo}` 
 								: "span 12 / span 12"
 						},
 						modelValue: values[name].value,

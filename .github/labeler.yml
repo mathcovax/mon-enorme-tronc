@@ -12,3 +12,6 @@ ci:
   
 docs:
   - "readme.md"
+
+WIP:
+  - "**/**"

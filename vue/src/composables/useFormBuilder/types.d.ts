@@ -3,14 +3,17 @@ import type { Ref } from "vue";
 
 import type { TextInputDef } from "./_inputs/TextInput";
 import type { NumberInputDef } from "./_inputs/NumberInput";
-import type { ComboBoxInputDef, ItemsComboBox } from "./_inputs/ComboBoxInput";
+import type { ComboBoxInputDef, ItemComboBox } from "./_inputs/ComboBoxInput";
+import type { CheckboxInputDef } from "./_inputs/CheckboxInput";
+import type { SelectInputDef } from "./_inputs/SelectInput";
+import type { TextareaInputDef } from "./_inputs/TextareaInput";
 
 export interface BaseInputDef {
 	type: string
 	defaultValue?: unknown
 	label?: string
 	zodSchema?: ZodType
-	clos?: number
+	clo?: number
 }
 
 export interface InputProps<modelValueInput = unknown> {
@@ -24,6 +27,9 @@ export type FormInputDef =
 	| TextInputDef
 	| NumberInputDef
 	| ComboBoxInputDef
+	| CheckboxInputDef
+	| SelectInputDef
+	| TextareaInputDef
 
 
 type GetValue<ref> = ref extends Ref<infer value> ? value : ref
@@ -33,12 +39,18 @@ export type FormInputToRecordRef<
 > = {
 	[name in keyof formInputs as name]: Ref<
 		(
-			GetValue<formInputs[name]>["type"] extends "string"
+			GetValue<formInputs[name]>["type"] extends "text"
 				? string 
 			: GetValue<formInputs[name]>["type"] extends "number" 
 				? number
 			: GetValue<formInputs[name]>["type"] extends "combo"
-				? ItemsComboBox
+				? ItemComboBox
+			: GetValue<formInputs[name]>["type"] extends "checkbox"
+				? boolean
+			: GetValue<formInputs[name]>["type"] extends "select"
+				? string
+			: GetValue<formInputs[name]>["type"] extends "textarea"
+				? string
 			: never
 		) | undefined
 	>

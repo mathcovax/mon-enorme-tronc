@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { app as firebaseApp } from "@/lib/firebase";
+import { effect } from "vue";
 
 const provider = new GoogleAuthProvider();
 const auth = getAuth(firebaseApp);
@@ -20,6 +21,41 @@ async function googleSign(){
 		// Handle error
 	}
 }
+
+const { Form, values } = useFormBuilder({
+	field1: {
+		type: "text",
+		defaultValue: "test",
+	},
+	field2: {
+		type: "checkbox",
+		defaultValue: true,
+		label: "test",
+		desc: "testete feedecefef efefe ec ez fezsf z fefes fgfez gzzegsgsr ggs ",
+	},
+	field3: {
+		type: "combo",
+		label: "test",
+		items: [],
+		placeholder: "",
+		emptyLabel: "",
+		textButton: "test",
+	},
+	field4: {
+		type: "select",
+		label: "ok",
+		items: [{ label: "te", value: "eeee" }],
+	},
+	field5: {
+		type: "textarea",
+		defaultValue: "test",
+	},
+});
+
+effect(() => {
+	console.log(values.field1.value, values.field2.value, values.field3.value, values.field4.value, values.field5.value);
+});
+
 </script>
 
 <template>
@@ -45,6 +81,8 @@ async function googleSign(){
 							{{ $t("page.login.buttonText") }}
 						</TheButton>
 					</div>
+
+					<Form />
 				</div>
 			</div>
 

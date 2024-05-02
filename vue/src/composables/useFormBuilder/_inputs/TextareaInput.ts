@@ -1,19 +1,19 @@
 import { effect } from "vue";
 import type { BaseInputDef, InputProps } from "../types";
-import PrimaryInput from "@/components/PrimaryInput.vue";
+import PrimaryTextarea from "@/components/PrimaryTextarea.vue";
 
-export type TextInputProps = InputProps<string>;
+export type TextareaInputProps = InputProps<string>;
 
-export interface TextInputDef extends BaseInputDef {
-	type: "text"
+export interface TextareaInputDef extends BaseInputDef {
+	type: "textarea"
 	defaultValue?: string
 }
 
-export const TextInput = defineComponent({
+export const TextareaInput = defineComponent({
 	props: [
 		"label", "modelValue", "zodSchema", "name"
 	],
-	setup(props: TextInputProps, { expose, emit }){
+	setup(props: TextareaInputProps, { expose, emit }){
 		const toValidated = ref(false);
 		const errorMessage = ref("");
 
@@ -56,15 +56,16 @@ export const TextInput = defineComponent({
 						"label", 
 						{
 							class: "",
-							for: props.name
+							for: props.name,
 						},
 						props.label
 					)
 					: null,
 				h(
-					PrimaryInput, 
+					PrimaryTextarea, 
 					{
-						type: "text",
+						type: "number",
+						name: props.name,
 						id: props.name,
 						modelValue: props.modelValue,
 						"onUpdate:modelValue": (value: unknown) => {
