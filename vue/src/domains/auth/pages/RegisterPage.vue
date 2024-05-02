@@ -1,49 +1,14 @@
 <script setup lang="ts">
-const { values, Form: SignForm, checkForm } = useFormBuilder({
-	lastname: {
-		cols: 6,
-		type: "string",
-		label: "Nom",
-		zodSchema: zod.string({ message: "Champ obligatoire" })
-			.min(2, "Doit faire au moins 2 caractères")
-			.max(255, "Doit faire au plus 255 caractères"),
-	},
-	fistname: {
-		cols: 6,
-		type: "string",
-		label: "Prénom",
-		zodSchema: zod.string({ message: "Champ obligatoire" })
-			.min(2, "Doit faire au moins 2 caractères")
-			.max(255, "Doit faire au plus 255 caractères"),
-	},
-	age: {
-		cols: 6,
-		type: "number",
-		label: "Âge",
-		zodSchema: zod.number({ message: "Champ obligatoire" })
-			.min(18, "Vous devez avoir au moins 18 ans"),
-	},
-	country: {
-		cols: 6,
-		type: "string",
-		label: "Pays",
-		zodSchema: zod.string({ message: "Champ obligatoire" })
-			.min(2, "Dois faire au moins 2 caractères")
-			.max(255, "Doit faire au plus 255 caractères"),
-	},
-	address: {
-		type: "string",
-		label: "Adresse",
-		zodSchema: zod.string({ message: "Champ obligatoire" }).min(2).max(255),
-	},
-});
+import { useSignUpForm } from "../composables/useSignUpForm"; 
+
+const { SignUpForm, checkSignUpForm } = useSignUpForm();
 
 const terms = ref(false);
 
-const signup = async () => {
-	const isValid = await checkForm();
+async function submit() {
+	const formFields = await checkSignUpForm();
 
-	if (!isValid) {
+	if (!formFields) {
 		return;
 	}
 
@@ -52,12 +17,12 @@ const signup = async () => {
 	}
 
 	const data = {
-		...values,
+		...formFields,
 		terms: terms.value,
 	};
 
 	console.log(data);
-};
+}
 </script>
 
 <template>
@@ -75,26 +40,28 @@ const signup = async () => {
 						</p>
 					</div>
 
-					<SignForm />
+					<SignUpForm @submit="submit">
+						<div class="flex items-center space-x-2 col-span-12">
+							<TheCheckbox
+								:checked="terms"
+								@update:checked="terms = $event"
+								id="terms"
+							/>
 
-					<div class="flex items-center space-x-2">
-						<TheCheckbox
-							:checked="terms"
-							@update:checked="terms = $event"
-							id="terms"
-						/>
+							<TheLabel for="terms">
+								{{ $t("page.register.terms") }}
+							</TheLabel>
+						</div>
 
-						<TheLabel for="terms">
-							{{ $t("page.register.terms") }}
-						</TheLabel>
-					</div>
-
-					<TheButton
-						@click="signup"
-						class="w-full"
-					>
-						{{ $t("page.register.buttonText") }}
-					</TheButton>
+						<div class="flex items-center space-x-2 col-span-12">
+							<PrimaryButton
+								type="submit"
+								class="w-full"
+							>
+								{{ $t("page.register.buttonText") }}
+							</PrimaryButton>
+						</div>
+					</SignUpForm>
 				</div>
 			</div>
 

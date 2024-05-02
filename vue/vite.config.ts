@@ -15,6 +15,7 @@ export default defineConfig({
 			"./src/lib/duploTo/**",
 			"./src/lib/zod/**",
 			"./src/composables/**",
+			"./src/lib/i18n/*.ts",
 		],
 		imports: [
 			"vue",
