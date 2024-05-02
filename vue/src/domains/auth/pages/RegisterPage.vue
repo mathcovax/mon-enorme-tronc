@@ -1,13 +1,63 @@
 <script setup lang="ts">
-async function signin(){
-	try {
-		// Signin
-		console.log("Signin");
+const { values, Form: SignForm, checkForm } = useFormBuilder({
+	lastname: {
+		cols: 6,
+		type: "string",
+		label: "Nom",
+		zodSchema: zod.string({ message: "Champ obligatoire" })
+			.min(2, "Doit faire au moins 2 caractères")
+			.max(255, "Doit faire au plus 255 caractères"),
+	},
+	fistname: {
+		cols: 6,
+		type: "string",
+		label: "Prénom",
+		zodSchema: zod.string({ message: "Champ obligatoire" })
+			.min(2, "Doit faire au moins 2 caractères")
+			.max(255, "Doit faire au plus 255 caractères"),
+	},
+	age: {
+		cols: 6,
+		type: "number",
+		label: "Âge",
+		zodSchema: zod.number({ message: "Champ obligatoire" })
+			.min(18, "Vous devez avoir au moins 18 ans"),
+	},
+	country: {
+		cols: 6,
+		type: "string",
+		label: "Pays",
+		zodSchema: zod.string({ message: "Champ obligatoire" })
+			.min(2, "Dois faire au moins 2 caractères")
+			.max(255, "Doit faire au plus 255 caractères"),
+	},
+	address: {
+		type: "string",
+		label: "Adresse",
+		zodSchema: zod.string({ message: "Champ obligatoire" }).min(2).max(255),
+	},
+});
+
+const terms = ref(false);
+
+const signup = async () => {
+	const isValid = await checkForm();
+
+	if (!isValid) {
+		return;
 	}
-	catch { 
-		// Handle error
+
+	if (!terms.value) {
+		return alert("Vous devez accepter les conditions d'utilisation");
 	}
-}
+
+	const data = {
+		...values,
+		terms: terms.value,
+	};
+
+	console.log(data);
+};
 </script>
 
 <template>
@@ -25,100 +75,26 @@ async function signin(){
 						</p>
 					</div>
 
-					<div class="grid gap-4">
-						<div class="grid grid-cols-2 gap-4">
-							<div class="grid gap-2">
-								<TheLabel for="lastname">
-									{{ $t("page.register.lastname") }}
-								</TheLabel>
+					<SignForm />
 
-								<TheInput
-									id="lastname"
-									type="text"
-									placeholder="Doe"
-									required
-								/>
-							</div>
+					<div class="flex items-center space-x-2">
+						<TheCheckbox
+							:checked="terms"
+							@update:checked="terms = $event"
+							id="terms"
+						/>
 
-							<div class="grid gap-2">
-								<TheLabel for="fistname">
-									{{ $t("page.register.fistname") }}
-								</TheLabel>
-
-								<TheInput
-									id="fistname"
-									type="text"
-									placeholder="John"
-									required
-								/>
-							</div>
-						</div>
-
-						<div class="grid grid-cols-2 gap-4">
-							<div class="grid gap-2">
-								<TheLabel for="age">
-									{{ $t("page.register.age") }}
-								</TheLabel>
-
-								<TheInput
-									id="age"
-									type="number"
-									placeholder="18"
-									required
-								/>
-							</div>
-
-							<div class="grid gap-2">
-								<TheLabel for="country">
-									{{ $t("page.register.country") }}
-								</TheLabel>
-
-								<TheInput
-									id="country"
-									type="text"
-									placeholder="England"
-									required
-								/>
-							</div>
-						</div>
-
-						<div class="grid gap-2">
-							<TheLabel for="address">
-								{{ $t("page.register.address.label") }}
-							</TheLabel>
-
-							<div class="relative w-full max-w-sm items-center">
-								<TheInput
-									id="address"
-									type="text"
-									:placeholder="$t('page.register.address.placeholder')"
-									class="pl-10"
-								/>
-
-								<span class="absolute px-2 start-0 inset-y-0 flex items-center justify-center opacity-50">
-									<TheIcon
-										icon="map-marker"
-										size="2xl"
-									/>
-								</span>
-							</div>
-						</div>
-
-						<div class="flex items-center space-x-2">
-							<TheCheckbox id="terms" />
-
-							<TheLabel for="terms">
-								{{ $t("page.register.terms") }}
-							</TheLabel>
-						</div>
-
-						<TheButton
-							@click="signin"
-							class="w-full"
-						>
-							{{ $t("page.register.buttonText") }}
-						</TheButton>
+						<TheLabel for="terms">
+							{{ $t("page.register.terms") }}
+						</TheLabel>
 					</div>
+
+					<TheButton
+						@click="signup"
+						class="w-full"
+					>
+						{{ $t("page.register.buttonText") }}
+					</TheButton>
 				</div>
 			</div>
 
