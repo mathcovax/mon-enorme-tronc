@@ -10,6 +10,7 @@ const inputMapper = {
 	select: SelectInput,
 	textarea: TextareaInput,
 	"date-picker": DatePickerInput,
+	radio: RadioGroupInput,
 };
 
 export function useFormBuilder<
@@ -93,7 +94,7 @@ export function useFormBuilder<
 			: null;
 	}
 
-	const Form: FunctionalComponent = (props, { slots }) => 
+	const Form: FunctionalComponent<unknown, {"submit": [event: Event]}> = (props, { slots }) => 
 		h(
 			"form",
 			{

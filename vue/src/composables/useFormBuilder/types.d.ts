@@ -8,6 +8,7 @@ import type { CheckboxInputDef } from "./_inputs/CheckboxInput";
 import type { SelectInputDef } from "./_inputs/SelectInput";
 import type { TextareaInputDef } from "./_inputs/TextareaInput";
 import type { DatePickerInputDef } from "./_inputs/DatePickerInput";
+import type { RadioGroupDef } from "./_inputs/RadioGroupInput";
 
 export interface BaseInputDef {
 	type: string
@@ -32,6 +33,7 @@ export type FormInputDef =
 	| SelectInputDef
 	| TextareaInputDef
 	| DatePickerInputDef
+	| RadioGroupDef
 
 
 type GetValue<ref> = ref extends Ref<infer value> ? value : ref
@@ -54,6 +56,8 @@ export type FormInputToRecordRef<
 			: GetValue<formInputs[name]>["type"] extends "textarea"
 				? string
 			: GetValue<formInputs[name]>["type"] extends "date-picker"
+				? string
+			: GetValue<formInputs[name]>["type"] extends "radio"
 				? string
 			: never
 		) | undefined

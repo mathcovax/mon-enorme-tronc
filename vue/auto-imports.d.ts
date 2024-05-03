@@ -10,6 +10,7 @@ declare global {
   const DatePickerInput: typeof import('./src/composables/useFormBuilder/_inputs/DatePickerInput')['DatePickerInput']
   const EffectScope: typeof import('vue')['EffectScope']
   const NumberInput: typeof import('./src/composables/useFormBuilder/_inputs/NumberInput')['NumberInput']
+  const RadioGroupInput: typeof import('./src/composables/useFormBuilder/_inputs/RadioGroupInput')['RadioGroupInput']
   const SelectInput: typeof import('./src/composables/useFormBuilder/_inputs/SelectInput')['SelectInput']
   const TextInput: typeof import('./src/composables/useFormBuilder/_inputs/TextInput')['TextInput']
   const TextareaInput: typeof import('./src/composables/useFormBuilder/_inputs/TextareaInput')['TextareaInput']

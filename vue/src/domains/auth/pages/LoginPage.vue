@@ -54,11 +54,26 @@ const { Form, values } = useFormBuilder({
 		type: "date-picker",
 		defaultValue: new Date().toISOString().split("T")[0],
 	},
+	field7: {
+		type: "radio",
+		items: [{ label: "testd zdzd zd zd zdz dz dzdzdz", value: "oooo" }, { label: "eee", value: "yaaaa" }] 
+	},
 });
 
 effect(() => {
-	console.log(values.field1.value, values.field2.value, values.field3.value, values.field4.value, values.field5.value, values.field6.value);
+	console.log(
+		values.field1.value, 
+		values.field2.value, 
+		values.field3.value, 
+		values.field4.value, 
+		values.field5.value, 
+		values.field6.value
+	);
 });
+
+function test(){
+	console.log("test");
+}
 
 </script>
 
@@ -86,7 +101,11 @@ effect(() => {
 						</PrimaryButton>
 					</div>
 
-					<Form />
+					<Form @submit="test">
+						<PrimaryButton type="submit">
+							test
+						</PrimaryButton>
+					</Form>
 				</div>
 			</div>
 
