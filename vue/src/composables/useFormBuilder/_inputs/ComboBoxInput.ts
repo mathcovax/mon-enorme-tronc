@@ -1,33 +1,33 @@
 import { effect } from "vue";
 import type { BaseInputDef, InputProps } from "../types";
-import ComboBox from "@/components/ui/combo-box/ComboBox.vue";
+import PrimaryComboBox from "@/components/PrimaryComboBox.vue";
 
-export interface ItemsComboBox {
+export interface ItemComboBox {
 	label: string
 	identifier: number | string
 }
 
-export interface ComboBoxInputProps extends InputProps<ItemsComboBox> {
-	items: ItemsComboBox[]
+export interface ComboBoxInputProps extends InputProps<ItemComboBox> {
+	items: ItemComboBox[]
 	onUpdateSearchTerm?: (value: string) => void
-	defaultLabel: string
+	textButton: string
 	placeholder: string
 	emptyLabel: string
 }
 
 export interface ComboBoxInputDef extends BaseInputDef {
 	type: "combo"
-	defaultValue?: () => ItemsComboBox
+	defaultValue?: () => ItemComboBox
 	onUpdateSearchTerm?: (value: string) => void
-	items: ItemsComboBox[]
-	defaultLabel: string
+	items: ItemComboBox[]
+	textButton: string
 	placeholder: string
 	emptyLabel: string
 }
 
 export const ComboBoxInput = defineComponent({
 	props: [
-		"label", "modelValue", "zodSchema", "name", "defaultLabel", "placeholder", "emptyLabel", "items", "onUpdateSearchTerm"
+		"label", "modelValue", "zodSchema", "name", "textButton", "placeholder", "emptyLabel", "items", "onUpdateSearchTerm"
 	],
 	setup(props: ComboBoxInputProps, { expose, emit }){
 		const toValidated = ref(false);
@@ -78,12 +78,12 @@ export const ComboBoxInput = defineComponent({
 					)
 					: null,
 				h(
-					ComboBox, 
+					PrimaryComboBox, 
 					{
-						items: props.items as {[P in keyof ItemsComboBox]: ItemsComboBox[P]}[],
-						getLabel: (i: unknown) => (i as ItemsComboBox).label,
-						getIdentifier: (i: unknown) => (i as ItemsComboBox).identifier,
-						defaultLabel: props.defaultLabel,
+						items: props.items as {[P in keyof ItemComboBox]: ItemComboBox[P]}[],
+						getLabel: (i: unknown) => (i as ItemComboBox).label,
+						getIdentifier: (i: unknown) => (i as ItemComboBox).identifier,
+						textButton: props.textButton,
 						placeholder: props.placeholder,
 						emptyLabel: props.emptyLabel,
 						modelValue: props.modelValue,

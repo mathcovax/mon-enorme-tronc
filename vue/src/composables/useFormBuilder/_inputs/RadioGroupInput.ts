@@ -1,19 +1,27 @@
 import { effect } from "vue";
 import type { BaseInputDef, InputProps } from "../types";
-import PrimaryInput from "@/components/PrimaryInput.vue";
+import PrimaryRadioGroup from "@/components/PrimaryRadioGroup.vue";
 
-export type TextInputProps = InputProps<string>;
-
-export interface TextInputDef extends BaseInputDef {
-	type: "text"
-	defaultValue?: string
+export interface ItemRadioGroup {
+	label: string
+	value: string
 }
 
-export const TextInput = defineComponent({
+export interface RadioGroupProps extends InputProps<string> {
+	items: ItemRadioGroup[]
+}
+
+export interface RadioGroupDef extends BaseInputDef {
+	type: "radio"
+	defaultValue?: string
+	items: ItemRadioGroup[]
+}
+
+export const RadioGroupInput = defineComponent({
 	props: [
-		"label", "modelValue", "zodSchema", "name"
+		"label", "modelValue", "zodSchema", "name", "items"
 	],
-	setup(props: TextInputProps, { expose, emit }){
+	setup(props: RadioGroupProps, { expose, emit }){
 		const toValidated = ref(false);
 		const errorMessage = ref("");
 
@@ -62,10 +70,10 @@ export const TextInput = defineComponent({
 					)
 					: null,
 				h(
-					PrimaryInput, 
+					PrimaryRadioGroup, 
 					{
-						type: "text",
 						id: props.name,
+						items: props.items,
 						modelValue: props.modelValue,
 						"onUpdate:modelValue": (value: unknown) => {
 							emit("update:modelValue", value);

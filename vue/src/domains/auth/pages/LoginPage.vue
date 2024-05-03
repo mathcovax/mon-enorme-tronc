@@ -38,12 +38,12 @@ async function googleSign(){
 					</div>
 
 					<div class="grid gap-4">
-						<TheButton
+						<PrimaryButton
 							@click="googleSign"
 							class="w-full"
 						>
 							{{ $t("page.login.buttonText") }}
-						</TheButton>
+						</PrimaryButton>
 					</div>
 				</div>
 			</div>

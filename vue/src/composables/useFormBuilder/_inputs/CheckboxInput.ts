@@ -1,19 +1,24 @@
 import { effect } from "vue";
 import type { BaseInputDef, InputProps } from "../types";
-import PrimaryInput from "@/components/PrimaryInput.vue";
+import TheCheckbox from "@/components/ui/checkbox/TheCheckbox.vue";
 
-export type TextInputProps = InputProps<string>;
-
-export interface TextInputDef extends BaseInputDef {
-	type: "text"
-	defaultValue?: string
+export interface CheckboxInputProps extends InputProps<boolean>{
+	desc?: string
+	reverse?: boolean
 }
 
-export const TextInput = defineComponent({
+export interface CheckboxInputDef extends BaseInputDef {
+	type: "checkbox"
+	defaultValue?: boolean
+	desc?: string
+	reverse?: boolean
+}
+
+export const CheckboxInput = defineComponent({
 	props: [
-		"label", "modelValue", "zodSchema", "name"
+		"label", "modelValue", "zodSchema", "name", "desc", "reverse"
 	],
-	setup(props: TextInputProps, { expose, emit }){
+	setup(props: CheckboxInputProps, { expose, emit }){
 		const toValidated = ref(false);
 		const errorMessage = ref("");
 
@@ -56,21 +61,39 @@ export const TextInput = defineComponent({
 						"label", 
 						{
 							class: "",
-							for: props.name
+							for: props.name,
 						},
 						props.label
 					)
 					: null,
 				h(
-					PrimaryInput, 
+					"div", 
 					{
-						type: "text",
-						id: props.name,
-						modelValue: props.modelValue,
-						"onUpdate:modelValue": (value: unknown) => {
-							emit("update:modelValue", value);
-						},
-					}
+						class: `flex gap-4 items-center ${props.reverse ? "flex-row-reverse" : ""}`
+					},
+					[
+						h(
+							TheCheckbox, 
+							{
+								name: props.name,
+								id: props.name,
+								checked: props.modelValue,
+								"onUpdate:checked": (value: unknown) => {
+									emit("update:modelValue", value);
+								},
+							}
+						),
+						props.desc
+							? h(
+								"label", 
+								{
+									class: "",
+									for: props.desc,
+								},
+								props.desc
+							)
+							: null,
+					]
 				),
 				props.zodSchema
 					? h(

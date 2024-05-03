@@ -20,7 +20,7 @@ interface Props {
 	items: T[]
 	getLabel: (item: T) => string
 	getIdentifier: (item: T) => string | number
-	defaultLabel: string
+	textButton: string
 	placeholder: string
 	emptyLabel: string
 	modelValue?: unknown
@@ -52,7 +52,7 @@ function onSelect(value: T){
 				:aria-expanded="open"
 				:class="`${props.class} justify-between`"
 			>
-				{{ modelValue ? getLabel(modelValue as T) : defaultLabel }}
+				{{ modelValue ? getLabel(modelValue as T) : textButton }}
 				<ChevronsUpDown class="ml-2 h-4 w-4 shrink-0 opacity-50" />
 			</TheButton>
 		</PopoverTrigger>

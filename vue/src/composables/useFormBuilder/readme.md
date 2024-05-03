@@ -1,54 +1,83 @@
-```ts
-
-const test = ref("test");
-
-const frameworks = computed(() => [
-	{ identifier: "next.js", label: "Next.js" },
-	{ identifier: "sveltekit", label: "SvelteKit" },
-	{ identifier: "nuxt.js", label: "Nuxt.js" },
-	{ identifier: "remix", label: "Remix" },
-	{ identifier: "astro", label: "Astro" },
-]);
-
-const { values, Form: SignForm, checkForm } = useFormBuilder({
-	test: computed(() => ({
-		type: "string",
-		zodSchema: zod.string().transform((v) => [v]),
-		label: test.value,
-	})),
-	te: {
-		type: "string",
-		zodSchema: zod.string({ message: "n'est pas une string" }),
+```vue
+<script setup lang="ts">
+const { Form, values, checkForm } = useFormBuilder({
+	field1: {
+		type: "text",
+		defaultValue: "test",
 	},
-	num: {
-		type: "number",
-		zodSchema: zod.number({ message: "n'est pas un nombre" }),
+	field2: {
+		type: "checkbox",
+		defaultValue: true,
+		label: "test",
+		desc: "testete feedecefef efefe ec ez fezsf z fefes fgfez gzzegsgsr ggs ",
 	},
-	framework: computed(() => ({
+	field3: {
 		type: "combo",
-		items: frameworks.value,
-		placeholder: "tata",
-		defaultLabel: "eeee",
-		emptyLabel: "zizi",
-		zodSchema: zod.string().array(),
-		onUpdateSearchTerm: console.log,
-	}))
-});
-
-setTimeout(async () => {
-	const tt = await checkForm();
-	if(tt){
-		tt.test;
-		tt.te;
-		tt.num;
-		tt.framework;
+		label: "test",
+		items: [{ label: "test", identifier: "aaa" }],
+		placeholder: "",
+		emptyLabel: "",
+		textButton: "test",
+	},
+	field4: {
+		type: "select",
+		label: "ok",
+		items: [{ label: "te", value: "eeee" }],
+	},
+	field5: {
+		type: "textarea",
+		defaultValue: "test",
+	},
+	field6: {
+		type: "date-picker",
+		defaultValue: new Date().toISOString().split("T")[0],
+	},
+	field7: {
+		type: "radio",
+		items: [{ label: "testd zdzd zd zd zdz dz dzdzdz", value: "oooo" }, { label: "eee", value: "yaaaa" }] 
+	},
+	field8: {
+		type: "custom",
+		defaultValue: "" as string | undefined,
+		zodSchema: zod.number()
 	}
-	frameworks.value.pop();
-}, 4000);
+});
 
 effect(() => {
 	console.log(
-		values.test.value, values.te.value, values.num.value, values.framework.value
+		values.field1.value, 
+		values.field2.value, 
+		values.field3.value, 
+		values.field4.value, 
+		values.field5.value, 
+		values.field6.value,
+		values.field7.value,
+		values.field8.value,
 	);
 });
+
+async function test(){
+	const result = await checkForm();
+
+	console.log(result);
+	result?.field1;
+}
+
+</script>
+
+<template>
+	<Form @submit="test">
+		<template #field8="{modelValue, onUpdate}">
+			<PrimaryInput
+				:model-value="modelValue"
+				@update:model-value="onUpdate"
+			/>
+		</template>
+
+		<PrimaryButton type="submit">
+			test
+		</PrimaryButton>
+	</Form>
+</template>
+
 ```

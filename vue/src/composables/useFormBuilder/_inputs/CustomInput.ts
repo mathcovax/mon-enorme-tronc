@@ -1,19 +1,18 @@
 import { effect } from "vue";
 import type { BaseInputDef, InputProps } from "../types";
-import PrimaryInput from "@/components/PrimaryInput.vue";
 
-export type TextInputProps = InputProps<string>;
+export type CutsomInputProps = InputProps<string>
 
-export interface TextInputDef extends BaseInputDef {
-	type: "text"
-	defaultValue?: string
+export interface CustomInputDef extends BaseInputDef {
+	type: "custom"
+	defaultValue?: unknown
 }
 
-export const TextInput = defineComponent({
+export const CustomInput = defineComponent({
 	props: [
 		"label", "modelValue", "zodSchema", "name"
 	],
-	setup(props: TextInputProps, { expose, emit }){
+	setup(props: CutsomInputProps, { expose, slots }){
 		const toValidated = ref(false);
 		const errorMessage = ref("");
 
@@ -61,17 +60,7 @@ export const TextInput = defineComponent({
 						props.label
 					)
 					: null,
-				h(
-					PrimaryInput, 
-					{
-						type: "text",
-						id: props.name,
-						modelValue: props.modelValue,
-						"onUpdate:modelValue": (value: unknown) => {
-							emit("update:modelValue", value);
-						},
-					}
-				),
+				slots.default?.(),
 				props.zodSchema
 					? h(
 						"div", 

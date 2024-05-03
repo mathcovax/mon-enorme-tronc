@@ -1,19 +1,29 @@
 import { effect } from "vue";
 import type { BaseInputDef, InputProps } from "../types";
-import PrimaryInput from "@/components/PrimaryInput.vue";
+import PrimarySelect from "@/components/PrimarySelect.vue";
 
-export type TextInputProps = InputProps<string>;
-
-export interface TextInputDef extends BaseInputDef {
-	type: "text"
-	defaultValue?: string
+export interface ItemSelect {
+	label: string
+	value: string | number
 }
 
-export const TextInput = defineComponent({
+export interface SelectInputProps extends InputProps<string> {
+	items: ItemSelect[]
+	placeholder?: string
+}
+
+export interface SelectInputDef extends BaseInputDef {
+	type: "select"
+	defaultValue?: string
+	items: ItemSelect[]
+	placeholder?: string
+}
+
+export const SelectInput = defineComponent({
 	props: [
-		"label", "modelValue", "zodSchema", "name"
+		"label", "modelValue", "zodSchema", "name", "items", "placeholder"
 	],
-	setup(props: TextInputProps, { expose, emit }){
+	setup(props: SelectInputProps, { expose, emit }){
 		const toValidated = ref(false);
 		const errorMessage = ref("");
 
@@ -56,16 +66,18 @@ export const TextInput = defineComponent({
 						"label", 
 						{
 							class: "",
-							for: props.name
+							for: props.name,
 						},
 						props.label
 					)
 					: null,
 				h(
-					PrimaryInput, 
+					PrimarySelect, 
 					{
-						type: "text",
+						name: props.name,
 						id: props.name,
+						items: props.items,
+						placeholder: props.placeholder,
 						modelValue: props.modelValue,
 						"onUpdate:modelValue": (value: unknown) => {
 							emit("update:modelValue", value);
