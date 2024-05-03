@@ -9,6 +9,7 @@ const inputMapper = {
 	checkbox: CheckboxInput,
 	select: SelectInput,
 	textarea: TextareaInput,
+	"date-picker": DatePickerInput,
 };
 
 export function useFormBuilder<

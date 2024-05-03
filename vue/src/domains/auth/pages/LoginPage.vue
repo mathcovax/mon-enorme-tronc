@@ -36,7 +36,7 @@ const { Form, values } = useFormBuilder({
 	field3: {
 		type: "combo",
 		label: "test",
-		items: [],
+		items: [{ label: "test", identifier: "aaa" }],
 		placeholder: "",
 		emptyLabel: "",
 		textButton: "test",
@@ -50,10 +50,14 @@ const { Form, values } = useFormBuilder({
 		type: "textarea",
 		defaultValue: "test",
 	},
+	field6: {
+		type: "date-picker",
+		defaultValue: new Date().toISOString().split("T")[0],
+	},
 });
 
 effect(() => {
-	console.log(values.field1.value, values.field2.value, values.field3.value, values.field4.value, values.field5.value);
+	console.log(values.field1.value, values.field2.value, values.field3.value, values.field4.value, values.field5.value, values.field6.value);
 });
 
 </script>
@@ -74,12 +78,12 @@ effect(() => {
 					</div>
 
 					<div class="grid gap-4">
-						<TheButton
+						<PrimaryButton
 							@click="googleSign"
 							class="w-full"
 						>
 							{{ $t("page.login.buttonText") }}
-						</TheButton>
+						</PrimaryButton>
 					</div>
 
 					<Form />
