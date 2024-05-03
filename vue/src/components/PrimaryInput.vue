@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const emit = defineEmits<{ "update:modelValue": [value: string | number] }>();
+const emit = defineEmits<{ "update:modelValue": [value: string] }>();
 
 interface Props {
 	modelValue?: string | number

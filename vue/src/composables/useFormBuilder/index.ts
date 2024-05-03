@@ -1,6 +1,6 @@
 import type { FunctionalComponent, VNode, Ref } from "vue";
 import { TextInput } from "./_inputs/TextInput";
-import type { FormInputDef, FormInputToRecordRef, ResultCheckForm } from "./types";
+import type { FormInputDef, FormInputToRecordRef, GetSlots, ResultCheckForm, SlotObject } from "./types";
 
 const inputMapper = {
 	text: TextInput,
@@ -11,6 +11,7 @@ const inputMapper = {
 	textarea: TextareaInput,
 	"date-picker": DatePickerInput,
 	radio: RadioGroupInput,
+	custom: CustomInput,
 };
 
 export function useFormBuilder<
@@ -36,7 +37,7 @@ export function useFormBuilder<
 	
 	let inputRefs: VNode[] = [];
 
-	const childInput = () => {
+	const childInput = (slots: SlotObject) => {
 		inputRefs = [];
 		return Object.entries(formInputs).map(
 			([name, input]) => {
@@ -60,7 +61,15 @@ export function useFormBuilder<
 						name,
 						key: name,
 						...reste
-					}
+					},
+					type === "custom"
+						? () => slots[name]?.({
+							modelValue: values[name].value,
+							onUpdate: (value) => {
+								values[name].value = value;
+							}
+						}) 
+						: undefined
 				);
 				inputRefs.push(component);
 				return component;
@@ -94,8 +103,14 @@ export function useFormBuilder<
 			: null;
 	}
 
-	const Form: FunctionalComponent<unknown, {"submit": [event: Event]}> = (props, { slots }) => 
-		h(
+	const Form: FunctionalComponent<
+		unknown, 
+		{"submit": [event: Event]},
+		{default?: () => never} & GetSlots<inputDef>
+	> = (props, { slots: wrongTypedSlots }) => {
+		const slots = wrongTypedSlots as {default?: () => never};
+
+		return h(
 			"form",
 			{
 				class: "grid grid-cols-12 gap-3",
@@ -103,9 +118,9 @@ export function useFormBuilder<
 					event.preventDefault();
 				}
 			},
-			[childInput(), slots.default?.(),]
+			[childInput(slots), slots.default?.()]
 		);
-
+	}; 
 	return {
 		Form,
 		values: values as FormInputToRecordRef<inputDef>,

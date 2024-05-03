@@ -9,6 +9,7 @@ import type { SelectInputDef } from "./_inputs/SelectInput";
 import type { TextareaInputDef } from "./_inputs/TextareaInput";
 import type { DatePickerInputDef } from "./_inputs/DatePickerInput";
 import type { RadioGroupDef } from "./_inputs/RadioGroupInput";
+import type { CustomInputDef } from "./_inputs/CustomInput";
 
 export interface BaseInputDef {
 	type: string
@@ -34,9 +35,44 @@ export type FormInputDef =
 	| TextareaInputDef
 	| DatePickerInputDef
 	| RadioGroupDef
+	| CustomInputDef
 
+interface SlotProps<T = unknown> {
+	modelValue: T, 
+	onUpdate: (value: T) => void
+}
 
 type GetValue<ref> = ref extends Ref<infer value> ? value : ref
+
+type ExtractCustomDef<
+	formInputs extends Record<string, FormInputDef | Ref<FormInputDef>>
+> = Exclude<
+	{
+		[prop in keyof formInputs]: formInputs[prop] extends CustomInputDef
+			? [prop, formInputs[prop]]
+			: undefined
+	}[keyof formInputs], 
+	undefined
+>
+
+type CustomDefToSlots<CustomDef extends [string, CustomInputDef]> = 
+	CustomDef extends [infer prop, infer def] 
+		? {[p in prop]?: (props: SlotProps<def["defaultValue"]>) => never}
+		: never
+
+type UnionToIntersection<U> = 
+	(U extends unknown ? (x: U)=>void : never) extends ((x: infer I)=>void) ? I : never
+
+export type GetSlots<
+	formInputs extends Record<string, FormInputDef | Ref<FormInputDef>>,
+> = UnionToIntersection<CustomDefToSlots<ExtractCustomDef<formInputs>>>
+
+export type SlotObject = Record<
+	string, 
+	(
+		props: SlotProps
+	) => never
+>
 
 export type FormInputToRecordRef<
 	formInputs extends Record<string, FormInputDef | Ref<FormInputDef>>
@@ -59,7 +95,7 @@ export type FormInputToRecordRef<
 				? string
 			: GetValue<formInputs[name]>["type"] extends "radio"
 				? string
-			: never
+			: GetValue<formInputs[name]>["defaultValue"]
 		) | undefined
 	>
 }
@@ -70,5 +106,5 @@ export type ResultCheckForm<
 	[name in keyof formInputs as name]: 
 		GetValue<formInputs[name]>["zodSchema"] extends ZodType
 			? ZodInfer<GetValue<formInputs[name]>["zodSchema"]>
-			: unknown
+			: GetValue<formInputs[name]>["defaultValue"]
 }
