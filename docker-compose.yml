@@ -46,6 +46,14 @@ services:
       - vue
       - duplo
 
+  minio:
+    image: minio/minio:latest
+    ports:
+      - 9000:9000
+      - 8900:8900
+    env_file: ./duplo/.env
+    command: server /data/minio --console-address ":8900"
+        
   postgres:
     image: postgres:16.2
     env_file: ./duplo/.env
