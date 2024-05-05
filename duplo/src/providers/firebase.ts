@@ -1,12 +1,11 @@
-import firebaseAdmin, { ServiceAccount } from "firebase-admin";
-import { Auth } from "firebase-admin/lib/auth/auth";
+import firebaseAdmin, { ServiceAccount, auth } from "firebase-admin";
 import { existsSync, readFileSync } from "fs";
 
 declare global {
 	const firebaseAuth: (typeof import("./firebase"))["firebaseAuth"];
 }
 
-export let firebaseAuth: Auth;
+export let firebaseAuth: auth.Auth;
 
 duplo.addHook("beforeListenHttpServer", async () => {
 	if(!existsSync(ENV.FIREBASE_CREDENTIAL_PATH)){

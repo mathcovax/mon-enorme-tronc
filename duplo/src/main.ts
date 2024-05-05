@@ -69,7 +69,7 @@ else {
 duplo.use(
 	duploRoutesDirectory, 
 	{
-		path: ["routes", "providers"].map((path) => `${__dirname}/${path}`),
+		path: ["routes", "providers"].map((path) => `src/${path}`),
 		matchs: [matchScriptFile],
 		ignores: ["**.test.ts"]
 	}
