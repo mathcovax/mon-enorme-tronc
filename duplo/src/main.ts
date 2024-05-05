@@ -3,7 +3,7 @@ import duploHttpException from "@duplojs/http-exception";
 import duploRoutesDirectory, { matchScriptFile } from "@duplojs/routes-directory";
 import duploSwagger from "@duplojs/swagger";
 import duploWhatWasSent from "@duplojs/what-was-sent";
-import { ZodAccelerator } from "@duplojs/zod-accelerator";
+import duploZodAccelerator, { ZodAcceleratorError } from "@duplojs/zod-accelerator/plugin";
 import duploTypeGenerator from "@duplojs/to/plugin";
 import "./env";
 
@@ -47,13 +47,24 @@ duplo.use(
 );
 duplo.use(duploHttpException, { globals: true });
 duplo.use(
-	ZodAccelerator.duplojs,
+	duploZodAccelerator,
 	{
 		DEV: true,
 		PROD: true
 	}
 );
 duplo.use(duploTypeGenerator, { outputFile: "../vue/src/lib/duploTo/EnrichedDuploTo.d.ts" });
+
+if(ENV.ENVIRONMENT === "DEV"){
+	duplo.setDefaultErrorExtract((res, type, index, err: ZodAcceleratorError) => {
+		throw new BadRequestHttpException(`${type}.${index}`, err.message);
+	});
+}
+else {
+	duplo.setDefaultErrorExtract((res, type, index) => {
+		throw new BadRequestHttpException(`${type}.${index}`);
+	});
+}
 
 duplo.use(
 	duploRoutesDirectory, 
