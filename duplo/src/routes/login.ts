@@ -26,39 +26,20 @@ export const POST = (method: Methods, path: string) => duplo
 			input: p => inputUser.email(
 				p("decodedIdToken").email
 			),
-			catch: () => undefined,
+			result: "user.exist",
+			catch: () => {
+				throw new NotFoundHttpException("user.notfound");
+			},
 			indexing: "user"
-		}
-	)
-	.cut(
-		async ({ pickup }) => {
-			let user = pickup("user");
-			
-			if(!user){
-				const email = pickup("decodedIdToken").email;
-
-				user = await prisma.user.create({
-					data: { email }
-				});
-
-				return {
-					user,
-					register: true
-				};
-			}
-
-			return {
-				user
-			};
 		},
-		["user", "register"]
+		new IHaveSentThis(NotFoundHttpException.code, "user.notfound", zod.string())
 	)
 	.handler(
 		({ pickup }) => {
 			const { id, email } = pickup("user");
 			const accessToken = AccessToken.generate({ id, email });
 
-			throw new OkHttpException(pickup("register") ? "user.register" : "user.login", accessToken);
+			throw new OkHttpException("user.login", accessToken);
 		},
-		new IHaveSentThis(OkHttpException.code, ["user.login", "user.register"], zod.string())
+		new IHaveSentThis(OkHttpException.code, "user.login", zod.string())
 	);

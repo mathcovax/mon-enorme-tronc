@@ -18,7 +18,7 @@ describe("POST /login", () => {
 			)
 			.mockChecker(
 				"userExist",
-				{ info: "", data: { email: "test", id: "1234" } },
+				{ info: "user.exist", data: { email: "test", id: "1234" } },
 				{ passCatch: true }
 			)
 			.launch();
@@ -27,8 +27,6 @@ describe("POST /login", () => {
 	});
 
 	it("user register", async () => {
-		MockPrisma.set("user", "create", () => ({ email: "test", id: "1234" }));
-
 		const res = await duploTesting
 			.testRoute(POST("POST", ""))
 			.setDefaultFloorValue({ body: "test" })
@@ -42,6 +40,6 @@ describe("POST /login", () => {
 			)
 			.launch();
 
-		expect(res.information).toBe("user.register");
+		expect(res.information).toBe("user.notfound");
 	});
 });
