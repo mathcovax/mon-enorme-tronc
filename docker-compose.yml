@@ -14,6 +14,8 @@ services:
     image: node:20.11.1
     volumes:
       - ./:/home/node/project
+    ports:
+      - 5555:5555
     environment:
       npm_config_cache: /home/node/cache
     working_dir: /home/node/project

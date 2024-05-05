@@ -8,7 +8,9 @@
     "test:types": "tsc --noEmit",
     "generate:swagger": "tsx src/main --swagger --only-generate",
     "generate:types": "tsx src/main --generate-types --only-generate",
-    "migrate:dev": "prisma migrate dev"
+    "migrate:dev": "prisma migrate dev",
+	"fixtures": "tsx src/fixtures",
+	"studio": "prisma studio -n 0.0.0.0"
   },
   "prisma": {
     "schema": "src/prisma/schema.prisma"
@@ -22,6 +24,7 @@
     "@duplojs/type-input": "1.0.0",
     "@duplojs/what-was-sent": "1.3.2",
     "@duplojs/zod-accelerator": "1.3.9",
+    "@faker-js/faker": "^8.4.1",
     "@types/jsonwebtoken": "^9.0.6",
     "dotenv": "^16.4.5",
     "dotenv-expand": "^11.0.6",
