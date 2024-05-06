@@ -23,15 +23,18 @@ describe("POST /register", () => {
 			})
 			.mockChecker(
 				"firebaseToken",
-				{ info: "firebase.token.valid", data: { email: "test" } }
+				{ info: "firebase.token.valid", data: { email: "test" } },
+				{passCatch: true}
 			)
 			.mockChecker(
 				"userExist",
-				{ info: "user.notfound", data: null }
+				{ info: "user.notfound", data: null },
+				{passCatch: true}
 			)
 			.mockChecker(
 				"addressValid",
-				{ info: "address.valid", data: true }
+				{ info: "address.valid", data: true },
+				{passCatch: true}
 			)
 			.launch();
 
