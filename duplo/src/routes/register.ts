@@ -43,10 +43,10 @@ export const POST = (method: Methods, path: string) => duplo
 			input: p => p("body").address,
 			result: "address.valid",
 			catch: () => {
-				throw new BadRequestHttpException("user.invalid.address");
+				throw new BadRequestHttpException("user.address.invalid");
 			}
 		},
-		new IHaveSentThis(BadRequestHttpException.code, "user.invalid.address")
+		new IHaveSentThis(BadRequestHttpException.code, "user.address.invalid")
 
 	)
 	.handler(

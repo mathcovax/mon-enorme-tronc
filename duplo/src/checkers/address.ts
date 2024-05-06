@@ -6,9 +6,9 @@ export const addressValidCheck = duplo
 		const isAdressValid = await PostService.checkAddress(address);
 
 		if (isAdressValid) {
-			return output("address.valid", isAdressValid);
+			return output("address.valid", true);
 		} else {
-			return output("address.invalid", !isAdressValid);
+			return output("address.invalid", false);
 		}
 	})
 	.build();

@@ -1,18 +1,22 @@
+interface AdressProperties {
+	label: string
+}
+
 interface Address {
-	properties: {
-		"label": string
-	}
+	properties: AdressProperties
 }
 
 export class PostService {
+	static baseUrl = "https://api-adresse.data.gouv.fr/search/";
+
 	static getAddresses(address: string): Promise<Address[]> {
-		return fetch(ENV.GOUV_SEARCH_ADDRESS_URL + `?q=${address}`)
+		return fetch(`${this.baseUrl}?q=${address}`)
 			.then(res => res.json())
 			.then(data => data.features);
 	}
 
-	static async checkAddress(address: string): Promise<boolean> {
+	static checkAddress(address: string): Promise<boolean> {
 		return this.getAddresses(address)
-			.then(findedAddresses => findedAddresses.find(addr => addr.properties.label === address) !== undefined);
+			.then(findedAddresses => !!findedAddresses.find(addr => addr.properties.label === address));
 	}
 }

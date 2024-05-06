@@ -3,13 +3,14 @@ import { duploTesting } from "@test/setup";
 import { POST } from "./register";
 
 describe("POST /register", () => {
-	const spy = vi.fn(() => ({}));
 	beforeEach(() => {
 		MockPrisma.resest();
-		MockPrisma.set("user", "create", spy);
 	});
 
 	it("user register", async () => {
+		const spy = vi.fn(() => ({}));
+		MockPrisma.set("user", "create", spy);
+
 		const res = await duploTesting
 			.testRoute(POST("POST", ""))
 			.setDefaultFloorValue({
@@ -23,7 +24,8 @@ describe("POST /register", () => {
 			})
 			.mockChecker(
 				"firebaseToken",
-				{ info: "firebase.token.valid", data: { email: "test" } }
+				{ info: "firebase.token.valid", data: { email: "test" } },
+				{ passCatch: true }
 			)
 			.mockChecker(
 				"userExist",
@@ -35,7 +37,15 @@ describe("POST /register", () => {
 			)
 			.launch();
 
-		expect(spy).toBeCalled;
+		expect(spy).lastCalledWith({
+			data: {
+				email: "test",
+				lastname: "Doe",
+				firstname: "Jhon",
+				age: 20,
+				address: "test",
+			}
+		});
 		expect(res.information).toBe("user.registered");
 	});
 
@@ -74,7 +84,6 @@ describe("POST /register", () => {
 			)
 			.launch();
 
-		expect(spy).not.toBeCalled;
 		expect(res.information).toBe("user.alreadyExist");
 	});
 
@@ -100,11 +109,10 @@ describe("POST /register", () => {
 			)
 			.mockChecker(
 				"addressValid",
-				{ info: "address.invalid", data: false }
+				{ info: "user.address.invalid", data: false }
 			)
 			.launch();
 
-		expect(spy).not.toBeCalled;
-		expect(res.information).toBe("user.invalid.address");
+		expect(res.information).toBe("user.address.invalid");
 	});
 });
