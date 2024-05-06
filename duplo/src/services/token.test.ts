@@ -6,20 +6,20 @@ describe("token service", () => {
 		MockEnv.resest();
 	});
 	
-	it("generate asccess token", () => {
+	it("generate access token", () => {
 		const token = AccessToken.generate({ email: "...", id: "..." });
 
 		expect(token.split(".")[0]).toBe("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9");
 	});
 
-	it("check valid asccess token", () => {
+	it("check valid access token", () => {
 		const token = AccessToken.generate({ email: "...", id: "..." });
 		const content = AccessToken.check(token);
 
 		expect(content).toStrictEqual({ email: "...", id: "..." });
 	});
 
-	it("check expire asccess token", () => {
+	it("check expire access token", () => {
 		MockEnv.set("JWT_TIME", "0h");
 
 		const token = AccessToken.generate({ email: "...", id: "..." });
@@ -28,7 +28,7 @@ describe("token service", () => {
 		expect(content).toBe(null);
 	});
 
-	it("check invalid asccess token", () => {
+	it("check invalid access token", () => {
 
 		//@ts-expect-error args error.
 		const token = AccessToken.generate("");

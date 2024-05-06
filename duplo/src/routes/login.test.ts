@@ -12,8 +12,8 @@ describe("POST /login", () => {
 			.testRoute(POST("POST", ""))
 			.setDefaultFloorValue({ body: "test" })
 			.mockChecker(
-				"firebaseToken", 
-				{ info: "firebase.token.valide", data: { email: "test" } },
+				"firebaseToken",
+				{ info: "firebase.token.valid", data: { email: "test" } },
 				{ passCatch: true }
 			)
 			.mockChecker(
@@ -23,7 +23,7 @@ describe("POST /login", () => {
 			)
 			.launch();
 
-		expect(res.information).toBe("user.login");
+		expect(res.information).toBe("user.logged");
 	});
 
 	it("user register", async () => {
@@ -31,8 +31,8 @@ describe("POST /login", () => {
 			.testRoute(POST("POST", ""))
 			.setDefaultFloorValue({ body: "test" })
 			.mockChecker(
-				"firebaseToken", 
-				{ info: "firebase.token.valide", data: { email: "test" } }
+				"firebaseToken",
+				{ info: "firebase.token.valid", data: { email: "test" } }
 			)
 			.mockChecker(
 				"userExist",

@@ -10,13 +10,13 @@ export const userExistCheck = duplo
 	.createChecker("userExist")
 	.handler(async ({ name, value }: GetTypeInput<typeof inputUser>, output) => {
 		let where: Prisma.UserFindFirstArgs["where"];
-		
-		if(name === "id"){
+
+		if (name === "id") {
 			where = {
 				id: value
 			};
 		}
-		else if(name === "email"){
+		else if (name === "email") {
 			where = {
 				email: value
 			};
@@ -26,7 +26,7 @@ export const userExistCheck = duplo
 			where,
 		});
 
-		if(user){
+		if (user) {
 			return output("user.exist", user);
 		}
 		else {

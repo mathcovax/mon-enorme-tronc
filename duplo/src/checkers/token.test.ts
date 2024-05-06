@@ -11,7 +11,7 @@ describe("token service", () => {
 
 		const result = await duploTesting.testChecker(firebaseTokenCheck, "");
 
-		expect(result.info).toBe("firebase.token.valide");
+		expect(result.info).toBe("firebase.token.valid");
 	});
 
 	it("invalide firebase token", async () => {
@@ -19,7 +19,7 @@ describe("token service", () => {
 
 		const result = await duploTesting.testChecker(firebaseTokenCheck, "");
 
-		expect(result.info).toBe("firebase.token.invalide");
+		expect(result.info).toBe("firebase.token.invalid");
 	});
 
 	it("valide accesToken", async () => {
@@ -27,7 +27,7 @@ describe("token service", () => {
 
 		const result = await duploTesting.testChecker(accessTokenCheck, "");
 
-		expect(result.info).toBe("access.token.valide");
+		expect(result.info).toBe("access.token.valid");
 	});
 
 	it("invalide accessToken", async () => {
@@ -35,6 +35,6 @@ describe("token service", () => {
 
 		const result = await duploTesting.testChecker(accessTokenCheck, "");
 
-		expect(result.info).toBe("access.token.invalide");
+		expect(result.info).toBe("access.token.invalid");
 	});
 });

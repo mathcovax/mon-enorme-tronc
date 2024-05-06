@@ -11,7 +11,7 @@ async function googleSign(){
 		const googleIdToken = await result.user.getIdToken();
 
 		await duploTo.enriched.post("/login", googleIdToken)
-			.info("user.login", accessToken => {
+			.info("user.logged", accessToken => {
 				console.log(accessToken);
 			})
 			.result;	
@@ -23,8 +23,8 @@ async function googleSign(){
 </script>
 
 <template>
-	<section class="h-screen-no-header flex justify-center items-center">
-		<div class="w-full h-full flex items-center justify-center lg:grid lg:items-stretch lg:justify-normal lg:grid-cols-2">
+	<section class="flex items-center justify-center h-screen-no-header">
+		<div class="flex items-center justify-center w-full h-full lg:grid lg:items-stretch lg:justify-normal lg:grid-cols-2">
 			<div class="flex items-center justify-center py-12">
 				<div class="mx-auto grid w-[350px] gap-6">
 					<div class="grid gap-2 text-center">
@@ -52,7 +52,7 @@ async function googleSign(){
 				<img
 					src="https://via.placeholder.com/250"
 					alt="Image"
-					class="h-full w-full object-cover"
+					class="object-cover w-full h-full"
 				>
 			</div>
 		</div>
