@@ -1,5 +1,3 @@
-const GOUV_SEARCH_ADDRESS_URL = "https://api-adresse.data.gouv.fr/search/";
-
 interface Address {
 	properties: {
 		"label": string
@@ -8,7 +6,7 @@ interface Address {
 
 export class PostService {
 	static getAddresses(address: string): Promise<Address[]> {
-		return fetch(GOUV_SEARCH_ADDRESS_URL + `?q=${address}`)
+		return fetch(ENV.GOUV_SEARCH_ADDRESS_URL + `?q=${address}`)
 			.then(res => res.json())
 			.then(data => data.features);
 	}

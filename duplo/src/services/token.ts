@@ -1,12 +1,12 @@
 import jwt from "jsonwebtoken";
 
-export interface AccessTokenContent{
+export interface AccessTokenContent {
 	id: string,
 	email: string,
 }
 
-export class AccessToken{
-	static generate(content: AccessTokenContent){
+export class AccessToken {
+	static generate(content: AccessTokenContent) {
 		const tokenContent = { content };
 
 		return jwt.sign(
@@ -16,14 +16,14 @@ export class AccessToken{
 		);
 	}
 
-	static check(token: string){
+	static check(token: string) {
 		try {
 			const { content } = jwt.verify(
 				token,
 				ENV.JWT_KEY,
 			) as jwt.JwtPayload;
 
-			if(!content){
+			if (!content) {
 				throw new Error("Missing content AccessToken");
 			}
 

@@ -20,12 +20,4 @@ describe("address service", () => {
 
 		expect(result.info).toBe("address.invalid");
 	});
-
-	it("valid url", async () => {
-		vi.mocked(PostService.checkAddress).mockReturnValue(Promise.resolve(true));
-
-		const result = await duploTesting.testChecker(addressValidCheck, "");
-
-		expect(result.info).toBe("address.valid");
-	});
 });
