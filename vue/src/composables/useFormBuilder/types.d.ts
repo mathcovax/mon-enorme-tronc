@@ -16,7 +16,7 @@ export interface BaseInputDef {
 	defaultValue?: unknown
 	label?: string
 	zodSchema?: ZodType
-	clo?: number
+	cols?: number
 }
 
 export interface InputProps<modelValueInput = unknown> {

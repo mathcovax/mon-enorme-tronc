@@ -69,7 +69,7 @@ export const CheckboxInput = defineComponent({
 				h(
 					"div", 
 					{
-						class: `flex gap-4 items-center ${props.reverse ? "flex-row-reverse" : ""}`
+						class: `flex gap-2 items-center ${props.reverse ? "flex-row-reverse" : ""}`
 					},
 					[
 						h(
@@ -87,7 +87,7 @@ export const CheckboxInput = defineComponent({
 							? h(
 								"label", 
 								{
-									class: "",
+									class: "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
 									for: props.desc,
 								},
 								props.desc

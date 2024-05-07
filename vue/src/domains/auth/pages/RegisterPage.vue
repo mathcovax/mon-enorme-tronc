@@ -42,18 +42,6 @@ async function submit() {
 
 					<SignUpForm @submit="submit">
 						<div class="flex items-center space-x-2 col-span-12">
-							<TheCheckbox
-								:checked="terms"
-								@update:checked="terms = $event"
-								id="terms"
-							/>
-
-							<TheLabel for="terms">
-								{{ $t("page.register.terms") }}
-							</TheLabel>
-						</div>
-
-						<div class="flex items-center space-x-2 col-span-12">
 							<PrimaryButton
 								type="submit"
 								class="w-full"

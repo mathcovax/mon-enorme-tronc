@@ -42,14 +42,14 @@ export function useFormBuilder<
 		return Object.entries(formInputs).map(
 			([name, input]) => {
 				input = isRef(input) ? input.value : input;
-				const { type, label, zodSchema, clo, ...reste } = input;
+				const { type, label, zodSchema, cols, ...reste } = input;
 
 				const component = h(
 					inputMapper[type],
 					{
 						style: {
-							"grid-column": clo 
-								? `span ${clo} / span ${clo}` 
+							"grid-column": cols 
+								? `span ${cols} / span ${cols}` 
 								: "span 12 / span 12"
 						},
 						modelValue: values[name].value,

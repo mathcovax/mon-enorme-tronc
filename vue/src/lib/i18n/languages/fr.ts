@@ -10,6 +10,7 @@ export default {
 			subtitle: "Créez un compte pour accéder à nos services.",
 			rules: {
 				required: "Champ obligatoire",
+				terms: "Vous devez accepter les conditions générales d'utilisation",
 				minLength: "Doit faire au moins 2 caractères",
 				maxLength: "Doit faire au plus 255 caractères",
 				minAge: "Vous devez avoir au moins 18 ans",
@@ -22,7 +23,7 @@ export default {
 			country: "Pays",
 			address: {
 				label: "Adresse",
-				placeholder: "Saisissez votre adresse",
+				placeholder: "Cherchez votre adresse",
 				emptyLabel: "Aucune adresse trouvée",
 				defaultLabel: "Sélectionnez une adresse"
 			},
