@@ -5,6 +5,10 @@ const prisma = new PrismaClient();
 
 prisma.user.create({
 	data: {
-		email: faker.internet.email()
+		email: faker.internet.email(),
+		firstname: faker.internet.userName(),
+		lastname: faker.internet.userName(),
+		address: "",
+		dateOfBirth: faker.date.birthdate({ min: 18 })
 	}  
 });

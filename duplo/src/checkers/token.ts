@@ -8,13 +8,13 @@ export const firebaseTokenCheck = duplo
 
 			const { email } = decodedIdToken;
 
-			if(!email){
+			if (!email) {
 				throw new Error("Missing Email");
 			}
-			
-			return output("firebase.token.valide", { ...decodedIdToken, email });
+
+			return output("firebase.token.valid", { ...decodedIdToken, email });
 		} catch {
-			return output("firebase.token.invalide", null);
+			return output("firebase.token.invalid", null);
 		}
 	})
 	.build();
@@ -23,12 +23,12 @@ export const accessTokenCheck = duplo
 	.createChecker("accessToken")
 	.handler((token: string, output) => {
 		const accessTokenContent = AccessToken.check(token);
-			
-		if(accessTokenContent){	
-			return output("access.token.valide", accessTokenContent);
+
+		if (accessTokenContent) {
+			return output("access.token.valid", accessTokenContent);
 		}
 		else {
-			return output("access.token.invalide", null);
+			return output("access.token.invalid", null);
 		}
 	})
 	.build();

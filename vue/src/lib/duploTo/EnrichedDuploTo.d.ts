@@ -10,24 +10,48 @@ export type request_body_0 = string
 export type response_0_0 = {
     code: 401;
     ok: false;
-    info: "firebase.token.invalide";
+    info: "firebase.token.invalid";
 } & {body: undefined};
-
-export type response_body_0_1 = string
 
 export type response_0_1 = {
     code: 404;
     ok: false;
     info: "user.notfound";
-} & {body: response_body_0_1};
+} & {body: undefined};
 
 export type response_body_0_2 = string
 
 export type response_0_2 = {
     code: 200;
     ok: true;
-    info: "user.login";
+    info: "user.logged";
 } & {body: response_body_0_2};
+
+export type request_body_1 = {
+    fireBaseIdToken: string;
+    lastname: string;
+    firstname: string;
+    address: string;
+    dateOfBirth: Date;
+}
+
+export type response_1_0 = {
+    code: 401;
+    ok: false;
+    info: "firebase.token.invalid";
+} & {body: undefined};
+
+export type response_1_1 = {
+    code: 409;
+    ok: false;
+    info: "user.alreadyExist";
+} & {body: undefined};
+
+export type response_1_2 = {
+    code: 400;
+    ok: false;
+    info: "user.address.invalid";
+} & {body: undefined};
 
 export type GetDef<
 	method extends DefEnrichedDuplojsTo["method"],
@@ -79,6 +103,14 @@ export type DefEnrichedDuplojsTo = {
 	response: response_0_0
 		| response_0_1
 		| response_0_2,
+} | {
+	path: "/register",
+	method: "POST",
+	body: request_body_1,
+	parameters: undefined,
+	response: response_1_0
+		| response_1_1
+		| response_1_2,
 };
 
 
@@ -179,6 +211,17 @@ export interface EnrichedDuploTo<
 		response_0_0
 		| response_0_1
 		| response_0_2
+	>
+
+	post(
+		path: "/register", 
+		body: request_body_1,
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+		interceptorParams?: interceptorParameter
+	): EnrichedRequestor<
+		response_1_0
+		| response_1_1
+		| response_1_2
 	>
 
 }

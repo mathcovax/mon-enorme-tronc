@@ -12,13 +12,13 @@ export const POST = (method: Methods, path: string) => duplo
 		firebaseTokenCheck,
 		{
 			input: p => p("body"),
-			result: "firebase.token.valide",
+			result: "firebase.token.valid",
 			catch: (res, info) => {
 				throw new UnauthorizedHttpException(info);
 			},
 			indexing: "decodedIdToken",
 		},
-		new IHaveSentThis(UnauthorizedHttpException.code, "firebase.token.invalide")
+		new IHaveSentThis(UnauthorizedHttpException.code, "firebase.token.invalid")
 	)
 	.check(
 		userExistCheck,
@@ -32,14 +32,14 @@ export const POST = (method: Methods, path: string) => duplo
 			},
 			indexing: "user"
 		},
-		new IHaveSentThis(NotFoundHttpException.code, "user.notfound", zod.string())
+		new IHaveSentThis(NotFoundHttpException.code, "user.notfound")
 	)
 	.handler(
 		({ pickup }) => {
 			const { id, email } = pickup("user");
 			const accessToken = AccessToken.generate({ id, email });
 
-			throw new OkHttpException("user.login", accessToken);
+			throw new OkHttpException("user.logged", accessToken);
 		},
-		new IHaveSentThis(OkHttpException.code, "user.login", zod.string())
+		new IHaveSentThis(OkHttpException.code, "user.logged", zod.string())
 	);

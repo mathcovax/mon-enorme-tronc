@@ -3,10 +3,10 @@ import { expand as expandEnv } from "dotenv-expand";
 import { zod } from "@duplojs/duplojs";
 
 declare global {
-  const ENV: (typeof import("./env"))["default"];
+	const ENV: (typeof import("./env"))["default"];
 }
 
-for(const pathEnv of [".env.local", ".env"]){
+for (const pathEnv of [".env.local", ".env"]) {
 	expandEnv(
 		importEnvFile({ path: pathEnv })
 	);
@@ -25,7 +25,7 @@ export default global.ENV = zod
 		MINIO_BUCKET: zod.string(),
 		FIREBASE_CREDENTIAL_PATH: zod.string(),
 		JWT_KEY: zod.string(),
-		JWT_TIME: zod.string(),
+		JWT_TIME: zod.string()
 	})
 	.readonly()
 	.parse(process.env);
