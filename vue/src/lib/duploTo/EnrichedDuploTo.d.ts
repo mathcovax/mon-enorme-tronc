@@ -53,6 +53,12 @@ export type response_1_2 = {
     info: "user.address.invalid";
 } & {body: undefined};
 
+export type response_1_3 = {
+    code: 400;
+    ok: false;
+    info: "user.dateOfBirth.invalid";
+} & {body: undefined};
+
 export type GetDef<
 	method extends DefEnrichedDuplojsTo["method"],
 	path extends Extract<
@@ -110,7 +116,8 @@ export type DefEnrichedDuplojsTo = {
 	parameters: undefined,
 	response: response_1_0
 		| response_1_1
-		| response_1_2,
+		| response_1_2
+		| response_1_3,
 };
 
 
@@ -222,6 +229,7 @@ export interface EnrichedDuploTo<
 		response_1_0
 		| response_1_1
 		| response_1_2
+		| response_1_3
 	>
 
 }

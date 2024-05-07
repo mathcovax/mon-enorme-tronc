@@ -12,7 +12,7 @@ export const POST = (method: Methods, path: string) => duplo
 			firstname: zod.string().max(36),
 			address: zod.string().max(400),
 			dateOfBirth: zod.coerce.date(),
-		})
+		}).passthrough(),
 	})
 	.check(
 		firebaseTokenCheck,
