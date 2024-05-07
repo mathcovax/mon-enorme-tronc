@@ -15,7 +15,7 @@ async function googleSign(){
 			.info("user.logged", accessToken => {
 				console.log(accessToken);
 			})
-			.info("user.register", () => {
+			.info("user.notfound", () => {
 				console.log("Redirect to register page");
 				router.push({ name: "customer-register" });
 			})
