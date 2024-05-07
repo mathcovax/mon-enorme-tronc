@@ -14,10 +14,10 @@ datasource db {
 }
 
 model User {
-    id        String @id @default(uuid())
-    email     String @unique @db.VarChar(320)
-    lastname  String @db.VarChar(32)
-    firstname String @db.VarChar(36)
-    age       Int    @db.Integer
-    address   String @db.VarChar(400)
+    id          String   @id @default(uuid())
+    email       String   @unique @db.VarChar(320)
+    lastname    String   @db.VarChar(32)
+    firstname   String   @db.VarChar(36)
+    dateOfBirth DateTime @db.Date
+    address     String   @db.VarChar(400)
 }

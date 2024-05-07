@@ -10,8 +10,8 @@ export const POST = (method: Methods, path: string) => duplo
 			fireBaseIdToken: zod.string(),
 			lastname: zod.string().max(32),
 			firstname: zod.string().max(36),
-			age: zod.number().positive().max(130),
-			address: zod.string().max(400)
+			address: zod.string().max(400),
+			dateOfBirth: zod.coerce.date(),
 		})
 	})
 	.check(
@@ -49,18 +49,36 @@ export const POST = (method: Methods, path: string) => duplo
 		new IHaveSentThis(BadRequestHttpException.code, "user.address.invalid")
 
 	)
+	.cut(
+		({ pickup }) => {
+			const userDateOfBirth = pickup("body").dateOfBirth;
+			const timestamp18year = 568036800000;
+			
+			if(Date.now() - userDateOfBirth.getTime() < timestamp18year) {
+				throw new BadRequestHttpException("user.dateOfBirth.invalid");
+			}
+
+			return {};
+		},
+		[],
+		new IHaveSentThis(BadRequestHttpException.code, "user.dateOfBirth.invalid")
+	)
 	.handler(
 		async ({ pickup }) => {
-			const user = pickup("body");
 			const { email } = pickup("decodedIdToken");
+			const { lastname, firstname, address, dateOfBirth } = pickup("body");
 
 			await prisma.user.create({
 				data: {
 					email,
-					lastname: user.lastname,
-					firstname: user.firstname,
-					age: user.age,
-					address: user.address
+					lastname,
+					firstname,
+					address,
+					dateOfBirth: new Date(
+						dateOfBirth.getFullYear(), 
+						dateOfBirth.getMonth(), 
+						dateOfBirth.getDate()
+					)
 				}
 			});
 

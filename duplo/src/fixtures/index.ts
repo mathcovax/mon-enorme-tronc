@@ -9,6 +9,6 @@ prisma.user.create({
 		firstname: faker.internet.userName(),
 		lastname: faker.internet.userName(),
 		address: "",
-		age: 18
+		dateOfBirth: faker.date.birthdate({ min: 18 })
 	}  
 });

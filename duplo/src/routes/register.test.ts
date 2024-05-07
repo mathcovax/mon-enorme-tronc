@@ -18,7 +18,7 @@ describe("POST /register", () => {
 					fireBaseIdToken: "test",
 					lastname: "Doe",
 					firstname: "Jhon",
-					age: 20,
+					dateOfBirth: new Date("2002-09-13"),
 					address: "test",
 				}
 			})
@@ -37,16 +37,16 @@ describe("POST /register", () => {
 			)
 			.launch();
 
+		expect(res.information).toBe("user.registered");
 		expect(spy).lastCalledWith({
 			data: {
 				email: "test",
 				lastname: "Doe",
 				firstname: "Jhon",
-				age: 20,
+				dateOfBirth: new Date("2002-09-13T00:00:00.000Z"),
 				address: "test",
 			}
 		});
-		expect(res.information).toBe("user.registered");
 	});
 
 	it("user already exist", async () => {
@@ -57,7 +57,7 @@ describe("POST /register", () => {
 					fireBaseIdToken: "test",
 					lastname: "Doe",
 					firstname: "Jhon",
-					age: 20,
+					dateOfBirth: new Date("2002-09-13"),
 					address: "test",
 				}
 			})
@@ -73,7 +73,7 @@ describe("POST /register", () => {
 						fireBaseIdToken: "test",
 						lastname: "Doe",
 						firstname: "Jhon",
-						age: 20,
+						dateOfBirth: new Date("2002-09-13"),
 						address: "test",
 					}
 				}
@@ -95,7 +95,7 @@ describe("POST /register", () => {
 					fireBaseIdToken: "test",
 					lastname: "Doe",
 					firstname: "Jhon",
-					age: 20,
+					dateOfBirth: new Date("2002-09-13"),
 					address: "test",
 				}
 			})
@@ -114,5 +114,34 @@ describe("POST /register", () => {
 			.launch();
 
 		expect(res.information).toBe("user.address.invalid");
+	});
+
+	it("user has invalid date of birth", async () => {
+		const res = await duploTesting
+			.testRoute(POST("POST", ""))
+			.setDefaultFloorValue({
+				body: {
+					fireBaseIdToken: "test",
+					lastname: "Doe",
+					firstname: "Jhon",
+					dateOfBirth: new Date(),
+					address: "test",
+				}
+			})
+			.mockChecker(
+				"firebaseToken",
+				{ info: "firebase.token.valid", data: { email: "test" } }
+			)
+			.mockChecker(
+				"userExist",
+				{ info: "user.notfound", data: null }
+			)
+			.mockChecker(
+				"addressValid",
+				{ info: "address.valid", data: true }
+			)
+			.launch();
+
+		expect(res.information).toBe("user.dateOfBirth.invalid");
 	});
 });

@@ -31,8 +31,8 @@ export type request_body_1 = {
     fireBaseIdToken: string;
     lastname: string;
     firstname: string;
-    age: number;
     address: string;
+    dateOfBirth: Date;
 }
 
 export type response_1_0 = {
