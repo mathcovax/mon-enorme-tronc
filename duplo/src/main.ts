@@ -62,7 +62,7 @@ if(ENV.ENVIRONMENT === "DEV"){
 }
 else {
 	duplo.setDefaultErrorExtract((res, type, index) => {
-		throw new BadRequestHttpException(`${type}.${index}`);
+		throw new BadRequestHttpException(`TYPE_ERROR.${type}.${index}`);
 	});
 }
 

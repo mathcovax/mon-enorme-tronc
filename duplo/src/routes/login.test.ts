@@ -10,7 +10,7 @@ describe("POST /login", () => {
 	it("user login", async () => {
 		const res = await duploTesting
 			.testRoute(POST("POST", ""))
-			.setDefaultFloorValue({ body: "test" })
+			.setRequestProperties({ body: "test" })
 			.mockChecker(
 				"firebaseToken",
 				{ info: "firebase.token.valid", data: { email: "test" } },
@@ -29,7 +29,7 @@ describe("POST /login", () => {
 	it("user register", async () => {
 		const res = await duploTesting
 			.testRoute(POST("POST", ""))
-			.setDefaultFloorValue({ body: "test" })
+			.setRequestProperties({ body: "test" })
 			.mockChecker(
 				"firebaseToken",
 				{ info: "firebase.token.valid", data: { email: "test" } }

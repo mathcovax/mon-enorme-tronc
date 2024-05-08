@@ -13,7 +13,7 @@ describe("POST /register", () => {
 
 		const res = await duploTesting
 			.testRoute(POST("POST", ""))
-			.setDefaultFloorValue({
+			.setRequestProperties({
 				body: {
 					fireBaseIdToken: "test",
 					lastname: "Doe",
@@ -37,6 +37,9 @@ describe("POST /register", () => {
 			)
 			.launch();
 
+		console.log(res.body);
+		
+
 		expect(res.information).toBe("user.registered");
 		expect(spy).lastCalledWith({
 			data: {
@@ -52,7 +55,7 @@ describe("POST /register", () => {
 	it("user already exist", async () => {
 		const res = await duploTesting
 			.testRoute(POST("POST", ""))
-			.setDefaultFloorValue({
+			.setRequestProperties({
 				body: {
 					fireBaseIdToken: "test",
 					lastname: "Doe",
@@ -90,7 +93,7 @@ describe("POST /register", () => {
 	it("user has invalid address", async () => {
 		const res = await duploTesting
 			.testRoute(POST("POST", ""))
-			.setDefaultFloorValue({
+			.setRequestProperties({
 				body: {
 					fireBaseIdToken: "test",
 					lastname: "Doe",
@@ -119,7 +122,7 @@ describe("POST /register", () => {
 	it("user has invalid date of birth", async () => {
 		const res = await duploTesting
 			.testRoute(POST("POST", ""))
-			.setDefaultFloorValue({
+			.setRequestProperties({
 				body: {
 					fireBaseIdToken: "test",
 					lastname: "Doe",
