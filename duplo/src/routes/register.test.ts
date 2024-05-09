@@ -37,9 +37,6 @@ describe("POST /register", () => {
 			)
 			.launch();
 
-		console.log(res.body);
-		
-
 		expect(res.information).toBe("user.registered");
 		expect(spy).lastCalledWith({
 			data: {
@@ -48,6 +45,10 @@ describe("POST /register", () => {
 				firstname: "Jhon",
 				dateOfBirth: new Date("2002-09-13T00:00:00.000Z"),
 				address: "test",
+			},
+			select: {
+				id: true,
+				primordialRole: true
 			}
 		});
 	});

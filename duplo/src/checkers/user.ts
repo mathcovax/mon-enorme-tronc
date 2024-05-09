@@ -9,7 +9,7 @@ export const inputUser = createTypeInput()
 export const userExistCheck = duplo
 	.createChecker("userExist")
 	.handler(async ({ name, value }: GetTypeInput<typeof inputUser>, output) => {
-		let where: Prisma.UserFindFirstArgs["where"];
+		let where: Prisma.userFindFirstArgs["where"];
 
 		if (name === "id") {
 			where = {
@@ -33,4 +33,14 @@ export const userExistCheck = duplo
 			return output("user.notfound", null);
 		}
 	})
+	.preCompletion(
+		"mustExist",
+		{
+			result: "user.exist",
+			catch: () => {
+				throw new NotFoundHttpException("user.notfound");
+			},
+			indexing: "user",
+		}
+	)
 	.build();

@@ -13,11 +13,17 @@ datasource db {
     url      = env("POSTGRES_DATABASE_URL")
 }
 
-model User {
-    id          String   @id @default(uuid())
-    email       String   @unique @db.VarChar(320)
-    lastname    String   @db.VarChar(32)
-    firstname   String   @db.VarChar(36)
-    dateOfBirth DateTime @db.Date
-    address     String   @db.VarChar(400)
+model user {
+    id             String          @id @default(uuid())
+    email          String          @unique @db.VarChar(320)
+    lastname       String          @db.VarChar(32)
+    firstname      String          @db.VarChar(36)
+    dateOfBirth    DateTime        @db.Date
+    address        String          @db.VarChar(400)
+    primordialRole primordial_role @default(CUSTOMER)
+}
+
+enum primordial_role {
+    CUSTOMER
+    ADMIN
 }
