@@ -1,6 +1,7 @@
 import { addressValidCheck } from "@checkers/address";
 import { firebaseTokenCheck } from "@checkers/token";
 import { inputUser, userExistCheck } from "@checkers/user";
+import { AccessToken } from "@services/token";
 
 /* METHOD : POST, PATH : /register */
 export const POST = (method: Methods, path: string) => duplo
@@ -18,18 +19,16 @@ export const POST = (method: Methods, path: string) => duplo
 		firebaseTokenCheck,
 		{
 			input: p => p("body").fireBaseIdToken,
-			result: "firebase.token.valid",
-			catch: (res, info) => {
-				throw new UnauthorizedHttpException(info);
-			},
-			indexing: "decodedIdToken",
+			...firebaseTokenCheck.preCompletions.mustBeValid
 		},
 		new IHaveSentThis(UnauthorizedHttpException.code, "firebase.token.invalid")
 	)
 	.check(
 		userExistCheck,
 		{
-			input: p => inputUser.email(p("decodedIdToken").email),
+			input: p => inputUser.email(
+				p("idTokenContent").email
+			),
 			result: "user.notfound",
 			catch: () => {
 				throw new ConflictHttpException("user.alreadyExist");
@@ -65,10 +64,10 @@ export const POST = (method: Methods, path: string) => duplo
 	)
 	.handler(
 		async ({ pickup }) => {
-			const { email } = pickup("decodedIdToken");
+			const { email } = pickup("idTokenContent");
 			const { lastname, firstname, address, dateOfBirth } = pickup("body");
 
-			await prisma.user.create({
+			const { id, primordialRole } = await prisma.user.create({
 				data: {
 					email,
 					lastname,
@@ -79,9 +78,16 @@ export const POST = (method: Methods, path: string) => duplo
 						dateOfBirth.getMonth(), 
 						dateOfBirth.getDate()
 					)
+				},
+				select: {
+					id: true,
+					primordialRole: true
 				}
 			});
 
-			throw new CreatedHttpException("user.registered");
+			const accessToken = AccessToken.generate({ id, email, primordialRole });
+
+			throw new CreatedHttpException("user.registered", accessToken);
 		},
+		new IHaveSentThis(CreatedHttpException.code, "user.registered", zod.string())
 	);
