@@ -35,27 +35,32 @@ export type response_1_0 = {
     info: "entry.accepted";
 } & {body: undefined};
 
-export type request_body_2 = string
+export type parameters_2 = {
+    params: {
+        categoryName: string;
+    };
+}
 
 export type response_2_0 = {
-    code: 401;
-    ok: false;
-    info: "firebase.token.invalid";
-} & {body: undefined};
-
-export type response_2_1 = {
     code: 404;
     ok: false;
-    info: "user.notfound";
+    info: "category.notfound";
 } & {body: undefined};
 
-export type response_body_2_2 = string
+export type response_body_2_1 = {
+    id: string;
+    name: string;
+    description: string;
+    price: number;
+    created_at: Date;
+    updated_at: Date;
+}[]
 
-export type response_2_2 = {
+export type response_2_1 = {
     code: 200;
     ok: true;
-    info: "user.logged";
-} & {body: response_body_2_2};
+    info: "category.products";
+} & {body: response_body_2_1};
 
 export type request_body_3 = {
     fireBaseIdToken: string;
@@ -96,6 +101,28 @@ export type response_3_4 = {
     ok: true;
     info: "user.registered";
 } & {body: response_body_3_4};
+
+export type request_body_4 = string
+
+export type response_4_0 = {
+    code: 401;
+    ok: false;
+    info: "firebase.token.invalid";
+} & {body: undefined};
+
+export type response_4_1 = {
+    code: 404;
+    ok: false;
+    info: "user.notfound";
+} & {body: undefined};
+
+export type response_body_4_2 = string
+
+export type response_4_2 = {
+    code: 200;
+    ok: true;
+    info: "user.logged";
+} & {body: response_body_4_2};
 
 export type GetDef<
 	method extends DefEnrichedDuplojsTo["method"],
@@ -154,13 +181,12 @@ export type DefEnrichedDuplojsTo = {
 	parameters: undefined,
 	response: response_1_0,
 } | {
-	path: "/login",
-	method: "POST",
-	body: request_body_2,
-	parameters: undefined,
+	path: "/category/{categoryName}/products",
+	method: "GET",
+	body: unknown,
+	parameters: parameters_2,
 	response: response_2_0
-		| response_2_1
-		| response_2_2,
+		| response_2_1,
 } | {
 	path: "/register",
 	method: "POST",
@@ -171,6 +197,14 @@ export type DefEnrichedDuplojsTo = {
 		| response_3_2
 		| response_3_3
 		| response_3_4,
+} | {
+	path: "/login",
+	method: "POST",
+	body: request_body_4,
+	parameters: undefined,
+	response: response_4_0
+		| response_4_1
+		| response_4_2,
 };
 
 
@@ -280,15 +314,13 @@ export interface EnrichedDuploTo<
 		response_1_0
 	>
 
-	post(
-		path: "/login", 
-		body: request_body_2,
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+	get(
+		path: "/category/{categoryName}/products", 
+		parameters : parameters_2 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_2_0
 		| response_2_1
-		| response_2_2
 	>
 
 	post(
@@ -302,6 +334,17 @@ export interface EnrichedDuploTo<
 		| response_3_2
 		| response_3_3
 		| response_3_4
+	>
+
+	post(
+		path: "/login", 
+		body: request_body_4,
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+		interceptorParams?: interceptorParameter
+	): EnrichedRequestor<
+		response_4_0
+		| response_4_1
+		| response_4_2
 	>
 
 }
