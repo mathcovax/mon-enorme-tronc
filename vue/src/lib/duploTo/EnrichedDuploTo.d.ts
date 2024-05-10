@@ -33,50 +33,56 @@ export type response_0_1 = {
 } & {body: response_body_0_1};
 
 export type parameters_1 = {
-    query?: {
-        address?: string | undefined;
-    } | undefined;
-}
-
-export type response_body_1_0 = string[]
-
-export type response_1_0 = {
-    code: 200;
-    ok: true;
-    info?: undefined;
-} & {body: response_body_1_0};
-
-export type parameters_2 = {
     headers: {
         "access-token": string;
     };
 }
 
-export type response_2_0 = {
+export type response_1_0 = {
     code: 401;
     ok: false;
     info: "access.token.invalid";
 } & {body: undefined};
 
-export type response_2_1 = {
+export type response_1_1 = {
     code: 401;
     ok: false;
     info: "user.role.invalid";
 } & {body: undefined};
 
-export type response_2_2 = {
+export type response_1_2 = {
     code: 204;
     ok: true;
     info: "entry.accepted";
 } & {body: undefined};
+
+export type response_2_0 = {
+    code: 204;
+    ok: true;
+    info: "entry.accepted";
+} & {body: undefined};
+
+export type parameters_3 = {
+    query?: {
+        address?: string | undefined;
+    } | undefined;
+}
+
+export type response_body_3_0 = string[]
 
 export type response_3_0 = {
-    code: 204;
+    code: 200;
     ok: true;
-    info: "entry.accepted";
-} & {body: undefined};
+    info?: undefined;
+} & {body: response_body_3_0};
 
-export type request_body_4 = string
+export type request_body_4 = {
+    fireBaseIdToken: string;
+    lastname: string;
+    firstname: string;
+    address: string;
+    dateOfBirth: Date;
+}
 
 export type response_4_0 = {
     code: 401;
@@ -85,26 +91,32 @@ export type response_4_0 = {
 } & {body: undefined};
 
 export type response_4_1 = {
-    code: 404;
+    code: 409;
     ok: false;
-    info: "user.notfound";
+    info: "user.alreadyExist";
 } & {body: undefined};
 
-export type response_body_4_2 = string
-
 export type response_4_2 = {
-    code: 200;
-    ok: true;
-    info: "user.logged";
-} & {body: response_body_4_2};
+    code: 400;
+    ok: false;
+    info: "user.address.invalid";
+} & {body: undefined};
 
-export type request_body_5 = {
-    fireBaseIdToken: string;
-    lastname: string;
-    firstname: string;
-    address: string;
-    dateOfBirth: Date;
-}
+export type response_4_3 = {
+    code: 400;
+    ok: false;
+    info: "user.dateOfBirth.invalid";
+} & {body: undefined};
+
+export type response_body_4_4 = string
+
+export type response_4_4 = {
+    code: 201;
+    ok: true;
+    info: "user.registered";
+} & {body: response_body_4_4};
+
+export type request_body_5 = string
 
 export type response_5_0 = {
     code: 401;
@@ -113,30 +125,18 @@ export type response_5_0 = {
 } & {body: undefined};
 
 export type response_5_1 = {
-    code: 409;
+    code: 404;
     ok: false;
-    info: "user.alreadyExist";
+    info: "user.notfound";
 } & {body: undefined};
+
+export type response_body_5_2 = string
 
 export type response_5_2 = {
-    code: 400;
-    ok: false;
-    info: "user.address.invalid";
-} & {body: undefined};
-
-export type response_5_3 = {
-    code: 400;
-    ok: false;
-    info: "user.dateOfBirth.invalid";
-} & {body: undefined};
-
-export type response_body_5_4 = string
-
-export type response_5_4 = {
-    code: 201;
+    code: 200;
     ok: true;
-    info: "user.registered";
-} & {body: response_body_5_4};
+    info: "user.logged";
+} & {body: response_body_5_2};
 
 export type GetDef<
 	method extends DefEnrichedDuplojsTo["method"],
@@ -188,43 +188,43 @@ export type DefEnrichedDuplojsTo = {
 	response: response_0_0
 		| response_0_1,
 } | {
-	path: "/geocoder",
-	method: "GET",
-	body: unknown,
-	parameters: parameters_1,
-	response: response_1_0,
-} | {
 	path: "/entry/admin-panel*",
 	method: "GET",
 	body: unknown,
-	parameters: parameters_2,
-	response: response_2_0
-		| response_2_1
-		| response_2_2,
+	parameters: parameters_1,
+	response: response_1_0
+		| response_1_1
+		| response_1_2,
 } | {
 	path: "/entry*",
 	method: "GET",
 	body: unknown,
 	parameters: undefined,
+	response: response_2_0,
+} | {
+	path: "/geocoder",
+	method: "GET",
+	body: unknown,
+	parameters: parameters_3,
 	response: response_3_0,
 } | {
-	path: "/login",
+	path: "/register",
 	method: "POST",
 	body: request_body_4,
 	parameters: undefined,
 	response: response_4_0
 		| response_4_1
-		| response_4_2,
+		| response_4_2
+		| response_4_3
+		| response_4_4,
 } | {
-	path: "/register",
+	path: "/login",
 	method: "POST",
 	body: request_body_5,
 	parameters: undefined,
 	response: response_5_0
 		| response_5_1
-		| response_5_2
-		| response_5_3
-		| response_5_4,
+		| response_5_2,
 };
 
 
@@ -326,21 +326,13 @@ export interface EnrichedDuploTo<
 	>
 
 	get(
-		path: "/geocoder", 
-		parameters ?: parameters_1 & BaseRequestParameters,
+		path: "/entry/admin-panel*", 
+		parameters : parameters_1 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_1_0
-	>
-
-	get(
-		path: "/entry/admin-panel*", 
-		parameters : parameters_2 & BaseRequestParameters,
-		interceptorParams?: interceptorParameter
-	): EnrichedRequestor<
-		response_2_0
-		| response_2_1
-		| response_2_2
+		| response_1_1
+		| response_1_2
 	>
 
 	get(
@@ -348,11 +340,19 @@ export interface EnrichedDuploTo<
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
+		response_2_0
+	>
+
+	get(
+		path: "/geocoder", 
+		parameters ?: parameters_3 & BaseRequestParameters,
+		interceptorParams?: interceptorParameter
+	): EnrichedRequestor<
 		response_3_0
 	>
 
 	post(
-		path: "/login", 
+		path: "/register", 
 		body: request_body_4,
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
@@ -360,10 +360,12 @@ export interface EnrichedDuploTo<
 		response_4_0
 		| response_4_1
 		| response_4_2
+		| response_4_3
+		| response_4_4
 	>
 
 	post(
-		path: "/register", 
+		path: "/login", 
 		body: request_body_5,
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
@@ -371,8 +373,6 @@ export interface EnrichedDuploTo<
 		response_5_0
 		| response_5_1
 		| response_5_2
-		| response_5_3
-		| response_5_4
 	>
 
 }

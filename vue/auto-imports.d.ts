@@ -9,7 +9,7 @@ declare global {
   const CheckboxInput: typeof import('./src/composables/useFormBuilder/_inputs/CheckboxInput')['CheckboxInput']
   const ComboBoxInput: typeof import('./src/composables/useFormBuilder/_inputs/ComboBoxInput')['ComboBoxInput']
   const CustomInput: typeof import('./src/composables/useFormBuilder/_inputs/CustomInput')['CustomInput']
-  const DatePickerInput: typeof import('./src/composables/useFormBuilder/_inputs/DatePickerInput')['DatePickerInput']
+  const DateInput: typeof import('./src/composables/useFormBuilder/_inputs/DateInput')['DateInput']
   const EffectScope: typeof import('vue')['EffectScope']
   const NumberInput: typeof import('./src/composables/useFormBuilder/_inputs/NumberInput')['NumberInput']
   const RadioGroupInput: typeof import('./src/composables/useFormBuilder/_inputs/RadioGroupInput')['RadioGroupInput']

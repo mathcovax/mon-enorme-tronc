@@ -2,12 +2,17 @@ import type { ItemComboBox } from "@/composables/useFormBuilder/_inputs/ComboBox
 
 export function useSignUpForm(){
 
+	const timestamp18year = 568036800000;
 	const suggestedAddresses = ref<ItemComboBox[]>([]);
 
 	function onSearchAddress(address: string){
 		duploTo.enriched.
 			get("/geocoder", { query: { address } })
 			.s((addresses) => {
+				if(addresses.length === 0) {
+					return;
+				}
+				
 				suggestedAddresses.value = addresses.map(
 					(address) => ({ label: address, identifier: address })
 				);
@@ -32,11 +37,13 @@ export function useSignUpForm(){
 				.max(255, $t("page.register.rules.maxLength")),
 		},
 		dateOfBirth: {
-			type: "date-picker",
+			type: "date",
 			label: $t("page.register.birthDate"),
-			zodSchema: zod.number({ message: $t("page.register.rules.required") })
-				.min(18, $t("page.register.rules.minAge"))
-				.max(130, $t("page.register.rules.maxAge"))
+			zodSchema: zod.coerce.date({ message: $t("page.register.rules.required") })
+				.refine(
+					(userDateOfBirth) => Date.now() - userDateOfBirth.getTime() >= timestamp18year, 
+					{ message: $t("page.register.rules.minAge") }
+				)
 		},
 		address: computed(() => ({
 			type: "combo",
@@ -45,7 +52,10 @@ export function useSignUpForm(){
 			emptyLabel: $t("page.register.address.emptyLabel"),
 			defaultLabel: $t("page.register.address.defaultLabel"),
 			label: $t("page.register.address.label"),
-			zodSchema: zod.string({ message: $t("page.register.rules.required") }),
+			zodSchema: zod.object(
+				{ label: zod.string() }, 
+				{ message: $t("page.register.rules.required") }
+			),
 			textButton: $t("page.register.address.placeholder"),
 			onUpdateSearchTerm: onSearchAddress
 		})),

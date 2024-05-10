@@ -19,7 +19,7 @@ async function submit() {
 			fireBaseIdToken: fireBaseIdToken as string,
 			firstname: formFields.fistname,
 			lastname: formFields.lastname,
-			address: formFields.address,
+			address: formFields.address.label,
 			dateOfBirth: new Date(formFields.dateOfBirth)
 		}
 	)
