@@ -10,6 +10,7 @@ const rules = {
 	"quotes": ["error", "double"],
 	"indent": ["error", "tab"],
 	"max-len": ["error", { "code": 120, "ignoreStrings": true, "ignoreTemplateLiterals": true }],
+	"@typescript-eslint/no-extraneous-class": "off",
 	"object-curly-newline": [
 		"error", 
 		{

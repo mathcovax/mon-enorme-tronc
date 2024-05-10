@@ -9,15 +9,14 @@ const router = useRouter();
 async function googleSign(){
 	try {
 		const result = await signInWithPopup(auth, provider);
-		const googleIdToken = await result.user.getIdToken();
+		const fireBaseIdToken = await result.user.getIdToken();
 
-		await duploTo.enriched.post("/login", googleIdToken)
+		await duploTo.enriched.post("/login", fireBaseIdToken)
 			.info("user.logged", accessToken => {
 				console.log(accessToken);
 			})
 			.info("user.notfound", () => {
-				console.log("Redirect to register page");
-				router.push({ name: "customer-register" });
+				router.push({ name: "customer-register", query: { fireBaseIdToken } });
 			})
 			.result;	
 	}

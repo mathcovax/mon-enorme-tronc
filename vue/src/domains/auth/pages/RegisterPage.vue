@@ -3,7 +3,8 @@ import { useSignUpForm } from "../composables/useSignUpForm";
 
 const { SignUpForm, checkSignUpForm } = useSignUpForm();
 
-const terms = ref(false);
+const { query: { fireBaseIdToken } } = useRoute();
+const router = useRouter();
 
 async function submit() {
 	const formFields = await checkSignUpForm();
@@ -12,17 +13,27 @@ async function submit() {
 		return;
 	}
 
-	if (!terms.value) {
-		return alert("Vous devez accepter les conditions d'utilisation");
-	}
-
-	const data = {
-		...formFields,
-		terms: terms.value,
-	};
-
-	console.log(data);
+	await duploTo.enriched.post(
+		"/register", 
+		{
+			fireBaseIdToken: fireBaseIdToken as string,
+			firstname: formFields.fistname,
+			lastname: formFields.lastname,
+			address: formFields.address,
+			dateOfBirth: new Date(formFields.dateOfBirth)
+		}
+	)
+		.info("user.registered", () => {
+			router.push({ path: "/" });
+		})
+		.result;
 }
+
+onMounted(async () => {
+	if(typeof fireBaseIdToken !== "string"){
+		router.push({ path: "/login" });
+	}
+});
 </script>
 
 <template>

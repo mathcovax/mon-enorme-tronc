@@ -1,6 +1,18 @@
+import type { ItemComboBox } from "@/composables/useFormBuilder/_inputs/ComboBoxInput";
+
 export function useSignUpForm(){
 
-	const suggestedAddresses = ref([]);
+	const suggestedAddresses = ref<ItemComboBox[]>([]);
+
+	function onSearchAddress(address: string){
+		duploTo.enriched.
+			get("/geocoder", { query: { address } })
+			.s((addresses) => {
+				suggestedAddresses.value = addresses.map(
+					(address) => ({ label: address, identifier: address })
+				);
+			});	
+	}
 
 	const { Form, checkForm } = useFormBuilder({
 		lastname: {
@@ -19,21 +31,12 @@ export function useSignUpForm(){
 				.min(2, $t("page.register.rules.minLength"))
 				.max(255, $t("page.register.rules.maxLength")),
 		},
-		birthDate: {
-			cols: 6,
+		dateOfBirth: {
 			type: "date-picker",
 			label: $t("page.register.birthDate"),
 			zodSchema: zod.number({ message: $t("page.register.rules.required") })
 				.min(18, $t("page.register.rules.minAge"))
 				.max(130, $t("page.register.rules.maxAge"))
-		},
-		country: {
-			cols: 6,
-			type: "text",
-			label: $t("page.register.country"),
-			zodSchema: zod.string({ message: $t("page.register.rules.required") })
-				.min(2, $t("page.register.rules.minLength"))
-				.max(255, $t("page.register.rules.maxLength")),
 		},
 		address: computed(() => ({
 			type: "combo",
@@ -42,13 +45,14 @@ export function useSignUpForm(){
 			emptyLabel: $t("page.register.address.emptyLabel"),
 			defaultLabel: $t("page.register.address.defaultLabel"),
 			label: $t("page.register.address.label"),
-			zodSchema: zod.string({ message: $t("page.register.rules.required") }).min(2).max(255),
+			zodSchema: zod.string({ message: $t("page.register.rules.required") }),
 			textButton: $t("page.register.address.placeholder"),
+			onUpdateSearchTerm: onSearchAddress
 		})),
 		terms: {
 			type: "checkbox",
 			desc: $t("page.register.terms"),
-			zodSchema: zod.boolean({ message: $t("page.register.rules.terms") }).refine(value => value, { message: $t("page.register.rules.terms") }),
+			zodSchema: zod.literal(true, { message: $t("page.register.rules.terms") }),
 		}
 	});
 

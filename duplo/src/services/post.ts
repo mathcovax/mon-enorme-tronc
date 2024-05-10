@@ -12,7 +12,7 @@ export class PostService {
 	static getAddresses(address: string): Promise<Address[]> {
 		return fetch(`${this.baseUrl}?q=${address}`)
 			.then(res => res.json())
-			.then(data => data.features);
+			.then(data => data.features || []);
 	}
 
 	static checkAddress(address: string): Promise<boolean> {
