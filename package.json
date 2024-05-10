@@ -1,30 +1,31 @@
 {
-  "name": "mon-enorme-tronc",
-  "workspaces": [
-    "vue",
-    "duplo"
-  ],
-  "scripts": {
-    "dev:duplo": "npm -w duplo run dev",
-    "dev:vue": "npm -w vue run dev",
-    "dev": "docker compose up",
-    "generate:types": "npm -w duplo run generate:types",
-    "generate:prisma": "npx prisma generate",
-    "migrate:dev": "docker compose exec duplo npm -w duplo run migrate:dev",
-    "prepare": "husky",
-    "fixtures": "docker compose exec duplo npm -w duplo run fixtures",
-    "studio": "docker compose exec duplo npm -w duplo run studio"
-  },
-  "prisma": {
-    "schema": "duplo/src/prisma/schema.prisma"
-  },
-  "dependencies": {
-    "@duplojs/to": "1.5.6",
-    "@prisma/client": "^5.12.0"
-  },
-  "devDependencies": {
-    "@commitlint/cli": "^19.2.1",
-    "@commitlint/config-conventional": "^19.1.0",
-    "husky": "^9.0.11"
-  }
+	"name": "mon-enorme-tronc",
+	"workspaces": [
+		"vue",
+		"duplo"
+	],
+	"scripts": {
+		"dev:duplo": "npm -w duplo run dev",
+		"dev:vue": "npm -w vue run dev",
+		"dev": "docker compose up",
+		"generate:types": "npm -w duplo run generate:types",
+		"generate:prisma": "npx prisma generate",
+		"migrate:dev": "docker compose exec duplo npm -w duplo run migrate:dev",
+		"prepare": "husky",
+		"fixtures": "docker compose exec duplo npm -w duplo run fixtures",
+		"studio": "docker compose exec duplo npm -w duplo run studio",
+		"test:tu": "docker compose exec duplo npm -w duplo run test:tu"
+	},
+	"prisma": {
+		"schema": "duplo/src/prisma/schema.prisma"
+	},
+	"dependencies": {
+		"@duplojs/to": "1.5.6",
+		"@prisma/client": "^5.12.0"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^19.2.1",
+		"@commitlint/config-conventional": "^19.1.0",
+		"husky": "^9.0.11"
+	}
 }
