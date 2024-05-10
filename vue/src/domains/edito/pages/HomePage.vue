@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import ProductCard from "@/domains/product/components/ProductCard.vue";
+
 const products = ref([
 	{
 		image: "https://via.placeholder.com/250",

@@ -15,8 +15,11 @@
 		<TheButton
 			size="lg"
 			class="mt-8 w-min"
+			as-child
 		>
-			Retourner à l'accueil
+			<RouterLink to="/">
+				Retour à l'accueil
+			</routerlink>
 		</TheButton>
 	</section>
 </template>
