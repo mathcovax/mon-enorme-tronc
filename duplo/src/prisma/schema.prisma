@@ -27,3 +27,42 @@ enum primordial_role {
     CUSTOMER
     ADMIN
 }
+
+model category {
+    id              String                        @id @default(uuid())
+    name            String                        @db.VarChar(255)
+    parent_category category_to_parent_category[]
+    product         product_to_category[]
+}
+
+model parent_category {
+    id       String                        @id @default(uuid())
+    name     String                        @db.VarChar(255)
+    category category_to_parent_category[]
+}
+
+model category_to_parent_category {
+    id                 String          @id @default(uuid())
+    category_id        String
+    parent_category_id String
+    category           category        @relation(fields: [category_id], references: [id])
+    parent_category    parent_category @relation(fields: [parent_category_id], references: [id])
+}
+
+model product {
+    id          String                @id @default(uuid())
+    name        String                @db.VarChar(255)
+    description String                @db.Text
+    price       Float
+    category    product_to_category[]
+    created_at  DateTime              @default(now())
+    updated_at  DateTime              @updatedAt
+}
+
+model product_to_category {
+    id          String   @id @default(uuid())
+    product_id  String
+    category_id String
+    product     product  @relation(fields: [product_id], references: [id])
+    category    category @relation(fields: [category_id], references: [id])
+}
