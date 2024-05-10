@@ -1,5 +1,5 @@
 import { makeCategories } from "./entities/category";
-import { makeParentCategories, assignParentCategoryToCategory } from "./entities/parent-category";
+import { makeParentCategories, assignParentCategoryToCategory } from "./entities/parent_category";
 import { makeProducts, assignProductToCategory } from "./entities/product";
 import { makeUsers } from "./entities/user";
 

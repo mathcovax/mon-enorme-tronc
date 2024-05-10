@@ -1,4 +1,4 @@
-import { prisma } from "../prisma-client";
+import { prisma } from "../prismaClient";
 import { faker } from "@faker-js/faker";
 
 interface Category {

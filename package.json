@@ -13,8 +13,7 @@
 		"migrate:dev": "docker compose exec duplo npm -w duplo run migrate:dev",
 		"prepare": "husky",
 		"fixtures": "docker compose exec duplo npm -w duplo run fixtures",
-		"studio": "docker compose exec duplo npm -w duplo run studio",
-		"test:tu": "docker compose exec duplo npm -w duplo run test:tu"
+		"studio": "docker compose exec duplo npm -w duplo run studio"
 	},
 	"prisma": {
 		"schema": "duplo/src/prisma/schema.prisma"

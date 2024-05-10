@@ -18,7 +18,7 @@ describe("POST /register", () => {
 					fireBaseIdToken: "test",
 					lastname: "Doe",
 					firstname: "Jhon",
-					dateOfBirth: new Date("2002-09-13"),
+					dateOfBirth: new Date(2002, 8, 13),
 					address: "test",
 				}
 			})
@@ -43,7 +43,7 @@ describe("POST /register", () => {
 				email: "test",
 				lastname: "Doe",
 				firstname: "Jhon",
-				dateOfBirth: new Date("2002-09-13T00:00:00.000Z"),
+				dateOfBirth: new Date(2002, 8, 13),
 				address: "test",
 			},
 			select: {
