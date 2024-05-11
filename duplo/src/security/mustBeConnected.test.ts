@@ -1,6 +1,7 @@
 import { duploTesting } from "@test/setup";
 import { mustBeConnected } from "./mustBeConnected";
 import { Response } from "@duplojs/duplojs";
+import { UnauthorizedHttpException } from "@duplojs/http-exception";
 
 describe("mustBeConnected", () => {
 	it("user is connected", async () => {
@@ -42,5 +43,11 @@ describe("mustBeConnected", () => {
 			.launch();
 
 		expect(res.information).toStrictEqual("access.token.invalid");
+
+		const res1: UnauthorizedHttpException = await duploTesting
+			.testAbstractRoute(mustBeConnected.abstractRoute)
+			.launch();
+			
+		expect(res1.info).toStrictEqual("access.token.invalid");
 	});
 });

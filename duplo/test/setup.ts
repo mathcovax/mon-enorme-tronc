@@ -3,6 +3,7 @@ import { DuploTesting } from "@duplojs/testing";
 import duploWhatWasSent from "@duplojs/what-was-sent";
 import duploHttpException from "@duplojs/http-exception";
 import duploZodAccelerator from "@duplojs/zod-accelerator/plugin";
+import "@duplojs/to/plugin";
 import "../src/env";
 
 export const duploTesting = new DuploTesting(

@@ -5,6 +5,7 @@ const { SignUpForm, checkSignUpForm } = useSignUpForm();
 
 const { query: { fireBaseIdToken } } = useRoute();
 const router = useRouter();
+const { setAccessToken, fetchUserValue } = useUserStore();
 
 async function submit() {
 	const formFields = await checkSignUpForm();
@@ -23,15 +24,17 @@ async function submit() {
 			dateOfBirth: new Date(formFields.dateOfBirth)
 		}
 	)
-		.info("user.registered", () => {
-			router.push({ path: "/" });
+		.info("user.registered", (accessToken) => {
+			setAccessToken(accessToken);
+			fetchUserValue();
+			router.push({ name: "home" });
 		})
 		.result;
 }
 
 onMounted(async () => {
 	if(typeof fireBaseIdToken !== "string"){
-		router.push({ path: "/login" });
+		router.push({ name: "customer-login" });
 	}
 });
 </script>

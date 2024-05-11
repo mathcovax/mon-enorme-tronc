@@ -9,8 +9,8 @@ export const POST = (method: Methods, path: string) => duplo
 	.extract({
 		body: zod.object({
 			fireBaseIdToken: zod.string(),
-			lastname: zod.string().max(32),
-			firstname: zod.string().max(36),
+			lastname: zod.string().max(32).toUpperCase(),
+			firstname: zod.string().max(36).toLowerCase(),
 			address: zod.string().max(400),
 			dateOfBirth: zod.coerce.date(),
 		}).passthrough(),

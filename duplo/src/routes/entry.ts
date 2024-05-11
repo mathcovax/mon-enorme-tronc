@@ -9,6 +9,25 @@ export const adminPanelEntry = hasPrimordialRole({ options: { primordialRole: "A
 		new IHaveSentThis(NoContentHttpException.code, "entry.accepted")
 	);
 
+export const authEntry = duplo
+	.declareRoute("GET", ["/entry/login", "/entry/register"])
+	.extract(
+		{
+			headers: {
+				"access-token": zod.undefined().ignore()
+			}
+		}, 
+		() => {
+			throw new UnauthorizedHttpException("entry.refuse");
+		}
+	)
+	.handler(
+		() => {
+			throw new NoContentHttpException("entry.accepted");
+		},
+		new IHaveSentThis(NoContentHttpException.code, "entry.accepted")
+	);
+
 export const basicEntry = duplo
 	.declareRoute("GET", "/entry*")
 	.handler(
