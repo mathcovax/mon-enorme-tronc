@@ -18,10 +18,15 @@ export default (): RouteRecordRaw[] => [
 	},
 ];
 
-export const customersAuthRoutes = (): RouteRecordRaw => (
+export const customersAuthRoutes = (): RouteRecordRaw[] => [
 	{
 		name: "customer-login",
 		path: "/login",
 		component: () => import("./pages/LoginPage.vue"),
+	},
+	{
+		name: "customer-register",
+		path: "/register",
+		component: () => import("./pages/RegisterPage.vue"),
 	}
-);
+];

@@ -7,7 +7,7 @@ import type { ComboBoxInputDef, ItemComboBox } from "./_inputs/ComboBoxInput";
 import type { CheckboxInputDef } from "./_inputs/CheckboxInput";
 import type { SelectInputDef } from "./_inputs/SelectInput";
 import type { TextareaInputDef } from "./_inputs/TextareaInput";
-import type { DatePickerInputDef } from "./_inputs/DatePickerInput";
+import type { DateInputDef } from "./_inputs/DateInput";
 import type { RadioGroupDef } from "./_inputs/RadioGroupInput";
 import type { CustomInputDef } from "./_inputs/CustomInput";
 
@@ -16,7 +16,7 @@ export interface BaseInputDef {
 	defaultValue?: unknown
 	label?: string
 	zodSchema?: ZodType
-	clo?: number
+	cols?: number
 }
 
 export interface InputProps<modelValueInput = unknown> {
@@ -33,7 +33,7 @@ export type FormInputDef =
 	| CheckboxInputDef
 	| SelectInputDef
 	| TextareaInputDef
-	| DatePickerInputDef
+	| DateInputDef
 	| RadioGroupDef
 	| CustomInputDef
 
@@ -91,7 +91,7 @@ export type FormInputToRecordRef<
 				? string
 			: GetValue<formInputs[name]>["type"] extends "textarea"
 				? string
-			: GetValue<formInputs[name]>["type"] extends "date-picker"
+			: GetValue<formInputs[name]>["type"] extends "date"
 				? string
 			: GetValue<formInputs[name]>["type"] extends "radio"
 				? string

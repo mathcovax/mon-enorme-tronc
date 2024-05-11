@@ -1,22 +1,19 @@
 import { effect } from "vue";
 import type { BaseInputDef, InputProps } from "../types";
-import PrimaryDatePicker from "@/components/PrimaryDatePicker.vue";
+import PrimaryDateInput from "@/components/PrimaryDateInput.vue";
 
-export interface DatePickerInputProps extends InputProps<string> {
-	placeholder?: string
-}
+export type DateInputProps = InputProps<string>
 
-export interface DatePickerInputDef extends BaseInputDef {
-	type: "date-picker"
+export interface DateInputDef extends BaseInputDef {
+	type: "date"
 	defaultValue?: string
-	placeholder?: string
 }
 
-export const DatePickerInput = defineComponent({
+export const DateInput = defineComponent({
 	props: [
-		"label", "modelValue", "zodSchema", "name", "placeholder"
+		"label", "modelValue", "zodSchema", "name"
 	],
-	setup(props: DatePickerInputProps, { expose, emit }){
+	setup(props: DateInputProps, { expose, emit }){
 		const toValidated = ref(false);
 		const errorMessage = ref("");
 
@@ -51,21 +48,21 @@ export const DatePickerInput = defineComponent({
 		return () => h(
 			"div",
 			{
-				class: "flex flex-col"
+				class: "flex flex-col gap-2"
 			},
 			[
 				props.label
 					? h(
 						"label", 
 						{
-							class: "",
+							class: "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
 							for: props.name
 						},
 						props.label
 					)
 					: null,
 				h(
-					PrimaryDatePicker, 
+					PrimaryDateInput, 
 					{
 						modelValue: props.modelValue,
 						"onUpdate:modelValue": (value: unknown) => {
@@ -77,7 +74,7 @@ export const DatePickerInput = defineComponent({
 					? h(
 						"div", 
 						{
-							class: "h-6"
+							class: "min-h-6"
 						},
 						[
 							h(
