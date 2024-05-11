@@ -57,7 +57,7 @@ duplo.use(duploTypeGenerator, { outputFile: "../vue/src/lib/duploTo/EnrichedDupl
 
 if(ENV.ENVIRONMENT === "DEV"){
 	duplo.setDefaultErrorExtract((res, type, index, err: ZodAcceleratorError) => {
-		throw new BadRequestHttpException(`${type}.${index}`, err.message);
+		throw new BadRequestHttpException(`TYPE_ERROR.${type}.${index}`, err.message);
 	});
 }
 else {

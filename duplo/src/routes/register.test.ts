@@ -41,8 +41,8 @@ describe("POST /register", () => {
 		expect(spy).lastCalledWith({
 			data: {
 				email: "test",
-				lastname: "Doe",
-				firstname: "Jhon",
+				lastname: "DOE",
+				firstname: "jhon",
 				dateOfBirth: new Date(2002, 8, 13),
 				address: "test",
 			},

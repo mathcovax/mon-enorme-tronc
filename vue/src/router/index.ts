@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import edito, { notFound } from "@/domains/edito/router";
-import auth, { customersAuthRoutes } from "@/domains/auth/router";
+import auth from "@/domains/auth/router";
 import product from "@/domains/product/router";
 import admin from "@/domains/admin/router";
 
@@ -13,11 +13,10 @@ const router = createRouter({
 			children: [
 				...edito(),
 				...product(),
-				...customersAuthRoutes(),
+				...auth(),
 			]
 		},
 		...admin(),
-		...auth(),
 		notFound(),
 	],
 	scrollBehavior() {

@@ -5,6 +5,7 @@ import { app as firebaseApp } from "@/lib/firebase";
 const provider = new GoogleAuthProvider();
 const auth = getAuth(firebaseApp);
 const router = useRouter();
+const { setAccessToken, fetchUserValue } = useUserStore();
 
 async function googleSign(){
 	try {
@@ -13,10 +14,12 @@ async function googleSign(){
 
 		await duploTo.enriched.post("/login", fireBaseIdToken)
 			.info("user.logged", accessToken => {
-				console.log(accessToken);
+				setAccessToken(accessToken);
+				fetchUserValue();
+				router.push({ name: "home" });
 			})
 			.info("user.notfound", () => {
-				router.push({ name: "customer-register", query: { fireBaseIdToken } });
+				router.push({ name: "register", query: { fireBaseIdToken } });
 			})
 			.result;	
 	}

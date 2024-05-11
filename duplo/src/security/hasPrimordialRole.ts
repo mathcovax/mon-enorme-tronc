@@ -5,10 +5,10 @@ interface HasPrimordialRoleOptions{
 	primordialRole: primordial_role
 }
 
-const primordialRolesPriority: primordial_role[] = [
-	"CUSTOMER",
-	"ADMIN",
-];
+const primordialRolesHierarchy: Record<primordial_role, primordial_role[]> = {
+	CUSTOMER: [],
+	ADMIN: ["CUSTOMER"] 
+};
 
 export const hasPrimordialRole = mustBeConnected({ pickup: ["accessTokenContent"] })
 	.declareAbstractRoute("hasPrimordialRole")
@@ -20,10 +20,12 @@ export const hasPrimordialRole = mustBeConnected({ pickup: ["accessTokenContent"
 			const { primordialRole: userPrimordialRole } = pickup("accessTokenContent");
 			const { primordialRole: currentPrimordialRole } = pickup("options");
 
-			const currentAccess = primordialRolesPriority.indexOf(currentPrimordialRole);
-			const userAccess = primordialRolesPriority.indexOf(userPrimordialRole);
+			
 
-			if(userAccess < currentAccess){
+			if(
+				userPrimordialRole !== currentPrimordialRole && 
+				!primordialRolesHierarchy[userPrimordialRole].includes(currentPrimordialRole)
+			){
 				throw new UnauthorizedHttpException("user.role.invalid");
 			}
 
