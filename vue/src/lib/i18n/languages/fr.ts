@@ -29,6 +29,35 @@ export default {
 			},
 			terms: "J'accepte les conditions générales d'utilisation",
 			buttonText: "S'inscrire"
+		},
+		createOrganization: {
+			form: {
+				name: {
+					label: "Nom de l'organisation"
+				},
+				owner: {
+					label: "Propriétaire de l'organisation",
+					textButton: "Trouver un propriétaire",
+					placeholder: "owner.bg@gmail.com...",
+					emptyLabel: "Aucun propriétaire."
+				},
+				submit: "Créer"
+			}
+		}
+	},
+	toast: {
+		default: "Info",
+		error: "Erreur",
+		seccess: "Succès",
+	},
+	response: {
+		organization: {
+			alreadyExist: "Une organisation avec ce nom éxiste déjà.",
+			created: "L'organisation a correctement étais créer."
+		},
+		user: {
+			notfound: "Utilisateur introuvable.",
+			alreadyOwner: "l'utilisateur est déjà owner d'une organisation."
 		}
 	}
 };

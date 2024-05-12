@@ -16,9 +16,9 @@ export const GET = (method: Methods, path: string) => mustBeConnected({ pickup: 
 	)
 	.handler(
 		async ({ pickup }) => {
-			const { dateOfBirth, ...user } = pickup("user");
+			const user = pickup("user");
 
-			throw new OkHttpException("user", { ...user, dateOfBirth: dateOfBirth.toISOString() });
+			throw new OkHttpException("user", user);
 		},
 		new IHaveSentThis(OkHttpException.code, "user", userSchema)
 	);
@@ -28,7 +28,7 @@ const userSchema = zod.object({
 	email: zod.string(),
 	lastname: zod.string(),
 	firstname: zod.string(),
-	dateOfBirth: zod.string(),
+	dateOfBirth: zod.coerce.string(),
 	address: zod.string(),
 	primordialRole: zod.string(),
 });

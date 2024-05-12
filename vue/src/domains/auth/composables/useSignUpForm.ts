@@ -55,7 +55,7 @@ export function useSignUpForm(){
 			zodSchema: zod.object(
 				{ label: zod.string() }, 
 				{ message: $t("page.register.rules.required") }
-			),
+			).transform(item => item.label),
 			textButton: $t("page.register.address.placeholder"),
 			onUpdateSearchTerm: onSearchAddress
 		})),

@@ -26,6 +26,7 @@ interface Props {
 	modelValue?: unknown
 	class?: string
 	searchTerm?: string
+	filterFunction?: (items: T[], term: string) => T[]
 }
 
 const props = defineProps<Props>();
@@ -61,6 +62,7 @@ function onSelect(value: T){
 			<TheCommand
 				@update:search-term="(value) => emit('update:searchTerm', value)"
 				:search-term="searchTerm"
+				:filter-function="(filterFunction as undefined)"
 			>
 				<CommandInput
 					class="h-9"
