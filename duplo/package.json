@@ -6,6 +6,7 @@
     "start": "ENVIRONMENT=PROD tsx src/main",
     "lint": "eslint .",
     "test:tu": "vitest --coverage",
+    "test:tu:watch": "vitest --coverage --watch",
     "test:types": "tsc --noEmit",
     "generate:swagger": "tsx src/main --swagger --only-generate",
     "generate:types": "tsx src/main --generate-types --only-generate",

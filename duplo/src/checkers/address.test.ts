@@ -4,7 +4,7 @@ import { PostService } from "@services/post";
 
 vi.mock("@services/post");
 
-describe("address service", () => {
+describe("address checker", () => {
 	it("valid address", async () => {
 		vi.mocked(PostService.checkAddress).mockReturnValue(Promise.resolve(true));
 

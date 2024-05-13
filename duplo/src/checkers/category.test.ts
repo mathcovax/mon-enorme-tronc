@@ -2,7 +2,7 @@ import { duploTesting } from "@test/setup";
 import { categoryExistCheck } from "./category";
 import { MockPrisma } from "@test/mocks/providers";
 
-describe("category service", () => {
+describe("category checker", () => {
 	beforeEach(() => {
 		MockPrisma.resest();
 	});

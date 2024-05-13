@@ -2,7 +2,7 @@ import { duploTesting } from "@test/setup";
 import { inputUser, userExistCheck } from "./user";
 import { MockPrisma } from "@test/mocks/providers";
 
-describe("token service", () => {
+describe("user checker", () => {
 	it("find user by id", async () => {
 		const spy = vi.fn(() => ({}));
 		MockPrisma.set("user", "findFirst", spy);

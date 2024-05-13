@@ -6,11 +6,13 @@ export const GET = (method: Methods, path: string) => hasPrimordialRole({ option
 	.declareRoute(method, path)
 	.extract({
 		query: {
+			page: zod.coerce.number().default(0),
 			email: zod.string().optional(),
 		}
 	})
 	.handler(
 		async ({ pickup }) => {
+			const page = pickup("page");
 			const searchEmail = pickup("email");
 
 			const users = await prisma.user.findMany({
@@ -23,6 +25,7 @@ export const GET = (method: Methods, path: string) => hasPrimordialRole({ option
 						: undefined
 				},
 				take: 10,
+				skip: page * 10
 			});
 
 			throw new OkHttpException("users", users);

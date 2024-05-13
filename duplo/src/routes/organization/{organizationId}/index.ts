@@ -1,3 +1,4 @@
+import { inputOrganization, organizationExistCheck } from "@checkers/organization";
 import { hasPrimordialRole } from "@security/hasPrimordialRole";
 
 /* METHOD : PATCH, PATH : /organization/{organizationId} */
@@ -11,6 +12,17 @@ export const PATCH = (method: Methods, path: string) => hasPrimordialRole({ opti
 			suspended: zod.boolean().optional()
 		}).passthrough()
 	})
+	.check(
+		organizationExistCheck,
+		{
+			input: p => inputOrganization.id(
+				p("organizationId")
+			),
+			...organizationExistCheck.preCompletions.wantExist,
+			indexing: undefined
+		},
+		new IHaveSentThis(NotFoundHttpException.code, "organization.notfound")
+	)
 	.handler(
 		async ({ pickup }) => {
 			const organizationId = pickup("organizationId");
