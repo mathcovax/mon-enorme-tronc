@@ -17,7 +17,7 @@ describe("organization checker", () => {
 		expect(result.info).toBe("organization.exist");
 	});
 
-	it("find organization by email", async () => {
+	it("find organization by name", async () => {
 		const spy = vi.fn(() => ({}));
 		MockPrisma.set("organization", "findFirst", spy);
 

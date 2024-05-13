@@ -28,17 +28,26 @@ export const useUserStore = defineStore(
 					user.value = data;
 					resolve();
 				})
+				.info("user.notfound", () => {
+					setAccessToken(null);
+					window.location.reload();
+				})
 				.e(() => {
 					reject();
 					promiseFetching = null;
 				});
 		}
 
-		function setAccessToken(newAccessToken: string){
-			localStorage.setItem(
-				KEY_ACCESS_TOKEN_LOCAL_STORAGE, 
-				accessToken.value = newAccessToken
-			);
+		function setAccessToken(newAccessToken: string | null){
+			if(newAccessToken){
+				localStorage.setItem(
+					KEY_ACCESS_TOKEN_LOCAL_STORAGE, 
+					accessToken.value = newAccessToken
+				);
+			}
+			else {
+				localStorage.removeItem(KEY_ACCESS_TOKEN_LOCAL_STORAGE);
+			}
 		}
 
 		setTimeout(fetchUserValue);

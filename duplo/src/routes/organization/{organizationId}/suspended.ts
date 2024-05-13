@@ -1,16 +1,14 @@
 import { inputOrganization, organizationExistCheck } from "@checkers/organization";
 import { hasPrimordialRole } from "@security/hasPrimordialRole";
 
-/* METHOD : PATCH, PATH : /organization/{organizationId} */
+/* METHOD : PATCH, PATH : /organization/{organizationId}/suspended */
 export const PATCH = (method: Methods, path: string) => hasPrimordialRole({ options: { primordialRole: "ADMIN" } })
 	.declareRoute(method, path)
 	.extract({
 		params: {
 			organizationId: zod.string(),
 		}, 
-		body: zod.object({
-			suspended: zod.boolean().optional()
-		}).passthrough()
+		body: zod.enum(["true", "false"]).transform(suspended => suspended === "true" ? true : false)
 	})
 	.check(
 		organizationExistCheck,
@@ -26,7 +24,7 @@ export const PATCH = (method: Methods, path: string) => hasPrimordialRole({ opti
 	.handler(
 		async ({ pickup }) => {
 			const organizationId = pickup("organizationId");
-			const { suspended } = pickup("body");
+			const suspended  = pickup("body");
 
 			await prisma.organization.update({
 				where: {

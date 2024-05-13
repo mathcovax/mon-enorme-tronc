@@ -69,8 +69,8 @@ function previous(){
 function suspended(organization: Organization){
 	duploTo.enriched
 		.patch(
-			"/organization/{organizationId}",
-			{ suspended: !organization.suspended },
+			"/organization/{organizationId}/suspended",
+			`${!organization.suspended}`,
 			{ params: { organizationId: organization.id } }
 		)
 		.info("organization.edited", () => {

@@ -51,15 +51,25 @@ services:
   minio:
     image: minio/minio:latest
     ports:
-      - 9000:9000
       - 8900:8900
     env_file: ./duplo/.env
+    volumes:
+      - "minio_data:/data/minio"
     command: server /data/minio --console-address ":8900"
-        
+
   postgres:
     image: postgres:16.2
     env_file: ./duplo/.env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 
   mongo:
     image: mongo
     env_file: ./duplo/.env
+    volumes:
+      - "mongo_data:/data/db"
+
+volumes:
+  postgres_data:
+  mongo_data:
+  minio_data:

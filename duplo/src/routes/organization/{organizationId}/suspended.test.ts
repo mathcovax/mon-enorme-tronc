@@ -1,8 +1,8 @@
 import { duploTesting } from "@test/setup";
-import { PATCH } from ".";
+import { PATCH } from "./suspended";
 import { MockPrisma } from "@test/mocks/providers";
 
-describe("GET /organization/{organizationId}", () => {
+describe("GET /organization/{organizationId}/suspended", () => {
 	beforeEach(() => {
 		MockPrisma.resest();
 	});
@@ -14,9 +14,7 @@ describe("GET /organization/{organizationId}", () => {
 				params: {
 					organizationId: ""
 				},
-				body: {
-					suspended: false
-				}
+				body: "false"
 			})
 			.mockChecker(
 				0, 
@@ -40,9 +38,7 @@ describe("GET /organization/{organizationId}", () => {
 				params: {
 					organizationId: ""
 				},
-				body: {
-					suspended: false
-				}
+				body: "false"
 			})
 			.mockChecker(
 				0, 
