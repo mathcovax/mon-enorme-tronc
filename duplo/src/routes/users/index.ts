@@ -1,3 +1,4 @@
+import { userSchema } from "@schemas/user";
 import { hasPrimordialRole } from "@security/hasPrimordialRole";
 
 /* METHOD : GET, PATH : /users */
@@ -28,13 +29,3 @@ export const GET = (method: Methods, path: string) => hasPrimordialRole({ option
 		},
 		new IHaveSentThis(OkHttpException.code, "users", userSchema.array())
 	);
-
-const userSchema = zod.object({
-	id: zod.string(),
-	email: zod.string(),
-	lastname: zod.string(),
-	firstname: zod.string(),
-	dateOfBirth: zod.coerce.string(),
-	address: zod.string(),
-	primordialRole: zod.string(),
-});

@@ -23,7 +23,7 @@ export const useUserStore = defineStore(
 			promiseFetching = promise;
 			
 			duploTo.enriched
-				.get("/user")
+				.get("/user", undefined, { disabledToast: true })
 				.info("user", (data) => {
 					user.value = data;
 					resolve();

@@ -1,6 +1,6 @@
 import { PostService } from "@services/post";
 import { duploTesting } from "@test/setup";
-import { GET } from "./geocoder";
+import { GET } from ".";
 
 vi.mock("@services/post");
 

@@ -33,15 +33,29 @@ export default {
 		createOrganization: {
 			form: {
 				name: {
-					label: "Nom de l'organisation"
+					label: "Nom de l'organisation",
+					maxLength: "Doit faire au plus 255 caractères",
+					minLength: "Doit faire au moins 2 caractères",
 				},
 				owner: {
 					label: "Propriétaire de l'organisation",
 					textButton: "Trouver un propriétaire",
-					placeholder: "owner.bg@gmail.com...",
+					placeholder: "{'owner.bg@gmail.com...'}",
 					emptyLabel: "Aucun propriétaire."
 				},
-				submit: "Créer"
+				submit: "Créer",
+				required: "Champ obligatoire",
+			},
+			table: {
+				suspended: "Suspendre",
+				enabled: "Activer",
+				searchPlaceholder: "Chercher une organization",
+				cols: {
+					name: "Nom",
+					id: "ID",
+					suspended: "Active",
+					actions: "Actions"
+				},
 			}
 		}
 	},
@@ -53,7 +67,8 @@ export default {
 	response: {
 		organization: {
 			alreadyExist: "Une organisation avec ce nom éxiste déjà.",
-			created: "L'organisation a correctement étais créer."
+			created: "L'organisation a correctement étais créer.",
+			edited: "L'organisation a correctement étais éditer",
 		},
 		user: {
 			notfound: "Utilisateur introuvable.",

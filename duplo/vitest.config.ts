@@ -15,7 +15,7 @@ export default defineConfig({
 			],
 			reportsDirectory: "coverage",
 			exclude: [
-				"test/**", "src/*.ts", "src/providers/**", "src/prisma/**", "src/fixtures"
+				"test/**", "src/*.ts", "src/providers/**", "src/prisma/**", "src/fixtures", "src/schemas"
 			],
 			thresholds: {
 				lines: 80,
