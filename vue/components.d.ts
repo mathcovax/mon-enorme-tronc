@@ -9,6 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     BigTable: typeof import('./src/components/BigTable/BigTable.vue')['default']
     BurgerButton: typeof import('./src/components/BurgerButton.vue')['default']
+    ButtonPopup: typeof import('./src/components/ButtonPopup.vue')['default']
     CalendarCell: typeof import('./src/components/ui/calendar/CalendarCell.vue')['default']
     CalendarCellTrigger: typeof import('./src/components/ui/calendar/CalendarCellTrigger.vue')['default']
     CalendarGrid: typeof import('./src/components/ui/calendar/CalendarGrid.vue')['default']
