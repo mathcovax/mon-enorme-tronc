@@ -1,5 +1,5 @@
 import { MockPrisma } from "@test/mocks/providers";
-import { POST } from "./login";
+import { POST } from ".";
 import { duploTesting } from "@test/setup";
 
 describe("POST /login", () => {

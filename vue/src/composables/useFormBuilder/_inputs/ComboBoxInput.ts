@@ -87,6 +87,7 @@ export const ComboBoxInput = defineComponent({
 						placeholder: props.placeholder,
 						emptyLabel: props.emptyLabel,
 						modelValue: props.modelValue,
+						filterFunction: props.onUpdateSearchTerm ? (items) => items : undefined,
 						"onUpdate:modelValue": (value: unknown) => {
 							emit("update:modelValue", value);
 						},

@@ -20,7 +20,7 @@ async function submit() {
 			fireBaseIdToken: fireBaseIdToken as string,
 			firstname: formFields.fistname,
 			lastname: formFields.lastname,
-			address: formFields.address.label,
+			address: formFields.address,
 			dateOfBirth: new Date(formFields.dateOfBirth)
 		}
 	)
@@ -55,14 +55,12 @@ onMounted(async () => {
 					</div>
 
 					<SignUpForm @submit="submit">
-						<div class="flex items-center space-x-2 col-span-12">
-							<PrimaryButton
-								type="submit"
-								class="w-full"
-							>
-								{{ $t("page.register.buttonText") }}
-							</PrimaryButton>
-						</div>
+						<PrimaryButton
+							type="submit"
+							class="col-span-12"
+						>
+							{{ $t("page.register.buttonText") }}
+						</PrimaryButton>
 					</SignUpForm>
 				</div>
 			</div>

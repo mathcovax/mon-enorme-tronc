@@ -17,6 +17,7 @@ export default defineConfig({
 			"./src/composables/**",
 			"./src/stores/**",
 			"./src/lib/i18n/*.ts",
+			"./src/lib/toast/*.ts",
 		],
 		imports: [
 			"vue",

@@ -4,7 +4,6 @@
 
 <template>
 	<div>
-		admin layout
 		<RouterView />
 	</div>
 </template>

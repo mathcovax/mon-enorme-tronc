@@ -1,3 +1,4 @@
+import { accessTokenCheck } from "@checkers/token";
 import { hasPrimordialRole } from "@security/hasPrimordialRole";
 
 export const adminPanelEntry = hasPrimordialRole({ options: { primordialRole: "ADMIN" } })
@@ -11,14 +12,19 @@ export const adminPanelEntry = hasPrimordialRole({ options: { primordialRole: "A
 
 export const authEntry = duplo
 	.declareRoute("GET", ["/entry/login", "/entry/register"])
-	.extract(
+	.extract({
+		headers: {
+			"access-token": zod.string().default("").ignore()
+		}
+	})
+	.check(
+		accessTokenCheck,
 		{
-			headers: {
-				"access-token": zod.undefined().ignore()
+			input: p => p("access-token"),
+			result: "access.token.invalid", 
+			catch: () => {
+				throw new UnauthorizedHttpException("entry.refuse");
 			}
-		}, 
-		() => {
-			throw new UnauthorizedHttpException("entry.refuse");
 		}
 	)
 	.handler(

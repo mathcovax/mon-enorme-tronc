@@ -23,10 +23,14 @@ export const useUserStore = defineStore(
 			promiseFetching = promise;
 			
 			duploTo.enriched
-				.get("/user")
+				.get("/user", undefined, { disabledToast: true })
 				.info("user", (data) => {
 					user.value = data;
 					resolve();
+				})
+				.info("user.notfound", () => {
+					setAccessToken(null);
+					window.location.reload();
 				})
 				.e(() => {
 					reject();
@@ -34,11 +38,16 @@ export const useUserStore = defineStore(
 				});
 		}
 
-		function setAccessToken(newAccessToken: string){
-			localStorage.setItem(
-				KEY_ACCESS_TOKEN_LOCAL_STORAGE, 
-				accessToken.value = newAccessToken
-			);
+		function setAccessToken(newAccessToken: string | null){
+			if(newAccessToken){
+				localStorage.setItem(
+					KEY_ACCESS_TOKEN_LOCAL_STORAGE, 
+					accessToken.value = newAccessToken
+				);
+			}
+			else {
+				localStorage.removeItem(KEY_ACCESS_TOKEN_LOCAL_STORAGE);
+			}
 		}
 
 		setTimeout(fetchUserValue);

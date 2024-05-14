@@ -8,7 +8,12 @@ export default (): RouteRecordRaw[] => [
 			{
 				name: "admin-panel",
 				path: "/admin-panel",
-				component: () => import("./pages/adminPanel.vue"),
+				component: () => import("./pages/homeAdminPanel.vue"),
+			},
+			{
+				name: "admin-panel-organization",
+				path: "/admin-panel/organization",
+				component: () => import("./pages/organizationAdminPanel.vue"),
 			},
 		],
 	},

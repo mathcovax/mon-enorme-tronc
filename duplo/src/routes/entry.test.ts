@@ -21,11 +21,7 @@ describe("entry", () => {
 	it("auth", async () => {
 		const res1 = await duploTesting
 			.testRoute(authEntry)
-			.setRequestProperties({
-				headers: {
-					"access-token": "testes"
-				}
-			})
+			.mockChecker(0, { info: "", data: null })
 			.launch();
 
 		expect(res1.information).toBe("entry.refuse");

@@ -5,7 +5,7 @@ import { duploTesting } from "@test/setup";
 
 vi.mock("@services/token");
 
-describe("token service", () => {
+describe("token checker", () => {
 	it("valide firebase token", async () => {
 		MockFirebaseAuth.set("verifyIdToken", () => ({ email: "eee" }));
 

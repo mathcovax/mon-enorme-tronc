@@ -1,6 +1,6 @@
 import { MockPrisma } from "@test/mocks/providers";
 import { duploTesting } from "@test/setup";
-import { POST } from "./register";
+import { POST } from ".";
 
 describe("POST /register", () => {
 	beforeEach(() => {

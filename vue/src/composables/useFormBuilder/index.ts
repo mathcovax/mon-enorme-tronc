@@ -19,20 +19,21 @@ export function useFormBuilder<
 	formInputs: inputDef
 )
 {
-	const values = Object.fromEntries(
+	const values =  Object.fromEntries(
+		Object.keys(formInputs).map((name) => [name,  ref()])
+	);
+
+	function resetForm(){
 		Object.entries(formInputs).map(([name, input]) => {
 			input = isRef(input) ? input.value : input;
-			
-			return [
-				name, 
-				ref<unknown>(
-					typeof input.defaultValue === "function" 
-						? input.defaultValue() 
-						: input.defaultValue
-				)
-			];
-		})
-	);
+
+			values[name].value = typeof input.defaultValue === "function" 
+				? input.defaultValue() 
+				: input.defaultValue;
+		});
+	}
+
+	resetForm();
 	
 	let inputRefs: VNode[] = [];
 
@@ -125,5 +126,6 @@ export function useFormBuilder<
 		values: values as FormInputToRecordRef<inputDef>,
 		inputRefs,
 		checkForm,
+		resetForm,
 	};
 }

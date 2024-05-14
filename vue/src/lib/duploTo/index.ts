@@ -8,6 +8,7 @@ declare global {
 
 interface InterceptorParams {
 	disabledLoader?: boolean
+	disabledToast?: boolean | string[]
 }
 
 export const duploTo = new DuploTo<
@@ -22,3 +23,26 @@ duploTo.setDefaultHeaders({
 		return useUserStore().accessToken || undefined;
 	}
 });
+
+duploTo.setResponseInterceptor(
+	(responseObject, request, params) => {
+		if(
+			params.disabledToast !== true && 
+			responseObject.success && 
+			responseObject.info &&
+			i18n.global.te(`response.${responseObject.info}`)
+		) {
+			if(!params.disabledToast || !params.disabledToast.includes(responseObject.info)){
+				if(responseObject.response.ok){
+					successToast($t(`response.${responseObject.info}`));
+				}
+				else {
+					errorToast($t(`response.${responseObject.info}`));
+				}
+			}
+		}
+		
+		return responseObject;
+	}
+);
+

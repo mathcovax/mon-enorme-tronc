@@ -12,7 +12,7 @@ async function googleSign(){
 		const result = await signInWithPopup(auth, provider);
 		const fireBaseIdToken = await result.user.getIdToken();
 
-		await duploTo.enriched.post("/login", fireBaseIdToken)
+		await duploTo.enriched.post("/login", fireBaseIdToken, undefined, { disabledToast: ["user.notfound"] })
 			.info("user.logged", accessToken => {
 				setAccessToken(accessToken);
 				fetchUserValue();
