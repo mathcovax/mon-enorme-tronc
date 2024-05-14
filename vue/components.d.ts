@@ -9,6 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     BigTable: typeof import('./src/components/BigTable/BigTable.vue')['default']
     BurgerButton: typeof import('./src/components/BurgerButton.vue')['default']
+    ButtonPopup: typeof import('./src/components/ThePopup.vue')['default']
     CalendarCell: typeof import('./src/components/ui/calendar/CalendarCell.vue')['default']
     CalendarCellTrigger: typeof import('./src/components/ui/calendar/CalendarCellTrigger.vue')['default']
     CalendarGrid: typeof import('./src/components/ui/calendar/CalendarGrid.vue')['default']
@@ -97,6 +98,7 @@ declare module 'vue' {
     TheInput: typeof import('./src/components/ui/input/TheInput.vue')['default']
     TheLabel: typeof import('./src/components/ui/label/TheLabel.vue')['default']
     ThePopover: typeof import('./src/components/ui/popover/ThePopover.vue')['default']
+    ThePopup: typeof import('./src/components/ThePopup.vue')['default']
     TheSelect: typeof import('./src/components/ui/select/TheSelect.vue')['default']
     TheTable: typeof import('./src/components/ui/table/TheTable.vue')['default']
     TheTextarea: typeof import('./src/components/ui/textarea/TheTextarea.vue')['default']

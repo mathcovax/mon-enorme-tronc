@@ -127,9 +127,7 @@ const products = ref([
 				Notre pack Plaisir
 			</h2>
 
-			<div
-				class="w-full h-192 lg:h-[calc(100%-5.25rem)] grid grid-cols-6 grid-rows-12 lg:grid-rows-6 gap-5"
-			>
+			<div class="w-full h-192 lg:h-[calc(100%-5.25rem)] grid grid-cols-6 grid-rows-12 lg:grid-rows-6 gap-5">
 				<div class="col-span-6 lg:col-span-4 row-span-3">
 					<img
 						src="https://via.placeholder.com/250"

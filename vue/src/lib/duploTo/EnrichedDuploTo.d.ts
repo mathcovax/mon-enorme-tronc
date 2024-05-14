@@ -76,13 +76,7 @@ export type response_4_0 = {
     info: "entry.accepted";
 } & {body: undefined};
 
-export type request_body_5 = {
-    fireBaseIdToken: string;
-    lastname: string;
-    firstname: string;
-    address: string;
-    dateOfBirth: Date;
-}
+export type request_body_5 = string
 
 export type response_5_0 = {
     code: 401;
@@ -91,44 +85,72 @@ export type response_5_0 = {
 } & {body: undefined};
 
 export type response_5_1 = {
-    code: 409;
-    ok: false;
-    info: "user.alreadyExist";
-} & {body: undefined};
-
-export type response_5_2 = {
-    code: 400;
-    ok: false;
-    info: "user.address.invalid";
-} & {body: undefined};
-
-export type response_5_3 = {
-    code: 400;
-    ok: false;
-    info: "user.dateOfBirth.invalid";
-} & {body: undefined};
-
-export type response_body_5_4 = string
-
-export type response_5_4 = {
-    code: 201;
-    ok: true;
-    info: "user.registered";
-} & {body: response_body_5_4};
-
-export type response_6_0 = {
-    code: 401;
-    ok: false;
-    info: "access.token.invalid";
-} & {body: undefined};
-
-export type response_6_1 = {
     code: 404;
     ok: false;
     info: "user.notfound";
 } & {body: undefined};
 
-export type response_body_6_2 = {
+export type response_body_5_2 = string
+
+export type response_5_2 = {
+    code: 200;
+    ok: true;
+    info: "user.logged";
+} & {body: response_body_5_2};
+
+export type request_body_6 = {
+    fireBaseIdToken: string;
+    lastname: string;
+    firstname: string;
+    address: string;
+    dateOfBirth: Date;
+}
+
+export type response_6_0 = {
+    code: 401;
+    ok: false;
+    info: "firebase.token.invalid";
+} & {body: undefined};
+
+export type response_6_1 = {
+    code: 409;
+    ok: false;
+    info: "user.alreadyExist";
+} & {body: undefined};
+
+export type response_6_2 = {
+    code: 400;
+    ok: false;
+    info: "user.address.invalid";
+} & {body: undefined};
+
+export type response_6_3 = {
+    code: 400;
+    ok: false;
+    info: "user.dateOfBirth.invalid";
+} & {body: undefined};
+
+export type response_body_6_4 = string
+
+export type response_6_4 = {
+    code: 201;
+    ok: true;
+    info: "user.registered";
+} & {body: response_body_6_4};
+
+export type response_7_0 = {
+    code: 401;
+    ok: false;
+    info: "access.token.invalid";
+} & {body: undefined};
+
+export type response_7_1 = {
+    code: 404;
+    ok: false;
+    info: "user.notfound";
+} & {body: undefined};
+
+export type response_body_7_2 = {
     id: string;
     email: string;
     lastname: string;
@@ -138,40 +160,17 @@ export type response_body_6_2 = {
     primordialRole: string;
 }
 
-export type response_6_2 = {
-    code: 200;
-    ok: true;
-    info: "user";
-} & {body: response_body_6_2};
-
-export type request_body_7 = string
-
-export type response_7_0 = {
-    code: 401;
-    ok: false;
-    info: "firebase.token.invalid";
-} & {body: undefined};
-
-export type response_7_1 = {
-    code: 404;
-    ok: false;
-    info: "user.notfound";
-} & {body: undefined};
-
-export type response_body_7_2 = string
-
 export type response_7_2 = {
     code: 200;
     ok: true;
-    info: "user.logged";
+    info: "user";
 } & {body: response_body_7_2};
 
-export type request_body_8 = "true" | "false"
-
 export type parameters_8 = {
-    params: {
-        organizationId: string;
-    };
+    query?: {
+        page?: number;
+        name?: string | undefined;
+    } | undefined;
 }
 
 export type response_8_0 = {
@@ -186,17 +185,19 @@ export type response_8_1 = {
     info: "user.role.invalid";
 } & {body: undefined};
 
-export type response_8_2 = {
-    code: 404;
-    ok: false;
-    info: "organization.notfound";
-} & {body: undefined};
+export type response_body_8_2 = {
+    id: string;
+    name: string;
+    label: string | null;
+    ownerId: string;
+    suspended: boolean;
+}[]
 
-export type response_8_3 = {
-    code: 204;
+export type response_8_2 = {
+    code: 200;
     ok: true;
-    info: "organization.edited";
-} & {body: undefined};
+    info: "organizations";
+} & {body: response_body_8_2};
 
 export type parameters_9 = {
     query?: {
@@ -274,11 +275,12 @@ export type response_10_5 = {
     info: "organization.created";
 } & {body: undefined};
 
+export type request_body_11 = "true" | "false"
+
 export type parameters_11 = {
-    query?: {
-        page?: number;
-        name?: string | undefined;
-    } | undefined;
+    params: {
+        organizationId: string;
+    };
 }
 
 export type response_11_0 = {
@@ -293,19 +295,17 @@ export type response_11_1 = {
     info: "user.role.invalid";
 } & {body: undefined};
 
-export type response_body_11_2 = {
-    id: string;
-    name: string;
-    label: string | null;
-    ownerId: string;
-    suspended: boolean;
-}[]
-
 export type response_11_2 = {
-    code: 200;
+    code: 404;
+    ok: false;
+    info: "organization.notfound";
+} & {body: undefined};
+
+export type response_11_3 = {
+    code: 204;
     ok: true;
-    info: "organizations";
-} & {body: response_body_11_2};
+    info: "organization.edited";
+} & {body: undefined};
 
 export type GetDef<
 	method extends DefEnrichedDuplojsTo["method"],
@@ -383,40 +383,39 @@ export type DefEnrichedDuplojsTo = {
 	parameters: undefined,
 	response: response_4_0,
 } | {
-	path: "/register",
+	path: "/login",
 	method: "POST",
 	body: request_body_5,
 	parameters: undefined,
 	response: response_5_0
 		| response_5_1
-		| response_5_2
-		| response_5_3
-		| response_5_4,
+		| response_5_2,
+} | {
+	path: "/register",
+	method: "POST",
+	body: request_body_6,
+	parameters: undefined,
+	response: response_6_0
+		| response_6_1
+		| response_6_2
+		| response_6_3
+		| response_6_4,
 } | {
 	path: "/user",
 	method: "GET",
 	body: unknown,
 	parameters: undefined,
-	response: response_6_0
-		| response_6_1
-		| response_6_2,
-} | {
-	path: "/login",
-	method: "POST",
-	body: request_body_7,
-	parameters: undefined,
 	response: response_7_0
 		| response_7_1
 		| response_7_2,
 } | {
-	path: "/organization/{organizationId}/suspended",
-	method: "PATCH",
-	body: request_body_8,
+	path: "/organizations",
+	method: "GET",
+	body: unknown,
 	parameters: parameters_8,
 	response: response_8_0
 		| response_8_1
-		| response_8_2
-		| response_8_3,
+		| response_8_2,
 } | {
 	path: "/users",
 	method: "GET",
@@ -437,13 +436,14 @@ export type DefEnrichedDuplojsTo = {
 		| response_10_4
 		| response_10_5,
 } | {
-	path: "/organizations",
-	method: "GET",
-	body: unknown,
+	path: "/organization/{organizationId}/suspended",
+	method: "PATCH",
+	body: request_body_11,
 	parameters: parameters_11,
 	response: response_11_0
 		| response_11_1
-		| response_11_2,
+		| response_11_2
+		| response_11_3,
 };
 
 
@@ -579,7 +579,7 @@ export interface EnrichedDuploTo<
 	>
 
 	post(
-		path: "/register", 
+		path: "/login", 
 		body: request_body_5,
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
@@ -587,23 +587,23 @@ export interface EnrichedDuploTo<
 		response_5_0
 		| response_5_1
 		| response_5_2
-		| response_5_3
-		| response_5_4
 	>
 
-	get(
-		path: "/user", 
+	post(
+		path: "/register", 
+		body: request_body_6,
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_6_0
 		| response_6_1
 		| response_6_2
+		| response_6_3
+		| response_6_4
 	>
 
-	post(
-		path: "/login", 
-		body: request_body_7,
+	get(
+		path: "/user", 
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -612,16 +612,14 @@ export interface EnrichedDuploTo<
 		| response_7_2
 	>
 
-	patch(
-		path: "/organization/{organizationId}/suspended", 
-		body: request_body_8,
-		parameters : parameters_8 & BaseRequestParameters,
+	get(
+		path: "/organizations", 
+		parameters ?: parameters_8 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_8_0
 		| response_8_1
 		| response_8_2
-		| response_8_3
 	>
 
 	get(
@@ -648,14 +646,16 @@ export interface EnrichedDuploTo<
 		| response_10_5
 	>
 
-	get(
-		path: "/organizations", 
-		parameters ?: parameters_11 & BaseRequestParameters,
+	patch(
+		path: "/organization/{organizationId}/suspended", 
+		body: request_body_11,
+		parameters : parameters_11 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_11_0
 		| response_11_1
 		| response_11_2
+		| response_11_3
 	>
 
 }
