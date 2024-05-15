@@ -1,4 +1,4 @@
-import { categoryExistCheck } from "@checkers/category";
+import { categoryExistCheck, inputCategory } from "@checkers/category";
 import { productSheetSchema } from "@schemas/product_sheet";
 
 /* METHOD : GET, PATH : /category/{categoryName}/products */
@@ -13,18 +13,20 @@ export const GET = (method: Methods, path: string) =>
 		.check(
 			categoryExistCheck,
 			{
-				input: (p) => p("categoryName"),
-				result: "category.exist",
+				input: (p) => inputCategory.name(
+					p("categoryName")
+				),
 				catch: () => {
 					throw new NotFoundHttpException("category.notfound");
 				},
-				indexing: "category",
+				indexing: "category"
+
 			},
 			new IHaveSentThis(NotFoundHttpException.code, "category.notfound")
 		)
 		.handler(
 			async ({ pickup }) => {
-				const { id } = pickup("category");
+				const id = pickup("category")?.id;
 
 				const products_sheets = await prisma.product_sheet_to_category
 					.findMany({
