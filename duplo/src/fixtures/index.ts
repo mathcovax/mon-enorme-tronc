@@ -2,12 +2,8 @@ import { AnyFunction } from "@duplojs/duplojs";
 import { makeUser } from "./entities/user";
 import { makeOrganization } from "./entities/organization";
 
-const repeater = <
-	cb extends AnyFunction
->(length: number, callback: cb) =>
-		Promise.all<Awaited<ReturnType<cb>>>(
-			Array.from({ length }).map(callback)
-		);
+const repeater = <cb extends AnyFunction>(length: number, callback: cb) =>
+	Promise.all<Awaited<ReturnType<cb>>>(Array.from({ length }).map(callback));
 
 // USERS
 if (process.argv.includes("--user")) {

@@ -8,20 +8,21 @@ describe("GET /category/{categoryName}/products", () => {
 	});
 
 	it("category products", async () => {
-		const product_to_category = [
+		const product_sheet_to_category = [
 			{
-				product: {
+				product_sheet: {
 					id: "",
 					name: "",
 					description: "",
+					short_description: "",
 					price: 0,
 					created_at: new Date(),
-					updated_at: new Date()
-				} 
+					updated_at: new Date(),
+				}
 			}
 		];
-		const spy = vi.fn(async () => product_to_category);
-		MockPrisma.set("product_to_category", "findMany", spy);
+		const spy = vi.fn(async () => product_sheet_to_category);
+		MockPrisma.set("product_sheet_to_category", "findMany", spy);
 
 		const res = await duploTesting
 			.testRoute(GET("GET", "/category/test/products"))
@@ -35,7 +36,7 @@ describe("GET /category/{categoryName}/products", () => {
 
 		expect(spy).lastCalledWith({
 			where: { category: { id: "1234" } },
-			select: { product: true },
+			select: { product_sheet: true },
 		});
 		expect(res.information).toBe("category.products");
 	});
@@ -50,7 +51,7 @@ describe("GET /category/{categoryName}/products", () => {
 				{ passCatch: true }
 			)
 			.launch();
-		
+
 		expect(res.information).toBe("category.notfound");
 	});
 });

@@ -1,4 +1,5 @@
 import { categoryExistCheck } from "@checkers/category";
+import { productSheetSchema } from "@schemas/product_sheet";
 
 /* METHOD : GET, PATH : /category/{categoryName}/products */
 export const GET = (method: Methods, path: string) =>
@@ -25,7 +26,7 @@ export const GET = (method: Methods, path: string) =>
 			async ({ pickup }) => {
 				const { id } = pickup("category");
 
-				const products = await prisma.product_to_category
+				const products_sheets = await prisma.product_sheet_to_category
 					.findMany({
 						where: {
 							category: {
@@ -33,21 +34,12 @@ export const GET = (method: Methods, path: string) =>
 							},
 						},
 						select: {
-							product: true,
+							product_sheet: true,
 						},
 					})
-					.then((products) => products.map((p) => p.product));
+					.then((products_sheets) => products_sheets.map((p) => p.product_sheet));
 
-				throw new OkHttpException("category.products", products);
-			}, 
-			new IHaveSentThis(OkHttpException.code, "category.products", productSchema.array())
+				throw new OkHttpException("category.products", products_sheets);
+			},
+			new IHaveSentThis(OkHttpException.code, "category.products", productSheetSchema.array())
 		);
-
-const productSchema = zod.object({
-	id: zod.string(),
-	name: zod.string(),
-	description: zod.string(),
-	price: zod.number(),
-	created_at: zod.date(),
-	updated_at: zod.date(),
-});
