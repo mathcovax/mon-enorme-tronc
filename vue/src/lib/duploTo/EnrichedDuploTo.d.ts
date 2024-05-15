@@ -237,6 +237,8 @@ export type request_body_11 = {
     organizationRole: "STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT";
 }
 
+export type request_body_11 = "true" | "false"
+
 export type parameters_11 = {
     params: {
         organizationId: string;
@@ -1118,6 +1120,7 @@ export interface EnrichedDuploTo<
 		| response_9_1
 		| response_9_2
 		| response_9_3
+		| response_9_4
 	>
 
 	post(

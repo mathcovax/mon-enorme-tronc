@@ -1,11 +1,5 @@
 <script setup lang="ts">
-import { 
-	CircleUser,
-	Menu,
-	Home,
-	Package,
-	ShoppingCart,
-} from "lucide-vue-next";
+
 </script>
 
 <template>
@@ -17,7 +11,10 @@ import {
 					size="icon"
 					class="shrink-0 md:hidden"
 				>
-					<Menu class="h-5 w-5" />
+					<TheIcon
+						icon="menu"
+						size="2xl"
+					/>
 
 					<span class="sr-only">Toggle navigation menu</span>
 				</TheButton>
@@ -36,18 +33,35 @@ import {
 					</RouterLink>
 
 					<RouterLink
+						to="/"
+						class="mx-[-0.65rem] flex items-center gap-4 rounded-xl bg-muted px-3 py-2 text-foreground hover:text-foreground"
+					>
+						<TheIcon
+							icon="home-outline"
+							size="2xl"
+						/>
+						Accueil
+					</RouterLink>
+
+					<RouterLink
 						to="#"
 						class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
 					>
-						<Home class="h-5 w-5" />
+						<TheIcon
+							icon="sale-outline"
+							size="2xl"
+						/>
 						Meilleures ventes
 					</RouterLink>
 
 					<RouterLink
 						to="#"
-						class="mx-[-0.65rem] flex items-center gap-4 rounded-xl bg-muted px-3 py-2 text-foreground hover:text-foreground"
+						class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
 					>
-						<ShoppingCart class="h-5 w-5" />
+						<TheIcon
+							icon="new-box"
+							size="2xl"
+						/>
 						Nouveautés
 					</RouterLink>
 
@@ -55,7 +69,10 @@ import {
 						to="#"
 						class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
 					>
-						<Package class="h-5 w-5" />
+						<TheIcon
+							icon="package-variant-closed"
+							size="2xl"
+						/>
 						Produits
 					</RouterLink>
 				</nav>
@@ -123,7 +140,10 @@ import {
 								size="icon"
 								class="rounded-full"
 							>
-								<CircleUser class="h-5 w-5" />
+								<TheIcon
+									icon="account-circle-outline"
+									size="2xl"
+								/>
 
 								<span class="sr-only">Toggle user menu</span>
 							</TheButton>

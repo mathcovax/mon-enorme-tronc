@@ -1,11 +1,5 @@
 <script setup lang="ts">
-import { 
-	Home,
-	LineChart,
-	Package,
-	ShoppingCart,
-	Users 
-} from "lucide-vue-next";
+
 </script>
 
 <template>
@@ -26,7 +20,10 @@ import {
 						to="#"
 						class="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
 					>
-						<Home class="h-4 w-4" />
+						<TheIcon
+							icon="home-outline"
+							size="2xl"
+						/>
 						Dashboard
 					</RouterLink>
 
@@ -34,7 +31,10 @@ import {
 						to="#"
 						class="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
 					>
-						<ShoppingCart class="h-4 w-4" />
+						<TheIcon
+							icon="cart-outline"
+							size="2xl"
+						/>
 						Orders
 					</RouterLink>
 
@@ -42,7 +42,10 @@ import {
 						to="#"
 						class="flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary"
 					>
-						<Package class="h-4 w-4" />
+						<TheIcon
+							icon="package-variant-closed"
+							size="2xl"
+						/>
 						Products
 					</RouterLink>
 
@@ -50,7 +53,10 @@ import {
 						to="#"
 						class="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
 					>
-						<Users class="h-4 w-4" />
+						<TheIcon
+							icon="account"
+							size="2xl"
+						/>
 						Customers
 					</RouterLink>
 
@@ -58,7 +64,10 @@ import {
 						to="#"
 						class="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
 					>
-						<LineChart class="h-4 w-4" />
+						<TheIcon
+							icon="chart-line"
+							size="2xl"
+						/>
 						Analytics
 					</RouterLink>
 				</nav>

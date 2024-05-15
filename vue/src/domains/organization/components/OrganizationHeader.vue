@@ -1,13 +1,5 @@
 <script setup lang="ts">
-import { 
-	CircleUser,
-	Menu,
-	Home,
-	LineChart,
-	Package,
-	ShoppingCart,
-	Users 
-} from "lucide-vue-next";
+
 </script>
 
 <template>
@@ -19,7 +11,10 @@ import {
 					size="icon"
 					class="shrink-0 md:hidden"
 				>
-					<Menu class="h-5 w-5" />
+					<TheIcon
+						icon="menu"
+						size="2xl"
+					/>
 
 					<span class="sr-only">Toggle navigation menu</span>
 				</TheButton>
@@ -41,7 +36,10 @@ import {
 						to="#"
 						class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
 					>
-						<Home class="h-5 w-5" />
+						<TheIcon
+							icon="home-outline"
+							size="2xl"
+						/>
 						Dashboard
 					</RouterLink>
 
@@ -49,7 +47,10 @@ import {
 						to="#"
 						class="mx-[-0.65rem] flex items-center gap-4 rounded-xl bg-muted px-3 py-2 text-foreground hover:text-foreground"
 					>
-						<ShoppingCart class="h-5 w-5" />
+						<TheIcon
+							icon="cart-outline"
+							size="2xl"
+						/>
 						Orders
 					</RouterLink>
 
@@ -57,7 +58,10 @@ import {
 						to="#"
 						class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
 					>
-						<Package class="h-5 w-5" />
+						<TheIcon
+							icon="package-variant-closed"
+							size="2xl"
+						/>
 						Products
 					</RouterLink>
 
@@ -65,7 +69,10 @@ import {
 						to="#"
 						class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
 					>
-						<Users class="h-5 w-5" />
+						<TheIcon
+							icon="account"
+							size="2xl"
+						/>
 						Customers
 					</RouterLink>
 
@@ -73,7 +80,10 @@ import {
 						to="#"
 						class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
 					>
-						<LineChart class="h-5 w-5" />
+						<TheIcon
+							icon="chart-line"
+							size="2xl"
+						/>
 						Analytics
 					</RouterLink>
 				</nav>
@@ -89,7 +99,10 @@ import {
 					size="icon"
 					class="rounded-full"
 				>
-					<CircleUser class="h-5 w-5" />
+					<TheIcon
+						icon="account-circle-outline"
+						size="2xl"
+					/>
 
 					<span class="sr-only">Toggle user menu</span>
 				</TheButton>
