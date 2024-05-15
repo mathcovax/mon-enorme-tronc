@@ -1117,6 +1117,7 @@ export interface EnrichedDuploTo<
 		response_9_0
 		| response_9_1
 		| response_9_2
+		| response_9_3
 	>
 
 	post(

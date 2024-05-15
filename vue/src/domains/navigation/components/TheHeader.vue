@@ -63,78 +63,87 @@ import {
 		</TheSheet>
 
 		<div class="w-full flex-1 flex gap-10 justify-between md:justify-center items-center">
-			<nav>
-				<ul class="hidden md:flex gap-6">
-					<li>
-						<RouterLink to="#">
-							Meilleures ventes
-						</RouterLink>
-					</li>
+			<RouterLink
+				to="/"
+				class="text-2xl font-bold"
+			>
+				MET
+			</RouterLink>
 
-					<li>
-						<RouterLink to="#">
-							Nouveautés
-						</RouterLink>
-					</li>
+			<div class="flex-1 flex gap-6 justify-between items-center">
+				<nav>
+					<ul class="hidden md:flex gap-6">
+						<li>
+							<RouterLink to="#">
+								Meilleures ventes
+							</RouterLink>
+						</li>
 
-					<li>
-						<RouterLink to="#">
-							Produits
-						</RouterLink>
-					</li>
-				</ul>
-			</nav>
+						<li>
+							<RouterLink to="#">
+								Nouveautés
+							</RouterLink>
+						</li>
 
-			<div class="hidden md:block grow max-w-144">
-				<input
-					type="text"
-					placeholder="Rechercher un produit..."
-					class="w-full px-4 py-3 bg-whiteless rounded-full"
-				>
-			</div>
+						<li>
+							<RouterLink to="#">
+								Produits
+							</RouterLink>
+						</li>
+					</ul>
+				</nav>
 
-			<div class="flex gap-3 items-center">
-				<button class="md:hidden">
-					<TheIcon
-						icon="magnify"
-						size="2xl"
-					/>
-				</button>
+				<div class="hidden lg:block grow max-w-144">
+					<input
+						type="text"
+						placeholder="Rechercher un produit..."
+						class="w-full px-4 py-3 bg-whiteless rounded-full"
+					>
+				</div>
 
-				<RouterLink to="/cart">
-					<TheIcon
-						icon="cart-outline"
-						size="2xl"
-					/>
-				</RouterLink>
+				<div class="flex gap-3 items-center">
+					<button class="lg:hidden">
+						<TheIcon
+							icon="magnify"
+							size="2xl"
+						/>
+					</button>
 
-				<DropdownMenu>
-					<DropdownMenuTrigger as-child>
-						<TheButton
-							variant="secondary"
-							size="icon"
-							class="rounded-full"
-						>
-							<CircleUser class="h-5 w-5" />
+					<RouterLink to="/cart">
+						<TheIcon
+							icon="cart-outline"
+							size="2xl"
+						/>
+					</RouterLink>
 
-							<span class="sr-only">Toggle user menu</span>
-						</TheButton>
-					</DropdownMenuTrigger>
+					<DropdownMenu>
+						<DropdownMenuTrigger as-child>
+							<TheButton
+								variant="secondary"
+								size="icon"
+								class="rounded-full"
+							>
+								<CircleUser class="h-5 w-5" />
 
-					<DropdownMenuContent align="end">
-						<DropdownMenuLabel>My Account</DropdownMenuLabel>
+								<span class="sr-only">Toggle user menu</span>
+							</TheButton>
+						</DropdownMenuTrigger>
 
-						<DropdownMenuSeparator />
+						<DropdownMenuContent align="end">
+							<DropdownMenuLabel>My Account</DropdownMenuLabel>
 
-						<DropdownMenuItem>Settings</DropdownMenuItem>
+							<DropdownMenuSeparator />
 
-						<DropdownMenuItem>Support</DropdownMenuItem>
+							<DropdownMenuItem>Settings</DropdownMenuItem>
 
-						<DropdownMenuSeparator />
+							<DropdownMenuItem>Support</DropdownMenuItem>
 
-						<DropdownMenuItem>Logout</DropdownMenuItem>
-					</DropdownMenuContent>
-				</DropdownMenu>
+							<DropdownMenuSeparator />
+
+							<DropdownMenuItem>Logout</DropdownMenuItem>
+						</DropdownMenuContent>
+					</DropdownMenu>
+				</div>
 			</div>
 		</div>
 	</header>
