@@ -27,7 +27,7 @@ export const GET = (method: Methods, path: string) =>
 		)
 		.handler(
 			async ({ pickup }) => {
-				const { id } = pickup("category");
+				const id = pickup("category")?.id;
 
 				const products_sheets = await prisma.product_sheet_to_category
 					.findMany({
