@@ -20,6 +20,7 @@ const router = createRouter({
 		},
 		...organization(),
 		...content(),
+		...organization(),
 		...admin(),
 		notFound(),
 	],
