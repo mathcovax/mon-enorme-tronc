@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+npm -w duplo run lint
+npm -w vue run lint
+npm -w duplo run test:types
+npm -w vue run type-check
+npm -w duplo run test:tu

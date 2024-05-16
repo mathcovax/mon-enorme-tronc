@@ -1,0 +1,81 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("POSTGRES_DATABASE_URL")
+}
+
+model user {
+    id             String          @id @default(uuid())
+    email          String          @unique @db.VarChar(320)
+    lastname       String          @db.VarChar(32)
+    firstname      String          @db.VarChar(36)
+    dateOfBirth    DateTime        @db.Date
+    address        String          @db.VarChar(400)
+    primordialRole primordial_role @default(CUSTOMER)
+    organization   organization?
+    muted          Boolean         @default(false)
+}
+
+enum primordial_role {
+    CUSTOMER
+    MODERATOR
+    CATEGORIES_MASTER
+    ADMIN
+}
+
+model organization {
+    id        String  @id @default(uuid())
+    name      String  @unique @db.VarChar(255)
+    label     String? @db.VarChar(36)
+    ownerId   String  @unique
+    owner     user    @relation(fields: [ownerId], references: [id])
+    suspended Boolean @default(false)
+}
+
+model category {
+    id              String                        @id @default(uuid())
+    name            String                        @db.VarChar(255)
+    parent_category category_to_parent_category[]
+    product         product_to_category[]
+}
+
+model parent_category {
+    id       String                        @id @default(uuid())
+    name     String                        @db.VarChar(255)
+    category category_to_parent_category[]
+}
+
+model category_to_parent_category {
+    id                 String          @id @default(uuid())
+    category_id        String
+    parent_category_id String
+    category           category        @relation(fields: [category_id], references: [id])
+    parent_category    parent_category @relation(fields: [parent_category_id], references: [id])
+}
+
+model product {
+    id          String                @id @default(uuid())
+    name        String                @db.VarChar(255)
+    description String                @db.Text
+    price       Float
+    category    product_to_category[]
+    created_at  DateTime              @default(now())
+    updated_at  DateTime              @updatedAt
+}
+
+model product_to_category {
+    id          String   @id @default(uuid())
+    product_id  String
+    category_id String
+    product     product  @relation(fields: [product_id], references: [id])
+    category    category @relation(fields: [category_id], references: [id])
+}

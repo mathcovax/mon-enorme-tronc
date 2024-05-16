@@ -1,0 +1,33 @@
+{
+	"name": "mon-enorme-tronc",
+	"workspaces": [
+		"vue",
+		"duplo"
+	],
+	"scripts": {
+		"dev:duplo": "npm -w duplo run dev",
+		"dev:vue": "npm -w vue run dev",
+		"dev": "docker compose up",
+		"generate:types": "npm -w duplo run generate:types",
+		"generate:prisma": "npx prisma generate",
+		"migrate:dev": "docker compose exec duplo npm -w duplo run migrate:dev",
+		"prepare": "husky",
+		"studio": "docker compose exec duplo npm -w duplo run studio",
+
+		"fixtures": "npm run fixture:user & npm run fixture:organization",
+		"fixture:user": "docker compose exec duplo npm -w duplo run fixture:user",
+		"fixture:organization": "docker compose exec duplo npm -w duplo run fixture:organization"
+	},
+	"prisma": {
+		"schema": "duplo/src/prisma/schema.prisma"
+	},
+	"dependencies": {
+		"@duplojs/to": "1.5.9",
+		"@prisma/client": "^5.12.0"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^19.2.1",
+		"@commitlint/config-conventional": "^19.1.0",
+		"husky": "^9.0.11"
+	}
+}

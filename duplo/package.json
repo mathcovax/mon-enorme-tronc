@@ -1,0 +1,52 @@
+{
+  "name": "duplojs-project",
+  "type": "module",
+  "scripts": {
+    "dev": "ENVIRONMENT=DEV tsx --watch src/main --swagger --generate-types",
+    "start": "ENVIRONMENT=PROD tsx src/main",
+    "lint": "eslint .",
+    "test:tu": "vitest --coverage",
+    "test:tu:watch": "vitest --coverage --watch",
+    "test:types": "tsc --noEmit",
+    "generate:swagger": "tsx src/main --swagger --only-generate",
+    "generate:types": "tsx src/main --generate-types --only-generate",
+    "migrate:dev": "prisma migrate dev",
+	"studio": "prisma studio -n 0.0.0.0",
+
+	"fixture:user": "tsx src/fixtures --user",
+	"fixture:organization": "tsx src/fixtures --organization"
+
+  },
+  "prisma": {
+    "schema": "src/prisma/schema.prisma"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.569.0",
+    "@duplojs/duplojs": "1.8.22",
+    "@duplojs/http-exception": "1.1.4",
+    "@duplojs/routes-directory": "1.2.3",
+    "@duplojs/swagger": "1.0.5",
+    "@duplojs/type-input": "1.0.1",
+    "@duplojs/what-was-sent": "1.5.4",
+    "@duplojs/zod-accelerator": "1.3.9",
+    "@faker-js/faker": "^8.4.1",
+    "@types/jsonwebtoken": "^9.0.6",
+    "dotenv": "^16.4.5",
+    "dotenv-expand": "^11.0.6",
+    "firebase-admin": "^12.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.2.4",
+    "prisma": "^5.12.0"
+  },
+  "devDependencies": {
+    "@duplojs/testing": "1.0.5",
+    "@types/node": "^20.11.30",
+    "@vitest/coverage-istanbul": "^1.4.0",
+    "eslint": "^8.57.0",
+    "tsx": "^4.7.1",
+    "typescript": "^5.4.2",
+    "typescript-eslint": "^7.3.1",
+    "vite-tsconfig-paths": "^4.3.2",
+    "vitest": "^1.4.0"
+  }
+}

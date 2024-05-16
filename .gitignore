@@ -1,0 +1,6 @@
+node_modules
+.env.local
+swagger.json
+firebase.credential.json
+coverage
+migrations
