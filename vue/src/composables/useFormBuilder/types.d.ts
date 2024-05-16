@@ -26,7 +26,7 @@ export interface InputProps<modelValueInput = unknown> {
 	name: string
 }
 
-export type FormInputDef = 
+export type FormInputDef =
 	| TextInputDef
 	| NumberInputDef
 	| ComboBoxInputDef
@@ -38,7 +38,7 @@ export type FormInputDef =
 	| CustomInputDef
 
 interface SlotProps<T = unknown> {
-	modelValue: T, 
+	modelValue: T,
 	onUpdate: (value: T) => void
 }
 
@@ -49,26 +49,26 @@ type ExtractCustomDef<
 > = Exclude<
 	{
 		[prop in keyof formInputs]: formInputs[prop] extends CustomInputDef
-			? [prop, formInputs[prop]]
-			: undefined
-	}[keyof formInputs], 
+		? [prop, formInputs[prop]]
+		: undefined
+	}[keyof formInputs],
 	undefined
 >
 
-type CustomDefToSlots<CustomDef extends [string, CustomInputDef]> = 
-	CustomDef extends [infer prop, infer def] 
-		? {[p in prop]?: (props: SlotProps<def["defaultValue"]>) => never}
-		: never
+type CustomDefToSlots<CustomDef extends [string, CustomInputDef]> =
+	CustomDef extends [infer prop, infer def]
+	? { [p in prop]?: (props: SlotProps<def["defaultValue"]>) => never }
+	: never
 
-type UnionToIntersection<U> = 
-	(U extends unknown ? (x: U)=>void : never) extends ((x: infer I)=>void) ? I : never
+type UnionToIntersection<U> =
+	(U extends unknown ? (x: U) => void : never) extends ((x: infer I) => void) ? I : never
 
 export type GetSlots<
 	formInputs extends Record<string, FormInputDef | Ref<FormInputDef>>,
 > = UnionToIntersection<CustomDefToSlots<ExtractCustomDef<formInputs>>>
 
 export type SlotObject = Record<
-	string, 
+	string,
 	(
 		props: SlotProps
 	) => never
@@ -77,34 +77,36 @@ export type SlotObject = Record<
 export type FormInputToRecordRef<
 	formInputs extends Record<string, FormInputDef | Ref<FormInputDef>>
 > = {
-	[name in keyof formInputs as name]: Ref<
-		(
-			GetValue<formInputs[name]>["type"] extends "text"
-				? string 
-			: GetValue<formInputs[name]>["type"] extends "number" 
+		[name in keyof formInputs as name]: Ref<
+			GetValue<formInputs[name]>["defaultValue"] extends undefined
+			? (
+				GetValue<formInputs[name]>["type"] extends "text"
+				? string
+				: GetValue<formInputs[name]>["type"] extends "number"
 				? number
-			: GetValue<formInputs[name]>["type"] extends "combo"
+				: GetValue<formInputs[name]>["type"] extends "combo"
 				? ItemComboBox
-			: GetValue<formInputs[name]>["type"] extends "checkbox"
+				: GetValue<formInputs[name]>["type"] extends "checkbox"
 				? boolean
-			: GetValue<formInputs[name]>["type"] extends "select"
+				: GetValue<formInputs[name]>["type"] extends "select"
 				? string
-			: GetValue<formInputs[name]>["type"] extends "textarea"
+				: GetValue<formInputs[name]>["type"] extends "textarea"
 				? string
-			: GetValue<formInputs[name]>["type"] extends "date"
+				: GetValue<formInputs[name]>["type"] extends "date"
 				? string
-			: GetValue<formInputs[name]>["type"] extends "radio"
+				: GetValue<formInputs[name]>["type"] extends "radio"
 				? string
+				: undefined
+			)
 			: GetValue<formInputs[name]>["defaultValue"]
-		) | undefined
-	>
-}
+		>
+	}
 
 export type ResultCheckForm<
 	formInputs extends Record<string, FormInputDef | Ref<FormInputDef>>
 > = {
-	[name in keyof formInputs as name]: 
+		[name in keyof formInputs as name]:
 		GetValue<formInputs[name]>["zodSchema"] extends ZodType
-			? ZodInfer<GetValue<formInputs[name]>["zodSchema"]>
-			: GetValue<formInputs[name]>["defaultValue"]
-}
+		? ZodInfer<GetValue<formInputs[name]>["zodSchema"]>
+		: GetValue<formInputs[name]>["defaultValue"]
+	}

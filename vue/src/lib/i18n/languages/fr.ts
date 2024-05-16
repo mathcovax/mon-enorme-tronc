@@ -56,8 +56,36 @@ export default {
 					suspended: "Active",
 					actions: "Actions"
 				},
-			}
-		}
+			},
+		},
+		manageUser: {
+			form: {
+				primordialRole: {
+					label: "Role Primordial",
+				},
+				muted: {
+					label: "Rendre muet",
+				},
+				submit: "Valider",
+			},
+			table: {
+				searchPlaceholder: "Chercher une email",
+				searchPlaceholderRole: "Chercher une email",
+				cols: {
+					email: "Email",
+					lastname: "Nom",
+					firstname: "Prénom",
+					role: "Role"
+				},
+			},
+			btnClear: "Clear"
+		},
+	},
+	roles: {
+		CUSTOMER: "Client",
+		MODERATOR: "Modérateur",
+		CATEGORIES_MASTER: "Géstionaire",
+		ADMIN: "Administrateur"
 	},
 	toast: {
 		default: "Info",

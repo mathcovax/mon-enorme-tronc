@@ -1,5 +1,5 @@
 import { duploTesting } from "@test/setup";
-import { PATCH } from "./suspended";
+import { PATCH } from "./index.admin";
 import { MockPrisma } from "@test/mocks/providers";
 
 describe("GET /organization/{organizationId}/suspended", () => {
@@ -14,17 +14,16 @@ describe("GET /organization/{organizationId}/suspended", () => {
 				params: {
 					organizationId: ""
 				},
-				body: "false"
 			})
 			.mockChecker(
-				0, 
+				0,
 				{
-					info: "organization.notfound", 
+					info: "organization.notfound",
 					data: null
 				}
 			)
 			.launch();
-		
+
 		expect(res.information).toBe("organization.notfound");
 	});
 
@@ -38,20 +37,20 @@ describe("GET /organization/{organizationId}/suspended", () => {
 				params: {
 					organizationId: ""
 				},
-				body: "false"
+				body: { suspended: false }
 			})
 			.mockChecker(
-				0, 
+				0,
 				{
-					info: "organization.exist", 
+					info: "organization.exist",
 					data: null
 				}
 			)
 			.launch();
-		
+
 		expect(spy).lastCalledWith({
-			where: { id: "" }, 
-			data: { suspended: false } 
+			where: { id: "" },
+			data: { suspended: false }
 		});
 		expect(res.information).toBe("organization.edited");
 	});

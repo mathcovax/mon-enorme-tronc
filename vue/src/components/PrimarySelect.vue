@@ -7,6 +7,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
+import type { HTMLAttributes } from "vue";
 
 interface Item {
 	label: string
@@ -17,9 +18,10 @@ interface Props {
 	placeholder?: string
 	items: Item[]
 	modelValue?: string
+	class?: HTMLAttributes["class"]
 }
 
-defineProps<Props>();
+const props = defineProps<Props>();
 const emit = defineEmits<{"update:modelValue": [value: string]}>();
 </script>
 
@@ -28,8 +30,13 @@ const emit = defineEmits<{"update:modelValue": [value: string]}>();
 		:model-value="modelValue"
 		@update:model-value="(value) => emit('update:modelValue', value.toString())"
 	>
-		<SelectTrigger>
-			<SelectValue :placeholder="placeholder" />
+		<SelectTrigger :class="props.class">
+			<SelectValue
+				:placeholder="placeholder"
+				:class="{
+					'text-muted-foreground': !modelValue
+				}"
+			/>
 		</SelectTrigger>
 
 		<SelectContent>

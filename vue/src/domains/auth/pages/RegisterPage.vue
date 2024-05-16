@@ -27,14 +27,14 @@ async function submit() {
 		.info("user.registered", (accessToken) => {
 			setAccessToken(accessToken);
 			fetchUserValue();
-			router.push({ name: "home" });
+			router.push({ name: routerPageName.EDITO_HOME });
 		})
 		.result;
 }
 
 onMounted(async () => {
 	if(typeof fireBaseIdToken !== "string"){
-		router.push({ name: "login" });
+		router.push({ name: routerPageName.AUTH_LOGIN });
 	}
 });
 </script>

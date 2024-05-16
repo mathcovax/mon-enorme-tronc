@@ -12,8 +12,10 @@
 		"generate:prisma": "npx prisma generate",
 		"migrate:dev": "docker compose exec duplo npm -w duplo run migrate:dev",
 		"prepare": "husky",
-		"fixtures": "docker compose exec duplo npm -w duplo run fixtures",
-		"studio": "docker compose exec duplo npm -w duplo run studio"
+		"studio": "docker compose exec duplo npm -w duplo run studio",
+		"fixtures": "npm run fixture:user & npm run fixture:organization",
+		"fixture:user": "docker compose exec duplo npm -w duplo run fixture:user",
+		"fixture:organization": "docker compose exec duplo npm -w duplo run fixture:organization"
 	},
 	"prisma": {
 		"schema": "duplo/src/prisma/schema.prisma"

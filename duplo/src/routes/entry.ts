@@ -7,7 +7,8 @@ export const adminPanelEntry = hasPrimordialRole({ options: { primordialRole: "A
 		() => {
 			throw new NoContentHttpException("entry.accepted");
 		},
-		new IHaveSentThis(NoContentHttpException.code, "entry.accepted")
+		new IHaveSentThis(NoContentHttpException.code, "entry.accepted"),
+		new SwaggerIgnore(),
 	);
 
 export const authEntry = duplo
@@ -21,7 +22,7 @@ export const authEntry = duplo
 		accessTokenCheck,
 		{
 			input: p => p("access-token"),
-			result: "access.token.invalid", 
+			result: "access.token.invalid",
 			catch: () => {
 				throw new UnauthorizedHttpException("entry.refuse");
 			}
@@ -31,7 +32,8 @@ export const authEntry = duplo
 		() => {
 			throw new NoContentHttpException("entry.accepted");
 		},
-		new IHaveSentThis(NoContentHttpException.code, "entry.accepted")
+		new IHaveSentThis(NoContentHttpException.code, "entry.accepted"),
+		new SwaggerIgnore(),
 	);
 
 export const basicEntry = duplo
@@ -40,5 +42,6 @@ export const basicEntry = duplo
 		() => {
 			throw new NoContentHttpException("entry.accepted");
 		},
-		new IHaveSentThis(NoContentHttpException.code, "entry.accepted")
+		new IHaveSentThis(NoContentHttpException.code, "entry.accepted"),
+		new SwaggerIgnore(),
 	);

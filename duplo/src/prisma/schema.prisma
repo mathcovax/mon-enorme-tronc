@@ -22,10 +22,13 @@ model user {
     address        String          @db.VarChar(400)
     primordialRole primordial_role @default(CUSTOMER)
     organization   organization?
+    muted          Boolean         @default(false)
 }
 
 enum primordial_role {
     CUSTOMER
+    MODERATOR
+    CATEGORIES_MASTER
     ADMIN
 }
 

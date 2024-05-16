@@ -5,6 +5,7 @@ import duploHttpException from "@duplojs/http-exception";
 import duploZodAccelerator from "@duplojs/zod-accelerator/plugin";
 import "@duplojs/to/plugin";
 import "../src/env";
+import duploSwagger from "@duplojs/swagger";
 
 export const duploTesting = new DuploTesting(
 	DuploInstance,
@@ -16,10 +17,10 @@ export const duploTesting = new DuploTesting(
 );
 
 duploTesting.use(duploWhatWasSent, { globals: true, enabled: true });
-duploTesting.use(duploHttpException,{ globals: true });
+duploTesting.use(duploHttpException, { globals: true });
 duploTesting.use(duploZodAccelerator, { TEST: true });
 
-export const duplo = 
+export const duplo =
 	new DuploInstance({
 		port: 1506,
 		host: "localhost",
@@ -29,5 +30,6 @@ export const duplo =
 
 
 duplo.use(duploWhatWasSent, { globals: true });
-duplo.use(duploHttpException,{ globals: true });
+duplo.use(duploHttpException, { globals: true });
 duplo.use(duploZodAccelerator, { TEST: true });
+duplo.use(duploSwagger, { globals: true });

@@ -7,6 +7,7 @@ const {
 	checkCreateOrganizationForm, 
 	resetCreateOrganizationForm 
 } = useCreateOrganizationForm();
+const { organizations, getOrganizations } = useGetOganizations();
 
 async function submit() {
 	const formFields = await checkCreateOrganizationForm();
@@ -31,7 +32,6 @@ async function submit() {
 
 const currentPage = ref(0);
 const searchName = ref("");
-const { organizations, getOrganizations } = useGetOganizations();
 const cols: BigTableColDef<Organization>[] = [
 	{
 		title: $t("page.createOrganization.table.cols.name"),
@@ -56,21 +56,23 @@ function next(){
 	if(organizations.value.length < 10 ) {
 		return;
 	}
-	getOrganizations(currentPage.value++, searchName.value);
+	getOrganizations(currentPage.value+=1, searchName.value);
 }
 
 function previous(){
 	if(currentPage.value === 0 ) {
 		return;
 	}
-	getOrganizations(currentPage.value--, searchName.value);
+	getOrganizations(currentPage.value-=1, searchName.value);
 }
 
 function suspended(organization: Organization){
 	duploTo.enriched
 		.patch(
-			"/organization/{organizationId}/suspended",
-			`${!organization.suspended}`,
+			"/organization/{organizationId}@admin",
+			{
+				suspended: !organization.suspended
+			},
 			{ params: { organizationId: organization.id } }
 		)
 		.info("organization.edited", () => {
@@ -79,6 +81,7 @@ function suspended(organization: Organization){
 }
 
 getOrganizations(currentPage.value, searchName.value);
+watch(searchName, () => getOrganizations(0, searchName.value));
 </script>
 
 <template>
