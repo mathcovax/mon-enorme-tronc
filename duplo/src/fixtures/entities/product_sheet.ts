@@ -1,36 +1,17 @@
+import type { product_sheet } from "@prisma/client";
 import { prisma } from "../prismaClient";
 import { faker } from "@faker-js/faker";
 
-export const makeProductsSheet = async (orgId: string) => {
-
-	return await prisma.product_sheet.create({
+export const makeProductSheet = (
+	organizationId: string,
+	product_sheet?: Partial<product_sheet>
+) =>
+	prisma.product_sheet.create({
 		data: {
-			name: faker.commerce.productName(),
-			price: parseFloat(faker.commerce.price()),
-			description: faker.commerce.productDescription(),
-			short_description: faker.commerce.productDescription(),
-			organization: {
-				connect: {
-					id: orgId
-				}
-			}
-		},
-	});
-};
-
-export const assignProductSheetToCategory = async (productId: string, categoryId: string) => {
-	await prisma.product_sheet_to_category.create({
-		data: {
-			product_sheet: {
-				connect: {
-					id: productId
-				}
-			},
-			category: {
-				connect: {
-					id: categoryId
-				}
-			}
+			name: product_sheet?.name || faker.commerce.productName(),
+			description: product_sheet?.description || faker.commerce.productDescription(),
+			shortDescription: product_sheet?.shortDescription || faker.commerce.productDescription(),
+			price: product_sheet?.price || parseFloat(faker.commerce.price()),
+			organizationId: organizationId
 		}
 	});
-};

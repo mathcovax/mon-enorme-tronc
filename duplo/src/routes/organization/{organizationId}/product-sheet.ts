@@ -1,6 +1,9 @@
-import { inputOrganization, organizationExistCheck } from "@checkers/organization";
-import { categoryExistCheck, inputCategory } from "@checkers/category";
+import {
+	inputOrganization,
+	organizationExistCheck,
+} from "@checkers/organization";
 import { mustBeConnected } from "@security/mustBeConnected";
+import { productSheetSchema } from "@schemas/product_sheet";
 
 /* METHOD : POST, PATH : /organization/{organizationId}/product-sheet */
 export const POST = (method: Methods, path: string) =>
@@ -8,80 +11,40 @@ export const POST = (method: Methods, path: string) =>
 		.declareRoute(method, path)
 		.extract({
 			params: {
-				organizationId: zod.string()
+				organizationId: zod.string(),
 			},
-			body: zod.object({
-				name: zod.string(),
-				description: zod.string(),
-				short_description: zod.string(),
-				price: zod.number().min(0),
-				categoryId: zod.string(),
-			}).passthrough()
+			body: zod
+				.object({
+					name: zod.string(),
+					description: zod.string(),
+					shortDescription: zod.string(),
+					price: zod.number().min(0),
+				})
+				.passthrough(),
 		})
-		.check(
-			categoryExistCheck,
-			{
-				input: (p) => inputCategory.id(
-					p("body").categoryId
-				),
-				result: "category.exist",
-				catch: () => {
-					throw new NotFoundHttpException("category.notfound");
-				},
-				indexing: "category"
-
-			},
-			new IHaveSentThis(NotFoundHttpException.code, "category.notfound")
-		)
 		.check(
 			organizationExistCheck,
 			{
-				input: p => inputOrganization.id(
-					p("organizationId")
-				),
+				input: (p) => inputOrganization.id(p("organizationId")),
 				...organizationExistCheck.preCompletions.wantExist,
 				indexing: undefined,
-				result: "organization.exist"
+				result: "organization.exist",
 			},
 			new IHaveSentThis(NotFoundHttpException.code, "organization.notfound")
 		)
-		.handler(
-			async ({ pickup }) => {
-				const { name, description, short_description, price } = pickup("body");
-				const category = pickup("category");
-				const organizationId = pickup("organizationId");
+		.handler(async ({ pickup }) => {
+			const { name, description, shortDescription, price } = pickup("body");
+			const organizationId = pickup("organizationId");
 
-				const product_sheet = await prisma.product_sheet
-					.create({
-						data: {
-							name: name,
-							description: description,
-							short_description: short_description,
-							price: price,
-							organization: {
-								connect: {
-									id: organizationId
-								}
-							}
-						}
-					});
+			const productSheet = await prisma.product_sheet.create({
+				data: {
+					name: name,
+					description: description,
+					shortDescription: shortDescription,
+					price: price,
+					organizationId: organizationId,
+				},
+			});
 
-				await prisma.product_sheet_to_category
-					.create({
-						data: {
-							category: {
-								connect: {
-									id: category.id
-								}
-							},
-							product_sheet: {
-								connect: {
-									id: product_sheet.id
-								}
-							}
-						}
-					});
-				throw new OkHttpException("product_sheet.created");
-			},
-			new IHaveSentThis(OkHttpException.code, "product_sheet.created")
-		);
+			throw new OkHttpException("product_sheet.created", productSheet);
+		}, new IHaveSentThis(OkHttpException.code, "product_sheet.created", productSheetSchema));

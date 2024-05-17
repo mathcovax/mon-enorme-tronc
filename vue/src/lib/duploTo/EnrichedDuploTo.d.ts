@@ -1,3 +1,4 @@
+
 /* eslint-disable */
 /* prettier-ignore */
 // @ts-nocheck
@@ -736,18 +737,18 @@ export type GetDef<
 > = Extract<
 	DefEnrichedDuplojsTo, 
 	{
-		method: method;
-		path: path;
+		method: method,
+		path: path
 	}
 >;
 
 export type DefDefinition = {
-	path: string;
-	method: string;
-	body: unknown;
-	parameters: unknown;
-	response: ResponseDefinition;
-};
+	path: string,
+	method: string,
+	body: unknown,
+	parameters: unknown,
+	response: ResponseDefinition,
+}
 
 export type GetResponseByInfo<
 	def extends DefDefinition,
@@ -755,7 +756,7 @@ export type GetResponseByInfo<
 > = Extract<
 	def["response"], 
 	{
-		info: info;
+		info: info
 	}
 >;
 
@@ -765,7 +766,7 @@ export type GetResponseByCode<
 > = Extract<
 	def["response"], 
 	{
-		code: code;
+		code: code
 	}
 >;
 
@@ -978,31 +979,31 @@ export type DefEnrichedDuplojsTo = {
 
 
 export type BaseRequestParameters = {
-	disabledPrefix?: boolean;
+	disabledPrefix?: boolean,
 } & Omit<RequestInit, "headers" | "method">;
 
 export type UndefinedRequestParameters = {
 	headers?: string | string[];
-};
+}
 
 export type DefToArgumentsWithInfo<
 	responseDefinition extends ResponseDefinition
 > = responseDefinition extends ResponseDefinition 
 	? [data: responseDefinition["body"], info: responseDefinition["info"]]
-	: never;
+	: never
 
 export type DefToArgumentsWithCode<
 	responseDefinition extends ResponseDefinition
 > = responseDefinition extends ResponseDefinition 
 	? [data: responseDefinition["body"], code: responseDefinition["code"]]
-	: never;
+	: never
 
-export type RequestCallbackError = (error: Error) => void;
+export type RequestCallbackError = (error: Error) => void
 
 export type ResponseObjectError = {
-	success: false;
-	error: Error;
-};
+	success: false,
+	error: Error,
+}
 
 export interface ResponseDefinition {
 	code: number;
@@ -1054,10 +1055,11 @@ export declare class EnrichedRequestor<
 
 	then(cb: (response: RepDefToResponseObject<repDef>) => void): this;
 	catch(cb: RequestCallbackError): this;
-	finally(
-		cb: (response: RepDefToResponseObject<repDef> | ResponseObjectError) => void
-	): this;
-	result: Promise<RepDefToResponseObject<repDef> | ResponseObjectError>;
+	finally(cb: (response: RepDefToResponseObject<repDef> | ResponseObjectError) => void): this;
+	result: Promise<
+		| RepDefToResponseObject<repDef>
+		| ResponseObjectError
+	>;
 }
 
 export interface EnrichedDuploTo<
@@ -1152,7 +1154,7 @@ export interface EnrichedDuploTo<
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
-		| response_9_0
+		response_9_0
 		| response_9_1
 		| response_9_2
 	>
@@ -1329,5 +1331,6 @@ export interface EnrichedDuploTo<
 }
 
 /** @deprecated */
-export type EnrichedDuplojsTo<interceptorParameter extends {} = {}> =
-	EnrichedDuploTo<interceptorParameter>;
+export type EnrichedDuplojsTo<
+	interceptorParameter extends {} = {},
+> = EnrichedDuploTo<interceptorParameter>;

@@ -27,9 +27,9 @@ export const GET = (method: Methods, path: string) =>
 		)
 		.handler(
 			async ({ pickup }) => {
-				const id = pickup("category")?.id;
+				const id = pickup("category").id;
 
-				const products_sheets = await prisma.product_sheet_to_category
+				const productsSheets = await prisma.product_sheet_to_category
 					.findMany({
 						where: {
 							category: {
@@ -37,12 +37,12 @@ export const GET = (method: Methods, path: string) =>
 							},
 						},
 						select: {
-							product_sheet: true,
+							productSheet: true,
 						},
 					})
-					.then((products_sheets) => products_sheets.map((p) => p.product_sheet));
+					.then((productsSheets) => productsSheets.map((p) => p.productSheet));
 
-				throw new OkHttpException("category.products", products_sheets);
+				throw new OkHttpException("category.products", productsSheets);
 			},
 			new IHaveSentThis(OkHttpException.code, "category.products", productSheetSchema.array())
 		);
