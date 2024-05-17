@@ -1,7 +1,8 @@
+import { UnionToIntersection } from "@duplojs/duplojs";
+
 export {};
 declare global {
-	type UnionToIntersection<U> =
-		(U extends unknown ? (k: U) => void : never) extends ((k: infer I) => void) ? I : never
+	type UninonToEnum<T extends string> = { [prop in T]: prop };
 	type LastOf<T> =
 		UnionToIntersection<T extends unknown ? () => T : never> extends () => (infer R) ? R : never
 	type Push<T extends unknown[], V> = [...T, V];

@@ -3,6 +3,7 @@ import edito, { notFound } from "@/domains/edito/router";
 import auth from "@/domains/auth/router";
 import product from "@/domains/product/router";
 import admin from "@/domains/admin/router";
+import content from "@/domains/content/router";
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
@@ -16,6 +17,7 @@ const router = createRouter({
 				...auth(),
 			]
 		},
+		...content(),
 		...admin(),
 		notFound(),
 	],

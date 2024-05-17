@@ -138,7 +138,7 @@ watch(
 		<template #popupContent>
 			<UserForm
 				@submit="submit"
-				class="max-w-[500px] items-center"
+				class="items-center"
 			>
 				<template #user="{modelValue}">
 					<Span class="text-center">{{ modelValue?.email }}</Span>

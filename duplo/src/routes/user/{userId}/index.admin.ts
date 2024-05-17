@@ -12,7 +12,7 @@ export const PATCH = (method: Methods, path: string) => hasPrimordialRole({ opti
 		body: zod.object({
 			primordialRole: zod.enum([
 				primordialRolesEnum.CUSTOMER,
-				primordialRolesEnum.CATEGORIES_MASTER,
+				primordialRolesEnum.CONTENTS_MASTER,
 				primordialRolesEnum.MODERATOR
 			]).optional(),
 			muted: zod.boolean().optional(),

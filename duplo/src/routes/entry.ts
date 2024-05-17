@@ -11,6 +11,16 @@ export const adminPanelEntry = hasPrimordialRole({ options: { primordialRole: "A
 		new SwaggerIgnore(),
 	);
 
+export const contentPanelEntry = hasPrimordialRole({ options: { primordialRole: "CONTENTS_MASTER" } })
+	.declareRoute("GET", "/entry/content-panel*")
+	.handler(
+		() => {
+			throw new NoContentHttpException("entry.accepted");
+		},
+		new IHaveSentThis(NoContentHttpException.code, "entry.accepted"),
+		new SwaggerIgnore(),
+	);
+
 export const authEntry = duplo
 	.declareRoute("GET", ["/entry/login", "/entry/register"])
 	.extract({

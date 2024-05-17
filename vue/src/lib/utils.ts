@@ -34,7 +34,7 @@ export type PrimordialRole = GetResponseByInfo<
 >["body"][number]["primordialRole"]
 
 export const primordialRoles: TuplifyUnion<PrimordialRole> = [
-	"CUSTOMER", "MODERATOR", "CATEGORIES_MASTER", "ADMIN"
+	"CUSTOMER", "MODERATOR", "CONTENTS_MASTER", "ADMIN"
 ];
 
 export type User = GetResponseByInfo<

@@ -1,3 +1,4 @@
+/* eslint-disable vue/require-prop-types */
 import { effect } from "vue";
 import type { BaseInputDef, InputProps } from "../types";
 import PrimaryDateInput from "@/components/PrimaryDateInput.vue";

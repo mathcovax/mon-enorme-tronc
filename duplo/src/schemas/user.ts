@@ -1,13 +1,13 @@
 import { primordial_role } from "@prisma/client";
 
 export const primordialRolesTuple: TuplifyUnion<primordial_role> = [
-	"CUSTOMER", "MODERATOR", "CATEGORIES_MASTER", "ADMIN"
+	"CUSTOMER", "MODERATOR", "CONTENTS_MASTER", "ADMIN"
 ];
 
-export const primordialRolesEnum: { [prop in primordial_role]: prop } = {
+export const primordialRolesEnum: UninonToEnum<primordial_role> = {
 	CUSTOMER: "CUSTOMER",
 	MODERATOR: "MODERATOR",
-	CATEGORIES_MASTER: "CATEGORIES_MASTER",
+	CONTENTS_MASTER: "CONTENTS_MASTER",
 	ADMIN: "ADMIN",
 };
 

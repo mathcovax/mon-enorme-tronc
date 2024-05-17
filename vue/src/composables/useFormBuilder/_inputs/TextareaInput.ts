@@ -1,3 +1,4 @@
+/* eslint-disable vue/require-prop-types */
 import { effect } from "vue";
 import type { BaseInputDef, InputProps } from "../types";
 import PrimaryTextarea from "@/components/PrimaryTextarea.vue";

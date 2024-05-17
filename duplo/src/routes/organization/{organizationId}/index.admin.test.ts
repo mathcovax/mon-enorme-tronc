@@ -2,7 +2,7 @@ import { duploTesting } from "@test/setup";
 import { PATCH } from "./index.admin";
 import { MockPrisma } from "@test/mocks/providers";
 
-describe("GET /organization/{organizationId}/suspended", () => {
+describe("GET /organization/{organizationId}@admin", () => {
 	beforeEach(() => {
 		MockPrisma.resest();
 	});

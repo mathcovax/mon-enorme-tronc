@@ -8,8 +8,8 @@ interface HasPrimordialRoleOptions {
 const primordialRolesHierarchy: Record<primordial_role, primordial_role[]> = {
 	CUSTOMER: [],
 	MODERATOR: ["CUSTOMER"],
-	CATEGORIES_MASTER: ["CUSTOMER"],
-	ADMIN: ["CATEGORIES_MASTER", "MODERATOR", "CUSTOMER"],
+	CONTENTS_MASTER: ["CUSTOMER"],
+	ADMIN: ["CONTENTS_MASTER", "MODERATOR", "CUSTOMER"],
 };
 
 export const hasPrimordialRole = mustBeConnected({ pickup: ["accessTokenContent"] })
