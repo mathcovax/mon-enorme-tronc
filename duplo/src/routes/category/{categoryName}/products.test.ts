@@ -30,7 +30,6 @@ describe("GET /category/{categoryName}/products", () => {
 			.mockChecker(
 				"categoryExist",
 				{ info: "category.exist", data: { id: "1234", name: "test" } },
-				{ passCatch: true }
 			)
 			.launch();
 
@@ -47,8 +46,7 @@ describe("GET /category/{categoryName}/products", () => {
 			.setRequestProperties({ params: { categoryName: "test" } })
 			.mockChecker(
 				"categoryExist",
-				{ info: "category.notfound", data: null },
-				{ passCatch: true }
+				{ info: "category.notfound", data: { name: "test" } },
 			)
 			.launch();
 

@@ -24,6 +24,7 @@ export const POST = (method: Methods, path: string) =>
 				input: (p) => inputCategory.id(
 					p("body").categoryId
 				),
+				result: "category.exist",
 				catch: () => {
 					throw new NotFoundHttpException("category.notfound");
 				},
@@ -39,7 +40,8 @@ export const POST = (method: Methods, path: string) =>
 					p("organizationId")
 				),
 				...organizationExistCheck.preCompletions.wantExist,
-				indexing: undefined
+				indexing: undefined,
+				result: "organization.exist"
 			},
 			new IHaveSentThis(NotFoundHttpException.code, "organization.notfound")
 		)
@@ -69,7 +71,7 @@ export const POST = (method: Methods, path: string) =>
 						data: {
 							category: {
 								connect: {
-									id: category?.id
+									id: category.id
 								}
 							},
 							product_sheet: {

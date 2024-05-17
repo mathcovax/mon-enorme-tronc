@@ -16,6 +16,7 @@ export const GET = (method: Methods, path: string) =>
 				input: (p) => inputCategory.name(
 					p("categoryName")
 				),
+				result: "category.exist",
 				catch: () => {
 					throw new NotFoundHttpException("category.notfound");
 				},
@@ -26,7 +27,7 @@ export const GET = (method: Methods, path: string) =>
 		)
 		.handler(
 			async ({ pickup }) => {
-				const id = pickup("category")?.id;
+				const { id } = pickup("category");
 
 				const products_sheets = await prisma.product_sheet_to_category
 					.findMany({

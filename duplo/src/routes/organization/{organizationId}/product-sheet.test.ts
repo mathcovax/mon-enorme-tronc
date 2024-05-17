@@ -8,21 +8,34 @@ describe("POST /organization/{organizationId}/product-sheet", () => {
 	});
 
 	it("post product sheet created", async () => {
-		const spy = vi.fn(() => undefined);
+		const product_sheet = {
+			id: "",
+			name: "",
+			description: "",
+			short_description: "",
+			price: 0,
+			created_at: new Date(),
+			pdated_at: new Date(),
+			organizationId: ""
+		};
+		const spy = vi.fn(() => product_sheet);
 		MockPrisma.set("product_sheet", "create", spy);
 
+		const spy2 = vi.fn(() => undefined);
+		MockPrisma.set("product_sheet_to_category", "create", spy2);
+
 		const res = await duploTesting
-			.testRoute(POST("POST", ""))
+			.testRoute(POST("POST", "/organization/1234/product-sheet"))
 			.setRequestProperties({
 				params: {
-					organizationId: ""
+					organizationId: "1234"
 				},
 				body: {
-					name: "",
-					description: "",
-					short_description: "",
-					price: 0,
-					categoryId: ""
+					name: "test",
+					description: "test",
+					short_description: "test",
+					price: 10,
+					categoryId: "1234"
 				}
 			})
 			.mockChecker(
@@ -34,19 +47,34 @@ describe("POST /organization/{organizationId}/product-sheet", () => {
 			)
 			.mockChecker(
 				"categoryExist",
-				{ info: "category.exist", data: { id: "1234", name: "test" } },
-				{ passCatch: true }
+				{ info: "category.exist", data: { id: "1234" } }
 			)
 			.launch();
+
 		expect(spy).lastCalledWith({
 			data: {
-				name: "",
-				description: "",
-				short_description: "",
-				price: 0,
+				description: "test",
+				name: "test",
 				organization: {
 					connect: {
-						id: ""
+						id: "1234"
+					}
+				},
+				short_description: "test",
+				price: 10,
+			}
+		});
+
+		expect(spy2).lastCalledWith({
+			data: {
+				category: {
+					connect: {
+						id: "1234"
+					}
+				},
+				product_sheet: {
+					connect: {
+						id: "1234"
 					}
 				}
 			}
@@ -54,7 +82,7 @@ describe("POST /organization/{organizationId}/product-sheet", () => {
 		expect(res.information).toBe("product_sheet.created");
 	});
 
-	it("post product sheet error creation category", async () => {
+	it("post product sheet error category notfound", async () => {
 		const spy = vi.fn(() => undefined);
 		MockPrisma.set("product_sheet", "create", spy);
 
@@ -81,14 +109,13 @@ describe("POST /organization/{organizationId}/product-sheet", () => {
 			)
 			.mockChecker(
 				"categoryExist",
-				{ info: "category.notfound", data: { id: "1234", name: "test" } },
-				{ passCatch: true }
+				{ info: "category.notfound", data: { id: "1234" } },
 			)
 			.launch();
 		expect(res.information).toBe("category.notfound");
 	});
 
-	it("post product sheet error creation organization", async () => {
+	it("post product sheet error organization notfound", async () => {
 		const spy = vi.fn(() => undefined);
 		MockPrisma.set("product_sheet", "create", spy);
 
@@ -107,16 +134,12 @@ describe("POST /organization/{organizationId}/product-sheet", () => {
 				}
 			})
 			.mockChecker(
-				0,
-				{
-					info: "organization.notfound",
-					data: null
-				}
+				"organizationExist",
+				{ info: "organization.notfound", data: { id: "1234" } },
 			)
 			.mockChecker(
 				"categoryExist",
-				{ info: "category.notfound", data: { id: "1234", name: "test" } },
-				{ passCatch: true }
+				{ info: "category.exist", data: { id: "1234" } }
 			)
 			.launch();
 		expect(res.information).toBe("organization.notfound");
