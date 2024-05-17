@@ -16,10 +16,10 @@ async function googleSign(){
 			.info("user.logged", accessToken => {
 				setAccessToken(accessToken);
 				fetchUserValue();
-				router.push({ name: "home" });
+				router.push({ name: routerPageName.EDITO_HOME });
 			})
 			.info("user.notfound", () => {
-				router.push({ name: "register", query: { fireBaseIdToken } });
+				router.push({ name: routerPageName.AUTH_REGISTER, query: { fireBaseIdToken } });
 			})
 			.result;	
 	}

@@ -9,7 +9,7 @@ type User = GetResponseByInfo<
 const KEY_ACCESS_TOKEN_LOCAL_STORAGE = "access-token";
 
 export const useUserStore = defineStore(
-	"user", 
+	"user",
 	() => {
 		const user = ref<null | User>(null);
 		const accessToken = ref<null | string>(localStorage.getItem(KEY_ACCESS_TOKEN_LOCAL_STORAGE));
@@ -18,10 +18,10 @@ export const useUserStore = defineStore(
 		let promiseFetching: null | Promise<void> = null;
 		const getPromiseFetching = () => promiseFetching;
 
-		function fetchUserValue(){
+		function fetchUserValue() {
 			const { promise, resolve, reject } = promiseWithResolvers();
 			promiseFetching = promise;
-			
+
 			duploTo.enriched
 				.get("/user", undefined, { disabledToast: true })
 				.info("user", (data) => {
@@ -38,10 +38,10 @@ export const useUserStore = defineStore(
 				});
 		}
 
-		function setAccessToken(newAccessToken: string | null){
-			if(newAccessToken){
+		function setAccessToken(newAccessToken: string | null) {
+			if (newAccessToken) {
 				localStorage.setItem(
-					KEY_ACCESS_TOKEN_LOCAL_STORAGE, 
+					KEY_ACCESS_TOKEN_LOCAL_STORAGE,
 					accessToken.value = newAccessToken
 				);
 			}
@@ -50,15 +50,17 @@ export const useUserStore = defineStore(
 			}
 		}
 
-		setTimeout(fetchUserValue);
+		if (accessToken.value !== null) {
+			setTimeout(fetchUserValue);
+		}
 
 		return {
 			getPromiseFetching,
 			setAccessToken,
-			fetchUserValue, 
-			user, 
-			accessToken, 
-			isConnected 
+			fetchUserValue,
+			user,
+			accessToken,
+			isConnected
 		};
 	}
 );

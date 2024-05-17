@@ -1,13 +1,15 @@
 import { primordial_role } from "@prisma/client";
 import { mustBeConnected } from "./mustBeConnected";
 
-interface HasPrimordialRoleOptions{
+interface HasPrimordialRoleOptions {
 	primordialRole: primordial_role
 }
 
 const primordialRolesHierarchy: Record<primordial_role, primordial_role[]> = {
 	CUSTOMER: [],
-	ADMIN: ["CUSTOMER"] 
+	MODERATOR: ["CUSTOMER"],
+	CATEGORIES_MASTER: ["CUSTOMER"],
+	ADMIN: ["CATEGORIES_MASTER", "MODERATOR", "CUSTOMER"],
 };
 
 export const hasPrimordialRole = mustBeConnected({ pickup: ["accessTokenContent"] })
@@ -20,12 +22,10 @@ export const hasPrimordialRole = mustBeConnected({ pickup: ["accessTokenContent"
 			const { primordialRole: userPrimordialRole } = pickup("accessTokenContent");
 			const { primordialRole: currentPrimordialRole } = pickup("options");
 
-			
-
-			if(
-				userPrimordialRole !== currentPrimordialRole && 
+			if (
+				userPrimordialRole !== currentPrimordialRole &&
 				!primordialRolesHierarchy[userPrimordialRole].includes(currentPrimordialRole)
-			){
+			) {
 				throw new UnauthorizedHttpException("user.role.invalid");
 			}
 
