@@ -1,5 +1,5 @@
 import { duploTesting } from "@test/setup";
-import { adminPanelEntry, authEntry, basicEntry } from "./entry";
+import { adminPanelEntry, authEntry, basicEntry, contentPanelEntry } from "./entry";
 
 describe("entry", () => {
 	it("basic", async () => {
@@ -13,6 +13,14 @@ describe("entry", () => {
 	it("adminPanel", async () => {
 		const res = await duploTesting
 			.testRoute(adminPanelEntry)
+			.launch();
+
+		expect(res.information).toBe("entry.accepted");
+	});
+
+	it("contentPanel", async () => {
+		const res = await duploTesting
+			.testRoute(contentPanelEntry)
 			.launch();
 
 		expect(res.information).toBe("entry.accepted");

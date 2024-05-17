@@ -19,7 +19,7 @@ export const PATCH = (method: Methods, path: string) => hasPrimordialRole({ opti
 			input: p => p("categoryName"),
 			...categoryExistCheck.preCompletions.mustExist
 		},
-		new IHaveSentThis(ConflictHttpException.code, "category.alreadyExist")
+		new IHaveSentThis(NotFoundHttpException.code, "category.notfound")
 	)
 	.check(
 		categoryExistCheck,
