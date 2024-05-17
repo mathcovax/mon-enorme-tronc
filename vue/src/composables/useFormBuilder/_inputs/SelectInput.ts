@@ -22,7 +22,7 @@ export interface SelectInputDef extends BaseInputDef {
 
 export const SelectInput = defineComponent({
 	props: [
-		"label", "modelValue", "zodSchema", "name", "items", "placeholder"
+		"label", "modelValue", "zodSchema", "name", "items", "placeholder", "formId"
 	],
 	setup(props: SelectInputProps, { expose, emit }){
 		const toValidated = ref(false);
@@ -67,7 +67,7 @@ export const SelectInput = defineComponent({
 						"label", 
 						{
 							class: "",
-							for: props.name,
+							for: `${props.name}-${props.formId}`,
 						},
 						props.label
 					)
@@ -75,8 +75,8 @@ export const SelectInput = defineComponent({
 				h(
 					PrimarySelect, 
 					{
-						name: props.name,
-						id: props.name,
+						name: `${props.name}-${props.formId}`,
+						id: `${props.name}-${props.formId}`,
 						items: props.items,
 						placeholder: props.placeholder,
 						modelValue: props.modelValue,

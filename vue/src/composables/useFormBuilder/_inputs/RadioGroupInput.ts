@@ -20,7 +20,7 @@ export interface RadioGroupDef extends BaseInputDef {
 
 export const RadioGroupInput = defineComponent({
 	props: [
-		"label", "modelValue", "zodSchema", "name", "items"
+		"label", "modelValue", "zodSchema", "name", "items", "formId"
 	],
 	setup(props: RadioGroupProps, { expose, emit }){
 		const toValidated = ref(false);
@@ -65,7 +65,7 @@ export const RadioGroupInput = defineComponent({
 						"label", 
 						{
 							class: "",
-							for: props.name
+							for: `${props.name}-${props.formId}`
 						},
 						props.label
 					)
@@ -73,7 +73,7 @@ export const RadioGroupInput = defineComponent({
 				h(
 					PrimaryRadioGroup, 
 					{
-						id: props.name,
+						id: `${props.name}-${props.formId}`,
 						items: props.items,
 						modelValue: props.modelValue,
 						"onUpdate:modelValue": (value: unknown) => {

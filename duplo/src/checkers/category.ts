@@ -14,4 +14,14 @@ export const categoryExistCheck = duplo
 			return output("category.notfound", null);
 		}
 	})
+	.preCompletion(
+		"mustExist",
+		{
+			result: "category.exist",
+			catch: () => {
+				throw new NotFoundHttpException("category.notfound");
+			},
+			indexing: "category",
+		}
+	)
 	.build();

@@ -28,16 +28,18 @@ declare global {
 		true extends N ? [] : Push<TuplifyUnion<Exclude<T, L>>, L>
 }
 
-export type PrimordialRole = GetResponseByInfo<
-	GetDef<"GET", "/users">,
-	"users"
->["body"][number]["primordialRole"]
+export type User = GetResponseByInfo<
+	GetDef<"GET", "/user">,
+	"user"
+>["body"]
+
+export type PrimordialRole = User["primordialRole"]
 
 export const primordialRoles: TuplifyUnion<PrimordialRole> = [
 	"CUSTOMER", "MODERATOR", "CONTENTS_MASTER", "ADMIN"
 ];
 
-export type User = GetResponseByInfo<
-	GetDef<"GET", "/users">,
-	"users"
+export type Category = GetResponseByInfo<
+	GetDef<"GET", "/categories">,
+	"categories"
 >["body"][number]

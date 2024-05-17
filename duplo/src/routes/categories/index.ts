@@ -4,18 +4,23 @@ import { categorySchema } from "@schemas/category";
 export const GET = (method: Methods, path: string) => duplo
 	.declareRoute(method, path)
 	.extract({
-		query: {
-			page: zod.number().default(0),
-			withDisabled: zod.boolean().optional()
-		}
+		query: zod.object({
+			name: zod.string().optional(),
+			page: zod.coerce.number().default(0),
+			withDisabled: zod.coerce.boolean().optional()
+		}).passthrough().default({})
 	})
 	.handler(
 		async ({ pickup }) => {
-			const page = pickup("page");
-			const withDisabled = pickup("withDisabled");
+			const { name, withDisabled, page } = pickup("query");
 
 			const categories = await prisma.category.findMany({
 				where: {
+					name: name
+						? {
+							contains: name
+						}
+						: undefined,
 					disabled: withDisabled 
 						? undefined
 						: false

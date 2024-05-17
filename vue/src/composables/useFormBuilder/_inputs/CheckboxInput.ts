@@ -6,6 +6,7 @@ import TheCheckbox from "@/components/ui/checkbox/TheCheckbox.vue";
 export interface CheckboxInputProps extends InputProps<boolean>{
 	desc?: string
 	reverse?: boolean
+	formId: string
 }
 
 export interface CheckboxInputDef extends BaseInputDef {
@@ -17,7 +18,7 @@ export interface CheckboxInputDef extends BaseInputDef {
 
 export const CheckboxInput = defineComponent({
 	props: [
-		"label", "modelValue", "zodSchema", "name", "desc", "reverse"
+		"label", "modelValue", "zodSchema", "name", "desc", "reverse", "formId"
 	],
 	setup(props: CheckboxInputProps, { expose, emit }){
 		const toValidated = ref(false);
@@ -62,7 +63,7 @@ export const CheckboxInput = defineComponent({
 						"label", 
 						{
 							class: "",
-							for: props.name,
+							for: `${props.name}-${props.formId}`,
 						},
 						props.label
 					)
@@ -76,8 +77,8 @@ export const CheckboxInput = defineComponent({
 						h(
 							TheCheckbox, 
 							{
-								name: props.name,
-								id: props.name,
+								name: `${props.name}-${props.formId}`,
+								id: `${props.name}-${props.formId}`,
 								checked: props.modelValue,
 								"onUpdate:checked": (value: unknown) => {
 									emit("update:modelValue", value);
@@ -89,7 +90,7 @@ export const CheckboxInput = defineComponent({
 								"label", 
 								{
 									class: "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
-									for: props.desc,
+									for: `${props.name}-${props.formId}`,
 								},
 								props.desc
 							)

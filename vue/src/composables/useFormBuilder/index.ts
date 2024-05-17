@@ -19,6 +19,8 @@ export function useFormBuilder<
 	formInputs: inputDef
 )
 {
+	const formId = Date.now().toString();
+
 	const values =  Object.fromEntries(
 		Object.keys(formInputs).map((name) => [name,  ref()])
 	);
@@ -60,6 +62,7 @@ export function useFormBuilder<
 						zodSchema,
 						name,
 						key: name,
+						formId,
 						...reste
 					},
 					type === "custom"
@@ -67,7 +70,8 @@ export function useFormBuilder<
 							modelValue: values[name].value,
 							onUpdate: (value) => {
 								values[name].value = value;
-							}
+							},
+							formId
 						}) 
 						: undefined
 				);
@@ -127,5 +131,6 @@ export function useFormBuilder<
 		inputRefs,
 		checkForm,
 		resetForm,
+		formId,
 	};
 }

@@ -12,7 +12,7 @@ export interface NumberInputDef extends BaseInputDef {
 
 export const NumberInput = defineComponent({
 	props: [
-		"label", "modelValue", "zodSchema", "name"
+		"label", "modelValue", "zodSchema", "name", "formId"
 	],
 	setup(props: NumberInputProps, { expose, emit }){
 		const toValidated = ref(false);
@@ -57,7 +57,7 @@ export const NumberInput = defineComponent({
 						"label", 
 						{
 							class: "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
-							for: props.name,
+							for: `${props.name}-${props.formId}`,
 						},
 						props.label
 					)
@@ -66,8 +66,8 @@ export const NumberInput = defineComponent({
 					PrimaryInput, 
 					{
 						type: "number",
-						name: props.name,
-						id: props.name,
+						name: `${props.name}-${props.formId}`,
+						id: `${props.name}-${props.formId}`,
 						modelValue: props.modelValue,
 						"onUpdate:modelValue": (value: unknown) => {
 							emit("update:modelValue", Number(value));

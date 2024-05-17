@@ -24,6 +24,7 @@ export interface InputProps<modelValueInput = unknown> {
 	label: string
 	zodSchema?: ZodType
 	name: string
+	formId: string
 }
 
 export type FormInputDef =
@@ -40,6 +41,7 @@ export type FormInputDef =
 interface SlotProps<T = unknown> {
 	modelValue: T,
 	onUpdate: (value: T) => void
+	formId: string
 }
 
 type GetValue<ref> = ref extends Ref<infer value> ? value : ref
