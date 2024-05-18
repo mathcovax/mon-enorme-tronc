@@ -5,8 +5,13 @@
 - Générer le client prisma `npm run generate:prisma`.
 
 - Faire une migration Primas en DEV :
+
   - `npm run dev`
   - `npm run migrate:dev`
+
+- Ouvrire les studio:
+  - `npm run dev`
+  - `npm run studio`
 
 ### Convention pour GIT
 
@@ -31,6 +36,7 @@
 - Les variables d'ENV sont des valeurs "sensibles" (mdp d'un compte ou autre). Définissez les dans le fichier `.env.local` qui est ignore par git.
 
 ### Convention pour VUE
+
 - Le texte doit **impérativement** passer par i18n et non directement dans le markup.
 
 - Les noms des composants doivent être en `PascalCase` et être minimum composés de 2 mots. Si vous n'en trouvez qu'un seul, vous pouvez le prefixer par `The`. Exemple : `Button` -> `TheButton`.
@@ -66,3 +72,29 @@
 - Cliquer sur `Générer une nouvelle clé privée`, (cela vous téléchargera un fichier json).
 
 - Placer le fichier json ici `duplo/firebase.credential.json`.
+
+### Guide de survie duplojs
+
+l'élément principale qui vous permettera de debug c'est le champ `info` dans le header.
+
+Les différente info que vous pouvez rencontré qui son r'envoyer par duplojs:
+
+- `INTERNAL_SERVER_ERROR` accompagner d'un status 500. Signifie qu'il y a ue une erreur pendant l'éxection des diférente étape de la route. Danse ce cas, il faut regader le body de la réponse, c'est ici que ce situe le détaile de l'erreur.
+- pas d'info mais code 500L. Si vous faite n'impote quoi cela peux arrivé, bonne chance ! vous pouvez quand même le contenu du body.
+- `NO_RESPONSE_SENT` acompagner d'un status 503. Signifie que vous n'avez pas envoyer de response. vérifier bien vos condition.
+- `NOTFOUND` accompagner d'un status 404. signifi que la route n'est pas enregister dans le router. Vérifier que vous utilisais la bonne méthod et le bon path.
+- `TYPE_ERROR...` accompagner d'un status 400. Signifi qu'un schema d'un de vos extract n'est pas valide. Vous pouvez véfifier le body pour avoir plus d'info.
+- `WHAT_WAS_SENT_ERROR` accompagner d'une 500. Signifi que votre contra de sortie n'a pas étais respstecter. Vérifié les class `IHaveSentThis` de votre route. Vous pouvais regarder le body et les headers `catch-info`et `catch-code` pour avoir plus d'information.
+
+**Toute ces régle sont valide pour les TU.**
+
+#### Comment Obtenir un access-token:
+
+Les acces-token son générer par notre back-end et serre a nous identifier. **A ne pas confondre avec le idToken de firebase**. L'idToken de firebase nous serre a certifier l'appartenance d'une address email a un utilisateur, avec cela nous povons le trouvez en base de donner pour l'authentifier.
+
+la façon la plus simple pour obtenir un access-token est de vous rendre sur `/login` et de clicker sur le button "Se connecter avec Google". Si c'est la premier fois ou que votre base est vide, vous serrez rediriger vers le formulaire d'enregistrement. Compléter le. une fois rediriger vers `/`. Vous povez allez cherchez l'access-token dans votre localStorage. **Attention a ne pas le coller plus d'une fois, sinon cela ne fonctionera pas**. l'info associer a un access-token invalide est `access.token.invalid`.
+
+#### Recource importante pouvant vous aider.
+
+- Le studio prisma, lancer la commande `npm run studio` et rendez vous sur votre port `5555`. le studio est un DB viwer du point de vue de l'ORM. Il peut vous permettre de créer des entiter a la volez facilement.
+- Les swagger, il suffit que duplo sois lancer. rendez vous sur `/api/swagger`. il vous permettera de visualisé toute les routes est leurs paramétre.
