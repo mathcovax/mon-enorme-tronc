@@ -7,7 +7,7 @@ export const POST = (method: Methods, path: string) => hasPrimordialRole({ optio
 	.declareRoute(method, path)
 	.extract({
 		body: zod.object({
-			name: zod.string(),
+			name: zod.string().min(2).max(255),
 			ownerId: zod.string(),
 		}).passthrough()
 	})
@@ -61,7 +61,13 @@ export const POST = (method: Methods, path: string) => hasPrimordialRole({ optio
 			await prisma.organization.create({
 				data: {
 					name,
-					ownerId, 
+					ownerId,
+					userToOrganization: {
+						create: {
+							userId: ownerId,
+							organizationRole: "OWNER",
+						}
+					}
 				}
 			});
 

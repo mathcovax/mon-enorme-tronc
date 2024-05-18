@@ -44,3 +44,37 @@ export const organizationExistCheck = duplo
 		}
 	)
 	.build();
+
+export interface InputHasOrganizationRole {
+	organizationId: string
+	userId: string
+}
+
+export const organizationHasUserCheck = duplo
+	.createChecker("organizationHasUser")
+	.handler(async ({ userId, organizationId }: InputHasOrganizationRole, output) => {
+		const user_to_organization = await prisma.user_to_organization.findFirst({
+			where: {
+				userId,
+				organizationId,
+			}
+		});
+
+		if(user_to_organization){
+			return output("organization.hasUser", user_to_organization);
+		}
+		else {
+			return output("organization.hasNotUser", null);
+		}
+	})
+	.preCompletion(
+		"mustHaveUser",
+		{
+			result: "organization.hasUser",
+			catch: () => {
+				throw new NotAcceptableHttpException("organization.hasNotUser");
+			},
+			indexing: "userToOrganization"
+		}
+	)
+	.build();

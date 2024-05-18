@@ -12,7 +12,7 @@ describe("POST /organization", () => {
 			.testRoute(POST("POST", ""))
 			.setRequestProperties({
 				body: {
-					name: "",
+					name: "aaa",
 					ownerId: ""
 				}
 			})
@@ -33,7 +33,7 @@ describe("POST /organization", () => {
 			.testRoute(POST("POST", ""))
 			.setRequestProperties({
 				body: {
-					name: "",
+					name: "aaa",
 					ownerId: ""
 				}
 			})
@@ -64,7 +64,7 @@ describe("POST /organization", () => {
 			.testRoute(POST("POST", ""))
 			.setRequestProperties({
 				body: {
-					name: "",
+					name: "aaa",
 					ownerId: ""
 				}
 			})
@@ -98,8 +98,8 @@ describe("POST /organization", () => {
 			.testRoute(POST("POST", ""))
 			.setRequestProperties({
 				body: {
-					name: "",
-					ownerId: ""
+					name: "aaaa",
+					ownerId: "test"
 				}
 			})
 			.mockChecker(
@@ -118,7 +118,18 @@ describe("POST /organization", () => {
 			)
 			.launch();
 		
-		expect(spy).lastCalledWith({ data: { ownerId: "", name: "" } });
 		expect(res.information).toBe("organization.created");
+		expect(spy).lastCalledWith({ 
+			data: { 
+				ownerId: "test", 
+				name: "aaaa",
+				userToOrganization: {
+					create: {
+						organizationRole: "OWNER",
+						userId: "test"
+					}
+				}
+			}, 
+		});
 	});
 });
