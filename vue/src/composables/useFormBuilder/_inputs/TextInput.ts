@@ -1,17 +1,21 @@
+/* eslint-disable vue/require-prop-types */
 import { effect } from "vue";
 import type { BaseInputDef, InputProps } from "../types";
 import PrimaryInput from "@/components/PrimaryInput.vue";
 
-export type TextInputProps = InputProps<string>;
+export interface TextInputProps extends InputProps<string>{
+	placeholder?: string
+}
 
 export interface TextInputDef extends BaseInputDef {
 	type: "text"
 	defaultValue?: string
+	placeholder?: string
 }
 
 export const TextInput = defineComponent({
 	props: [
-		"label", "modelValue", "zodSchema", "name"
+		"label", "modelValue", "zodSchema", "name", "placeholder", "formId"
 	],
 	setup(props: TextInputProps, { expose, emit }){
 		const toValidated = ref(false);
@@ -56,7 +60,7 @@ export const TextInput = defineComponent({
 						"label", 
 						{
 							class: "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
-							for: props.name
+							for: `${props.name}-${props.formId}`
 						},
 						props.label
 					)
@@ -65,8 +69,9 @@ export const TextInput = defineComponent({
 					PrimaryInput, 
 					{
 						type: "text",
-						id: props.name,
+						id: `${props.name}-${props.formId}`,
 						modelValue: props.modelValue,
+						placeholder: props.placeholder,
 						"onUpdate:modelValue": (value: unknown) => {
 							emit("update:modelValue", value);
 						},

@@ -1,3 +1,4 @@
+/* eslint-disable vue/require-prop-types */
 import { effect } from "vue";
 import type { BaseInputDef, InputProps } from "../types";
 import PrimaryTextarea from "@/components/PrimaryTextarea.vue";
@@ -11,7 +12,7 @@ export interface TextareaInputDef extends BaseInputDef {
 
 export const TextareaInput = defineComponent({
 	props: [
-		"label", "modelValue", "zodSchema", "name"
+		"label", "modelValue", "zodSchema", "name", "formId"
 	],
 	setup(props: TextareaInputProps, { expose, emit }){
 		const toValidated = ref(false);
@@ -56,7 +57,7 @@ export const TextareaInput = defineComponent({
 						"label", 
 						{
 							class: "",
-							for: props.name,
+							for: `${props.name}-${props.formId}`,
 						},
 						props.label
 					)
@@ -65,8 +66,8 @@ export const TextareaInput = defineComponent({
 					PrimaryTextarea, 
 					{
 						type: "number",
-						name: props.name,
-						id: props.name,
+						name: `${props.name}-${props.formId}`,
+						id: `${props.name}-${props.formId}`,
 						modelValue: props.modelValue,
 						"onUpdate:modelValue": (value: unknown) => {
 							emit("update:modelValue", value);

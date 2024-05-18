@@ -1,3 +1,4 @@
+/* eslint-disable vue/require-prop-types */
 import { effect } from "vue";
 import type { BaseInputDef, InputProps } from "../types";
 import PrimaryComboBox from "@/components/PrimaryComboBox.vue";
@@ -27,7 +28,7 @@ export interface ComboBoxInputDef extends BaseInputDef {
 
 export const ComboBoxInput = defineComponent({
 	props: [
-		"label", "modelValue", "zodSchema", "name", "textButton", "placeholder", "emptyLabel", "items", "onUpdateSearchTerm"
+		"label", "modelValue", "zodSchema", "name", "textButton", "placeholder", "emptyLabel", "items", "onUpdateSearchTerm", "formId"
 	],
 	setup(props: ComboBoxInputProps, { expose, emit }){
 		const toValidated = ref(false);
@@ -72,7 +73,7 @@ export const ComboBoxInput = defineComponent({
 						"label", 
 						{
 							class: "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
-							for: props.name,
+							for: `${props.name}-${props.formId}`,
 						},
 						props.label
 					)
@@ -80,6 +81,7 @@ export const ComboBoxInput = defineComponent({
 				h(
 					PrimaryComboBox, 
 					{
+						id: `${props.name}-${props.formId}`,
 						items: props.items as {[P in keyof ItemComboBox]: ItemComboBox[P]}[],
 						getLabel: (i: unknown) => (i as ItemComboBox).label,
 						getIdentifier: (i: unknown) => (i as ItemComboBox).identifier,

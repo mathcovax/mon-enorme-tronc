@@ -80,6 +80,30 @@ export default {
 			},
 			btnClear: "Clear"
 		},
+		manageCategories: {
+			form: {
+				oldName: {
+					label: "Nom actuel : {currentName}"
+				},
+				name: {
+					label: "Nom de la catégorie",
+					minLength: "Doit faire au moins 3 caractères",
+					maxLength: "Doit faire au plus 255 caractères",
+				},
+				disabled: {
+					desc: "Désactiver la catégorie"
+				},
+				submit: "Valider",
+				required: "Champ obligatoire",
+			},
+			table: {
+				searchPlaceholder: "Chercher une categorie",
+				cols: {
+					name: "Nom",
+					disabled: "Catégorie active"
+				},
+			}
+		}
 	},
 	roles: {
 		CUSTOMER: "Client",
@@ -101,6 +125,11 @@ export default {
 		user: {
 			notfound: "Utilisateur introuvable.",
 			alreadyOwner: "l'utilisateur est déjà owner d'une organisation."
+		},
+		category: {
+			alreadyExist: "Le nom de catégory est déjà utilisais",
+			created: "La catégory a correctement étais créer.",
+			edited: "La catégory a correctement étais modifier.",
 		}
 	}
 };

@@ -28,7 +28,7 @@ model user {
 enum primordial_role {
     CUSTOMER
     MODERATOR
-    CATEGORIES_MASTER
+    CONTENTS_MASTER
     ADMIN
 }
 
@@ -43,7 +43,8 @@ model organization {
 
 model category {
     id              String                        @id @default(uuid())
-    name            String                        @db.VarChar(255)
+    name            String                        @unique @db.VarChar(255)
+    disabled        Boolean                       @default(false)
     parent_category category_to_parent_category[]
     product         product_to_category[]
 }
