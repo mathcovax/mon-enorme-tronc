@@ -486,7 +486,7 @@ export type response_17_0 = {
 export type response_17_1 = {
     code: 403;
     ok: false;
-    info: "user.role.invalid";
+    info: "category.notfound";
 } & {body: undefined};
 
 export type response_17_2 = {
@@ -521,7 +521,7 @@ export type response_18_0 = {
 export type response_18_1 = {
     code: 403;
     ok: false;
-    info: "user.role.invalid";
+    info: "category.notfound";
 } & {body: undefined};
 
 export type response_18_2 = {
