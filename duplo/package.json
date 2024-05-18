@@ -14,7 +14,11 @@
 		"studio": "prisma studio -n 0.0.0.0",
 		"fixture:user": "tsx src/fixtures --user",
 		"fixture:organization": "tsx src/fixtures --organization",
-		"fixture:all": "tsx src/fixtures --all"
+		"fixture:category": "tsx src/fixtures --category",
+		"fixture:product": "tsx src/fixtures --product-sheet",
+		"fixture:category-with-products": "tsx src/fixtures --category --with-product",
+		"fixture:category-with-parent": "tsx src/fixtures --category --with-parent",
+		"fixture:all": "tsx src/fixtures --category --with-product --with-parent"
 	},
 	"prisma": {
 		"schema": "src/prisma/schema.prisma"

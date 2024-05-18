@@ -368,7 +368,7 @@ export type parameters_14 = {
 export type response_14_0 = {
     code: 401;
     ok: false;
-    info: "access.token.invalid";
+    info: "firebase.token.invalid";
 } & {body: undefined};
 
 export type response_14_1 = {
@@ -492,13 +492,13 @@ export type response_17_1 = {
 export type response_17_2 = {
     code: 409;
     ok: false;
-    info: "category.alreadyExist";
+    info: "product_sheet.notfound";
 } & {body: undefined};
 
 export type response_17_3 = {
     code: 201;
     ok: true;
-    info: "category.created";
+    info: "product_sheet_to_category.created";
 } & {body: undefined};
 
 export type request_body_18 = {
@@ -521,7 +521,7 @@ export type response_18_0 = {
 export type response_18_1 = {
     code: 403;
     ok: false;
-    info: "category.notfound";
+    info: "organization.notfound";
 } & {body: undefined};
 
 export type response_18_2 = {
@@ -556,7 +556,7 @@ export type response_19_0 = {
 export type response_19_1 = {
     code: 403;
     ok: false;
-    info: "user.role.invalid";
+    info: "category.notfound";
 } & {body: undefined};
 
 export type response_19_2 = {

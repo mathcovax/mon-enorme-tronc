@@ -16,82 +16,37 @@ if (process.argv.includes("--user")) {
 }
 
 // ORGANIZATION
-if (process.argv.includes("--organization")) {
-	await repeater(15, makeUser)
-		.then(users => 
-			Promise.all(users.map(({ id }) => makeOrganization(id)))
-		);
-}
-
-// CATEGORY
-if (process.argv.includes("--category")) {
-	await repeater(10, makeCategory);
-}
-
-// PARENT_CATEGORY
-if (process.argv.includes("--parent-category")) {
-	await repeater(5, makeParentCategory);
-}
-
-// FUNCTION TO CREATE USERS, ORGANIZATIONS, PRODUCT SHEETS, AND CATEGORIES
 const createUsersAndOrganizations = async () => {
 	const users = await repeater(15, makeUser);
 	const organizations = await Promise.all(users.map(({ id }) => makeOrganization(id)));
 	return organizations;
 };
 
-// PRODUCT_SHEET
-if (process.argv.includes("--product-sheet")) {
-	await createUsersAndOrganizations()
-		.then((organizations) => organizations.map(({ id }) => makeProductSheet(id)))
-		.then((arr) => Promise.all(arr));
+if (process.argv.includes("--organization")) {
+	await createUsersAndOrganizations();
 }
 
-// PRODUCT_SHEET_TO_CATEGORY
-if (process.argv.includes("--with-product")) {
-	const createProductSheetToCategory = async () => {
-		const organizations = await createUsersAndOrganizations();
-		const productSheets = await Promise.all(
-			organizations.map(org => repeater(10, () => makeProductSheet(org.id)))
-		).then(results => results.flat());
-		const categories = await repeater(10, makeCategory);
+// CATEGORY
+if (process.argv.includes("--category")) {
+	const categories = await repeater(10, makeCategory);
 
-		await Promise.all(productSheets.map(
-			productSheet => makeProductSheetToCategory(
-				productSheet.id, categories[Math.floor(Math.random() * categories.length)].id
-			)
-		));
-	};
-	await createProductSheetToCategory();
-}
+	if (process.argv.includes("--with-parent")) {
+		const parentCategories = await repeater(5, makeParentCategory);
+		await Promise.all(categories.map(category => makeCategoryToParentCategory(
+			category.id, parentCategories[Math.floor(Math.random() * parentCategories.length)].id
+		)));
+	}
 
-// ALL
-if (process.argv.includes("--all")) {
-	const createAll = async () => {
+	if (process.argv.includes("--with-product")) {
 		const organizations = await createUsersAndOrganizations();
 		const productSheets = await Promise.all(
 			organizations.map(org => repeater(10, () => makeProductSheet(org.id)))
 		).then(results => results.flat());
 		
-		const categories = await repeater(10, makeCategory);
-		const parentCategories = await repeater(5, makeParentCategory);
-
-		await Promise.all([	
-			...categories.map(category => makeCategoryToParentCategory(
-				category.id, parentCategories[Math.floor(Math.random() * parentCategories.length)].id
-			)),
-			...productSheets.map(productSheet => makeProductSheetToCategory(
+		await Promise.all(productSheets.map(
+			productSheet => makeProductSheetToCategory(
 				productSheet.id, categories[Math.floor(Math.random() * categories.length)].id
-			)),
-		]);
-	};
-
-	await createAll();
+			)
+		));
+	}
 }
-// @mathcovax - I have a question about the following code:
-/*
-// ORGANIZATION (Separate section if needed)
-if (process.argv.includes("--organization")) {
-	await createUsersAndOrganizations();
-}
-*/

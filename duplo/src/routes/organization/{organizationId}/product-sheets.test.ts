@@ -38,7 +38,6 @@ describe("GET /organization/{organizationId}/product-sheets", () => {
 			skip: 0,
 			take: 10,
 		});
-		console.log(res.body);
 		expect(res.information).toBe("product_sheets.found");
 	});
 });

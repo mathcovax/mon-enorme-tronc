@@ -31,12 +31,12 @@ export default (): RouteRecordRaw[] => [
 			{
 				name: routerPageOrganization.CREATE_PRODUCT_SHEET,
 				path: "/organization/:organizationId/create-product-sheet",
-				component: () => import("./pages/FormProductSheet.vue")
+				component: () => import("./pages/CreateProductSheet.vue")
 			},
 			{
 				name: routerPageOrganization.EDIT_PRODUCT_SHEET,
 				path: "/cate organization/:organizationId/edit-product-sheet/:productSheetId",
-				component: () => import("./pages/FormProductSheet.vue")
+				component: () => import("./pages/EditProductSheet.vue")
 			}
 		]
 	}
