@@ -1,5 +1,5 @@
 import { duploTesting } from "@test/setup";
-import { adminPanelEntry, authEntry, basicEntry, contentPanelEntry } from "./entry";
+import { adminPanelEntry, authEntry, basicEntry, contentPanelEntry, organizationOwnerEntry, organizationEntry } from "./entry";
 
 describe("entry", () => {
 	it("basic", async () => {
@@ -39,5 +39,57 @@ describe("entry", () => {
 			.launch();
 
 		expect(res3.information).toBe("entry.accepted");
+	});
+
+	it("organization", async () => {
+		const res = await duploTesting
+			.testRoute(organizationEntry)
+			.setDefaultFloorValue({ accessTokenContent: {} })
+			.setRequestProperties({
+				params: {
+					organizationId: "tete"
+				}
+			})
+			.mockChecker(
+				0,
+				{ info: "organization.hasNotUser", data: null }
+			)
+			.launch();
+
+		expect(res.information).toBe("entry.refuse");
+
+		const res1 = await duploTesting
+			.testRoute(organizationEntry)
+			.setDefaultFloorValue({ accessTokenContent: {} })
+			.setRequestProperties({
+				params: {
+					organizationId: "tete"
+				}
+			})
+			.mockChecker(
+				0,
+				{ info: "organization.hasUser", data: null }
+			)
+			.launch();
+
+		expect(res1.information).toBe("entry.accepted");
+	});
+
+	it("organization owner", async () => {
+		const res = await duploTesting
+			.testRoute(organizationOwnerEntry)
+			.setDefaultFloorValue({ accessTokenContent: {} })
+			.setRequestProperties({
+				params: {
+					organizationId: "tete"
+				}
+			})
+			.mockProcess(
+				0,
+				{ info: "organization.hasNotUser", data: null }
+			)
+			.launch();
+
+		expect(res.information).toBe("entry.accepted");
 	});
 });

@@ -31,4 +31,27 @@ describe("user checker", () => {
 
 		expect(result.info).toBe("user.notfound");
 	});
+
+	it("find user by EFl", async () => {
+		const spy = vi.fn(() => ({}));
+		MockPrisma.set("user", "findFirst", spy);
+
+		const result = await duploTesting.testChecker(
+			userExistCheck, 
+			inputUser.EFL({
+				email: "eee",
+				firstname: "aaa",
+				lastname: "yyy"
+			})
+		);
+
+		expect(spy).lastCalledWith({
+			where: {
+				email: "eee",
+				firstname: "aaa",
+				lastname: "yyy"
+			}
+		});
+		expect(result.info).toBe("user.exist");
+	});
 });

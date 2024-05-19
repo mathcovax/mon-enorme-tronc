@@ -24,7 +24,7 @@ export const contentPanelEntry = hasPrimordialRole({ options: { primordialRole: 
 		new SwaggerIgnore(),
 	);
 
-export const organizationAdminEntry = mustBeConnected({ pickup: ["accessTokenContent"] })
+export const organizationOwnerEntry = mustBeConnected({ pickup: ["accessTokenContent"] })
 	.declareRoute("GET", ["/entry/organization/{organizationId}/manage-user"])
 	.extract({
 		params: {
