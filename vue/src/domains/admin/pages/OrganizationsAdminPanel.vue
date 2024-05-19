@@ -87,7 +87,7 @@ watch(searchName, () => getOrganizations(currentPage.value = 0, searchName.value
 </script>
 
 <template>
-	<div class="w-full flex flex-col items-center p-6 gap-10">
+	<div class="flex flex-col items-center w-full gap-10 p-6">
 		<CreateOrganizationForm
 			@submit="submit"
 			class="max-w-[500px] w-[80%]"

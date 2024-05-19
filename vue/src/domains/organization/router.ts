@@ -5,7 +5,8 @@ export const routerPageOrganization = Object.freeze({
 	MANAGE_PRODUCT_SHEET: "manage-product-sheet",
 	CREATE_PRODUCT_SHEET: "create-product-sheet",
 	EDIT_PRODUCT_SHEET: "edit-product-sheet",
-	DASHBOARD: "organization"
+	DASHBOARD: "organization",
+	GET_PRODUCT_SHEET: "get-product-sheet",
 });
 
 export default (): RouteRecordRaw[] => [
@@ -35,8 +36,13 @@ export default (): RouteRecordRaw[] => [
 			},
 			{
 				name: routerPageOrganization.EDIT_PRODUCT_SHEET,
-				path: "/cate organization/:organizationId/edit-product-sheet/:productSheetId",
+				path: "/organization/:organizationId/edit-product-sheet/:productSheetId",
 				component: () => import("./pages/EditProductSheet.vue")
+			},
+			{
+				name: routerPageOrganization.GET_PRODUCT_SHEET,
+				path: "/organization/:organizationId/product-sheets",
+				component: () => import("./pages/ProductSheets.vue")
 			}
 		]
 	}

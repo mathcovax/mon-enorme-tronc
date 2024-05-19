@@ -76,7 +76,7 @@ const slot = defineSlots<Record<string,(prop: {item: T}) => unknown | undefined>
 			v-if="currentPage !== undefined"
 		>
 			<TableCell :colspan="Object.keys(cols as object).length">
-				<div class="w-full flex justify-center items-center gap-10">
+				<div class="flex items-center justify-center w-full gap-10">
 					<TheButton
 						variant="ghost"
 						@click="emit('clickPrevious')"
