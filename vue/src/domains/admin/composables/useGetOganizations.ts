@@ -1,9 +1,4 @@
-import type { GetDef, GetResponseByInfo } from "@/lib/duploTo/EnrichedDuploTo";
-
-export type Organization = GetResponseByInfo<
-	GetDef<"GET", "/organizations">,
-	"organizations"
->["body"][number]
+import type { Organization } from "@/lib/utils";
 
 export function useGetOganizations(){
 	const organizations = ref<Organization[]>([]);

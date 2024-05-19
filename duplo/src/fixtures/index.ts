@@ -17,8 +17,9 @@ if (process.argv.includes("--user")) {
 // ORGANIZATION
 if (process.argv.includes("--organization")) {
 	await repeater(15, makeUser)
-		.then(users => users.map(({ id }) => makeOrganization(id)))
-		.then(arr => Promise.all(arr));
+		.then(users => 
+			Promise.all(users.map(({ id }) => makeOrganization(id)))
+		);
 }
 
 // // CATEGORIES

@@ -4,6 +4,7 @@ import auth from "@/domains/auth/router";
 import product from "@/domains/product/router";
 import admin from "@/domains/admin/router";
 import content from "@/domains/content/router";
+import organization from "@/domains/organization/router";
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,6 +18,7 @@ const router = createRouter({
 				...auth(),
 			]
 		},
+		...organization(),
 		...content(),
 		...admin(),
 		notFound(),

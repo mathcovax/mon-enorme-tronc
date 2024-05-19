@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import type { Organization } from "@/lib/utils";
 import { useCreateOrganizationForm } from "../composables/useCreateOrganizationForm"; 
-import { useGetOganizations, type Organization } from "../composables/useGetOganizations"; 
+import { useGetOganizations } from "../composables/useGetOganizations"; 
 
 const { 
 	CreateOrganizationForm, 
@@ -81,7 +82,7 @@ function suspended(organization: Organization){
 }
 
 getOrganizations(currentPage.value, searchName.value);
-watch(searchName, () => getOrganizations(0, searchName.value));
+watch(searchName, () => getOrganizations(currentPage.value = 0, searchName.value));
 </script>
 
 <template>

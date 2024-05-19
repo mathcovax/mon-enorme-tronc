@@ -95,7 +95,7 @@ function openPopup(user: User){
 getUsers(currentPage.value, search.email, search.role);
 watch(
 	() => search.email + search.role, 
-	() => getUsers(0, search.email, search.role)
+	() => getUsers(currentPage.value = 0, search.email, search.role)
 );
 </script>
 
@@ -141,7 +141,7 @@ watch(
 				class="items-center"
 			>
 				<template #user="{modelValue}">
-					<Span class="text-center">{{ modelValue?.email }}</Span>
+					<span class="text-center">{{ modelValue?.email }}</span>
 				</template>
 
 				<PrimaryButton

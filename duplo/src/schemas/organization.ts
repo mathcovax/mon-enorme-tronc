@@ -9,7 +9,10 @@ export const organizationSchema = zod.object({
 });
 
 export const organizationRolesTuple: TuplifyUnion<organization_role> = [
-	"STORE_KEEPER", "PRODUCT_SHEET_MANAGER", "ACCOUNTANT", "OWNER"
+	"STORE_KEEPER",
+	"PRODUCT_SHEET_MANAGER",
+	"ACCOUNTANT",
+	"OWNER",
 ];
 
 export const organizationRolesEnum: UninonToEnum<organization_role> = {
@@ -18,3 +21,11 @@ export const organizationRolesEnum: UninonToEnum<organization_role> = {
 	ACCOUNTANT: "ACCOUNTANT",
 	OWNER: "OWNER",
 };
+
+export const organizationUserSchema = zod.object({
+	id: zod.string(),
+	email: zod.string(),
+	lastname: zod.string(),
+	firstname: zod.string(),
+	organizationRole: zod.enum(organizationRolesTuple)
+});

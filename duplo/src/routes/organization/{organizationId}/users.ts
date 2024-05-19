@@ -1,4 +1,4 @@
-import { userSchema } from "@schemas/user";
+import { organizationUserSchema } from "@schemas/organization";
 import { hasOrganizationRole } from "@security/hasOrganizationRole";
 import { mustBeConnected } from "@security/mustBeConnected";
 
@@ -37,19 +37,31 @@ export const GET = (method: Methods, path: string) =>
 						user: email 
 							? {
 								email: {
-									contains: email
+									contains: email,
+									mode: "insensitive",
 								}
 							}
 							: undefined
 					},
 					select: {
+						organizationRole: true,
 						user: true
 					},
 					take: 10,
 					skip: page * 10,
-				}).then(userToOrganizationCollection => userToOrganizationCollection.map(v => v.user));
+				}).then(
+					userToOrganizationCollection => userToOrganizationCollection.map(
+						v => ({ 
+							id: v.user.id, 
+							email: v.user.email,
+							firstname: v.user.firstname,
+							lastname: v.user.lastname,
+							organizationRole: v.organizationRole 
+						})
+					)
+				);
 
 				throw new OkHttpException("organization.users", users);
 			},
-			new IHaveSentThis(OkHttpException.code, "organization.users", userSchema.array())
+			new IHaveSentThis(OkHttpException.code, "organization.users", organizationUserSchema.array())
 		);

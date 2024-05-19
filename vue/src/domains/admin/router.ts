@@ -14,12 +14,12 @@ export default (): RouteRecordRaw[] => [
 			{
 				name: routerPageNameAdminPanel.ADMIN_PANEL_HOME,
 				path: "/admin-panel",
-				component: () => import("./pages/homeAdminPanel.vue"),
+				component: () => import("./pages/HomeAdminPanel.vue"),
 			},
 			{
 				name: routerPageNameAdminPanel.ADMIN_PANEL_ORGANIZATIONS,
 				path: "/admin-panel/organizations",
-				component: () => import("./pages/organizationsAdminPanel.vue"),
+				component: () => import("./pages/OrganizationsAdminPanel.vue"),
 			},
 			{
 				name: routerPageNameAdminPanel.ADMIN_PANEL_USERS,
