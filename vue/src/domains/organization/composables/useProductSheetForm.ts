@@ -1,6 +1,6 @@
 import type { ItemComboBox } from "@/composables/useFormBuilder/_inputs/ComboBoxInput";
 
-export function useCreateProductSheetForm() {
+export function useProductSheetForm() {
 	const suggestedCategory = ref<ItemComboBox[]>([]);
 	
 	function onSearchCategory(categoryName: string) {
@@ -59,8 +59,8 @@ export function useCreateProductSheetForm() {
 		})),
 	});
 	return {
-		CreateProductSheetForm: Form,
-		checkCreateProductSheetForm: checkForm,
-		resetCreateProductSheetForm: resetForm,
+		ProductSheetForm: Form,
+		checkProductSheetForm: checkForm,
+		resetProductSheetForm: resetForm,
 	};
 }

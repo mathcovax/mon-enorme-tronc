@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import { useCreateProductSheetForm } from "../composables/useCreateProductSheetForm";
+import { useProductSheetForm } from "../composables/useProductSheetForm";
 
 const { 
-	CreateProductSheetForm, 
-	checkCreateProductSheetForm, 
-	resetCreateProductSheetForm 
-} = useCreateProductSheetForm();
+	ProductSheetForm, 
+	checkProductSheetForm, 
+	resetProductSheetForm 
+} = useProductSheetForm();
 const router = useRouter();
 const { params: { organizationId } } = useRoute();
 
 
 async function submit() {
 
-	const formFields = await checkCreateProductSheetForm();
+	const formFields = await checkProductSheetForm();
 
-	if(!formFields) {
+	if (!formFields) {
 		return; 
 	}
 
@@ -31,7 +31,7 @@ async function submit() {
 		)
 		.result;
 	
-	if(result.success && result.info === "product_sheet.created"){
+	if (result.success && result.info === "product_sheet.created") {
 		await duploTo.enriched
 			.post(
 				"/category/{categoryId}/product-sheet/{productSheetId}",
@@ -39,13 +39,13 @@ async function submit() {
 				{ params: { productSheetId: result.data, categoryId: formFields.categoryId } }
 			)
 			.info("product_sheet_to_category.created", () => {
-				resetCreateProductSheetForm();
+				resetProductSheetForm();
 			}); 
 	}
 }
 
 onMounted(async () => {
-	if(typeof organizationId !== "string"){
+	if (typeof organizationId !== "string") {
 		router.push({ name: routerPageName.EDITO_HOME });
 	}
 });
@@ -53,12 +53,12 @@ onMounted(async () => {
 </script>
 
 <template>
-	<CreateProductSheetForm @submit="submit">
+	<ProductSheetForm @submit="submit">
 		<PrimaryButton
 			type="submit"
 			class="col-span-12"
 		>
 			{{ $t("page.createProductSheet.form.submit") }}
 		</PrimaryButton>
-	</CreateProductSheetForm>
+	</ProductSheetForm>
 </template>

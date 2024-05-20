@@ -34,21 +34,21 @@ const cols: BigTableColDef<ProductSheet>[] = [
 	},
 ];
 
-function next(){
-	if(productSheets.value.length < 10 ) {
+function next() {
+	if (productSheets.value.length < 10) {
 		return;
 	}
 	getProductSheets(currentPage.value+=1, searchName.value);
 }
 
-function previous(){
-	if(currentPage.value === 0) {
+function previous() {
+	if (currentPage.value === 0) {
 		return;
 	}
 	getProductSheets(currentPage.value-=1, searchName.value);
 }
 
-function redirectToEditPage(productSheet: ProductSheet){
+function redirectToEditPage(productSheet: ProductSheet) {
 	router.push({
 		name: routerPageName.EDIT_PRODUCT_SHEET,
 		params: {
