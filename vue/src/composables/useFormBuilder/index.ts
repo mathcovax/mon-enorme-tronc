@@ -25,7 +25,7 @@ export function useFormBuilder<
 		Object.keys(formInputs).map((name) => [name,  ref()])
 	);
 
-	function resetForm(){
+	function resetForm() {
 		Object.entries(formInputs).map(([name, input]) => {
 			input = isRef(input) ? input.value : input;
 
@@ -81,15 +81,15 @@ export function useFormBuilder<
 		);
 	};
 
-	async function checkForm(){
+	async function checkForm() {
 		let valid = true;
 
 		const resultValue: Record<string, unknown> = {};
 		
-		for(const ref of inputRefs) {
+		for (const ref of inputRefs) {
 			const key = ref.component?.props.name;
 			const submit = ref.component?.exposed?.submit;
-			if(
+			if (
 				typeof key !== "string" || 
 				typeof submit !== "function"
 			) {

@@ -26,7 +26,7 @@ export const organizationExistCheck = duplo
 			where,
 		});
 
-		if(organization){
+		if (organization) {
 			return output("organization.exist", organization);
 		}
 		else {
@@ -60,7 +60,7 @@ export const organizationHasUserCheck = duplo
 			}
 		});
 
-		if(user_to_organization){
+		if (user_to_organization) {
 			return output("organization.hasUser", user_to_organization);
 		}
 		else {

@@ -30,10 +30,10 @@ const cols: BigTableColDef<Category>[] = [
 	},
 ];
 
-async function submitCreate(){
+async function submitCreate() {
 	const formFields = await checkCreateCategoryForm();
 
-	if(!formFields) {
+	if (!formFields) {
 		return; 
 	}
 
@@ -49,10 +49,10 @@ async function submitCreate(){
 		.result;
 }
 
-async function submitPatch(){
+async function submitPatch() {
 	const formFields = await checkPatchCategoryForm();
 
-	if(!formFields) {
+	if (!formFields) {
 		return; 
 	}
 
@@ -70,21 +70,21 @@ async function submitPatch(){
 		.result;
 }
 
-function next(){
-	if(categories.value.length < 10 ) {
+function next() {
+	if (categories.value.length < 10) {
 		return;
 	}
 	getCategories(currentPage.value+=1, searchName.value);
 }
 
-function previous(){
-	if(currentPage.value === 0 ) {
+function previous() {
+	if (currentPage.value === 0) {
 		return;
 	}
 	getCategories(currentPage.value-=1, searchName.value);
 }
 
-function openPopup(category: Category){
+function openPopup(category: Category) {
 	valuesPatchCategoryForm.oldName.value = category.name;
 	valuesPatchCategoryForm.name.value = category.name;
 	valuesPatchCategoryForm.disabled.value = category.disabled;

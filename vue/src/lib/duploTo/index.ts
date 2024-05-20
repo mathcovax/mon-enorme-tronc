@@ -19,21 +19,21 @@ export const duploTo = new DuploTo<
 });
 
 duploTo.setDefaultHeaders({
-	get "access-token"(){
+	get "access-token"() {
 		return useUserStore().accessToken || undefined;
 	}
 });
 
 duploTo.setResponseInterceptor(
 	(responseObject, request, params) => {
-		if(
+		if (
 			params.disabledToast !== true && 
 			responseObject.success && 
 			responseObject.info &&
 			i18n.global.te(`response.${responseObject.info}`)
 		) {
-			if(!params.disabledToast || !params.disabledToast.includes(responseObject.info)){
-				if(responseObject.response.ok){
+			if (!params.disabledToast || !params.disabledToast.includes(responseObject.info)) {
+				if (responseObject.response.ok) {
 					successToast($t(`response.${responseObject.info}`));
 				}
 				else {

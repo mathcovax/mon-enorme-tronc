@@ -1,9 +1,9 @@
 import type { Category } from "@/lib/utils";
 
-export function useGetCategories(){
+export function useGetCategories() {
 	const categories = ref<Category[]>([]);
 
-	function getCategories(page: number, name: string){
+	function getCategories(page: number, name: string) {
 		return duploTo.enriched
 			.get(
 				"/categories",

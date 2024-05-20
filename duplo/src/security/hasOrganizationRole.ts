@@ -20,7 +20,7 @@ export const hasOrganizationRole = duplo
 		({ pickup }) => {
 			const input = pickup("input");
 
-			if(!input){
+			if (!input) {
 				throw new Error("input is missing in process hasOrganizationRole");
 			}
 
@@ -44,10 +44,10 @@ export const hasOrganizationRole = duplo
 			const { organizationRole: currentOrganizationRole } = pickup("options");
 			const { organizationRole: userOrganizationRole } = pickup("userToOrganization");
 
-			if(
+			if (
 				userOrganizationRole !== currentOrganizationRole &&
 				!organizationRolesHierarchy[userOrganizationRole].includes(currentOrganizationRole)
-			){
+			) {
 				throw new ForbiddenHttpException("user.role.organization.invalid");
 			}
 

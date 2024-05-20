@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { useUserForm } from "../composables/useUserForm";
-import { useGetUsers } from "../composables/useGetUsers"; 
+import { useGetUsers } from "../composables/useGetUsers";
 import { primordialRoles, type PrimordialRole, type User } from "@/lib/utils";
 import type ThePopup from "@/components/ThePopup.vue";
 
-const { 
-	UserForm, 
-	checkUserForm, 
+const {
+	UserForm,
+	checkUserForm,
 	resetUserForm,
 	valuesUserForm
 } = useUserForm();
@@ -23,15 +23,15 @@ const popup = ref<InstanceType<typeof ThePopup>>();
 async function submit() {
 	const formFields = await checkUserForm();
 
-	if(!formFields) {
-		return; 
+	if (!formFields) {
+		return;
 	}
 
 	await duploTo.enriched
 		.patch(
 			"/user/{userId}@admin",
-			{ 
-				primordialRole: formFields.primordialRole, 
+			{
+				primordialRole: formFields.primordialRole,
 				muted: formFields.muted,
 			},
 			{ params: { userId: formFields.user.id } }
@@ -62,30 +62,30 @@ const cols: BigTableColDef<User>[] = [
 	},
 ];
 
-function next(){
-	if(users.value.length < 10 ) {
+function next() {
+	if (users.value.length < 10) {
 		return;
 	}
-	getUsers(currentPage.value+=1, search.email, search.role);
+	getUsers(currentPage.value += 1, search.email, search.role);
 }
 
-function previous(){
-	if(currentPage.value === 0 ) {
+function previous() {
+	if (currentPage.value === 0) {
 		return;
 	}
-	getUsers(currentPage.value-=1, search.email, search.role);
+	getUsers(currentPage.value -= 1, search.email, search.role);
 }
 
-function clear(){
-	search.email = ""; 
+function clear() {
+	search.email = "";
 	search.role = undefined;
 }
 
-function openPopup(user: User){
-	if(user.primordialRole === "ADMIN"){
-		return; 
+function openPopup(user: User) {
+	if (user.primordialRole === "ADMIN") {
+		return;
 	}
-	
+
 	valuesUserForm.user.value = user;
 	valuesUserForm.primordialRole.value = user.primordialRole;
 	valuesUserForm.muted.value = user.muted;
@@ -94,7 +94,7 @@ function openPopup(user: User){
 
 getUsers(currentPage.value, search.email, search.role);
 watch(
-	() => search.email + search.role, 
+	() => search.email + search.role,
 	() => getUsers(currentPage.value = 0, search.email, search.role)
 );
 </script>
@@ -110,7 +110,7 @@ watch(
 
 			<PrimarySelect
 				class="max-w-[300px]"
-				:items="primordialRoles.map(r => ({label: $t(`roles.${r}`), value: r}))"
+				:items="primordialRoles.map(r => ({ label: $t(`roles.${r}`), value: r }))"
 				:placeholder="$t('page.manageUser.table.searchPlaceholderRole')"
 				v-model="search.role"
 			/>
@@ -140,7 +140,7 @@ watch(
 				@submit="submit"
 				class="items-center"
 			>
-				<template #user="{modelValue}">
+				<template #user="{ modelValue }">
 					<span class="text-center">{{ modelValue?.email }}</span>
 				</template>
 

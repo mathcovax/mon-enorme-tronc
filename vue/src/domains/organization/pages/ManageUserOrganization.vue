@@ -41,10 +41,10 @@ const cols: BigTableColDef<OrganizationUser>[] = [
 	},
 ];
 
-async function submit(){
+async function submit() {
 	const formFields = await checkFormOrganizationUserAdd();
 
-	if(!formFields){
+	if (!formFields) {
 		return;
 	}
 
@@ -65,8 +65,8 @@ async function submit(){
 		});
 }
 
-function openPopup(user: OrganizationUser){
-	if(user.organizationRole === "OWNER"){
+function openPopup(user: OrganizationUser) {
+	if (user.organizationRole === "OWNER") {
 		return; 
 	}
 	valuesFormOrganizationUserEdit.user.value = user;
@@ -74,10 +74,10 @@ function openPopup(user: OrganizationUser){
 	popup.value?.open();
 }
 
-async function submitPatch(){
+async function submitPatch() {
 	const formFields = await checkFormOrganizationUserEdit();
 
-	if(!formFields){
+	if (!formFields) {
 		return;
 	}
 
@@ -96,8 +96,8 @@ async function submitPatch(){
 		});
 }
 
-function deleteUser(){
-	if(!valuesFormOrganizationUserEdit.user.value){
+function deleteUser() {
+	if (!valuesFormOrganizationUserEdit.user.value) {
 		return;
 	}
 
@@ -118,15 +118,15 @@ function deleteUser(){
 		});
 }
 
-function next(){
-	if(organisationUsers.value.length < 10 ) {
+function next() {
+	if (organisationUsers.value.length < 10) {
 		return;
 	}
 	getOrganizationUsers(currentPage.value+=1, searchEmail.value);
 }
 
-function previous(){
-	if(currentPage.value === 0 ) {
+function previous() {
+	if (currentPage.value === 0) {
 		return;
 	}
 	getOrganizationUsers(currentPage.value-=1, searchEmail.value);

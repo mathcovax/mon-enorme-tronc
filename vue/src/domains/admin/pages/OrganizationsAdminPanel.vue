@@ -13,8 +13,8 @@ const { organizations, getOrganizations } = useGetOganizations();
 async function submit() {
 	const formFields = await checkCreateOrganizationForm();
 
-	if(!formFields) {
-		return; 
+	if (!formFields) {
+		return;
 	}
 
 	await duploTo.enriched
@@ -53,21 +53,21 @@ const cols: BigTableColDef<Organization>[] = [
 	},
 ];
 
-function next(){
-	if(organizations.value.length < 10 ) {
+function next() {
+	if (organizations.value.length < 10) {
 		return;
 	}
 	getOrganizations(currentPage.value+=1, searchName.value);
 }
 
-function previous(){
-	if(currentPage.value === 0 ) {
+function previous() {
+	if (currentPage.value === 0) {
 		return;
 	}
 	getOrganizations(currentPage.value-=1, searchName.value);
 }
 
-function suspended(organization: Organization){
+function suspended(organization: Organization) {
 	duploTo.enriched
 		.patch(
 			"/organization/{organizationId}@admin",

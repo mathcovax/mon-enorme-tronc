@@ -27,6 +27,11 @@ export default tseslint.config(
 			"array-bracket-newline": ["error", { "multiline": true, "minItems": 4 }],
 			"array-bracket-spacing": ["error", "never"],
 			"key-spacing": ["error", { "beforeColon": false }],
+			"keyword-spacing": ["error", { "before": true, "after": true }], 
+			"space-in-parens": ["error", "never"],
+			"arrow-spacing": ["error", { "before": true, "after": true }],
+			"space-before-blocks": ["error", "always"],
+			"func-call-spacing": ["error", "never"],
 		}
 	},
 );

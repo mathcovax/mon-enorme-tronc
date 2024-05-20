@@ -45,7 +45,7 @@ export const POST = (method: Methods, path: string) => hasPrimordialRole({ optio
 				}
 			});
 
-			if(hasOrganization){
+			if (hasOrganization) {
 				throw new ConflictHttpException("user.alreadyOwner");
 			}
 

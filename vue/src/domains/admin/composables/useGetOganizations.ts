@@ -1,9 +1,9 @@
 import type { Organization } from "@/lib/utils";
 
-export function useGetOganizations(){
+export function useGetOganizations() {
 	const organizations = ref<Organization[]>([]);
 
-	function getOrganizations(page: number, name: string){
+	function getOrganizations(page: number, name: string) {
 		return duploTo.enriched
 			.get(
 				"/organizations",

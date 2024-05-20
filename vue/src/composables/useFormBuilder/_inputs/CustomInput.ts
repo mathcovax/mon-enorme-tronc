@@ -13,14 +13,14 @@ export const CustomInput = defineComponent({
 	props: [
 		"label", "modelValue", "zodSchema", "name", "formId"
 	],
-	setup(props: CutsomInputProps, { expose, slots }){
+	setup(props: CutsomInputProps, { expose, slots }) {
 		const toValidated = ref(false);
 		const errorMessage = ref("");
 
-		async function submit(){
-			if(props.zodSchema){
+		async function submit() {
+			if (props.zodSchema) {
 				const result = await props.zodSchema.safeParseAsync(props.modelValue);
-				if(!result.success){
+				if (!result.success) {
 					toValidated.value = true;
 					throw new Error(result.error.issues[0].message);
 				}
@@ -34,9 +34,9 @@ export const CustomInput = defineComponent({
 		expose({ submit });
 
 		effect(async () => {
-			if(toValidated.value && props.zodSchema){
+			if (toValidated.value && props.zodSchema) {
 				const result = await props.zodSchema.safeParseAsync(props.modelValue);
-				if(!result.success){
+				if (!result.success) {
 					errorMessage.value = result.error.issues[0].message;
 					return;
 				}

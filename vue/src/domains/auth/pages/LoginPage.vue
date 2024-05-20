@@ -7,7 +7,7 @@ const auth = getAuth(firebaseApp);
 const router = useRouter();
 const { setAccessToken, fetchUserValue } = useUserStore();
 
-async function googleSign(){
+async function googleSign() {
 	try {
 		const result = await signInWithPopup(auth, provider);
 		const fireBaseIdToken = await result.user.getIdToken();

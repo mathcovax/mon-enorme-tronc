@@ -14,14 +14,14 @@ export const NumberInput = defineComponent({
 	props: [
 		"label", "modelValue", "zodSchema", "name", "formId"
 	],
-	setup(props: NumberInputProps, { expose, emit }){
+	setup(props: NumberInputProps, { expose, emit }) {
 		const toValidated = ref(false);
 		const errorMessage = ref("");
 
-		async function submit(){
-			if(props.zodSchema){
+		async function submit() {
+			if (props.zodSchema) {
 				const result = await props.zodSchema.safeParseAsync(props.modelValue);
-				if(!result.success){
+				if (!result.success) {
 					toValidated.value = true;
 					throw new Error(result.error.issues[0].message);
 				}
@@ -35,9 +35,9 @@ export const NumberInput = defineComponent({
 		expose({ submit });
 
 		effect(async () => {
-			if(toValidated.value && props.zodSchema){
+			if (toValidated.value && props.zodSchema) {
 				const result = await props.zodSchema.safeParseAsync(props.modelValue);
-				if(!result.success){
+				if (!result.success) {
 					errorMessage.value = result.error.issues[0].message;
 					return;
 				}

@@ -26,7 +26,7 @@ const emit = defineEmits<{
 	clickPrevious: []
 }>();
 
-const slot = defineSlots<Record<string, (prop: {item: T}) => unknown | undefined>>();
+const slot = defineSlots<Record<string,(prop: {item: T}) => unknown | undefined>>();
 
 </script>
 

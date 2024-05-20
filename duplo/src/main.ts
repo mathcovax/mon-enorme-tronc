@@ -55,7 +55,7 @@ duplo.use(
 );
 duplo.use(duploTypeGenerator, { outputFile: "../vue/src/lib/duploTo/EnrichedDuploTo.d.ts" });
 
-if(ENV.ENVIRONMENT === "DEV"){
+if (ENV.ENVIRONMENT === "DEV") {
 	duplo.setDefaultErrorExtract((res, type, index, err: ZodAcceleratorError) => {
 		throw new BadRequestHttpException(`TYPE_ERROR.${type}.${index}`, err.message);
 	});

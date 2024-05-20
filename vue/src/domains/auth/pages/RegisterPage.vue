@@ -33,7 +33,7 @@ async function submit() {
 }
 
 onMounted(async () => {
-	if(typeof fireBaseIdToken !== "string"){
+	if (typeof fireBaseIdToken !== "string") {
 		router.push({ name: routerPageName.AUTH_LOGIN });
 	}
 });

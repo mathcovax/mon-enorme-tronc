@@ -1,4 +1,4 @@
-export function useCategoryForm(){
+export function useCategoryForm() {
 	const { Form, checkForm, values, resetForm } = useFormBuilder({
 		oldName: {
 			type: "custom",

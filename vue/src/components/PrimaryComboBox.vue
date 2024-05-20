@@ -38,7 +38,7 @@ const emit = defineEmits<{
 
 const open = ref(false);
 
-function onSelect(value: T){
+function onSelect(value: T) {
 	emit("update:modelValue", value);
 	open.value = false;
 }

@@ -8,7 +8,7 @@ declare global {
 export let firebaseAuth: auth.Auth;
 
 duplo.addHook("beforeListenHttpServer", async () => {
-	if(!existsSync(ENV.FIREBASE_CREDENTIAL_PATH)){
+	if (!existsSync(ENV.FIREBASE_CREDENTIAL_PATH)) {
 		throw new Error("Firebase credential not found.");
 	}
 

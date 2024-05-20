@@ -10,18 +10,18 @@ export class MockFetch {
 
 	static fetch = global.fetch;
 
-	static addResponse(matchUrl: RegExp, callback: AnyFunction){
+	static addResponse(matchUrl: RegExp, callback: AnyFunction) {
 		this.requests.push({
 			matchUrl,
 			callback,
 		});
 	}
 
-	static clearRequests(){
+	static clearRequests() {
 		this.requests = [];
 	}
 
-	static start(){
+	static start() {
 		global.fetch = async(url, ...args) => {
 			const responses = this.requests
 				.find(v => v.matchUrl.test(url as string));
@@ -30,7 +30,7 @@ export class MockFetch {
 		};
 	}
 
-	static stop(){
+	static stop() {
 		global.fetch = this.fetch;
 	}
 }

@@ -16,7 +16,7 @@ export const S3 = global.S3 = new S3Client({
 });
 
 duplo.addHook("beforeListenHttpServer", async () => {
-	try{
+	try {
 		await S3.send(new HeadBucketCommand({ Bucket: ENV.MINIO_BUCKET }));
 	}
 	catch {

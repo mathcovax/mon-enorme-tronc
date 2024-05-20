@@ -40,7 +40,7 @@ describe("GET /category/{categoryName}/products", () => {
 		expect(res.information).toBe("category.products");
 	});
 
-	it ("category notfound", async () => {
+	it("category notfound", async () => {
 		const res = await duploTesting
 			.testRoute(GET("GET", "/category/test/products"))
 			.setRequestProperties({ params: { categoryName: "test" } })

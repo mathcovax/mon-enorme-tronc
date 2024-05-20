@@ -3,7 +3,7 @@ import { primordialRoles, type PrimordialRole, type User } from "@/lib/utils";
 type EditingPrimordialRole = Exclude<PrimordialRole, "ADMIN">
 const editingPrimordialRole = primordialRoles.filter(r => r !== "ADMIN") as TuplifyUnion<EditingPrimordialRole>;
 
-export function useUserForm(){
+export function useUserForm() {
 	const { Form, checkForm, resetForm, values } = useFormBuilder({
 		user: {
 			type: "custom",

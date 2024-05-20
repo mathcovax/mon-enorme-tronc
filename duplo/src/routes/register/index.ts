@@ -53,7 +53,7 @@ export const POST = (method: Methods, path: string) => duplo
 			const userDateOfBirth = pickup("body").dateOfBirth;
 			const timestamp18year = 568036800000;
 			
-			if(Date.now() - userDateOfBirth.getTime() < timestamp18year) {
+			if (Date.now() - userDateOfBirth.getTime() < timestamp18year) {
 				throw new BadRequestHttpException("user.dateOfBirth.invalid");
 			}
 

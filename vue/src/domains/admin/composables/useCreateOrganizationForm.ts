@@ -1,9 +1,9 @@
 import type { ItemComboBox } from "@/composables/useFormBuilder/_inputs/ComboBoxInput";
 
-export function useCreateOrganizationForm(){
+export function useCreateOrganizationForm() {
 	const suggestedUser = ref<ItemComboBox[]>([]);
 
-	function onSearchUser(userEmail: string){
+	function onSearchUser(userEmail: string) {
 		duploTo.enriched.
 			get("/users", { query: { email: userEmail } })
 			.s((users) => {

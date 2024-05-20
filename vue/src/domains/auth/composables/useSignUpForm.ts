@@ -1,15 +1,15 @@
 import type { ItemComboBox } from "@/composables/useFormBuilder/_inputs/ComboBoxInput";
 
-export function useSignUpForm(){
+export function useSignUpForm() {
 
 	const timestamp18year = 568036800000;
 	const suggestedAddresses = ref<ItemComboBox[]>([]);
 
-	function onSearchAddress(address: string){
+	function onSearchAddress(address: string) {
 		duploTo.enriched.
 			get("/geocoder", { query: { address } })
 			.s((addresses) => {
-				if(addresses.length === 0) {
+				if (addresses.length === 0) {
 					return;
 				}
 				

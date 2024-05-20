@@ -1,12 +1,12 @@
 const organizationIdShema = zod.string();
 
-export function useOrganizationId(){
+export function useOrganizationId() {
 	const { params: { organizationId: organizationIdParams } } = useRoute();
 	const router = useRouter();
 
 	const { success, data: organizationId } = organizationIdShema.safeParse(organizationIdParams);
 
-	if(!success){
+	if (!success) {
 		router.push({ name: routerPageName.EDITO_HOME });
 		throw new Error("Params organizationId is invalid.");
 	}
