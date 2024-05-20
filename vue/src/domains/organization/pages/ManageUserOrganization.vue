@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { useOrganizationId } from "../composables/useOrganizationId";
 import { useGetOrganizationUsers } from "../composables/useGetOrganizationUsers";
 import { useOrganizationUserEditForm } from "../composables/useOrganizationUserEditForm";
 import { useOrganizationUserAddForm } from "../composables/useOrganizationUserAddForm";
 import type { OrganizationUser } from "@/lib/utils";
 import type ThePopup from "@/components/ThePopup.vue";
 
-const { organizationId } = useOrganizationId();
+const { organizationId } = useRouteParams({ 
+	organizationId: zod.string() 
+});
 const {
 	FormOrganizationUserAdd,
 	checkFormOrganizationUserAdd,
