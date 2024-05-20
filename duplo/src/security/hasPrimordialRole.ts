@@ -26,12 +26,12 @@ export const hasPrimordialRole = mustBeConnected({ pickup: ["accessTokenContent"
 				userPrimordialRole !== currentPrimordialRole &&
 				!primordialRolesHierarchy[userPrimordialRole].includes(currentPrimordialRole)
 			) {
-				throw new UnauthorizedHttpException("user.role.invalid");
+				throw new ForbiddenHttpException("user.role.invalid");
 			}
 
 			return {};
 		},
 		[],
-		new IHaveSentThis(UnauthorizedHttpException.code, "user.role.invalid")
+		new IHaveSentThis(ForbiddenHttpException.code, "user.role.invalid")
 	)
 	.build(["accessTokenContent"]);

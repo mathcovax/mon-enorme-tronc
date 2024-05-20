@@ -14,15 +14,16 @@ datasource db {
 }
 
 model user {
-    id             String          @id @default(uuid())
-    email          String          @unique @db.VarChar(320)
-    lastname       String          @db.VarChar(32)
-    firstname      String          @db.VarChar(36)
-    dateOfBirth    DateTime        @db.Date
-    address        String          @db.VarChar(400)
-    primordialRole primordial_role @default(CUSTOMER)
-    organization   organization?
-    muted          Boolean         @default(false)
+    id                 String                 @id @default(uuid())
+    email              String                 @unique @db.VarChar(320)
+    lastname           String                 @db.VarChar(32)
+    firstname          String                 @db.VarChar(36)
+    dateOfBirth        DateTime               @db.Date
+    address            String                 @db.VarChar(400)
+    primordialRole     primordial_role        @default(CUSTOMER)
+    organization       organization?
+    muted              Boolean                @default(false)
+    userToOrganization user_to_organization[]
 }
 
 enum primordial_role {
@@ -33,12 +34,30 @@ enum primordial_role {
 }
 
 model organization {
-    id        String  @id @default(uuid())
-    name      String  @unique @db.VarChar(255)
-    label     String? @db.VarChar(36)
-    ownerId   String  @unique
-    owner     user    @relation(fields: [ownerId], references: [id])
-    suspended Boolean @default(false)
+    id                 String                 @id @default(uuid())
+    name               String                 @unique @db.VarChar(255)
+    label              String?                @db.VarChar(36)
+    ownerId            String                 @unique
+    owner              user                   @relation(fields: [ownerId], references: [id])
+    suspended          Boolean                @default(false)
+    userToOrganization user_to_organization[]
+}
+
+model user_to_organization {
+    organizationRole organization_role
+    userId           String
+    user             user              @relation(fields: [userId], references: [id])
+    organizationId   String
+    organization     organization      @relation(fields: [organizationId], references: [id])
+
+    @@unique([userId, organizationId])
+}
+
+enum organization_role {
+    STORE_KEEPER
+    PRODUCT_SHEET_MANAGER
+    ACCOUNTANT
+    OWNER
 }
 
 model category {

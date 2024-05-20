@@ -70,7 +70,7 @@ export default {
 			},
 			table: {
 				searchPlaceholder: "Chercher une email",
-				searchPlaceholderRole: "Chercher une email",
+				searchPlaceholderRole: "Chercher par role",
 				cols: {
 					email: "Email",
 					lastname: "Nom",
@@ -103,13 +103,48 @@ export default {
 					disabled: "Catégorie active"
 				},
 			}
+		},
+		organizationUser: {
+			form: {
+				firstname: {
+					label: "Prénom",
+				},
+				lastname: {
+					label: "Nom",
+				},
+				email: {
+					label: "Email",
+					wrong: "Email pas correcte."
+				},
+				organizationRole: {
+					label: "Role",
+				},
+				submit: "Valider",
+				remove: "Retirer",
+				required: "Champ obligatoire",
+			},
+			table: {
+				searchPlaceholder: "Chercher une email",
+				cols: {
+					email: "Email",
+					lastname: "Nom",
+					firstname: "Prénom",
+					role: "Role"
+				},
+			},
 		}
 	},
 	roles: {
 		CUSTOMER: "Client",
 		MODERATOR: "Modérateur",
-		CATEGORIES_MASTER: "Géstionaire",
+		CONTENTS_MASTER: "Géstionaire",
 		ADMIN: "Administrateur"
+	},
+	organizationRole: {
+		STORE_KEEPER: "Magasinier",
+		PRODUCT_SHEET_MANAGER: "Gestionaire de fiche produit",
+		ACCOUNTANT: "Comptable",
+		OWNER: "Propriétaire"
 	},
 	toast: {
 		default: "Info",
@@ -121,8 +156,15 @@ export default {
 			alreadyExist: "Une organisation avec ce nom éxiste déjà.",
 			created: "L'organisation a correctement étais créer.",
 			edited: "L'organisation a correctement étais éditer",
+			hasAlreadyUser: "Cette utilisateur est déja dans l'organization.",
+			user: {
+				add: "L'utilisateur a correctement étais ajouter.",
+				edited: "L'utilisateur a correctement étais modifier.",
+				deleted: "L'utilisateur a correctement étais supprimé."
+			}
 		},
 		user: {
+			edited: "L'utilisateur a bien été modifier.", 
 			notfound: "Utilisateur introuvable.",
 			alreadyOwner: "l'utilisateur est déjà owner d'une organisation."
 		},
