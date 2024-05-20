@@ -10,7 +10,7 @@
 					to="/organization"
 					class="flex items-center gap-2 text-center font-semibold"
 				>
-					<span>Mon organisation</span>
+					<span>{{ $t("layout.organization.title") }}</span>
 				</RouterLink>
 			</div>
 
@@ -24,7 +24,7 @@
 							icon="home-outline"
 							size="2xl"
 						/>
-						Dashboard
+						{{ $t("layout.organization.nav.dashboard") }}
 					</RouterLink>
 
 					<RouterLink
@@ -35,7 +35,7 @@
 							icon="cart-outline"
 							size="2xl"
 						/>
-						Orders
+						{{ $t("layout.organization.nav.orders") }}
 					</RouterLink>
 
 					<RouterLink
@@ -46,7 +46,7 @@
 							icon="package-variant-closed"
 							size="2xl"
 						/>
-						Products
+						{{ $t("layout.organization.nav.products") }}
 					</RouterLink>
 
 					<RouterLink
@@ -57,7 +57,7 @@
 							icon="account"
 							size="2xl"
 						/>
-						Customers
+						{{ $t("layout.organization.nav.customers") }}
 					</RouterLink>
 
 					<RouterLink
@@ -68,7 +68,7 @@
 							icon="chart-line"
 							size="2xl"
 						/>
-						Analytics
+						{{ $t("layout.organization.nav.analytics") }}
 					</RouterLink>
 				</nav>
 			</div>

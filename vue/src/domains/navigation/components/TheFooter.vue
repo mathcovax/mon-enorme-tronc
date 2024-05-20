@@ -5,7 +5,7 @@ const currentYear = ref(new Date().getFullYear());
 <template>
 	<footer class="px-4 md:px-6 py-10 lg:py-16 bg-whiteless">
 		<div>
-			<div class="container flex flex-col lg:flex-row gap-16 lg:gap-0 justify-around">
+			<div class="container flex flex-col lg:flex-row gap-16 lg:gap-0 justify-between">
 				<div class="flex flex-col gap-6">
 					<RouterLink
 						to="/"
@@ -14,7 +14,7 @@ const currentYear = ref(new Date().getFullYear());
 						MET
 					</RouterLink>
 
-					<p>Le plaisir au naturel.</p>
+					<p>{{ $t("layout.default.footer.slogan") }}</p>
 
 					<nav>
 						<ul class="flex gap-3">
@@ -59,33 +59,61 @@ const currentYear = ref(new Date().getFullYear());
 
 				<div class="flex flex-col lg:flex-row gap-16">
 					<div class="flex flex-col gap-6">
-						<h6 class="text-lg font-semibold">
-							AIDE
+						<h6 class="text-lg font-semibold uppercase">
+							{{ $t("layout.default.footer.helpNav.title") }}
 						</h6>
 
 						<nav>
 							<ul class="flex flex-col gap-6 opacity-60">
 								<li>
 									<RouterLink to="#">
-										Support client
+										{{ $t("layout.default.footer.helpNav.clientSupport") }}
 									</RouterLink>
 								</li>
 
 								<li>
 									<RouterLink to="#">
-										Détails de livraison
+										{{ $t("layout.default.footer.helpNav.deliveryDetails") }}
 									</RouterLink>
 								</li>
 
 								<li>
 									<RouterLink to="#">
-										Conditions générales
+										{{ $t("layout.default.footer.helpNav.generalConditions") }}
 									</RouterLink>
 								</li>
 
 								<li>
 									<RouterLink to="#">
-										Confidentialité
+										{{ $t("layout.default.footer.helpNav.confidentialityPolicy") }}
+									</RouterLink>
+								</li>
+							</ul>
+						</nav>
+					</div>
+
+					<div class="flex flex-col gap-6">
+						<h6 class="text-lg font-semibold uppercase">
+							{{ $t("layout.default.footer.faqNav.title") }}
+						</h6>
+
+						<nav>
+							<ul class="flex flex-col gap-6 opacity-60">
+								<li>
+									<RouterLink to="#">
+										{{ $t("layout.default.footer.faqNav.account") }}
+									</RouterLink>
+								</li>
+
+								<li>
+									<RouterLink to="#">
+										{{ $t("layout.default.footer.faqNav.orders") }}
+									</RouterLink>
+								</li>
+
+								<li>
+									<RouterLink to="#">
+										{{ $t("layout.default.footer.faqNav.payements") }}
 									</RouterLink>
 								</li>
 							</ul>
@@ -94,60 +122,32 @@ const currentYear = ref(new Date().getFullYear());
 
 					<div class="flex flex-col gap-6">
 						<h6 class="text-lg font-semibold">
-							FAQ
+							{{ $t("layout.default.footer.pageNav.title") }}
 						</h6>
 
 						<nav>
 							<ul class="flex flex-col gap-6 opacity-60">
 								<li>
-									<RouterLink to="#">
-										Compte
+									<RouterLink to="/">
+										{{ $t("layout.default.footer.pageNav.home") }}
 									</RouterLink>
 								</li>
 
 								<li>
 									<RouterLink to="#">
-										Détails de livraison
+										{{ $t("layout.default.footer.pageNav.bestSeller") }}
 									</RouterLink>
 								</li>
 
 								<li>
 									<RouterLink to="#">
-										Commandes
+										{{ $t("layout.default.footer.pageNav.new") }}
 									</RouterLink>
 								</li>
 
 								<li>
 									<RouterLink to="#">
-										Payements
-									</RouterLink>
-								</li>
-							</ul>
-						</nav>
-					</div>
-
-					<div class="flex flex-col gap-6">
-						<h6 class="text-lg font-semibold">
-							Pages
-						</h6>
-
-						<nav>
-							<ul class="flex flex-col gap-6 opacity-60">
-								<li>
-									<RouterLink to="#">
-										Meilleures ventes
-									</RouterLink>
-								</li>
-
-								<li>
-									<RouterLink to="#">
-										Nouveautés
-									</RouterLink>
-								</li>
-
-								<li>
-									<RouterLink to="#">
-										Produits
+										{{ $t("layout.default.footer.pageNav.products") }}
 									</RouterLink>
 								</li>
 							</ul>
@@ -158,8 +158,7 @@ const currentYear = ref(new Date().getFullYear());
 
 			<hr class="h-px my-6 border-0 bg-black opacity-10">
 
-			<span class="opacity-60">Mon Énorme Tronc &#169; 2024-{{ currentYear }}. Tous droits
-				réservés.</span>
+			<span class="opacity-60">Mon Énorme Tronc &#169; 2024-{{ currentYear }}. {{ $t("layout.default.footer.copyrights") }} </span>
 		</div>
 	</footer>
 </template>

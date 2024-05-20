@@ -1,5 +1,14 @@
 export default {
 	page: {
+		home: {
+			heroTtitle: "Faites vous\u00A0plaisir tout en restant naturel",
+			heroSubtitle: "Des produits naturels et bio pour prendre soin de vous.",
+			heroButton: "Découvrir",
+			sectionNewTitle: "Nouveautés",
+			sectionBestSellerTitle: "Meilleures ventes",
+			sectionPackTitle: "Notre pack Plaisir",
+			buttonMore: "Voir plus",
+		},
 		login: {
 			title: "Connexion",
 			subtitle: "Connectez-vous pour accéder à votre compte.",
@@ -132,7 +141,62 @@ export default {
 					role: "Role"
 				},
 			},
+		},
+		notFound: {
+			title: "404 - Page introuvable",
+			description: "La page que vous cherchez n'existe pas.",
+			buttonText: "Retourner à l'accueil"
+		},
+	},
+	layout: {
+		default: {
+			header: {
+				home: "Accueil",
+				bestSeller: "Meilleures ventes",
+				new: "Contact",
+				products: "Produits",
+			},
+			footer: {
+				slogan: "Le plaisir au naturel.",
+				helpNav: {
+					title: "Aide",
+					clientSupport: "Support client",
+					deliveryDetails: "Détails de livraison",
+					generalConditions: "Conditions générales",
+					confidentialityPolicy: "Politique de confidentialité",
+				},
+				faqNav: {
+					title: "FAQ",
+					account: "Compte",
+					orders: "Commandes",
+					payements: "Paiements",
+				},
+				pageNav: {
+					title: "Pages",
+					home: "Accueil",
+					bestSeller: "Meilleures ventes",
+					new: "Contact",
+					products: "Produits",
+				},
+				copyrights: "Tous droits réservés."
+			}
+		},
+		organization: {
+			title: "Mon organisation",
+			nav: {
+				dashboard: "Tableau de bord",
+				orders: "Commandes",
+				products: "Produits",
+				customers: "Clients",
+				analytics: "Analytiques",
+			},
 		}
+	},
+	dropdownAccount: {
+		myAccount: "Mon compte",
+		settings: "Paramètres",
+		support: "Support",
+		logout: "Déconnexion"
 	},
 	roles: {
 		CUSTOMER: "Client",

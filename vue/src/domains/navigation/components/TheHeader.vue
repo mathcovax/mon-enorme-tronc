@@ -15,8 +15,6 @@
 						icon="menu"
 						size="2xl"
 					/>
-
-					<span class="sr-only">Toggle navigation menu</span>
 				</TheButton>
 			</SheetTrigger>
 
@@ -40,7 +38,7 @@
 							icon="home-outline"
 							size="2xl"
 						/>
-						Accueil
+						{{ $t("layout.default.header.home") }}
 					</RouterLink>
 
 					<RouterLink
@@ -51,7 +49,7 @@
 							icon="sale-outline"
 							size="2xl"
 						/>
-						Meilleures ventes
+						{{ $t("layout.default.header.bestSeller") }}
 					</RouterLink>
 
 					<RouterLink
@@ -62,7 +60,7 @@
 							icon="new-box"
 							size="2xl"
 						/>
-						Nouveautés
+						{{ $t("layout.default.header.new") }}
 					</RouterLink>
 
 					<RouterLink
@@ -73,13 +71,13 @@
 							icon="package-variant-closed"
 							size="2xl"
 						/>
-						Produits
+						{{ $t("layout.default.header.products") }}
 					</RouterLink>
 				</nav>
 			</SheetContent>
 		</TheSheet>
 
-		<div class="w-full flex-1 flex gap-10 justify-between md:justify-center items-center">
+		<div class="container flex-1 flex gap-10 justify-between md:justify-center items-center">
 			<RouterLink
 				to="/"
 				class="text-2xl font-bold"
@@ -91,34 +89,40 @@
 				<nav>
 					<ul class="hidden md:flex gap-6">
 						<li>
-							<RouterLink to="#">
-								Meilleures ventes
+							<RouterLink to="/">
+								{{ $t("layout.default.header.home") }}
 							</RouterLink>
 						</li>
 
 						<li>
 							<RouterLink to="#">
-								Nouveautés
+								{{ $t("layout.default.header.bestSeller") }}
 							</RouterLink>
 						</li>
 
 						<li>
 							<RouterLink to="#">
-								Produits
+								{{ $t("layout.default.header.new") }}
+							</RouterLink>
+						</li>
+
+						<li>
+							<RouterLink to="#">
+								{{ $t("layout.default.header.products") }}
 							</RouterLink>
 						</li>
 					</ul>
 				</nav>
 
-				<div class="hidden lg:block grow max-w-144">
-					<input
-						type="text"
-						placeholder="Rechercher un produit..."
-						class="w-full px-4 py-3 bg-whiteless rounded-full"
-					>
-				</div>
+				<div class="flex-1 flex gap-3 justify-end items-center">
+					<div class="hidden lg:block grow max-w-144">
+						<input
+							type="text"
+							placeholder="Rechercher un produit..."
+							class="w-full px-4 py-3 bg-whiteless rounded-full"
+						>
+					</div>
 
-				<div class="flex gap-3 items-center">
 					<button class="lg:hidden">
 						<TheIcon
 							icon="magnify"
@@ -144,23 +148,21 @@
 									icon="account-circle-outline"
 									size="2xl"
 								/>
-
-								<span class="sr-only">Toggle user menu</span>
 							</TheButton>
 						</DropdownMenuTrigger>
 
 						<DropdownMenuContent align="end">
-							<DropdownMenuLabel>My Account</DropdownMenuLabel>
+							<DropdownMenuLabel>{{ $t("dropdownAccount.myAccount") }}</DropdownMenuLabel>
 
 							<DropdownMenuSeparator />
 
-							<DropdownMenuItem>Settings</DropdownMenuItem>
+							<DropdownMenuItem>{{ $t("dropdownAccount.settings") }}</DropdownMenuItem>
 
-							<DropdownMenuItem>Support</DropdownMenuItem>
+							<DropdownMenuItem>{{ $t("dropdownAccount.support") }}</DropdownMenuItem>
 
 							<DropdownMenuSeparator />
 
-							<DropdownMenuItem>Logout</DropdownMenuItem>
+							<DropdownMenuItem>{{ $t("dropdownAccount.logout") }}</DropdownMenuItem>
 						</DropdownMenuContent>
 					</DropdownMenu>
 				</div>

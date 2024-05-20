@@ -15,8 +15,6 @@
 						icon="menu"
 						size="2xl"
 					/>
-
-					<span class="sr-only">Toggle navigation menu</span>
 				</TheButton>
 			</SheetTrigger>
 
@@ -29,7 +27,7 @@
 						to="/organization"
 						class="text-center text-2xl font-bold"
 					>
-						<span>Mon Organisation</span>
+						<span>{{ $t("layout.organization.title") }}</span>
 					</RouterLink>
 
 					<RouterLink
@@ -40,7 +38,7 @@
 							icon="home-outline"
 							size="2xl"
 						/>
-						Dashboard
+						{{ $t("layout.organization.nav.dashboard") }}
 					</RouterLink>
 
 					<RouterLink
@@ -51,7 +49,7 @@
 							icon="cart-outline"
 							size="2xl"
 						/>
-						Orders
+						{{ $t("layout.organization.nav.orders") }}
 					</RouterLink>
 
 					<RouterLink
@@ -62,7 +60,7 @@
 							icon="package-variant-closed"
 							size="2xl"
 						/>
-						Products
+						{{ $t("layout.organization.nav.products") }}
 					</RouterLink>
 
 					<RouterLink
@@ -73,7 +71,7 @@
 							icon="account"
 							size="2xl"
 						/>
-						Customers
+						{{ $t("layout.organization.nav.customers") }}
 					</RouterLink>
 
 					<RouterLink
@@ -84,7 +82,7 @@
 							icon="chart-line"
 							size="2xl"
 						/>
-						Analytics
+						{{ $t("layout.organization.nav.analytics") }}
 					</RouterLink>
 				</nav>
 			</SheetContent>
@@ -103,23 +101,21 @@
 						icon="account-circle-outline"
 						size="2xl"
 					/>
-
-					<span class="sr-only">Toggle user menu</span>
 				</TheButton>
 			</DropdownMenuTrigger>
 
 			<DropdownMenuContent align="end">
-				<DropdownMenuLabel>My Account</DropdownMenuLabel>
+				<DropdownMenuLabel>{{ $t("dropdownAccount.myAccount") }}</DropdownMenuLabel>
 
 				<DropdownMenuSeparator />
 
-				<DropdownMenuItem>Settings</DropdownMenuItem>
+				<DropdownMenuItem>{{ $t("dropdownAccount.settings") }}</DropdownMenuItem>
 
-				<DropdownMenuItem>Support</DropdownMenuItem>
+				<DropdownMenuItem>{{ $t("dropdownAccount.support") }}</DropdownMenuItem>
 
 				<DropdownMenuSeparator />
 
-				<DropdownMenuItem>Logout</DropdownMenuItem>
+				<DropdownMenuItem>{{ $t("dropdownAccount.logout") }}</DropdownMenuItem>
 			</DropdownMenuContent>
 		</DropdownMenu>
 	</header>
