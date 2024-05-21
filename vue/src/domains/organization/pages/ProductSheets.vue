@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { useGetProductSheets, type ProductSheet } from "../composables/useGetProductSheets";
 
-const { params: { organizationId } } = useRoute();
+const { organizationId } = useRouteParams({ 
+	organizationId: zod.string(), 
+});
 const router = useRouter();
-const { productSheets, getProductSheets } = useGetProductSheets(organizationId as string);
+const { productSheets, getProductSheets } = useGetProductSheets(organizationId);
 
 const currentPage = ref(0);
 const searchName = ref("");
@@ -50,12 +52,16 @@ function previous() {
 
 function redirectToEditPage(productSheet: ProductSheet) {
 	router.push({
-		name: routerPageName.EDIT_PRODUCT_SHEET,
+		name: routerPageName.ORGANIZATION_EDIT_PRODUCT_SHEET,
 		params: {
-			organizationId: organizationId as string,
-			productSheetId: productSheet.id as string
+			organizationId,
+			productSheetId: productSheet.id
 		},
 	});
+}
+
+function redirectToCreatedPage() {
+	router.push({ name: routerPageName.ORGANIZATION_CREATE_PRODUCT_SHEET, params: { organizationId } });
 }
 
 getProductSheets(currentPage.value, searchName.value);
@@ -63,12 +69,16 @@ watch(searchName, () => getProductSheets(0, searchName.value));
 </script>
 <template>
 	<div class="flex flex-col items-center w-full gap-6 p-6">
-		<div class="flex justify-center w-full">
+		<div class="flex justify-center w-full gap-[1rem]">
 			<PrimaryInput
 				class="max-w-[300px]"
 				:placeholder="$t('page.getProductSheets.table.searchPlaceholder')"
 				v-model="searchName"
 			/>
+
+			<PrimaryButton @click="redirectToCreatedPage">
+				{{ $t("page.createProductSheet.form.submit") }}
+			</PrimaryButton>
 		</div>
 
 		<BigTable

@@ -1,5 +1,6 @@
 import { organizationHasUserCheck } from "@checkers/organization";
 import { accessTokenCheck } from "@checkers/token";
+import { productSheetExistCheck, inputProductSheet } from "@checkers/productSheet";
 import { hasOrganizationRole } from "@security/hasOrganizationRole";
 import { hasPrimordialRole } from "@security/hasPrimordialRole";
 import { mustBeConnected } from "@security/mustBeConnected";
@@ -36,6 +37,52 @@ export const organizationOwnerEntry = mustBeConnected({ pickup: ["accessTokenCon
 		{
 			input: p => ({ organizationId: p("organizationId"), userId: p("accessTokenContent").id }),
 			options: { organizationRole: "OWNER" }
+		}
+	)
+	.handler(
+		async () => {
+			throw new NoContentHttpException("entry.accepted");
+		},
+		new IHaveSentThis(NoContentHttpException.code, "entry.accepted"),
+		new SwaggerIgnore(),
+	);
+
+export const organizationProductSheetManagerEntry = mustBeConnected({ pickup: ["accessTokenContent"] })
+	.declareRoute(
+		"GET", 
+		[
+			"/entry/organization/{organizationId}/product-sheets",
+			"/entry/organization/{organizationId}/edit-product-sheet/{productSheetId}",
+			"/entry/organization/{organizationId}/create-product-sheet"
+		]
+	)
+	.extract({
+		params: {
+			organizationId: zod.string(),
+			productSheetId: zod.string().optional()
+		}
+	})
+	.check(
+		productSheetExistCheck,
+		{
+			input: (p) => inputProductSheet.id(p("productSheetId") ?? ""),
+			result: "productSheet.exist",
+			catch: () => {
+				throw new UnauthorizedHttpException("entry.refuse");
+			},
+			indexing: "productSheet",
+			skip: p => !p("productSheetId")
+		},
+		new IHaveSentThis(UnauthorizedHttpException.code, "entry.refuse")
+	)
+	.process(
+		hasOrganizationRole,
+		{
+			input: p => ({ 
+				organizationId: p("productSheet")?.organizationId ?? p("organizationId"), 
+				userId: p("accessTokenContent").id 
+			}),
+			options: { organizationRole: "PRODUCT_SHEET_MANAGER" }
 		}
 	)
 	.handler(

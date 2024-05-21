@@ -14,9 +14,6 @@ export const GET = (method: Methods, path: string) =>
 			params: {
 				productSheetId: zod.string(),
 			},
-			query: {
-				page: zod.coerce.number().default(0),
-			}
 		})
 		.check(
 			productSheetExistCheck,
@@ -24,13 +21,13 @@ export const GET = (method: Methods, path: string) =>
 				input: (p) => inputProductSheet.id(p("productSheetId")),
 				...productSheetExistCheck.preCompletions.mustExist
 			},
-			new IHaveSentThis(NotFoundHttpException.code, "product_sheet.notfound")
+			new IHaveSentThis(NotFoundHttpException.code, "productSheet.notfound")
 		)
 		.process(
 			hasOrganizationRole,
 			{
 				input: p => ({
-					organizationId: p("product_sheet").organizationId,
+					organizationId: p("productSheet").organizationId,
 					userId: p("accessTokenContent").id
 				}),
 				options: { organizationRole: "PRODUCT_SHEET_MANAGER" }
@@ -38,8 +35,7 @@ export const GET = (method: Methods, path: string) =>
 		)
 		.handler(
 			async ({ pickup }) => {
-				const page = pickup("page");
-				const { id } = pickup("product_sheet");
+				const { id } = pickup("productSheet");
 
 				const categories = await prisma.product_sheet_to_category.findMany({
 					where: {
@@ -48,11 +44,9 @@ export const GET = (method: Methods, path: string) =>
 					select: {
 						category: true
 					},
-					skip: 10 * page,
-					take: 10,
 				}).then((pstc) => pstc.map(({ category }) => category));
 
-				throw new OkHttpException("product_sheet.categories", categories);
+				throw new OkHttpException("productSheet.categories", categories);
 			},
-			new IHaveSentThis(OkHttpException.code, "product_sheet.categories", categorySchema.array())
+			new IHaveSentThis(OkHttpException.code, "productSheet.categories", categorySchema.array())
 		);

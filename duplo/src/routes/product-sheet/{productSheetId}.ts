@@ -27,13 +27,13 @@ export const PATCH = (method: Methods, path: string) =>
 				input: (p) => inputProductSheet.id(p("productSheetId")),
 				...productSheetExistCheck.preCompletions.mustExist
 			},
-			new IHaveSentThis(NotFoundHttpException.code, "product_sheet.notfound")
+			new IHaveSentThis(NotFoundHttpException.code, "productSheet.notfound")
 		)
 		.process(
 			hasOrganizationRole,
 			{
 				input: p => ({
-					organizationId: p("product_sheet").organizationId,
+					organizationId: p("productSheet").organizationId,
 					userId: p("accessTokenContent").id
 				}),
 				options: { organizationRole: "PRODUCT_SHEET_MANAGER" }
@@ -42,7 +42,7 @@ export const PATCH = (method: Methods, path: string) =>
 		.handler(
 			async ({ pickup }) => {
 				const { name, description, shortDescription, price } = pickup("body");
-				const productSheet = await prisma.product_sheet.update({
+				const { id } = await prisma.product_sheet.update({
 					where: {
 						id: pickup("productSheetId"),
 					},
@@ -53,9 +53,9 @@ export const PATCH = (method: Methods, path: string) =>
 						price,
 					},
 				});
-				throw new CreatedHttpException("product_sheet.edited", productSheet.id);
+				throw new CreatedHttpException("productSheet.edited", id);
 			},
-			new IHaveSentThis(CreatedHttpException.code, "product_sheet.edited", zod.string())
+			new IHaveSentThis(CreatedHttpException.code, "productSheet.edited", zod.string())
 		);
 
 /* METHOD : GET, PATH : /product-sheet/{productSheetId} */
@@ -73,13 +73,13 @@ export const GET = (method: Methods, path: string) =>
 				input: (p) => inputProductSheet.id(p("productSheetId")),
 				...productSheetExistCheck.preCompletions.mustExist
 			},
-			new IHaveSentThis(NotFoundHttpException.code, "product_sheet.notfound")
+			new IHaveSentThis(NotFoundHttpException.code, "productSheet.notfound")
 		)
 		.process(
 			hasOrganizationRole,
 			{
 				input: p => ({
-					organizationId: p("product_sheet").organizationId,
+					organizationId: p("productSheet").organizationId,
 					userId: p("accessTokenContent").id
 				}),
 				options: { organizationRole: "PRODUCT_SHEET_MANAGER" }
@@ -87,8 +87,8 @@ export const GET = (method: Methods, path: string) =>
 		)
 		.handler(
 			async ({ pickup }) => {
-				throw new OkHttpException("product_sheet.found", pickup("product_sheet"));
+				throw new OkHttpException("productSheet.found", pickup("productSheet"));
 			},
-			new IHaveSentThis(OkHttpException.code, "product_sheet.found", productSheetSchema)
+			new IHaveSentThis(OkHttpException.code, "productSheet.found", productSheetSchema)
 		);
 

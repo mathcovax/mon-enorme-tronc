@@ -2,7 +2,7 @@ import type { GetDef, GetResponseByInfo } from "@/lib/duploTo/EnrichedDuploTo";
 
 export type ProductSheet = GetResponseByInfo<
 	GetDef<"GET", "/organization/{organizationId}/product-sheets">,
-	"product_sheets.found"
+	"productSheets.found"
 >["body"][number]
 
 export function useGetProductSheets(organizationId: string) {
@@ -14,7 +14,7 @@ export function useGetProductSheets(organizationId: string) {
 				"/organization/{organizationId}/product-sheets",
 				{ params: { organizationId }, query: { page, name } }
 			)
-			.info("product_sheets.found", (data) => {
+			.info("productSheets.found", (data) => {
 				productSheets.value = data;
 			})
 			.result;

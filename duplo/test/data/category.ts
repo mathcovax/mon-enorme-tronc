@@ -1,6 +1,6 @@
 import { category } from "@prisma/client";
 
-export const categoryDate: category = {
+export const categoryData: category = {
 	id: "ttt",
 	name: "super Cat",
 	disabled: false

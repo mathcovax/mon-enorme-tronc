@@ -1,4 +1,4 @@
-import { categoryDate } from "@test/data/category";
+import { categoryData } from "@test/data/category";
 import { MockPrisma } from "@test/mocks/providers";
 import { duploTesting } from "@test/setup";
 import { GET } from ".";
@@ -9,7 +9,7 @@ describe("GET /categories", () => {
 	});
 
 	it("get categories with query", async () => {
-		const spy = vi.fn(() => [categoryDate]);
+		const spy = vi.fn(() => [categoryData]);
 		MockPrisma.set("category", "findMany", spy);
 
 		const res = await duploTesting
@@ -30,13 +30,14 @@ describe("GET /categories", () => {
 			where: {
 				disabled: undefined,
 				name: {
-					contains: "test"
+					contains: "test",
+					mode: "insensitive",
 				}
 			}
 		});
 	});
 	it("get categories without query", async () => {
-		const spy = vi.fn(() => [categoryDate]);
+		const spy = vi.fn(() => [categoryData]);
 		MockPrisma.set("category", "findMany", spy);
 
 		const res = await duploTesting

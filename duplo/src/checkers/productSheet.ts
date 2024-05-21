@@ -27,20 +27,20 @@ export const productSheetExistCheck = duplo
 		});
 
 		if (productSheet) {
-			return output("product_sheet.exist", productSheet);
+			return output("productSheet.exist", productSheet);
 		}
 		else {
-			return output("product_sheet.notfound", null);
+			return output("productSheet.notfound", null);
 		}
 	})
 	.preCompletion(
 		"mustExist",
 		{
-			result: "product_sheet.exist",
+			result: "productSheet.exist",
 			catch: () => {
-				throw new NotFoundHttpException("product_sheet.notfound");
+				throw new NotFoundHttpException("productSheet.notfound");
 			},
-			indexing: "product_sheet"
+			indexing: "productSheet"
 		}
 	)
 	.build();

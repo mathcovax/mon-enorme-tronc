@@ -13,6 +13,7 @@ describe("GET /organization/{organizationId}/product-sheets", () => {
 
 		const res = await duploTesting
 			.testRoute(GET("GET", ""))
+			.setDefaultFloorValue({ accessTokenContent: {} })
 			.setRequestProperties({
 				params: {
 					organizationId: "1",
@@ -21,9 +22,9 @@ describe("GET /organization/{organizationId}/product-sheets", () => {
 					name: "eeee",
 				}
 			})
-			.mockChecker(
-				"organizationExist",
-				{ info: "organization.exist", data: { id: "1234" } },
+			.mockProcess(
+				"hasOrganizationRole",
+				{ }
 			)
 			.launch();
 
@@ -38,6 +39,6 @@ describe("GET /organization/{organizationId}/product-sheets", () => {
 			skip: 0,
 			take: 10,
 		});
-		expect(res.information).toBe("product_sheets.found");
+		expect(res.information).toBe("productSheets.found");
 	});
 });

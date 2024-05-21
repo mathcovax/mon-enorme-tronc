@@ -1,12 +1,9 @@
-import {
-	inputOrganization,
-	organizationExistCheck,
-} from "@checkers/organization";
+import { hasOrganizationRole } from "@security/hasOrganizationRole";
 import { mustBeConnected } from "@security/mustBeConnected";
 
 /* METHOD : POST, PATH : /organization/{organizationId}/product-sheet */
 export const POST = (method: Methods, path: string) =>
-	mustBeConnected()
+	mustBeConnected({ pickup: ["accessTokenContent"] })
 		.declareRoute(method, path)
 		.extract({
 			params: {
@@ -19,14 +16,15 @@ export const POST = (method: Methods, path: string) =>
 				price: zod.number().min(0),
 			}).passthrough(),
 		})
-		.check(
-			organizationExistCheck,
+		.process(
+			hasOrganizationRole,
 			{
-				input: (p) => inputOrganization.id(p("organizationId")),
-				...organizationExistCheck.preCompletions.wantExist,
-				indexing: undefined,
-			},
-			new IHaveSentThis(NotFoundHttpException.code, "organization.notfound")
+				input: p => ({
+					organizationId: p("organizationId"),
+					userId: p("accessTokenContent").id
+				}),
+				options: { organizationRole: "PRODUCT_SHEET_MANAGER" }
+			}
 		)
 		.handler(
 			async ({ pickup }) => {
@@ -43,7 +41,7 @@ export const POST = (method: Methods, path: string) =>
 					},
 				});
 
-				throw new CreatedHttpException("product_sheet.created", productSheetId);
+				throw new CreatedHttpException("productSheet.created", productSheetId);
 			}, 
-			new IHaveSentThis(CreatedHttpException.code, "product_sheet.created", zod.string())
+			new IHaveSentThis(CreatedHttpException.code, "productSheet.created", zod.string())
 		);

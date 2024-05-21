@@ -23,6 +23,7 @@ describe("POST /organization/{organizationId}/product-sheet", () => {
 
 		const res = await duploTesting
 			.testRoute(POST("POST", "/organization/1234/product-sheet"))
+			.setDefaultFloorValue({ accessTokenContent: {} })
 			.setRequestProperties({
 				params: {
 					organizationId: "1234"
@@ -34,9 +35,9 @@ describe("POST /organization/{organizationId}/product-sheet", () => {
 					price: 10,
 				}
 			})
-			.mockChecker(
-				"organizationExist",
-				{ info: "organization.exist", data: { id: "1234" } },
+			.mockProcess(
+				"hasOrganizationRole",
+				{ }
 			)
 			.launch();
 
@@ -49,28 +50,6 @@ describe("POST /organization/{organizationId}/product-sheet", () => {
 				price: 10
 			}
 		});
-		expect(res.information).toBe("product_sheet.created");
-	});
-
-	it("post product sheet error organization notfound", async () => {
-		const res = await duploTesting
-			.testRoute(POST("POST", "/organization/1234/product-sheet"))
-			.setRequestProperties({
-				params: {
-					organizationId: ""
-				},
-				body: {
-					name: "",
-					description: "",
-					shortDescription: "",
-					price: 0,
-				}
-			})
-			.mockChecker(
-				"organizationExist",
-				{ info: "organization.notfound", data: { id: "1234" } },
-			)
-			.launch();
-		expect(res.information).toBe("organization.notfound");
+		expect(res.information).toBe("productSheet.created");
 	});
 });

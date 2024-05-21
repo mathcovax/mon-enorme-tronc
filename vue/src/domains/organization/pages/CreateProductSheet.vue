@@ -3,7 +3,6 @@ import { useProductSheetForm } from "../composables/useProductSheetForm";
 
 const { organizationId } = useRouteParams({ 
 	organizationId: zod.string(), 
-
 });
 const { 
 	ProductSheetForm, 
@@ -12,8 +11,8 @@ const {
 	suggestedCategories,
 	onSearchCategories 
 } = useProductSheetForm(organizationId);
-const router = useRouter();
 
+const router = useRouter();
 
 async function submit() {
 
@@ -36,7 +35,7 @@ async function submit() {
 		)
 		.result;
 	
-	if (result.success && result.info === "product_sheet.created") {
+	if (result.success && result.info === "productSheet.created") {
 		const promiseList: unknown[] = [];
 		formFields.categories?.forEach((c) => {
 			promiseList.push(
@@ -56,33 +55,39 @@ async function submit() {
 	}
 }
 
-onMounted(async () => {
-	if (typeof organizationId !== "string") {
-		router.push({ name: routerPageName.EDITO_HOME });
-	}
-});
-
+function back() {
+	router.push({ name: routerPageName.ORGANIZATION_GET_PRODUCT_SHEET, params: { organizationId } });
+}
 </script>
 
 <template>
-	<ProductSheetForm @submit="submit">
-		<template #categories="{onUpdate, modelValue}">
-			<MultiComboBox
-				:model-value="modelValue"
-				@update:model-value="onUpdate"
-				:items="suggestedCategories"
-				@update:search-term="onSearchCategories"
-				:placeholder="$t('page.editProductSheet.form')"
-				:empty-label="$t('page.editProductSheet.form')"
-				:text-button="$t('page.editProductSheet.form')"
-			/>
-		</template>
-
-		<PrimaryButton
-			type="submit"
-			class="col-span-12"
+	<div class="w-full flex flex-col items-center p-6 gap-6">
+		<ProductSheetForm
+			@submit="submit"
+			class="max-w-[500px] w-[80%]"
 		>
-			{{ $t("page.createProductSheet.form.submit") }}
-		</PrimaryButton>
-	</ProductSheetForm>
+			<template #categories="{onUpdate, modelValue}">
+				<MultiComboBox
+					:model-value="modelValue"
+					@update:model-value="onUpdate"
+					:items="suggestedCategories"
+					@update:search-term="onSearchCategories"
+					:placeholder="$t('page.createProductSheet.form.placeholder')"
+					:empty-label="$t('page.createProductSheet.form.emptyLabel')"
+					:text-button="$t('page.createProductSheet.form.button')"
+				/>
+			</template>
+
+			<PrimaryButton
+				type="submit"
+				class="col-span-12"
+			>
+				{{ $t("page.createProductSheet.form.submit") }}
+			</PrimaryButton>
+		</ProductSheetForm>
+
+		<SecondaryButton @click="back">
+			{{ $t("back") }}
+		</secondarybutton>
+	</div>
 </template>

@@ -1,5 +1,5 @@
-import { inputOrganization, organizationExistCheck } from "@checkers/organization";
 import { productSheetSchema } from "@schemas/productSheet";
+import { hasOrganizationRole } from "@security/hasOrganizationRole";
 import { mustBeConnected } from "@security/mustBeConnected";
 
 /* METHOD : GET, PATH : /organization/{organizationId}/product-sheets */
@@ -15,16 +15,15 @@ export const GET = (method: Methods, path: string) =>
 				name: zod.string().optional()
 			}
 		})
-		.check(
-			organizationExistCheck,
+		.process(
+			hasOrganizationRole,
 			{
-				input: p => inputOrganization.id(
-					p("organizationId")
-				),
-				...organizationExistCheck.preCompletions.wantExist,
-				indexing: undefined
-			},
-			new IHaveSentThis(NotFoundHttpException.code, "organization.notfound")
+				input: p => ({
+					organizationId: p("organizationId"),
+					userId: p("accessTokenContent").id
+				}),
+				options: { organizationRole: "PRODUCT_SHEET_MANAGER" }
+			}
 		)
 		.handler(
 			async ({ pickup }) => {
@@ -46,7 +45,7 @@ export const GET = (method: Methods, path: string) =>
 					skip: page * 10
 				});
 
-				throw new OkHttpException("product_sheets.found", productSheets);
+				throw new OkHttpException("productSheets.found", productSheets);
 			},
-			new IHaveSentThis(OkHttpException.code, "product_sheets.found", productSheetSchema.array())
+			new IHaveSentThis(OkHttpException.code, "productSheets.found", productSheetSchema.array())
 		);

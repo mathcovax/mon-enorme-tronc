@@ -3,6 +3,7 @@ import {
 	productSheetExistCheck,
 	inputProductSheet,
 } from "@checkers/productSheet";
+import { hasOrganizationRole } from "@security/hasOrganizationRole";
 import { mustBeConnected } from "@security/mustBeConnected";
 
 /* METHOD : POST, PATH : /category/{categoryId}/product-sheet */
@@ -18,6 +19,28 @@ export const POST = (method: Methods, path: string) =>
 			})
 		})
 		.check(
+			productSheetExistCheck,
+			{
+				input: (p) => inputProductSheet.id(p("body").productSheetId),
+				result: "productSheet.exist",
+				catch: () => {
+					throw new NotFoundHttpException("productSheet.notfound");
+				},
+				indexing: "productSheet"
+			},
+			new IHaveSentThis(NotFoundHttpException.code, "productSheet.notfound")
+		)
+		.process(
+			hasOrganizationRole,
+			{
+				input: p => ({
+					organizationId: p("productSheet").organizationId,
+					userId: p("accessTokenContent").id
+				}),
+				options: { organizationRole: "PRODUCT_SHEET_MANAGER" }
+			}
+		)
+		.check(
 			categoryExistCheck,
 			{
 				input: (p) => inputCategory.id(p("categoryId")),
@@ -29,28 +52,37 @@ export const POST = (method: Methods, path: string) =>
 			},
 			new IHaveSentThis(NotFoundHttpException.code, "category.notfound")
 		)
-		.check(
-			productSheetExistCheck,
-			{
-				input: (p) => inputProductSheet.id(p("body").productSheetId),
-				result: "product_sheet.exist",
-				catch: () => {
-					throw new NotFoundHttpException("product_sheet.notfound");
-				},
-				indexing: "product_sheet"
+		.cut(
+			async ({ pickup }) => {
+				const productSheetId = pickup("productSheet").id;
+				const categoriesProductSheetCount = await prisma.product_sheet_to_category.count({
+					where: {
+						productSheetId,
+					}
+				});
+
+				if (categoriesProductSheetCount > 4) {
+					throw new ConflictHttpException("product.categories.limit");
+				}
+
+				return {};
 			},
-			new IHaveSentThis(NotFoundHttpException.code, "product_sheet.notfound")
+			[],
+			new IHaveSentThis(ConflictHttpException.code, "product.categories.limit")
 		)
-		.handler(async ({ pickup }) => {
-			const categoryId = pickup("categoryId");
-			const { productSheetId } = pickup("body");
+		.handler(
+			async ({ pickup }) => {
+				const categoryId = pickup("categoryId");
+				const { productSheetId } = pickup("body");
 
-			await prisma.product_sheet_to_category.create({
-				data: {
-					categoryId,
-					productSheetId
-				},
-			});
+				await prisma.product_sheet_to_category.create({
+					data: {
+						categoryId,
+						productSheetId
+					},
+				});
 
-			throw new OkHttpException("product_sheet_to_category.created");
-		}, new IHaveSentThis(OkHttpException.code, "product_sheet_to_category.created"));
+				throw new OkHttpException("product_sheet_to_category.created");
+			}, 
+			new IHaveSentThis(OkHttpException.code, "product_sheet_to_category.created")
+		);

@@ -13,6 +13,7 @@ describe("DELETE /category/{categoryId}/product-sheet/{productSheetId}", () => {
 
 		const res = await duploTesting
 			.testRoute(DELETE("DELETE", "/category/1234/product-sheet/1234"))
+			.setDefaultFloorValue({ accessTokenContent: {} })
 			.setRequestProperties({
 				params: {
 					categoryId: "1234",
@@ -20,12 +21,16 @@ describe("DELETE /category/{categoryId}/product-sheet/{productSheetId}", () => {
 				}
 			})
 			.mockChecker(
-				"categoryExist",
-				{ info: "category.exist", data: { id: "1234" } },
+				"productSheetExist",
+				{ info: "productSheet.exist", data: { id: "1234" } }
+			)
+			.mockProcess(
+				"hasOrganizationRole",
+				{ }
 			)
 			.mockChecker(
-				"productSheetExist",
-				{ info: "product_sheet.exist", data: { id: "1234" } }
+				"categoryExist",
+				{ info: "category.exist", data: { id: "1234" } },
 			)
 			.launch();
 
@@ -41,6 +46,7 @@ describe("DELETE /category/{categoryId}/product-sheet/{productSheetId}", () => {
 	it("separate category to product - category notfound", async () => {
 		const res = await duploTesting
 			.testRoute(DELETE("DELETE", "/category/1234/product-sheet/1234"))
+			.setDefaultFloorValue({ accessTokenContent: {} })
 			.setRequestProperties({
 				params: {
 					categoryId: "1234",
@@ -48,18 +54,22 @@ describe("DELETE /category/{categoryId}/product-sheet/{productSheetId}", () => {
 				}
 			})
 			.mockChecker(
-				"categoryExist",
-				{ info: "category.notfound", data: { id: "1234" } },
+				"productSheetExist",
+				{ info: "productSheet.exist", data: { id: "1234" } }
+			)
+			.mockProcess(
+				"hasOrganizationRole",
+				{  }
 			)
 			.mockChecker(
-				"productSheetExist",
-				{ info: "product_sheet.exist", data: { id: "1234" } }
+				"categoryExist",
+				{ info: "category.notfound", data: { id: "1234" } },
 			)
 			.launch();
 		expect(res.information).toBe("category.notfound");
 	});
 
-	it("separate category to product - product_sheet notfound", async () => {
+	it("separate category to product - productSheet notfound", async () => {
 		const res = await duploTesting
 			.testRoute(DELETE("DELETE", "/category/1234/product-sheet/1234"))
 			.setRequestProperties({
@@ -69,14 +79,10 @@ describe("DELETE /category/{categoryId}/product-sheet/{productSheetId}", () => {
 				}
 			})
 			.mockChecker(
-				"categoryExist",
-				{ info: "category.exist", data: { id: "1234" } },
-			)
-			.mockChecker(
 				"productSheetExist",
-				{ info: "product_sheet.notfound", data: { id: "1234" } }
+				{ info: "productSheet.notfound", data: { id: "1234" } }
 			)
 			.launch();
-		expect(res.information).toBe("product_sheet.notfound");
+		expect(res.information).toBe("productSheet.notfound");
 	});
 });

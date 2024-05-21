@@ -3,6 +3,7 @@ import {
 	productSheetExistCheck,
 	inputProductSheet,
 } from "@checkers/productSheet";
+import { hasOrganizationRole } from "@security/hasOrganizationRole";
 import { mustBeConnected } from "@security/mustBeConnected";
 
 /* METHOD : DELETE, PATH : /category/{categoryId}/product-sheet/{productSheetId} */
@@ -16,6 +17,28 @@ export const DELETE = (method: Methods, path: string) =>
 			},
 		})
 		.check(
+			productSheetExistCheck,
+			{
+				input: (p) => inputProductSheet.id(p("productSheetId")),
+				result: "productSheet.exist",
+				catch: () => {
+					throw new NotFoundHttpException("productSheet.notfound");
+				},
+				indexing: "productSheet"
+			},
+			new IHaveSentThis(NotFoundHttpException.code, "productSheet.notfound")
+		)
+		.process(
+			hasOrganizationRole,
+			{
+				input: p => ({
+					organizationId: p("productSheet").organizationId,
+					userId: p("accessTokenContent").id
+				}),
+				options: { organizationRole: "PRODUCT_SHEET_MANAGER" }
+			}
+		)
+		.check(
 			categoryExistCheck,
 			{
 				input: (p) => inputCategory.id(p("categoryId")),
@@ -27,28 +50,19 @@ export const DELETE = (method: Methods, path: string) =>
 			},
 			new IHaveSentThis(NotFoundHttpException.code, "category.notfound")
 		)
-		.check(
-			productSheetExistCheck,
-			{
-				input: (p) => inputProductSheet.id(p("productSheetId")),
-				result: "product_sheet.exist",
-				catch: () => {
-					throw new NotFoundHttpException("product_sheet.notfound");
-				},
-				indexing: "product_sheet"
-			},
-			new IHaveSentThis(NotFoundHttpException.code, "product_sheet.notfound")
-		)
-		.handler(async ({ pickup }) => {
-			const productSheetId = pickup("productSheetId");
-			const categoryId = pickup("categoryId");
+		.handler(
+			async ({ pickup }) => {
+				const productSheetId = pickup("productSheetId");
+				const categoryId = pickup("categoryId");
 
-			await prisma.product_sheet_to_category.deleteMany({
-				where: {
-					productSheetId,
-					categoryId,
-				},
-			});
+				await prisma.product_sheet_to_category.deleteMany({
+					where: {
+						productSheetId,
+						categoryId,
+					},
+				});
 
-			throw new OkHttpException("product_sheet_to_category.delete");
-		}, new IHaveSentThis(OkHttpException.code, "product_sheet_to_category.delete"));
+				throw new OkHttpException("product_sheet_to_category.delete");
+			}, 
+			new IHaveSentThis(OkHttpException.code, "product_sheet_to_category.delete")
+		);

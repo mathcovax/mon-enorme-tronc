@@ -49,6 +49,14 @@ export function useProductSheetForm(organizationId: string, productSheetId?: str
 		},
 		categories: {
 			type: "custom",
+			label: $t("page.createProductSheet.form.categories.label"),
+			defaultValue: undefined as ItemMultiComBox[] | undefined,
+			zodSchema: zod.object({
+				value: zod.string()
+			}).array().max(5, { message: $t("page.createProductSheet.form.catgories.max") })
+		},
+		oldCategories: {
+			type: "custom",
 			defaultValue: undefined as ItemMultiComBox[] | undefined,
 		}
 	});
@@ -59,7 +67,7 @@ export function useProductSheetForm(organizationId: string, productSheetId?: str
 				"/product-sheet/{productSheetId}",
 				{ params: { productSheetId } }
 			)
-			.info("product_sheet.found", (data) => {
+			.info("productSheet.found", (data) => {
 				values.name.value = data.name;
 				values.description.value = data.description;
 				values.shortDescription.value = data.shortDescription;
@@ -71,8 +79,10 @@ export function useProductSheetForm(organizationId: string, productSheetId?: str
 				"/product-sheet/{productSheetId}/categories",
 				{ params: { productSheetId } }
 			)
-			.info("product_sheet.categories", (data) => {
-				values.categories.value = data.map(c => ({ label: c.name, value: c.id }));
+			.info("productSheet.categories", (data) => {
+				const categoriesItems = data.map(c => ({ label: c.name, value: c.id }));
+				values.categories.value = categoriesItems;
+				values.oldCategories.value = categoriesItems;
 			});
 	}
 
