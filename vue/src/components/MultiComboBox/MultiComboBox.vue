@@ -1,20 +1,15 @@
 <script setup lang="ts">
-
-interface Item {
-	label: string
-	value: string | number
-}
+import type { Item } from "./types";
 
 interface Props {
 	items: Item[]
-	textButton: string
 	placeholder: string
 	emptyLabel: string
 	modelValue?: Item[]
 	class?: string
 	searchTerm?: string
-	filterFunction?: (items: Item[], term: string) => Item[]
 }
+
 const props = defineProps<Props>();
 const emit = defineEmits<{
 	"update:modelValue": [value: Item[] | undefined]
@@ -64,7 +59,7 @@ function onSelect(item: Item) {
 			<TheCommand
 				@update:search-term="(value) => emit('update:searchTerm', value)"
 				:search-term="searchTerm"
-				:filter-function="(filterFunction as undefined)"
+				:filter-function="(val) => val"
 			>
 				<CommandInput
 					class="h-9"

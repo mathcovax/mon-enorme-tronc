@@ -78,6 +78,7 @@ declare global {
   const useLink: typeof import('vue-router')['useLink']
   const useRoute: typeof import('vue-router')['useRoute']
   const useRouteParams: typeof import('./src/composables/useRouteParams')['useRouteParams']
+  const useRouteQuery: typeof import('./src/composables/useRouteQuery')['useRouteQuery']
   const useRouter: typeof import('vue-router')['useRouter']
   const useSlots: typeof import('vue')['useSlots']
   const useSuccessToast: typeof import('./src/composables/toast/successToast')['useSuccessToast']

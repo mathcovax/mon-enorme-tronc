@@ -2,8 +2,7 @@
 import { useSignUpForm } from "../composables/useSignUpForm"; 
 
 const { SignUpForm, checkSignUpForm } = useSignUpForm();
-
-const { query: { fireBaseIdToken } } = useRoute();
+const { fireBaseIdToken } = useRouteQuery({ fireBaseIdToken: zod.string() });
 const router = useRouter();
 const { setAccessToken, fetchUserValue } = useUserStore();
 
@@ -17,7 +16,7 @@ async function submit() {
 	await duploTo.enriched.post(
 		"/register", 
 		{
-			fireBaseIdToken: fireBaseIdToken as string,
+			fireBaseIdToken: fireBaseIdToken,
 			firstname: formFields.fistname,
 			lastname: formFields.lastname,
 			address: formFields.address,
@@ -31,12 +30,6 @@ async function submit() {
 		})
 		.result;
 }
-
-onMounted(async () => {
-	if (typeof fireBaseIdToken !== "string") {
-		router.push({ name: routerPageName.AUTH_LOGIN });
-	}
-});
 </script>
 
 <template>
