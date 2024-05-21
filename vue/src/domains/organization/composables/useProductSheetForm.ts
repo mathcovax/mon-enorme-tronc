@@ -1,19 +1,22 @@
-import type { ItemComboBox } from "@/composables/useFormBuilder/_inputs/ComboBoxInput";
+interface ItemMultiComBox {
+	label: string,
+	value: string | number
+}
 
-export function useProductSheetForm() {
-	const suggestedCategory = ref<ItemComboBox[]>([]);
+export function useProductSheetForm(organizationId: string, productSheetId?: string) {
+	const suggestedCategories = ref<ItemMultiComBox[]>([]);
 	
-	function onSearchCategory(categoryName: string) {
+	function onSearchCategories(categoryName: string) {
 		duploTo.enriched.
 			get("/categories", { query: { name: categoryName } })
 			.s((categories) => {
-				suggestedCategory.value = categories.map(
-					(category) => ({ label: category.name, identifier: category.id })
+				suggestedCategories.value = categories.map(
+					(category) => ({ label: category.name, value: category.id })
 				);
 			});
 	}
 
-	const { Form, checkForm, resetForm } = useFormBuilder({
+	const { Form, checkForm, resetForm, values } = useFormBuilder({
 		name: {
 			type: "text",
 			label: $t("page.createProductSheet.form.name.label"),
@@ -44,23 +47,41 @@ export function useProductSheetForm() {
 			zodSchema: zod.number({ message: $t("page.createProductSheet.form.required") })
 				.min(0, { message: $t("page.createProductSheet.form.price.min") })
 		},
-		categoryId: computed(() => ({
-			type: "combo",
-			label: $t("page.createProductSheet.form.category.label"),
-			textButton: $t("page.createProductSheet.form.category.textButton"),
-			placeholder: $t("page.createProductSheet.form.category.placeholder"),
-			emptyLabel: $t("page.createProductSheet.form.category.emptyLabel"),
-			items: suggestedCategory.value,
-			onUpdateSearchTerm: onSearchCategory,
-			zodSchema: zod.object(
-				{ identifier: zod.string() },
-				{ message: $t("page.createProductSheet.form.required") }
-			).transform(item => item.identifier),
-		})),
+		categories: {
+			type: "custom",
+			defaultValue: undefined as ItemMultiComBox[] | undefined,
+		}
 	});
+
+	if (productSheetId) {
+		duploTo.enriched
+			.get(
+				"/product-sheet/{productSheetId}",
+				{ params: { productSheetId } }
+			)
+			.info("product_sheet.found", (data) => {
+				values.name.value = data.name;
+				values.description.value = data.description;
+				values.shortDescription.value = data.shortDescription;
+				values.price.value = data.price;
+			});
+	
+		duploTo.enriched
+			.get(
+				"/product-sheet/{productSheetId}/categories",
+				{ params: { productSheetId } }
+			)
+			.info("product_sheet.categories", (data) => {
+				values.categories.value = data.map(c => ({ label: c.name, value: c.id }));
+			});
+	}
+
 	return {
 		ProductSheetForm: Form,
 		checkProductSheetForm: checkForm,
 		resetProductSheetForm: resetForm,
+		ProductSheetValues: values,
+		onSearchCategories,
+		suggestedCategories
 	};
 }

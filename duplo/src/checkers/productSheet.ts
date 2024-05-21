@@ -22,16 +22,26 @@ export const productSheetExistCheck = duplo
 			};
 		}
 
-		const category = await prisma.product_sheet.findFirst({
+		const productSheet = await prisma.product_sheet.findFirst({
 			where,
 		});
 
-		if (category) {
-			return output("product_sheet.exist", category);
+		if (productSheet) {
+			return output("product_sheet.exist", productSheet);
 		}
 		else {
 			return output("product_sheet.notfound", null);
 		}
 	})
+	.preCompletion(
+		"mustExist",
+		{
+			result: "product_sheet.exist",
+			catch: () => {
+				throw new NotFoundHttpException("product_sheet.notfound");
+			},
+			indexing: "product_sheet"
+		}
+	)
 	.build();
 

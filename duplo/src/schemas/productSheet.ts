@@ -5,5 +5,6 @@ export const productSheetSchema = zod.object({
 	shortDescription: zod.string(),
 	price: zod.number(),
 	createdAt: zod.coerce.string(),
-	updatedAt: zod.coerce.string()
+	updatedAt: zod.coerce.string(),
+	organizationId: zod.string()
 });

@@ -1,6 +1,6 @@
 import { duploTesting } from "@test/setup";
 import { MockPrisma } from "@test/mocks/providers";
-import { inputProductSheet, productSheetExistCheck } from "./product_sheet";
+import { inputProductSheet, productSheetExistCheck } from "./productSheet";
 
 describe("product_sheet checker", () => {
 	beforeEach(() => {

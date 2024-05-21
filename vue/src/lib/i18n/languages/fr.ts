@@ -220,6 +220,10 @@ export default {
 			alreadyExist: "Le nom de catégory est déjà utilisais",
 			created: "La catégory a correctement étais créer.",
 			edited: "La catégory a correctement étais modifier.",
+			notfound: "La catégorie n'existe pas",
+		},
+		product_sheet: {
+			notfound: "la fiche produit n'existe pas",
 		}
 	}
 };

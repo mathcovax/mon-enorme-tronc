@@ -1,7 +1,7 @@
 import { categoryExistCheck, inputCategory } from "@checkers/category";
-import { productSheetSchema } from "@schemas/product_sheet";
+import { productSheetSchema } from "@schemas/productSheet";
 
-/* METHOD : GET, PATH : /category/{categoryName}/products */
+/* METHOD : GET, PATH : /category/{categoryName}/product-sheets */
 export const GET = (method: Methods, path: string) =>
 	duplo
 		.declareRoute(method, path)
@@ -9,6 +9,9 @@ export const GET = (method: Methods, path: string) =>
 			params: {
 				categoryName: zod.string(),
 			},
+			query: {
+				page: zod.coerce.number().default(0)
+			}
 		})
 		.check(
 			categoryExistCheck,
@@ -27,18 +30,21 @@ export const GET = (method: Methods, path: string) =>
 		)
 		.handler(
 			async ({ pickup }) => {
-				const id = pickup("category").id;
+				const page = pickup("page");
+				const { id } = pickup("category");
 
 				const productsSheets = await prisma.product_sheet_to_category
 					.findMany({
 						where: {
 							category: {
-								id: id,
+								id,
 							},
 						},
 						select: {
 							productSheet: true,
 						},
+						skip: page * 10,
+						take: 10
 					})
 					.then((productsSheets) => productsSheets.map((p) => p.productSheet));
 

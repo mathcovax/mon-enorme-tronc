@@ -5,15 +5,17 @@ import {
 } from "@checkers/productSheet";
 import { mustBeConnected } from "@security/mustBeConnected";
 
-/* METHOD : DELETE, PATH : /category/{categoryId}/product-sheet/{productSheetId} */
-export const DELETE = (method: Methods, path: string) =>
+/* METHOD : POST, PATH : /category/{categoryId}/product-sheet */
+export const POST = (method: Methods, path: string) =>
 	mustBeConnected({ pickup: ["accessTokenContent"] })
 		.declareRoute(method, path)
 		.extract({
 			params: {
-				productSheetId: zod.string(),
 				categoryId: zod.string(),
 			},
+			body: zod.object({
+				productSheetId: zod.string(),
+			})
 		})
 		.check(
 			categoryExistCheck,
@@ -30,7 +32,7 @@ export const DELETE = (method: Methods, path: string) =>
 		.check(
 			productSheetExistCheck,
 			{
-				input: (p) => inputProductSheet.id(p("productSheetId")),
+				input: (p) => inputProductSheet.id(p("body").productSheetId),
 				result: "product_sheet.exist",
 				catch: () => {
 					throw new NotFoundHttpException("product_sheet.notfound");
@@ -40,15 +42,15 @@ export const DELETE = (method: Methods, path: string) =>
 			new IHaveSentThis(NotFoundHttpException.code, "product_sheet.notfound")
 		)
 		.handler(async ({ pickup }) => {
-			const productSheetId = pickup("productSheetId");
 			const categoryId = pickup("categoryId");
+			const { productSheetId } = pickup("body");
 
-			await prisma.product_sheet_to_category.deleteMany({
-				where: {
-					productSheetId,
+			await prisma.product_sheet_to_category.create({
+				data: {
 					categoryId,
+					productSheetId
 				},
 			});
 
-			throw new OkHttpException("product_sheet_to_category.delete");
-		}, new IHaveSentThis(OkHttpException.code, "product_sheet_to_category.delete"));
+			throw new OkHttpException("product_sheet_to_category.created");
+		}, new IHaveSentThis(OkHttpException.code, "product_sheet_to_category.created"));

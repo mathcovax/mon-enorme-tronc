@@ -1,13 +1,20 @@
 <script setup lang="ts">
 import { useProductSheetForm } from "../composables/useProductSheetForm";
 
+const { productSheetId, organizationId } = useRouteParams({ 
+	organizationId: zod.string(), 
+	productSheetId: zod.string() 
+});
 const { 
 	ProductSheetForm, 
 	checkProductSheetForm, 
-	resetProductSheetForm 
-} = useProductSheetForm();
+	suggestedCategories,
+	onSearchCategories 
+} = useProductSheetForm(organizationId, productSheetId);
+
+const oldCategories = suggestedCategories.value.map((category) => category.value.toString());
+
 const router = useRouter();
-const { params: { organizationId, productSheetId } } = useRoute();
 
 async function submit() {
 
@@ -18,41 +25,56 @@ async function submit() {
 	}
 
 	const result = await duploTo.enriched
-		.put(
-			"/organization/{organizationId}/product-sheet/{productSheetId}",
+		.patch(
+			"/product-sheet/{productSheetId}",
 			{
 				name: formFields.name,
 				description: formFields.description,
 				shortDescription: formFields.shortDescription,
 				price: formFields.price,
 			},
-			{ params: { organizationId: organizationId as string, productSheetId: productSheetId as string } }
+			{ params: { productSheetId } }
 		)
 		.result;
 
 	if (result.success && result.info === "product_sheet.edited") {
-		await duploTo.enriched
-			.post(
-				"/category/{categoryId}/product-sheet/{productSheetId}",
-				{},
-				{ params: { productSheetId: result.data, categoryId: formFields.categoryId } }
-			)
-			.info("product_sheet_to_category.created", () => {
-				resetProductSheetForm();
-			}); 
+		const promiseList: unknown[] = [];
+		formFields.categories?.forEach((c) => {
+			if (!oldCategories.includes(c.value.toString())) {
+				promiseList.push(
+					duploTo.enriched
+						.post(
+							"/category/{categoryId}/product-sheet",
+							{
+								productSheetId
+							},
+							{ params: { categoryId: c.value.toString() } }
+						)
+						.result
+				);
+			}
+		});
+		await Promise.all(promiseList);
 	}
+
+	router.push({ name: routerPageName.GET_PRODUCT_SHEET });
 }
-
-onMounted(async () => {
-	if (typeof organizationId !== "string" || typeof productSheetId !== "string") {
-		router.push({ name: routerPageName.EDITO_HOME });
-	}
-});
-
 </script>
 
 <template>
 	<ProductSheetForm @submit="submit">
+		<template #categories="{onUpdate, modelValue}">
+			<MultiComboBox
+				:model-value="modelValue"
+				@update:model-value="onUpdate"
+				:items="suggestedCategories"
+				@update:search-term="onSearchCategories"
+				:placeholder="$t('page.editProductSheet.form')"
+				:empty-label="$t('page.editProductSheet.form')"
+				:text-button="$t('page.editProductSheet.form')"
+			/>
+		</template>
+			
 		<PrimaryButton
 			type="submit"
 			class="col-span-12"

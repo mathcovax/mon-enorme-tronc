@@ -1,5 +1,5 @@
 import { inputOrganization, organizationExistCheck } from "@checkers/organization";
-import { productSheetSchema } from "@schemas/product_sheet";
+import { productSheetSchema } from "@schemas/productSheet";
 import { mustBeConnected } from "@security/mustBeConnected";
 
 /* METHOD : GET, PATH : /organization/{organizationId}/product-sheets */

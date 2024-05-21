@@ -93,8 +93,8 @@ model product_sheet {
     createdAt          DateTime                    @default(now())
     updatedAt          DateTime                    @updatedAt
     productSheetImages product_sheet_images[]
-    organization       organization?               @relation(fields: [organizationId], references: [id])
-    organizationId     String?
+    organization       organization                @relation(fields: [organizationId], references: [id])
+    organizationId     String
 }
 
 model product_sheet_to_category {
