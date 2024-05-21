@@ -1,6 +1,6 @@
 import { organizationHasUserCheck } from "@checkers/organization";
 import { inputUser, userExistCheck } from "@checkers/user";
-import { organizationRolesEnum } from "@schemas/organization";
+import { organizationRolesEnum, organizationUserSchema } from "@schemas/organization";
 import { hasOrganizationRole } from "@security/hasOrganizationRole";
 import { mustBeConnected } from "@security/mustBeConnected";
 
@@ -73,4 +73,40 @@ export const POST = (method: Methods, path: string) =>
 				throw new CreatedHttpException("organization.user.add");
 			},
 			new IHaveSentThis(CreatedHttpException.code, "organization.user.add")
+		);
+		
+/* METHOD : GET, PATH : /organization/{organizationId}/user */
+export const GET = (method: Methods, path: string) =>
+	mustBeConnected({ pickup: ["accessTokenContent"] })
+		.declareRoute(method, path)
+		.extract({
+			params: {
+				organizationId: zod.string(),
+			}
+		})
+		.check(
+			organizationHasUserCheck,
+			{
+				input: p => ({ organizationId: p("organizationId"), userId: p("accessTokenContent").id }),
+				...organizationHasUserCheck.preCompletions.mustHaveUser,
+				result: "organization.hasUserWithMoreData",
+				options: { selectUser: true }
+			},
+			new IHaveSentThis(NotAcceptableHttpException.code, "organization.hasNotUser")
+		)
+		.handler(
+			async ({ pickup }) => {
+				const { organizationRole, user: { id, email, lastname, firstname } } = pickup("userToOrganization");
+				
+				const organisationUser = {
+					id,
+					email,
+					lastname,
+					firstname,
+					organizationRole,
+				};
+
+				throw new OkHttpException("organization.user", organisationUser);
+			}, 
+			new IHaveSentThis(OkHttpException.code, "organization.user", organizationUserSchema)
 		);

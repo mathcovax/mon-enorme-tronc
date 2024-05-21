@@ -5,6 +5,8 @@ import { useOrganizationUserAddForm } from "../composables/useOrganizationUserAd
 import type { OrganizationUser } from "@/lib/utils";
 import type ThePopup from "@/components/ThePopup.vue";
 
+const $pt = usePageTranslate(); 
+
 const { organizationId } = useRouteParams({ 
 	organizationId: zod.string() 
 });
@@ -25,19 +27,19 @@ const searchEmail = ref("");
 const popup = ref<InstanceType<typeof ThePopup>>();
 const cols: BigTableColDef<OrganizationUser>[] = [
 	{
-		title: $t("page.organizationUser.table.cols.email"),
+		title: $pt("table.cols.email"),
 		getter: i => i.email
 	},
 	{
-		title: $t("page.organizationUser.table.cols.lastname"),
+		title: $pt("table.cols.lastname"),
 		getter: i => i.lastname
 	},
 	{
-		title: $t("page.organizationUser.table.cols.firstname"),
+		title: $pt("table.cols.firstname"),
 		getter: i => i.firstname
 	},
 	{
-		title: $t("page.organizationUser.table.cols.role"),
+		title: $pt("table.cols.role"),
 		getter: i => $t(`organizationRole.${i.organizationRole}`)
 	},
 ];
@@ -147,14 +149,14 @@ watch(searchEmail, () => getOrganizationUsers(currentPage.value = 0, searchEmail
 				type="submit"
 				class="col-span-12"
 			>
-				{{ $t("page.organizationUser.form.submit") }}
+				{{ $t("form.submit") }}
 			</PrimaryButton>
 		</FormOrganizationUserAdd>
 
 		<div class="flex flex-col items-center w-full gap-3">
 			<PrimaryInput
 				class="max-w-[300px]"
-				:placeholder="$t('page.organizationUser.table.searchPlaceholder')"
+				:placeholder="$t('placeholder.search')"
 				v-model="searchEmail"
 			/>
 
@@ -186,7 +188,7 @@ watch(searchEmail, () => getOrganizationUsers(currentPage.value = 0, searchEmail
 					type="submit"
 					class="col-span-8"
 				>
-					{{ $t("page.organizationUser.form.submit") }}
+					{{ $pt("form.submit") }}
 				</PrimaryButton>
 
 				<TheButton
@@ -195,7 +197,7 @@ watch(searchEmail, () => getOrganizationUsers(currentPage.value = 0, searchEmail
 					class="col-span-4"
 					variant="destructive"
 				>
-					{{ $t("page.organizationUser.form.remove") }}
+					{{ $pt("form.remove") }}
 				</TheButton>
 			</FormOrganizationUserEdit>
 		</template>

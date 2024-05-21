@@ -4,6 +4,8 @@ import { useGetUsers } from "../composables/useGetUsers";
 import { primordialRoles, type PrimordialRole, type User } from "@/lib/utils";
 import type ThePopup from "@/components/ThePopup.vue";
 
+const $pt = usePageTranslate(); 
+
 const {
 	UserForm,
 	checkUserForm,
@@ -45,20 +47,20 @@ async function submit() {
 
 const cols: BigTableColDef<User>[] = [
 	{
-		title: $t("page.manageUser.table.cols.email"),
+		title: $t("label.email"),
 		getter: i => i.email
 	},
 	{
-		title: $t("page.manageUser.table.cols.lastname"),
+		title: $t("label.lastname"),
 		getter: i => i.lastname
 	},
 	{
-		title: $t("page.manageUser.table.cols.firstname"),
+		title: $t("label.firstname"),
 		getter: i => i.firstname
 	},
 	{
-		title: $t("page.manageUser.table.cols.role"),
-		getter: i => $t(`roles.${i.primordialRole}`)
+		title: $t("label.role"),
+		getter: i => $t(`role.${i.primordialRole}`)
 	},
 ];
 
@@ -104,19 +106,19 @@ watch(
 		<div class="flex gap-6 w-full justify-center">
 			<PrimaryInput
 				class="max-w-[300px]"
-				:placeholder="$t('page.manageUser.table.searchPlaceholder')"
+				:placeholder="$pt('table.searchPlaceholder')"
 				v-model="search.email"
 			/>
 
 			<PrimarySelect
 				class="max-w-[300px]"
-				:items="primordialRoles.map(r => ({ label: $t(`roles.${r}`), value: r }))"
-				:placeholder="$t('page.manageUser.table.searchPlaceholderRole')"
+				:items="primordialRoles.map(r => ({ label: $t(`role.${r}`), value: r }))"
+				:placeholder="$pt('table.searchPlaceholderRole')"
 				v-model="search.role"
 			/>
 
 			<SecondaryButton @click="clear">
-				{{ $t("page.manageUser.btnClear") }}
+				{{ $t("button.clear") }}
 			</SecondaryButton>
 		</div>
 
@@ -124,7 +126,7 @@ watch(
 			:items="users"
 			:cols="cols"
 			:current-page="currentPage + 1"
-			:action-label="$t('page.manageUser.table.cols.actions')"
+			:action-label="$pt('table.cols.actions')"
 			@click-next="next"
 			@click-previous="previous"
 			@click-on-row="openPopup"
@@ -148,7 +150,7 @@ watch(
 					type="submit"
 					class="col-span-12"
 				>
-					{{ $t("page.manageUser.form.submit") }}
+					{{ $t("button.send") }}
 				</PrimaryButton>
 			</UserForm>
 		</template>

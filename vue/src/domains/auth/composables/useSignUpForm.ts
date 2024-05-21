@@ -1,68 +1,52 @@
-import type { ItemComboBox } from "@/composables/useFormBuilder/_inputs/ComboBoxInput";
-
 export function useSignUpForm() {
 
 	const timestamp18year = 568036800000;
-	const suggestedAddresses = ref<ItemComboBox[]>([]);
-
-	function onSearchAddress(address: string) {
-		duploTo.enriched.
-			get("/geocoder", { query: { address } })
-			.s((addresses) => {
-				if (addresses.length === 0) {
-					return;
-				}
-				
-				suggestedAddresses.value = addresses.map(
-					(address) => ({ label: address, identifier: address })
-				);
-			});	
-	}
+	const { searchAddresses, addresses } = useSearchAddresses();
 
 	const { Form, checkForm } = useFormBuilder({
 		lastname: {
 			cols: 6,
 			type: "text",
-			label: $t("page.register.lastname"),
-			zodSchema: zod.string({ message: $t("page.register.rules.required") })
-				.min(2, $t("page.register.rules.minLength"))
-				.max(255, $t("page.register.rules.maxLength")),
+			label: $t("label.lastname"),
+			zodSchema: zod.string({ message: $t("form.rule.required") })
+				.min(2, $t("form.rules.minLength", { value: 2 }))
+				.max(255, $t("form.rules.maxLength", { value: 255 })),
 		},
 		fistname: {
 			cols: 6,
 			type: "text",
-			label: $t("page.register.firstname"),
-			zodSchema: zod.string({ message: $t("page.register.rules.required") })
-				.min(2, $t("page.register.rules.minLength"))
-				.max(255, $t("page.register.rules.maxLength")),
+			label: $t("label.firstname"),
+			zodSchema: zod.string({ message: $t("form.rule.required") })
+				.min(2, $t("form.rule.minLength", { value: 2 }))
+				.max(255, $t("form.rule.maxLength", { value: 255 })),
 		},
 		dateOfBirth: {
 			type: "date",
-			label: $t("page.register.birthDate"),
-			zodSchema: zod.coerce.date({ message: $t("page.register.rules.required") })
+			label: $t("label.birthDate"),
+			zodSchema: zod.coerce.date({ message: $t("form.rule.required") })
 				.refine(
 					(userDateOfBirth) => Date.now() - userDateOfBirth.getTime() >= timestamp18year, 
-					{ message: $t("page.register.rules.minAge") }
+					{ message: $t("form.rule.minAge") }
 				)
 		},
 		address: computed(() => ({
 			type: "combo",
-			items: suggestedAddresses.value,
-			placeholder: $t("page.register.address.placeholder"),
-			emptyLabel: $t("page.register.address.emptyLabel"),
-			defaultLabel: $t("page.register.address.defaultLabel"),
-			label: $t("page.register.address.label"),
+			items: addresses.value.map(v => ({ label: v, identifier: v })),
+			placeholder: $t("placeholder.address"),
+			emptyLabel: $t("label.address.empty"),
+			defaultLabel: $t("label.address.addressDefault"),
+			label: $t("label.address"),
 			zodSchema: zod.object(
 				{ label: zod.string() }, 
-				{ message: $t("page.register.rules.required") }
+				{ message: $t("form.rule.required") }
 			).transform(item => item.label),
-			textButton: $t("page.register.address.placeholder"),
-			onUpdateSearchTerm: onSearchAddress
+			textButton: $t("button.validate"),
+			onUpdateSearchTerm: searchAddresses
 		})),
 		terms: {
 			type: "checkbox",
-			desc: $t("page.register.terms"),
-			zodSchema: zod.literal(true, { message: $t("page.register.rules.terms") }),
+			desc: $t("label.terms"),
+			zodSchema: zod.literal(true, { message: $t("form.rule.terms") }),
 		}
 	});
 

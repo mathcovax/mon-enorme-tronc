@@ -4,6 +4,8 @@ import { useGetCategories } from "../composables/useGetCategories";
 import type { Category } from "@/lib/utils";
 import type ThePopup from "@/components/ThePopup.vue";
 
+const $pt = usePageTranslate(); 
+
 const { 
 	CategoryForm: CreateCategoryForm, 
 	checkCategoryForm: checkCreateCategoryForm, 
@@ -21,11 +23,11 @@ const searchName = ref("");
 const popup = ref<InstanceType<typeof ThePopup>>();
 const cols: BigTableColDef<Category>[] = [
 	{
-		title: $t("page.manageCategories.table.cols.name"),
+		title: $pt("table.col.name"),
 		getter: i => i.name
 	},
 	{
-		title: $t("page.manageCategories.table.cols.disabled"),
+		title: $pt("table.col.disabled"),
 		slotName: "disabled", 
 	},
 ];
@@ -110,14 +112,14 @@ getCategories(currentPage.value, searchName.value);
 				type="submit"
 				class="col-span-12"
 			>
-				{{ $t("page.manageCategories.form.submit") }}
+				{{ $t("button.validate") }}
 			</PrimaryButton>
 		</CreateCategoryForm>
 
 		<div class="flex flex-col items-center w-full gap-3">
 			<PrimaryInput
 				class="max-w-[300px]"
-				:placeholder="$t('page.manageCategories.table.searchPlaceholder')"
+				:placeholder="$pt('table.searchPlaceholder')"
 				v-model="searchName"
 			/>
 
@@ -152,14 +154,14 @@ getCategories(currentPage.value, searchName.value);
 				class="items-center"
 			>
 				<template #oldName="{modelValue}">
-					<span class="text-center">{{ $t("page.manageCategories.form.oldName.label", {currentName: modelValue}) }}</span>
+					<span class="text-center">{{ $pt("form.oldName.label", { currentName: modelValue }) }}</span>
 				</template>
 
 				<PrimaryButton
 					type="submit"
 					class="col-span-12"
 				>
-					{{ $t("page.manageCategories.form.submit") }}
+					{{ $t("button.validate") }}
 				</PrimaryButton>
 			</PatchCategoryForm>
 		</template>

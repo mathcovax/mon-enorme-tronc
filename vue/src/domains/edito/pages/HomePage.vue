@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const $pt = usePageTranslate(); 
+
 const products = ref([
 	{
 		image: "https://via.placeholder.com/250",
@@ -36,18 +38,18 @@ const products = ref([
 		<div class="container h-full flex flex-col lg:flex-row gap-12 lg:gap-24">
 			<div class="h-1/2 lg:h-full flex flex-col justify-center">
 				<h1 class="text-3xl lg:text-5xl font-bold">
-					Faites vous&nbsp;plaisir tout en restant naturel
+					{{ $pt("heroTitle") }}
 				</h1>
 
 				<p class="mt-4 text-base lg:text-lg font-medium opacity-50">
-					Des produits naturels et bio pour prendre soin de vous.
+					{{ $pt("heroSubtitle") }}
 				</p>
 
 				<TheButton
 					size="lg"
 					class="mt-8 w-min"
 				>
-					Parcourir les produits
+					{{ $pt("button.discover") }}
 				</TheButton>
 			</div>
 
@@ -64,7 +66,7 @@ const products = ref([
 	<section>
 		<div class="container mb-12 lg:mb-16 flex flex-col gap-8 lg:gap-12 items-center">
 			<h2 class="text-2xl lg:text-3xl font-bold">
-				Nouveautés
+				{{ $pt("sectionNewTitle") }}
 			</h2>
 
 			<ScrollArea class="w-full">
@@ -84,7 +86,7 @@ const products = ref([
 				variant="outline"
 				class="w-min"
 			>
-				Voir plus
+				{{ $pt("button.more") }}
 			</TheButton>
 		</div>
 	</section>
@@ -94,7 +96,7 @@ const products = ref([
 	<section>
 		<div class="container mb-12 lg:mb-16 flex flex-col gap-8 lg:gap-12 items-center">
 			<h2 class="text-2xl lg:text-3xl font-bold">
-				Meilleures ventes
+				{{ $pt("sectionBestSellerTitle") }}
 			</h2>
 
 			<ScrollArea class="w-full">
@@ -114,7 +116,7 @@ const products = ref([
 				variant="outline"
 				class="w-min"
 			>
-				Voir plus
+				{{ $pt("buttonMore") }}
 			</TheButton>
 		</div>
 	</section>
@@ -124,7 +126,7 @@ const products = ref([
 			class="container max-w-240 lg:h-192 px-6 lg:px-16 py-10 lg:py-20 flex flex-col gap-8 lg:gap-12 items-center bg-whiteless rounded-3xl"
 		>
 			<h2 class="text-2xl lg:text-3xl font-bold">
-				Notre pack Plaisir
+				{{ $pt("sectionPackTitle") }}
 			</h2>
 
 			<div class="w-full h-192 lg:h-[calc(100%-5.25rem)] grid grid-cols-6 grid-rows-12 lg:grid-rows-6 gap-5">

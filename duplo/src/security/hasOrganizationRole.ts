@@ -1,4 +1,4 @@
-import { InputHasOrganizationRole, organizationHasUserCheck } from "@checkers/organization";
+import { InputOrganizationHasUser, organizationHasUserCheck } from "@checkers/organization";
 import { organization_role } from "@prisma/client";
 
 interface OptionsHasOrganizationRole {
@@ -15,7 +15,7 @@ const organizationRolesHierarchy: Record<organization_role, organization_role[]>
 export const hasOrganizationRole = duplo
 	.createProcess("hasOrganizationRole")
 	.options<OptionsHasOrganizationRole>({ organizationRole: "OWNER" })
-	.input<undefined | InputHasOrganizationRole>(() => undefined)
+	.input<undefined | InputOrganizationHasUser>(() => undefined)
 	.cut(
 		({ pickup }) => {
 			const input = pickup("input");

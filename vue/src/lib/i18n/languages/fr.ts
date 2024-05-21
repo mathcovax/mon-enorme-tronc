@@ -1,41 +1,28 @@
 export default {
 	page: {
-		login: {
+		[routerPageName.EDITO_HOME]: {
+			heroTitle: "Faites vous\u00A0plaisir tout en restant naturel",
+			heroSubtitle: "Des produits naturels et bio pour prendre soin de vous.",
+			sectionNewTitle: "Nouveautés",
+			sectionBestSellerTitle: "Meilleures ventes",
+			sectionPackTitle: "Notre pack Plaisir",
+			button: {
+				discover: "Découvrir",
+				more: "Voir plus",
+			}
+		},
+		[routerPageName.AUTH_LOGIN]: {
 			title: "Connexion",
 			subtitle: "Connectez-vous pour accéder à votre compte.",
-			buttonText: "Se connecter avec Google"
 		},
-		register: {
+		[routerPageName.AUTH_REGISTER]: {
 			title: "Première visite ?",
 			subtitle: "Créez un compte pour accéder à nos services.",
-			rules: {
-				required: "Champ obligatoire",
-				terms: "Vous devez accepter les conditions générales d'utilisation",
-				minLength: "Doit faire au moins 2 caractères",
-				maxLength: "Doit faire au plus 255 caractères",
-				minAge: "Vous devez avoir au moins 18 ans",
-				maxAge: "Vous devez avoir au plus 130 ans"
-			},
-			lastname: "Nom",
-			firstname: "Prénom",
-			birthDate: "Date de naissance",
-			email: "Adresse e-mail",
-			country: "Pays",
-			address: {
-				label: "Adresse",
-				placeholder: "Cherchez votre adresse",
-				emptyLabel: "Aucune adresse trouvée",
-				defaultLabel: "Sélectionnez une adresse"
-			},
-			terms: "J'accepte les conditions générales d'utilisation",
-			buttonText: "S'inscrire"
 		},
-		createOrganization: {
+		[routerPageName.ADMIN_PANEL_ORGANIZATIONS]: {
 			form: {
 				name: {
 					label: "Nom de l'organisation",
-					maxLength: "Doit faire au plus 255 caractères",
-					minLength: "Doit faire au moins 2 caractères",
 				},
 				owner: {
 					label: "Propriétaire de l'organisation",
@@ -43,22 +30,21 @@ export default {
 					placeholder: "{'owner.bg@gmail.com...'}",
 					emptyLabel: "Aucun propriétaire."
 				},
-				submit: "Créer",
-				required: "Champ obligatoire",
 			},
 			table: {
-				suspended: "Suspendre",
-				enabled: "Activer",
 				searchPlaceholder: "Chercher une organization",
-				cols: {
+				col: {
 					name: "Nom",
-					id: "ID",
-					suspended: "Active",
+					active: "Actif",
 					actions: "Actions"
 				},
+				action: {
+					activate: "Activer",
+					suspend: "Suspendre",
+				}
 			},
 		},
-		manageUser: {
+		[routerPageName.ADMIN_PANEL_USERS]: {
 			form: {
 				primordialRole: {
 					label: "Role Primordial",
@@ -66,75 +52,97 @@ export default {
 				muted: {
 					label: "Rendre muet",
 				},
-				submit: "Valider",
 			},
 			table: {
 				searchPlaceholder: "Chercher une email",
 				searchPlaceholderRole: "Chercher par role",
-				cols: {
-					email: "Email",
-					lastname: "Nom",
-					firstname: "Prénom",
-					role: "Role"
-				},
 			},
 			btnClear: "Clear"
 		},
-		manageCategories: {
+		[routerPageName.CONTENT_PANEL_CATEGORIES]: {
 			form: {
 				oldName: {
 					label: "Nom actuel : {currentName}"
 				},
 				name: {
 					label: "Nom de la catégorie",
-					minLength: "Doit faire au moins 3 caractères",
-					maxLength: "Doit faire au plus 255 caractères",
 				},
 				disabled: {
 					desc: "Désactiver la catégorie"
 				},
 				submit: "Valider",
-				required: "Champ obligatoire",
 			},
 			table: {
 				searchPlaceholder: "Chercher une categorie",
-				cols: {
+				col: {
 					name: "Nom",
-					disabled: "Catégorie active"
+					disabled: "Active"
 				},
 			}
 		},
-		organizationUser: {
-			form: {
-				firstname: {
-					label: "Prénom",
-				},
-				lastname: {
-					label: "Nom",
-				},
-				email: {
-					label: "Email",
-					wrong: "Email pas correcte."
-				},
-				organizationRole: {
-					label: "Role",
-				},
-				submit: "Valider",
-				remove: "Retirer",
-				required: "Champ obligatoire",
-			},
+		[routerPageName.ORGANIZATION_MANAGE_USER]: {
 			table: {
 				searchPlaceholder: "Chercher une email",
-				cols: {
-					email: "Email",
-					lastname: "Nom",
-					firstname: "Prénom",
-					role: "Role"
+			},
+		},
+		notFound: {
+			title: "404 - Page introuvable",
+			description: "La page que vous cherchez n'existe pas.",
+			buttonText: "Retourner à l'accueil"
+		},
+	},
+	layout: {
+		default: {
+			header: {
+				home: "Accueil",
+				bestSeller: "Meilleures ventes",
+				new: "Contact",
+				products: "Produits",
+				dropdownAccount: {
+					myAccount: "Mon compte",
+					settings: "Paramètres",
+					support: "Support",
+					login: "Connexion",
+					logout: "Déconnexion"
 				},
+			},
+			footer: {
+				slogan: "Le plaisir au naturel.",
+				helpNav: {
+					title: "Aide",
+					clientSupport: "Support client",
+					deliveryDetails: "Détails de livraison",
+					generalConditions: "Conditions générales",
+					confidentialityPolicy: "Politique de confidentialité",
+				},
+				faqNav: {
+					title: "FAQ",
+					account: "Compte",
+					orders: "Commandes",
+					payements: "Paiements",
+				},
+				pageNav: {
+					title: "Pages",
+					home: "Accueil",
+					bestSeller: "Meilleures ventes",
+					new: "Contact",
+					products: "Produits",
+				},
+				copyrights: "Tous droits réservés."
+			}
+		},
+		organization: {
+			title: "Mon organisation",
+			nav: {
+				dashboard: "Tableau de bord",
+				orders: "Commandes",
+				products: "Produits",
+				users: "Utilisateurs",
+				analytics: "Analytiques",
 			},
 		}
 	},
-	roles: {
+	role: {
 		CUSTOMER: "Client",
 		MODERATOR: "Modérateur",
 		CONTENTS_MASTER: "Géstionaire",
@@ -150,6 +158,46 @@ export default {
 		default: "Info",
 		error: "Erreur",
 		seccess: "Succès",
+	},
+	form: {
+		submit: "Valider",
+		rule: {
+			required: "Champ obligatoire",
+			maxLength: "Doit faire au maximum {value} caractères",
+			minLength: "Doit faire au moins {value} caractères",
+			invalidEmail: "Cette email est invalide.",
+			minAge: "Vous devez avoir au moins {value} ans",
+		}
+	},
+	label: {
+		id: "ID",
+		email: "Email",
+		lastname: "Nom",
+		firstname: "Prénom",
+		birthDate: "Date de naissance",
+		address: "Adresse",
+		addressDefault: "Chercher votre adresse",
+		empty: "Aucun résultat",
+		terms: "J'accepte les conditions générales d'utilisation",
+		user: "Utilisateur",
+		role: "Rôle",
+	},
+	placeholder: {
+		address: "Cherchez votre adresse",
+		search: "Chercher",
+	},
+	button: {
+		register: "S'inscrire",
+		login: "Se connecter avec Google",
+		validate: "Valider",
+		cancel: "Annuler",
+		close: "Fermer",
+		save: "Enregister",
+		send: "Envoyer",
+		add: "Ajouter",
+		clear: "Effacer",
+		remove: "Retirer",
+		delete: "Supprimer",
 	},
 	response: {
 		organization: {

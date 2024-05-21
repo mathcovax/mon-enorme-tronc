@@ -5,18 +5,21 @@
 <template>
 	<section class="h-screen-no-header flex flex-col items-center justify-center">
 		<h1 class="text-3xl lg:text-5xl font-bold">
-			404 - Page non trouvée
+			{{ $t("page.notFound.title") }}
 		</h1>
 
 		<p class="mt-4 text-base lg:text-lg font-medium opacity-50">
-			La page que vous cherchez n'existe pas.
+			{{ $t("page.notFound.description") }}
 		</p>
 
 		<TheButton
 			size="lg"
 			class="mt-8 w-min"
+			as-child
 		>
-			Retourner à l'accueil
+			<RouterLink to="/">
+				{{ $t("page.notFound.button") }}
+			</RouterLink>
 		</TheButton>
 	</section>
 </template>
