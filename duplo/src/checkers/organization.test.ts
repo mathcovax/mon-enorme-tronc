@@ -43,7 +43,15 @@ describe("organization checker", () => {
 		const result = await duploTesting.testChecker(organizationHasUserCheck, { organizationId: "tt", userId: "test" });
 
 		expect(result.info).toBe("organization.hasUser");
-		expect(spy).lastCalledWith({ where: { organizationId: "tt", userId: "test" } });
+		expect(spy).lastCalledWith({ 
+			where: { organizationId: "tt", userId: "test" } ,
+			select: {
+				organizationId: true,
+				organizationRole: true,
+				user: false,
+				userId: true,
+			}
+		});
 	});
 
 	it("organization has not user", async() => {

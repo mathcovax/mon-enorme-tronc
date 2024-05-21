@@ -1,6 +1,7 @@
 import type { ItemComboBox } from "@/composables/useFormBuilder/_inputs/ComboBoxInput";
 
 export function useCreateOrganizationForm() {
+	const $pt = usePageTranslate();
 	const suggestedUser = ref<ItemComboBox[]>([]);
 
 	function onSearchUser(userEmail: string) {
@@ -16,23 +17,23 @@ export function useCreateOrganizationForm() {
 	const { Form, checkForm, resetForm } = useFormBuilder({
 		name: {
 			type: "text",
-			label: $t("page.createOrganization.form.name.label"),
+			label: $pt("form.name.label"),
 			defaultValue: "",
-			zodSchema: zod.string({ message: $t("page.createOrganization.form.required") })
-				.max(255, { message: $t("page.createOrganization.form.name.maxLength") })
-				.min(2, { message: $t("page.createOrganization.form.name.minLength") })
+			zodSchema: zod.string({ message: $t("form.rule.required") })
+				.max(255, { message: $t("form.rule.maxLength", { value: 255 }) })
+				.min(2, { message: $t("form.rule.minLength", { value: 2 }) })
 		},
 		ownerId: computed(() => ({
 			type: "combo",
-			label: $t("page.createOrganization.form.owner.label"),
-			textButton: $t("page.createOrganization.form.owner.textButton"),
-			placeholder: $t("page.createOrganization.form.owner.placeholder"),
-			emptyLabel: $t("page.createOrganization.form.owner.emptyLabel"),
+			label: $pt("form.owner.label"),
+			textButton: $pt("form.owner.textButton"),
+			placeholder: $pt("form.owner.placeholder"),
+			emptyLabel: $t("label.empty"),
 			items: suggestedUser.value,
 			onUpdateSearchTerm: onSearchUser,
 			zodSchema: zod.object(
 				{ identifier: zod.string() }, 
-				{ message: $t("page.createOrganization.form.required") }
+				{ message: $t("form.rule.required") }
 			).transform(item => item.identifier),
 		})),
 	});

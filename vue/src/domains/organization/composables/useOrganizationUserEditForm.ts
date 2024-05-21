@@ -10,7 +10,7 @@ export function useOrganizationUserEditForm() {
 		},
 		organizationRole: {
 			type: "select",
-			label: $t("page.organizationUser.form.organizationRole.label"),
+			label: $t("label.role"),
 			defaultValue: undefined as EditingOrganizationRole | undefined, 
 			items: editingOrganizationRoles.map(r => ({
 				label: $t(`organizationRole.${r}`), 

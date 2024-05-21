@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useSignUpForm } from "../composables/useSignUpForm"; 
 
+const $pt = usePageTranslate(); 
 const { SignUpForm, checkSignUpForm } = useSignUpForm();
 const { fireBaseIdToken } = useRouteQuery({ fireBaseIdToken: zod.string() });
 const router = useRouter();
@@ -39,11 +40,11 @@ async function submit() {
 				<div class="mx-auto grid w-[350px] gap-6">
 					<div class="grid gap-2 text-center">
 						<h1 class="text-3xl font-bold">
-							{{ $t("page.register.title") }}
+							{{ $pt("title") }}
 						</h1>
 
 						<p class="text-balance text-muted-foreground">
-							{{ $t("page.register.subtitle") }}
+							{{ $pt("subtitle") }}
 						</p>
 					</div>
 
@@ -52,7 +53,7 @@ async function submit() {
 							type="submit"
 							class="col-span-12"
 						>
-							{{ $t("page.register.buttonText") }}
+							{{ $t("button.register") }}
 						</PrimaryButton>
 					</SignUpForm>
 				</div>

@@ -59,14 +59,14 @@ export const SelectInput = defineComponent({
 		return () => h(
 			"div",
 			{
-				class: "flex flex-col"
+				class: "flex flex-col gap-2"
 			},
 			[
 				props.label
 					? h(
 						"label", 
 						{
-							class: "",
+							class: "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
 							for: `${props.name}-${props.formId}`,
 						},
 						props.label

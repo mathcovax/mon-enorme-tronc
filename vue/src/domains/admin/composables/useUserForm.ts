@@ -4,6 +4,7 @@ type EditingPrimordialRole = Exclude<PrimordialRole, "ADMIN">
 const editingPrimordialRole = primordialRoles.filter(r => r !== "ADMIN") as TuplifyUnion<EditingPrimordialRole>;
 
 export function useUserForm() {
+	const $pt = usePageTranslate();
 	const { Form, checkForm, resetForm, values } = useFormBuilder({
 		user: {
 			type: "custom",
@@ -12,10 +13,10 @@ export function useUserForm() {
 		},
 		primordialRole: {
 			type: "select",
-			label: $t("page.manageUser.form.primordialRole.label"),
+			label: $pt("form.primordialRole.label"),
 			defaultValue: undefined as EditingPrimordialRole | undefined, 
 			items: editingPrimordialRole.map(r => ({
-				label: $t(`roles.${r}`), 
+				label: $t(`role.${r}`), 
 				value: r
 			})),
 			zodSchema: zod.enum(editingPrimordialRole),
@@ -24,7 +25,7 @@ export function useUserForm() {
 		muted: {
 			type: "checkbox",
 			defaultValue: false as boolean,
-			desc: $t("page.manageUser.form.muted.label"),
+			desc: $pt("form.muted.label"),
 			cols: 4,
 		}
 	});

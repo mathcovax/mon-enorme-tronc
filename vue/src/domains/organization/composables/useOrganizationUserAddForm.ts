@@ -7,31 +7,31 @@ export function useOrganizationUserAddForm() {
 	const { Form, checkForm, resetForm } = useFormBuilder({
 		firstname: {
 			type: "text",
-			label: $t("page.organizationUser.form.firstname.label"),
+			label: $t("label.firstname"),
 			cols: 6,
-			zodSchema: zod.string({ message: $t("page.organizationUser.form.required") })
+			zodSchema: zod.string({ message: $t("form.rule.required") })
 		},
 		lastname: {
 			type: "text",
-			label: $t("page.organizationUser.form.lastname.label"),
+			label: $t("label.lastname"),
 			cols: 6,
-			zodSchema: zod.string({ message: $t("page.organizationUser.form.required") })
+			zodSchema: zod.string({ message: $t("form.rule.required") })
 		},
 		email: {
 			type: "text",
-			label: $t("page.organizationUser.form.email.label"),
-			zodSchema: zod.string({ message: $t("page.organizationUser.form.required") })
-				.email({ message: $t("page.organizationUser.form.email.wrong") })
+			label: $t("label.email"),
+			zodSchema: zod.string({ message: $t("form.rule.required") })
+				.email({ message: $t("label.email.wrong") })
 		},
 		organizationRole: {
 			type: "select",
-			label: $t("page.organizationUser.form.organizationRole.label"),
+			label: $t("label.role"),
 			defaultValue: undefined as EditingOrganizationRole | undefined, 
 			items: editingOrganizationRoles.map(r => ({
 				label: $t(`organizationRole.${r}`), 
 				value: r
 			})),
-			zodSchema: zod.enum(editingOrganizationRoles, { message: $t("page.organizationUser.form.required") }),
+			zodSchema: zod.enum(editingOrganizationRoles, { message: $t("form.rule.required") }),
 		},
 	});
 

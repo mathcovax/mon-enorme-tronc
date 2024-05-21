@@ -1,5 +1,5 @@
 <script setup lang="ts">
-
+const { isConnected } = useUserStore();
 </script>
 
 <template>
@@ -152,17 +152,27 @@
 						</DropdownMenuTrigger>
 
 						<DropdownMenuContent align="end">
-							<DropdownMenuLabel>{{ $t("dropdownAccount.myAccount") }}</DropdownMenuLabel>
+							<DropdownMenuLabel v-if="isConnected">
+								{{ $t("layout.default.header.dropdownAccount.myAccount") }}
+							</DropdownMenuLabel>
+
+							<DropdownMenuSeparator v-if="isConnected" />
+
+							<DropdownMenuItem v-if="isConnected">
+								{{ $t("layout.default.header.dropdownAccount.settings") }}
+							</DropdownMenuItem>
+
+							<DropdownMenuItem>{{ $t("layout.default.header.dropdownAccount.support") }}</DropdownMenuItem>
 
 							<DropdownMenuSeparator />
 
-							<DropdownMenuItem>{{ $t("dropdownAccount.settings") }}</DropdownMenuItem>
+							<DropdownMenuItem v-if="isConnected">
+								{{ $t("layout.default.header.dropdownAccount.logout") }}
+							</DropdownMenuItem>
 
-							<DropdownMenuItem>{{ $t("dropdownAccount.support") }}</DropdownMenuItem>
-
-							<DropdownMenuSeparator />
-
-							<DropdownMenuItem>{{ $t("dropdownAccount.logout") }}</DropdownMenuItem>
+							<DropdownMenuItem v-else>
+								{{ $t("layout.default.header.dropdownAccount.login") }}
+							</DropdownMenuItem>
 						</DropdownMenuContent>
 					</DropdownMenu>
 				</div>

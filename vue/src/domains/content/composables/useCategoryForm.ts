@@ -1,4 +1,6 @@
 export function useCategoryForm() {
+	const $pt = usePageTranslate(); 
+
 	const { Form, checkForm, values, resetForm } = useFormBuilder({
 		oldName: {
 			type: "custom",
@@ -6,15 +8,15 @@ export function useCategoryForm() {
 		},
 		name: {
 			type: "text",
-			label: $t("page.manageCategories.form.name.label"),
-			zodSchema: zod.string({ message: $t("page.manageCategories.form.required") })
-				.min(3, { message: $t("page.manageCategories.form.name.minLength") })
-				.max(255, { message: $t("page.manageCategories.form.name.max") })
+			label: $pt("form.name.label"),
+			zodSchema: zod.string({ message: $t("form.rule.required") })
+				.min(3, { message: $t("form.rule.minLength", { value: 3 }) })
+				.max(255, { message: $t("form.rule.maxLength", { value: 255 }) })
 		},
 		disabled: {
 			type: "checkbox",
 			defaultValue: true as boolean,
-			desc: $t("page.manageCategories.form.disabled.desc"),
+			desc: $pt("form.disabled.desc"),
 			zodSchema: zod.boolean()
 		}
 	});

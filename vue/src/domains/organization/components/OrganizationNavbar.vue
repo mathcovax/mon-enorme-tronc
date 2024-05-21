@@ -1,5 +1,11 @@
 <script setup lang="ts">
+import { useOrganizationUserStore } from "@/domains/organization/stores/organizationUser";
 
+const { ORGANIZATION_MANAGE_USER } = routerPageName;
+const route = useRoute();
+const organizationUserStore = useOrganizationUserStore();
+
+const tmp = ref(false);
 </script>
 
 <template>
@@ -18,7 +24,13 @@
 				<nav class="grid items-start px-2 text-sm font-medium lg:px-4">
 					<RouterLink
 						to="#"
-						class="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+						class="px-3 py-2 flex items-center gap-3 rounded-lg transition-all hover:text-primary"
+						:class="
+							tmp ?
+								'bg-muted text-primary'
+								:
+								'text-muted-foreground'
+						"
 					>
 						<TheIcon
 							icon="home-outline"
@@ -28,8 +40,15 @@
 					</RouterLink>
 
 					<RouterLink
+						v-if="organizationUserStore.hasRole('STORE_KEEPER')"
 						to="#"
-						class="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+						class="px-3 py-2 flex items-center gap-3 rounded-lg transition-all hover:text-primary"
+						:class="
+							tmp ?
+								'bg-muted text-primary'
+								:
+								'text-muted-foreground'
+						"
 					>
 						<TheIcon
 							icon="cart-outline"
@@ -39,8 +58,15 @@
 					</RouterLink>
 
 					<RouterLink
+						v-if="organizationUserStore.hasRole('PRODUCT_SHEET_MANAGER')"
 						to="#"
-						class="flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary"
+						class="px-3 py-2 flex items-center gap-3 rounded-lg transition-all hover:text-primary"
+						:class="
+							tmp ?
+								'bg-muted text-primary'
+								:
+								'text-muted-foreground'
+						"
 					>
 						<TheIcon
 							icon="package-variant-closed"
@@ -50,19 +76,33 @@
 					</RouterLink>
 
 					<RouterLink
+						v-if="organizationUserStore.hasRole('OWNER')"
 						to="#"
-						class="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+						class="px-3 py-2 flex items-center gap-3 rounded-lg transition-all hover:text-primary"
+						:class="
+							route.name === ORGANIZATION_MANAGE_USER ?
+								'bg-muted text-primary'
+								:
+								'text-muted-foreground'
+						"
 					>
 						<TheIcon
 							icon="account"
 							size="2xl"
 						/>
-						{{ $t("layout.organization.nav.customers") }}
+						{{ $t("layout.organization.nav.users") }}
 					</RouterLink>
 
 					<RouterLink
+						v-if="organizationUserStore.hasRole('ACCOUNTANT')"
 						to="#"
-						class="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+						class="px-3 py-2 flex items-center gap-3 rounded-lg transition-all hover:text-primary"
+						:class="
+							tmp ?
+								'bg-muted text-primary'
+								:
+								'text-muted-foreground'
+						"
 					>
 						<TheIcon
 							icon="chart-line"

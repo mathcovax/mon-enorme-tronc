@@ -8,6 +8,7 @@ const {
 	checkCreateOrganizationForm, 
 	resetCreateOrganizationForm 
 } = useCreateOrganizationForm();
+const $pt = usePageTranslate();
 const { organizations, getOrganizations } = useGetOganizations();
 
 async function submit() {
@@ -35,19 +36,19 @@ const currentPage = ref(0);
 const searchName = ref("");
 const cols: BigTableColDef<Organization>[] = [
 	{
-		title: $t("page.createOrganization.table.cols.name"),
+		title: $pt("table.col.name"),
 		getter: i => i.name
 	},
 	{
-		title: $t("page.createOrganization.table.cols.id"),
+		title: $t("label.id"),
 		getter: i => i.id
 	},
 	{
-		title: $t("page.createOrganization.table.cols.suspended"),
+		title: $pt("table.col.active"),
 		slotName: "suspended", 
 	},
 	{
-		title: $t("page.createOrganization.table.cols.actions"),
+		title: $pt("table.col.actions"),
 		slotName: "actions", 
 		cols: 2
 	},
@@ -95,14 +96,14 @@ watch(searchName, () => getOrganizations(currentPage.value = 0, searchName.value
 				type="submit"
 				class="col-span-12"
 			>
-				{{ $t("page.createOrganization.form.submit") }}
+				{{ $t("button.add") }}
 			</PrimaryButton>
 		</CreateOrganizationForm>
 
 		<div class="flex flex-col items-center w-full gap-3">
 			<PrimaryInput
 				class="max-w-[300px]"
-				:placeholder="$t('page.createOrganization.table.searchPlaceholder')"
+				:placeholder="$pt('table.searchPlaceholder')"
 				v-model="searchName"
 			/>
 
@@ -110,7 +111,7 @@ watch(searchName, () => getOrganizations(currentPage.value = 0, searchName.value
 				:items="organizations"
 				:cols="cols"
 				:current-page="currentPage + 1"
-				:action-label="$t('page.createOrganization.table.cols.actions')"
+				:action-label="$pt('table.col.actions')"
 				@click-next="next"
 				@click-previous="previous"
 			>
@@ -126,7 +127,7 @@ watch(searchName, () => getOrganizations(currentPage.value = 0, searchName.value
 
 				<template #actions="{item}">
 					<SecondaryButton @click="suspended(item)">
-						{{ $t(item.suspended ? "page.createOrganization.table.enabled" : "page.createOrganization.table.suspended") }}
+						{{ $pt(item.suspended ? "table.action.activate" : "table.action.suspend") }}
 					</SecondaryButton>
 				</template>
 			</BigTable>

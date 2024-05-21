@@ -42,7 +42,10 @@ export type Organization = GetResponseByInfo<
   "organizations"
 >["body"][number];
 
-export type User = GetResponseByInfo<GetDef<"GET", "/user">, "user">["body"];
+export type User = GetResponseByInfo<
+	GetDef<"GET", "/user">,
+	"user"
+>["body"]
 
 export type PrimordialRole = User["primordialRole"];
 

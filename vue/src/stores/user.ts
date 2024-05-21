@@ -1,10 +1,5 @@
-import { promiseWithResolvers } from "@/lib/utils";
+import { promiseWithResolvers, type User } from "@/lib/utils";
 import { defineStore } from "pinia";
-
-type User = GetResponseByInfo<
-	GetDef<"GET", "/user">,
-	"user"
->["body"]
 
 const KEY_ACCESS_TOKEN_LOCAL_STORAGE = "access-token";
 

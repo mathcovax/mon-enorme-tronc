@@ -2,6 +2,7 @@
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { app as firebaseApp } from "@/lib/firebase";
 
+const $pt = usePageTranslate(); 
 const provider = new GoogleAuthProvider();
 const auth = getAuth(firebaseApp);
 const router = useRouter();
@@ -36,11 +37,11 @@ async function googleSign() {
 				<div class="mx-auto grid w-[350px] gap-6">
 					<div class="grid gap-2 text-center">
 						<h1 class="text-3xl font-bold">
-							{{ $t("page.login.title") }}
+							{{ $pt("title") }}
 						</h1>
 
 						<p class="text-balance text-muted-foreground">
-							{{ $t("page.login.subtitle") }}
+							{{ $pt("subtitle") }}
 						</p>
 					</div>
 
@@ -49,7 +50,7 @@ async function googleSign() {
 							@click="googleSign"
 							class="w-full"
 						>
-							{{ $t("page.login.buttonText") }}
+							{{ $t("button.login") }}
 						</PrimaryButton>
 					</div>
 				</div>
