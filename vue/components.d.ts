@@ -60,7 +60,7 @@ declare module 'vue' {
     DropdownMenuSubTrigger: typeof import('./src/components/ui/dropdown-menu/DropdownMenuSubTrigger.vue')['default']
     DropdownMenuTrigger: typeof import('./src/components/ui/dropdown-menu/DropdownMenuTrigger.vue')['default']
     Label: typeof import('./src/components/ui/label/Label.vue')['default']
-    MultiComboBox: typeof import('./src/components/MultiComboBox.vue')['default']
+    MultiComboBox: typeof import('./src/components/MultiComboBox/MultiComboBox.vue')['default']
     PopoverContent: typeof import('./src/components/ui/popover/PopoverContent.vue')['default']
     PopoverTrigger: typeof import('./src/components/ui/popover/PopoverTrigger.vue')['default']
     PrimaryButton: typeof import('./src/components/PrimaryButton.vue')['default']
