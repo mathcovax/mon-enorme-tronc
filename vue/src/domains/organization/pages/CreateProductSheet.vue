@@ -13,6 +13,7 @@ const {
 } = useProductSheetForm(organizationId);
 
 const router = useRouter();
+const $pt = usePageTranslate();
 
 async function submit() {
 
@@ -72,9 +73,9 @@ function back() {
 					@update:model-value="onUpdate"
 					:items="suggestedCategories"
 					@update:search-term="onSearchCategories"
-					:placeholder="$t('page.createProductSheet.form.placeholder')"
-					:empty-label="$t('page.createProductSheet.form.emptyLabel')"
-					:text-button="$t('page.createProductSheet.form.button')"
+					:placeholder="$pt('page.createProductSheet.form.placeholder')"
+					:empty-label="$pt('page.createProductSheet.form.emptyLabel')"
+					:text-button="$pt('page.createProductSheet.form.button')"
 				/>
 			</template>
 
@@ -82,7 +83,7 @@ function back() {
 				type="submit"
 				class="col-span-12"
 			>
-				{{ $t("page.createProductSheet.form.submit") }}
+				{{ $t("button.create") }}
 			</PrimaryButton>
 		</ProductSheetForm>
 

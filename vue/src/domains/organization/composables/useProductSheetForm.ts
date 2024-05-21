@@ -4,6 +4,7 @@ interface ItemMultiComBox {
 }
 
 export function useProductSheetForm(organizationId: string, productSheetId?: string) {
+	const $pt = usePageTranslate();
 	const suggestedCategories = ref<ItemMultiComBox[]>([]);
 	
 	function onSearchCategories(categoryName: string) {
@@ -19,41 +20,42 @@ export function useProductSheetForm(organizationId: string, productSheetId?: str
 	const { Form, checkForm, resetForm, values } = useFormBuilder({
 		name: {
 			type: "text",
-			label: $t("page.createProductSheet.form.name.label"),
+			label: $t("label.lastname"),
 			defaultValue: "",
-			zodSchema: zod.string({ message: $t("page.createProductSheet.form.required") })
-				.max(255, { message: $t("page.createProductSheet.form.name.maxLength") })
-				.min(2, { message: $t("page.createProductSheet.form.name.minLength") })
+			zodSchema: zod.string({ message: $t("form.rule.required") })
+				.max(255, { message: $t("form.rule.maxLength", { value: 255 }) })
+				.min(2, { message: $t("form.rule.minLength", { value: 2 }) })
 		},
 		description: {
 			type: "textarea",
-			label: $t("page.createProductSheet.form.description.label"),
+			label: $t("label.description"),
 			defaultValue: "",
-			zodSchema: zod.string({ message: $t("page.createProductSheet.form.required") })
-				.min(2, { message: $t("page.createProductSheet.form.description.minLength") })
+			zodSchema: zod.string({ message: $t("form.rule.required") })
+				.max(255, { message: $t("form.rule.maxLength", { value: 255 }) })
+				.min(2, { message: $t("form.rule.minLength", { value: 2 }) })
 		},
 		shortDescription: {
 			type: "text",
-			label: $t("page.createProductSheet.form.shortDescription.label"),
+			label: $pt("shortDescription"),
 			defaultValue: "",
-			zodSchema: zod.string({ message: $t("page.createProductSheet.form.required") })
-				.max(255, { message: $t("page.createProductSheet.form.shortDescription.maxLength") })
-				.min(2, { message: $t("page.createProductSheet.form.shortDescription.minLength") })
+			zodSchema: zod.string({ message: $t("form.rule.required") })
+				.max(255, { message: $t("form.rule.maxLength", { value: 255 }) })
+				.min(2, { message: $t("form.rule.minLength", { value: 2 }) })
 		},
 		price: {
 			type: "number",
-			label: $t("page.createProductSheet.form.price.label"),
+			label: $t("price"),
 			defaultValue: 0,
-			zodSchema: zod.number({ message: $t("page.createProductSheet.form.required") })
-				.min(0, { message: $t("page.createProductSheet.form.price.min") })
+			zodSchema: zod.number({ message: $t("form.rule.required") })
+				.min(0.01, { message: $t("form.rule.minLength", { value: 0.01 }) })
 		},
 		categories: {
 			type: "custom",
-			label: $t("page.createProductSheet.form.categories.label"),
+			label: $t("label.categories"),
 			defaultValue: undefined as ItemMultiComBox[] | undefined,
 			zodSchema: zod.object({
 				value: zod.string()
-			}).array().max(5, { message: $t("page.createProductSheet.form.catgories.max") })
+			}).array().max(5, { message: $t("form.rule.maxItems") })
 		},
 		oldCategories: {
 			type: "custom",

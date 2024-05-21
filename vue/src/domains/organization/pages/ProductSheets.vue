@@ -6,32 +6,33 @@ const { organizationId } = useRouteParams({
 });
 const router = useRouter();
 const { productSheets, getProductSheets } = useGetProductSheets(organizationId);
+const $pt = usePageTranslate();
 
 const currentPage = ref(0);
 const searchName = ref("");
 const cols: BigTableColDef<ProductSheet>[] = [
 	{
-		title: $t("page.getProductSheets.table.cols.name"),
+		title: $t("label.lastname"),
 		getter: i => i.name
 	},
 	{
-		title: $t("page.getProductSheets.table.cols.shortDescription"),
+		title: $t("label.description"),
 		getter: i => i.shortDescription
 	},
 	{
-		title: $t("page.getProductSheets.table.cols.price"),
+		title: $pt("price"),
 		getter: i => i.price
 	},
 	{
-		title: $t("page.getProductSheets.table.cols.createdAt"),
+		title: $t("label.createdAt"),
 		getter: i => i.createdAt?.split("T")[0]
 	},
 	{
-		title: $t("page.getProductSheets.table.cols.updatedAt"),
+		title: $t("label.updatedAt"),
 		getter: i => i.updatedAt?.split("T")[0]
 	},
 	{
-		title: $t("page.getProductSheets.table.cols.actions"),
+		title: $t("label.actions"),
 		slotName: "actions"
 	},
 ];
@@ -72,12 +73,12 @@ watch(searchName, () => getProductSheets(0, searchName.value));
 		<div class="flex justify-center w-full gap-[1rem]">
 			<PrimaryInput
 				class="max-w-[300px]"
-				:placeholder="$t('page.getProductSheets.table.searchPlaceholder')"
+				:placeholder="$pt('searchPlaceholder')"
 				v-model="searchName"
 			/>
 
 			<PrimaryButton @click="redirectToCreatedPage">
-				{{ $t("page.createProductSheet.form.submit") }}
+				{{ $t("button.create") }}
 			</PrimaryButton>
 		</div>
 
