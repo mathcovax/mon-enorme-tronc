@@ -18,7 +18,7 @@ export const PATCH = (method: Methods, path: string) => hasPrimordialRole({ opti
 			input: p => inputOrganization.id(
 				p("organizationId")
 			),
-			...organizationExistCheck.preCompletions.wantExist,
+			...organizationExistCheck.preCompletions.mustExist,
 		},
 		new IHaveSentThis(NotFoundHttpException.code, "organization.notfound")
 	)

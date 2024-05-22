@@ -18,7 +18,8 @@ export const GET = (method: Methods, path: string) => duplo
 				where: {
 					name: name
 						? {
-							contains: name
+							contains: name,
+							mode: "insensitive"
 						}
 						: undefined,
 					disabled: withDisabled 

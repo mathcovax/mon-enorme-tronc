@@ -8,7 +8,7 @@ export class MockEnv {
 		ENV[key] = value;
 	}
 
-	static resest(key?: keyof (typeof ENV)){
+	static reset(key?: keyof (typeof ENV)){
 		if(key){
 			ENV[key] = this.ENV[key];
 		}
@@ -20,6 +20,6 @@ export class MockEnv {
 	}
 
 	static {
-		this.resest();
+		this.reset();
 	}
 }

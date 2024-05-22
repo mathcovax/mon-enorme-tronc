@@ -1,5 +1,5 @@
 import { duploTesting } from "@test/setup";
-import { adminPanelEntry, authEntry, basicEntry, contentPanelEntry, organizationOwnerEntry, organizationEntry } from "./entry";
+import { adminPanelEntry, authEntry, basicEntry, contentPanelEntry, organizationOwnerEntry, organizationEntry, organizationProductSheetManagerEntry } from "./entry";
 
 describe("entry", () => {
 	it("basic", async () => {
@@ -75,6 +75,49 @@ describe("entry", () => {
 		expect(res1.information).toBe("entry.accepted");
 	});
 
+	it("product sheet manager", async () => {
+		const res = await duploTesting
+			.testRoute(organizationProductSheetManagerEntry)
+			.setDefaultFloorValue({ accessTokenContent: {} })
+			.setRequestProperties({
+				params: {
+					organizationId: "audit tete"
+				}
+			})
+			.mockChecker(
+				0,
+				{ info: "productSheet.exist", data: "1234" }
+			)
+			.mockProcess(
+				1,
+				{}
+			)
+			.launch();
+
+		expect(res.information).toBe("entry.accepted");
+
+		const res1 = await duploTesting
+			.testRoute(organizationProductSheetManagerEntry)
+			.setDefaultFloorValue({ accessTokenContent: {} })
+			.setRequestProperties({
+				params: {
+					organizationId: "audit tete",
+					productSheetId: "tttt"
+				}
+			})
+			.mockChecker(
+				0,
+				{ info: "productSheet.notfound", data: "1234" }
+			)
+			.mockProcess(
+				1,
+				{}
+			)
+			.launch();
+
+		expect(res1.information).toBe("entry.refuse");
+	});
+
 	it("organization owner", async () => {
 		const res = await duploTesting
 			.testRoute(organizationOwnerEntry)
@@ -86,7 +129,7 @@ describe("entry", () => {
 			})
 			.mockProcess(
 				0,
-				{ info: "organization.hasNotUser", data: null }
+				{}
 			)
 			.launch();
 

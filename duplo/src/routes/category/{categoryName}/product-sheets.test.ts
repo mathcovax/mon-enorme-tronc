@@ -1,56 +1,46 @@
 import { MockPrisma } from "@test/mocks/providers";
-import { GET } from "./products";
+import { GET } from "./product-sheets";
 import { duploTesting } from "@test/setup";
+import { productSheetData } from "@test/data/productSheet";
 
 describe("GET /category/{categoryName}/products", () => {
 	beforeEach(() => {
-		MockPrisma.resest();
+		MockPrisma.reset();
 	});
 
 	it("category products", async () => {
-		const product_to_category = [
-			{
-				product: {
-					id: "",
-					name: "",
-					description: "",
-					price: 0,
-					created_at: new Date(),
-					updated_at: new Date()
-				} 
-			}
-		];
-		const spy = vi.fn(async () => product_to_category);
-		MockPrisma.set("product_to_category", "findMany", spy);
+		const productSheetToCategory = [{ productSheet: productSheetData }];
+		const spy = vi.fn(async () => productSheetToCategory);
+		MockPrisma.set("product_sheet_to_category", "findMany", spy);
 
 		const res = await duploTesting
-			.testRoute(GET("GET", "/category/test/products"))
+			.testRoute(GET("GET", "/category/test/product-sheets"))
 			.setRequestProperties({ params: { categoryName: "test" } })
 			.mockChecker(
 				"categoryExist",
-				{ info: "category.exist", data: { id: "1234", name: "test" } },
-				{ passCatch: true }
+				{ info: "category.exist", data: { id: "1234", name: "test",  } },
 			)
 			.launch();
-
+			
 		expect(spy).lastCalledWith({
 			where: { category: { id: "1234" } },
-			select: { product: true },
+			select: { productSheet: true },
+			skip: 0,
+			take: 10
 		});
 		expect(res.information).toBe("category.products");
 	});
 
 	it("category notfound", async () => {
 		const res = await duploTesting
-			.testRoute(GET("GET", "/category/test/products"))
+			.testRoute(GET("GET", "/category/test/product-sheets"))
 			.setRequestProperties({ params: { categoryName: "test" } })
 			.mockChecker(
 				"categoryExist",
-				{ info: "category.notfound", data: null },
-				{ passCatch: true }
+				{ info: "category.notfound", data: { name: "test" } },
 			)
 			.launch();
-		
+
 		expect(res.information).toBe("category.notfound");
 	});
 });

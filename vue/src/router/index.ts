@@ -22,6 +22,7 @@ const router = createRouter({
 		...content(),
 		...organization(),
 		...admin(),
+		...organization(),
 		notFound(),
 	],
 	scrollBehavior() {

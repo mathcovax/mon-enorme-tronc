@@ -38,7 +38,7 @@ function onSelect(item: Item) {
 				variant="outline"
 				role="combobox"
 				:aria-expanded="open"
-				:class="`${props.class} h-auto !px-2 !py-0 flex gap-2`"
+				:class="`${props.class} !px-2 !py-0 flex gap-2`"
 			>
 				<div class="w-full justify-start flex overflow-y-hidden overflow-x-auto gap-2 py-2">
 					<ClosingTag

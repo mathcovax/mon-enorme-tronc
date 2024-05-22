@@ -4,7 +4,7 @@ import { duploTesting } from "@test/setup";
 
 describe("POST /login", () => {
 	beforeEach(() => {
-		MockPrisma.resest();
+		MockPrisma.reset();
 	});
 
 	it("user login", async () => {

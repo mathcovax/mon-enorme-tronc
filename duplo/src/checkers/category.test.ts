@@ -1,19 +1,19 @@
 import { duploTesting } from "@test/setup";
-import { categoryExistCheck } from "./category";
+import { categoryExistCheck, inputCategory } from "./category";
 import { MockPrisma } from "@test/mocks/providers";
 
 describe("category checker", () => {
 	beforeEach(() => {
-		MockPrisma.resest();
+		MockPrisma.reset();
 	});
 
-	it("find category", async () => {
+	it("find by name", async () => {
 		const category = {};
 		const spy = vi.fn(async () => category);
 		MockPrisma.set("category", "findFirst", spy);
 
 		const res = await duploTesting
-			.testChecker(categoryExistCheck, "test");
+			.testChecker(categoryExistCheck, inputCategory.name("test"));
 
 		expect(spy).lastCalledWith({
 			where: { name: "test" }
@@ -21,10 +21,24 @@ describe("category checker", () => {
 		expect(res.info).toBe("category.exist");
 	});
 
-	it("notfound category", async () => {
+	it("find by id", async () => {
+		const category = {};
+		const spy = vi.fn(async () => category);
+		MockPrisma.set("category", "findFirst", spy);
+
+		const res = await duploTesting
+			.testChecker(categoryExistCheck, inputCategory.id("143535"));
+
+		expect(spy).lastCalledWith({
+			where: { id: "143535" }
+		});
+		expect(res.info).toBe("category.exist");
+	});
+
+	it("notfound", async () => {
 		MockPrisma.set("category", "findFirst", () => null);
 		const res = await duploTesting
-			.testChecker(categoryExistCheck, "");
+			.testChecker(categoryExistCheck, inputCategory.id("143535"));
 
 		expect(res.info).toBe("category.notfound");
 	});

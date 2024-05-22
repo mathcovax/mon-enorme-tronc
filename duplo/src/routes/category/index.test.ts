@@ -4,7 +4,7 @@ import { POST } from ".";
 
 describe("POST /category", () => {
 	beforeEach(() => {
-		MockPrisma.resest();
+		MockPrisma.reset();
 	});
 
 	it("post category with used name", async () => {

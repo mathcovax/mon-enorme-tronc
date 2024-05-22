@@ -85,6 +85,24 @@ export default {
 				searchPlaceholder: "Chercher une email",
 			},
 		},
+		[routerPageName.ORGANIZATION_GET_PRODUCT_SHEET]: {
+			searchPlaceholder: "Chercher un produit",
+			price: "Prix",
+		},
+		[routerPageName.ORGANIZATION_EDIT_PRODUCT_SHEET]: {
+			shortDescription: "Description courte",
+			price: "Prix",
+			form: {
+				placeholder: "Chercher des catégories.",
+			}
+		},
+		[routerPageName.ORGANIZATION_CREATE_PRODUCT_SHEET]: {
+			shortDescription: "Description courte",
+			price: "Prix",
+			form: {
+				placeholder: "Chercher des catégories.",
+			}
+		},
 		notFound: {
 			title: "404 - Page introuvable",
 			description: "La page que vous cherchez n'existe pas.",
@@ -162,11 +180,12 @@ export default {
 	form: {
 		submit: "Valider",
 		rule: {
-			required: "Champ obligatoire",
-			maxLength: "Doit faire au maximum {value} caractères",
-			minLength: "Doit faire au moins {value} caractères",
+			required: "Champ obligatoire.",
+			maxLength: "Doit faire au maximum {value} caractères.",
+			minLength: "Doit faire au moins {value} caractères.",
 			invalidEmail: "Cette email est invalide.",
-			minAge: "Vous devez avoir au moins {value} ans",
+			minAge: "Vous devez avoir au moins {value} ans.",
+			maxItems: "Vous pouvez en selectioner max {value}.",
 		}
 	},
 	label: {
@@ -181,6 +200,11 @@ export default {
 		terms: "J'accepte les conditions générales d'utilisation",
 		user: "Utilisateur",
 		role: "Rôle",
+		actions: "Actions",
+		description: "Descritption",
+		createdAt: "Date de création",
+		updatedAt: "Date de modification",
+		categories: "Categories",
 	},
 	placeholder: {
 		address: "Cherchez votre adresse",
@@ -191,6 +215,7 @@ export default {
 		login: "Se connecter avec Google",
 		validate: "Valider",
 		cancel: "Annuler",
+		create: "Créer",
 		close: "Fermer",
 		save: "Enregister",
 		send: "Envoyer",
@@ -198,6 +223,7 @@ export default {
 		clear: "Effacer",
 		remove: "Retirer",
 		delete: "Supprimer",
+		back: "Retour",
 	},
 	response: {
 		organization: {
@@ -220,6 +246,12 @@ export default {
 			alreadyExist: "Le nom de catégory est déjà utilisais",
 			created: "La catégory a correctement étais créer.",
 			edited: "La catégory a correctement étais modifier.",
+			notfound: "La catégorie n'existe pas.",
+		},
+		productSheet: {
+			notfound: "La fiche produit n'existe pas.",
+			edited: "La fiche a correctement étais éditer.",
+			created: "La fiche a correctement étais créer."
 		}
 	}
 };

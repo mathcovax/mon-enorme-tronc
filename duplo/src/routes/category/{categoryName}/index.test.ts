@@ -4,7 +4,7 @@ import { PATCH } from ".";
 
 describe("PATCH /category/{categoryName}", () => {
 	beforeEach(() => {
-		MockPrisma.resest();
+		MockPrisma.reset();
 	});
 
 	it("patch category not exist", async () => {

@@ -102,8 +102,8 @@ watch(
 </script>
 
 <template>
-	<div class="w-full flex flex-col items-center p-6 gap-6">
-		<div class="flex gap-6 w-full justify-center">
+	<div class="flex flex-col items-center w-full gap-6 p-6">
+		<div class="flex justify-center w-full gap-6">
 			<PrimaryInput
 				class="max-w-[300px]"
 				:placeholder="$pt('table.searchPlaceholder')"

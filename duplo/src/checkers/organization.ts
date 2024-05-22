@@ -28,7 +28,7 @@ export const organizationExistCheck = duplo
 			return output("organization.notfound", null);
 		}
 	})
-	.preCompletion("wantExist", {
+	.preCompletion("mustExist", {
 		result: "organization.exist",
 		catch: () => {
 			throw new NotFoundHttpException("organization.notfound");

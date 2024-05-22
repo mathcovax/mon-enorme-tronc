@@ -4,7 +4,7 @@ import { MockPrisma } from "@test/mocks/providers";
 
 describe("GET /organization/{organizationId}@admin", () => {
 	beforeEach(() => {
-		MockPrisma.resest();
+		MockPrisma.reset();
 	});
 
 	it("patch notfound organization", async () => {

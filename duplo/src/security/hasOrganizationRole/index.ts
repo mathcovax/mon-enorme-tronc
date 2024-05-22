@@ -1,7 +1,7 @@
 import { InputOrganizationHasUser, organizationHasUserCheck } from "@checkers/organization";
 import { organization_role } from "@prisma/client";
 
-interface OptionsHasOrganizationRole {
+export interface OptionsHasOrganizationRole {
 	organizationRole: organization_role
 }
 

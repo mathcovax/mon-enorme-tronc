@@ -62,7 +62,6 @@ services:
     env_file: ./duplo/.env
     volumes:
       - postgres_data:/var/lib/postgresql/data
-
   mongo:
     image: mongo
     env_file: ./duplo/.env

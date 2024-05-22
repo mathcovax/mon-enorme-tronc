@@ -41,6 +41,7 @@ model organization {
     owner              user                   @relation(fields: [ownerId], references: [id])
     suspended          Boolean                @default(false)
     userToOrganization user_to_organization[]
+    product_sheet      product_sheet[]
 }
 
 model user_to_organization {
@@ -65,7 +66,7 @@ model category {
     name            String                        @unique @db.VarChar(255)
     disabled        Boolean                       @default(false)
     parent_category category_to_parent_category[]
-    product         product_to_category[]
+    product_sheet   product_sheet_to_category[]
 }
 
 model parent_category {
@@ -75,27 +76,41 @@ model parent_category {
 }
 
 model category_to_parent_category {
-    id                 String          @id @default(uuid())
-    category_id        String
-    parent_category_id String
-    category           category        @relation(fields: [category_id], references: [id])
-    parent_category    parent_category @relation(fields: [parent_category_id], references: [id])
+    id               String          @id @default(uuid())
+    categoryId       String
+    parentCategoryId String
+    category         category        @relation(fields: [categoryId], references: [id])
+    parentCategory   parent_category @relation(fields: [parentCategoryId], references: [id])
 }
 
-model product {
-    id          String                @id @default(uuid())
-    name        String                @db.VarChar(255)
-    description String                @db.Text
-    price       Float
-    category    product_to_category[]
-    created_at  DateTime              @default(now())
-    updated_at  DateTime              @updatedAt
+model product_sheet {
+    id                 String                      @id @default(uuid())
+    name               String                      @db.VarChar(255)
+    description        String                      @db.Text
+    shortDescription   String                      @db.VarChar(255)
+    price              Float
+    category           product_sheet_to_category[]
+    createdAt          DateTime                    @default(now())
+    updatedAt          DateTime                    @updatedAt
+    productSheetImages product_sheet_images[]
+    organization       organization                @relation(fields: [organizationId], references: [id])
+    organizationId     String
 }
 
-model product_to_category {
-    id          String   @id @default(uuid())
-    product_id  String
-    category_id String
-    product     product  @relation(fields: [product_id], references: [id])
-    category    category @relation(fields: [category_id], references: [id])
+model product_sheet_to_category {
+    id             String        @id @default(uuid())
+    productSheetId String
+    categoryId     String
+    productSheet   product_sheet @relation(fields: [productSheetId], references: [id])
+    category       category      @relation(fields: [categoryId], references: [id])
+}
+
+model product_sheet_images {
+    id             String        @id @default(uuid())
+    productSheet   product_sheet @relation(fields: [productSheetId], references: [id])
+    productSheetId String
+    path           String        @db.VarChar(255)
+    alt            String        @db.VarChar(255)
+    createdAt      DateTime      @default(now())
+    updatedAt      DateTime      @updatedAt
 }

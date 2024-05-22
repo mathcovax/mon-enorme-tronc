@@ -18,15 +18,12 @@ export const useOrganizationUserStore = defineStore(
 			duploTo.enriched
 				.get("/organization/{organizationId}/user", { params: { organizationId } }, { disabledToast: true })
 				.info("organization.user", (data) => {
-					console.log(data);
 					organizationUser.value = data;
 				});
 		}
 
 		function hasRole(wantedRole: OrganizationRole) {
 			const userRole = organizationUser.value?.organizationRole;
-
-			console.log(userRole);
 
 			if (!userRole) {
 				return false;
