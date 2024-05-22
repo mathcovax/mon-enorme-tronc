@@ -1,5 +1,6 @@
 <script setup lang="ts">
-
+const { ORGANIZATION_HOME, ORGANIZATION_MANAGE_USER } = routerPageName;
+const route = useRoute();
 </script>
 
 <template>
@@ -24,15 +25,21 @@
 			>
 				<nav class="grid gap-2 text-lg font-medium">
 					<RouterLink
-						to="/organization"
+						:to="{ name: ORGANIZATION_HOME }"
 						class="text-center text-2xl font-bold"
 					>
 						<span>{{ $t("layout.organization.title") }}</span>
 					</RouterLink>
 
 					<RouterLink
-						to="#"
-						class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+						:to="{ name: ORGANIZATION_HOME }"
+						class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
+						:class="
+							route.name === ORGANIZATION_HOME ?
+								'bg-muted text-foreground'
+								:
+								'text-muted-foreground'
+						"
 					>
 						<TheIcon
 							icon="home-outline"
@@ -54,7 +61,13 @@
 
 					<RouterLink
 						to="#"
-						class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+						class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
+						:class="
+							route.name ?
+								'bg-muted text-foreground'
+								:
+								'text-muted-foreground'
+						"
 					>
 						<TheIcon
 							icon="package-variant-closed"
@@ -64,19 +77,31 @@
 					</RouterLink>
 
 					<RouterLink
-						to="#"
-						class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+						:to="{ name: ORGANIZATION_MANAGE_USER }"
+						class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
+						:class="
+							route.name === ORGANIZATION_MANAGE_USER ?
+								'bg-muted text-foreground'
+								:
+								'text-muted-foreground'
+						"
 					>
 						<TheIcon
 							icon="account"
 							size="2xl"
 						/>
-						{{ $t("layout.organization.nav.customers") }}
+						{{ $t("layout.organization.nav.users") }}
 					</RouterLink>
 
 					<RouterLink
 						to="#"
-						class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+						class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
+						:class="
+							route.name ?
+								'bg-muted text-foreground'
+								:
+								'text-muted-foreground'
+						"
 					>
 						<TheIcon
 							icon="chart-line"

@@ -4,8 +4,6 @@ import { useOrganizationUserStore } from "@/domains/organization/stores/organiza
 const { ORGANIZATION_MANAGE_USER, ORGANIZATION_GET_WAREHOUSE } = routerPageName;
 const route = useRoute();
 const organizationUserStore = useOrganizationUserStore();
-
-const tmp = ref(false);
 </script>
 
 <template>
@@ -26,7 +24,7 @@ const tmp = ref(false);
 						to="#"
 						class="px-3 py-2 flex items-center gap-3 rounded-lg transition-all hover:text-primary"
 						:class="
-							tmp ?
+							route.name ?
 								'bg-muted text-primary'
 								:
 								'text-muted-foreground'
@@ -44,7 +42,7 @@ const tmp = ref(false);
 						to="#"
 						class="px-3 py-2 flex items-center gap-3 rounded-lg transition-all hover:text-primary"
 						:class="
-							tmp ?
+							route.name ?
 								'bg-muted text-primary'
 								:
 								'text-muted-foreground'
@@ -62,7 +60,7 @@ const tmp = ref(false);
 						to="#"
 						class="px-3 py-2 flex items-center gap-3 rounded-lg transition-all hover:text-primary"
 						:class="
-							tmp ?
+							route.name ?
 								'bg-muted text-primary'
 								:
 								'text-muted-foreground'
@@ -77,7 +75,7 @@ const tmp = ref(false);
 
 					<RouterLink
 						v-if="organizationUserStore.hasRole('OWNER')"
-						to="#"
+						:to="{ name: ORGANIZATION_MANAGE_USER }"
 						class="px-3 py-2 flex items-center gap-3 rounded-lg transition-all hover:text-primary"
 						:class="
 							route.name === ORGANIZATION_MANAGE_USER ?
@@ -98,7 +96,7 @@ const tmp = ref(false);
 						to="#"
 						class="px-3 py-2 flex items-center gap-3 rounded-lg transition-all hover:text-primary"
 						:class="
-							tmp ?
+							route.name ?
 								'bg-muted text-primary'
 								:
 								'text-muted-foreground'
