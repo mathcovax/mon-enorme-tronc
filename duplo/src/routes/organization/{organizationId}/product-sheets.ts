@@ -1,39 +1,28 @@
 import { productSheetSchema } from "@schemas/productSheet";
-import { hasOrganizationRole } from "@security/hasOrganizationRole";
-import { mustBeConnected } from "@security/mustBeConnected";
+import { hasOrganizationRoleByOrganizationId } from "@security/hasOrganizationRole/byOrganizationId";
 
 /* METHOD : GET, PATH : /organization/{organizationId}/product-sheets */
 export const GET = (method: Methods, path: string) =>
-	mustBeConnected({ pickup: ["accessTokenContent"] })
+	hasOrganizationRoleByOrganizationId({ 
+		options: { organizationRole: "PRODUCT_SHEET_MANAGER" }, 
+		pickup: ["organization"] 
+	})
 		.declareRoute(method, path)
 		.extract({
-			params: {
-				organizationId: zod.string()
-			},
 			query: {
 				page: zod.coerce.number().default(0),
 				name: zod.string().optional()
 			}
 		})
-		.process(
-			hasOrganizationRole,
-			{
-				input: p => ({
-					organizationId: p("organizationId"),
-					userId: p("accessTokenContent").id
-				}),
-				options: { organizationRole: "PRODUCT_SHEET_MANAGER" }
-			}
-		)
 		.handler(
 			async ({ pickup }) => {
-				const organizationId = pickup("organizationId");
+				const { id: organizationId } = pickup("organization");
 				const page = pickup("page");
 				const name = pickup("name");
 
 				const productSheets = await prisma.product_sheet.findMany({
 					where: {
-						organizationId: organizationId,
+						organizationId,
 						name: name
 							? {
 								contains: name,

@@ -1,43 +1,32 @@
-import { hasOrganizationRole } from "@security/hasOrganizationRole";
-import { mustBeConnected } from "@security/mustBeConnected";
+import { hasOrganizationRoleByOrganizationId } from "@security/hasOrganizationRole/byOrganizationId";
 
 /* METHOD : POST, PATH : /organization/{organizationId}/product-sheet */
 export const POST = (method: Methods, path: string) =>
-	mustBeConnected({ pickup: ["accessTokenContent"] })
+	hasOrganizationRoleByOrganizationId({ 
+		options: { organizationRole: "PRODUCT_SHEET_MANAGER" }, 
+		pickup: ["organization"] 
+	})
 		.declareRoute(method, path)
 		.extract({
-			params: {
-				organizationId: zod.string(),
-			},
 			body: zod.object({
-				name: zod.string(),
+				name: zod.string().min(3).max(255),
 				description: zod.string(),
-				shortDescription: zod.string(),
-				price: zod.number().min(0),
+				shortDescription: zod.string().min(3).max(255),
+				price: zod.number().min(0.01),
 			}).passthrough(),
 		})
-		.process(
-			hasOrganizationRole,
-			{
-				input: p => ({
-					organizationId: p("organizationId"),
-					userId: p("accessTokenContent").id
-				}),
-				options: { organizationRole: "PRODUCT_SHEET_MANAGER" }
-			}
-		)
 		.handler(
 			async ({ pickup }) => {
 				const { name, description, shortDescription, price } = pickup("body");
-				const organizationId = pickup("organizationId");
+				const { id: organizationId } = pickup("organization");
 
 				const { id: productSheetId } = await prisma.product_sheet.create({
 					data: {
-						name: name,
-						description: description,
-						shortDescription: shortDescription,
-						price: price,
-						organizationId: organizationId,
+						name,
+						description,
+						shortDescription,
+						price,
+						organizationId,
 					},
 				});
 

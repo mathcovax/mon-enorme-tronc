@@ -24,15 +24,13 @@ export function useProductSheetForm(productSheetId?: string) {
 			defaultValue: "",
 			zodSchema: zod.string({ message: $t("form.rule.required") })
 				.max(255, { message: $t("form.rule.maxLength", { value: 255 }) })
-				.min(2, { message: $t("form.rule.minLength", { value: 2 }) })
+				.min(3, { message: $t("form.rule.minLength", { value: 3 }) })
 		},
 		description: {
 			type: "textarea",
 			label: $t("label.description"),
 			defaultValue: "",
 			zodSchema: zod.string({ message: $t("form.rule.required") })
-				.max(255, { message: $t("form.rule.maxLength", { value: 255 }) })
-				.min(2, { message: $t("form.rule.minLength", { value: 2 }) })
 		},
 		shortDescription: {
 			type: "text",
@@ -40,7 +38,7 @@ export function useProductSheetForm(productSheetId?: string) {
 			defaultValue: "",
 			zodSchema: zod.string({ message: $t("form.rule.required") })
 				.max(255, { message: $t("form.rule.maxLength", { value: 255 }) })
-				.min(2, { message: $t("form.rule.minLength", { value: 2 }) })
+				.min(3, { message: $t("form.rule.minLength", { value: 3 }) })
 		},
 		price: {
 			type: "number",

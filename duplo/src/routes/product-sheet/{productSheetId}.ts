@@ -7,10 +7,10 @@ export const PATCH = (method: Methods, path: string) =>
 		.declareRoute(method, path)
 		.extract({
 			body: zod.object({
-				name: zod.string().optional(),
+				name: zod.string().min(3).max(255).optional(),
 				description: zod.string().optional(),
-				shortDescription: zod.string().optional(),
-				price: zod.number().min(0).optional(),
+				shortDescription: zod.string().min(3).max(255).optional(),
+				price: zod.number().min(0.01).optional(),
 			}).passthrough().default({}),
 		})
 		.handler(

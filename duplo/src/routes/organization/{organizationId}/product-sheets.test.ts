@@ -1,6 +1,7 @@
 import { MockPrisma } from "@test/mocks/providers";
 import { duploTesting } from "@test/setup";
 import { GET } from "./product-sheets";
+import { organizationData } from "@test/data/organization";
 
 describe("GET /organization/{organizationId}/product-sheets", () => {
 	beforeEach(() => {
@@ -13,24 +14,17 @@ describe("GET /organization/{organizationId}/product-sheets", () => {
 
 		const res = await duploTesting
 			.testRoute(GET("GET", ""))
-			.setDefaultFloorValue({ accessTokenContent: {} })
+			.setDefaultFloorValue({ organization: organizationData })
 			.setRequestProperties({
-				params: {
-					organizationId: "1",
-				},
 				query: {
 					name: "eeee",
 				}
 			})
-			.mockProcess(
-				"hasOrganizationRole",
-				{ }
-			)
 			.launch();
 
 		expect(spy).lastCalledWith({
 			where: {
-				organizationId: "1",
+				organizationId: "eee",
 				name: {
 					contains: "eeee",
 					mode: "insensitive",

@@ -1,6 +1,7 @@
 import { MockPrisma } from "@test/mocks/providers";
 import { POST } from "./product-sheet";
 import { duploTesting } from "@test/setup";
+import { organizationData } from "@test/data/organization";
 
 describe("POST /organization/{organizationId}/product-sheet", () => {
 	beforeEach(() => {
@@ -23,11 +24,8 @@ describe("POST /organization/{organizationId}/product-sheet", () => {
 
 		const res = await duploTesting
 			.testRoute(POST("POST", "/organization/1234/product-sheet"))
-			.setDefaultFloorValue({ accessTokenContent: {} })
+			.setDefaultFloorValue({ organization: organizationData })
 			.setRequestProperties({
-				params: {
-					organizationId: "1234"
-				},
 				body: {
 					name: "test",
 					description: "test",
@@ -35,17 +33,13 @@ describe("POST /organization/{organizationId}/product-sheet", () => {
 					price: 10,
 				}
 			})
-			.mockProcess(
-				"hasOrganizationRole",
-				{ }
-			)
 			.launch();
 
 		expect(spy).lastCalledWith({
 			data: {
 				description: "test",
 				name: "test",
-				organizationId: "1234",
+				organizationId: "eee",
 				shortDescription: "test",
 				price: 10
 			}
