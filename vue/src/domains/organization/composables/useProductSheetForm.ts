@@ -42,7 +42,7 @@ export function useProductSheetForm(productSheetId?: string) {
 		},
 		price: {
 			type: "number",
-			label: $t("price"),
+			label: $pt("price"),
 			defaultValue: 0,
 			zodSchema: zod.number({ message: $t("form.rule.required") })
 				.min(0.01, { message: $t("form.rule.minLength", { value: 0.01 }) })

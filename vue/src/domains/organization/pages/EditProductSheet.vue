@@ -11,6 +11,7 @@ const {
 	suggestedCategories,
 	onSearchCategories,
 } = useProductSheetForm(productSheetId);
+const $pt = usePageTranslate();
 
 const router = useRouter();
 
@@ -87,9 +88,8 @@ function back() {
 					@update:model-value="onUpdate"
 					:items="suggestedCategories"
 					@update:search-term="onSearchCategories"
-					:placeholder="$t('page.createProductSheet.form.categories.placeholder')"
-					:empty-label="$t('page.createProductSheet.form.categories.emptyLabel')"
-					:text-button="$t('page.createProductSheet.form.categories.button')"
+					:placeholder="$pt('form.placeholder')"
+					:empty-label="$t('label.empty')"
 				/>
 			</template>
 			
@@ -97,12 +97,12 @@ function back() {
 				type="submit"
 				class="col-span-12"
 			>
-				{{ $t("page.editProductSheet.form.submit") }}
+				{{ $t("button.save") }}
 			</PrimaryButton>
 		</ProductSheetForm>
 
 		<SecondaryButton @click="back">
-			{{ $t("back") }}
+			{{ $t("button.back") }}
 		</secondarybutton>
 	</div>
 </template>

@@ -73,9 +73,8 @@ function back() {
 					@update:model-value="onUpdate"
 					:items="suggestedCategories"
 					@update:search-term="onSearchCategories"
-					:placeholder="$pt('page.createProductSheet.form.placeholder')"
-					:empty-label="$pt('page.createProductSheet.form.emptyLabel')"
-					:text-button="$pt('page.createProductSheet.form.button')"
+					:placeholder="$pt('form.placeholder')"
+					:empty-label="$t('label.empty')"
 				/>
 			</template>
 
@@ -88,7 +87,7 @@ function back() {
 		</ProductSheetForm>
 
 		<SecondaryButton @click="back">
-			{{ $t("back") }}
+			{{ $t("button.back") }}
 		</secondarybutton>
 	</div>
 </template>

@@ -87,8 +87,21 @@ export default {
 		},
 		[routerPageName.ORGANIZATION_GET_PRODUCT_SHEET]: {
 			searchPlaceholder: "Chercher un produit",
+			price: "Prix",
+		},
+		[routerPageName.ORGANIZATION_EDIT_PRODUCT_SHEET]: {
 			shortDescription: "Description courte",
 			price: "Prix",
+			form: {
+				placeholder: "Chercher des catégories.",
+			}
+		},
+		[routerPageName.ORGANIZATION_CREATE_PRODUCT_SHEET]: {
+			shortDescription: "Description courte",
+			price: "Prix",
+			form: {
+				placeholder: "Chercher des catégories.",
+			}
 		},
 		notFound: {
 			title: "404 - Page introuvable",
@@ -233,10 +246,12 @@ export default {
 			alreadyExist: "Le nom de catégory est déjà utilisais",
 			created: "La catégory a correctement étais créer.",
 			edited: "La catégory a correctement étais modifier.",
-			notfound: "La catégorie n'existe pas",
+			notfound: "La catégorie n'existe pas.",
 		},
-		product_sheet: {
-			notfound: "la fiche produit n'existe pas",
+		productSheet: {
+			notfound: "La fiche produit n'existe pas.",
+			edited: "La fiche a correctement étais éditer.",
+			created: "La fiche a correctement étais créer."
 		}
 	}
 };
