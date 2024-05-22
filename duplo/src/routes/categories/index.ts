@@ -8,7 +8,7 @@ export const GET = (method: Methods, path: string) => duplo
 			name: zod.string().optional(),
 			page: zod.coerce.number().default(0),
 			withDisabled: zod.coerce.boolean().optional()
-		}).passthrough().default({})
+		}).strip().default({})
 	})
 	.handler(
 		async ({ pickup }) => {

@@ -18,7 +18,7 @@ export const PATCH = (method: Methods, path: string) =>
 					organizationRolesEnum.PRODUCT_SHEET_MANAGER,
 					organizationRolesEnum.ACCOUNTANT,
 				]).optional()
-			}).passthrough().default({})
+			}).strip().default({})
 		})
 		.process(
 			hasOrganizationRole,

@@ -18,7 +18,7 @@ export const POST = (method: Methods, path: string) =>
 					organizationRolesEnum.PRODUCT_SHEET_MANAGER,
 					organizationRolesEnum.ACCOUNTANT,
 				]),
-			}).passthrough()
+			}).strip()
 		})
 		.check(
 			userExistCheck,

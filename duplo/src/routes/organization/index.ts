@@ -9,7 +9,7 @@ export const POST = (method: Methods, path: string) => hasPrimordialRole({ optio
 		body: zod.object({
 			name: zod.string().min(2).max(255),
 			ownerId: zod.string(),
-		}).passthrough()
+		}).strip()
 	})
 	.check(
 		organizationExistCheck,

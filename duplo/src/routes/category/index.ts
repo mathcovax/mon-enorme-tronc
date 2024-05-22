@@ -8,7 +8,7 @@ export const POST = (method: Methods, path: string) => hasPrimordialRole({ optio
 		body: zod.object({
 			name: zod.string().min(3).max(255),
 			disabled: zod.boolean()
-		}).passthrough()
+		}).strip()
 	})
 	.check(
 		categoryExistCheck,

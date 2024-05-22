@@ -8,7 +8,7 @@ export const POST = (method: Methods, path: string) =>
 		.extract({
 			body: zod.object({
 				categoryId: zod.string(),
-			}).passthrough()
+			}).strip()
 		})
 		.check(
 			categoryExistCheck,

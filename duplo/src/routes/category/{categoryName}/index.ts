@@ -11,7 +11,7 @@ export const PATCH = (method: Methods, path: string) => hasPrimordialRole({ opti
 		body: zod.object({
 			name: zod.string().min(3).max(255).optional(),
 			disabled: zod.boolean().optional()
-		}).passthrough()
+		}).strip()
 	})
 	.check(
 		categoryExistCheck,

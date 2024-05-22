@@ -11,7 +11,7 @@ export const PATCH = (method: Methods, path: string) =>
 				description: zod.string().optional(),
 				shortDescription: zod.string().min(3).max(255).optional(),
 				price: zod.number().min(0.01).optional(),
-			}).passthrough().default({}),
+			}).strip().default({}),
 		})
 		.handler(
 			async ({ pickup }) => {
