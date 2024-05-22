@@ -5,7 +5,7 @@ import { productSheetData } from "@test/data/productSheet";
 
 describe("GET /category/{categoryName}/products", () => {
 	beforeEach(() => {
-		MockPrisma.resest();
+		MockPrisma.reset();
 	});
 
 	it("category products", async () => {

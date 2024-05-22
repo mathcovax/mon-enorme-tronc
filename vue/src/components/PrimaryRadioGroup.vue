@@ -24,7 +24,7 @@ const emit = defineEmits<{"update:modelValue": [value: string]}>();
 	>
 		<div
 			v-for="(item, index) of items"
-			:key="index"
+			:key="item.value"
 			class="flex items-center space-x-2"
 		>
 			<RadioGroupItem

@@ -10,7 +10,7 @@ const {
 	resetProductSheetForm,
 	suggestedCategories,
 	onSearchCategories 
-} = useProductSheetForm(organizationId);
+} = useProductSheetForm();
 
 const router = useRouter();
 const $pt = usePageTranslate();
@@ -42,11 +42,11 @@ async function submit() {
 			promiseList.push(
 				duploTo.enriched
 					.post(
-						"/category/{categoryId}/product-sheet",
+						"/product-sheet/{productSheetId}/category",
 						{
-							productSheetId: result.data
+							categoryId: c.value.toString()
 						},
-						{ params: { categoryId: c.value.toString() } }
+						{ params: { productSheetId: result.data } }
 					)
 					.result
 			);

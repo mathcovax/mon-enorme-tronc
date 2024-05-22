@@ -4,7 +4,7 @@ import { GET } from "./product-sheets";
 
 describe("GET /organization/{organizationId}/product-sheets", () => {
 	beforeEach(() => {
-		MockPrisma.resest();
+		MockPrisma.reset();
 	});
 
 	it("get product-sheets", async () => {

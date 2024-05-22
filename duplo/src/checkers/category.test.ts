@@ -4,7 +4,7 @@ import { MockPrisma } from "@test/mocks/providers";
 
 describe("category checker", () => {
 	beforeEach(() => {
-		MockPrisma.resest();
+		MockPrisma.reset();
 	});
 
 	it("find by name", async () => {

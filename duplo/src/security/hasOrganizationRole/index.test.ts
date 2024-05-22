@@ -1,5 +1,5 @@
 import { duploTesting } from "@test/setup";
-import { hasOrganizationRole } from "./hasOrganizationRole";
+import { hasOrganizationRole } from ".";
 import { Response } from "@duplojs/duplojs";
 import { userToOrganizationData } from "@test/data/userToOrganization";
 

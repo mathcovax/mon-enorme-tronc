@@ -4,7 +4,7 @@ import { duploTesting } from "@test/setup";
 
 describe("POST /organization/{organizationId}/product-sheet", () => {
 	beforeEach(() => {
-		MockPrisma.resest();
+		MockPrisma.reset();
 	});
 
 	it("post product sheet created", async () => {

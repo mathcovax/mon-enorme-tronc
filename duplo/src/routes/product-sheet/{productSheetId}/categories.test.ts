@@ -2,10 +2,11 @@ import { MockPrisma } from "@test/mocks/providers";
 import { GET } from "./categories";
 import { duploTesting } from "@test/setup";
 import { categoryData } from "@test/data/category";
+import { productSheetData } from "@test/data/productSheet";
 
 describe("GET /product-sheet/{productSheetId}/categories", () => {
 	beforeEach(() => {
-		MockPrisma.resest();
+		MockPrisma.reset();
 	});
 
 	it("get categories where product", async () => {
@@ -14,28 +15,13 @@ describe("GET /product-sheet/{productSheetId}/categories", () => {
 
 		const res = await duploTesting
 			.testRoute(GET("GET", "/product-sheet/1234/categories"))
-			.setDefaultFloorValue({ accessTokenContent: {} })
-			.setRequestProperties({
-				params: {
-					productSheetId: "1234"
-				},
-			})
-			.mockChecker(
-				"productSheetExist",
-				{ info: "productSheet.exist", data: { id: "1234" } }
-			)
-			.mockProcess(
-				"hasOrganizationRole",
-				{ }
-			)
+			.setDefaultFloorValue({ productSheet: productSheetData })
 			.launch();
-
-		console.log(res.body);
 
 		expect(res.information).toBe("productSheet.categories");
 		expect(spy).lastCalledWith({
 			where: {
-				productSheetId: "1234"
+				productSheetId: ""
 			},
 			select: {
 				category: true

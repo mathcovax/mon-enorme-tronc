@@ -3,7 +3,7 @@ interface ItemMultiComBox {
 	value: string | number
 }
 
-export function useProductSheetForm(organizationId: string, productSheetId?: string) {
+export function useProductSheetForm(productSheetId?: string) {
 	const $pt = usePageTranslate();
 	const suggestedCategories = ref<ItemMultiComBox[]>([]);
 	
@@ -55,7 +55,7 @@ export function useProductSheetForm(organizationId: string, productSheetId?: str
 			defaultValue: undefined as ItemMultiComBox[] | undefined,
 			zodSchema: zod.object({
 				value: zod.string()
-			}).array().max(5, { message: $t("form.rule.maxItems") })
+			}).array().max(5, { message: $t("form.rule.maxItems", { value: 5 }) })
 		},
 		oldCategories: {
 			type: "custom",

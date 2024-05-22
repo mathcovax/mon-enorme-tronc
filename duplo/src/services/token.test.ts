@@ -3,7 +3,7 @@ import { AccessToken } from "./token";
 
 describe("token service", () => {
 	beforeEach(() => {
-		MockEnv.resest();
+		MockEnv.reset();
 	});
 	
 	it("generate access token", () => {

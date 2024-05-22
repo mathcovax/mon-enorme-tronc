@@ -4,7 +4,7 @@ import { MockPrisma } from "@test/mocks/providers";
 
 describe("GET /organizations", () => {
 	beforeEach(() => {
-		MockPrisma.resest();
+		MockPrisma.reset();
 	});
 
 	it("get organizations", async () => {

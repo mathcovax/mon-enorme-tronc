@@ -4,7 +4,7 @@ import { inputProductSheet, productSheetExistCheck } from "./productSheet";
 
 describe("productSheet checker", () => {
 	beforeEach(() => {
-		MockPrisma.resest();
+		MockPrisma.reset();
 	});
 
 	it("find by name", async () => {

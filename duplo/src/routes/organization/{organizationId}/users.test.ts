@@ -6,7 +6,7 @@ import { userData } from "@test/data/user";
 
 describe("GET /organization/{organizationId}/users", () => {
 	beforeEach(() => {
-		MockPrisma.resest();
+		MockPrisma.reset();
 	});
 
 	it("get organization users", async () => {

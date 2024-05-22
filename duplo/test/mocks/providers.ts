@@ -10,7 +10,7 @@ export class MockFirebaseAuth{
 		this.firebaseAuth[key] = value;
 	}
 
-	static resest(key?: keyof Auth){
+	static reset(key?: keyof Auth){
 		if(key){
 			this.firebaseAuth[key] = undefined;
 		}
@@ -45,7 +45,7 @@ export class MockPrisma{
 		this.prisma[entity][key] = value;
 	}
 
-	static resest(entity?: PrismaEntityKey, key?: keyof PrismaClient[PrismaEntityKey]){
+	static reset(entity?: PrismaEntityKey, key?: keyof PrismaClient[PrismaEntityKey]){
 		if(entity && key){
 			this.prisma[entity][key] = undefined;
 		}

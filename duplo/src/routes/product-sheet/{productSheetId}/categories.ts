@@ -1,45 +1,17 @@
-import { hasOrganizationRole } from "@security/hasOrganizationRole";
-import {
-	productSheetExistCheck,
-	inputProductSheet,
-} from "@checkers/productSheet";
-import { mustBeConnected } from "@security/mustBeConnected";
 import { categorySchema } from "@schemas/category";
+import { hasOrganizationRoleByProductSheetId } from "@security/hasOrganizationRole/byProductSheetId";
 
 /* METHOD : GET, PATH : /product-sheet/{productSheetId}/categories */
 export const GET = (method: Methods, path: string) =>
-	mustBeConnected({ pickup: ["accessTokenContent"] })
+	hasOrganizationRoleByProductSheetId({ pickup: ["productSheet"] })
 		.declareRoute(method, path)
-		.extract({
-			params: {
-				productSheetId: zod.string(),
-			},
-		})
-		.check(
-			productSheetExistCheck,
-			{
-				input: (p) => inputProductSheet.id(p("productSheetId")),
-				...productSheetExistCheck.preCompletions.mustExist
-			},
-			new IHaveSentThis(NotFoundHttpException.code, "productSheet.notfound")
-		)
-		.process(
-			hasOrganizationRole,
-			{
-				input: p => ({
-					organizationId: p("productSheet").organizationId,
-					userId: p("accessTokenContent").id
-				}),
-				options: { organizationRole: "PRODUCT_SHEET_MANAGER" }
-			}
-		)
 		.handler(
 			async ({ pickup }) => {
-				const { id } = pickup("productSheet");
+				const { id: productSheetId } = pickup("productSheet");
 
 				const categories = await prisma.product_sheet_to_category.findMany({
 					where: {
-						productSheetId: id
+						productSheetId,
 					},
 					select: {
 						category: true

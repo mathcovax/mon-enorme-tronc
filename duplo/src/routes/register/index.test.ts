@@ -4,7 +4,7 @@ import { POST } from ".";
 
 describe("POST /register", () => {
 	beforeEach(() => {
-		MockPrisma.resest();
+		MockPrisma.reset();
 	});
 
 	it("user register", async () => {

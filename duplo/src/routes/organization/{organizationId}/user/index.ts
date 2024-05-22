@@ -1,17 +1,14 @@
 import { organizationHasUserCheck } from "@checkers/organization";
 import { inputUser, userExistCheck } from "@checkers/user";
 import { organizationRolesEnum, organizationUserSchema } from "@schemas/organization";
-import { hasOrganizationRole } from "@security/hasOrganizationRole";
+import { hasOrganizationRoleByOrganizationId } from "@security/hasOrganizationRole/byOrganizationId";
 import { mustBeConnected } from "@security/mustBeConnected";
 
 /* METHOD : POST, PATH : /organization/{organizationId}/user */
 export const POST = (method: Methods, path: string) =>
-	mustBeConnected({ pickup: ["accessTokenContent"] })
+	hasOrganizationRoleByOrganizationId({ pickup: ["organization"] })
 		.declareRoute(method, path)
 		.extract({
-			params: {
-				organizationId: zod.string(),
-			},
 			body: zod.object({
 				email: zod.string(),
 				firstname: zod.string(),
@@ -23,16 +20,6 @@ export const POST = (method: Methods, path: string) =>
 				]),
 			}).passthrough()
 		})
-		.process(
-			hasOrganizationRole,
-			{
-				input: p => ({
-					organizationId: p("organizationId"),
-					userId: p("accessTokenContent").id
-				}),
-				options: { organizationRole: "OWNER" }
-			}
-		)
 		.check(
 			userExistCheck,
 			{
@@ -48,7 +35,7 @@ export const POST = (method: Methods, path: string) =>
 		.check(
 			organizationHasUserCheck,
 			{
-				input: p => ({ organizationId: p("organizationId"), userId: p("user").id }),
+				input: p => ({ organizationId: p("organization").id, userId: p("user").id }),
 				result: "organization.hasNotUser",
 				catch: () => {
 					throw new ConflictHttpException("organization.hasAlreadyUser");
@@ -58,7 +45,7 @@ export const POST = (method: Methods, path: string) =>
 		)
 		.handler(
 			async ({ pickup }) => {
-				const organizationId = pickup("organizationId");
+				const { id: organizationId } = pickup("organization");
 				const { organizationRole } = pickup("body");
 				const { id: userId } = pickup("user");
 

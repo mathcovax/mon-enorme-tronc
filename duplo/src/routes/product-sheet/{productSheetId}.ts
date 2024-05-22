@@ -1,19 +1,11 @@
-import { hasOrganizationRole } from "@security/hasOrganizationRole";
-import {
-	productSheetExistCheck,
-	inputProductSheet,
-} from "@checkers/productSheet";
-import { mustBeConnected } from "@security/mustBeConnected";
 import { productSheetSchema } from "@schemas/productSheet";
+import { hasOrganizationRoleByProductSheetId } from "@security/hasOrganizationRole/byProductSheetId";
 
 /* METHOD : PATCH, PATH : /product-sheet/{productSheetId} */
 export const PATCH = (method: Methods, path: string) =>
-	mustBeConnected({ pickup: ["accessTokenContent"] })
+	hasOrganizationRoleByProductSheetId({ pickup: ["productSheet"] })
 		.declareRoute(method, path)
 		.extract({
-			params: {
-				productSheetId: zod.string(),
-			},
 			body: zod.object({
 				name: zod.string().optional(),
 				description: zod.string().optional(),
@@ -21,30 +13,13 @@ export const PATCH = (method: Methods, path: string) =>
 				price: zod.number().min(0).optional(),
 			}).passthrough().default({}),
 		})
-		.check(
-			productSheetExistCheck,
-			{
-				input: (p) => inputProductSheet.id(p("productSheetId")),
-				...productSheetExistCheck.preCompletions.mustExist
-			},
-			new IHaveSentThis(NotFoundHttpException.code, "productSheet.notfound")
-		)
-		.process(
-			hasOrganizationRole,
-			{
-				input: p => ({
-					organizationId: p("productSheet").organizationId,
-					userId: p("accessTokenContent").id
-				}),
-				options: { organizationRole: "PRODUCT_SHEET_MANAGER" }
-			}
-		)
 		.handler(
 			async ({ pickup }) => {
+				const { id: productSheetId } = pickup("productSheet");
 				const { name, description, shortDescription, price } = pickup("body");
 				const { id } = await prisma.product_sheet.update({
 					where: {
-						id: pickup("productSheetId"),
+						id: productSheetId,
 					},
 					data: {
 						name,
@@ -60,34 +35,13 @@ export const PATCH = (method: Methods, path: string) =>
 
 /* METHOD : GET, PATH : /product-sheet/{productSheetId} */
 export const GET = (method: Methods, path: string) =>
-	mustBeConnected({ pickup: ["accessTokenContent"] })
+	hasOrganizationRoleByProductSheetId({ pickup: ["productSheet"] })
 		.declareRoute(method, path)
-		.extract({
-			params: {
-				productSheetId: zod.string(),
-			}
-		})
-		.check(
-			productSheetExistCheck,
-			{
-				input: (p) => inputProductSheet.id(p("productSheetId")),
-				...productSheetExistCheck.preCompletions.mustExist
-			},
-			new IHaveSentThis(NotFoundHttpException.code, "productSheet.notfound")
-		)
-		.process(
-			hasOrganizationRole,
-			{
-				input: p => ({
-					organizationId: p("productSheet").organizationId,
-					userId: p("accessTokenContent").id
-				}),
-				options: { organizationRole: "PRODUCT_SHEET_MANAGER" }
-			}
-		)
 		.handler(
 			async ({ pickup }) => {
-				throw new OkHttpException("productSheet.found", pickup("productSheet"));
+				const productSheet = pickup("productSheet");
+
+				throw new OkHttpException("productSheet.found", productSheet);
 			},
 			new IHaveSentThis(OkHttpException.code, "productSheet.found", productSheetSchema)
 		);

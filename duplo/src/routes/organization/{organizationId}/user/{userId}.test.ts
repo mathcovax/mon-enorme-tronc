@@ -4,7 +4,7 @@ import { DELETE, PATCH } from "./{userId}";
 
 describe("/organization/{organizationId}/user/{userId}", () => {
 	beforeEach(() => {
-		MockPrisma.resest();
+		MockPrisma.reset();
 	});
 
 	describe("PATCH", () => {

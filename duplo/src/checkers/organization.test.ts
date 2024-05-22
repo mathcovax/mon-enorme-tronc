@@ -4,7 +4,7 @@ import { inputOrganization, organizationExistCheck, organizationHasUserCheck } f
 
 describe("organization checker", () => {
 	beforeEach(() => {
-		MockPrisma.resest();
+		MockPrisma.reset();
 	});
 
 	it("find organization by id", async () => {
@@ -61,5 +61,23 @@ describe("organization checker", () => {
 		const result = await duploTesting.testChecker(organizationHasUserCheck, { organizationId: "tt", userId: "test" });
 
 		expect(result.info).toBe("organization.hasNotUser");
+	});
+
+	it("organization has not user", async() => {
+		const spy = vi.fn(() => ({ user: {} }));
+		MockPrisma.set("user_to_organization", "findFirst", spy);
+
+		const result = await duploTesting.testChecker(organizationHasUserCheck, { organizationId: "tt", userId: "test" });
+
+		expect(result.info).toBe("organization.hasUserWithMoreData");
+		expect(spy).lastCalledWith({ 
+			where: { organizationId: "tt", userId: "test" } ,
+			select: {
+				organizationId: true,
+				organizationRole: true,
+				user: false,
+				userId: true,
+			}
+		});
 	});
 });

@@ -1,7 +1,7 @@
 import { primordial_role } from "@prisma/client";
 import { mustBeConnected } from "./mustBeConnected";
 
-interface HasPrimordialRoleOptions {
+export interface HasPrimordialRoleOptions {
 	primordialRole: primordial_role
 }
 

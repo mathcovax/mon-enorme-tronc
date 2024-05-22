@@ -5,7 +5,7 @@ import { GET } from ".";
 
 describe("GET /categories", () => {
 	beforeEach(() => {
-		MockPrisma.resest();
+		MockPrisma.reset();
 	});
 
 	it("get categories with query", async () => {
