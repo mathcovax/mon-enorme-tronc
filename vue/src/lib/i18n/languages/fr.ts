@@ -155,6 +155,14 @@ export default {
 				copyrights: "Tous droits réservés."
 			}
 		},
+		admin: {
+			title: "Panneau d'administration",
+			nav: {
+				home: "Tableau de bord",
+				organizations: "Organisations",
+				users: "Utilisateurs",
+			},
+		},
 		organization: {
 			title: "Mon organisation",
 			nav: {
