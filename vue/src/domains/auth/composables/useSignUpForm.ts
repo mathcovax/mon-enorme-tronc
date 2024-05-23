@@ -33,14 +33,13 @@ export function useSignUpForm() {
 			type: "combo",
 			items: addresses.value.map(v => ({ label: v, identifier: v })),
 			placeholder: $t("placeholder.address"),
-			emptyLabel: $t("label.address.empty"),
-			defaultLabel: $t("label.address.addressDefault"),
+			emptyLabel: $t("label.empty"),
 			label: $t("label.address"),
 			zodSchema: zod.object(
 				{ label: zod.string() }, 
 				{ message: $t("form.rule.required") }
 			).transform(item => item.label),
-			textButton: $t("button.validate"),
+			textButton: $t("button.add"),
 			onUpdateSearchTerm: searchAddresses
 		})),
 		terms: {

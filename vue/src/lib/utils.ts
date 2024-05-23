@@ -74,3 +74,8 @@ export const organizationRoles: TuplifyUnion<OrganizationRole> = [
 	"ACCOUNTANT",
 	"OWNER"
 ];
+
+export type Warehouse = GetResponseByInfo<
+	GetDef<"GET", "/organization/{organizationId}/warehouses">,
+	"warehouses.found"
+>["body"][number];
