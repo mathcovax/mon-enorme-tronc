@@ -42,7 +42,7 @@ model organization {
     suspended          Boolean                @default(false)
     userToOrganization user_to_organization[]
     product_sheet      product_sheet[]
-    warehouse          warehouse[]
+    warehouses         warehouse[]
 }
 
 model user_to_organization {

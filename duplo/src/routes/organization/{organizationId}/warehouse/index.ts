@@ -17,7 +17,7 @@ export const POST = (method: Methods, path: string) =>
 		.check(
 			addressValidCheck,
 			{
-				input: p => p("body").address ?? "",
+				input: p => p("body").address,
 				result: "address.valid",
 				catch: () => {
 					throw new BadRequestHttpException("warehouse.address.invalid");

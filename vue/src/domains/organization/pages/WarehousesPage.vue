@@ -7,12 +7,12 @@ import { useWarehouseForm } from "../composables/useWarehouseForm";
 const { organizationId } = useRouteParams({ 
 	organizationId: zod.string(), 
 });
-const router = useRouter();
 const { warehouses, getWarehouses } = useGetWarehouses(organizationId);
 const { WarehouseForm, warehouseValues, checkWarehouseForm, resetWarehouseForm } = useWarehouseForm();
 const $pt = usePageTranslate();
 const currentPage = ref(0);
 const searchName = ref("");
+const creatForm = ref(false);
 const popup = ref<InstanceType<typeof ThePopup>>();
 const cols: BigTableColDef<Warehouse>[] = [
 	{
@@ -41,10 +41,6 @@ function previous() {
 		return;
 	}
 	getWarehouses(currentPage.value-=1, searchName.value);
-}
-
-function redirectToCreatedPage() {
-	router.push({ name: routerPageName.ORGANIZATION_CREATE_WAREHOUSE, params: { organizationId } });
 }
 
 async function submitPatch() {
@@ -80,12 +76,57 @@ function openPopup(warehouse: Warehouse) {
 	popup.value?.open();
 }
 
+async function submitPost() {
+
+	const formFields = await checkWarehouseForm();
+
+	if (!formFields) {
+		return; 
+	}
+
+	await duploTo.enriched
+		.post(
+			"/organization/{organizationId}/warehouse",
+			{
+				name: formFields.name,
+				address: formFields.address
+			},
+			{ params: { organizationId } }
+		)
+		.info("warehouse.created", () => {
+			resetWarehouseForm();
+			getWarehouses(currentPage.value, searchName.value);
+		});
+}
+
+function openCreateForm() {
+	resetWarehouseForm();
+	creatForm.value = !creatForm.value;
+}
+
 getWarehouses(currentPage.value, searchName.value);
 watch(searchName, () => getWarehouses(0, searchName.value));
 </script>
 
 <template>
 	<div class="flex flex-col items-center w-full gap-6 p-6">
+		<div
+			v-if="creatForm"
+			class="w-full flex flex-col items-center p-6 gap-6"
+		>
+			<WarehouseForm
+				@submit="submitPost"
+				class="max-w-[500px] w-[80%]"
+			>
+				<PrimaryButton
+					type="submit"
+					class="col-span-12"
+				>
+					{{ $t("button.create") }}
+				</PrimaryButton>
+			</WarehouseForm>
+		</div>
+
 		<div class="flex justify-center w-full gap-[1rem]">
 			<PrimaryInput
 				class="max-w-[300px]"
@@ -93,8 +134,16 @@ watch(searchName, () => getWarehouses(0, searchName.value));
 				v-model="searchName"
 			/>
 
-			<PrimaryButton @click="redirectToCreatedPage">
-				{{ $t("button.create") }}
+			<PrimaryButton @click="openCreateForm">
+				<div v-if="creatForm">
+					<TheIcon icon="menu-down" />
+					{{ $t("button.cancel") }}
+				</div>
+
+				<div v-else>
+					<TheIcon icon="menu-up" />
+					{{ $t("button.create") }}
+				</div>
 			</PrimaryButton>
 		</div>
 

@@ -7,7 +7,6 @@ export const routerPageOrganization = Object.freeze({
 	ORGANIZATION_GET_PRODUCT_SHEET: "get-product-sheet",
 	ORGANIZATION_DASHBOARD: "organization",
 	ORGANIZATION_GET_WAREHOUSE: "get-warehouse",
-	ORGANIZATION_CREATE_WAREHOUSE: "create-warehouse"
 });
 
 export default (): RouteRecordRaw[] => [
@@ -44,11 +43,6 @@ export default (): RouteRecordRaw[] => [
 				name: routerPageOrganization.ORGANIZATION_GET_WAREHOUSE,
 				path: "/organization/:organizationId/warehouses",
 				component: () => import("./pages/WarehousesPage.vue")
-			},
-			{
-				name: routerPageOrganization.ORGANIZATION_CREATE_WAREHOUSE,
-				path: "/organization/:organizationId/warehouse",
-				component: () => import("./pages/CreateWarehouse.vue")
 			},
 		]
 	}

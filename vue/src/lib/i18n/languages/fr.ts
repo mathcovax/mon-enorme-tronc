@@ -105,6 +105,9 @@ export default {
 		},
 		[routerPageName.ORGANIZATION_GET_WAREHOUSE]: {
 			searchPlaceholder: "Chercher un entrepôt",
+			placeholder: {
+				name: "nom de l'entrepôt"
+			}
 		},
 		notFound: {
 			title: "404 - Page introuvable",

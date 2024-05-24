@@ -3,6 +3,7 @@ import type { Warehouse } from "@/lib/utils";
 export function useWarehouseForm() {
 
 	const { searchAddresses, addresses } = useSearchAddresses();
+	const $pt = usePageTranslate();
 
 	const { Form, checkForm, resetForm, values } = useFormBuilder({
 		warehouse: {
@@ -13,6 +14,7 @@ export function useWarehouseForm() {
 		name: {
 			type: "text",
 			label: $t("label.lastname"),
+			placeholder: $pt("placeholder.name"),
 			defaultValue: "",
 			zodSchema: zod.string({ message: $t("form.rule.required") })
 				.max(255, { message: $t("form.rule.maxLength", { value: 255 }) })
