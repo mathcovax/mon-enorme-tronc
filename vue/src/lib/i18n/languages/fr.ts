@@ -126,6 +126,7 @@ export default {
 					myAccount: "Mon compte",
 					settings: "Paramètres",
 					support: "Support",
+					admin: "Administration",
 					login: "Connexion",
 					logout: "Déconnexion"
 				},
@@ -154,6 +155,14 @@ export default {
 				},
 				copyrights: "Tous droits réservés."
 			}
+		},
+		admin: {
+			title: "Panneau d'administration",
+			nav: {
+				home: "Tableau de bord",
+				organizations: "Organisations",
+				users: "Utilisateurs",
+			},
 		},
 		organization: {
 			title: "Mon organisation",
@@ -231,6 +240,7 @@ export default {
 		remove: "Retirer",
 		delete: "Supprimer",
 		back: "Retour",
+		backToHome: "Retourner à l'accueil",
 	},
 	response: {
 		organization: {

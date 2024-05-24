@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { ORGANIZATION_HOME, ORGANIZATION_MANAGE_USER } = routerPageName;
+const { ADMIN_PANEL_HOME, ADMIN_PANEL_ORGANIZATIONS, ADMIN_PANEL_USERS } = routerPageName;
 const route = useRoute();
 </script>
 
@@ -25,17 +25,17 @@ const route = useRoute();
 			>
 				<nav class="grid gap-2 text-lg font-medium">
 					<RouterLink
-						:to="{ name: ORGANIZATION_HOME }"
+						:to="{ name: ADMIN_PANEL_HOME }"
 						class="text-center text-2xl font-bold"
 					>
-						<span>{{ $t("layout.organization.title") }}</span>
+						<span>{{ $t("layout.admin.title") }}</span>
 					</RouterLink>
 
 					<RouterLink
-						:to="{ name: ORGANIZATION_HOME }"
+						:to="{ name: ADMIN_PANEL_HOME }"
 						class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
 						:class="
-							route.name === ORGANIZATION_HOME ?
+							route.name === ADMIN_PANEL_HOME ?
 								'bg-muted text-foreground'
 								:
 								'text-muted-foreground'
@@ -45,69 +45,41 @@ const route = useRoute();
 							icon="home-outline"
 							size="2xl"
 						/>
-						{{ $t("layout.organization.nav.dashboard") }}
+						{{ $t("layout.admin.nav.home") }}
 					</RouterLink>
 
 					<RouterLink
-						to="#"
-						class="mx-[-0.65rem] flex items-center gap-4 rounded-xl bg-muted px-3 py-2 text-foreground hover:text-foreground"
-					>
-						<TheIcon
-							icon="cart-outline"
-							size="2xl"
-						/>
-						{{ $t("layout.organization.nav.orders") }}
-					</RouterLink>
-
-					<RouterLink
-						to="#"
+						:to="{ name: ADMIN_PANEL_ORGANIZATIONS }"
 						class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
 						:class="
-							route.name ?
+							route.name === ADMIN_PANEL_ORGANIZATIONS ?
 								'bg-muted text-foreground'
 								:
 								'text-muted-foreground'
 						"
 					>
 						<TheIcon
-							icon="package-variant-closed"
+							icon="domain"
 							size="2xl"
 						/>
-						{{ $t("layout.organization.nav.products") }}
+						{{ $t("layout.admin.nav.organizations") }}
 					</RouterLink>
 
 					<RouterLink
-						:to="{ name: ORGANIZATION_MANAGE_USER }"
+						:to="{ name: ADMIN_PANEL_USERS }"
 						class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
 						:class="
-							route.name === ORGANIZATION_MANAGE_USER ?
+							route.name === ADMIN_PANEL_USERS ?
 								'bg-muted text-foreground'
 								:
 								'text-muted-foreground'
 						"
 					>
 						<TheIcon
-							icon="account"
+							icon="account-multiple"
 							size="2xl"
 						/>
-						{{ $t("layout.organization.nav.users") }}
-					</RouterLink>
-
-					<RouterLink
-						to="#"
-						class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
-						:class="
-							route.name ?
-								'bg-muted text-foreground'
-								:
-								'text-muted-foreground'
-						"
-					>
-						<TheIcon
-							icon="chart-line"
-							size="2xl"
-						/>
-						{{ $t("layout.organization.nav.analytics") }}
+						{{ $t("layout.admin.nav.users") }}
 					</RouterLink>
 				</nav>
 			</SheetContent>

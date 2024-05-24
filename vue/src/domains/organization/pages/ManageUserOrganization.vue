@@ -5,8 +5,6 @@ import { useOrganizationUserAddForm } from "../composables/useOrganizationUserAd
 import type { OrganizationUser } from "@/lib/utils";
 import type ThePopup from "@/components/ThePopup.vue";
 
-const $pt = usePageTranslate(); 
-
 const { organizationId } = useRouteParams({ 
 	organizationId: zod.string() 
 });
@@ -27,19 +25,19 @@ const searchEmail = ref("");
 const popup = ref<InstanceType<typeof ThePopup>>();
 const cols: BigTableColDef<OrganizationUser>[] = [
 	{
-		title: $pt("table.cols.email"),
+		title: $t("label.email"),
 		getter: i => i.email
 	},
 	{
-		title: $pt("table.cols.lastname"),
+		title: $t("label.lastname"),
 		getter: i => i.lastname
 	},
 	{
-		title: $pt("table.cols.firstname"),
+		title: $t("label.firstname"),
 		getter: i => i.firstname
 	},
 	{
-		title: $pt("table.cols.role"),
+		title: $t("label.role"),
 		getter: i => $t(`organizationRole.${i.organizationRole}`)
 	},
 ];
@@ -188,7 +186,7 @@ watch(searchEmail, () => getOrganizationUsers(currentPage.value = 0, searchEmail
 					type="submit"
 					class="col-span-8"
 				>
-					{{ $pt("form.submit") }}
+					{{ $t("form.submit") }}
 				</PrimaryButton>
 
 				<TheButton
@@ -197,7 +195,7 @@ watch(searchEmail, () => getOrganizationUsers(currentPage.value = 0, searchEmail
 					class="col-span-4"
 					variant="destructive"
 				>
-					{{ $pt("form.remove") }}
+					{{ $t("form.remove") }}
 				</TheButton>
 			</FormOrganizationUserEdit>
 		</template>

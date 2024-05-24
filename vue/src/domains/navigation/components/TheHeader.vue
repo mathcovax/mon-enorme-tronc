@@ -1,5 +1,6 @@
 <script setup lang="ts">
-const { isConnected } = useUserStore();
+const userStore = useUserStore();
+const { ADMIN_PANEL_HOME } = routerPageName;
 </script>
 
 <template>
@@ -77,7 +78,7 @@ const { isConnected } = useUserStore();
 			</SheetContent>
 		</TheSheet>
 
-		<div class="container flex-1 flex gap-10 justify-between md:justify-center items-center">
+		<div class="container px-0 md:px-8 flex-1 flex gap-10 justify-between md:justify-center items-center">
 			<RouterLink
 				to="/"
 				class="text-2xl font-bold"
@@ -152,21 +153,29 @@ const { isConnected } = useUserStore();
 						</DropdownMenuTrigger>
 
 						<DropdownMenuContent align="end">
-							<DropdownMenuLabel v-if="isConnected">
+							<DropdownMenuLabel v-if="userStore.isConnected">
 								{{ $t("layout.default.header.dropdownAccount.myAccount") }}
 							</DropdownMenuLabel>
 
-							<DropdownMenuSeparator v-if="isConnected" />
+							<DropdownMenuSeparator v-if="userStore.isConnected" />
 
-							<DropdownMenuItem v-if="isConnected">
+							<DropdownMenuItem v-if="userStore.isConnected">
 								{{ $t("layout.default.header.dropdownAccount.settings") }}
 							</DropdownMenuItem>
 
 							<DropdownMenuItem>{{ $t("layout.default.header.dropdownAccount.support") }}</DropdownMenuItem>
 
+							<DropdownMenuSeparator v-if="userStore.user?.primordialRole === 'ADMIN'" />
+
+							<DropdownMenuItem v-if="userStore.user?.primordialRole === 'ADMIN'">
+								<RouterLink :to="ADMIN_PANEL_HOME">
+									{{ $t("layout.default.header.dropdownAccount.admin") }}
+								</RouterLink>
+							</DropdownMenuItem>
+
 							<DropdownMenuSeparator />
 
-							<DropdownMenuItem v-if="isConnected">
+							<DropdownMenuItem v-if="userStore.isConnected">
 								{{ $t("layout.default.header.dropdownAccount.logout") }}
 							</DropdownMenuItem>
 
