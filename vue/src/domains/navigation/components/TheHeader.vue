@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const userStore = useUserStore();
+const { ADMIN_PANEL_HOME } = routerPageName;
 </script>
 
 <template>
@@ -163,6 +164,14 @@ const userStore = useUserStore();
 							</DropdownMenuItem>
 
 							<DropdownMenuItem>{{ $t("layout.default.header.dropdownAccount.support") }}</DropdownMenuItem>
+
+							<DropdownMenuSeparator v-if="userStore.user?.primordialRole === 'ADMIN'" />
+
+							<DropdownMenuItem v-if="userStore.user?.primordialRole === 'ADMIN'">
+								<RouterLink :to="ADMIN_PANEL_HOME">
+									{{ $t("layout.default.header.dropdownAccount.admin") }}
+								</RouterLink>
+							</DropdownMenuItem>
 
 							<DropdownMenuSeparator />
 
