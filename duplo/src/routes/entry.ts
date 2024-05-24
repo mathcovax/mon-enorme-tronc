@@ -4,6 +4,7 @@ import { productSheetExistCheck, inputProductSheet } from "@checkers/productShee
 import { hasOrganizationRole } from "@security/hasOrganizationRole";
 import { hasPrimordialRole } from "@security/hasPrimordialRole";
 import { mustBeConnected } from "@security/mustBeConnected";
+import { inputWarehouse, warehouseExistCheck } from "@checkers/warehouse";
 
 export const adminPanelEntry = hasPrimordialRole({ options: { primordialRole: "ADMIN" } })
 	.declareRoute("GET", "/entry/admin-panel*")
@@ -36,6 +37,52 @@ export const organizationOwnerEntry = mustBeConnected({ pickup: ["accessTokenCon
 		hasOrganizationRole,
 		{
 			input: p => ({ organizationId: p("organizationId"), userId: p("accessTokenContent").id }),
+			options: { organizationRole: "OWNER" }
+		}
+	)
+	.handler(
+		async () => {
+			throw new NoContentHttpException("entry.accepted");
+		},
+		new IHaveSentThis(NoContentHttpException.code, "entry.accepted"),
+		new SwaggerIgnore(),
+	);
+
+export const organizationWarehouseManagerEntry = mustBeConnected({ pickup: ["accessTokenContent"] })
+	.declareRoute(
+		"GET", 
+		[
+			"/entry/organization/{organizationId}/warehouses",
+			"/entry/organization/{organizationId}/create-warehouse",
+			"/entry/organization/{organizationId}/edited-warehouse/{warehouseId}",
+		]
+	)
+	.extract({
+		params: {
+			organizationId: zod.string(),
+			warehouseId: zod.string().optional(),
+		}
+	})
+	.check(
+		warehouseExistCheck,
+		{
+			input: (p) => inputWarehouse.id(p("warehouseId") ?? ""),
+			result: "warehouse.exist",
+			catch: () => {
+				throw new UnauthorizedHttpException("entry.refuse");
+			},
+			indexing: "warehouse",
+			skip: p => !p("warehouseId"),
+		},
+		new IHaveSentThis(UnauthorizedHttpException.code, "entry.refuse")
+	)
+	.process(
+		hasOrganizationRole,
+		{
+			input: p => ({ 
+				organizationId: p("warehouse")?.organizationId ?? p("organizationId"), 
+				userId: p("accessTokenContent").id
+			}),
 			options: { organizationRole: "OWNER" }
 		}
 	)

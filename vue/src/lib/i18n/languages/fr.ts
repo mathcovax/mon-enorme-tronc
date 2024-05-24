@@ -103,6 +103,12 @@ export default {
 				placeholder: "Chercher des catégories.",
 			}
 		},
+		[routerPageName.ORGANIZATION_GET_WAREHOUSE]: {
+			searchPlaceholder: "Chercher un entrepôt",
+			placeholder: {
+				name: "nom de l'entrepôt"
+			}
+		},
 		notFound: {
 			title: "404 - Page introuvable",
 			description: "La page que vous cherchez n'existe pas.",
@@ -157,6 +163,7 @@ export default {
 				products: "Produits",
 				users: "Utilisateurs",
 				analytics: "Analytiques",
+				warehouse: "Entrepôts"
 			},
 		}
 	},
@@ -252,6 +259,11 @@ export default {
 			notfound: "La fiche produit n'existe pas.",
 			edited: "La fiche a correctement étais éditer.",
 			created: "La fiche a correctement étais créer."
+		},
+		warehouse: {
+			notfound: "l'entrepôt n'existe pas.",
+			edited: "l'entrepôt a correctement été édité",
+			created: "l'entrepôt a correctement été créé"
 		}
 	}
 };

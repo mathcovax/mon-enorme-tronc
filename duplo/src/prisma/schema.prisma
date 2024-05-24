@@ -42,6 +42,7 @@ model organization {
     suspended          Boolean                @default(false)
     userToOrganization user_to_organization[]
     product_sheet      product_sheet[]
+    warehouses         warehouse[]
 }
 
 model user_to_organization {
@@ -113,4 +114,12 @@ model product_sheet_images {
     alt            String        @db.VarChar(255)
     createdAt      DateTime      @default(now())
     updatedAt      DateTime      @updatedAt
+}
+
+model warehouse {
+    id             String       @id @default(uuid())
+    name           String       @db.VarChar(255)
+    address        String       @db.Text
+    organization   organization @relation(fields: [organizationId], references: [id])
+    organizationId String
 }

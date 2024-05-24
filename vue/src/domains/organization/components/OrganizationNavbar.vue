@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useOrganizationUserStore } from "@/domains/organization/stores/organizationUser";
 
-const { ORGANIZATION_MANAGE_USER } = routerPageName;
+const { ORGANIZATION_MANAGE_USER, ORGANIZATION_GET_WAREHOUSE } = routerPageName;
 const route = useRoute();
 const organizationUserStore = useOrganizationUserStore();
 
@@ -109,6 +109,24 @@ const tmp = ref(false);
 							size="2xl"
 						/>
 						{{ $t("layout.organization.nav.analytics") }}
+					</RouterLink>
+
+					<RouterLink
+						v-if="organizationUserStore.hasRole('OWNER')"
+						to="#"
+						class="px-3 py-2 flex items-center gap-3 rounded-lg transition-all hover:text-primary"
+						:class="
+							route.name === ORGANIZATION_GET_WAREHOUSE ?
+								'bg-muted text-primary'
+								:
+								'text-muted-foreground'
+						"
+					>
+						<TheIcon
+							icon="warehouse"
+							size="2xl"
+						/>
+						{{ $t("layout.organization.nav.warehouse") }}
 					</RouterLink>
 				</nav>
 			</div>
