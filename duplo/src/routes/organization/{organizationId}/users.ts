@@ -1,33 +1,19 @@
 import { organizationUserSchema } from "@schemas/organization";
-import { hasOrganizationRole } from "@security/hasOrganizationRole";
-import { mustBeConnected } from "@security/mustBeConnected";
+import { hasOrganizationRoleByOrganizationId } from "@security/hasOrganizationRole/byOrganizationId";
 
 /* METHOD : GET, PATH : /organization/{organizationId}/users */
 export const GET = (method: Methods, path: string) => 
-	mustBeConnected({ pickup: ["accessTokenContent"] }) 
+	hasOrganizationRoleByOrganizationId({ pickup: ["organization"] })
 		.declareRoute(method, path)
 		.extract({
-			params: {
-				organizationId: zod.string(),
-			}, 
 			query: {
 				page: zod.coerce.number().default(0),
 				email: zod.coerce.string().optional(),
 			}
 		})
-		.process(
-			hasOrganizationRole,
-			{
-				input: p => ({ 
-					organizationId: p("organizationId"), 
-					userId: p("accessTokenContent").id 
-				}),
-				options: { organizationRole: "OWNER" }
-			}
-		)
 		.handler(
 			async ({ pickup }) => {
-				const organizationId = pickup("organizationId");
+				const { id: organizationId } = pickup("organization");
 				const page = pickup("page");
 				const email = pickup("email");
 

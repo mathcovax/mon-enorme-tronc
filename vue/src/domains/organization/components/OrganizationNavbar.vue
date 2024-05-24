@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useOrganizationUserStore } from "@/domains/organization/stores/organizationUser";
 
-const { ORGANIZATION_MANAGE_USER, ORGANIZATION_GET_WAREHOUSE } = routerPageName;
+const { ORGANIZATION_MANAGE_USER, ORGANIZATION_GET_PRODUCT_SHEET, ORGANIZATION_GET_WAREHOUSE } = routerPageName;
 const route = useRoute();
 const organizationUserStore = useOrganizationUserStore();
 </script>
@@ -57,13 +57,12 @@ const organizationUserStore = useOrganizationUserStore();
 
 					<RouterLink
 						v-if="organizationUserStore.hasRole('PRODUCT_SHEET_MANAGER')"
-						to="#"
+						:to="{name: ORGANIZATION_GET_PRODUCT_SHEET}"
 						class="px-3 py-2 flex items-center gap-3 rounded-lg transition-all hover:text-primary"
 						:class="
-							route.name ?
-								'bg-muted text-primary'
-								:
-								'text-muted-foreground'
+							route.name === ORGANIZATION_GET_PRODUCT_SHEET 
+								? 'bg-muted text-primary'
+								: 'text-muted-foreground'
 						"
 					>
 						<TheIcon
@@ -78,10 +77,9 @@ const organizationUserStore = useOrganizationUserStore();
 						:to="{ name: ORGANIZATION_MANAGE_USER }"
 						class="px-3 py-2 flex items-center gap-3 rounded-lg transition-all hover:text-primary"
 						:class="
-							route.name === ORGANIZATION_MANAGE_USER ?
-								'bg-muted text-primary'
-								:
-								'text-muted-foreground'
+							route.name === ORGANIZATION_MANAGE_USER 
+								? 'bg-muted text-primary'
+								: 'text-muted-foreground'
 						"
 					>
 						<TheIcon

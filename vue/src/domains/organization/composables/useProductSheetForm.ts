@@ -3,6 +3,16 @@ interface ItemMultiComBox {
 	value: string | number
 }
 
+export interface ItemImage {
+	id: string
+	url: string
+}
+export interface ItemImageNew {
+	blob: Blob
+	url: string
+}
+
+
 export function useProductSheetForm(productSheetId?: string) {
 	const $pt = usePageTranslate();
 	const suggestedCategories = ref<ItemMultiComBox[]>([]);
@@ -21,16 +31,31 @@ export function useProductSheetForm(productSheetId?: string) {
 		name: {
 			type: "text",
 			label: $t("label.lastname"),
+			cols: 6,
 			defaultValue: "",
 			zodSchema: zod.string({ message: $t("form.rule.required") })
 				.max(255, { message: $t("form.rule.maxLength", { value: 255 }) })
 				.min(3, { message: $t("form.rule.minLength", { value: 3 }) })
 		},
-		description: {
-			type: "textarea",
-			label: $t("label.description"),
-			defaultValue: "",
-			zodSchema: zod.string({ message: $t("form.rule.required") })
+		price: {
+			type: "number",
+			label: $pt("price"),
+			cols: 6,
+			defaultValue: 0,
+			zodSchema: zod.number({ message: $t("form.rule.required") })
+				.min(0.01, { message: $t("form.rule.minLength", { value: 0.01 }) })
+		},
+		categories: {
+			type: "custom",
+			label: $t("label.categories"),
+			defaultValue: [] as ItemMultiComBox[] | undefined,
+			zodSchema: zod.object({
+				value: zod.string()
+			}).array().max(5, { message: $t("form.rule.maxItems", { value: 5 }) })
+		},
+		oldCategories: {
+			type: "custom",
+			defaultValue: undefined as ItemMultiComBox[] | undefined,
 		},
 		shortDescription: {
 			type: "text",
@@ -40,24 +65,19 @@ export function useProductSheetForm(productSheetId?: string) {
 				.max(255, { message: $t("form.rule.maxLength", { value: 255 }) })
 				.min(3, { message: $t("form.rule.minLength", { value: 3 }) })
 		},
-		price: {
-			type: "number",
-			label: $pt("price"),
-			defaultValue: 0,
-			zodSchema: zod.number({ message: $t("form.rule.required") })
-				.min(0.01, { message: $t("form.rule.minLength", { value: 0.01 }) })
-		},
-		categories: {
+		description: {
 			type: "custom",
-			label: $t("label.categories"),
-			defaultValue: undefined as ItemMultiComBox[] | undefined,
-			zodSchema: zod.object({
-				value: zod.string()
-			}).array().max(5, { message: $t("form.rule.maxItems", { value: 5 }) })
+			label: $t("label.description"),
+			defaultValue: "",
 		},
-		oldCategories: {
+		oldImages: {
 			type: "custom",
-			defaultValue: undefined as ItemMultiComBox[] | undefined,
+			defaultValue: undefined as ItemImage[] | undefined,
+		},
+		images: {
+			type: "custom",
+			label: $pt("form.image"),
+			defaultValue: [] as (ItemImage | ItemImageNew)[],
 		}
 	});
 
@@ -83,6 +103,17 @@ export function useProductSheetForm(productSheetId?: string) {
 				const categoriesItems = data.map(c => ({ label: c.name, value: c.id }));
 				values.categories.value = categoriesItems;
 				values.oldCategories.value = categoriesItems;
+			});
+		
+		duploTo.enriched
+			.get(
+				"/product-sheet/{productSheetId}/images",
+				{ params: { productSheetId } }
+			)
+			.info("productSheet.images", (data) => {
+				const itemImages = data.map(({ id, url }) => ({ id, url }));
+				values.images.value = itemImages;
+				values.oldImages.value = itemImages;
 			});
 	}
 

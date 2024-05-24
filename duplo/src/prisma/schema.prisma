@@ -34,15 +34,16 @@ enum primordial_role {
 }
 
 model organization {
-    id                 String                 @id @default(uuid())
-    name               String                 @unique @db.VarChar(255)
-    label              String?                @db.VarChar(36)
-    ownerId            String                 @unique
-    owner              user                   @relation(fields: [ownerId], references: [id])
-    suspended          Boolean                @default(false)
-    userToOrganization user_to_organization[]
-    product_sheet      product_sheet[]
-    warehouses         warehouse[]
+    id                  String                 @id @default(uuid())
+    name                String                 @unique @db.VarChar(255)
+    label               String?                @db.VarChar(36)
+    ownerId             String                 @unique
+    owner               user                   @relation(fields: [ownerId], references: [id])
+    suspended           Boolean                @default(false)
+    userToOrganization  user_to_organization[]
+    product_sheet       product_sheet[]
+    image_product_sheet image_product_sheet[]
+    warehouses          warehouse[]
 }
 
 model user_to_organization {
@@ -85,17 +86,17 @@ model category_to_parent_category {
 }
 
 model product_sheet {
-    id                 String                      @id @default(uuid())
-    name               String                      @db.VarChar(255)
-    description        String                      @db.Text
-    shortDescription   String                      @db.VarChar(255)
-    price              Float
-    category           product_sheet_to_category[]
-    createdAt          DateTime                    @default(now())
-    updatedAt          DateTime                    @updatedAt
-    productSheetImages product_sheet_images[]
-    organization       organization                @relation(fields: [organizationId], references: [id])
-    organizationId     String
+    id               String                      @id @default(uuid())
+    name             String                      @db.VarChar(255)
+    description      String                      @db.Text
+    shortDescription String                      @db.VarChar(255)
+    price            Float
+    category         product_sheet_to_category[]
+    createdAt        DateTime                    @default(now())
+    updatedAt        DateTime                    @updatedAt
+    images           image_product_sheet[]
+    organization     organization                @relation(fields: [organizationId], references: [id])
+    organizationId   String
 }
 
 model product_sheet_to_category {
@@ -106,14 +107,15 @@ model product_sheet_to_category {
     category       category      @relation(fields: [categoryId], references: [id])
 }
 
-model product_sheet_images {
+model image_product_sheet {
     id             String        @id @default(uuid())
     productSheet   product_sheet @relation(fields: [productSheetId], references: [id])
     productSheetId String
-    path           String        @db.VarChar(255)
-    alt            String        @db.VarChar(255)
-    createdAt      DateTime      @default(now())
-    updatedAt      DateTime      @updatedAt
+    organization   organization  @relation(fields: [organizationId], references: [id])
+    organizationId String
+    url            String        @db.VarChar(400)
+    key            String        @db.VarChar(255)
+    alt            String?       @db.VarChar(255)
 }
 
 model warehouse {

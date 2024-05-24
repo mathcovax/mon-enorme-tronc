@@ -28,6 +28,7 @@
 		"@duplojs/duplojs": "1.8.23",
 		"@duplojs/editor-tools": "1.2.5",
 		"@duplojs/http-exception": "1.1.4",
+		"@duplojs/multipart": "1.0.2",
 		"@duplojs/routes-directory": "1.2.3",
 		"@duplojs/swagger": "1.0.5",
 		"@duplojs/type-input": "1.0.1",
@@ -40,7 +41,8 @@
 		"firebase-admin": "^12.0.0",
 		"jsonwebtoken": "^9.0.2",
 		"mongoose": "^8.2.4",
-		"prisma": "^5.12.0"
+		"prisma": "^5.12.0",
+		"uuidv7": "^1.0.0"
 	},
 	"devDependencies": {
 		"@duplojs/testing": "1.0.5",

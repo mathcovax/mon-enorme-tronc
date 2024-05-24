@@ -52,7 +52,8 @@ export function useFormBuilder<
 						style: {
 							"grid-column": cols 
 								? `span ${cols} / span ${cols}` 
-								: "span 12 / span 12"
+								: "span 12 / span 12",
+							...(type === "custom" && !slots[name] ? { display: "none" } : {})
 						},
 						modelValue: values[name].value,
 						"onUpdate:modelValue": (value: unknown) => {
@@ -75,6 +76,7 @@ export function useFormBuilder<
 						}) 
 						: undefined
 				);
+
 				inputRefs.push(component);
 				return component;
 			}

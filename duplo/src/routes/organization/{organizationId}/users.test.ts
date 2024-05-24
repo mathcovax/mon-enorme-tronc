@@ -3,6 +3,7 @@ import { GET } from "./users";
 import { MockPrisma } from "@test/mocks/providers";
 import { userToOrganizationData } from "@test/data/userToOrganization";
 import { userData } from "@test/data/user";
+import { organizationData } from "@test/data/organization";
 
 describe("GET /organization/{organizationId}/users", () => {
 	beforeEach(() => {
@@ -16,26 +17,19 @@ describe("GET /organization/{organizationId}/users", () => {
 		MockPrisma.set("user_to_organization", "findMany", spy);
 
 		const res = await duploTesting.testRoute(GET("GET", ""))
-			.setDefaultFloorValue({ accessTokenContent: {} })
+			.setDefaultFloorValue({ organization: organizationData })
 			.setRequestProperties({
-				params: {
-					organizationId: "test",
-				},
 				query: {
 					page: 2,
 					email: "toto",
 				}
 			})
-			.mockProcess(
-				0,
-				{}
-			)
 			.launch();
 			
 		expect(res.information).toBe("organization.users");
 		expect(spy).lastCalledWith({
 			where: {
-				organizationId: "test",
+				organizationId: "eee",
 				user: {
 					email: {
 						contains: "toto",

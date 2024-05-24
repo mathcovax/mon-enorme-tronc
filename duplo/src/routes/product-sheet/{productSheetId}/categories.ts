@@ -16,6 +16,7 @@ export const GET = (method: Methods, path: string) =>
 					select: {
 						category: true
 					},
+					take: 5,
 				}).then((pstc) => pstc.map(({ category }) => category));
 
 				throw new OkHttpException("productSheet.categories", categories);
