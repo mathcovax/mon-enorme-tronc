@@ -18,7 +18,7 @@
 			as-child
 		>
 			<RouterLink to="/">
-				{{ $t("page.notFound.button") }}
+				{{ $t("button.backToHome") }}
 			</RouterLink>
 		</TheButton>
 	</section>

@@ -126,6 +126,7 @@ export default {
 					myAccount: "Mon compte",
 					settings: "Paramètres",
 					support: "Support",
+					admin: "Administration",
 					login: "Connexion",
 					logout: "Déconnexion"
 				},
@@ -239,6 +240,7 @@ export default {
 		remove: "Retirer",
 		delete: "Supprimer",
 		back: "Retour",
+		backToHome: "Retourner à l'accueil",
 	},
 	response: {
 		organization: {
