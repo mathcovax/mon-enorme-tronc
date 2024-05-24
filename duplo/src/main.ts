@@ -5,11 +5,13 @@ import duploSwagger from "@duplojs/swagger";
 import duploWhatWasSent from "@duplojs/what-was-sent";
 import duploZodAccelerator, { ZodAcceleratorError } from "@duplojs/zod-accelerator/plugin";
 import duploTypeGenerator from "@duplojs/to/plugin";
+import duploMultipart from "@duplojs/multipart";
 import "./env";
 
 declare global {
     const duplo: typeof import("./main.js")["default"];
 	const zod: typeof import("./main.js")["zod"];
+	const multipart: typeof import("./main.js")["multipart"];
 	type Methods = HttpMethods;
 }
 
@@ -24,6 +26,11 @@ export {
 	zod
 };
 
+//@ts-expect-error var 'global' cause type error.
+export const multipart = global.multipart = duplo.use(
+	duploMultipart,
+	{ uploadFolder: "/tmp/duplojsUpload" }
+);
 duplo.use(
 	duploSwagger,
 	{

@@ -1,3 +1,4 @@
+import { productSheetSchema } from "@schemas/productSheet";
 import { hasOrganizationRoleByOrganizationId } from "@security/hasOrganizationRole/byOrganizationId";
 
 /* METHOD : POST, PATH : /organization/{organizationId}/product-sheet */
@@ -20,7 +21,7 @@ export const POST = (method: Methods, path: string) =>
 				const { name, description, shortDescription, price } = pickup("body");
 				const { id: organizationId } = pickup("organization");
 
-				const { id: productSheetId } = await prisma.product_sheet.create({
+				const productSheet = await prisma.product_sheet.create({
 					data: {
 						name,
 						description,
@@ -30,7 +31,7 @@ export const POST = (method: Methods, path: string) =>
 					},
 				});
 
-				throw new CreatedHttpException("productSheet.created", productSheetId);
+				throw new CreatedHttpException("productSheet.created", productSheet);
 			}, 
-			new IHaveSentThis(CreatedHttpException.code, "productSheet.created", zod.string())
+			new IHaveSentThis(CreatedHttpException.code, "productSheet.created", productSheetSchema)
 		);

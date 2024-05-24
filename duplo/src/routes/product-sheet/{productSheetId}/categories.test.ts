@@ -26,6 +26,7 @@ describe("GET /product-sheet/{productSheetId}/categories", () => {
 			select: {
 				category: true
 			},
+			take: 5
 		});
 	});
 });

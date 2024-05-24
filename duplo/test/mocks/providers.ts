@@ -2,6 +2,7 @@
 //@ts-nocheck
 import { Auth } from "firebase-admin/lib/auth/auth";
 import { PrismaClient } from "@prisma/client";
+import { S3Client } from "@aws-sdk/client-s3";
 
 export class MockFirebaseAuth{
 	private static firebaseAuth = {} as Auth;
@@ -59,5 +60,26 @@ export class MockPrisma{
 
 	static {
 		global.prisma = this.prisma
+	}
+}
+
+export class MockS3{
+	private static S3 = {} as S3Client;
+
+	static set(prop: keyof S3Client, value: any){
+		this.S3[prop] = value;
+	}
+
+	static reset(prop?: keyof S3Client){
+		if(prop){
+			this.S3[prop] = undefined;
+		}
+		else {
+			Object.keys(this.S3).forEach((key) => this.S3[key] = undefined);
+		}
+	}
+
+	static {
+		global.S3 = this.S3
 	}
 }

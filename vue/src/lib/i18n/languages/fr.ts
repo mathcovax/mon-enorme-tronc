@@ -94,6 +94,8 @@ export default {
 			price: "Prix",
 			form: {
 				placeholder: "Chercher des catégories.",
+				image: "Image du produit.",
+				addImage: "Ajouter une image",
 			}
 		},
 		[routerPageName.ORGANIZATION_CREATE_PRODUCT_SHEET]: {
@@ -101,6 +103,8 @@ export default {
 			price: "Prix",
 			form: {
 				placeholder: "Chercher des catégories.",
+				image: "Image du produit.",
+				addImage: "Ajouter une image",
 			}
 		},
 		[routerPageName.ORGANIZATION_GET_WAREHOUSE]: {

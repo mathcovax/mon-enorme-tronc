@@ -1,7 +1,10 @@
 import { GetTypeInput, createTypeInput } from "@duplojs/type-input";
 import { Prisma } from "@prisma/client";
 
-export const inputOrganization = createTypeInput().add<"id", string>().add<"name", string>().build();
+export const inputOrganization = createTypeInput()
+	.add<"id", string>()
+	.add<"name", string>()
+	.build();
 
 export const organizationExistCheck = duplo
 	.createChecker("organizationExist")
