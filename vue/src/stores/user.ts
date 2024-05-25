@@ -8,7 +8,7 @@ export const useUserStore = defineStore(
 	() => {
 		const user = ref<null | User>(null);
 		const accessToken = ref<null | string>(localStorage.getItem(KEY_ACCESS_TOKEN_LOCAL_STORAGE));
-		const isConnected = computed(() => !!accessToken);
+		const isConnected = computed(() => !!accessToken.value);
 
 		let promiseFetching: null | Promise<void> = null;
 		const getPromiseFetching = () => promiseFetching;
@@ -24,8 +24,7 @@ export const useUserStore = defineStore(
 					resolve();
 				})
 				.info("user.notfound", () => {
-					setAccessToken(null);
-					window.location.reload();
+					removeAccessToken();
 				})
 				.e(() => {
 					reject();
@@ -45,6 +44,11 @@ export const useUserStore = defineStore(
 			}
 		}
 
+		function removeAccessToken() {
+			setAccessToken(null);
+			window.location.reload();
+		}
+
 		if (accessToken.value !== null) {
 			setTimeout(fetchUserValue);
 		}
@@ -52,6 +56,7 @@ export const useUserStore = defineStore(
 		return {
 			getPromiseFetching,
 			setAccessToken,
+			removeAccessToken,
 			fetchUserValue,
 			user,
 			accessToken,

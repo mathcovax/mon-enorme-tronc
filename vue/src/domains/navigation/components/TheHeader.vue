@@ -138,7 +138,23 @@ const { ADMIN_PANEL_HOME } = routerPageName;
 						/>
 					</RouterLink>
 
-					<DropdownMenu>
+					<RouterLink
+						to="/login"
+						v-if="!userStore.isConnected"
+					>
+						<TheButton
+							variant="secondary"
+							size="icon"
+							class="rounded-full"
+						>
+							<TheIcon
+								icon="account-plus-outline"
+								size="2xl"
+							/>
+						</TheButton>
+					</routerlink>
+
+					<DropdownMenu v-else>
 						<DropdownMenuTrigger as-child>
 							<TheButton
 								variant="secondary"
@@ -146,20 +162,20 @@ const { ADMIN_PANEL_HOME } = routerPageName;
 								class="rounded-full"
 							>
 								<TheIcon
-									icon="account-circle-outline"
+									icon="account-outline"
 									size="2xl"
 								/>
 							</TheButton>
 						</DropdownMenuTrigger>
 
 						<DropdownMenuContent align="end">
-							<DropdownMenuLabel v-if="userStore.isConnected">
+							<DropdownMenuLabel>
 								{{ $t("layout.default.header.dropdownAccount.myAccount") }}
 							</DropdownMenuLabel>
 
-							<DropdownMenuSeparator v-if="userStore.isConnected" />
+							<DropdownMenuSeparator />
 
-							<DropdownMenuItem v-if="userStore.isConnected">
+							<DropdownMenuItem>
 								{{ $t("layout.default.header.dropdownAccount.settings") }}
 							</DropdownMenuItem>
 
@@ -175,12 +191,8 @@ const { ADMIN_PANEL_HOME } = routerPageName;
 
 							<DropdownMenuSeparator />
 
-							<DropdownMenuItem v-if="userStore.isConnected">
+							<DropdownMenuItem @click="userStore.removeAccessToken">
 								{{ $t("layout.default.header.dropdownAccount.logout") }}
-							</DropdownMenuItem>
-
-							<DropdownMenuItem v-else>
-								{{ $t("layout.default.header.dropdownAccount.login") }}
 							</DropdownMenuItem>
 						</DropdownMenuContent>
 					</DropdownMenu>
