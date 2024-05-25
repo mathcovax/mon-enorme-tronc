@@ -181,7 +181,10 @@ export default {
 					myAccount: "Mon compte",
 					settings: "Paramètres",
 					support: "Support",
+					management: "Gestion",
 					admin: "Administration",
+					organizations: "Mes organisations",
+					content: "Gestion du contenu",
 					login: "Connexion",
 					logout: "Déconnexion"
 				},

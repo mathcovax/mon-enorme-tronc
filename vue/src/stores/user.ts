@@ -1,7 +1,14 @@
-import { promiseWithResolvers, type User } from "@/lib/utils";
+import { promiseWithResolvers, type User, type PrimordialRole } from "@/lib/utils";
 import { defineStore } from "pinia";
 
 const KEY_ACCESS_TOKEN_LOCAL_STORAGE = "access-token";
+
+const primordialRolesHierarchy: Record<PrimordialRole, PrimordialRole[]> = {
+	CUSTOMER: [],
+	MODERATOR: ["CUSTOMER"],
+	CONTENTS_MASTER: ["CUSTOMER"],
+	ADMIN: ["CONTENTS_MASTER", "MODERATOR", "CUSTOMER"],
+};
 
 export const useUserStore = defineStore(
 	"user",
@@ -32,6 +39,23 @@ export const useUserStore = defineStore(
 				});
 		}
 
+		function hasPrimordialRole(wantedPrimordialRole: PrimordialRole) {
+			const userPrimordialRole = user.value?.primordialRole;
+
+			if (!userPrimordialRole) {
+				return false;
+			}
+
+			if (
+				userPrimordialRole !== wantedPrimordialRole &&
+				!primordialRolesHierarchy[userPrimordialRole].includes(wantedPrimordialRole)
+			) {
+				return false;
+			}
+
+			return true;
+		}
+
 		function setAccessToken(newAccessToken: string | null) {
 			if (newAccessToken) {
 				localStorage.setItem(
@@ -55,6 +79,7 @@ export const useUserStore = defineStore(
 
 		return {
 			getPromiseFetching,
+			hasPrimordialRole,
 			setAccessToken,
 			removeAccessToken,
 			fetchUserValue,
