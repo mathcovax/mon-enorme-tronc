@@ -70,6 +70,7 @@ export default {
 				disabled: {
 					desc: "Désactiver la catégorie"
 				},
+				selectImage: "Selectioner une image",
 				submit: "Valider",
 			},
 			table: {
@@ -225,6 +226,7 @@ export default {
 		createdAt: "Date de création",
 		updatedAt: "Date de modification",
 		categories: "Categories",
+		image: "Image",
 	},
 	placeholder: {
 		address: "Cherchez votre adresse",

@@ -8,3 +8,5 @@ export function zodToArray<
 		zodSchema.array()
 	]);
 }
+
+export const stringBoolean = zod.enum(["true", "false"]).transform(v => v === "true" ? true : false);

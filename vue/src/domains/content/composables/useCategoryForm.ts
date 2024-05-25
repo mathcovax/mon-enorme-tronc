@@ -1,3 +1,8 @@
+export interface ItemImage {
+	blob?: Blob
+	url: string
+}
+
 export function useCategoryForm() {
 	const $pt = usePageTranslate(); 
 
@@ -9,16 +14,24 @@ export function useCategoryForm() {
 		name: {
 			type: "text",
 			label: $pt("form.name.label"),
+			cols: 6,
 			zodSchema: zod.string({ message: $t("form.rule.required") })
 				.min(3, { message: $t("form.rule.minLength", { value: 3 }) })
 				.max(255, { message: $t("form.rule.maxLength", { value: 255 }) })
+		},
+		image: {
+			label: $t("label.image"),
+			type: "custom",
+			defaultValue: undefined as undefined | ItemImage,
+			cols: 6,
+			zodSchema: zod.object({}, { message: $t("form.rule.required") })
 		},
 		disabled: {
 			type: "checkbox",
 			defaultValue: true as boolean,
 			desc: $pt("form.disabled.desc"),
 			zodSchema: zod.boolean()
-		}
+		},
 	});
 
 	return {

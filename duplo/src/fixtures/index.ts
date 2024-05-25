@@ -33,7 +33,7 @@ if (process.argv.includes("--category")) {
 	if (process.argv.includes("--with-parent")) {
 		const parentCategories = await repeater(5, makeParentCategory);
 		await Promise.all(categories.map(category => makeCategoryToParentCategory(
-			category.id, parentCategories[Math.floor(Math.random() * parentCategories.length)].id
+			category.id, parentCategories[Math.floor(Math.random() * parentCategories.length)].name
 		)));
 	}
 

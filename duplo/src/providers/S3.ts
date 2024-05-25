@@ -16,31 +16,39 @@ export const S3 = global.S3 = new S3Client({
 });
 
 duplo.addHook("beforeListenHttpServer", async () => {
-	try {
-		await S3.send(new HeadBucketCommand({ Bucket: ENV.MINIO_BUCKET_PRODUCT_SHEET_IMAGES }));
-	}
-	catch {
-		await S3.send(new CreateBucketCommand({ Bucket: ENV.MINIO_BUCKET_PRODUCT_SHEET_IMAGES }));
-		await S3.send(
-			new PutBucketPolicyCommand({ 
-				Bucket: ENV.MINIO_BUCKET_PRODUCT_SHEET_IMAGES, 
-				Policy: JSON.stringify({
-					Version: "2012-10-17",
-					Statement: [
-						{
-							Effect: "Allow",
-							Principal: {
-								AWS: ["*"]
-							},
-							Action: ["s3:GetObject"],
-							Resource: [
-								`arn:aws:s3:::${ENV.MINIO_BUCKET_PRODUCT_SHEET_IMAGES}`,
-								`arn:aws:s3:::${ENV.MINIO_BUCKET_PRODUCT_SHEET_IMAGES}/*`
+	const promiseListe: unknown[] = [];
+
+	for (const bucket of [ENV.MINIO_BUCKET_PRODUCT_SHEET_IMAGES, ENV.MINIO_BUCKET_CONTENT]) {
+		promiseListe.push((async () => {
+			try {
+				await S3.send(new HeadBucketCommand({ Bucket: bucket }));
+			}
+			catch {
+				await S3.send(new CreateBucketCommand({ Bucket: bucket }));
+				await S3.send(
+					new PutBucketPolicyCommand({ 
+						Bucket: bucket, 
+						Policy: JSON.stringify({
+							Version: "2012-10-17",
+							Statement: [
+								{
+									Effect: "Allow",
+									Principal: {
+										AWS: ["*"]
+									},
+									Action: ["s3:GetObject"],
+									Resource: [
+										`arn:aws:s3:::${bucket}`,
+										`arn:aws:s3:::${bucket}/*`
+									]
+								}
 							]
-						}
-					]
-				})
-			})
-		);
+						})
+					})
+				);
+			}
+		})());
 	}
+
+	await Promise.all(promiseListe);
 });
