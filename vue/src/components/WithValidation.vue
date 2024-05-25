@@ -24,7 +24,7 @@ const emit = defineEmits<{
 				{{ title }}
 			</h2>
 
-			<p class="text-base">
+			<p v-if="content" class="text-base">
 				{{ content }}
 			</p>
 
