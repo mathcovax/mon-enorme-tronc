@@ -12,7 +12,7 @@ const emit = defineEmits<{
 </script>
 
 <template>
-	<ThePopup>
+	<ThePopup class="flex flex-col gap-4">
 		<template #trigger="{ open }">
 			<div @click="open">
 				<slot />
@@ -20,17 +20,15 @@ const emit = defineEmits<{
 		</template>
 
 		<template #popupContent="{ close }">
-			<div>
-				<h2 class="mb-4 text-2xl font-bold">
-					{{ title }}
-				</h2>
+			<h2 class="text-2xl font-bold">
+				{{ title }}
+			</h2>
 
-				<p class="mb-4 text-base">
-					{{ content }}
-				</p>
-			</div>
+			<p class="text-base">
+				{{ content }}
+			</p>
 
-			<div class="flex gap-2 justify-end">
+			<div class="flex gap-3 justify-end">
 				<TheButton
 					size="lg"
 					variant="secondary"
