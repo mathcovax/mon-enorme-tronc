@@ -135,5 +135,6 @@ declare module 'vue' {
     ToastProvider: typeof import('./src/components/ui/toast/ToastProvider.vue')['default']
     ToastTitle: typeof import('./src/components/ui/toast/ToastTitle.vue')['default']
     ToastViewport: typeof import('./src/components/ui/toast/ToastViewport.vue')['default']
+    WithValidation: typeof import('./src/components/WithValidation.vue')['default']
   }
 }
