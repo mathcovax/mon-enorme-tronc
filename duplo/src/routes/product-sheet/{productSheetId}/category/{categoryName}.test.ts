@@ -1,36 +1,41 @@
 import { MockPrisma } from "@test/mocks/providers";
-import { DELETE } from "./{categoryId}";
+import { DELETE } from "./{categoryName}";
 import { duploTesting } from "@test/setup";
 import { productSheetData } from "@test/data/productSheet";
 
-describe("DELETE /product-sheet/{productSheetId}/category/{categoryId}", () => {
+describe("DELETE /product-sheet/{productSheetId}/category/{categoryName}", () => {
 	beforeEach(() => {
 		MockPrisma.reset();
 	});
 
 	it("separate category to product", async () => {
 		const spy = vi.fn(() => null);
-		MockPrisma.set("product_sheet_to_category", "deleteMany", spy);
+		MockPrisma.set("product_sheet_to_category", "delete", spy);
 
 		const res = await duploTesting
 			.testRoute(DELETE("DELETE", ""))
 			.setDefaultFloorValue({ productSheet: productSheetData })
 			.setRequestProperties({
 				params: {
-					categoryId: "1234"
+					categoryName: "1234"
 				}
 			})
 			.mockChecker(
 				0,
-				{ info: "category.exist", data: { id: "1234" } },
+				{ info: "category.exist", data: { name: "1234" } },
 			)
 			.launch();
+
+		console.log(res.body);
+		
 
 		expect(res.information).toBe("productSheet.category.untied");
 		expect(spy).lastCalledWith({
 			where: {
-				categoryId: "1234",
-				productSheetId: ""
+				categoryName_productSheetId: {
+					categoryName: "1234",
+					productSheetId: ""
+				}
 			}
 		});
 	});
@@ -41,7 +46,7 @@ describe("DELETE /product-sheet/{productSheetId}/category/{categoryId}", () => {
 			.setDefaultFloorValue({ productSheet: productSheetData })
 			.setRequestProperties({
 				params: {
-					categoryId: "1234"
+					categoryName: "1234"
 				}
 			})
 			.mockChecker(

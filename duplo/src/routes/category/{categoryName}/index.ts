@@ -1,4 +1,4 @@
-import { categoryExistCheck, inputCategory } from "@checkers/category";
+import { categoryExistCheck } from "@checkers/category";
 import { hasPrimordialRole } from "@security/hasPrimordialRole";
 
 /* METHOD : PATCH, PATH : /category/{categoryName} */
@@ -16,9 +16,7 @@ export const PATCH = (method: Methods, path: string) => hasPrimordialRole({ opti
 	.check(
 		categoryExistCheck,
 		{
-			input: p => inputCategory.name(
-				p("categoryName")
-			),
+			input: p => p("categoryName"),
 			...categoryExistCheck.preCompletions.mustExist
 		},
 		new IHaveSentThis(NotFoundHttpException.code, "category.notfound")
@@ -26,9 +24,7 @@ export const PATCH = (method: Methods, path: string) => hasPrimordialRole({ opti
 	.check(
 		categoryExistCheck,
 		{
-			input: p => inputCategory.name(
-				p("body").name || ""
-			),
+			input: p => p("body").name || "",
 			result: "category.notfound",
 			catch: () => {
 				throw new ConflictHttpException("category.alreadyExist");

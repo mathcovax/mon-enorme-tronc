@@ -10,7 +10,7 @@ export const PATCH = (method: Methods, path: string) =>
 				parentCategoryName: zod.string()
 			},
 			body: zod.object({
-				isInNavBar: zod.boolean().optional(),
+				name: zod.string().max(255).min(3).optional(),
 			}).strip().default({})
 		})
 		.check(
@@ -21,17 +21,29 @@ export const PATCH = (method: Methods, path: string) =>
 			},
 			new IHaveSentThis(NotFoundHttpException.code, "parentCategory.notfound")
 		)
+		.check(
+			parentCategoryExistCheck, 
+			{
+				input: p => p("body").name ?? "",
+				result: "parentCategory.notfound",
+				catch: () => {
+					throw new ConflictHttpException("parentCategory.name.alreadyUse");
+				},
+				skip: p => !p("body").name || p("parentCategoryName") === p("body").name
+			},
+			new IHaveSentThis(ConflictHttpException.code, "parentCategory.name.alreadyUse")
+		)
 		.handler(
 			async ({ pickup }) => {
 				const { name: parentCategoryName } = pickup("parentCategory");
-				const { isInNavBar } = pickup("body");
+				const { name: newParentCategoryName } = pickup("body");
 
 				await prisma.parent_category.update({
 					where: {
 						name: parentCategoryName
 					},
 					data: {
-						isInNavBar
+						name: newParentCategoryName
 					}
 				});
 

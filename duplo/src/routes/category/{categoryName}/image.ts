@@ -1,4 +1,4 @@
-import { categoryExistCheck, inputCategory } from "@checkers/category";
+import { categoryExistCheck } from "@checkers/category";
 import { hasPrimordialRole } from "@security/hasPrimordialRole";
 import { S3Service } from "@services/S3";
 import { extname } from "path";
@@ -15,7 +15,7 @@ export const PUT = (method: Methods, path: string) =>
 		.check(
 			categoryExistCheck,
 			{
-				input: p => inputCategory.name(p("categoryName")),
+				input: p => p("categoryName"),
 				...categoryExistCheck.preCompletions.mustExist,
 			},
 			new IHaveSentThis(NotFoundHttpException.code, "category.notfound")
@@ -49,8 +49,8 @@ export const PUT = (method: Methods, path: string) =>
 		.handler(
 			async ({ pickup }) => {
 				const categoryImage = pickup("categoryImage");
-				const { id: categorieId, imageKey: oldImageKey } = pickup("category");
-				const newImageKey = `/category/${categorieId}-${Date.now()}${extname(categoryImage.properties.filename)}`;
+				const { name: categorieName, imageKey: oldImageKey } = pickup("category");
+				const newImageKey = `/category/${categorieName}/${Date.now()}${extname(categoryImage.properties.filename)}`;
 
 				if (oldImageKey) {
 					await S3Service.delete(ENV.MINIO_BUCKET_CONTENT, oldImageKey);
@@ -60,7 +60,7 @@ export const PUT = (method: Methods, path: string) =>
 
 				await prisma.category.update({
 					where: {
-						id: categorieId
+						name: categorieName
 					},
 					data: {
 						imageKey: newImageKey,

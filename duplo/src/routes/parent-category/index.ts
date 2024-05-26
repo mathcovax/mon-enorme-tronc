@@ -8,7 +8,7 @@ export const POST = (method: Methods, path: string) =>
 		.declareRoute(method, path)
 		.extract({
 			body: zod.object({
-				name: zod.string(),
+				name: zod.string().max(255).min(3),
 			}).strip()
 		})
 		.check(

@@ -1,12 +1,12 @@
 import { prisma } from "../prismaClient";
 
 export const makeCategoryToParentCategory = (
-	categoryId: string,
+	categoryName: string,
 	parentCategoryName: string,
 ) =>
 	prisma.category_to_parent_category.create({
 		data: {
-			categoryId: categoryId,
+			categoryName: categoryName,
 			parentCategoryName: parentCategoryName
 		}
 	});

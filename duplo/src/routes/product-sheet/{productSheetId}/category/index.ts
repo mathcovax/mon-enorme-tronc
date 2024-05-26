@@ -1,4 +1,4 @@
-import { categoryExistCheck, inputCategory } from "@checkers/category";
+import { categoryExistCheck } from "@checkers/category";
 import { hasOrganizationRoleByProductSheetId } from "@security/hasOrganizationRole/byProductSheetId";
 
 /* METHOD : POST, PATH : /product-sheet/{productSheetId}/category */
@@ -7,13 +7,13 @@ export const POST = (method: Methods, path: string) =>
 		.declareRoute(method, path)
 		.extract({
 			body: zod.object({
-				categoryId: zod.string(),
+				categoryName: zod.string(),
 			}).strip()
 		})
 		.check(
 			categoryExistCheck,
 			{
-				input: (p) => inputCategory.id(p("body").categoryId),
+				input: (p) => p("body").categoryName,
 				...categoryExistCheck.preCompletions.mustExist
 			},
 			new IHaveSentThis(NotFoundHttpException.code, "category.notfound")
@@ -28,22 +28,22 @@ export const POST = (method: Methods, path: string) =>
 				});
 
 				if (categoriesProductSheetCount > 4) {
-					throw new ConflictHttpException("product.categories.limit");
+					throw new ConflictHttpException("productSheet.categories.limit");
 				}
 
 				return {};
 			},
 			[],
-			new IHaveSentThis(ConflictHttpException.code, "product.categories.limit")
+			new IHaveSentThis(ConflictHttpException.code, "productSheet.categories.limit")
 		)
 		.handler(
 			async ({ pickup }) => {
 				const { id: productSheetId } = pickup("productSheet");
-				const { categoryId } = pickup("body");
+				const { categoryName } = pickup("body");
 
 				await prisma.product_sheet_to_category.create({
 					data: {
-						categoryId,
+						categoryName,
 						productSheetId
 					},
 				});

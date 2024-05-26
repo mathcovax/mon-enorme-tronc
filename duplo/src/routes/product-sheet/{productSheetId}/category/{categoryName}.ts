@@ -1,19 +1,19 @@
-import { categoryExistCheck, inputCategory } from "@checkers/category";
+import { categoryExistCheck } from "@checkers/category";
 import { hasOrganizationRoleByProductSheetId } from "@security/hasOrganizationRole/byProductSheetId";
 
-/* METHOD : DELETE, PATH : /product-sheet/{productSheetId}/category/{categoryId} */
+/* METHOD : DELETE, PATH : /product-sheet/{productSheetId}/category/{categoryName} */
 export const DELETE = (method: Methods, path: string) =>
 	hasOrganizationRoleByProductSheetId({ pickup: ["productSheet"] })
 		.declareRoute(method, path)
 		.extract({
 			params: {
-				categoryId: zod.string(),
+				categoryName: zod.string(),
 			},
 		})
 		.check(
 			categoryExistCheck,
 			{
-				input: (p) => inputCategory.id(p("categoryId")),
+				input: (p) => p("categoryName"),
 				result: "category.exist",
 				catch: () => {
 					throw new NotFoundHttpException("category.notfound");
@@ -25,12 +25,14 @@ export const DELETE = (method: Methods, path: string) =>
 		.handler(
 			async ({ pickup }) => {
 				const { id: productSheetId } = pickup("productSheet");
-				const categoryId = pickup("categoryId");
+				const categoryName = pickup("categoryName");
 
-				await prisma.product_sheet_to_category.deleteMany({
+				await prisma.product_sheet_to_category.delete({
 					where: {
-						productSheetId,
-						categoryId,
+						categoryName_productSheetId: {
+							productSheetId,
+							categoryName,
+						}
 					},
 				});
 

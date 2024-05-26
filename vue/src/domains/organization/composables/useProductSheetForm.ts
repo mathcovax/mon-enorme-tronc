@@ -22,7 +22,7 @@ export function useProductSheetForm(productSheetId?: string) {
 			get("/categories", { query: { name: categoryName } })
 			.s((categories) => {
 				suggestedCategories.value = categories.map(
-					(category) => ({ label: category.name, value: category.id })
+					(category) => ({ label: category.name, value: category.name })
 				);
 			});
 	}
@@ -100,7 +100,7 @@ export function useProductSheetForm(productSheetId?: string) {
 				{ params: { productSheetId } }
 			)
 			.info("productSheet.categories", (data) => {
-				const categoriesItems = data.map(c => ({ label: c.name, value: c.id }));
+				const categoriesItems = data.map(c => ({ label: c.name, value: c.name }));
 				values.categories.value = categoriesItems;
 				values.oldCategories.value = categoriesItems;
 			});

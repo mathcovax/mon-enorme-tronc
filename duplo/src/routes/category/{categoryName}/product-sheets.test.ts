@@ -18,12 +18,12 @@ describe("GET /category/{categoryName}/products", () => {
 			.setRequestProperties({ params: { categoryName: "test" } })
 			.mockChecker(
 				"categoryExist",
-				{ info: "category.exist", data: { id: "1234", name: "test",  } },
+				{ info: "category.exist", data: { name: "test" } },
 			)
 			.launch();
 			
 		expect(spy).lastCalledWith({
-			where: { category: { id: "1234" } },
+			where: { category: { name: "test" } },
 			select: { productSheet: true },
 			skip: 0,
 			take: 10

@@ -1,4 +1,4 @@
-import { categoryExistCheck, inputCategory } from "@checkers/category";
+import { categoryExistCheck } from "@checkers/category";
 import { categorySchema } from "@schemas/category";
 import { hasPrimordialRole } from "@security/hasPrimordialRole";
 
@@ -14,9 +14,7 @@ export const POST = (method: Methods, path: string) => hasPrimordialRole({ optio
 	.check(
 		categoryExistCheck,
 		{
-			input: p => inputCategory.name(
-				p("body").name
-			),
+			input: p => p("body").name,
 			result: "category.notfound",
 			catch: () => {
 				throw new ConflictHttpException("category.alreadyExist");

@@ -54,7 +54,7 @@ async function submit() {
 					.post(
 						"/product-sheet/{productSheetId}/category",
 						{
-							categoryId: c.value.toString()
+							categoryName: c.value.toString()
 						},
 						{ params: { productSheetId } }
 					)
@@ -70,8 +70,8 @@ async function submit() {
 			promiseList.push(
 				duploTo.enriched
 					.delete(
-						"/product-sheet/{productSheetId}/category/{categoryId}",
-						{ params: { categoryId: c.value.toString(), productSheetId } }
+						"/product-sheet/{productSheetId}/category/{categoryName}",
+						{ params: { categoryName: c.value.toString(), productSheetId } }
 					)
 					.result
 			);

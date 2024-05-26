@@ -49,7 +49,7 @@ async function submit() {
 					.post(
 						"/product-sheet/{productSheetId}/category",
 						{
-							categoryId: c.value.toString()
+							categoryName: c.value.toString()
 						},
 						{ params: { productSheetId: result.data.id } }
 					)

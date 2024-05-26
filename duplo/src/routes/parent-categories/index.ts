@@ -1,6 +1,5 @@
 import { parentCategorySchema } from "@schemas/parentCategory";
 import { hasPrimordialRole } from "@security/hasPrimordialRole";
-import { stringBoolean } from "@utils/zod";
 
 /* METHOD : GET, PATH : /parent-categories */
 export const GET = (method: Methods, path: string) => 
@@ -9,15 +8,13 @@ export const GET = (method: Methods, path: string) =>
 		.extract({
 			query: {
 				page: zod.coerce.number().default(0),
-				name: zod.string().optional(),
-				isInNavBar: stringBoolean.optional()
+				name: zod.string().optional()
 			}
 		})
 		.handler(
 			async ({ pickup }) => {
 				const page = pickup("page");
 				const name = pickup("name");
-				const isInNavBar = pickup("isInNavBar");
 
 				const parentCategories = await prisma.parent_category.findMany({
 					where: {
@@ -27,7 +24,6 @@ export const GET = (method: Methods, path: string) =>
 								mode: "insensitive"
 							}	
 							: undefined,
-						isInNavBar
 					},
 					skip: 0 * page,
 					take: 10
