@@ -114,6 +114,17 @@ export default {
 				name: "nom de l'entrepôt"
 			}
 		},
+		[routerPageName.CONTENT_PANEL_PARENT_CATEGORIES]: {
+			label: {
+				name: "Nom de la catégori parent",
+				linkCategories: "Categories associer",
+				placeholder: "Nom d'une categorie"
+			},
+			table: {
+				name: "Nom catégori parent",
+				searchPlaceholder: "Chercher par le nom de la catégory parent.",
+			}
+		},
 		notFound: {
 			title: "404 - Page introuvable",
 			description: "La page que vous cherchez n'existe pas.",
@@ -280,6 +291,13 @@ export default {
 			notfound: "l'entrepôt n'existe pas.",
 			edited: "l'entrepôt a correctement été édité",
 			created: "l'entrepôt a correctement été créé"
+		},
+		parentCategory: {
+			name: {
+				alreadyUse: "Une catégory parent portant ce nom éxiste déjà."
+			},
+			created: "La catégory parent a correctement étais créer.",
+			edited: "La catégory parent a correctement étais modifier.",
 		}
 	}
 };

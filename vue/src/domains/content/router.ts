@@ -3,6 +3,7 @@ import type { RouteRecordRaw } from "vue-router";
 export const routerPageNameContentPanel = Object.freeze({
 	CONTENT_PANEL_HOME: "content-panel-home",
 	CONTENT_PANEL_CATEGORIES: "content-panel-categories",
+	CONTENT_PANEL_PARENT_CATEGORIES: "content-panel-parent-categories",
 });
 
 export default (): RouteRecordRaw[] => [
@@ -19,6 +20,11 @@ export default (): RouteRecordRaw[] => [
 				name: routerPageNameContentPanel.CONTENT_PANEL_CATEGORIES,
 				path: "/content-panel/categories",
 				component: () => import("./pages/CategoriesContentPanel.vue"),
+			},
+			{
+				name: routerPageNameContentPanel.CONTENT_PANEL_PARENT_CATEGORIES,
+				path: "/content-panel/parent-categories",
+				component: () => import("./pages/ParentCategoriesContentPanel.vue"),
 			},
 		],
 	},

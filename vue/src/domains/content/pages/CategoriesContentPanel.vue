@@ -120,7 +120,7 @@ async function submitPatch() {
 				.put(
 					"/category/{categoryName}/image",
 					formData,
-					{ params: { categoryName: formFields.oldName } }
+					{ params: { categoryName: formFields.name } }
 				)
 				.result;
 		}

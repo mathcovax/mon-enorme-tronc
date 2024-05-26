@@ -1,5 +1,6 @@
-import { parentCategorySchema } from "@schemas/parentCategory";
+import { parentCategoryWithCategoriesNameSchema } from "@schemas/parentCategory";
 import { hasPrimordialRole } from "@security/hasPrimordialRole";
+import { stringBoolean } from "@utils/zod";
 
 /* METHOD : GET, PATH : /parent-categories */
 export const GET = (method: Methods, path: string) => 
@@ -8,13 +9,15 @@ export const GET = (method: Methods, path: string) =>
 		.extract({
 			query: {
 				page: zod.coerce.number().default(0),
-				name: zod.string().optional()
+				name: zod.string().optional(),
+				withCategories: stringBoolean.optional(),
 			}
 		})
 		.handler(
 			async ({ pickup }) => {
 				const page = pickup("page");
 				const name = pickup("name");
+				const withCategories = pickup("withCategories");
 
 				const parentCategories = await prisma.parent_category.findMany({
 					where: {
@@ -25,11 +28,24 @@ export const GET = (method: Methods, path: string) =>
 							}	
 							: undefined,
 					},
+					select: withCategories 
+						? { 
+							name: true,
+							categories: {
+								select: {
+									categoryName: true
+								}
+							} 
+						}
+						: undefined,
 					skip: 0 * page,
 					take: 10
 				});
 
+				console.log(parentCategories[0]);
+				
+
 				throw new OkHttpException("parentCategory", parentCategories);
 			},
-			new IHaveSentThis(OkHttpException.code, "parentCategory", parentCategorySchema.array())
+			new IHaveSentThis(OkHttpException.code, "parentCategory", parentCategoryWithCategoriesNameSchema.array())
 		);

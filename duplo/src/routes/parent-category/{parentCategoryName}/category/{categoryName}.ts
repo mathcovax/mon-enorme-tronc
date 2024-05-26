@@ -3,6 +3,7 @@ import { parentCategoryExistCheck } from "@checkers/parentCategory";
 import { hasPrimordialRole } from "@security/hasPrimordialRole";
 
 /* METHOD : DELETE, PATH : /parent-category/{parentCategoryName}/{categoryName} */
+/* METHOD : DELETE, PATH : /parent-category/{parentCategoryName}/category/{categoryName} */
 export const DELETE = (method: Methods, path: string) =>
 	hasPrimordialRole({ options: { primordialRole: "CONTENTS_MASTER" } })
 		.declareRoute(method, path)
