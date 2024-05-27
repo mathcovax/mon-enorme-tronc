@@ -70,11 +70,13 @@ model category {
     imageKey         String?                       @db.VarChar(255)
     parentCategories category_to_parent_category[]
     productSheets    product_sheet_to_category[]
+    navigation_item  navigation_item[]
 }
 
 model parent_category {
-    name       String                        @unique @db.VarChar(255)
-    categories category_to_parent_category[]
+    name            String                        @unique @db.VarChar(255)
+    categories      category_to_parent_category[]
+    navigation_item navigation_item[]
 }
 
 model category_to_parent_category {
@@ -126,4 +128,21 @@ model warehouse {
     address        String       @db.Text
     organization   organization @relation(fields: [organizationId], references: [id])
     organizationId String
+}
+
+model navigation_item {
+    type               navigation_item_type
+    priority           Int
+    title              String               @unique @db.VarChar(30)
+    parentCategoryName String?
+    parentCategory     parent_category?     @relation(fields: [parentCategoryName], references: [name])
+    categoryName       String?
+    category           category?            @relation(fields: [categoryName], references: [name])
+    url                String?              @db.VarChar(400)
+}
+
+enum navigation_item_type {
+    PARENT_CATEGORY
+    CATEGORY
+    LINK
 }

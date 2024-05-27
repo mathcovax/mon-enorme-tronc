@@ -2,7 +2,7 @@ import { duploTesting } from "@test/setup";
 import { parentCategoryExistCheck } from "./parentCategory";
 import { MockPrisma } from "@test/mocks/providers";
 
-describe("category checker", () => {
+describe("parent category checker", () => {
 	beforeEach(() => {
 		MockPrisma.reset();
 	});
