@@ -53,7 +53,7 @@ function onSelect(value: T) {
 				variant="outline"
 				role="combobox"
 				:aria-expanded="open"
-				:class="`${props.class} justify-between`"
+				:class="`${props.class} justify-between font-normal`"
 			>
 				{{ modelValue ? getLabel(modelValue as T) : textButton }}
 				<ChevronsUpDown class="ml-2 h-4 w-4 shrink-0 opacity-50" />

@@ -19,6 +19,9 @@ export default {
 			title: "Première visite ?",
 			subtitle: "Créez un compte pour accéder à nos services.",
 		},
+		[routerPageName.USER_EDIT_PROFIL]: {
+			title: "Mon profil",
+		},
 		[routerPageName.ADMIN_PANEL_ORGANIZATIONS]: {
 			form: {
 				name: {
@@ -179,7 +182,7 @@ export default {
 				products: "Produits",
 				dropdownAccount: {
 					myAccount: "Mon compte",
-					settings: "Paramètres",
+					editProfil: "Editer mon profil",
 					support: "Support",
 					management: "Gestion",
 					admin: "Administration",
@@ -306,6 +309,7 @@ export default {
 		save: "Enregister",
 		send: "Envoyer",
 		add: "Ajouter",
+		edit: "Modifier",
 		clear: "Effacer",
 		remove: "Retirer",
 		delete: "Supprimer",

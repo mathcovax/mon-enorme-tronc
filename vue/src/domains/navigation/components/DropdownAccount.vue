@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const userStore = useUserStore();
-const { ADMIN_PANEL_HOME, ORGANIZATION_HOME, CONTENT_PANEL_HOME } = routerPageName;
+const { USER_EDIT_PROFIL, ADMIN_PANEL_HOME, ORGANIZATION_HOME, CONTENT_PANEL_HOME } = routerPageName;
 </script>
 
 <template>
@@ -26,7 +26,9 @@ const { ADMIN_PANEL_HOME, ORGANIZATION_HOME, CONTENT_PANEL_HOME } = routerPageNa
 			<DropdownMenuSeparator />
 
 			<DropdownMenuItem>
-				{{ $t("layout.default.header.dropdownAccount.settings") }}
+				<RouterLink :to="USER_EDIT_PROFIL">
+					{{ $t("layout.default.header.dropdownAccount.editProfil") }}
+				</RouterLink>
 			</DropdownMenuItem>
 
 			<DropdownMenuItem>{{ $t("layout.default.header.dropdownAccount.support") }}</DropdownMenuItem>
