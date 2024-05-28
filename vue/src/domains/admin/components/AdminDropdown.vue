@@ -26,7 +26,7 @@ const { EDITO_HOME, ADMIN_PANEL_HOME, ORGANIZATION_HOME, CONTENT_PANEL_HOME } = 
 			<DropdownMenuSeparator />
 
 			<DropdownMenuItem v-if="userStore.hasPrimordialRole('ADMIN')">
-				<RouterLink :to="ADMIN_PANEL_HOME">
+				<RouterLink :to="{ name: ADMIN_PANEL_HOME }">
 					{{ $t("layout.admin.dropdown.admin") }}
 				</RouterLink>
 			</DropdownMenuItem>
@@ -46,7 +46,7 @@ const { EDITO_HOME, ADMIN_PANEL_HOME, ORGANIZATION_HOME, CONTENT_PANEL_HOME } = 
 			<DropdownMenuSeparator />
 
 			<DropdownMenuItem>
-				<RouterLink :to="EDITO_HOME">
+				<RouterLink :to="{ name: EDITO_HOME }">
 					{{ $t("layout.admin.dropdown.backHome") }}
 				</RouterLink>
 			</DropdownMenuItem>

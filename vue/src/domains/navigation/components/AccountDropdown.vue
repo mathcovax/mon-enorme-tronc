@@ -26,7 +26,7 @@ const { USER_EDIT_PROFIL, ADMIN_PANEL_HOME, ORGANIZATION_HOME, CONTENT_PANEL_HOM
 			<DropdownMenuSeparator />
 
 			<DropdownMenuItem>
-				<RouterLink :to="USER_EDIT_PROFIL">
+				<RouterLink :to="{ name: USER_EDIT_PROFIL }">
 					{{ $t("layout.default.header.dropdown.editProfil") }}
 				</RouterLink>
 			</DropdownMenuItem>
@@ -42,19 +42,19 @@ const { USER_EDIT_PROFIL, ADMIN_PANEL_HOME, ORGANIZATION_HOME, CONTENT_PANEL_HOM
 			<DropdownMenuSeparator v-if="userStore.hasPrimordialRole('ADMIN') || userStore.hasPrimordialRole('MODERATOR') || userStore.hasPrimordialRole('CONTENTS_MASTER')" />
 
 			<DropdownMenuItem v-if="userStore.hasPrimordialRole('ADMIN')">
-				<RouterLink :to="ADMIN_PANEL_HOME">
+				<RouterLink :to="{ name: ADMIN_PANEL_HOME }">
 					{{ $t("layout.default.header.dropdown.admin") }}
 				</RouterLink>
 			</DropdownMenuItem>
 
 			<DropdownMenuItem v-if="userStore.hasPrimordialRole('MODERATOR')">
-				<RouterLink :to="ORGANIZATION_HOME">
+				<RouterLink :to="{ name: ORGANIZATION_HOME }">
 					{{ $t("layout.default.header.dropdown.organizations") }}
 				</RouterLink>
 			</DropdownMenuItem>
 
 			<DropdownMenuItem v-if="userStore.hasPrimordialRole('CONTENTS_MASTER')">
-				<RouterLink :to="CONTENT_PANEL_HOME">
+				<RouterLink :to="{ name: CONTENT_PANEL_HOME }">
 					{{ $t("layout.default.header.dropdown.content") }}
 				</RouterLink>
 			</DropdownMenuItem>
