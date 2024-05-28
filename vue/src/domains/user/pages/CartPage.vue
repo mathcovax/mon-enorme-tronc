@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import ProductCard from "../components/ProductCard.vue";
 
+const $pt = usePageTranslate();
+
 const products = ref(
 	[
 		{
@@ -27,7 +29,7 @@ const products = ref(
 	<section class="h-screen-no-header">
 		<div class="container h-[calc(100%-3rem)] mt-12 lg:mt-16 flex flex-col gap-12">
 			<h1 class="text-2xl lg:text-3xl font-bold">
-				Panier
+				{{ $pt("title") }}
 			</h1>
 
 			<div
@@ -39,15 +41,15 @@ const products = ref(
 					class="flex flex-col items-center gap-1 text-center"
 				>
 					<h2 class="text-2xl font-bold tracking-tight">
-						Votre panier est vide
+						{{ $pt("emptyTitle") }}
 					</h2>
 
 					<p class="text-sm text-muted-foreground">
-						Commencez à ajouter des produits pour les retrouver ici
+						{{ $pt("emptySubtitle") }}
 					</p>
 
 					<TheButton class="mt-4">
-						Parcourir les produits
+						{{ $pt("browseButton") }}
 					</TheButton>
 				</div>
 

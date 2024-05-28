@@ -22,6 +22,12 @@ export default {
 		[routerPageName.USER_EDIT_PROFIL]: {
 			title: "Mon profil",
 		},
+		[routerPageName.USER_CART]: {
+			title: "Mon panier",
+			emptyTitle: "Votre panier est vide.",
+			emptySubtitle: "Commencez à ajouter des produits pour les retrouver ici",
+			browseButton: "Parcourir les produits",
+		},
 		[routerPageName.ADMIN_PANEL_ORGANIZATIONS]: {
 			form: {
 				name: {
