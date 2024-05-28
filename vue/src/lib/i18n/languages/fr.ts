@@ -180,7 +180,7 @@ export default {
 				bestSeller: "Meilleures ventes",
 				new: "Contact",
 				products: "Produits",
-				dropdownAccount: {
+				dropdown: {
 					myAccount: "Mon compte",
 					editProfil: "Editer mon profil",
 					support: "Support",
@@ -224,6 +224,14 @@ export default {
 				organizations: "Organisations",
 				users: "Utilisateurs",
 			},
+			dropdown: {
+				management: "Gestion",
+				admin: "Administration",
+				organizations: "Mes organisations",
+				content: "Gestion du contenu",
+				backHome: "Retour à l'accueil",
+				logout: "Déconnexion"
+			}
 		},
 		organization: {
 			title: "Mon organisation",
