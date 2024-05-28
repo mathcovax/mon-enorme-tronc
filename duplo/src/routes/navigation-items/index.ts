@@ -11,5 +11,5 @@ export const GET = (method: Methods, path: string) =>
 
 				throw new OkHttpException("navigationItems", navigationItems);
 			},
-			new IHaveSentThis(OkHttpException.code, navigationItemSchema.array())
+			new IHaveSentThis(OkHttpException.code, "navigationItems", navigationItemSchema.array())
 		);
