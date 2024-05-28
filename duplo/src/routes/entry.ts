@@ -191,6 +191,18 @@ export const authEntry = duplo
 		new SwaggerIgnore(),
 	);
 
+export const connectedEntry = mustBeConnected({ pickup: ["accessTokenContent"] })
+	.declareRoute(
+		"GET",
+		["/entry/edit-profile",]
+	)
+	.handler(
+		async () => {
+			throw new NoContentHttpException("entry.accepted");
+		},
+		new IHaveSentThis(NoContentHttpException.code, "entry.accepted"),
+		new SwaggerIgnore(),
+	);
 export const basicEntry = duplo
 	.declareRoute("GET", "/entry*")
 	.handler(

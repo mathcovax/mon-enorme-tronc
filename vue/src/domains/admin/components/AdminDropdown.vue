@@ -43,13 +43,13 @@ const { EDITO_HOME, ADMIN_PANEL_HOME, ORGANIZATION_HOME, CONTENT_PANEL_HOME } = 
 				</RouterLink>
 			</DropdownMenuItem>
 
+			<DropdownMenuSeparator />
+
 			<DropdownMenuItem>
 				<RouterLink :to="EDITO_HOME">
 					{{ $t("layout.admin.dropdown.backHome") }}
 				</RouterLink>
 			</DropdownMenuItem>
-
-			<DropdownMenuSeparator />
 
 			<DropdownMenuItem @click="userStore.removeAccessToken">
 				{{ $t("layout.admin.dropdown.logout") }}
