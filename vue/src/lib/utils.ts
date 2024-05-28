@@ -98,3 +98,8 @@ export const navigationItemType: TuplifyUnion<NavigationItemType> = [
 	"CATEGORY",
 	"LINK"
 ];
+
+export type Product = GetResponseByInfo<
+	GetDef<"GET", "/organization/{organizationId}/products">,
+	"products.found"
+>["body"][number]
