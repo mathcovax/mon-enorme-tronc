@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import DropdownAccount from "@/domains/navigation/components/DropdownAccount.vue";
+import AccountDropdown from "@/domains/navigation/components/AccountDropdown.vue";
 import MobileNavbar from "@/domains/navigation/components/MobileNavbar.vue";
 
 const userStore = useUserStore();
@@ -85,7 +85,7 @@ const userStore = useUserStore();
 						</TheButton>
 					</routerlink>
 				
-					<DropdownAccount v-else />
+					<AccountDropdown v-else />
 				</div>
 			</div>
 		</div>
