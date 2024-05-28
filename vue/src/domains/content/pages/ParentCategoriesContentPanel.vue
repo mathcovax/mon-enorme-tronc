@@ -43,7 +43,7 @@ async function submitCreate() {
 	if (!formField) {
 		return;
 	}
-
+	
 	const result = await duploTo.enriched
 		.post(
 			"/parent-category",

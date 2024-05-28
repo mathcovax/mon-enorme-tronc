@@ -12,7 +12,7 @@ export interface DateInputDef extends BaseInputDef {
 
 export const DateInput = defineComponent({
 	props: [
-		"label", "modelValue", "zodSchema", "name", "formId"
+		"label", "modelValue", "zodSchema", "name", "formId", "inputProps"
 	],
 	setup(props: DateInputProps, { expose, emit }) {
 		const toValidated = ref(false);
@@ -65,6 +65,7 @@ export const DateInput = defineComponent({
 				h(
 					PrimaryDateInput, 
 					{
+						...props.inputProps,
 						id: `${props.name}-${props.formId}`,
 						modelValue: props.modelValue,
 						"onUpdate:modelValue": (value: unknown) => {

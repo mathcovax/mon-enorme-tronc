@@ -11,7 +11,7 @@ export interface CustomInputDef extends BaseInputDef {
 
 export const CustomInput = defineComponent({
 	props: [
-		"label", "modelValue", "zodSchema", "name", "formId"
+		"label", "modelValue", "zodSchema", "name", "formId", "inputProps"
 	],
 	setup(props: CutsomInputProps, { expose, slots }) {
 		const toValidated = ref(false);

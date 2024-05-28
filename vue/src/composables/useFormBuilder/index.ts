@@ -44,8 +44,12 @@ export function useFormBuilder<
 		return Object.entries(formInputs).map(
 			([name, input]) => {
 				input = isRef(input) ? input.value : input;
-				const { type, label, zodSchema, cols, ...reste } = input;
+				const { type, cols, disabled, ...reste } = input;
 				
+				if (disabled) {
+					return null;
+				}
+
 				const component = h(
 					inputMapper[type],
 					{
@@ -59,8 +63,6 @@ export function useFormBuilder<
 						"onUpdate:modelValue": (value: unknown) => {
 							values[name].value = value;
 						},
-						label,
-						zodSchema,
 						name,
 						key: name,
 						formId,

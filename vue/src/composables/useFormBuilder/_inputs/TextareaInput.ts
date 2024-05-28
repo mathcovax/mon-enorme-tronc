@@ -12,7 +12,7 @@ export interface TextareaInputDef extends BaseInputDef {
 
 export const TextareaInput = defineComponent({
 	props: [
-		"label", "modelValue", "zodSchema", "name", "formId"
+		"label", "modelValue", "zodSchema", "name", "formId", "inputProps"
 	],
 	setup(props: TextareaInputProps, { expose, emit }) {
 		const toValidated = ref(false);
@@ -65,6 +65,7 @@ export const TextareaInput = defineComponent({
 				h(
 					PrimaryTextarea, 
 					{
+						...props.inputProps,
 						type: "number",
 						name: `${props.name}-${props.formId}`,
 						id: `${props.name}-${props.formId}`,

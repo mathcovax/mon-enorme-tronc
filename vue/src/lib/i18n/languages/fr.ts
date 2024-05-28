@@ -238,6 +238,8 @@ export default {
 		updatedAt: "Date de modification",
 		categories: "Categories",
 		image: "Image",
+		type: "Type",
+		title: "Titre"
 	},
 	placeholder: {
 		address: "Cherchez votre adresse",
@@ -258,6 +260,11 @@ export default {
 		delete: "Supprimer",
 		back: "Retour",
 		backToHome: "Retourner à l'accueil",
+	},
+	navigationItemType: {
+		PARENT_CATEGORY: "Catégorie parent",
+		CATEGORY: "Categorie",
+		LINK: "Lien",
 	},
 	response: {
 		organization: {
