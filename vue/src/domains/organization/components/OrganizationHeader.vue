@@ -130,17 +130,17 @@ const route = useRoute();
 			</DropdownMenuTrigger>
 
 			<DropdownMenuContent align="end">
-				<DropdownMenuLabel>{{ $t("dropdownAccount.myAccount") }}</DropdownMenuLabel>
+				<DropdownMenuLabel>{{ $t("dropdown.myAccount") }}</DropdownMenuLabel>
 
 				<DropdownMenuSeparator />
 
-				<DropdownMenuItem>{{ $t("dropdownAccount.settings") }}</DropdownMenuItem>
+				<DropdownMenuItem>{{ $t("dropdown.settings") }}</DropdownMenuItem>
 
-				<DropdownMenuItem>{{ $t("dropdownAccount.support") }}</DropdownMenuItem>
+				<DropdownMenuItem>{{ $t("dropdown.support") }}</DropdownMenuItem>
 
 				<DropdownMenuSeparator />
 
-				<DropdownMenuItem>{{ $t("dropdownAccount.logout") }}</DropdownMenuItem>
+				<DropdownMenuItem>{{ $t("dropdown.logout") }}</DropdownMenuItem>
 			</DropdownMenuContent>
 		</DropdownMenu>
 	</header>

@@ -45,7 +45,7 @@ export function useSignUpForm() {
 		terms: {
 			type: "checkbox",
 			desc: $t("label.terms"),
-			zodSchema: zod.literal(true, { message: $t("form.rule.terms") }),
+			zodSchema: zod.literal(true, { message: $t("form.rule.required") }),
 		}
 	});
 

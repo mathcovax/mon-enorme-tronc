@@ -34,12 +34,10 @@ async function submit() {
 
 <template>
 	<section class="h-screen-no-header">
-		<div class="container h-full mt-12 lg:mt-16 flex flex-col gap-12">
-			<div class="mx-auto grid w-full gap-2">
-				<h1 class="text-2xl lg:text-3xl font-bold">
-					{{ $pt("title") }}
-				</h1>
-			</div>
+		<div class="container h-[calc(100%-3rem)] mt-12 lg:mt-16 flex flex-col gap-12">
+			<h1 class="text-2xl lg:text-3xl font-bold">
+				{{ $pt("title") }}
+			</h1>
 
 			<div class="mx-auto grid w-full items-start gap-6 md:grid-cols-[180px_1fr] lg:grid-cols-[250px_1fr]">
 				<aside class="flex flex-col gap-4 items-center text-sm text-muted-foreground">

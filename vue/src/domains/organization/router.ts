@@ -1,7 +1,7 @@
 import type { RouteRecordRaw } from "vue-router";
 
 export const routerPageNameOrganization = Object.freeze({
-	ORGANIZATION_HOME: "organization",
+	ORGANIZATION_HOME: "organizations",
 	ORGANIZATION_EDIT: "organization-edit",
 	ORGANIZATION_MANAGE_USER: "organization-manage-user",
 	ORGANIZATION_CREATE_PRODUCT_SHEET: "create-product-sheet",
@@ -13,13 +13,13 @@ export const routerPageNameOrganization = Object.freeze({
 
 export default (): RouteRecordRaw[] => [
 	{
-		path: "/organization",
+		path: "/organizations",
 		component: () => import("./layout/OrganizationLayout.vue"),
 		children: [
 			{
 				name: routerPageNameOrganization.ORGANIZATION_HOME,
-				path: "/organization/:organizationId/dashboard",
-				component: () => import("./pages/OrganizationPage.vue"),
+				path: "/organizations",
+				component: () => import("./pages/OrganizationsPage.vue"),
 			},
 			{
 				name: routerPageNameOrganization.ORGANIZATION_EDIT,
@@ -28,27 +28,27 @@ export default (): RouteRecordRaw[] => [
 			},
 			{
 				name: routerPageNameOrganization.ORGANIZATION_MANAGE_USER,
-				path: "/organization/:organizationId/manage-user",
+				path: "/organizations/:organizationId/manage-user",
 				component: () => import("./pages/ManageUserOrganization.vue"),
 			},
 			{
 				name: routerPageNameOrganization.ORGANIZATION_CREATE_PRODUCT_SHEET,
-				path: "/organization/:organizationId/create-product-sheet",
+				path: "/organizations/:organizationId/create-product-sheet",
 				component: () => import("./pages/CreateProductSheet.vue")
 			},
 			{
 				name: routerPageNameOrganization.ORGANIZATION_EDIT_PRODUCT_SHEET,
-				path: "/organization/:organizationId/edit-product-sheet/:productSheetId",
+				path: "/organizations/:organizationId/edit-product-sheet/:productSheetId",
 				component: () => import("./pages/EditProductSheet.vue")
 			},
 			{
 				name: routerPageNameOrganization.ORGANIZATION_GET_PRODUCT_SHEET,
-				path: "/organization/:organizationId/product-sheets",
+				path: "/organizations/:organizationId/product-sheets",
 				component: () => import("./pages/ProductSheets.vue")
 			},
 			{
 				name: routerPageNameOrganization.ORGANIZATION_GET_WAREHOUSE,
-				path: "/organization/:organizationId/warehouses",
+				path: "/organizations/:organizationId/warehouses",
 				component: () => import("./pages/WarehousesPage.vue")
 			},
 			{
