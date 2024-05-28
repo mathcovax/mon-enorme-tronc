@@ -38,6 +38,11 @@ export const GET = (method: Methods, path: string) =>
 								name: true,
 							},
 						},
+						warehouse: {
+							select: {
+								name: true,
+							},
+						},
 					},
 				});
 				throw new OkHttpException("products.found", products);

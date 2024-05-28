@@ -1,3 +1,4 @@
+import { inputWarehouse, warehouseExistCheck } from "@checkers/warehouse";
 import { productSchema, productStatusEnum } from "@schemas/product";
 import { hasOrganizationRoleByProductSheetId } from "@security/hasOrganizationRole/byProductSheetId";
 
@@ -11,12 +12,21 @@ export const POST = (method: Methods, path: string) =>
 		.extract({
 			body: zod.object({
 				sku: zod.string().min(2).max(255),
+				warehouseId: zod.string()
 			}).strip(),
 		})
+		.check(
+			warehouseExistCheck,
+			{
+				input: (p) => inputWarehouse.id(p("body").warehouseId),
+				...warehouseExistCheck.preCompletions.mustExist
+			},
+			new IHaveSentThis(NotFoundHttpException.code, "warehouse.notfound")
+		)
 		.handler(
 			async ({ pickup }) => {
 				const { id: productSheetId, organizationId } = pickup("productSheet");
-				const { sku } = pickup("body");
+				const { sku, warehouseId } = pickup("body");
 
 				const product = await prisma.product.create({
 					data: {
@@ -24,6 +34,7 @@ export const POST = (method: Methods, path: string) =>
 						productSheetId,
 						organizationId,
 						status: productStatusEnum.IN_STOCK,
+						warehouseId,
 					}
 				});
 				throw new CreatedHttpException("product.created", product);

@@ -29,6 +29,10 @@ const cols: BigTableColDef<Product>[] = [
 		getter: i => i.productSheet.name
 	},
 	{
+		title: $pt("table.warehouseName"),
+		getter: i => i.warehouse.name
+	},
+	{
 		title: $pt("table.lastEdit"),
 		getter: i => i.updatedAt?.split("T")[0]
 	},
@@ -63,6 +67,7 @@ async function submitPost() {
 			"/product-sheet/{productSheetId}/product",
 			{
 				sku: formFields.sku,
+				warehouseId: formFields.warehouse
 			},
 			{ params: { productSheetId: formFields.productSheet } }
 		)
@@ -148,7 +153,7 @@ watch(searchName, () => getProducts(0, searchName.value));
 			@click-previous="previous"
 		>
 			<template #status="{item}">
-				<div class="flex flex-col items-center">
+				<div>
 					<WithValidation
 						:title="$pt('popupWrongMessage')"
 						@validate="toggleStatus(item)"

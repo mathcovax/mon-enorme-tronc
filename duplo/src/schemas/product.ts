@@ -19,6 +19,7 @@ export const productSchema = zod.object({
 	sku: zod.string().min(2).max(255),
 	productSheetId: zod.string(),
 	organizationId: zod.string(),
+	warehouseId: zod.string(),
 	createdAt: zod.coerce.string(),
 	updatedAt: zod.coerce.string(),
 	status: zod.enum(productStatusTuple),
@@ -29,10 +30,14 @@ export const productAndProductSheetNameSchema = zod.object({
 	sku: zod.string().min(2).max(255),
 	productSheetId: zod.string(),
 	organizationId: zod.string(),
+	warehouseId: zod.string(),
 	createdAt: zod.coerce.string(),
 	updatedAt: zod.coerce.string(),
 	status: zod.enum(productStatusTuple),
 	productSheet: zod.object({
+		name: zod.string(),
+	}),
+	warehouse: zod.object({
 		name: zod.string(),
 	}),
 });

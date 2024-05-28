@@ -150,6 +150,25 @@ export default {
 			description: "La page que vous cherchez n'existe pas.",
 			buttonText: "Retourner à l'accueil"
 		},
+		[routerPageName.ORGANIZATION_MANAGE_PRODUCT]: {
+			table: {
+				ref: "Ref°",
+				productSheetName: "Fiche Produit",
+				lastEdit: "Modifiée le",
+				status: "Status",
+				warehouseName: "Entrepôt"
+			},
+			form: {
+				sku: "Reference",
+				skuPlaceholder: "Entrer une reference",
+				productSheetLabel: "Fiche produit",
+				warehouseLabel: "Entrepôt",
+				productSheetPlaceholder: "Entrer une fiche produit",
+				warehousePlaceholder: "Entrer un entrepôt",
+			},
+			searchPlaceholder: "Chercher un produit",
+			popupWrongMessage: "Etes-vous sur de vouloir supprimer cette reference ?"
+		},
 	},
 	layout: {
 		default: {
@@ -209,9 +228,16 @@ export default {
 				products: "Produits",
 				users: "Utilisateurs",
 				analytics: "Analytiques",
-				warehouse: "Entrepôts"
+				warehouse: "Entrepôts",
+				productSheets: "Fiche produits"
 			},
 		}
+	},
+	productStatus: {
+		WRONG: "SUPPRIME",
+		IN_STOCK: "EN STOCK",
+		SOLD: "VENDU",
+		ORDER: "COMMANDE",
 	},
 	role: {
 		CUSTOMER: "Client",
@@ -331,6 +357,11 @@ export default {
 			},
 			created: "La catégorie parent a correctement été créée.",
 			edited: "La catégorie parent a correctement été modifiée.",
+		},
+		product: {
+			notfound: "Le produit n'existe pas.",
+			edited: "Le produit a correctement étais éditer.",
+			created: "Le produit a correctement étais créer."
 		},
 		TYPE_ERROR: "L'une des donné envoyer est éroner. (Erreur provenant du site)",
 		NOTFOUND: "La route route utilisais n'existe pas. (Erreur provenant du site)",

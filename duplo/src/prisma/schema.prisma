@@ -132,6 +132,7 @@ model warehouse {
     address        String       @db.Text
     organization   organization @relation(fields: [organizationId], references: [id])
     organizationId String
+    product        product[]
 }
 
 model navigation_item {
@@ -160,6 +161,8 @@ model product {
     organization   organization   @relation(fields: [organizationId], references: [id])
     organizationId String
     status         product_status
+    warehouseId    String
+    warehouse      warehouse      @relation(fields: [warehouseId], references: [id])
     createdAt      DateTime       @default(now())
     updatedAt      DateTime       @updatedAt
 }
