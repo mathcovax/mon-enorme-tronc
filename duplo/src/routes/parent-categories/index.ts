@@ -41,10 +41,7 @@ export const GET = (method: Methods, path: string) =>
 					skip: 0 * page,
 					take: 10
 				});
-
-				console.log(parentCategories[0]);
 				
-
 				throw new OkHttpException("parentCategory", parentCategories);
 			},
 			new IHaveSentThis(OkHttpException.code, "parentCategory", parentCategoryWithCategoriesNameSchema.array())

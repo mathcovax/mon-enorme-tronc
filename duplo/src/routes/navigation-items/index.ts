@@ -7,7 +7,7 @@ export const GET = (method: Methods, path: string) =>
 		.declareRoute(method, path)
 		.handler(
 			async () => {
-				const navigationItems = await prisma.navigation_item.findMany({ take: 10 });
+				const navigationItems = await prisma.navigation_item.findMany({ take: 10, orderBy: { priority: "asc" } });
 
 				throw new OkHttpException("navigationItems", navigationItems);
 			},

@@ -1,14 +1,19 @@
-import { navigationItemType, type NavigationItemType } from "@/lib/utils";
+import { navigationItemType, type NavigationItem, type NavigationItemType } from "@/lib/utils";
 import { useGetParentCategories } from "./useGetParentCategories";
 import { useGetCategories } from "./useGetCategories";
 
 export function useNavigationItemForm() {
+	const $pt = usePageTranslate();
 	const { getParentCategories, parentCategories } = useGetParentCategories();
 	const { getCategories, categories } = useGetCategories();
 
 	const debugRefType = ref<undefined | NavigationItemType>();
 
-	const { Form, formId, values, resetForm } = useFormBuilder({
+	const { Form, values, resetForm, checkForm } = useFormBuilder({
+		oldNavigationItem: {
+			type: "custom",
+			defaultValue: undefined as undefined | NavigationItem
+		},
 		type: {
 			type: "select",
 			items: navigationItemType.map(v => ({
@@ -17,8 +22,7 @@ export function useNavigationItemForm() {
 			})),
 			label: $t("label.type"),
 			defaultValue: "LINK" as  NavigationItemType,
-			zodSchema: zod.object({ value: zod.enum(navigationItemType) }, { message: $t("form.rule.required") })
-				.transform(({ value }) => value)
+			zodSchema: zod.enum(navigationItemType, { message: $t("form.rule.required") })
 		},
 		title: {
 			type: "text",
@@ -29,36 +33,40 @@ export function useNavigationItemForm() {
 		},
 		priority: {
 			type: "number",
+			label: $pt("label.priority"),
 			zodSchema: zod.number({ message: $t("form.rule.required") })
 		},
 		parentCategory: computed(() => ({
 			type: "combo",
 			items: parentCategories.value.map(({ name }) => ({ label: name, identifier: name })),
 			placeholder: "",
-			emptyLabel: "",
-			textButton: "",
+			emptyLabel: $t("label.empty"),
+			textButton: $pt("label.select"),
+			label: $t("navigationItemType.PARENT_CATEGORY"),
 			onUpdateSearchTerm: (name) => getParentCategories(undefined, name),
 			zodSchema: zod.object(
-				{ indentifier: zod.string() }, 
+				{ identifier: zod.string() }, 
 				{ message: $t("form.rule.required") }
-			).transform(({ indentifier }) => indentifier),
+			).transform(({ identifier }) => identifier),
 			disabled: debugRefType.value !== "PARENT_CATEGORY"
 		})),
 		category: computed(() => ({
 			type: "combo",
 			items: categories.value.map(({ name }) => ({ label: name, identifier: name })),
 			placeholder: "",
-			emptyLabel: "",
-			textButton: "",
+			emptyLabel: $t("label.empty"),
+			textButton: $pt("label.select"),
+			label: $t("navigationItemType.CATEGORY"),
 			onUpdateSearchTerm: (name) => getCategories(undefined, name),
 			zodSchema: zod.object(
-				{ indentifier: zod.string() }, 
+				{ identifier: zod.string() }, 
 				{ message: $t("form.rule.required") }
-			).transform(({ indentifier }) => indentifier),
+			).transform(({ identifier }) => identifier),
 			disabled: debugRefType.value !== "CATEGORY"
 		})),
-		link: computed(() => ({
+		url: computed(() => ({
 			type: "text",
+			label: $t("navigationItemType.LINK"),
 			zodSchema: zod.string({ message: $t("form.rule.required") })
 				.url()
 				.max(400),
@@ -66,14 +74,57 @@ export function useNavigationItemForm() {
 		})),
 	});
 
-	watchEffect(() => {
-		debugRefType.value = values.type.value;
-	});
+	watchEffect(
+		() => {
+			debugRefType.value = values.type.value;
+		}
+	);
 
 	return {
 		NavigationItemForm: Form,
-		NavigationItemFormId: formId,
-		NavigationItemFormValues: values,
+		navigationItemFormValues: values,
 		resetNavigationItemForm: resetForm,
+		checkNavigationItemForm: async () => {
+			const formField = await checkForm();
+
+			if (!formField) {
+				return null;
+			}
+		
+			const baseNavigationItem: Pick<NavigationItem, "priority" | "title"| "type"> = {
+				type: formField.type,
+				priority: formField.priority,
+				title: formField.title,
+			};
+			let navigationItem: NavigationItem | undefined;
+		
+			if (baseNavigationItem.type === "PARENT_CATEGORY" && formField.parentCategory) {
+				navigationItem = {
+					...baseNavigationItem,
+					type: baseNavigationItem.type,
+					parentCategoryName: formField.parentCategory
+				};
+			}
+			else if (baseNavigationItem.type === "CATEGORY"  && formField.category) {
+				navigationItem = {
+					...baseNavigationItem,
+					type: baseNavigationItem.type,
+					categoryName: formField.category
+				};
+			}
+			else if (baseNavigationItem.type === "LINK"  && formField.url) {
+				navigationItem = {
+					...baseNavigationItem,
+					type: baseNavigationItem.type,
+					url: formField.url
+				};
+			} 
+			
+			if (!navigationItem) {
+				return null;
+			}
+			
+			return navigationItem;
+		},
 	};
 }

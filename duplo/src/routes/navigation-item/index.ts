@@ -41,5 +41,5 @@ export const POST = (method: Methods, path: string) =>
 
 				throw new CreatedHttpException("navigationItem.created", navigationItem);
 			},
-			new IHaveSentThis(ConflictHttpException.code, "navigationItem.created", navigationItemSchema)
+			new IHaveSentThis(CreatedHttpException.code, "navigationItem.created", navigationItemSchema)
 		);

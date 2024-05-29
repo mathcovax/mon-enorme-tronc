@@ -1,4 +1,6 @@
+import { categoryExistCheck } from "@checkers/category";
 import { navigationItemExistCheck } from "@checkers/navigationItem";
+import { parentCategoryExistCheck } from "@checkers/parentCategory";
 import { navigationItemSchema } from "@schemas/navigationItem";
 import { hasPrimordialRole } from "@security/hasPrimordialRole";
 
@@ -31,6 +33,36 @@ export const PUT = (method: Methods, path: string) =>
 				skip: p => p("navigationItemTitle") === p("body").title
 			},
 			new IHaveSentThis(ConflictHttpException.code, "navigationItem.title.alreadyUse")
+		)
+		.check(
+			categoryExistCheck,
+			{
+				input: p => {
+					const navigationItem = p("body");
+					if (navigationItem.type === "CATEGORY") {
+						return navigationItem.categoryName;
+					}
+					return "";
+				},
+				...categoryExistCheck.preCompletions.mustExist,
+				skip: p => p("body").type !== "CATEGORY"
+			},
+			new IHaveSentThis(NotFoundHttpException.code, "category.notfound")
+		)
+		.check(
+			parentCategoryExistCheck,
+			{
+				input: p => {
+					const navigationItem = p("body");
+					if (navigationItem.type === "PARENT_CATEGORY") {
+						return navigationItem.parentCategoryName;
+					}
+					return "";
+				},
+				...parentCategoryExistCheck.preCompletions.mustExist,
+				skip: p => p("body").type !== "PARENT_CATEGORY"
+			},
+			new IHaveSentThis(NotFoundHttpException.code, "parentCategory.notfound")
 		)
 		.handler(
 			async ({ pickup }) => {

@@ -125,6 +125,19 @@ export default {
 				searchPlaceholder: "Chercher par le nom de la catégory parent.",
 			}
 		},
+		[routerPageName.CONTENT_PANEL_NAVIGATION_BAR]: {
+			label: {
+				priority: "Priorité",
+				select: "Selectioné",
+			},
+			table: {
+				linked: "Lier",
+			},
+			popup: {
+				title: "Voulez vous vraiment le supprimer ?",
+				content: "Si vous valider, cette Ellement de la bar de navigation sera supprimer définitivement."
+			}
+		},
 		notFound: {
 			title: "404 - Page introuvable",
 			description: "La page que vous cherchez n'existe pas.",

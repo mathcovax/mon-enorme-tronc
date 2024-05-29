@@ -27,6 +27,7 @@ interface Props {
 	class?: string
 	searchTerm?: string
 	filterFunction?: (items: T[], term: string) => T[]
+	id?: string
 }
 
 const props = defineProps<Props>();
@@ -48,6 +49,7 @@ function onSelect(value: T) {
 	<ThePopover v-model:open="open">
 		<PopoverTrigger as-child>
 			<TheButton
+				:id="id"
 				variant="outline"
 				role="combobox"
 				:aria-expanded="open"
