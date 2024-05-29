@@ -11,8 +11,9 @@ export const primordialRolesEnum: UninonToEnum<navigation_item_type> = {
 export const navigationItemTypeSchema = zod.enum(navigationItemTypeTuple);
 
 export const navigationItemBaseSchema = zod.object({
+	id: zod.string(),
 	priority: zod.number(),
-	title: zod.string().max(30),
+	type: navigationItemTypeSchema,
 });
 
 export const navigationItemParentCategorySchema = 
@@ -31,6 +32,7 @@ export const navigationItemLinkSchema =
 	navigationItemBaseSchema.extend({
 		type: zod.literal(primordialRolesEnum.LINK),
 		url: zod.string(),
+		title: zod.string().min(3).max(30),
 	});
 
 export const navigationItemSchema = zod.union([

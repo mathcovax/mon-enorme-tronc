@@ -7,7 +7,7 @@ describe("navigation item checker", () => {
 		MockPrisma.reset();
 	});
 
-	it("find by title", async () => {
+	it("find by id", async () => {
 		const spy = vi.fn(async () => ({}));
 		MockPrisma.set("navigation_item", "findFirst", spy);
 
@@ -15,7 +15,7 @@ describe("navigation item checker", () => {
 			.testChecker(navigationItemExistCheck, "test");
 
 		expect(spy).lastCalledWith({
-			where: { title: "test" }
+			where: { id: "test" }
 		});
 		expect(res.info).toBe("navigationItem.exist");
 	});

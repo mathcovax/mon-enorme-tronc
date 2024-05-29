@@ -24,13 +24,6 @@ export function useNavigationItemForm() {
 			defaultValue: "LINK" as  NavigationItemType,
 			zodSchema: zod.enum(navigationItemType, { message: $t("form.rule.required") })
 		},
-		title: {
-			type: "text",
-			label: $t("label.title"),
-			zodSchema: zod.string({ message: $t("form.rule.required") })
-				.min(3, { message: $t("form.rule.minLength", { value: 3 }) })
-				.max(30, { message: $t("form.rule.maxLength", { value: 30 }) })
-		},
 		priority: {
 			type: "number",
 			label: $pt("label.priority"),
@@ -64,6 +57,14 @@ export function useNavigationItemForm() {
 			).transform(({ identifier }) => identifier),
 			disabled: debugRefType.value !== "CATEGORY"
 		})),
+		title: computed(() => ({
+			type: "text",
+			label: $t("label.title"),
+			zodSchema: zod.string({ message: $t("form.rule.required") })
+				.min(3, { message: $t("form.rule.minLength", { value: 3 }) })
+				.max(30, { message: $t("form.rule.maxLength", { value: 30 }) }),
+			disabled: debugRefType.value !== "LINK"
+		})),
 		url: computed(() => ({
 			type: "text",
 			label: $t("navigationItemType.LINK"),
@@ -91,17 +92,17 @@ export function useNavigationItemForm() {
 				return null;
 			}
 		
-			const baseNavigationItem: Pick<NavigationItem, "priority" | "title"| "type"> = {
+			const baseNavigationItem: Pick<NavigationItem, "priority" | "type" | "id"> = {
+				id: formField.oldNavigationItem?.id ?? "",
 				type: formField.type,
 				priority: formField.priority,
-				title: formField.title,
 			};
 			let navigationItem: NavigationItem | undefined;
 		
 			if (baseNavigationItem.type === "PARENT_CATEGORY" && formField.parentCategory) {
 				navigationItem = {
 					...baseNavigationItem,
-					type: baseNavigationItem.type,
+					type: "PARENT_CATEGORY",
 					parentCategoryName: formField.parentCategory
 				};
 			}
@@ -112,11 +113,12 @@ export function useNavigationItemForm() {
 					categoryName: formField.category
 				};
 			}
-			else if (baseNavigationItem.type === "LINK"  && formField.url) {
+			else if (baseNavigationItem.type === "LINK"  && formField.url && formField.title) {
 				navigationItem = {
 					...baseNavigationItem,
 					type: baseNavigationItem.type,
-					url: formField.url
+					url: formField.url,
+					title: formField.title,
 				};
 			} 
 			

@@ -1,5 +1,4 @@
-import { navigationItemExistCheck } from "@checkers/navigationItem";
-import { navigationItemSchema } from "@schemas/navigationItem";
+import { navigationItemCategorySchema, navigationItemLinkSchema, navigationItemParentCategorySchema, navigationItemSchema } from "@schemas/navigationItem";
 import { hasPrimordialRole } from "@security/hasPrimordialRole";
 
 /* METHOD : POST, PATH : /navigation-item */
@@ -7,7 +6,11 @@ export const POST = (method: Methods, path: string) =>
 	hasPrimordialRole({ options: { primordialRole: "CONTENTS_MASTER" } })
 		.declareRoute(method, path)
 		.extract({
-			body: navigationItemSchema
+			body: zod.union([
+				navigationItemParentCategorySchema.omit({ id: true }),
+				navigationItemCategorySchema.omit({ id: true }),
+				navigationItemLinkSchema.omit({ id: true }),
+			])
 		})
 		.cut(
 			async () => {
@@ -21,17 +24,6 @@ export const POST = (method: Methods, path: string) =>
 			},
 			[],
 			new IHaveSentThis(ConflictHttpException.code, "navigationItem.limit")
-		)
-		.check(
-			navigationItemExistCheck,
-			{
-				input: p => p("body").title,
-				result: "navigationItem.notfound",
-				catch: () => {
-					throw new ConflictHttpException("navigationItem.title.alreadyUse");
-				}
-			},
-			new IHaveSentThis(ConflictHttpException.code, "navigationItem.title.alreadyUse")
 		)
 		.handler(
 			async ({ pickup }) => {

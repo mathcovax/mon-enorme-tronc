@@ -9,10 +9,6 @@ const { NavigationItemForm, checkNavigationItemForm, resetNavigationItemForm } =
 const { navigationItems, getNavigationItem } = useGetNavigationItem();
 const cols: BigTableColDef<NavigationItem>[] = [
 	{
-		title: $t("label.title"),
-		getter: i => i.title
-	},
-	{
 		title: $t("label.type"),
 		getter: i => $t(`navigationItemType.${i.type}`)
 	},
@@ -26,7 +22,7 @@ const cols: BigTableColDef<NavigationItem>[] = [
 			? i.parentCategoryName
 			: i.type === "CATEGORY"
 				? i.categoryName
-				:i.url
+				: `${i.title} : ${i.url}`
 	}
 ];  
 
@@ -60,7 +56,7 @@ function openPopup(navigationItem: NavigationItem) {
 	navigationItemPatchFormValues.oldNavigationItem.value = navigationItem;
 	navigationItemPatchFormValues.type.value = navigationItem.type;
 	navigationItemPatchFormValues.priority.value = navigationItem.priority;
-	navigationItemPatchFormValues.title.value = navigationItem.title;
+
 	if (navigationItem.type === "PARENT_CATEGORY") {
 		navigationItemPatchFormValues.parentCategory.value = {
 			label: navigationItem.parentCategoryName, 
@@ -75,6 +71,7 @@ function openPopup(navigationItem: NavigationItem) {
 	}
 	else {
 		navigationItemPatchFormValues.url.value = navigationItem.url;
+		navigationItemPatchFormValues.title.value = navigationItem.title;
 	}
 
 	popup.value?.open();
@@ -88,10 +85,10 @@ async function submitPatch() {
 	}
 
 	duploTo.enriched
-		.put(
-			"/navigation-item/{navigationItemTitle}",
+		.patch(
+			"/navigation-item/{navigationItemId}",
 			formField,
-			{ params: { navigationItemTitle: navigationItemPatchFormValues.oldNavigationItem.value.title } }
+			{ params: { navigationItemId: navigationItemPatchFormValues.oldNavigationItem.value.id } }
 		)
 		.info("navigationItem.edited", () => {
 			popup.value?.close();
@@ -107,8 +104,8 @@ function deleteItem() {
 
 	duploTo.enriched
 		.delete(
-			"/navigation-item/{navigationItemTitle}",
-			{ params: { navigationItemTitle: navigationItemPatchFormValues.oldNavigationItem.value.title } }
+			"/navigation-item/{navigationItemId}",
+			{ params: { navigationItemId: navigationItemPatchFormValues.oldNavigationItem.value.id } }
 		)
 		.info("navigationItem.delete", () => {
 			popup.value?.close();

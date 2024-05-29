@@ -1,9 +1,9 @@
 export const navigationItemExistCheck = duplo
 	.createChecker("navigationItemExist")
-	.handler(async (title: string, output) => {
+	.handler(async (id: string, output) => {
 		const navigationItem = await prisma.navigation_item.findFirst({
 			where: {
-				title
+				id
 			},
 		});
 

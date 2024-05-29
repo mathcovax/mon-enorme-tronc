@@ -131,14 +131,15 @@ model warehouse {
 }
 
 model navigation_item {
+    id                 String               @id @default(uuid())
     type               navigation_item_type
     priority           Int
-    title              String               @unique @db.VarChar(30)
     parentCategoryName String?
     parentCategory     parent_category?     @relation(fields: [parentCategoryName], references: [name])
     categoryName       String?
     category           category?            @relation(fields: [categoryName], references: [name])
     url                String?              @db.VarChar(400)
+    title              String?              @unique @db.VarChar(30)
 }
 
 enum navigation_item_type {
