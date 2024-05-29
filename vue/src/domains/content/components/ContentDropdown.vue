@@ -1,0 +1,59 @@
+<script setup lang="ts">
+const userStore = useUserStore();
+const { EDITO_HOME, ADMIN_PANEL_HOME, ORGANIZATION_HOME, CONTENT_PANEL_HOME } = routerPageName;
+</script>
+
+<template>
+	<DropdownMenu>
+		<DropdownMenuTrigger as-child>
+			<TheButton
+				variant="secondary"
+				size="icon"
+				class="rounded-full"
+			>
+				<TheIcon
+					icon="account-outline"
+					size="2xl"
+				/>
+			</TheButton>
+		</DropdownMenuTrigger>
+
+		<DropdownMenuContent align="end">
+			<DropdownMenuLabel>
+				{{ $t("layout.content.dropdown.management") }}
+			</DropdownMenuLabel>
+
+			<DropdownMenuSeparator />
+
+			<DropdownMenuItem v-if="userStore.hasPrimordialRole('ADMIN')">
+				<RouterLink :to="{ name: ADMIN_PANEL_HOME }">
+					{{ $t("layout.content.dropdown.admin") }}
+				</RouterLink>
+			</DropdownMenuItem>
+
+			<DropdownMenuItem v-if="userStore.hasPrimordialRole('MODERATOR')">
+				<RouterLink :to="{name: ORGANIZATION_HOME}">
+					{{ $t("layout.content.dropdown.organizations") }}
+				</RouterLink>
+			</DropdownMenuItem>
+
+			<DropdownMenuItem v-if="userStore.hasPrimordialRole('CONTENTS_MASTER')">
+				<RouterLink :to="{name: CONTENT_PANEL_HOME}">
+					{{ $t("layout.content.dropdown.content") }}
+				</RouterLink>
+			</DropdownMenuItem>
+
+			<DropdownMenuSeparator />
+
+			<DropdownMenuItem>
+				<RouterLink :to="{ name: EDITO_HOME }">
+					{{ $t("layout.content.dropdown.backHome") }}
+				</RouterLink>
+			</DropdownMenuItem>
+
+			<DropdownMenuItem @click="userStore.removeAccessToken">
+				{{ $t("layout.content.dropdown.logout") }}
+			</DropdownMenuItem>
+		</DropdownMenuContent>
+	</DropdownMenu>
+</template>

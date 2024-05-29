@@ -4,6 +4,6 @@
 
 <template>
 	<div>
-		ee
+		Content panel
 	</div>
 </template>

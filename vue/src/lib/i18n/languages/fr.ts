@@ -251,6 +251,21 @@ export default {
 				warehouse: "Entrepôts",
 				productSheets: "Fiche produits"
 			},
+		},
+		content: {
+			title: "Gestion du contenu",
+			nav: {
+				dashboard: "Tableau de bord",
+				categories: "Catégories",
+			},
+			dropdown: {
+				management: "Gestion",
+				admin: "Administration",
+				organizations: "Mes organisations",
+				content: "Gestion du contenu",
+				backHome: "Retour à l'accueil",
+				logout: "Déconnexion"
+			}
 		}
 	},
 	productStatus: {
