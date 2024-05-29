@@ -71,7 +71,7 @@ export const GET = (method: Methods, path: string) =>
 								url: navigationItem.url,
 							};
 						}
-
+						
 						throw new Error("Invalide NavigationBarItem");
 					})
 				); 

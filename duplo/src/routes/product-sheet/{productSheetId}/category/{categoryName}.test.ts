@@ -26,9 +26,6 @@ describe("DELETE /product-sheet/{productSheetId}/category/{categoryName}", () =>
 			)
 			.launch();
 
-		console.log(res.body);
-		
-
 		expect(res.information).toBe("productSheet.category.untied");
 		expect(spy).lastCalledWith({
 			where: {
