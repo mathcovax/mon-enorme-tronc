@@ -191,7 +191,7 @@ export const authEntry = duplo
 		new SwaggerIgnore(),
 	);
 
-export const connectedEntry = mustBeConnected({ pickup: ["accessTokenContent"] })
+export const selfEntry = mustBeConnected({ pickup: ["accessTokenContent"] })
 	.declareRoute(
 		"GET",
 		["/entry/edit-profile",]
@@ -203,6 +203,7 @@ export const connectedEntry = mustBeConnected({ pickup: ["accessTokenContent"] }
 		new IHaveSentThis(NoContentHttpException.code, "entry.accepted"),
 		new SwaggerIgnore(),
 	);
+	
 export const basicEntry = duplo
 	.declareRoute("GET", "/entry*")
 	.handler(
