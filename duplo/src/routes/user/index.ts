@@ -60,7 +60,8 @@ export const PATCH = (method: Methods, path: string) => mustBeConnected({ pickup
 			result: "address.valid",
 			catch: () => {
 				throw new BadRequestHttpException("user.address.invalid");
-			}
+			},
+			skip: p => !p("body").address
 		},
 		new IHaveSentThis(BadRequestHttpException.code, "user.address.invalid")
 
