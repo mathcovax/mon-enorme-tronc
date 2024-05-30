@@ -40,16 +40,7 @@ describe("/user", () => {
 					0,
 					{
 						info: "user.exist",
-						data: {
-							id: "rere",
-							email: "test",
-							lastname: "DOE",
-							firstname: "jhon",
-							dateOfBirth: new Date(2002, 8, 13),
-							address: "test",
-							primordialRole: "ADMIN",
-							muted: false
-						}
+						data: userData
 					}
 				)
 				.launch();
@@ -57,7 +48,7 @@ describe("/user", () => {
 			expect(res.information).toBe("user");
 			expect(spy).lastCalledWith({
 				where: {
-					userId: "rere"
+					userId: userData.id
 				}
 			});
 		});
@@ -106,12 +97,19 @@ describe("/user", () => {
 						data: userData
 					}
 				)
+				.mockChecker(
+					1,
+					{ 
+						info: "address.valid",
+						data: true 
+					}
+				)
 				.launch();
 
 			expect(res.information).toBe("user.edited");
 			expect(spy).lastCalledWith({
 				where: {
-					id: "rere"
+					id: userData.id
 				},
 				data: {
 					lastname: "ROSBOULE",
@@ -121,6 +119,4 @@ describe("/user", () => {
 			});
 		});
 	});
-
-	
 });

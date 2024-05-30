@@ -1,4 +1,5 @@
 import { inputUser, userExistCheck } from "@checkers/user";
+import { addressValidCheck } from "@checkers/address";
 import { selfUserSchema } from "@schemas/user";
 import { mustBeConnected } from "@security/mustBeConnected";
 
@@ -51,6 +52,18 @@ export const PATCH = (method: Methods, path: string) => mustBeConnected({ pickup
 			...userExistCheck.preCompletions.mustExist
 		},
 		new IHaveSentThis(NotFoundHttpException.code, "user.notfound")
+	)
+	.check(
+		addressValidCheck,
+		{
+			input: p => p("body").address || "",
+			result: "address.valid",
+			catch: () => {
+				throw new BadRequestHttpException("user.address.invalid");
+			}
+		},
+		new IHaveSentThis(BadRequestHttpException.code, "user.address.invalid")
+
 	)
 	.handler(
 		async ({ pickup }) => {
