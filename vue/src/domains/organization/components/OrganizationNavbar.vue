@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { useOrganizationUserStore } from "@/domains/organization/stores/organizationUser";
 
-const { ORGANIZATION_MANAGE_USER, ORGANIZATION_GET_PRODUCT_SHEET, ORGANIZATION_GET_WAREHOUSE, ORGANIZATION_EDIT } = routerPageName;
+const { 
+	ORGANIZATION_MANAGE_USER,
+	ORGANIZATION_GET_PRODUCT_SHEET,
+	ORGANIZATION_GET_WAREHOUSE, ORGANIZATION_EDIT 
+} = routerPageName;
 const route = useRoute();
 const organizationUserStore = useOrganizationUserStore();
 </script>
