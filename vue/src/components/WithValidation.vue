@@ -1,10 +1,11 @@
 <script setup lang="ts">
 interface Props {
 	title: string,
-	content?: string
+	content?: string,
+	class?: HTMLElement["className"]
 }
 
-defineProps<Props>();
+const props = defineProps<Props>();
 
 const emit = defineEmits<{
 	validate: []
@@ -14,7 +15,10 @@ const emit = defineEmits<{
 <template>
 	<ThePopup class="flex flex-col gap-4">
 		<template #trigger="{ open }">
-			<div @click="open">
+			<div
+				:class="props.class"
+				@click="open"
+			>
 				<slot />
 			</div>
 		</template>
@@ -24,7 +28,10 @@ const emit = defineEmits<{
 				{{ title }}
 			</h2>
 
-			<p v-if="content" class="text-base">
+			<p
+				v-if="content"
+				class="text-base"
+			>
 				{{ content }}
 			</p>
 

@@ -33,7 +33,7 @@ if (process.argv.includes("--category")) {
 	if (process.argv.includes("--with-parent")) {
 		const parentCategories = await repeater(5, makeParentCategory);
 		await Promise.all(categories.map(category => makeCategoryToParentCategory(
-			category.id, parentCategories[Math.floor(Math.random() * parentCategories.length)].id
+			category.name, parentCategories[Math.floor(Math.random() * parentCategories.length)].name
 		)));
 	}
 
@@ -45,7 +45,7 @@ if (process.argv.includes("--category")) {
 		
 		await Promise.all(productSheets.map(
 			productSheet => makeProductSheetToCategory(
-				productSheet.id, categories[Math.floor(Math.random() * categories.length)].id
+				productSheet.id, categories[Math.floor(Math.random() * categories.length)].name
 			)
 		));
 	}

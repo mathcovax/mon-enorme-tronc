@@ -15,7 +15,7 @@ export interface TextInputDef extends BaseInputDef {
 
 export const TextInput = defineComponent({
 	props: [
-		"label", "modelValue", "zodSchema", "name", "placeholder", "formId"
+		"label", "modelValue", "zodSchema", "name", "placeholder", "formId", "inputProps"
 	],
 	setup(props: TextInputProps, { expose, emit }) {
 		const toValidated = ref(false);
@@ -68,6 +68,7 @@ export const TextInput = defineComponent({
 				h(
 					PrimaryInput, 
 					{
+						...props.inputProps,
 						type: "text",
 						id: `${props.name}-${props.formId}`,
 						modelValue: props.modelValue,

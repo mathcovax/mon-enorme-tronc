@@ -1,6 +1,7 @@
 import { MockPrisma } from "@test/mocks/providers";
 import { duploTesting } from "@test/setup";
 import { POST } from ".";
+import { categoryData } from "@test/data/category";
 
 describe("POST /category", () => {
 	beforeEach(() => {
@@ -29,7 +30,7 @@ describe("POST /category", () => {
 	});
 
 	it("post category with used name", async () => {
-		const spy = vi.fn(() => undefined);
+		const spy = vi.fn(() => categoryData);
 		MockPrisma.set("category", "create", spy);
 
 		const res = await duploTesting

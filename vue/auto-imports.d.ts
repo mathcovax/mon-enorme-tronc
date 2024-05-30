@@ -80,6 +80,7 @@ declare global {
   const useRouteQuery: typeof import('./src/composables/useRouteQuery')['useRouteQuery']
   const useRouter: typeof import('vue-router')['useRouter']
   const useSearchAddresses: typeof import('./src/composables/useSearchAddress')['useSearchAddresses']
+  const useSearchCategories: typeof import('./src/composables/useSearchCategories')['useSearchCategories']
   const useSlots: typeof import('vue')['useSlots']
   const useUserStore: typeof import('./src/stores/user')['useUserStore']
   const watch: typeof import('vue')['watch']

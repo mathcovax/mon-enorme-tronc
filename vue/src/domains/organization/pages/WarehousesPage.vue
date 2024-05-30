@@ -72,7 +72,7 @@ async function submitPatch() {
 function openPopup(warehouse: Warehouse) {
 	warehouseValues.warehouse.value = warehouse;
 	warehouseValues.name.value = warehouse.name;
-	warehouseValues.address.value = warehouse.address;
+	warehouseValues.address.value = { identifier: warehouse.address, label: warehouse.address };
 	popup.value?.open();
 }
 

@@ -1,4 +1,5 @@
-import { categoryExistCheck, inputCategory } from "@checkers/category";
+import { categoryExistCheck } from "@checkers/category";
+import { categorySchema } from "@schemas/category";
 import { hasPrimordialRole } from "@security/hasPrimordialRole";
 
 /* METHOD : POST, PATH : /category */
@@ -13,9 +14,7 @@ export const POST = (method: Methods, path: string) => hasPrimordialRole({ optio
 	.check(
 		categoryExistCheck,
 		{
-			input: p => inputCategory.name(
-				p("body").name
-			),
+			input: p => p("body").name,
 			result: "category.notfound",
 			catch: () => {
 				throw new ConflictHttpException("category.alreadyExist");
@@ -27,14 +26,14 @@ export const POST = (method: Methods, path: string) => hasPrimordialRole({ optio
 		async ({ pickup }) => {
 			const { name, disabled } = pickup("body");
 			
-			await prisma.category.create({
+			const category = await prisma.category.create({
 				data: {
 					name,
 					disabled
 				}
 			});
 
-			throw new CreatedHttpException("category.created");
+			throw new CreatedHttpException("category.created", category);
 		},
-		new IHaveSentThis(CreatedHttpException.code, "category.created")
+		new IHaveSentThis(CreatedHttpException.code, "category.created", categorySchema)
 	);

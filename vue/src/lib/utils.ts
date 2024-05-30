@@ -61,6 +61,11 @@ export type Category = GetResponseByInfo<
   "categories"
 >["body"][number];
 
+export type ParentCategory = GetResponseByInfo<
+  GetDef<"GET", "/parent-categories">,
+  "parentCategories"
+>["body"][number];
+
 export type OrganizationUser = GetResponseByInfo<
   GetDef<"GET", "/organization/{organizationId}/users">,
   "organization.users"
@@ -79,3 +84,17 @@ export type Warehouse = GetResponseByInfo<
 	GetDef<"GET", "/organization/{organizationId}/warehouses">,
 	"warehouses.found"
 >["body"][number];
+
+export type NavigationItem = GetResponseByInfo<
+	GetDef<"GET", "/navigation-items">,
+	"navigationItems"
+>["body"][number];
+
+
+export type NavigationItemType = NavigationItem["type"];
+
+export const navigationItemType: TuplifyUnion<NavigationItemType> = [
+	"PARENT_CATEGORY",
+	"CATEGORY",
+	"LINK"
+];

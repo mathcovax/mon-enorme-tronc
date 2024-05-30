@@ -70,6 +70,7 @@ export default {
 				disabled: {
 					desc: "Désactiver la catégorie"
 				},
+				selectImage: "Sélectionner une image",
 				submit: "Valider",
 			},
 			table: {
@@ -111,6 +112,30 @@ export default {
 			searchPlaceholder: "Chercher un entrepôt",
 			placeholder: {
 				name: "nom de l'entrepôt"
+			}
+		},
+		[routerPageName.CONTENT_PANEL_PARENT_CATEGORIES]: {
+			label: {
+				name: "Nom de la catégorie parent",
+				linkCategories: "Categories associées",
+				placeholder: "Nom d'une catégorie"
+			},
+			table: {
+				name: "Nom catégorie parent",
+				searchPlaceholder: "Chercher par le nom de la catégorie parent",
+			}
+		},
+		[routerPageName.CONTENT_PANEL_NAVIGATION_BAR]: {
+			label: {
+				priority: "Priorité",
+				select: "Selectioner",
+			},
+			table: {
+				linked: "Lier",
+			},
+			popup: {
+				title: "Voulez-vous vraiment le supprimer ?",
+				content: "Si vous validez, cet élément de la barre de navigation sera supprimé définitivement."
 			}
 		},
 		notFound: {
@@ -225,6 +250,9 @@ export default {
 		createdAt: "Date de création",
 		updatedAt: "Date de modification",
 		categories: "Categories",
+		image: "Image",
+		type: "Type",
+		title: "Titre"
 	},
 	placeholder: {
 		address: "Cherchez votre adresse",
@@ -245,6 +273,11 @@ export default {
 		delete: "Supprimer",
 		back: "Retour",
 		backToHome: "Retourner à l'accueil",
+	},
+	navigationItemType: {
+		PARENT_CATEGORY: "Catégorie parent",
+		CATEGORY: "Catégorie",
+		LINK: "Lien",
 	},
 	response: {
 		organization: {
@@ -278,6 +311,13 @@ export default {
 			notfound: "l'entrepôt n'existe pas.",
 			edited: "l'entrepôt a correctement été édité",
 			created: "l'entrepôt a correctement été créé"
+		},
+		parentCategory: {
+			name: {
+				alreadyUse: "Une catégorie parent portant ce nom éxiste déjà."
+			},
+			created: "La catégorie parent a correctement été créée.",
+			edited: "La catégorie parent a correctement été modifiée.",
 		}
 	}
 };

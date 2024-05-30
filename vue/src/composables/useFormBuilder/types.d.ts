@@ -17,6 +17,8 @@ export interface BaseInputDef {
 	label?: string
 	zodSchema?: ZodType
 	cols?: number
+	inputProps?: Record<string, unknown>
+	disabled?: boolean
 }
 
 export interface InputProps<modelValueInput = unknown> {
@@ -25,6 +27,7 @@ export interface InputProps<modelValueInput = unknown> {
 	zodSchema?: ZodType
 	name: string
 	formId: string
+	inputProps: Record<string, unknown>
 }
 
 export type FormInputDef =
@@ -59,8 +62,8 @@ type ExtractCustomDef<
 
 type CustomDefToSlots<CustomDef extends [string, CustomInputDef]> =
 	CustomDef extends [infer prop, infer def]
-	? { [p in prop]?: (props: SlotProps<def["defaultValue"]>) => never }
-	: never
+		? { [p in prop]?: (props: SlotProps<def["defaultValue"]>) => never }
+		: never
 
 type UnionToIntersection<U> =
 	(U extends unknown ? (x: U) => void : never) extends ((x: infer I) => void) ? I : never
@@ -80,35 +83,46 @@ export type FormInputToRecordRef<
 	formInputs extends Record<string, FormInputDef | Ref<FormInputDef>>
 > = {
 		[name in keyof formInputs as name]: Ref<
-			GetValue<formInputs[name]>["defaultValue"] extends undefined
-			? (
-				GetValue<formInputs[name]>["type"] extends "text"
-				? string
-				: GetValue<formInputs[name]>["type"] extends "number"
-				? number
-				: GetValue<formInputs[name]>["type"] extends "combo"
-				? ItemComboBox
-				: GetValue<formInputs[name]>["type"] extends "checkbox"
-				? boolean
-				: GetValue<formInputs[name]>["type"] extends "select"
-				? string
-				: GetValue<formInputs[name]>["type"] extends "textarea"
-				? string
-				: GetValue<formInputs[name]>["type"] extends "date"
-				? string
-				: GetValue<formInputs[name]>["type"] extends "radio"
-				? string
-				: undefined
+			(
+				unknown extends GetValue<formInputs[name]>["defaultValue"]
+					? (
+						GetValue<formInputs[name]>["type"] extends "text"
+						? string
+						: GetValue<formInputs[name]>["type"] extends "number"
+						? number
+						: GetValue<formInputs[name]>["type"] extends "combo"
+						? ItemComboBox
+						: GetValue<formInputs[name]>["type"] extends "checkbox"
+						? boolean
+						: GetValue<formInputs[name]>["type"] extends "select"
+						? string
+						: GetValue<formInputs[name]>["type"] extends "textarea"
+						? string
+						: GetValue<formInputs[name]>["type"] extends "date"
+						? string
+						: GetValue<formInputs[name]>["type"] extends "radio"
+						? string
+						: undefined
+					) | undefined
+					: GetValue<formInputs[name]>["defaultValue"]
+			) | (
+				GetValue<formInputs[name]>["disabled"] extends boolean
+					? undefined 
+					: never 
 			)
-			: GetValue<formInputs[name]>["defaultValue"]
-		>
+		> 
 	}
 
 export type ResultCheckForm<
 	formInputs extends Record<string, FormInputDef | Ref<FormInputDef>>
 > = {
-		[name in keyof formInputs as name]:
+	[name in keyof formInputs as name]: (
 		GetValue<formInputs[name]>["zodSchema"] extends ZodType
-		? ZodInfer<GetValue<formInputs[name]>["zodSchema"]>
-		: GetValue<formInputs[name]>["defaultValue"]
-	}
+			? ZodInfer<GetValue<formInputs[name]>["zodSchema"]>
+			: GetValue<formInputs[name]>["defaultValue"]
+	) | (
+		GetValue<formInputs[name]>["disabled"] extends boolean 
+			? undefined 
+			: never 
+	)
+}

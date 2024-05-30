@@ -9,7 +9,8 @@ const $pt = usePageTranslate();
 const { 
 	CategoryForm: CreateCategoryForm, 
 	checkCategoryForm: checkCreateCategoryForm, 
-	resetCategoryForm: resetCreateCategoryForm 
+	resetCategoryForm: resetCreateCategoryForm,
+	valuesCategoryForm: valuesCreateCategoryForm,
 } = useCategoryForm();
 const { 
 	CategoryForm: PatchCategoryForm, 
@@ -30,25 +31,69 @@ const cols: BigTableColDef<Category>[] = [
 		title: $pt("table.col.disabled"),
 		slotName: "disabled", 
 	},
+	{
+		title: $t("label.image"),
+		slotName: "image", 
+	},
 ];
+
+const inputFileCreate = ref<null | HTMLInputElement>(null);
+function addImageCreate() {
+	if (!inputFileCreate.value?.files?.[0]) {
+		return; 
+	}
+
+	valuesCreateCategoryForm.image.value = {
+		blob: inputFileCreate.value.files[0],
+		url: URL.createObjectURL(inputFileCreate.value.files[0])
+	};
+	
+	inputFileCreate.value.value = "";
+}
 
 async function submitCreate() {
 	const formFields = await checkCreateCategoryForm();
 
-	if (!formFields) {
+	if (!formFields || !valuesCreateCategoryForm.image.value?.blob) {
 		return; 
 	}
 
-	await duploTo.enriched
+	const result = await duploTo.enriched
 		.post(
 			"/category",
 			{ name: formFields.name, disabled: formFields.disabled }
 		)
-		.info("category.created", () => {
-			resetCreateCategoryForm();
-			getCategories(currentPage.value = 0, searchName.value = "");
-		})
 		.result;
+	
+	if (result.success && result.info === "category.created") {
+		const formData = new FormData();
+		formData.append("image", valuesCreateCategoryForm.image.value.blob);
+		
+		await duploTo
+			.put(
+				"/category/{categoryName}/image",
+				formData,
+				{ params: { categoryName: result.data.name } }
+			)
+			.result;
+
+		resetCreateCategoryForm();
+		getCategories(currentPage.value = 0, searchName.value = "");
+	}
+}
+
+const inputFilePatch = ref<null | HTMLInputElement>(null);
+function addImagePatch() {
+	if (!inputFilePatch.value?.files?.[0]) {
+		return; 
+	}
+
+	valuesPatchCategoryForm.image.value = {
+		blob: inputFilePatch.value.files[0],
+		url: URL.createObjectURL(inputFilePatch.value.files[0])
+	};
+	
+	inputFilePatch.value.value = "";
 }
 
 async function submitPatch() {
@@ -58,18 +103,32 @@ async function submitPatch() {
 		return; 
 	}
 
-	await duploTo.enriched
+	const result = await duploTo.enriched
 		.patch(
 			"/category/{categoryName}",
 			{ name: formFields.name, disabled: formFields.disabled },
 			{ params: { categoryName: formFields.oldName } }
 		)
-		.info("category.edited", () => {
-			popup.value?.close();
-			resetPatchCategoryForm();
-			getCategories(currentPage.value, searchName.value);
-		})
 		.result;
+	
+	if (result.success && result.info === "category.edited") {
+		if (valuesPatchCategoryForm.image.value?.blob) {
+			const formData = new FormData();
+			formData.append("image", valuesPatchCategoryForm.image.value.blob);
+		
+			await duploTo
+				.put(
+					"/category/{categoryName}/image",
+					formData,
+					{ params: { categoryName: formFields.name } }
+				)
+				.result;
+		}
+
+		popup.value?.close();
+		resetPatchCategoryForm();
+		getCategories(currentPage.value, searchName.value);
+	}
 }
 
 function next() {
@@ -90,6 +149,7 @@ function openPopup(category: Category) {
 	valuesPatchCategoryForm.oldName.value = category.name;
 	valuesPatchCategoryForm.name.value = category.name;
 	valuesPatchCategoryForm.disabled.value = category.disabled;
+	valuesPatchCategoryForm.image.value = { url: category.imageUrl || "" };
 	popup.value?.open();
 }
 
@@ -106,8 +166,35 @@ getCategories(currentPage.value, searchName.value);
 	<div class="w-full flex flex-col items-center p-6 gap-10">
 		<CreateCategoryForm
 			@submit="submitCreate"
-			class="max-w-[500px] w-[80%] items-center"
+			class="max-w-[500px] w-[80%]"
 		>
+			<template #image="{modelValue}">
+				<div class="flex flex-col items-start gap-3">
+					<input
+						ref="inputFileCreate"
+						type="file"
+						class="fixed top-full left-full"
+						accept="image/png, image/jpeg"
+						@input="addImageCreate"
+					>
+
+					<SecondaryButton
+						type="button"
+						@click="inputFileCreate?.click()"
+					>
+						<TheIcon icon="plus" />
+						{{ $pt("form.selectImage") }}
+					</SecondaryButton>
+
+					<div
+						v-if="modelValue"
+						class="aspect-square overflow-hidden w-[100px]"
+					>
+						<img :src="modelValue.url">
+					</div>
+				</div>
+			</template>
+
 			<PrimaryButton
 				type="submit"
 				class="col-span-12"
@@ -140,6 +227,12 @@ getCategories(currentPage.value, searchName.value);
 						}"
 					/>
 				</template>
+
+				<template #image="{item}">
+					<div class="aspect-square overflow-hidden w-[30px]">
+						<img :src="item.imageUrl || ''">
+					</div>
+				</template>
 			</BigTable>
 		</div>
 	</div>
@@ -149,12 +242,39 @@ getCategories(currentPage.value, searchName.value);
 		class="max-w-[500px] w-[80%]"
 	>
 		<template #popupContent>
-			<PatchCategoryForm
-				@submit="submitPatch"
-				class="items-center"
-			>
+			<PatchCategoryForm @submit="submitPatch">
 				<template #oldName="{modelValue}">
 					<span class="text-center">{{ $pt("form.oldName.label", { currentName: modelValue }) }}</span>
+				</template>
+
+				<template #image="{modelValue}">
+					<div class="flex flex-col items-start gap-3">
+						<input
+							ref="inputFilePatch"
+							type="file"
+							class="fixed top-full left-full"
+							accept="image/png, image/jpeg"
+							@input="addImagePatch"
+						>
+
+						<SecondaryButton
+							type="button"
+							@click="inputFilePatch?.click()"
+						>
+							<TheIcon icon="plus" />
+							{{ $pt("form.selectImage") }}
+						</SecondaryButton>
+
+						<div
+							v-if="modelValue"
+							class="aspect-square overflow-hidden w-[100px]"
+						>
+							<img
+								:src="modelValue.url"
+								class="col-span-1 row-span-1"
+							>
+						</div>
+					</div>
 				</template>
 
 				<PrimaryButton

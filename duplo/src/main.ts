@@ -29,7 +29,7 @@ export {
 //@ts-expect-error var 'global' cause type error.
 export const multipart = global.multipart = duplo.use(
 	duploMultipart,
-	{ uploadFolder: "/tmp/duplojsUpload" }
+	{ uploadFolder: "/tmp/duplojsUpload", maxSize: 5000000 }
 );
 duplo.use(
 	duploSwagger,

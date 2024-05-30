@@ -64,25 +64,28 @@ enum organization_role {
 }
 
 model category {
-    id              String                        @id @default(uuid())
-    name            String                        @unique @db.VarChar(255)
-    disabled        Boolean                       @default(false)
-    parent_category category_to_parent_category[]
-    product_sheet   product_sheet_to_category[]
+    name             String                        @unique @db.VarChar(255)
+    disabled         Boolean                       @default(false)
+    imageUrl         String?                       @db.VarChar(400)
+    imageKey         String?                       @db.VarChar(255)
+    parentCategories category_to_parent_category[]
+    productSheets    product_sheet_to_category[]
+    navigationItem   navigation_item[]
 }
 
 model parent_category {
-    id       String                        @id @default(uuid())
-    name     String                        @db.VarChar(255)
-    category category_to_parent_category[]
+    name           String                        @unique @db.VarChar(255)
+    categories     category_to_parent_category[]
+    navigationItem navigation_item[]
 }
 
 model category_to_parent_category {
-    id               String          @id @default(uuid())
-    categoryId       String
-    parentCategoryId String
-    category         category        @relation(fields: [categoryId], references: [id])
-    parentCategory   parent_category @relation(fields: [parentCategoryId], references: [id])
+    categoryName       String
+    parentCategoryName String
+    category           category        @relation(fields: [categoryName], references: [name])
+    parentCategory     parent_category @relation(fields: [parentCategoryName], references: [name])
+
+    @@unique([categoryName, parentCategoryName])
 }
 
 model product_sheet {
@@ -91,7 +94,7 @@ model product_sheet {
     description      String                      @db.Text
     shortDescription String                      @db.VarChar(255)
     price            Float
-    category         product_sheet_to_category[]
+    categories       product_sheet_to_category[]
     createdAt        DateTime                    @default(now())
     updatedAt        DateTime                    @updatedAt
     images           image_product_sheet[]
@@ -100,11 +103,12 @@ model product_sheet {
 }
 
 model product_sheet_to_category {
-    id             String        @id @default(uuid())
     productSheetId String
-    categoryId     String
+    categoryName   String
     productSheet   product_sheet @relation(fields: [productSheetId], references: [id])
-    category       category      @relation(fields: [categoryId], references: [id])
+    category       category      @relation(fields: [categoryName], references: [name])
+
+    @@unique([categoryName, productSheetId])
 }
 
 model image_product_sheet {
@@ -124,4 +128,22 @@ model warehouse {
     address        String       @db.Text
     organization   organization @relation(fields: [organizationId], references: [id])
     organizationId String
+}
+
+model navigation_item {
+    id                 String               @id @default(uuid())
+    type               navigation_item_type
+    priority           Int
+    parentCategoryName String?
+    parentCategory     parent_category?     @relation(fields: [parentCategoryName], references: [name])
+    categoryName       String?
+    category           category?            @relation(fields: [categoryName], references: [name])
+    url                String?              @db.VarChar(400)
+    title              String?              @unique @db.VarChar(30)
+}
+
+enum navigation_item_type {
+    PARENT_CATEGORY
+    CATEGORY
+    LINK
 }

@@ -19,7 +19,7 @@ describe("POST /product-sheet/{productSheetId}/category", () => {
 			.setDefaultFloorValue({ productSheet: productSheetData })
 			.setRequestProperties({
 				body: {
-					categoryId: "1234"
+					categoryName: "1234"
 				}
 			})
 			.mockChecker(
@@ -37,7 +37,7 @@ describe("POST /product-sheet/{productSheetId}/category", () => {
 		expect(spy).lastCalledWith({
 			data: {
 				productSheetId: "",
-				categoryId: "1234"
+				categoryName: "1234"
 			}
 		});
 	});
@@ -51,7 +51,7 @@ describe("POST /product-sheet/{productSheetId}/category", () => {
 			.setDefaultFloorValue({ productSheet: productSheetData })
 			.setRequestProperties({
 				body: {
-					categoryId: "1234"
+					categoryName: "1234"
 				}
 			})
 			.mockChecker(
@@ -60,7 +60,7 @@ describe("POST /product-sheet/{productSheetId}/category", () => {
 			)
 			.launch();
 
-		expect(res.information).toBe("product.categories.limit");
+		expect(res.information).toBe("productSheet.categories.limit");
 		expect(spy).lastCalledWith({
 			where: {
 				productSheetId: ""
@@ -75,7 +75,7 @@ describe("POST /product-sheet/{productSheetId}/category", () => {
 			.setDefaultFloorValue({ productSheet: productSheetData })
 			.setRequestProperties({
 				body: {
-					categoryId: "1234"
+					categoryName: "1234"
 				}
 			})
 			.mockChecker(

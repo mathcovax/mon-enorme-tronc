@@ -18,7 +18,7 @@ export interface CheckboxInputDef extends BaseInputDef {
 
 export const CheckboxInput = defineComponent({
 	props: [
-		"label", "modelValue", "zodSchema", "name", "desc", "reverse", "formId"
+		"label", "modelValue", "zodSchema", "name", "desc", "reverse", "formId", "inputProps"
 	],
 	setup(props: CheckboxInputProps, { expose, emit }) {
 		const toValidated = ref(false);
@@ -77,6 +77,7 @@ export const CheckboxInput = defineComponent({
 						h(
 							TheCheckbox, 
 							{
+								...props.inputProps,
 								name: `${props.name}-${props.formId}`,
 								id: `${props.name}-${props.formId}`,
 								checked: props.modelValue,

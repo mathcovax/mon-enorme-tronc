@@ -29,7 +29,6 @@ export const POST = (method: Methods, path: string) =>
 		)
 		.process(
 			...multipart({
-				maxSize: 5000000,
 				files: {
 					image: {
 						max: 1,

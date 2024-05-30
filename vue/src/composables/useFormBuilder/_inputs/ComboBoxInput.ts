@@ -28,7 +28,7 @@ export interface ComboBoxInputDef extends BaseInputDef {
 
 export const ComboBoxInput = defineComponent({
 	props: [
-		"label", "modelValue", "zodSchema", "name", "textButton", "placeholder", "emptyLabel", "items", "onUpdateSearchTerm", "formId"
+		"label", "modelValue", "zodSchema", "name", "textButton", "placeholder", "emptyLabel", "items", "onUpdateSearchTerm", "formId", "inputProps"
 	],
 	setup(props: ComboBoxInputProps, { expose, emit }) {
 		const toValidated = ref(false);
@@ -81,6 +81,7 @@ export const ComboBoxInput = defineComponent({
 				h(
 					PrimaryComboBox, 
 					{
+						...props.inputProps,
 						id: `${props.name}-${props.formId}`,
 						items: props.items as {[P in keyof ItemComboBox]: ItemComboBox[P]}[],
 						getLabel: (i: unknown) => (i as ItemComboBox).label,
