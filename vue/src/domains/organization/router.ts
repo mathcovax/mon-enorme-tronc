@@ -2,6 +2,7 @@ import type { RouteRecordRaw } from "vue-router";
 
 export const routerPageNameOrganization = Object.freeze({
 	ORGANIZATION_HOME: "organization",
+	ORGANIZATION_EDIT: "organization-edit",
 	ORGANIZATION_MANAGE_USER: "organization-manage-user",
 	ORGANIZATION_CREATE_PRODUCT_SHEET: "create-product-sheet",
 	ORGANIZATION_EDIT_PRODUCT_SHEET: "edit-product-sheet",
@@ -18,6 +19,11 @@ export default (): RouteRecordRaw[] => [
 				name: routerPageNameOrganization.ORGANIZATION_HOME,
 				path: "/organization/:organizationId/dashboard",
 				component: () => import("./pages/OrganizationPage.vue"),
+			},
+			{
+				name: routerPageNameOrganization.ORGANIZATION_EDIT,
+				path: "/organization/:organizationId/manage",
+				component: () => import("./pages/EditOrganization.vue"),
 			},
 			{
 				name: routerPageNameOrganization.ORGANIZATION_MANAGE_USER,

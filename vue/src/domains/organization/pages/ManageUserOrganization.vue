@@ -138,7 +138,7 @@ watch(searchEmail, () => getOrganizationUsers(currentPage.value = 0, searchEmail
 </script>
 
 <template>
-	<div class="w-full flex flex-col items-center p-6 gap-6">
+	<div class="flex flex-col items-center w-full gap-6 p-6">
 		<FormOrganizationUserAdd
 			@submit="submit"
 			class="max-w-[500px] w-[80%]"

@@ -6,6 +6,8 @@ export const organizationSchema = zod.object({
 	label: zod.string().nullable(),
 	ownerId: zod.string(),
 	suspended: zod.boolean(),
+	logoKey: zod.string().nullable(),
+	logoUrl: zod.string().nullable()
 });
 
 export const organizationRolesTuple: TuplifyUnion<organization_role> = [

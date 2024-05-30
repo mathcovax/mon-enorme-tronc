@@ -5,7 +5,7 @@ import { extname } from "path";
 import { uuidv7 } from "uuidv7";
 
 /* METHOD : POST, PATH : /product-sheet/{productSheetId}/image */
-export const POST = (method: Methods, path: string) => 
+export const POST = (method: Methods, path: string) =>
 	hasOrganizationRoleByProductSheetId({ pickup: ["productSheet"] })
 		.declareRoute(method, path)
 		.cut(

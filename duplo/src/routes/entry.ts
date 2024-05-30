@@ -27,7 +27,7 @@ export const contentPanelEntry = hasPrimordialRole({ options: { primordialRole: 
 	);
 
 export const organizationOwnerEntry = mustBeConnected({ pickup: ["accessTokenContent"] })
-	.declareRoute("GET", ["/entry/organization/{organizationId}/manage-user"])
+	.declareRoute("GET", ["/entry/organization/{organizationId}/manage-user", "/entry/organization/{organizationId}/manage"])
 	.extract({
 		params: {
 			organizationId: zod.string(),

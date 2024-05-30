@@ -10,7 +10,7 @@ import OrganizationNavbar from "../components/OrganizationNavbar.vue";
 		<div class="flex flex-col h-[100vh]">
 			<OrganizationHeader />
 
-			<main class="p-6 flex flex-1 flex-col gap-4 lg:gap-6 bg-whiteless overflow-y-auto">
+			<main class="flex flex-col flex-1 gap-4 p-4 lg:p-6 lg:gap-6 bg-whiteless">
 				<RouterView />
 			</main>
 		</div>
