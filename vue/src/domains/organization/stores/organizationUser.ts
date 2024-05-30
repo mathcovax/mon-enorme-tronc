@@ -39,10 +39,13 @@ export const useOrganizationUserStore = defineStore(
 			return true;
 		}
 
-		setTimeout(fetchOrganizationValue);
+		function resetOrganizationValue() {
+			organizationUser.value = null;
+		}
 
 		return {
 			fetchOrganizationValue,
+			resetOrganizationValue,
 			hasRole,
 			organizationUser
 		};
