@@ -3,7 +3,11 @@ import TheToaster from "@/components/ui/toast/TheToaster.vue";
 </script>
 
 <template>
-	<RouterView />
+	<TheLoader />
 
-	<TheToaster />
+	<div class="w-full h-[100vh] overflow-auto">
+		<RouterView />
+	</div>
+
+	<TheToaster	/>
 </template>
