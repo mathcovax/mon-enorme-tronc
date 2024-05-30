@@ -70,13 +70,13 @@ model category {
     imageKey         String?                       @db.VarChar(255)
     parentCategories category_to_parent_category[]
     productSheets    product_sheet_to_category[]
-    navigation_item  navigation_item[]
+    navigationItem   navigation_item[]
 }
 
 model parent_category {
-    name            String                        @unique @db.VarChar(255)
-    categories      category_to_parent_category[]
-    navigation_item navigation_item[]
+    name           String                        @unique @db.VarChar(255)
+    categories     category_to_parent_category[]
+    navigationItem navigation_item[]
 }
 
 model category_to_parent_category {
