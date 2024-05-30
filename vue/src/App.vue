@@ -3,7 +3,9 @@ import TheToaster from "@/components/ui/toast/TheToaster.vue";
 </script>
 
 <template>
+	<TheSpinner />
+
 	<RouterView />
 
-	<TheToaster />
+	<TheToaster	/>
 </template>
