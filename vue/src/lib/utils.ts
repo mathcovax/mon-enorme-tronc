@@ -42,12 +42,17 @@ export type Organization = GetResponseByInfo<
   "organizations"
 >["body"][number];
 
-export type User = GetResponseByInfo<
+export type SelfUser = GetResponseByInfo<
 	GetDef<"GET", "/user">,
 	"user"
 >["body"]
 
-export type PrimordialRole = User["primordialRole"];
+export type User = GetResponseByInfo<
+	GetDef<"GET", "/users">,
+	"users"
+>["body"][number]
+
+export type PrimordialRole = SelfUser["primordialRole"];
 
 export const primordialRoles: TuplifyUnion<PrimordialRole> = [
 	"CUSTOMER",

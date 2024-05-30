@@ -1,5 +1,5 @@
 import { inputUser, userExistCheck } from "@checkers/user";
-import { userSchema } from "@schemas/user";
+import { selfUserSchema } from "@schemas/user";
 import { mustBeConnected } from "@security/mustBeConnected";
 
 /* METHOD : GET, PATH : /user */
@@ -19,9 +19,15 @@ export const GET = (method: Methods, path: string) => mustBeConnected({ pickup: 
 		async ({ pickup }) => {
 			const user = pickup("user");
 
-			throw new OkHttpException("user", user);
+			const userOrganizationCount = await prisma.user_to_organization.count({
+				where: {
+					userId: user.id
+				}
+			});
+
+			throw new OkHttpException("user", { ...user, hasOrganization: !!userOrganizationCount });
 		},
-		new IHaveSentThis(OkHttpException.code, "user", userSchema)
+		new IHaveSentThis(OkHttpException.code, "user", selfUserSchema)
 	);
 
 /* METHOD : PATCH, PATH : /user */
