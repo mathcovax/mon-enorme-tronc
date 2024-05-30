@@ -70,7 +70,7 @@ export default {
 				disabled: {
 					desc: "Désactiver la catégorie"
 				},
-				selectImage: "Selectioner une image",
+				selectImage: "Sélectionner une image",
 				submit: "Valider",
 			},
 			table: {
@@ -116,26 +116,26 @@ export default {
 		},
 		[routerPageName.CONTENT_PANEL_PARENT_CATEGORIES]: {
 			label: {
-				name: "Nom de la catégori parent",
-				linkCategories: "Categories associer",
-				placeholder: "Nom d'une categorie"
+				name: "Nom de la catégorie parent",
+				linkCategories: "Categories associées",
+				placeholder: "Nom d'une catégorie"
 			},
 			table: {
-				name: "Nom catégori parent",
-				searchPlaceholder: "Chercher par le nom de la catégory parent.",
+				name: "Nom catégorie parent",
+				searchPlaceholder: "Chercher par le nom de la catégore parent",
 			}
 		},
 		[routerPageName.CONTENT_PANEL_NAVIGATION_BAR]: {
 			label: {
 				priority: "Priorité",
-				select: "Selectioné",
+				select: "Selectioner",
 			},
 			table: {
 				linked: "Lier",
 			},
 			popup: {
-				title: "Voulez vous vraiment le supprimer ?",
-				content: "Si vous valider, cette Ellement de la bar de navigation sera supprimer définitivement."
+				title: "Voulez-vous vraiment le supprimer ?",
+				content: "Si vous validez, cet élément de la barre de navigation sera supprimé définitivement."
 			}
 		},
 		notFound: {
@@ -276,7 +276,7 @@ export default {
 	},
 	navigationItemType: {
 		PARENT_CATEGORY: "Catégorie parent",
-		CATEGORY: "Categorie",
+		CATEGORY: "Catégorie",
 		LINK: "Lien",
 	},
 	response: {
@@ -314,10 +314,10 @@ export default {
 		},
 		parentCategory: {
 			name: {
-				alreadyUse: "Une catégory parent portant ce nom éxiste déjà."
+				alreadyUse: "Une catégorie parent portant ce nom éxiste déjà."
 			},
-			created: "La catégory parent a correctement étais créer.",
-			edited: "La catégory parent a correctement étais modifier.",
+			created: "La catégorie parent a correctement été créée.",
+			edited: "La catégorie parent a correctement été modifiée.",
 		}
 	}
 };
