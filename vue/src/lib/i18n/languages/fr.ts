@@ -122,7 +122,7 @@ export default {
 			},
 			table: {
 				name: "Nom catégorie parent",
-				searchPlaceholder: "Chercher par le nom de la catégore parent",
+				searchPlaceholder: "Chercher par le nom de la catégorie parent",
 			}
 		},
 		[routerPageName.CONTENT_PANEL_NAVIGATION_BAR]: {
