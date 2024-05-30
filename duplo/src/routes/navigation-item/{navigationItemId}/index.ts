@@ -27,10 +27,7 @@ export const PATCH = (method: Methods, path: string) =>
 			{
 				input: p => {
 					const navigationItem = p("body");
-					if (navigationItem.type === "CATEGORY") {
-						return navigationItem.categoryName;
-					}
-					return "";
+					return navigationItem.type === "CATEGORY" ? navigationItem.categoryName : "";
 				},
 				...categoryExistCheck.preCompletions.mustExist,
 				skip: p => p("body").type !== "CATEGORY"
@@ -42,10 +39,7 @@ export const PATCH = (method: Methods, path: string) =>
 			{
 				input: p => {
 					const navigationItem = p("body");
-					if (navigationItem.type === "PARENT_CATEGORY") {
-						return navigationItem.parentCategoryName;
-					}
-					return "";
+					return navigationItem.type === "PARENT_CATEGORY" ? navigationItem.parentCategoryName : "";
 				},
 				...parentCategoryExistCheck.preCompletions.mustExist,
 				skip: p => p("body").type !== "PARENT_CATEGORY"

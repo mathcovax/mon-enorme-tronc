@@ -63,7 +63,7 @@ export type Category = GetResponseByInfo<
 
 export type ParentCategory = GetResponseByInfo<
   GetDef<"GET", "/parent-categories">,
-  "parentCategory"
+  "parentCategories"
 >["body"][number];
 
 export type OrganizationUser = GetResponseByInfo<

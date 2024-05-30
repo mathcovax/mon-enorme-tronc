@@ -9,3 +9,13 @@ export const navigationItemData: navigation_item = {
 	url: null,
 	title: null
 };
+
+export const navigationItemCategoryData: navigation_item = {
+	id: "toto",
+	type: "CATEGORY", 
+	priority: 10,
+	categoryName: "test",
+	parentCategoryName: null,
+	url: null,
+	title: null
+};

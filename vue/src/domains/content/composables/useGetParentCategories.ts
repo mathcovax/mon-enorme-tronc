@@ -32,7 +32,7 @@ export function useGetParentCategories(withCategories?: boolean) {
 					signal: abortController.signal
 				}
 			)
-			.info("parentCategory", (data) => {
+			.info("parentCategories", (data) => {
 				parentCategories.value = data;
 			})
 			.then(() => abortController = undefined)

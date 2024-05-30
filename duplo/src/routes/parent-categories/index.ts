@@ -38,11 +38,11 @@ export const GET = (method: Methods, path: string) =>
 							} 
 						}
 						: undefined,
-					skip: 0 * page,
+					skip: 10 * page,
 					take: 10
 				});
 				
-				throw new OkHttpException("parentCategory", parentCategories);
+				throw new OkHttpException("parentCategories", parentCategories);
 			},
-			new IHaveSentThis(OkHttpException.code, "parentCategory", parentCategoryWithCategoriesNameSchema.array())
+			new IHaveSentThis(OkHttpException.code, "parentCategories", parentCategoryWithCategoriesNameSchema.array())
 		);
