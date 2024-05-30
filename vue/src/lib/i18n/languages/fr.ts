@@ -25,7 +25,7 @@ export default {
 		[routerPageName.USER_CART]: {
 			title: "Mon panier",
 			emptyTitle: "Votre panier est vide.",
-			emptySubtitle: "Commencez à ajouter des produits pour les retrouver ici",
+			emptySubtitle: "Commencez à ajouter des produits pour les retrouver ici.",
 			browseButton: "Parcourir les produits",
 		},
 		[routerPageName.ADMIN_PANEL_ORGANIZATIONS]: {
@@ -59,15 +59,15 @@ export default {
 			title: "Liste des utilisateurs",
 			form: {
 				primordialRole: {
-					label: "Role Primordial",
+					label: "Rôle Primordial",
 				},
 				muted: {
 					label: "Rendre muet",
 				},
 			},
 			table: {
-				searchPlaceholder: "Chercher une email",
-				searchPlaceholderRole: "Chercher par role",
+				searchPlaceholder: "Chercher un email",
+				searchPlaceholderRole: "Chercher par rôle",
 			},
 			btnClear: "Clear"
 		},
@@ -101,7 +101,7 @@ export default {
 				title: "Ajouter un utilisateur",
 			},
 			table: {
-				searchPlaceholder: "Chercher une email",
+				searchPlaceholder: "Chercher un email",
 			},
 		},
 		[routerPageName.ORGANIZATION_GET_PRODUCT_SHEET]: {
@@ -132,7 +132,7 @@ export default {
 			price: "Prix",
 			form: {
 				placeholder: "Chercher des catégories.",
-				image: "Image du produit.",
+				image: "Image du produit",
 				addImage: "Ajouter une image",
 			}
 		},
@@ -154,10 +154,10 @@ export default {
 			label: {
 				name: "Nom de la catégorie parent",
 				linkCategories: "Categories associées",
-				placeholder: "Nom d'une catégorie"
+				placeholder: "Nom de la catégorie"
 			},
 			table: {
-				name: "Nom catégorie parent",
+				name: "Nom de la catégorie parent",
 				searchPlaceholder: "Chercher par le nom de la catégorie parent",
 			}
 		},
@@ -303,7 +303,7 @@ export default {
 	role: {
 		CUSTOMER: "Client",
 		MODERATOR: "Modérateur",
-		CONTENTS_MASTER: "Géstionaire",
+		CONTENTS_MASTER: "Gestionaire",
 		ADMIN: "Administrateur"
 	},
 	organizationRole: {
@@ -321,11 +321,11 @@ export default {
 		submit: "Valider",
 		rule: {
 			required: "Champ obligatoire.",
-			maxLength: "Doit faire au maximum {value} caractères.",
+			maxLength: "Doit faire au plus {value} caractères.",
 			minLength: "Doit faire au moins {value} caractères.",
-			invalidEmail: "Cette email est invalide.",
+			invalidEmail: "Cet email est invalide.",
 			minAge: "Vous devez avoir au moins {value} ans.",
-			maxItems: "Vous pouvez en selectioner max {value}.",
+			maxItems: "Vous pouvez selectionner au plus {value} éléments.",
 			blobToLarge: "L'image est superirére a {value}.",
 		}
 	},
@@ -345,7 +345,7 @@ export default {
 		description: "Descritption",
 		createdAt: "Date de création",
 		updatedAt: "Date de modification",
-		categories: "Categories",
+		categories: "Catégories",
 		image: "Image",
 		type: "Type",
 		title: "Titre",
@@ -378,35 +378,35 @@ export default {
 	},
 	response: {
 		organization: {
-			alreadyExist: "Une organisation avec ce nom éxiste déjà.",
-			created: "L'organisation à correctement été créer.",
-			edited: "L'organisation à été modifiée avec succès.",
-			hasAlreadyUser: "Cette utilisateur est déja dans l'organization.",
+			alreadyExist: "Une organisation avec ce nom existe déjà.",
+			created: "L'organisation a correctement été créée.",
+			edited: "L'organisation a été modifiée avec succès.",
+			hasAlreadyUser: "Cette utilisateur est déjà dans l'organisation.",
 			user: {
-				add: "L'utilisateur a correctement étais ajouter.",
-				edited: "L'utilisateur a correctement étais modifier.",
-				deleted: "L'utilisateur a correctement étais supprimé."
+				add: "L'utilisateur a correctement été ajouté.",
+				edited: "L'utilisateur a correctement été modifié.",
+				deleted: "L'utilisateur a correctement été supprimé."
 			},
 			image: {
 				missing: "Aucune image n'a été sélectionnée.",
-				edited: "L'image à été ajouté à l'organization avec succès."
+				edited: "L'image a été ajouté à l'organisation avec succès."
 			}
 		},
 		user: {
-			edited: "L'utilisateur a bien été modifier.", 
+			edited: "L'utilisateur a bien été modifié.", 
 			notfound: "Utilisateur introuvable.",
-			alreadyOwner: "l'utilisateur est déjà owner d'une organisation."
+			alreadyOwner: "l'utilisateur est déjà propriétaire d'une organisation."
 		},
 		category: {
-			alreadyExist: "Le nom de catégory est déjà utilisais",
-			created: "La catégory a correctement étais créer.",
-			edited: "La catégory a correctement étais modifier.",
+			alreadyExist: "Le nom de catégorie est déjà utilisé",
+			created: "La catégorie a correctement été créée.",
+			edited: "La catégorie a correctement été modifiée.",
 			notfound: "La catégorie n'existe pas.",
 		},
 		productSheet: {
 			notfound: "La fiche produit n'existe pas.",
-			edited: "La fiche a correctement étais éditer.",
-			created: "La fiche a correctement étais créer."
+			edited: "La fiche a correctement été éditée.",
+			created: "La fiche a correctement été créée."
 		},
 		warehouse: {
 			notfound: "l'entrepôt n'existe pas.",
@@ -422,15 +422,15 @@ export default {
 		},
 		product: {
 			notfound: "Le produit n'existe pas.",
-			edited: "Le produit a correctement étais éditer.",
-			created: "Le produit a correctement étais créer.",
+			edited: "Le produit a correctement été modifié.",
+			created: "Le produit a correctement été créé.",
 			sku: {
-				alreadyUse: "Ce sku est déjà utilisais",
+				alreadyUse: "Ce sku est déjà utilisé.",
 			}
 		},
-		TYPE_ERROR: "L'une des donné envoyer est éroner. (Erreur provenant du site)",
-		NOTFOUND: "La route route utilisais n'existe pas. (Erreur provenant du site)",
-		INTERNAL_SERVER_ERROR: "Le serveur a eu un probléme. (Erreur provenant du site)",
-		WHAT_WAS_SENT_ERROR: "Le serveur a renvoyer n'importe quoi. (Erreur provenant du site)",
+		TYPE_ERROR: "L'une des données envoyées est erronée. (Erreur provenant du site)",
+		NOTFOUND: "La route utilisée n'existe pas. (Erreur provenant du site)",
+		INTERNAL_SERVER_ERROR: "Le serveur a eu un problème. (Erreur provenant du site)",
+		WHAT_WAS_SENT_ERROR: "Le serveur a renvoyé n'importe quoi. (Erreur provenant du site)",
 	}
 };
