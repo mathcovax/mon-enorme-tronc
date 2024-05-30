@@ -1,5 +1,6 @@
 import DuploTo from "@duplojs/to";
 import type { EnrichedDuploTo } from "./EnrichedDuploTo";
+import { loaderPush, type LoaderItem } from "../loader";
 
 declare global {
 	//@ts-expect-error useless error
@@ -8,6 +9,7 @@ declare global {
 
 interface InterceptorParams {
 	disabledLoader?: boolean
+	loaderItem?: LoaderItem
 	disabledToast?: boolean | string[]
 }
 
@@ -24,8 +26,17 @@ duploTo.setDefaultHeaders({
 	}
 });
 
+duploTo.setRequestInterceptor(
+	(requestObject, params) => {
+		if (params.disabledLoader !== true) {
+			params.loaderItem = loaderPush();
+		}
+		return requestObject;
+	}
+);
+
 duploTo.setResponseInterceptor(
-	(responseObject, request, params) => {
+	(responseObject, requestObject, params) => {
 		if (
 			params.disabledToast !== true && 
 			responseObject.success && 
@@ -40,6 +51,10 @@ duploTo.setResponseInterceptor(
 					errorToast($t(`response.${responseObject.info}`));
 				}
 			}
+		}
+
+		if (params.loaderItem) {
+			params.loaderItem.close();
 		}
 		
 		return responseObject;

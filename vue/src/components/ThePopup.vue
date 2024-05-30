@@ -22,16 +22,6 @@ const open = () => isOpen.value = true;
 const close = () => isOpen.value = false;
 
 defineExpose({ isOpen, open, close });
-
-onMounted(() => {
-	watch(isOpen, (value) => {
-		if (value) {
-			document.body.classList.add("overflow-hidden");
-		} else {
-			document.body.classList.remove("overflow-hidden");
-		}
-	}, { immediate: true });
-});
 </script>
 
 <template>

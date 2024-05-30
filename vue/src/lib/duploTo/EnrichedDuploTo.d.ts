@@ -58,23 +58,19 @@ export type response_1_1 = {
     info: "category.products";
 } & {body: response_body_1_1};
 
+export type parameters_2 = {
+    query?: {
+        address?: string | undefined;
+    } | undefined;
+}
+
+export type response_body_2_0 = string[]
+
 export type response_2_0 = {
-    code: 401;
-    ok: false;
-    info: "access.token.invalid";
-} & {body: undefined};
-
-export type response_2_1 = {
-    code: 403;
-    ok: false;
-    info: "user.role.invalid";
-} & {body: undefined};
-
-export type response_2_2 = {
-    code: 204;
+    code: 200;
     ok: true;
-    info: "entry.accepted";
-} & {body: undefined};
+    info?: undefined;
+} & {body: response_body_2_0};
 
 export type response_3_0 = {
     code: 401;
@@ -94,12 +90,6 @@ export type response_3_2 = {
     info: "entry.accepted";
 } & {body: undefined};
 
-export type parameters_4 = {
-    params: {
-        organizationId: string;
-    };
-}
-
 export type response_4_0 = {
     code: 401;
     ok: false;
@@ -107,27 +97,20 @@ export type response_4_0 = {
 } & {body: undefined};
 
 export type response_4_1 = {
+    code: 403;
+    ok: false;
+    info: "user.role.invalid";
+} & {body: undefined};
+
+export type response_4_2 = {
     code: 204;
     ok: true;
     info: "entry.accepted";
 } & {body: undefined};
 
-export type response_4_2 = {
-    code: 406;
-    ok: false;
-    info: "organization.hasNotUser";
-} & {body: undefined};
-
-export type response_4_3 = {
-    code: 403;
-    ok: false;
-    info: "user.role.organization.invalid";
-} & {body: undefined};
-
 export type parameters_5 = {
     params: {
         organizationId: string;
-        warehouseId?: string | undefined;
     };
 }
 
@@ -138,24 +121,18 @@ export type response_5_0 = {
 } & {body: undefined};
 
 export type response_5_1 = {
-    code: 401;
-    ok: false;
-    info: "entry.refuse";
-} & {body: undefined};
-
-export type response_5_2 = {
     code: 204;
     ok: true;
     info: "entry.accepted";
 } & {body: undefined};
 
-export type response_5_3 = {
+export type response_5_2 = {
     code: 406;
     ok: false;
     info: "organization.hasNotUser";
 } & {body: undefined};
 
-export type response_5_4 = {
+export type response_5_3 = {
     code: 403;
     ok: false;
     info: "user.role.organization.invalid";
@@ -164,7 +141,7 @@ export type response_5_4 = {
 export type parameters_6 = {
     params: {
         organizationId: string;
-        productSheetId?: string | undefined;
+        warehouseId?: string | undefined;
     };
 }
 
@@ -201,6 +178,7 @@ export type response_6_4 = {
 export type parameters_7 = {
     params: {
         organizationId: string;
+        productSheetId?: string | undefined;
     };
 }
 
@@ -222,7 +200,37 @@ export type response_7_2 = {
     info: "entry.accepted";
 } & {body: undefined};
 
+export type response_7_3 = {
+    code: 406;
+    ok: false;
+    info: "organization.hasNotUser";
+} & {body: undefined};
+
+export type response_7_4 = {
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+} & {body: undefined};
+
+export type parameters_8 = {
+    params: {
+        organizationId: string;
+    };
+}
+
 export type response_8_0 = {
+    code: 401;
+    ok: false;
+    info: "access.token.invalid";
+} & {body: undefined};
+
+export type response_8_1 = {
+    code: 401;
+    ok: false;
+    info: "entry.refuse";
+} & {body: undefined};
+
+export type response_8_2 = {
     code: 204;
     ok: true;
     info: "entry.accepted";
@@ -234,19 +242,11 @@ export type response_9_0 = {
     info: "entry.accepted";
 } & {body: undefined};
 
-export type parameters_10 = {
-    query?: {
-        address?: string | undefined;
-    } | undefined;
-}
-
-export type response_body_10_0 = string[]
-
 export type response_10_0 = {
-    code: 200;
+    code: 204;
     ok: true;
-    info?: undefined;
-} & {body: response_body_10_0};
+    info: "entry.accepted";
+} & {body: undefined};
 
 export type response_body_11_0 = ({
     type: "PARENT_CATEGORY";
@@ -334,7 +334,7 @@ export type response_13_4 = {
 
 export type parameters_14 = {
     params: {
-        organizationId: string;
+        imageProductSheetId: string;
     };
 }
 
@@ -345,31 +345,28 @@ export type response_14_0 = {
 } & {body: undefined};
 
 export type response_14_1 = {
+    code: 404;
+    ok: false;
+    info: "imageProductSheet.notfound";
+} & {body: undefined};
+
+export type response_14_2 = {
+    code: 204;
+    ok: true;
+    info: "imageProductSheet.deleted";
+} & {body: undefined};
+
+export type response_14_3 = {
     code: 406;
     ok: false;
     info: "organization.hasNotUser";
 } & {body: undefined};
 
-export type response_body_14_2 = {
-    id: string;
-    email: string;
-    lastname: string;
-    firstname: string;
-    organizationRole: "STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT" | "OWNER";
-}
-
-export type response_14_2 = {
-    code: 200;
-    ok: true;
-    info: "organization.user";
-} & {body: response_body_14_2};
-
-export type request_body_15 = {
-    email: string;
-    firstname: string;
-    lastname: string;
-    organizationRole: "STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT";
-}
+export type response_14_4 = {
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+} & {body: undefined};
 
 export type parameters_15 = {
     params: {
@@ -384,44 +381,35 @@ export type response_15_0 = {
 } & {body: undefined};
 
 export type response_15_1 = {
-    code: 404;
-    ok: false;
-    info: "organization.notfound";
-} & {body: undefined};
-
-export type response_15_2 = {
     code: 406;
     ok: false;
     info: "organization.hasNotUser";
 } & {body: undefined};
 
-export type response_15_3 = {
-    code: 403;
-    ok: false;
-    info: "user.role.organization.invalid";
-} & {body: undefined};
+export type response_body_15_2 = {
+    id: string;
+    email: string;
+    lastname: string;
+    firstname: string;
+    organizationRole: "STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT" | "OWNER";
+}
 
-export type response_15_4 = {
-    code: 404;
-    ok: false;
-    info: "user.notfound";
-} & {body: undefined};
-
-export type response_15_5 = {
-    code: 409;
-    ok: false;
-    info: "organization.hasAlreadyUser";
-} & {body: undefined};
-
-export type response_15_6 = {
-    code: 201;
+export type response_15_2 = {
+    code: 200;
     ok: true;
-    info: "organization.user.add";
-} & {body: undefined};
+    info: "organization.user";
+} & {body: response_body_15_2};
+
+export type request_body_16 = {
+    email: string;
+    firstname: string;
+    lastname: string;
+    organizationRole: "STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT";
+}
 
 export type parameters_16 = {
     params: {
-        imageProductSheetId: string;
+        organizationId: string;
     };
 }
 
@@ -434,25 +422,37 @@ export type response_16_0 = {
 export type response_16_1 = {
     code: 404;
     ok: false;
-    info: "imageProductSheet.notfound";
+    info: "organization.notfound";
 } & {body: undefined};
 
 export type response_16_2 = {
-    code: 204;
-    ok: true;
-    info: "imageProductSheet.deleted";
-} & {body: undefined};
-
-export type response_16_3 = {
     code: 406;
     ok: false;
     info: "organization.hasNotUser";
 } & {body: undefined};
 
-export type response_16_4 = {
+export type response_16_3 = {
     code: 403;
     ok: false;
     info: "user.role.organization.invalid";
+} & {body: undefined};
+
+export type response_16_4 = {
+    code: 404;
+    ok: false;
+    info: "user.notfound";
+} & {body: undefined};
+
+export type response_16_5 = {
+    code: 409;
+    ok: false;
+    info: "organization.hasAlreadyUser";
+} & {body: undefined};
+
+export type response_16_6 = {
+    code: 201;
+    ok: true;
+    info: "organization.user.add";
 } & {body: undefined};
 
 export type request_body_17 = {
@@ -610,11 +610,12 @@ export type response_20_3 = {
     info: "category.created";
 } & {body: response_body_20_3};
 
+export type request_body_21 = {
+    name?: string | undefined;
+    disabled?: boolean | undefined;
+} | undefined
+
 export type parameters_21 = {
-    headers: {
-        "content-type": string;
-        "content-length": number;
-    };
     params: {
         categoryName: string;
     };
@@ -639,23 +640,22 @@ export type response_21_2 = {
 } & {body: undefined};
 
 export type response_21_3 = {
-    code: 400;
+    code: 409;
     ok: false;
-    info: "category.image.missing";
+    info: "category.alreadyExist";
 } & {body: undefined};
 
 export type response_21_4 = {
     code: 204;
     ok: true;
-    info: "category.image.updated";
+    info: "category.edited";
 } & {body: undefined};
 
-export type request_body_22 = {
-    name?: string | undefined;
-    disabled?: boolean | undefined;
-} | undefined
-
 export type parameters_22 = {
+    headers: {
+        "content-type": string;
+        "content-length": number;
+    };
     params: {
         categoryName: string;
     };
@@ -680,20 +680,25 @@ export type response_22_2 = {
 } & {body: undefined};
 
 export type response_22_3 = {
-    code: 409;
+    code: 400;
     ok: false;
-    info: "category.alreadyExist";
+    info: "category.image.missing";
 } & {body: undefined};
 
 export type response_22_4 = {
     code: 204;
     ok: true;
-    info: "category.edited";
+    info: "category.image.updated";
 } & {body: undefined};
 
 export type request_body_23 = {
-    name: string;
-    ownerId: string;
+    suspended?: boolean | undefined;
+}
+
+export type parameters_23 = {
+    params: {
+        organizationId: string;
+    };
 }
 
 export type response_23_0 = {
@@ -709,37 +714,20 @@ export type response_23_1 = {
 } & {body: undefined};
 
 export type response_23_2 = {
-    code: 409;
+    code: 404;
     ok: false;
-    info: "organization.alreadyExist";
+    info: "organization.notfound";
 } & {body: undefined};
 
 export type response_23_3 = {
-    code: 404;
-    ok: false;
-    info: "user.notfound";
-} & {body: undefined};
-
-export type response_23_4 = {
-    code: 409;
-    ok: false;
-    info: "user.alreadyOwner";
-} & {body: undefined};
-
-export type response_23_5 = {
-    code: 201;
+    code: 204;
     ok: true;
-    info: "organization.created";
+    info: "organization.edited";
 } & {body: undefined};
 
 export type request_body_24 = {
-    suspended?: boolean | undefined;
-}
-
-export type parameters_24 = {
-    params: {
-        organizationId: string;
-    };
+    name: string;
+    ownerId: string;
 }
 
 export type response_24_0 = {
@@ -755,30 +743,33 @@ export type response_24_1 = {
 } & {body: undefined};
 
 export type response_24_2 = {
-    code: 404;
+    code: 409;
     ok: false;
-    info: "organization.notfound";
+    info: "organization.alreadyExist";
 } & {body: undefined};
 
 export type response_24_3 = {
-    code: 204;
-    ok: true;
-    info: "organization.edited";
+    code: 404;
+    ok: false;
+    info: "user.notfound";
 } & {body: undefined};
 
-export type request_body_25 = {
-    priority: number;
-    type: "PARENT_CATEGORY";
-    parentCategoryName: string;
-} | {
-    priority: number;
-    type: "CATEGORY";
-    categoryName: string;
-} | {
-    priority: number;
-    type: "LINK";
-    url: string;
-    title: string;
+export type response_24_4 = {
+    code: 409;
+    ok: false;
+    info: "user.alreadyOwner";
+} & {body: undefined};
+
+export type response_24_5 = {
+    code: 201;
+    ok: true;
+    info: "organization.created";
+} & {body: undefined};
+
+export type parameters_25 = {
+    params: {
+        parentCategoryName: string;
+    };
 }
 
 export type response_25_0 = {
@@ -794,34 +785,33 @@ export type response_25_1 = {
 } & {body: undefined};
 
 export type response_25_2 = {
-    code: 409;
+    code: 404;
     ok: false;
-    info: "navigationItem.limit";
+    info: "parentCategory.notfound";
 } & {body: undefined};
 
 export type response_body_25_3 = {
-    id: string;
-    priority: number;
-    type: "PARENT_CATEGORY";
-    parentCategoryName: string;
-} | {
-    id: string;
-    priority: number;
-    type: "CATEGORY";
-    categoryName: string;
-} | {
-    id: string;
-    priority: number;
-    type: "LINK";
-    url: string;
-    title: string;
-}
+    name: string;
+    disabled: boolean;
+    imageKey: string | null;
+    imageUrl: string | null;
+}[]
 
 export type response_25_3 = {
-    code: 201;
+    code: 200;
     ok: true;
-    info: "navigationItem.created";
+    info: "parentCategory.categories";
 } & {body: response_body_25_3};
+
+export type request_body_26 = {
+    categoryName: string;
+}
+
+export type parameters_26 = {
+    params: {
+        parentCategoryName: string;
+    };
+}
 
 export type response_26_0 = {
     code: 401;
@@ -835,51 +825,34 @@ export type response_26_1 = {
     info: "user.role.invalid";
 } & {body: undefined};
 
-export type response_body_26_2 = ({
-    id: string;
-    priority: number;
-    type: "PARENT_CATEGORY";
-    parentCategoryName: string;
-} | {
-    id: string;
-    priority: number;
-    type: "CATEGORY";
-    categoryName: string;
-} | {
-    id: string;
-    priority: number;
-    type: "LINK";
-    url: string;
-    title: string;
-})[]
-
 export type response_26_2 = {
-    code: 200;
-    ok: true;
-    info: "navigationItems";
-} & {body: response_body_26_2};
+    code: 404;
+    ok: false;
+    info: "parentCategory.notfound";
+} & {body: undefined};
 
-export type request_body_27 = {
-    id: string;
-    priority: number;
-    type: "PARENT_CATEGORY";
-    parentCategoryName: string;
-} | {
-    id: string;
-    priority: number;
-    type: "CATEGORY";
-    categoryName: string;
-} | {
-    id: string;
-    priority: number;
-    type: "LINK";
-    url: string;
-    title: string;
-}
+export type response_26_3 = {
+    code: 404;
+    ok: false;
+    info: "category.notfound";
+} & {body: undefined};
+
+export type response_26_4 = {
+    code: 409;
+    ok: false;
+    info: "parentCategory.categories.limit";
+} & {body: undefined};
+
+export type response_26_5 = {
+    code: 204;
+    ok: true;
+    info: "parentCategory.category.linked";
+} & {body: undefined};
 
 export type parameters_27 = {
     params: {
-        navigationItemId: string;
+        parentCategoryName: string;
+        categoryName: string;
     };
 }
 
@@ -898,30 +871,22 @@ export type response_27_1 = {
 export type response_27_2 = {
     code: 404;
     ok: false;
-    info: "navigationItem.notfound";
-} & {body: undefined};
-
-export type response_27_3 = {
-    code: 404;
-    ok: false;
-    info: "category.notfound";
-} & {body: undefined};
-
-export type response_27_4 = {
-    code: 404;
-    ok: false;
     info: "parentCategory.notfound";
 } & {body: undefined};
 
-export type response_27_5 = {
-    code: 204;
+export type response_27_3 = {
+    code: 200;
     ok: true;
-    info: "navigationItem.edited";
+    info: "parentCategory.category.untied";
 } & {body: undefined};
+
+export type request_body_28 = {
+    name?: string | undefined;
+}
 
 export type parameters_28 = {
     params: {
-        navigationItemId: string;
+        parentCategoryName: string;
     };
 }
 
@@ -940,19 +905,34 @@ export type response_28_1 = {
 export type response_28_2 = {
     code: 404;
     ok: false;
-    info: "navigationItem.notfound";
+    info: "parentCategory.notfound";
 } & {body: undefined};
 
 export type response_28_3 = {
-    code: 204;
-    ok: true;
-    info: "navigationItem.delete";
+    code: 409;
+    ok: false;
+    info: "parentCategory.name.alreadyUse";
 } & {body: undefined};
 
-export type parameters_29 = {
-    params: {
-        parentCategoryName: string;
-    };
+export type response_28_4 = {
+    code: 204;
+    ok: true;
+    info: "parentCategory.edited";
+} & {body: undefined};
+
+export type request_body_29 = {
+    priority: number;
+    type: "PARENT_CATEGORY";
+    parentCategoryName: string;
+} | {
+    priority: number;
+    type: "CATEGORY";
+    categoryName: string;
+} | {
+    priority: number;
+    type: "LINK";
+    url: string;
+    title: string;
 }
 
 export type response_29_0 = {
@@ -968,33 +948,34 @@ export type response_29_1 = {
 } & {body: undefined};
 
 export type response_29_2 = {
-    code: 404;
+    code: 409;
     ok: false;
-    info: "parentCategory.notfound";
+    info: "navigationItem.limit";
 } & {body: undefined};
 
 export type response_body_29_3 = {
-    name: string;
-    disabled: boolean;
-    imageKey: string | null;
-    imageUrl: string | null;
-}[]
+    id: string;
+    priority: number;
+    type: "PARENT_CATEGORY";
+    parentCategoryName: string;
+} | {
+    id: string;
+    priority: number;
+    type: "CATEGORY";
+    categoryName: string;
+} | {
+    id: string;
+    priority: number;
+    type: "LINK";
+    url: string;
+    title: string;
+}
 
 export type response_29_3 = {
-    code: 200;
+    code: 201;
     ok: true;
-    info: "parentCategory.categories";
+    info: "navigationItem.created";
 } & {body: response_body_29_3};
-
-export type request_body_30 = {
-    categoryName: string;
-}
-
-export type parameters_30 = {
-    params: {
-        parentCategoryName: string;
-    };
-}
 
 export type response_30_0 = {
     code: 401;
@@ -1008,34 +989,51 @@ export type response_30_1 = {
     info: "user.role.invalid";
 } & {body: undefined};
 
+export type response_body_30_2 = ({
+    id: string;
+    priority: number;
+    type: "PARENT_CATEGORY";
+    parentCategoryName: string;
+} | {
+    id: string;
+    priority: number;
+    type: "CATEGORY";
+    categoryName: string;
+} | {
+    id: string;
+    priority: number;
+    type: "LINK";
+    url: string;
+    title: string;
+})[]
+
 export type response_30_2 = {
-    code: 404;
-    ok: false;
-    info: "parentCategory.notfound";
-} & {body: undefined};
-
-export type response_30_3 = {
-    code: 404;
-    ok: false;
-    info: "category.notfound";
-} & {body: undefined};
-
-export type response_30_4 = {
-    code: 409;
-    ok: false;
-    info: "parentCategory.categories.limit";
-} & {body: undefined};
-
-export type response_30_5 = {
-    code: 204;
+    code: 200;
     ok: true;
-    info: "parentCategory.category.linked";
-} & {body: undefined};
+    info: "navigationItems";
+} & {body: response_body_30_2};
+
+export type request_body_31 = {
+    id: string;
+    priority: number;
+    type: "PARENT_CATEGORY";
+    parentCategoryName: string;
+} | {
+    id: string;
+    priority: number;
+    type: "CATEGORY";
+    categoryName: string;
+} | {
+    id: string;
+    priority: number;
+    type: "LINK";
+    url: string;
+    title: string;
+}
 
 export type parameters_31 = {
     params: {
-        parentCategoryName: string;
-        categoryName: string;
+        navigationItemId: string;
     };
 }
 
@@ -1054,22 +1052,30 @@ export type response_31_1 = {
 export type response_31_2 = {
     code: 404;
     ok: false;
-    info: "parentCategory.notfound";
+    info: "navigationItem.notfound";
 } & {body: undefined};
 
 export type response_31_3 = {
-    code: 200;
-    ok: true;
-    info: "parentCategory.category.untied";
+    code: 404;
+    ok: false;
+    info: "category.notfound";
 } & {body: undefined};
 
-export type request_body_32 = {
-    name?: string | undefined;
-}
+export type response_31_4 = {
+    code: 404;
+    ok: false;
+    info: "parentCategory.notfound";
+} & {body: undefined};
+
+export type response_31_5 = {
+    code: 204;
+    ok: true;
+    info: "navigationItem.edited";
+} & {body: undefined};
 
 export type parameters_32 = {
     params: {
-        parentCategoryName: string;
+        navigationItemId: string;
     };
 }
 
@@ -1088,19 +1094,13 @@ export type response_32_1 = {
 export type response_32_2 = {
     code: 404;
     ok: false;
-    info: "parentCategory.notfound";
+    info: "navigationItem.notfound";
 } & {body: undefined};
 
 export type response_32_3 = {
-    code: 409;
-    ok: false;
-    info: "parentCategory.name.alreadyUse";
-} & {body: undefined};
-
-export type response_32_4 = {
     code: 204;
     ok: true;
-    info: "parentCategory.edited";
+    info: "navigationItem.delete";
 } & {body: undefined};
 
 export type parameters_33 = {
@@ -1202,15 +1202,13 @@ export type response_35_2 = {
 } & {body: response_body_35_2};
 
 export type request_body_36 = {
-    name: string;
-    description: string;
-    shortDescription: string;
-    price: number;
+    primordialRole?: ("CUSTOMER" | "CONTENTS_MASTER" | "MODERATOR") | undefined;
+    muted?: boolean | undefined;
 }
 
 export type parameters_36 = {
     params: {
-        organizationId: string;
+        userId: string;
     };
 }
 
@@ -1221,47 +1219,34 @@ export type response_36_0 = {
 } & {body: undefined};
 
 export type response_36_1 = {
-    code: 404;
+    code: 403;
     ok: false;
-    info: "organization.notfound";
+    info: "user.role.invalid";
 } & {body: undefined};
 
 export type response_36_2 = {
-    code: 406;
+    code: 404;
     ok: false;
-    info: "organization.hasNotUser";
+    info: "user.notfound";
 } & {body: undefined};
 
 export type response_36_3 = {
-    code: 403;
+    code: 401;
     ok: false;
-    info: "user.role.organization.invalid";
+    info: "user.primordialRole.admin";
 } & {body: undefined};
 
-export type response_body_36_4 = {
-    id: string;
-    name: string;
-    description: string;
-    shortDescription: string;
-    price: number;
-    createdAt?: string;
-    updatedAt?: string;
-    organizationId: string;
-}
-
 export type response_36_4 = {
-    code: 201;
+    code: 204;
     ok: true;
-    info: "productSheet.created";
-} & {body: response_body_36_4};
+    info: "user.edited";
+} & {body: undefined};
 
 export type parameters_37 = {
-    params: {
-        organizationId: string;
-    };
     query?: {
         page?: number;
-        name?: string | undefined;
+        email?: string | undefined;
+        primordialRole?: (("CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN") | ("CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN")[]) | undefined;
     } | undefined;
 }
 
@@ -1272,48 +1257,39 @@ export type response_37_0 = {
 } & {body: undefined};
 
 export type response_37_1 = {
-    code: 404;
-    ok: false;
-    info: "organization.notfound";
-} & {body: undefined};
-
-export type response_37_2 = {
-    code: 406;
-    ok: false;
-    info: "organization.hasNotUser";
-} & {body: undefined};
-
-export type response_37_3 = {
     code: 403;
     ok: false;
-    info: "user.role.organization.invalid";
+    info: "user.role.invalid";
 } & {body: undefined};
 
-export type response_body_37_4 = {
+export type response_body_37_2 = {
     id: string;
+    email: string;
+    lastname: string;
+    firstname: string;
+    dateOfBirth?: string;
+    address: string;
+    primordialRole: "CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN";
+    muted: boolean;
+}[]
+
+export type response_37_2 = {
+    code: 200;
+    ok: true;
+    info: "users";
+} & {body: response_body_37_2};
+
+export type request_body_38 = {
     name: string;
     description: string;
     shortDescription: string;
     price: number;
-    createdAt?: string;
-    updatedAt?: string;
-    organizationId: string;
-}[]
-
-export type response_37_4 = {
-    code: 200;
-    ok: true;
-    info: "productSheets.found";
-} & {body: response_body_37_4};
+}
 
 export type parameters_38 = {
     params: {
         organizationId: string;
     };
-    query?: {
-        page?: number;
-        email?: string | undefined;
-    } | undefined;
 }
 
 export type response_38_0 = {
@@ -1342,16 +1318,19 @@ export type response_38_3 = {
 
 export type response_body_38_4 = {
     id: string;
-    email: string;
-    lastname: string;
-    firstname: string;
-    organizationRole: "STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT" | "OWNER";
-}[]
+    name: string;
+    description: string;
+    shortDescription: string;
+    price: number;
+    createdAt?: string;
+    updatedAt?: string;
+    organizationId: string;
+}
 
 export type response_38_4 = {
-    code: 200;
+    code: 201;
     ok: true;
-    info: "organization.users";
+    info: "productSheet.created";
 } & {body: response_body_38_4};
 
 export type parameters_39 = {
@@ -1391,25 +1370,28 @@ export type response_39_3 = {
 export type response_body_39_4 = {
     id: string;
     name: string;
-    address: string;
+    description: string;
+    shortDescription: string;
+    price: number;
+    createdAt?: string;
+    updatedAt?: string;
     organizationId: string;
 }[]
 
 export type response_39_4 = {
     code: 200;
     ok: true;
-    info: "warehouses.found";
+    info: "productSheets.found";
 } & {body: response_body_39_4};
-
-export type request_body_40 = {
-    name: string;
-    address: string;
-}
 
 export type parameters_40 = {
     params: {
         organizationId: string;
     };
+    query?: {
+        page?: number;
+        email?: string | undefined;
+    } | undefined;
 }
 
 export type response_40_0 = {
@@ -1436,29 +1418,28 @@ export type response_40_3 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
-export type response_40_4 = {
-    code: 400;
-    ok: false;
-    info: "warehouse.address.invalid";
-} & {body: undefined};
-
-export type response_body_40_5 = {
+export type response_body_40_4 = {
     id: string;
-    name: string;
-    address: string;
-    organizationId: string;
-}
+    email: string;
+    lastname: string;
+    firstname: string;
+    organizationRole: "STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT" | "OWNER";
+}[]
 
-export type response_40_5 = {
-    code: 201;
+export type response_40_4 = {
+    code: 200;
     ok: true;
-    info: "warehouse.created";
-} & {body: response_body_40_5};
+    info: "organization.users";
+} & {body: response_body_40_4};
 
 export type parameters_41 = {
     params: {
-        productSheetId: string;
+        organizationId: string;
     };
+    query?: {
+        page?: number;
+        name?: string | undefined;
+    } | undefined;
 }
 
 export type response_41_0 = {
@@ -1470,7 +1451,7 @@ export type response_41_0 = {
 export type response_41_1 = {
     code: 404;
     ok: false;
-    info: "productSheet.notfound";
+    info: "organization.notfound";
 } & {body: undefined};
 
 export type response_41_2 = {
@@ -1486,25 +1467,26 @@ export type response_41_3 = {
 } & {body: undefined};
 
 export type response_body_41_4 = {
+    id: string;
     name: string;
-    disabled: boolean;
-    imageKey: string | null;
-    imageUrl: string | null;
+    address: string;
+    organizationId: string;
 }[]
 
 export type response_41_4 = {
     code: 200;
     ok: true;
-    info: "productSheet.categories";
+    info: "warehouses.found";
 } & {body: response_body_41_4};
 
 export type request_body_42 = {
-    categoryName: string;
+    name: string;
+    address: string;
 }
 
 export type parameters_42 = {
     params: {
-        productSheetId: string;
+        organizationId: string;
     };
 }
 
@@ -1517,7 +1499,7 @@ export type response_42_0 = {
 export type response_42_1 = {
     code: 404;
     ok: false;
-    info: "productSheet.notfound";
+    info: "organization.notfound";
 } & {body: undefined};
 
 export type response_42_2 = {
@@ -1533,27 +1515,32 @@ export type response_42_3 = {
 } & {body: undefined};
 
 export type response_42_4 = {
-    code: 404;
+    code: 400;
     ok: false;
-    info: "category.notfound";
+    info: "warehouse.address.invalid";
 } & {body: undefined};
+
+export type response_body_42_5 = {
+    id: string;
+    name: string;
+    address: string;
+    organizationId: string;
+}
 
 export type response_42_5 = {
-    code: 409;
-    ok: false;
-    info: "productSheet.categories.limit";
-} & {body: undefined};
-
-export type response_42_6 = {
-    code: 200;
+    code: 201;
     ok: true;
-    info: "productSheet.category.linked";
-} & {body: undefined};
+    info: "warehouse.created";
+} & {body: response_body_42_5};
+
+export type request_body_43 = {
+    name?: string | undefined;
+    address?: string | undefined;
+}
 
 export type parameters_43 = {
     params: {
-        productSheetId: string;
-        categoryName: string;
+        warehouseId: string;
     };
 }
 
@@ -1566,7 +1553,7 @@ export type response_43_0 = {
 export type response_43_1 = {
     code: 404;
     ok: false;
-    info: "productSheet.notfound";
+    info: "warehouse.notfound";
 } & {body: undefined};
 
 export type response_43_2 = {
@@ -1582,15 +1569,15 @@ export type response_43_3 = {
 } & {body: undefined};
 
 export type response_43_4 = {
-    code: 404;
+    code: 400;
     ok: false;
-    info: "category.notfound";
+    info: "warehouse.address.invalid";
 } & {body: undefined};
 
 export type response_43_5 = {
-    code: 200;
+    code: 204;
     ok: true;
-    info: "productSheet.category.untied";
+    info: "warehouse.edited";
 } & {body: undefined};
 
 export type parameters_44 = {
@@ -1624,27 +1611,20 @@ export type response_44_3 = {
 } & {body: undefined};
 
 export type response_body_44_4 = {
-    id: string;
     name: string;
-    description: string;
-    shortDescription: string;
-    price: number;
-    createdAt?: string;
-    updatedAt?: string;
-    organizationId: string;
-}
+    disabled: boolean;
+    imageKey: string | null;
+    imageUrl: string | null;
+}[]
 
 export type response_44_4 = {
     code: 200;
     ok: true;
-    info: "productSheet.found";
+    info: "productSheet.categories";
 } & {body: response_body_44_4};
 
 export type request_body_45 = {
-    name?: string | undefined;
-    description?: string | undefined;
-    shortDescription?: string | undefined;
-    price?: number | undefined;
+    categoryName: string;
 }
 
 export type parameters_45 = {
@@ -1677,21 +1657,28 @@ export type response_45_3 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
-export type response_body_45_4 = string
-
 export type response_45_4 = {
-    code: 201;
+    code: 404;
+    ok: false;
+    info: "category.notfound";
+} & {body: undefined};
+
+export type response_45_5 = {
+    code: 409;
+    ok: false;
+    info: "productSheet.categories.limit";
+} & {body: undefined};
+
+export type response_45_6 = {
+    code: 200;
     ok: true;
-    info: "productSheet.edited";
-} & {body: response_body_45_4};
+    info: "productSheet.category.linked";
+} & {body: undefined};
 
 export type parameters_46 = {
-    headers: {
-        "content-type": string;
-        "content-length": number;
-    };
     params: {
         productSheetId: string;
+        categoryName: string;
     };
 }
 
@@ -1720,31 +1707,16 @@ export type response_46_3 = {
 } & {body: undefined};
 
 export type response_46_4 = {
-    code: 409;
+    code: 404;
     ok: false;
-    info: "product.images.limit";
+    info: "category.notfound";
 } & {body: undefined};
 
 export type response_46_5 = {
-    code: 400;
-    ok: false;
-    info: "productSheet.image.missing";
-} & {body: undefined};
-
-export type response_body_46_6 = {
-    id: string;
-    productSheetId: string;
-    organizationId: string;
-    url: string;
-    key: string;
-    alt: string | null;
-}
-
-export type response_46_6 = {
-    code: 201;
+    code: 200;
     ok: true;
-    info: "productSheet.image.create";
-} & {body: response_body_46_6};
+    info: "productSheet.category.untied";
+} & {body: undefined};
 
 export type parameters_47 = {
     params: {
@@ -1778,27 +1750,31 @@ export type response_47_3 = {
 
 export type response_body_47_4 = {
     id: string;
-    productSheetId: string;
+    name: string;
+    description: string;
+    shortDescription: string;
+    price: number;
+    createdAt?: string;
+    updatedAt?: string;
     organizationId: string;
-    url: string;
-    key: string;
-    alt: string | null;
-}[]
+}
 
 export type response_47_4 = {
     code: 200;
     ok: true;
-    info: "productSheet.images";
+    info: "productSheet.found";
 } & {body: response_body_47_4};
 
 export type request_body_48 = {
-    primordialRole?: ("CUSTOMER" | "CONTENTS_MASTER" | "MODERATOR") | undefined;
-    muted?: boolean | undefined;
+    name?: string | undefined;
+    description?: string | undefined;
+    shortDescription?: string | undefined;
+    price?: number | undefined;
 }
 
 export type parameters_48 = {
     params: {
-        userId: string;
+        productSheetId: string;
     };
 }
 
@@ -1809,35 +1785,39 @@ export type response_48_0 = {
 } & {body: undefined};
 
 export type response_48_1 = {
-    code: 403;
+    code: 404;
     ok: false;
-    info: "user.role.invalid";
+    info: "productSheet.notfound";
 } & {body: undefined};
 
 export type response_48_2 = {
-    code: 404;
+    code: 406;
     ok: false;
-    info: "user.notfound";
+    info: "organization.hasNotUser";
 } & {body: undefined};
 
 export type response_48_3 = {
-    code: 401;
+    code: 403;
     ok: false;
-    info: "user.primordialRole.admin";
+    info: "user.role.organization.invalid";
 } & {body: undefined};
+
+export type response_body_48_4 = string
 
 export type response_48_4 = {
-    code: 204;
+    code: 201;
     ok: true;
-    info: "user.edited";
-} & {body: undefined};
+    info: "productSheet.edited";
+} & {body: response_body_48_4};
 
 export type parameters_49 = {
-    query?: {
-        page?: number;
-        email?: string | undefined;
-        primordialRole?: (("CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN") | ("CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN")[]) | undefined;
-    } | undefined;
+    headers: {
+        "content-type": string;
+        "content-length": number;
+    };
+    params: {
+        productSheetId: string;
+    };
 }
 
 export type response_49_0 = {
@@ -1847,36 +1827,53 @@ export type response_49_0 = {
 } & {body: undefined};
 
 export type response_49_1 = {
-    code: 403;
+    code: 404;
     ok: false;
-    info: "user.role.invalid";
+    info: "productSheet.notfound";
 } & {body: undefined};
 
-export type response_body_49_2 = {
-    id: string;
-    email: string;
-    lastname: string;
-    firstname: string;
-    dateOfBirth?: string;
-    address: string;
-    primordialRole: "CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN";
-    muted: boolean;
-}[]
-
 export type response_49_2 = {
-    code: 200;
-    ok: true;
-    info: "users";
-} & {body: response_body_49_2};
+    code: 406;
+    ok: false;
+    info: "organization.hasNotUser";
+} & {body: undefined};
 
-export type request_body_50 = {
-    name?: string | undefined;
-    address?: string | undefined;
+export type response_49_3 = {
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+} & {body: undefined};
+
+export type response_49_4 = {
+    code: 409;
+    ok: false;
+    info: "product.images.limit";
+} & {body: undefined};
+
+export type response_49_5 = {
+    code: 400;
+    ok: false;
+    info: "productSheet.image.missing";
+} & {body: undefined};
+
+export type response_body_49_6 = {
+    id: string;
+    productSheetId: string;
+    organizationId: string;
+    url: string;
+    key: string;
+    alt: string | null;
 }
+
+export type response_49_6 = {
+    code: 201;
+    ok: true;
+    info: "productSheet.image.create";
+} & {body: response_body_49_6};
 
 export type parameters_50 = {
     params: {
-        warehouseId: string;
+        productSheetId: string;
     };
 }
 
@@ -1889,7 +1886,7 @@ export type response_50_0 = {
 export type response_50_1 = {
     code: 404;
     ok: false;
-    info: "warehouse.notfound";
+    info: "productSheet.notfound";
 } & {body: undefined};
 
 export type response_50_2 = {
@@ -1904,17 +1901,20 @@ export type response_50_3 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
-export type response_50_4 = {
-    code: 400;
-    ok: false;
-    info: "warehouse.address.invalid";
-} & {body: undefined};
+export type response_body_50_4 = {
+    id: string;
+    productSheetId: string;
+    organizationId: string;
+    url: string;
+    key: string;
+    alt: string | null;
+}[]
 
-export type response_50_5 = {
-    code: 204;
+export type response_50_4 = {
+    code: 200;
     ok: true;
-    info: "warehouse.edited";
-} & {body: undefined};
+    info: "productSheet.images";
+} & {body: response_body_50_4};
 
 export type GetDef<
 	method extends DefEnrichedDuplojsTo["method"],
@@ -1972,15 +1972,13 @@ export type DefEnrichedDuplojsTo = {
 	response: response_1_0
 		| response_1_1,
 } | {
-	path: "/entry/admin-panel*",
+	path: "/geocoder",
 	method: "GET",
 	body: unknown,
-	parameters: undefined,
-	response: response_2_0
-		| response_2_1
-		| response_2_2,
+	parameters: parameters_2,
+	response: response_2_0,
 } | {
-	path: "/entry/content-panel*",
+	path: "/entry/admin-panel*",
 	method: "GET",
 	body: unknown,
 	parameters: undefined,
@@ -1988,26 +1986,24 @@ export type DefEnrichedDuplojsTo = {
 		| response_3_1
 		| response_3_2,
 } | {
-	path: "/entry/organization/{organizationId}/manage-user",
+	path: "/entry/content-panel*",
 	method: "GET",
 	body: unknown,
-	parameters: parameters_4,
+	parameters: undefined,
 	response: response_4_0
 		| response_4_1
-		| response_4_2
-		| response_4_3,
+		| response_4_2,
 } | {
-	path: "/entry/organization/{organizationId}/warehouses" | "/entry/organization/{organizationId}/create-warehouse" | "/entry/organization/{organizationId}/edited-warehouse/{warehouseId}",
+	path: "/entry/organization/{organizationId}/manage-user",
 	method: "GET",
 	body: unknown,
 	parameters: parameters_5,
 	response: response_5_0
 		| response_5_1
 		| response_5_2
-		| response_5_3
-		| response_5_4,
+		| response_5_3,
 } | {
-	path: "/entry/organization/{organizationId}/product-sheets" | "/entry/organization/{organizationId}/edit-product-sheet/{productSheetId}" | "/entry/organization/{organizationId}/create-product-sheet",
+	path: "/entry/organization/{organizationId}/warehouses" | "/entry/organization/{organizationId}/create-warehouse" | "/entry/organization/{organizationId}/edited-warehouse/{warehouseId}",
 	method: "GET",
 	body: unknown,
 	parameters: parameters_6,
@@ -2017,30 +2013,34 @@ export type DefEnrichedDuplojsTo = {
 		| response_6_3
 		| response_6_4,
 } | {
-	path: "/entry/organization/{organizationId}*",
+	path: "/entry/organization/{organizationId}/product-sheets" | "/entry/organization/{organizationId}/edit-product-sheet/{productSheetId}" | "/entry/organization/{organizationId}/create-product-sheet",
 	method: "GET",
 	body: unknown,
 	parameters: parameters_7,
 	response: response_7_0
 		| response_7_1
-		| response_7_2,
+		| response_7_2
+		| response_7_3
+		| response_7_4,
+} | {
+	path: "/entry/organization/{organizationId}*",
+	method: "GET",
+	body: unknown,
+	parameters: parameters_8,
+	response: response_8_0
+		| response_8_1
+		| response_8_2,
 } | {
 	path: "/entry/login" | "/entry/register",
 	method: "GET",
 	body: unknown,
 	parameters: undefined,
-	response: response_8_0,
+	response: response_9_0,
 } | {
 	path: "/entry*",
 	method: "GET",
 	body: unknown,
 	parameters: undefined,
-	response: response_9_0,
-} | {
-	path: "/geocoder",
-	method: "GET",
-	body: unknown,
-	parameters: parameters_10,
 	response: response_10_0,
 } | {
 	path: "/navigation-bar",
@@ -2067,35 +2067,35 @@ export type DefEnrichedDuplojsTo = {
 		| response_13_3
 		| response_13_4,
 } | {
-	path: "/organization/{organizationId}/user",
-	method: "GET",
+	path: "/image-product-sheet/{imageProductSheetId}",
+	method: "DELETE",
 	body: unknown,
 	parameters: parameters_14,
 	response: response_14_0
 		| response_14_1
-		| response_14_2,
+		| response_14_2
+		| response_14_3
+		| response_14_4,
 } | {
 	path: "/organization/{organizationId}/user",
-	method: "POST",
-	body: request_body_15,
+	method: "GET",
+	body: unknown,
 	parameters: parameters_15,
 	response: response_15_0
 		| response_15_1
-		| response_15_2
-		| response_15_3
-		| response_15_4
-		| response_15_5
-		| response_15_6,
+		| response_15_2,
 } | {
-	path: "/image-product-sheet/{imageProductSheetId}",
-	method: "DELETE",
-	body: unknown,
+	path: "/organization/{organizationId}/user",
+	method: "POST",
+	body: request_body_16,
 	parameters: parameters_16,
 	response: response_16_0
 		| response_16_1
 		| response_16_2
 		| response_16_3
-		| response_16_4,
+		| response_16_4
+		| response_16_5
+		| response_16_6,
 } | {
 	path: "/organization/{organizationId}/user/{userId}",
 	method: "PATCH",
@@ -2136,9 +2136,9 @@ export type DefEnrichedDuplojsTo = {
 		| response_20_2
 		| response_20_3,
 } | {
-	path: "/category/{categoryName}/image",
-	method: "PUT",
-	body: unknown,
+	path: "/category/{categoryName}",
+	method: "PATCH",
+	body: request_body_21,
 	parameters: parameters_21,
 	response: response_21_0
 		| response_21_1
@@ -2146,9 +2146,9 @@ export type DefEnrichedDuplojsTo = {
 		| response_21_3
 		| response_21_4,
 } | {
-	path: "/category/{categoryName}",
-	method: "PATCH",
-	body: request_body_22,
+	path: "/category/{categoryName}/image",
+	method: "PUT",
+	body: unknown,
 	parameters: parameters_22,
 	response: response_22_0
 		| response_22_1
@@ -2156,101 +2156,101 @@ export type DefEnrichedDuplojsTo = {
 		| response_22_3
 		| response_22_4,
 } | {
-	path: "/organization",
-	method: "POST",
+	path: "/organization/{organizationId}@admin",
+	method: "PATCH",
 	body: request_body_23,
-	parameters: undefined,
+	parameters: parameters_23,
 	response: response_23_0
 		| response_23_1
 		| response_23_2
-		| response_23_3
-		| response_23_4
-		| response_23_5,
+		| response_23_3,
 } | {
-	path: "/organization/{organizationId}@admin",
-	method: "PATCH",
+	path: "/organization",
+	method: "POST",
 	body: request_body_24,
-	parameters: parameters_24,
+	parameters: undefined,
 	response: response_24_0
 		| response_24_1
 		| response_24_2
-		| response_24_3,
+		| response_24_3
+		| response_24_4
+		| response_24_5,
 } | {
-	path: "/navigation-item",
-	method: "POST",
-	body: request_body_25,
-	parameters: undefined,
+	path: "/parent-category/{parentCategoryName}/categories",
+	method: "GET",
+	body: unknown,
+	parameters: parameters_25,
 	response: response_25_0
 		| response_25_1
 		| response_25_2
 		| response_25_3,
 } | {
-	path: "/navigation-items",
-	method: "GET",
-	body: unknown,
-	parameters: undefined,
+	path: "/parent-category/{parentCategoryName}/category",
+	method: "POST",
+	body: request_body_26,
+	parameters: parameters_26,
 	response: response_26_0
 		| response_26_1
-		| response_26_2,
+		| response_26_2
+		| response_26_3
+		| response_26_4
+		| response_26_5,
 } | {
-	path: "/navigation-item/{navigationItemId}",
-	method: "PATCH",
-	body: request_body_27,
+	path: "/parent-category/{parentCategoryName}/category/{categoryName}",
+	method: "DELETE",
+	body: unknown,
 	parameters: parameters_27,
 	response: response_27_0
 		| response_27_1
 		| response_27_2
-		| response_27_3
-		| response_27_4
-		| response_27_5,
+		| response_27_3,
 } | {
-	path: "/navigation-item/{navigationItemId}",
-	method: "DELETE",
-	body: unknown,
+	path: "/parent-category/{parentCategoryName}",
+	method: "PATCH",
+	body: request_body_28,
 	parameters: parameters_28,
 	response: response_28_0
 		| response_28_1
 		| response_28_2
-		| response_28_3,
+		| response_28_3
+		| response_28_4,
 } | {
-	path: "/parent-category/{parentCategoryName}/categories",
-	method: "GET",
-	body: unknown,
-	parameters: parameters_29,
+	path: "/navigation-item",
+	method: "POST",
+	body: request_body_29,
+	parameters: undefined,
 	response: response_29_0
 		| response_29_1
 		| response_29_2
 		| response_29_3,
 } | {
-	path: "/parent-category/{parentCategoryName}/category",
-	method: "POST",
-	body: request_body_30,
-	parameters: parameters_30,
+	path: "/navigation-items",
+	method: "GET",
+	body: unknown,
+	parameters: undefined,
 	response: response_30_0
 		| response_30_1
-		| response_30_2
-		| response_30_3
-		| response_30_4
-		| response_30_5,
+		| response_30_2,
 } | {
-	path: "/parent-category/{parentCategoryName}/category/{categoryName}",
-	method: "DELETE",
-	body: unknown,
+	path: "/navigation-item/{navigationItemId}",
+	method: "PATCH",
+	body: request_body_31,
 	parameters: parameters_31,
 	response: response_31_0
 		| response_31_1
 		| response_31_2
-		| response_31_3,
+		| response_31_3
+		| response_31_4
+		| response_31_5,
 } | {
-	path: "/parent-category/{parentCategoryName}",
-	method: "PATCH",
-	body: request_body_32,
+	path: "/navigation-item/{navigationItemId}",
+	method: "DELETE",
+	body: unknown,
 	parameters: parameters_32,
 	response: response_32_0
 		| response_32_1
 		| response_32_2
-		| response_32_3
-		| response_32_4,
+		| response_32_3,
 } | {
 	path: "/organizations",
 	method: "GET",
@@ -2277,8 +2277,8 @@ export type DefEnrichedDuplojsTo = {
 		| response_35_1
 		| response_35_2,
 } | {
-	path: "/organization/{organizationId}/product-sheet",
-	method: "POST",
+	path: "/user/{userId}@admin",
+	method: "PATCH",
 	body: request_body_36,
 	parameters: parameters_36,
 	response: response_36_0
@@ -2287,19 +2287,17 @@ export type DefEnrichedDuplojsTo = {
 		| response_36_3
 		| response_36_4,
 } | {
-	path: "/organization/{organizationId}/product-sheets",
+	path: "/users",
 	method: "GET",
 	body: unknown,
 	parameters: parameters_37,
 	response: response_37_0
 		| response_37_1
-		| response_37_2
-		| response_37_3
-		| response_37_4,
+		| response_37_2,
 } | {
-	path: "/organization/{organizationId}/users",
-	method: "GET",
-	body: unknown,
+	path: "/organization/{organizationId}/product-sheet",
+	method: "POST",
+	body: request_body_38,
 	parameters: parameters_38,
 	response: response_38_0
 		| response_38_1
@@ -2307,7 +2305,7 @@ export type DefEnrichedDuplojsTo = {
 		| response_38_3
 		| response_38_4,
 } | {
-	path: "/organization/{organizationId}/warehouses",
+	path: "/organization/{organizationId}/product-sheets",
 	method: "GET",
 	body: unknown,
 	parameters: parameters_39,
@@ -2317,18 +2315,17 @@ export type DefEnrichedDuplojsTo = {
 		| response_39_3
 		| response_39_4,
 } | {
-	path: "/organization/{organizationId}/warehouse",
-	method: "POST",
-	body: request_body_40,
+	path: "/organization/{organizationId}/users",
+	method: "GET",
+	body: unknown,
 	parameters: parameters_40,
 	response: response_40_0
 		| response_40_1
 		| response_40_2
 		| response_40_3
-		| response_40_4
-		| response_40_5,
+		| response_40_4,
 } | {
-	path: "/product-sheet/{productSheetId}/categories",
+	path: "/organization/{organizationId}/warehouses",
 	method: "GET",
 	body: unknown,
 	parameters: parameters_41,
@@ -2338,7 +2335,7 @@ export type DefEnrichedDuplojsTo = {
 		| response_41_3
 		| response_41_4,
 } | {
-	path: "/product-sheet/{productSheetId}/category",
+	path: "/organization/{organizationId}/warehouse",
 	method: "POST",
 	body: request_body_42,
 	parameters: parameters_42,
@@ -2347,12 +2344,11 @@ export type DefEnrichedDuplojsTo = {
 		| response_42_2
 		| response_42_3
 		| response_42_4
-		| response_42_5
-		| response_42_6,
+		| response_42_5,
 } | {
-	path: "/product-sheet/{productSheetId}/category/{categoryName}",
-	method: "DELETE",
-	body: unknown,
+	path: "/warehouse/{warehouseId}",
+	method: "PATCH",
+	body: request_body_43,
 	parameters: parameters_43,
 	response: response_43_0
 		| response_43_1
@@ -2361,7 +2357,7 @@ export type DefEnrichedDuplojsTo = {
 		| response_43_4
 		| response_43_5,
 } | {
-	path: "/product-sheet/{productSheetId}",
+	path: "/product-sheet/{productSheetId}/categories",
 	method: "GET",
 	body: unknown,
 	parameters: parameters_44,
@@ -2371,18 +2367,20 @@ export type DefEnrichedDuplojsTo = {
 		| response_44_3
 		| response_44_4,
 } | {
-	path: "/product-sheet/{productSheetId}",
-	method: "PATCH",
+	path: "/product-sheet/{productSheetId}/category",
+	method: "POST",
 	body: request_body_45,
 	parameters: parameters_45,
 	response: response_45_0
 		| response_45_1
 		| response_45_2
 		| response_45_3
-		| response_45_4,
+		| response_45_4
+		| response_45_5
+		| response_45_6,
 } | {
-	path: "/product-sheet/{productSheetId}/image",
-	method: "POST",
+	path: "/product-sheet/{productSheetId}/category/{categoryName}",
+	method: "DELETE",
 	body: unknown,
 	parameters: parameters_46,
 	response: response_46_0
@@ -2390,10 +2388,9 @@ export type DefEnrichedDuplojsTo = {
 		| response_46_2
 		| response_46_3
 		| response_46_4
-		| response_46_5
-		| response_46_6,
+		| response_46_5,
 } | {
-	path: "/product-sheet/{productSheetId}/images",
+	path: "/product-sheet/{productSheetId}",
 	method: "GET",
 	body: unknown,
 	parameters: parameters_47,
@@ -2403,7 +2400,7 @@ export type DefEnrichedDuplojsTo = {
 		| response_47_3
 		| response_47_4,
 } | {
-	path: "/user/{userId}@admin",
+	path: "/product-sheet/{productSheetId}",
 	method: "PATCH",
 	body: request_body_48,
 	parameters: parameters_48,
@@ -2413,24 +2410,27 @@ export type DefEnrichedDuplojsTo = {
 		| response_48_3
 		| response_48_4,
 } | {
-	path: "/users",
-	method: "GET",
+	path: "/product-sheet/{productSheetId}/image",
+	method: "POST",
 	body: unknown,
 	parameters: parameters_49,
 	response: response_49_0
 		| response_49_1
-		| response_49_2,
+		| response_49_2
+		| response_49_3
+		| response_49_4
+		| response_49_5
+		| response_49_6,
 } | {
-	path: "/warehouse/{warehouseId}",
-	method: "PATCH",
-	body: request_body_50,
+	path: "/product-sheet/{productSheetId}/images",
+	method: "GET",
+	body: unknown,
 	parameters: parameters_50,
 	response: response_50_0
 		| response_50_1
 		| response_50_2
 		| response_50_3
-		| response_50_4
-		| response_50_5,
+		| response_50_4,
 };
 
 
@@ -2540,17 +2540,15 @@ export interface EnrichedDuploTo<
 	>
 
 	get(
-		path: "/entry/admin-panel*", 
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+		path: "/geocoder", 
+		parameters ?: parameters_2 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_2_0
-		| response_2_1
-		| response_2_2
 	>
 
 	get(
-		path: "/entry/content-panel*", 
+		path: "/entry/admin-panel*", 
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -2560,18 +2558,17 @@ export interface EnrichedDuploTo<
 	>
 
 	get(
-		path: "/entry/organization/{organizationId}/manage-user", 
-		parameters : parameters_4 & BaseRequestParameters,
+		path: "/entry/content-panel*", 
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_4_0
 		| response_4_1
 		| response_4_2
-		| response_4_3
 	>
 
 	get(
-		path: "/entry/organization/{organizationId}/warehouses" | "/entry/organization/{organizationId}/create-warehouse" | "/entry/organization/{organizationId}/edited-warehouse/{warehouseId}", 
+		path: "/entry/organization/{organizationId}/manage-user", 
 		parameters : parameters_5 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -2579,11 +2576,10 @@ export interface EnrichedDuploTo<
 		| response_5_1
 		| response_5_2
 		| response_5_3
-		| response_5_4
 	>
 
 	get(
-		path: "/entry/organization/{organizationId}/product-sheets" | "/entry/organization/{organizationId}/edit-product-sheet/{productSheetId}" | "/entry/organization/{organizationId}/create-product-sheet", 
+		path: "/entry/organization/{organizationId}/warehouses" | "/entry/organization/{organizationId}/create-warehouse" | "/entry/organization/{organizationId}/edited-warehouse/{warehouseId}", 
 		parameters : parameters_6 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -2595,13 +2591,25 @@ export interface EnrichedDuploTo<
 	>
 
 	get(
-		path: "/entry/organization/{organizationId}*", 
+		path: "/entry/organization/{organizationId}/product-sheets" | "/entry/organization/{organizationId}/edit-product-sheet/{productSheetId}" | "/entry/organization/{organizationId}/create-product-sheet", 
 		parameters : parameters_7 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_7_0
 		| response_7_1
 		| response_7_2
+		| response_7_3
+		| response_7_4
+	>
+
+	get(
+		path: "/entry/organization/{organizationId}*", 
+		parameters : parameters_8 & BaseRequestParameters,
+		interceptorParams?: interceptorParameter
+	): EnrichedRequestor<
+		response_8_0
+		| response_8_1
+		| response_8_2
 	>
 
 	get(
@@ -2609,20 +2617,12 @@ export interface EnrichedDuploTo<
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
-		response_8_0
+		response_9_0
 	>
 
 	get(
 		path: "/entry*", 
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
-		interceptorParams?: interceptorParameter
-	): EnrichedRequestor<
-		response_9_0
-	>
-
-	get(
-		path: "/geocoder", 
-		parameters ?: parameters_10 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_10_0
@@ -2660,33 +2660,31 @@ export interface EnrichedDuploTo<
 		| response_13_4
 	>
 
-	get(
-		path: "/organization/{organizationId}/user", 
+	delete(
+		path: "/image-product-sheet/{imageProductSheetId}", 
 		parameters : parameters_14 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_14_0
 		| response_14_1
 		| response_14_2
+		| response_14_3
+		| response_14_4
 	>
 
-	post(
+	get(
 		path: "/organization/{organizationId}/user", 
-		body: request_body_15,
 		parameters : parameters_15 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_15_0
 		| response_15_1
 		| response_15_2
-		| response_15_3
-		| response_15_4
-		| response_15_5
-		| response_15_6
 	>
 
-	delete(
-		path: "/image-product-sheet/{imageProductSheetId}", 
+	post(
+		path: "/organization/{organizationId}/user", 
+		body: request_body_16,
 		parameters : parameters_16 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -2695,6 +2693,8 @@ export interface EnrichedDuploTo<
 		| response_16_2
 		| response_16_3
 		| response_16_4
+		| response_16_5
+		| response_16_6
 	>
 
 	patch(
@@ -2746,9 +2746,9 @@ export interface EnrichedDuploTo<
 		| response_20_3
 	>
 
-	put(
-		path: "/category/{categoryName}/image", 
-		body: unknown,
+	patch(
+		path: "/category/{categoryName}", 
+		body: request_body_21,
 		parameters : parameters_21 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -2759,9 +2759,9 @@ export interface EnrichedDuploTo<
 		| response_21_4
 	>
 
-	patch(
-		path: "/category/{categoryName}", 
-		body: request_body_22,
+	put(
+		path: "/category/{categoryName}/image", 
+		body: unknown,
 		parameters : parameters_22 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -2772,36 +2772,35 @@ export interface EnrichedDuploTo<
 		| response_22_4
 	>
 
-	post(
-		path: "/organization", 
+	patch(
+		path: "/organization/{organizationId}@admin", 
 		body: request_body_23,
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+		parameters : parameters_23 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_23_0
 		| response_23_1
 		| response_23_2
 		| response_23_3
-		| response_23_4
-		| response_23_5
 	>
 
-	patch(
-		path: "/organization/{organizationId}@admin", 
+	post(
+		path: "/organization", 
 		body: request_body_24,
-		parameters : parameters_24 & BaseRequestParameters,
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_24_0
 		| response_24_1
 		| response_24_2
 		| response_24_3
+		| response_24_4
+		| response_24_5
 	>
 
-	post(
-		path: "/navigation-item", 
-		body: request_body_25,
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+	get(
+		path: "/parent-category/{parentCategoryName}/categories", 
+		parameters : parameters_25 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_25_0
@@ -2810,19 +2809,22 @@ export interface EnrichedDuploTo<
 		| response_25_3
 	>
 
-	get(
-		path: "/navigation-items", 
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+	post(
+		path: "/parent-category/{parentCategoryName}/category", 
+		body: request_body_26,
+		parameters : parameters_26 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_26_0
 		| response_26_1
 		| response_26_2
+		| response_26_3
+		| response_26_4
+		| response_26_5
 	>
 
-	patch(
-		path: "/navigation-item/{navigationItemId}", 
-		body: request_body_27,
+	delete(
+		path: "/parent-category/{parentCategoryName}/category/{categoryName}", 
 		parameters : parameters_27 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -2830,12 +2832,11 @@ export interface EnrichedDuploTo<
 		| response_27_1
 		| response_27_2
 		| response_27_3
-		| response_27_4
-		| response_27_5
 	>
 
-	delete(
-		path: "/navigation-item/{navigationItemId}", 
+	patch(
+		path: "/parent-category/{parentCategoryName}", 
+		body: request_body_28,
 		parameters : parameters_28 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -2843,11 +2844,13 @@ export interface EnrichedDuploTo<
 		| response_28_1
 		| response_28_2
 		| response_28_3
+		| response_28_4
 	>
 
-	get(
-		path: "/parent-category/{parentCategoryName}/categories", 
-		parameters : parameters_29 & BaseRequestParameters,
+	post(
+		path: "/navigation-item", 
+		body: request_body_29,
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_29_0
@@ -2856,22 +2859,19 @@ export interface EnrichedDuploTo<
 		| response_29_3
 	>
 
-	post(
-		path: "/parent-category/{parentCategoryName}/category", 
-		body: request_body_30,
-		parameters : parameters_30 & BaseRequestParameters,
+	get(
+		path: "/navigation-items", 
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_30_0
 		| response_30_1
 		| response_30_2
-		| response_30_3
-		| response_30_4
-		| response_30_5
 	>
 
-	delete(
-		path: "/parent-category/{parentCategoryName}/category/{categoryName}", 
+	patch(
+		path: "/navigation-item/{navigationItemId}", 
+		body: request_body_31,
 		parameters : parameters_31 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -2879,11 +2879,12 @@ export interface EnrichedDuploTo<
 		| response_31_1
 		| response_31_2
 		| response_31_3
+		| response_31_4
+		| response_31_5
 	>
 
-	patch(
-		path: "/parent-category/{parentCategoryName}", 
-		body: request_body_32,
+	delete(
+		path: "/navigation-item/{navigationItemId}", 
 		parameters : parameters_32 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -2891,7 +2892,6 @@ export interface EnrichedDuploTo<
 		| response_32_1
 		| response_32_2
 		| response_32_3
-		| response_32_4
 	>
 
 	get(
@@ -2926,8 +2926,8 @@ export interface EnrichedDuploTo<
 		| response_35_2
 	>
 
-	post(
-		path: "/organization/{organizationId}/product-sheet", 
+	patch(
+		path: "/user/{userId}@admin", 
 		body: request_body_36,
 		parameters : parameters_36 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
@@ -2940,19 +2940,18 @@ export interface EnrichedDuploTo<
 	>
 
 	get(
-		path: "/organization/{organizationId}/product-sheets", 
-		parameters : parameters_37 & BaseRequestParameters,
+		path: "/users", 
+		parameters ?: parameters_37 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_37_0
 		| response_37_1
 		| response_37_2
-		| response_37_3
-		| response_37_4
 	>
 
-	get(
-		path: "/organization/{organizationId}/users", 
+	post(
+		path: "/organization/{organizationId}/product-sheet", 
+		body: request_body_38,
 		parameters : parameters_38 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -2964,7 +2963,7 @@ export interface EnrichedDuploTo<
 	>
 
 	get(
-		path: "/organization/{organizationId}/warehouses", 
+		path: "/organization/{organizationId}/product-sheets", 
 		parameters : parameters_39 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -2975,9 +2974,8 @@ export interface EnrichedDuploTo<
 		| response_39_4
 	>
 
-	post(
-		path: "/organization/{organizationId}/warehouse", 
-		body: request_body_40,
+	get(
+		path: "/organization/{organizationId}/users", 
 		parameters : parameters_40 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -2986,11 +2984,10 @@ export interface EnrichedDuploTo<
 		| response_40_2
 		| response_40_3
 		| response_40_4
-		| response_40_5
 	>
 
 	get(
-		path: "/product-sheet/{productSheetId}/categories", 
+		path: "/organization/{organizationId}/warehouses", 
 		parameters : parameters_41 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -3002,7 +2999,7 @@ export interface EnrichedDuploTo<
 	>
 
 	post(
-		path: "/product-sheet/{productSheetId}/category", 
+		path: "/organization/{organizationId}/warehouse", 
 		body: request_body_42,
 		parameters : parameters_42 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
@@ -3013,11 +3010,11 @@ export interface EnrichedDuploTo<
 		| response_42_3
 		| response_42_4
 		| response_42_5
-		| response_42_6
 	>
 
-	delete(
-		path: "/product-sheet/{productSheetId}/category/{categoryName}", 
+	patch(
+		path: "/warehouse/{warehouseId}", 
+		body: request_body_43,
 		parameters : parameters_43 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -3030,7 +3027,7 @@ export interface EnrichedDuploTo<
 	>
 
 	get(
-		path: "/product-sheet/{productSheetId}", 
+		path: "/product-sheet/{productSheetId}/categories", 
 		parameters : parameters_44 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -3041,8 +3038,8 @@ export interface EnrichedDuploTo<
 		| response_44_4
 	>
 
-	patch(
-		path: "/product-sheet/{productSheetId}", 
+	post(
+		path: "/product-sheet/{productSheetId}/category", 
 		body: request_body_45,
 		parameters : parameters_45 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
@@ -3052,11 +3049,12 @@ export interface EnrichedDuploTo<
 		| response_45_2
 		| response_45_3
 		| response_45_4
+		| response_45_5
+		| response_45_6
 	>
 
-	post(
-		path: "/product-sheet/{productSheetId}/image", 
-		body: unknown,
+	delete(
+		path: "/product-sheet/{productSheetId}/category/{categoryName}", 
 		parameters : parameters_46 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -3066,11 +3064,10 @@ export interface EnrichedDuploTo<
 		| response_46_3
 		| response_46_4
 		| response_46_5
-		| response_46_6
 	>
 
 	get(
-		path: "/product-sheet/{productSheetId}/images", 
+		path: "/product-sheet/{productSheetId}", 
 		parameters : parameters_47 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -3082,7 +3079,7 @@ export interface EnrichedDuploTo<
 	>
 
 	patch(
-		path: "/user/{userId}@admin", 
+		path: "/product-sheet/{productSheetId}", 
 		body: request_body_48,
 		parameters : parameters_48 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
@@ -3094,19 +3091,23 @@ export interface EnrichedDuploTo<
 		| response_48_4
 	>
 
-	get(
-		path: "/users", 
-		parameters ?: parameters_49 & BaseRequestParameters,
+	post(
+		path: "/product-sheet/{productSheetId}/image", 
+		body: unknown,
+		parameters : parameters_49 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_49_0
 		| response_49_1
 		| response_49_2
+		| response_49_3
+		| response_49_4
+		| response_49_5
+		| response_49_6
 	>
 
-	patch(
-		path: "/warehouse/{warehouseId}", 
-		body: request_body_50,
+	get(
+		path: "/product-sheet/{productSheetId}/images", 
 		parameters : parameters_50 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -3115,7 +3116,6 @@ export interface EnrichedDuploTo<
 		| response_50_2
 		| response_50_3
 		| response_50_4
-		| response_50_5
 	>
 
 }

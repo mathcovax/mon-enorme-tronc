@@ -120,6 +120,7 @@ declare module 'vue' {
     TheIcon: typeof import('./src/components/TheIcon.vue')['default']
     TheInput: typeof import('./src/components/ui/input/TheInput.vue')['default']
     TheLabel: typeof import('./src/components/ui/label/TheLabel.vue')['default']
+    TheLoader: typeof import('./src/components/loader/TheLoader.vue')['default']
     ThePopover: typeof import('./src/components/ui/popover/ThePopover.vue')['default']
     ThePopup: typeof import('./src/components/ThePopup.vue')['default']
     TheSelect: typeof import('./src/components/ui/select/TheSelect.vue')['default']

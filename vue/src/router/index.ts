@@ -5,6 +5,7 @@ import product from "@/domains/product/router";
 import admin from "@/domains/admin/router";
 import content from "@/domains/content/router";
 import organization from "@/domains/organization/router";
+import { loaderPush, type LoaderItem } from "@/lib/loader";
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,9 +33,29 @@ const router = createRouter({
 
 export default router;
 
+let loaderItem: LoaderItem | undefined;
+
 router.beforeEach((to, form, next) => {
+	if (to.fullPath === "/") {
+		return next();
+	}
+
+	loaderItem = loaderPush();
 	duploTo.get(`/entry${to.fullPath}`)
 		.info("entry.accepted", () => next())
-		.e(() => next("/"))
-		.catch(() => next("/"));
+		.e(() => {
+			loaderItem?.close();
+			loaderItem = undefined;
+			next("/");
+		})
+		.catch(() => {
+			loaderItem?.close();
+			loaderItem = undefined;
+			next("/");
+		});
+});
+
+router.afterEach(() => {
+	loaderItem?.close();
+	loaderItem = undefined;
 });
