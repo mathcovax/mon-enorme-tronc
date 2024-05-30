@@ -46,3 +46,20 @@ duploTo.setResponseInterceptor(
 	}
 );
 
+duploTo.addHookCode(400, (req, res) => {
+	if (res.success && res.info?.startsWith("TYPE_ERROR")) {
+		errorToast($t("response.TYPE_ERROR"));
+	}
+});
+
+duploTo.addHookInfo("NOTFOUND", () => {
+	errorToast($t("response.NOTFOUND"));
+});
+
+duploTo.addHookInfo("INTERNAL_SERVER_ERROR", () => {
+	errorToast($t("response.INTERNAL_SERVER_ERROR"));
+});
+
+duploTo.addHookInfo("WHAT_WAS_SENT_ERROR", () => {
+	errorToast($t("response.WHAT_WAS_SENT_ERROR"));
+});

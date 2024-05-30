@@ -318,6 +318,10 @@ export default {
 			},
 			created: "La catégorie parent a correctement été créée.",
 			edited: "La catégorie parent a correctement été modifiée.",
-		}
+		},
+		TYPE_ERROR: "L'une des donné envoyer est éroner. (Erreur provenant du site)",
+		NOTFOUND: "La route route utilisais n'existe pas. (Erreur provenant du site)",
+		INTERNAL_SERVER_ERROR: "Le serveur a eu un probléme. (Erreur provenant du site)",
+		WHAT_WAS_SENT_ERROR: "Le serveur a renvoyer n'importe quoi. (Erreur provenant du site)",
 	}
 };
