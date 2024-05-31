@@ -3,14 +3,11 @@ import { organizationSchema } from "@schemas/organization";
 
 /* METHOD : PATCH, PATH : /organization/{organizationId} */
 export const PATCH = (method: Methods, path: string) => 
-	hasOrganizationRoleByOrganizationId({ 
-		options: { organizationRole: "OWNER" }, 
-		pickup: ["organization"] 
-	})
+	hasOrganizationRoleByOrganizationId({ pickup: ["organization"] })
 		.declareRoute(method, path)
 		.extract({
 			body: zod.object({
-				label: zod.string().optional()
+				label: zod.string().nullish()
 			}).default({})
 		})
 		.handler(
@@ -23,7 +20,7 @@ export const PATCH = (method: Methods, path: string) =>
 						id: organizationId
 					},
 					data: {
-						label: label || null,
+						label: label === "" ? null : label,
 						
 					}
 				});
@@ -35,10 +32,7 @@ export const PATCH = (method: Methods, path: string) =>
 
 /* METHOD : GET, PATH : /organization/{organizationId} */
 export const GET = (method: Methods, path: string) =>
-	hasOrganizationRoleByOrganizationId({ 
-		options: { organizationRole: "OWNER" }, 
-		pickup: ["organization"] 
-	})
+	hasOrganizationRoleByOrganizationId({ pickup: ["organization"] })
 		.declareRoute(method, path)
 		.handler(
 			async ({ pickup }) => {

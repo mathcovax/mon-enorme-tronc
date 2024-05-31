@@ -21,17 +21,17 @@ async function submit () {
 		.patch(
 			"/organization/{organizationId}",
 			{
-				label: formFields.label
+				label: formFields.label === "" ? null : formFields.label
 			},
 			{ params: { organizationId } }
 		);
 
-	if (!valuesFormOrganziationEdit.logo.value.blob) {
+	if (!formFields.logo?.blob) {
 		return; 
 	}
 
 	const formData = new FormData();
-	formData.append("logo", valuesFormOrganziationEdit.logo.value.blob);
+	formData.append("logo", formFields.logo?.blob);
 
 	duploTo
 		.put(
@@ -47,7 +47,8 @@ function addLogo() {
 	}
 
 	valuesFormOrganziationEdit.logo.value = {
-		blob: inputFile.value.files[0], url: URL.createObjectURL(inputFile.value.files[0]) 
+		blob: inputFile.value.files[0], 
+		url: URL.createObjectURL(inputFile.value.files[0]) 
 	};
 }
 </script>
@@ -82,7 +83,7 @@ function addLogo() {
 						</SecondaryButton>
 
 						<img
-							v-if="modelValue.url"
+							v-if="modelValue"
 							:src="modelValue.url"
 							alt="Logo de l'organization"
 						>

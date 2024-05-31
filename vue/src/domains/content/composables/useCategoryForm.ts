@@ -24,7 +24,14 @@ export function useCategoryForm() {
 			type: "custom",
 			defaultValue: undefined as undefined | ItemImage,
 			cols: 6,
-			zodSchema: zod.object({}, { message: $t("form.rule.required") })
+			zodSchema: zod.object(
+				{
+					blob: zod.instanceof(Blob)
+						.refine((blob) => blob.size <= 5000000, { message: $t("form.rule.blobToLarge", { value: "5 Mo" }) })
+						.optional()
+				}, 
+				{ message: $t("form.rule.required") }
+			)
 		},
 		disabled: {
 			type: "checkbox",

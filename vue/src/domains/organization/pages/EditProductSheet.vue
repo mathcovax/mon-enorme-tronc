@@ -78,7 +78,7 @@ async function submit() {
 		});
 
 		formFields.images.forEach(item => { 
-			if (!("blob" in item)) {
+			if (!item.blob) {
 				return;
 			}
 
@@ -210,7 +210,6 @@ function addImage() {
 
 		<SecondaryButton @click="back">
 			{{ $t("button.back") }}
-			/>
 		</secondarybutton>
 	</div>
 </template>

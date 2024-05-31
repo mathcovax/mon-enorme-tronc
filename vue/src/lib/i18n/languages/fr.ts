@@ -102,7 +102,8 @@ export default {
 		[routerPageName.ORGANIZATION_EDIT]: {
 			form: {
 				logo: "Image du logo",
-				addLogo: "Ajouter un logo"
+				addLogo: "Ajouter un logo",
+				organizationLabel: "Label de l'organisation",
 			}
 		},
 		[routerPageName.ORGANIZATION_CREATE_PRODUCT_SHEET]: {
@@ -238,6 +239,7 @@ export default {
 			invalidEmail: "Cette email est invalide.",
 			minAge: "Vous devez avoir au moins {value} ans.",
 			maxItems: "Vous pouvez en selectioner max {value}.",
+			blobToLarge: "L'image est superirére a {value}.",
 		}
 	},
 	label: {
@@ -260,8 +262,6 @@ export default {
 		image: "Image",
 		type: "Type",
 		title: "Titre",
-		organizationName: "Nom de l'organisation",
-		organizationLabel: "Label de l'organisation"
 	},
 	placeholder: {
 		address: "Cherchez votre adresse",
