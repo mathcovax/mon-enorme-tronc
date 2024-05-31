@@ -46,6 +46,7 @@ model organization {
     warehouses          warehouse[]
     logoKey             String?                @db.VarChar(255)
     logoUrl             String?                @db.VarChar(400)
+    products            product[]
 }
 
 model user_to_organization {
@@ -102,6 +103,7 @@ model product_sheet {
     images           image_product_sheet[]
     organization     organization                @relation(fields: [organizationId], references: [id])
     organizationId   String
+    products         product[]
 }
 
 model product_sheet_to_category {
@@ -130,6 +132,7 @@ model warehouse {
     address        String       @db.Text
     organization   organization @relation(fields: [organizationId], references: [id])
     organizationId String
+    product        product[]
 }
 
 model navigation_item {
@@ -148,4 +151,24 @@ enum navigation_item_type {
     PARENT_CATEGORY
     CATEGORY
     LINK
+}
+
+model product {
+    sku            String         @unique @db.VarChar(255)
+    productSheet   product_sheet  @relation(fields: [productSheetId], references: [id])
+    productSheetId String
+    organization   organization   @relation(fields: [organizationId], references: [id])
+    organizationId String
+    status         product_status @default(IN_STOCK)
+    warehouseId    String
+    warehouse      warehouse      @relation(fields: [warehouseId], references: [id])
+    createdAt      DateTime       @default(now())
+    updatedAt      DateTime       @updatedAt
+}
+
+enum product_status {
+    ORDER
+    WRONG
+    SOLD
+    IN_STOCK
 }

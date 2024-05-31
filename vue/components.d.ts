@@ -124,6 +124,7 @@ declare module 'vue' {
     ThePopover: typeof import('./src/components/ui/popover/ThePopover.vue')['default']
     ThePopup: typeof import('./src/components/ThePopup.vue')['default']
     TheSelect: typeof import('./src/components/ui/select/TheSelect.vue')['default']
+    TheSheep: typeof import('./src/components/TheSheep.vue')['default']
     TheSheet: typeof import('./src/components/ui/sheet/TheSheet.vue')['default']
     TheSpinner: typeof import('./src/components/TheSpinner.vue')['default']
     TheTable: typeof import('./src/components/ui/table/TheTable.vue')['default']

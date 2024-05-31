@@ -1,14 +1,9 @@
-import type { GetDef, GetResponseByInfo } from "@/lib/duploTo/EnrichedDuploTo";
-
-export type ProductSheet = GetResponseByInfo<
-	GetDef<"GET", "/organization/{organizationId}/product-sheets">,
-	"productSheets.found"
->["body"][number]
+import type { ProductSheet } from "@/lib/utils";
 
 export function useGetProductSheets(organizationId: string) {
 	const productSheets = ref<ProductSheet[]>([]);
 
-	function getProductSheets(page: number, name: string) {
+	function getProductSheets(page?: number, name?: string) {
 		return duploTo.enriched
 			.get(
 				"/organization/{organizationId}/product-sheets",
@@ -19,6 +14,8 @@ export function useGetProductSheets(organizationId: string) {
 			})
 			.result;
 	}
+	getProductSheets();
+	
 	return {
 		productSheets,
 		getProductSheets

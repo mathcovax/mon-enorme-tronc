@@ -42,7 +42,6 @@ describe("/organization/{organizationId}", () => {
 				.setDefaultFloorValue({ organization: organizationData })
 				.launch();
 	
-			console.log(res.body);
 			expect(res.information).toBe("organization.found");
 		});
 	});

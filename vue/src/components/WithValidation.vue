@@ -1,8 +1,9 @@
 <script setup lang="ts">
 interface Props {
-	title: string,
-	content?: string,
+	title: string
+	content?: string
 	class?: HTMLElement["className"]
+	disabled?: boolean
 }
 
 const props = defineProps<Props>();
@@ -17,7 +18,7 @@ const emit = defineEmits<{
 		<template #trigger="{ open }">
 			<div
 				:class="props.class"
-				@click="open"
+				@click="disabled || open()"
 			>
 				<slot />
 			</div>

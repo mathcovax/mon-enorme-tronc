@@ -4,7 +4,9 @@ import { useOrganizationUserStore } from "@/domains/organization/stores/organiza
 const { 
 	ORGANIZATION_MANAGE_USER,
 	ORGANIZATION_GET_PRODUCT_SHEET,
-	ORGANIZATION_GET_WAREHOUSE, ORGANIZATION_EDIT 
+	ORGANIZATION_GET_WAREHOUSE, 
+	ORGANIZATION_EDIT,
+	ORGANIZATION_MANAGE_PRODUCT
 } = routerPageName;
 const route = useRoute();
 const organizationUserStore = useOrganizationUserStore();
@@ -28,7 +30,7 @@ const organizationUserStore = useOrganizationUserStore();
 						to="#"
 						class="flex items-center gap-3 px-3 py-2 transition-all rounded-lg hover:text-primary"
 						:class="
-							route.name ?
+							!route.name ?
 								'bg-muted text-primary'
 								:
 								'text-muted-foreground'
@@ -46,7 +48,7 @@ const organizationUserStore = useOrganizationUserStore();
 						:to="{ name: ORGANIZATION_EDIT }"
 						class="flex items-center gap-3 px-3 py-2 transition-all rounded-lg hover:text-primary"
 						:class="
-							route.name ?
+							route.name === ORGANIZATION_EDIT ?
 								'bg-muted text-primary'
 								:
 								'text-muted-foreground'
@@ -64,7 +66,7 @@ const organizationUserStore = useOrganizationUserStore();
 						to="#"
 						class="flex items-center gap-3 px-3 py-2 transition-all rounded-lg hover:text-primary"
 						:class="
-							route.name ?
+							!route.name ?
 								'bg-muted text-primary'
 								:
 								'text-muted-foreground'
@@ -79,10 +81,27 @@ const organizationUserStore = useOrganizationUserStore();
 
 					<RouterLink
 						v-if="organizationUserStore.hasRole('PRODUCT_SHEET_MANAGER')"
-						to="#"
+						:to="{name: ORGANIZATION_GET_PRODUCT_SHEET}"
 						class="flex items-center gap-3 px-3 py-2 transition-all rounded-lg hover:text-primary"
 						:class="
 							route.name === ORGANIZATION_GET_PRODUCT_SHEET 
+								? 'bg-muted text-primary'
+								: 'text-muted-foreground'
+						"
+					>
+						<TheIcon
+							icon="text-box-multiple-outline"
+							size="2xl"
+						/>
+						{{ $t("layout.organization.nav.productSheets") }}
+					</RouterLink>
+
+					<RouterLink
+						v-if="organizationUserStore.hasRole('STORE_KEEPER')"
+						:to="{name: ORGANIZATION_MANAGE_PRODUCT}"
+						class="px-3 py-2 flex items-center gap-3 rounded-lg transition-all hover:text-primary"
+						:class="
+							route.name === ORGANIZATION_MANAGE_PRODUCT 
 								? 'bg-muted text-primary'
 								: 'text-muted-foreground'
 						"
@@ -116,7 +135,7 @@ const organizationUserStore = useOrganizationUserStore();
 						to="#"
 						class="flex items-center gap-3 px-3 py-2 transition-all rounded-lg hover:text-primary"
 						:class="
-							route.name ?
+							!route.name ?
 								'bg-muted text-primary'
 								:
 								'text-muted-foreground'
@@ -131,8 +150,8 @@ const organizationUserStore = useOrganizationUserStore();
 
 					<RouterLink
 						v-if="organizationUserStore.hasRole('OWNER')"
-						to="#"
-						class="flex items-center gap-3 px-3 py-2 transition-all rounded-lg hover:text-primary"
+						:to="{ name: ORGANIZATION_GET_WAREHOUSE }"
+						class="px-3 py-2 flex items-center gap-3 rounded-lg transition-all hover:text-primary"
 						:class="
 							route.name === ORGANIZATION_GET_WAREHOUSE ?
 								'bg-muted text-primary'
