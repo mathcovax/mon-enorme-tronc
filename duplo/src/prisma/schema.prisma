@@ -44,6 +44,8 @@ model organization {
     product_sheet       product_sheet[]
     image_product_sheet image_product_sheet[]
     warehouses          warehouse[]
+    logoKey             String?                @db.VarChar(255)
+    logoUrl             String?                @db.VarChar(400)
 }
 
 model user_to_organization {

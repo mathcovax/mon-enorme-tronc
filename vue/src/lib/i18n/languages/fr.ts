@@ -95,8 +95,15 @@ export default {
 			price: "Prix",
 			form: {
 				placeholder: "Chercher des catégories.",
-				image: "Image du produit.",
+				image: "Image du produit",
 				addImage: "Ajouter une image",
+			}
+		},
+		[routerPageName.ORGANIZATION_EDIT]: {
+			form: {
+				logo: "Image du logo",
+				addLogo: "Ajouter un logo",
+				organizationLabel: "Label de l'organisation",
 			}
 		},
 		[routerPageName.ORGANIZATION_CREATE_PRODUCT_SHEET]: {
@@ -197,6 +204,7 @@ export default {
 			title: "Mon organisation",
 			nav: {
 				dashboard: "Tableau de bord",
+				organizationEdit: "Modifier l'organisation",
 				orders: "Commandes",
 				products: "Produits",
 				users: "Utilisateurs",
@@ -231,6 +239,7 @@ export default {
 			invalidEmail: "Cette email est invalide.",
 			minAge: "Vous devez avoir au moins {value} ans.",
 			maxItems: "Vous pouvez en selectioner max {value}.",
+			blobToLarge: "L'image est superirére a {value}.",
 		}
 	},
 	label: {
@@ -252,7 +261,7 @@ export default {
 		categories: "Categories",
 		image: "Image",
 		type: "Type",
-		title: "Titre"
+		title: "Titre",
 	},
 	placeholder: {
 		address: "Cherchez votre adresse",
@@ -282,13 +291,17 @@ export default {
 	response: {
 		organization: {
 			alreadyExist: "Une organisation avec ce nom éxiste déjà.",
-			created: "L'organisation a correctement étais créer.",
-			edited: "L'organisation a correctement étais éditer",
+			created: "L'organisation à correctement été créer.",
+			edited: "L'organisation à été modifiée avec succès.",
 			hasAlreadyUser: "Cette utilisateur est déja dans l'organization.",
 			user: {
 				add: "L'utilisateur a correctement étais ajouter.",
 				edited: "L'utilisateur a correctement étais modifier.",
 				deleted: "L'utilisateur a correctement étais supprimé."
+			},
+			image: {
+				missing: "Aucune image n'a été sélectionnée.",
+				edited: "L'image à été ajouté à l'organization avec succès."
 			}
 		},
 		user: {

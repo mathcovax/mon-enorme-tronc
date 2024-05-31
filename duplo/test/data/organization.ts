@@ -6,4 +6,6 @@ export const organizationData: organization = {
 	label: null,
 	ownerId: "okok",
 	suspended: false,
+	logoKey: null,
+	logoUrl: null
 };

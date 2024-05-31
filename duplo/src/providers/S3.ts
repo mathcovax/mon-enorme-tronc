@@ -18,7 +18,11 @@ export const S3 = global.S3 = new S3Client({
 duplo.addHook("beforeListenHttpServer", async () => {
 	const promiseListe: unknown[] = [];
 
-	for (const bucket of [ENV.MINIO_BUCKET_PRODUCT_SHEET_IMAGES, ENV.MINIO_BUCKET_CONTENT]) {
+	for (const bucket of [
+		ENV.MINIO_BUCKET_PRODUCT_SHEET_IMAGES,
+		ENV.MINIO_BUCKET_CONTENT,
+		ENV.MINIO_BUCKET_ORGANIZATION_LOGO
+	]) {
 		promiseListe.push((async () => {
 			try {
 				await S3.send(new HeadBucketCommand({ Bucket: bucket }));

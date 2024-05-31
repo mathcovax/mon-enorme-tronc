@@ -78,7 +78,7 @@ async function submit() {
 		});
 
 		formFields.images.forEach(item => { 
-			if (!("blob" in item)) {
+			if (!item.blob) {
 				return;
 			}
 
@@ -137,7 +137,7 @@ function addImage() {
 </script>
 
 <template>
-	<div class="w-full flex flex-col items-center p-6 gap-6">
+	<div class="flex flex-col items-center w-full gap-6 p-6">
 		<ProductSheetForm
 			@submit="submit"
 			class="max-w-[500px] w-[80%]"
@@ -179,15 +179,15 @@ function addImage() {
 						{{ $pt("form.addImage") }}
 					</SecondaryButton>
 
-					<div class="w-full overflow-hidden grid grid-cols-3 grid-row-2 gap-3">
+					<div class="grid w-full grid-cols-3 gap-3 overflow-hidden grid-row-2">
 						<div
 							v-for="(itemImage, index) of modelValue"
 							:key="'id' in itemImage? itemImage.id : index"
-							class=" w-full aspect-square overflow-hidden relative"
+							class="relative w-full overflow-hidden aspect-square"
 						>
 							<TheIcon
 								icon="delete"
-								class="absolute top-2 right-2 rounded-sm bg-white hover:opacity-80 transition-all cursor-pointer"
+								class="absolute transition-all bg-white rounded-sm cursor-pointer top-2 right-2 hover:opacity-80"
 								@click="onUpdate(modelValue.filter(i => i!==itemImage))"
 							/>
 

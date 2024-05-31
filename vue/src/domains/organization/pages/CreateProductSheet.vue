@@ -58,7 +58,7 @@ async function submit() {
 		});
 
 		formFields.images.forEach(item => { 
-			if (!("blob" in item)) {
+			if (!item.blob) {
 				return;
 			}
 

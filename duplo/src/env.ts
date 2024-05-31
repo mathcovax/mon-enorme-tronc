@@ -25,6 +25,7 @@ export default global.ENV = zod
 		MINIO_PREFIX: zod.string(),
 		MINIO_BUCKET_PRODUCT_SHEET_IMAGES: zod.string(),
 		MINIO_BUCKET_CONTENT: zod.string(),
+		MINIO_BUCKET_ORGANIZATION_LOGO: zod.string(),
 		FIREBASE_CREDENTIAL_PATH: zod.string(),
 		JWT_KEY: zod.string(),
 		JWT_TIME: zod.string()

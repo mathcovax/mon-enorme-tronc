@@ -78,6 +78,12 @@ export function useProductSheetForm(productSheetId?: string) {
 			type: "custom",
 			label: $pt("form.image"),
 			defaultValue: [] as (ItemImage | ItemImageNew)[],
+			zodSchema: zod.object({
+				blob: zod.instanceof(Blob)
+					.refine((blob) => blob.size <= 5000000, { message: $t("form.rule.blobToLarge", { value: "5 Mo" }) })
+					.optional(),
+				id: zod.string().optional()
+			}).array()
 		}
 	});
 

@@ -54,7 +54,7 @@ function addImageCreate() {
 async function submitCreate() {
 	const formFields = await checkCreateCategoryForm();
 
-	if (!formFields || !valuesCreateCategoryForm.image.value?.blob) {
+	if (!formFields || !formFields.image.blob) {
 		return; 
 	}
 
@@ -67,7 +67,7 @@ async function submitCreate() {
 	
 	if (result.success && result.info === "category.created") {
 		const formData = new FormData();
-		formData.append("image", valuesCreateCategoryForm.image.value.blob);
+		formData.append("image", formFields.image.blob);
 		
 		await duploTo
 			.put(
@@ -112,9 +112,9 @@ async function submitPatch() {
 		.result;
 	
 	if (result.success && result.info === "category.edited") {
-		if (valuesPatchCategoryForm.image.value?.blob) {
+		if (formFields.image.blob) {
 			const formData = new FormData();
-			formData.append("image", valuesPatchCategoryForm.image.value.blob);
+			formData.append("image", formFields.image.blob);
 		
 			await duploTo
 				.put(
