@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { useGetProductSheets, type ProductSheet } from "../composables/useGetProductSheets";
+import type { ProductSheet } from "@/lib/utils";
+import { useGetProductSheets } from "../composables/useGetProductSheets";
 
 const { organizationId } = useRouteParams({ 
 	organizationId: zod.string(), 

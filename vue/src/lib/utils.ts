@@ -103,3 +103,17 @@ export type Product = GetResponseByInfo<
 	GetDef<"GET", "/organization/{organizationId}/products">,
 	"products.found"
 >["body"][number]
+
+export type ProductStatus = Product["status"]
+
+export const productStatus: TuplifyUnion<Product["status"]> = [
+	"ORDER",
+	"WRONG",
+	"SOLD",
+	"IN_STOCK",
+];
+
+export type ProductSheet = GetResponseByInfo<
+	GetDef<"GET", "/organization/{organizationId}/product-sheets">,
+	"productSheets.found"
+>["body"][number]

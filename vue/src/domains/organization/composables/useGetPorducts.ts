@@ -7,12 +7,21 @@ export function useGetProducts(organizationId: string) {
 		return duploTo.enriched
 			.get(
 				"/organization/{organizationId}/products",
-				{ params: { organizationId }, query: { page, sku } }
+				{ 
+					params: { organizationId }, 
+					query: {
+						page, 
+						sku, 
+						withProductSheet: "true", 
+						withWarehouse: "true" 
+					} 
+				}
 			)
 			.info("products.found", (data) => {
 				products.value = data;
 			});
 	}
+
 	return {
 		products,
 		getProducts

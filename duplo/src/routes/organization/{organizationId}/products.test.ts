@@ -18,6 +18,8 @@ describe("GET /organization/{organizationId}/products", () => {
 			.setRequestProperties({
 				query: {
 					sku: "eeee",
+					withProductSheet: "true",
+					withWarehouse: "false"
 				}
 			})
 			.launch();
@@ -33,16 +35,8 @@ describe("GET /organization/{organizationId}/products", () => {
 			skip: 0,
 			take: 10,
 			include: {
-				productSheet: {
-					select: {
-						name: true,
-					},
-				},
-				warehouse: {
-					select: {
-						name: true,
-					},
-				},
+				productSheet: true,
+				warehouse: false,
 			},
 		});
 		expect(res.information).toBe("products.found");

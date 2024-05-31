@@ -1,4 +1,6 @@
 import { product_status } from "@prisma/client";
+import { productSheetSchema } from "./productSheet";
+import { warehouseSchema } from "./warehouseSchema";
 
 export const productStatusTuple: TuplifyUnion<product_status> = [
 	"ORDER",
@@ -15,7 +17,6 @@ export const productStatusEnum: UninonToEnum<product_status> = {
 };
 
 export const productSchema = zod.object({
-	id: zod.string(),
 	sku: zod.string().min(2).max(255),
 	productSheetId: zod.string(),
 	organizationId: zod.string(),
@@ -25,19 +26,7 @@ export const productSchema = zod.object({
 	status: zod.enum(productStatusTuple),
 });
 
-export const productAndProductSheetNameSchema = zod.object({
-	id: zod.string(),
-	sku: zod.string().min(2).max(255),
-	productSheetId: zod.string(),
-	organizationId: zod.string(),
-	warehouseId: zod.string(),
-	createdAt: zod.coerce.string(),
-	updatedAt: zod.coerce.string(),
-	status: zod.enum(productStatusTuple),
-	productSheet: zod.object({
-		name: zod.string(),
-	}),
-	warehouse: zod.object({
-		name: zod.string(),
-	}),
+export const productWithMoreSchema = productSchema.extend({
+	productSheet: productSheetSchema.optional(),
+	warehouse: warehouseSchema.optional(),
 });

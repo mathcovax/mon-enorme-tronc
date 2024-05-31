@@ -41,7 +41,6 @@ describe("PUT /organization/{organizationId}/logo", () => {
 			.mockProcess(0, { multipartGetFile: { logo: [{ properties: { filename: "toto.png" }, tempFileName: "ii" }] } })
 			.launch();
 			
-		console.log(res.body);
 		expect(res.information).toBe("organization.logo.edited");
 		expect(spy2).lastCalledWith("lolo", "/eee/logo.png", "ii");
 		expect(spy).lastCalledWith({

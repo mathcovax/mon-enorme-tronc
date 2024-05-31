@@ -154,13 +154,12 @@ enum navigation_item_type {
 }
 
 model product {
-    id             String         @id @default(uuid())
-    sku            String         @db.VarChar(255)
+    sku            String         @unique @db.VarChar(255)
     productSheet   product_sheet  @relation(fields: [productSheetId], references: [id])
     productSheetId String
     organization   organization   @relation(fields: [organizationId], references: [id])
     organizationId String
-    status         product_status
+    status         product_status @default(IN_STOCK)
     warehouseId    String
     warehouse      warehouse      @relation(fields: [warehouseId], references: [id])
     createdAt      DateTime       @default(now())

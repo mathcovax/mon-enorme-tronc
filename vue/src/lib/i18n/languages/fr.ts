@@ -361,7 +361,10 @@ export default {
 		product: {
 			notfound: "Le produit n'existe pas.",
 			edited: "Le produit a correctement étais éditer.",
-			created: "Le produit a correctement étais créer."
+			created: "Le produit a correctement étais créer.",
+			sku: {
+				alreadyUse: "Ce sku est déjà utilisais",
+			}
 		},
 		TYPE_ERROR: "L'une des donné envoyer est éroner. (Erreur provenant du site)",
 		NOTFOUND: "La route route utilisais n'existe pas. (Erreur provenant du site)",

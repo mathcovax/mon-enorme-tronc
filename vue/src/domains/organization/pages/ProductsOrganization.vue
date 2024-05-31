@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useGetProducts } from "../composables/useGetPorducts";
-import type { Product } from "@/lib/utils";
+import type { Product, ProductStatus } from "@/lib/utils";
 import { useProductForm } from "../composables/useProductForm";
 import WithValidation from "@/components/WithValidation.vue";
 
@@ -13,7 +13,7 @@ const currentPage = ref(0);
 const searchName = ref("");
 const $pt = usePageTranslate();
 const toggleBtnCreateForm = ref(false);
-const statusToColor: Record<string, string> = {
+const statusToColor: Record<ProductStatus, string> = {
 	ORDER: "orange",
 	WRONG: "red",
 	SOLD: "green",
@@ -26,11 +26,11 @@ const cols: BigTableColDef<Product>[] = [
 	},
 	{
 		title: $pt("table.productSheetName"),
-		getter: i => i.productSheet.name
+		getter: i => i.productSheet?.name
 	},
 	{
 		title: $pt("table.warehouseName"),
-		getter: i => i.warehouse.name
+		getter: i => i.warehouse?.name
 	},
 	{
 		title: $pt("table.lastEdit"),
@@ -81,11 +81,11 @@ async function toggleStatus(product: Product) {
 	if (product.status !== "WRONG" && product.status !== "IN_STOCK") return;
 	await duploTo.enriched
 		.patch(
-			"/product/{productId}",
+			"/product/{sku}",
 			{
 				status: product.status === "WRONG" ? "IN_STOCK" : "WRONG"
 			},
-			{ params: { productId: product.id } }
+			{ params: { sku: product.sku } }
 		)
 		.info("product.edited", () => {
 			resetProductForm();
@@ -98,8 +98,8 @@ function openCreateForm() {
 	toggleBtnCreateForm.value = !toggleBtnCreateForm.value;
 }
 
-const getColorForStatus = (status: string): string => {
-	return statusToColor[status] || "black";
+const getColorForStatus = (status: ProductStatus) => {
+	return statusToColor[status];
 };
 
 getProducts(currentPage.value, searchName.value);

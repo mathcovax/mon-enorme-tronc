@@ -30,7 +30,7 @@ const organizationUserStore = useOrganizationUserStore();
 						to="#"
 						class="flex items-center gap-3 px-3 py-2 transition-all rounded-lg hover:text-primary"
 						:class="
-							route.name ?
+							!route.name ?
 								'bg-muted text-primary'
 								:
 								'text-muted-foreground'
@@ -48,7 +48,7 @@ const organizationUserStore = useOrganizationUserStore();
 						:to="{ name: ORGANIZATION_EDIT }"
 						class="flex items-center gap-3 px-3 py-2 transition-all rounded-lg hover:text-primary"
 						:class="
-							route.name ?
+							route.name === ORGANIZATION_EDIT ?
 								'bg-muted text-primary'
 								:
 								'text-muted-foreground'
@@ -66,7 +66,7 @@ const organizationUserStore = useOrganizationUserStore();
 						to="#"
 						class="flex items-center gap-3 px-3 py-2 transition-all rounded-lg hover:text-primary"
 						:class="
-							route.name ?
+							!route.name ?
 								'bg-muted text-primary'
 								:
 								'text-muted-foreground'
@@ -81,7 +81,7 @@ const organizationUserStore = useOrganizationUserStore();
 
 					<RouterLink
 						v-if="organizationUserStore.hasRole('PRODUCT_SHEET_MANAGER')"
-						to="#"
+						:to="{name: ORGANIZATION_GET_PRODUCT_SHEET}"
 						class="flex items-center gap-3 px-3 py-2 transition-all rounded-lg hover:text-primary"
 						:class="
 							route.name === ORGANIZATION_GET_PRODUCT_SHEET 
@@ -135,7 +135,7 @@ const organizationUserStore = useOrganizationUserStore();
 						to="#"
 						class="flex items-center gap-3 px-3 py-2 transition-all rounded-lg hover:text-primary"
 						:class="
-							route.name ?
+							!route.name ?
 								'bg-muted text-primary'
 								:
 								'text-muted-foreground'

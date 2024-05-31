@@ -1,5 +1,6 @@
 import { hasOrganizationRoleByOrganizationId } from "@security/hasOrganizationRole/byOrganizationId";
-import { productAndProductSheetNameSchema } from "@schemas/product";
+import { productWithMoreSchema } from "@schemas/product";
+import { stringBoolean } from "@utils/zod";
 
 /* METHOD : GET, PATH : /organization/{organizationId}/products */
 export const GET = (method: Methods, path: string) =>
@@ -11,7 +12,9 @@ export const GET = (method: Methods, path: string) =>
 		.extract({
 			query: {
 				page: zod.coerce.number().default(0),
-				sku: zod.string().optional()
+				sku: zod.string().optional(),
+				withProductSheet: stringBoolean.optional(),
+				withWarehouse: stringBoolean.optional(),
 			}
 		})
 		.handler(
@@ -19,6 +22,8 @@ export const GET = (method: Methods, path: string) =>
 				const { id: organizationId } = pickup("organization");
 				const page = pickup("page");
 				const sku = pickup("sku");
+				const withProductSheet = pickup("withProductSheet");
+				const withWarehouse = pickup("withWarehouse");
 				
 				const products = await prisma.product.findMany({
 					where: {
@@ -33,19 +38,11 @@ export const GET = (method: Methods, path: string) =>
 					take: 10,
 					skip: page * 10,
 					include: {
-						productSheet: {
-							select: {
-								name: true,
-							},
-						},
-						warehouse: {
-							select: {
-								name: true,
-							},
-						},
+						productSheet: withProductSheet,
+						warehouse: withWarehouse,
 					},
 				});
 				throw new OkHttpException("products.found", products);
 			},
-			new IHaveSentThis(OkHttpException.code, "products.found", productAndProductSheetNameSchema.array())
+			new IHaveSentThis(OkHttpException.code, "products.found", productWithMoreSchema.array())
 		);

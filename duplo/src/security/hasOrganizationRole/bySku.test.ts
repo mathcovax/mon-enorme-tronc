@@ -1,15 +1,15 @@
 import { duploTesting } from "@test/setup";
 import { productData } from "@test/data/product";
-import { hasOrganizationRoleByProductId } from "./byProductId";
+import { hasOrganizationRoleBySku } from "./bySku";
 import { Response } from "@duplojs/duplojs";
 
-describe("hasOrganizationRoleByProductId", () => {
+describe("hasOrganizationRoleBySku", () => {
 	it("product notfound", async () => {
 		const res: Response = await duploTesting
-			.testAbstractRoute(hasOrganizationRoleByProductId.abstractRoute)
+			.testAbstractRoute(hasOrganizationRoleBySku.abstractRoute)
 			.setRequestProperties({
 				params: {
-					productId: "tete"
+					sku: "tete"
 				},
 			})
 			.mockChecker(
@@ -22,11 +22,11 @@ describe("hasOrganizationRoleByProductId", () => {
 
 	it("product exist", async () => {
 		const res = await duploTesting
-			.testAbstractRoute(hasOrganizationRoleByProductId.abstractRoute)
+			.testAbstractRoute(hasOrganizationRoleBySku.abstractRoute)
 			.setDefaultFloorValue({ accessTokenContent: {} })
 			.setRequestProperties({
 				params: {
-					productId: "tete"
+					sku: "tete"
 				},
 			})
 			.mockChecker(

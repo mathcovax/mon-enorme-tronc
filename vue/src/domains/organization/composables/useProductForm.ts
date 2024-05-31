@@ -1,18 +1,13 @@
-import { type Product } from "@/lib/utils";
 import { useGetWarehouses } from "./useGetWarehouses";
+import { useGetProductSheets } from "./useGetProductSheets";
 
 export function useProductForm(organizationId: string) {
 
-	const { searchProductSheets, productSheetNames } = useSearchProductSheets(organizationId);
+	const { productSheets, getProductSheets } = useGetProductSheets(organizationId);
 	const { getWarehouses, warehouses } = useGetWarehouses(organizationId);
 	const $pt = usePageTranslate();
 
 	const { Form, checkForm, resetForm, values } = useFormBuilder({
-		product: {
-			type: "custom",
-			defaultValue: undefined as undefined | Product,
-			zodSchema: zod.object({ id: zod.string() }).optional(),
-		},
 		sku: {
 			type: "text",
 			label: $pt("form.sku"),
@@ -24,7 +19,7 @@ export function useProductForm(organizationId: string) {
 		},
 		productSheet: computed(() => ({
 			type: "combo",
-			items: productSheetNames.value.map(v => ({ label: v.name, identifier: v.id })),
+			items: productSheets.value.map(v => ({ label: v.name, identifier: v.id })),
 			placeholder: $pt("form.productSheetPlaceholder"),
 			emptyLabel: $t("label.empty"),
 			label: $pt("form.productSheetLabel"),
@@ -33,7 +28,7 @@ export function useProductForm(organizationId: string) {
 				{ message: $t("form.rule.required") }
 			).transform(item => item.identifier),
 			textButton: $t("button.add"),
-			onUpdateSearchTerm: searchProductSheets,
+			onUpdateSearchTerm: name => getProductSheets(undefined, name),
 		})),
 		warehouse: computed(() => ({
 			type: "combo",
@@ -46,7 +41,7 @@ export function useProductForm(organizationId: string) {
 				{ message: $t("form.rule.required") }
 			).transform(item => item.identifier),
 			textButton: $t("button.add"),
-			onUpdateSearchTerm: (name: string) => { getWarehouses(undefined, name); },
+			onUpdateSearchTerm: (name: string) => getWarehouses(undefined, name),
 		})),
 	});
 
@@ -58,23 +53,3 @@ export function useProductForm(organizationId: string) {
 	};
 }
 
-// move
-export function useSearchProductSheets(organizationId: string) {
-	const productSheetNames = ref<{name: string, id: string}[]>([]);
-
-	function searchProductSheets(productSheetName: string) {
-		duploTo.enriched
-			.get(
-				"/organization/{organizationId}/product-sheets",
-				{ params: { organizationId }, query: { name: productSheetName } }
-			)
-			.s((res) => {
-				productSheetNames.value = res.map((r) => ({ name: r.name, id: r.id })); 
-			});
-	}
-
-	return {
-		productSheetNames,
-		searchProductSheets
-	};
-}

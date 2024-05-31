@@ -13,6 +13,8 @@ export function useGetWarehouses(organizationId: string) {
 				warehouses.value = data;
 			});
 	}
+
+	getWarehouses();
 	return {
 		warehouses,
 		getWarehouses

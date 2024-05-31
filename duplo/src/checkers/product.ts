@@ -1,29 +1,10 @@
-import { GetTypeInput, createTypeInput } from "@duplojs/type-input";
-import { Prisma } from "@prisma/client";
-
-export const inputProduct = createTypeInput()
-	.add<"id", string>()
-	.add<"sku", string>()
-	.build();
-
 export const productExistCheck = duplo
 	.createChecker("productExist")
-	.handler(async ({ name, value }: GetTypeInput<typeof inputProduct>, output) => {
-		let where: Prisma.productFindFirstArgs["where"];
-
-		if (name === "id") {
-			where = {
-				id: value
-			};
-		}
-		else if (name === "sku") {
-			where = {
-				sku: value
-			};
-		}
-
+	.handler(async (sku: string, output) => {
 		const product = await prisma.product.findFirst({
-			where,
+			where: {
+				sku
+			},
 		});
 
 		if (product) {

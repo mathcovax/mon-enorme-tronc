@@ -1,5 +1,6 @@
+import { productExistCheck } from "@checkers/product";
 import { inputWarehouse, warehouseExistCheck } from "@checkers/warehouse";
-import { productSchema, productStatusEnum } from "@schemas/product";
+import { productSchema } from "@schemas/product";
 import { hasOrganizationRoleByProductSheetId } from "@security/hasOrganizationRole/byProductSheetId";
 
 /* METHOD : POST, PATH : /product-sheet/{productSheetId}/product */
@@ -23,6 +24,17 @@ export const POST = (method: Methods, path: string) =>
 			},
 			new IHaveSentThis(NotFoundHttpException.code, "warehouse.notfound")
 		)
+		.check(
+			productExistCheck,
+			{
+				input: (p) => p("body").sku,
+				result: "product.notfound",
+				catch: () => {
+					throw new ConflictHttpException("product.sku.alreadyUse");
+				}
+			},
+			new IHaveSentThis(ConflictHttpException.code, "product.sku.alreadyUse")
+		)
 		.handler(
 			async ({ pickup }) => {
 				const { id: productSheetId, organizationId } = pickup("productSheet");
@@ -33,10 +45,10 @@ export const POST = (method: Methods, path: string) =>
 						sku,
 						productSheetId,
 						organizationId,
-						status: productStatusEnum.IN_STOCK,
 						warehouseId,
 					}
 				});
+
 				throw new CreatedHttpException("product.created", product);
 			},
 			new IHaveSentThis(CreatedHttpException.code, "product.created", productSchema)
