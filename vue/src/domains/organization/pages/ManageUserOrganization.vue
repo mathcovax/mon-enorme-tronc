@@ -157,7 +157,7 @@ watch(searchEmail, () => getOrganizationUsers(currentPage.value = 0, searchEmail
 					type="submit"
 					class="col-span-12"
 				>
-					{{ $t("form.submit") }}
+					{{ $t("button.validate") }}
 				</PrimaryButton>
 			</FormOrganizationUserAdd>
 

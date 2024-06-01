@@ -22,6 +22,22 @@ export default {
 		[routerPageName.USER_EDIT_PROFIL]: {
 			title: "Mon profil",
 		},
+		[routerPageName.USER_ORGANIZATIONS]: {
+			title: "Mes organisations",
+			emptyTitle: "Vous n'avez pas encore d'organisation.",
+			emptySubtitle: "Créez ou rejoignez une organisation pour commencer à vendre vos produits.",
+			table: {
+				searchPlaceholder: "Chercher une organization",
+				col: {
+					name: "Nom",
+					active: "Actif",
+					actions: "Actions"
+				},
+				action: {
+					goTo: "Aller à l'organisation",
+				}
+			},
+		},
 		[routerPageName.USER_CART]: {
 			title: "Mon panier",
 			emptyTitle: "Votre panier est vide.",
@@ -213,11 +229,12 @@ export default {
 				dropdown: {
 					myAccount: "Mon compte",
 					editProfil: "Editer mon profil",
+					myOrganizations: "Mes organisations",
 					support: "Support",
 					management: "Gestion",
 					admin: "Administration",
-					organizations: "Mes organisations",
-					content: "Gestion du contenu",
+					organizations: "Oorganisations",
+					content: "Contenu",
 					login: "Connexion",
 					logout: "Déconnexion"
 				},
