@@ -72,7 +72,9 @@ export default {
 			btnClear: "Clear"
 		},
 		[routerPageName.CONTENT_PANEL_CATEGORIES]: {
+			title: "Liste des catégories",
 			form: {
+				title: "Créer une catégorie",
 				oldName: {
 					label: "Nom actuel : {currentName}"
 				},
@@ -145,6 +147,10 @@ export default {
 			}
 		},
 		[routerPageName.CONTENT_PANEL_PARENT_CATEGORIES]: {
+			title: "Liste des catégories parent",
+			form: {
+				title: "Créer une catégorie parent",
+			},
 			label: {
 				name: "Nom de la catégorie parent",
 				linkCategories: "Categories associées",
@@ -156,6 +162,10 @@ export default {
 			}
 		},
 		[routerPageName.CONTENT_PANEL_NAVIGATION_BAR]: {
+			title: "Éléments de la barre de navigation",
+			form: {
+				title: "Ajouter un élément",
+			},
 			label: {
 				priority: "Priorité",
 				select: "Selectioner",
@@ -270,6 +280,8 @@ export default {
 			title: "Gestion du contenu",
 			nav: {
 				dashboard: "Tableau de bord",
+				navbar: "Barre de navigation",
+				parentCategories: "Catégories parent",
 				categories: "Catégories",
 			},
 			dropdown: {

@@ -1,5 +1,10 @@
 <script setup lang="ts">
-const { CONTENT_PANEL_HOME, CONTENT_PANEL_CATEGORIES } = routerPageName;
+const {
+	CONTENT_PANEL_HOME,
+	CONTENT_PANEL_NAVIGATION_BAR,
+	CONTENT_PANEL_PARENT_CATEGORIES,
+	CONTENT_PANEL_CATEGORIES
+} = routerPageName;
 const route = useRoute();
 </script>
 
@@ -35,6 +40,40 @@ const route = useRoute();
 					</RouterLink>
 
 					<RouterLink
+						:to="{ name: CONTENT_PANEL_NAVIGATION_BAR }"
+						class="px-3 py-2 flex items-center gap-3 rounded-lg transition-all hover:text-primary"
+						:class="
+							route.name === CONTENT_PANEL_NAVIGATION_BAR ?
+								'bg-muted text-primary'
+								:
+								'text-muted-foreground'
+						"
+					>
+						<TheIcon
+							icon="magnify"
+							size="2xl"
+						/>
+						{{ $t("layout.content.nav.navbar") }}
+					</RouterLink>
+
+					<RouterLink
+						:to="{ name: CONTENT_PANEL_PARENT_CATEGORIES }"
+						class="px-3 py-2 flex items-center gap-3 rounded-lg transition-all hover:text-primary"
+						:class="
+							route.name === CONTENT_PANEL_PARENT_CATEGORIES ?
+								'bg-muted text-primary'
+								:
+								'text-muted-foreground'
+						"
+					>
+						<TheIcon
+							icon="shape-outline"
+							size="2xl"
+						/>
+						{{ $t("layout.content.nav.parentCategories") }}
+					</RouterLink>
+
+					<RouterLink
 						:to="{ name: CONTENT_PANEL_CATEGORIES }"
 						class="px-3 py-2 flex items-center gap-3 rounded-lg transition-all hover:text-primary"
 						:class="
@@ -45,7 +84,7 @@ const route = useRoute();
 						"
 					>
 						<TheIcon
-							icon="shape-outline"
+							icon="shape-plus-outline"
 							size="2xl"
 						/>
 						{{ $t("layout.content.nav.categories") }}

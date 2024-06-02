@@ -1,5 +1,10 @@
 <script setup lang="ts">
-const { ADMIN_PANEL_HOME, ADMIN_PANEL_ORGANIZATIONS, ADMIN_PANEL_USERS } = routerPageName;
+const {
+	CONTENT_PANEL_HOME,
+	CONTENT_PANEL_NAVIGATION_BAR,
+	CONTENT_PANEL_PARENT_CATEGORIES,
+	CONTENT_PANEL_CATEGORIES
+} = routerPageName;
 const route = useRoute();
 </script>
 
@@ -24,17 +29,17 @@ const route = useRoute();
 		>
 			<nav class="grid gap-2 text-lg font-medium">
 				<RouterLink
-					:to="{ name: ADMIN_PANEL_HOME }"
+					:to="{ name: CONTENT_PANEL_HOME }"
 					class="text-center text-2xl font-bold"
 				>
 					<span>{{ $t("layout.admin.title") }}</span>
 				</RouterLink>
 
 				<RouterLink
-					:to="{ name: ADMIN_PANEL_HOME }"
+					:to="{ name: CONTENT_PANEL_HOME }"
 					class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
 					:class="
-						route.name === ADMIN_PANEL_HOME ?
+						route.name === CONTENT_PANEL_HOME ?
 							'bg-muted text-foreground'
 							:
 							'text-muted-foreground'
@@ -48,37 +53,54 @@ const route = useRoute();
 				</RouterLink>
 
 				<RouterLink
-					:to="{ name: ADMIN_PANEL_ORGANIZATIONS }"
+					:to="{ name: CONTENT_PANEL_NAVIGATION_BAR }"
 					class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
 					:class="
-						route.name === ADMIN_PANEL_ORGANIZATIONS ?
+						route.name === CONTENT_PANEL_NAVIGATION_BAR ?
 							'bg-muted text-foreground'
 							:
 							'text-muted-foreground'
 					"
 				>
 					<TheIcon
-						icon="domain"
+						icon="magnify"
 						size="2xl"
 					/>
-					{{ $t("layout.admin.nav.organizations") }}
+					{{ $t("layout.content.nav.navbar") }}
 				</RouterLink>
 
 				<RouterLink
-					:to="{ name: ADMIN_PANEL_USERS }"
+					:to="{ name: CONTENT_PANEL_PARENT_CATEGORIES }"
 					class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
 					:class="
-						route.name === ADMIN_PANEL_USERS ?
+						route.name === CONTENT_PANEL_PARENT_CATEGORIES ?
 							'bg-muted text-foreground'
 							:
 							'text-muted-foreground'
 					"
 				>
 					<TheIcon
-						icon="account-multiple"
+						icon="shape-outline"
 						size="2xl"
 					/>
-					{{ $t("layout.admin.nav.users") }}
+					{{ $t("layout.content.nav.parentCategories") }}
+				</RouterLink>
+
+				<RouterLink
+					:to="{ name: CONTENT_PANEL_CATEGORIES }"
+					class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
+					:class="
+						route.name === CONTENT_PANEL_CATEGORIES ?
+							'bg-muted text-foreground'
+							:
+							'text-muted-foreground'
+					"
+				>
+					<TheIcon
+						icon="shape-plus-outline"
+						size="2xl"
+					/>
+					{{ $t("layout.content.nav.categories") }}
 				</RouterLink>
 			</nav>
 		</SheetContent>

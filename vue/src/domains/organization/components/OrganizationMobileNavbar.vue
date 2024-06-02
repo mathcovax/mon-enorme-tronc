@@ -1,6 +1,16 @@
 <script setup lang="ts">
-const { ORGANIZATION_HOME, ORGANIZATION_MANAGE_USER } = routerPageName;
+import { useOrganizationUserStore } from "@/domains/organization/stores/organizationUser";
+
+const { 
+	ORGANIZATION_HOME,
+	ORGANIZATION_MANAGE_USER,
+	ORGANIZATION_EDIT,
+	ORGANIZATION_MANAGE_PRODUCT,
+	ORGANIZATION_GET_PRODUCT_SHEET,
+	ORGANIZATION_GET_WAREHOUSE
+} = routerPageName;
 const route = useRoute();
+const organizationUserStore = useOrganizationUserStore();
 </script>
 
 <template>
@@ -48,6 +58,25 @@ const route = useRoute();
 				</RouterLink>
 
 				<RouterLink
+					v-if="organizationUserStore.hasRole('OWNER')"
+					:to="{ name: ORGANIZATION_EDIT }"
+					class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
+					:class="
+						route.name === ORGANIZATION_EDIT ?
+							'bg-muted text-foreground'
+							:
+							'text-muted-foreground'
+					"
+				>
+					<TheIcon
+						icon="store-edit"
+						size="2xl"
+					/>
+					{{ $t("layout.organization.nav.organizationEdit") }}
+				</RouterLink>
+
+				<RouterLink
+					v-if="organizationUserStore.hasRole('STORE_KEEPER')"
 					to="#"
 					class="mx-[-0.65rem] flex items-center gap-4 rounded-xl bg-muted px-3 py-2 text-foreground hover:text-foreground"
 				>
@@ -59,10 +88,29 @@ const route = useRoute();
 				</RouterLink>
 
 				<RouterLink
-					to="#"
+					v-if="organizationUserStore.hasRole('PRODUCT_SHEET_MANAGER')"
+					:to="{ name: ORGANIZATION_GET_PRODUCT_SHEET }"
 					class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
 					:class="
-						route.name ?
+						route.name === ORGANIZATION_GET_PRODUCT_SHEET ?
+							'bg-muted text-foreground'
+							:
+							'text-muted-foreground'
+					"
+				>
+					<TheIcon
+						icon="text-box-multiple-outline"
+						size="2xl"
+					/>
+					{{ $t("layout.organization.nav.productSheets") }}
+				</RouterLink>
+
+				<RouterLink
+					v-if="organizationUserStore.hasRole('STORE_KEEPER')"
+					:to="{ name: ORGANIZATION_MANAGE_PRODUCT }"
+					class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
+					:class="
+						route.name === ORGANIZATION_MANAGE_PRODUCT ?
 							'bg-muted text-foreground'
 							:
 							'text-muted-foreground'
@@ -93,20 +141,21 @@ const route = useRoute();
 				</RouterLink>
 
 				<RouterLink
-					to="#"
+					v-if="organizationUserStore.hasRole('OWNER')"
+					:to="{ name: ORGANIZATION_GET_WAREHOUSE }"
 					class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
 					:class="
-						route.name ?
+						route.name === ORGANIZATION_GET_WAREHOUSE ?
 							'bg-muted text-foreground'
 							:
 							'text-muted-foreground'
 					"
 				>
 					<TheIcon
-						icon="chart-line"
+						icon="warehouse"
 						size="2xl"
 					/>
-					{{ $t("layout.organization.nav.analytics") }}
+					{{ $t("layout.organization.nav.warehouse") }}
 				</RouterLink>
 			</nav>
 		</SheetContent>
