@@ -12,9 +12,10 @@ export const useOrganizationUserStore = defineStore(
 	"organizationUser",
 	() => {
 		const organizationUser = ref<null | OrganizationUser>(null);
-		const { organizationId } = useRouteParams({ organizationId: zod.string() });
 
 		function fetchOrganizationValue() {
+			const { organizationId } = useRouteParams({ organizationId: zod.string() });
+			
 			duploTo.enriched
 				.get("/organization/{organizationId}/user", { params: { organizationId } }, { disabledToast: true })
 				.info("organization.user", (data) => {

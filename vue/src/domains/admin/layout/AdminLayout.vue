@@ -4,14 +4,14 @@ import AdminNavbar from "../components/AdminNavbar.vue";
 </script>
 
 <template>
-	<div class="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
-		<AdminNavbar />
+	<div class="grid h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
+		<AdminNavbar class="h-full" />
 
-		<div class="flex flex-col">
-			<AdminHeader />
+		<div class="flex flex-col h-full overflow-hidden">
+			<AdminHeader class="shrink-0" />
 
-			<main class="p-4 lg:p-6 flex flex-1 flex-col gap-4 lg:gap-6 shadow-inner-top-left">
-				<RouterView />
+			<main class="flex flex-col shadow-inner-top-left grow overflow-hidden">
+				<RouterView class="overflow-y-auto p-4 lg:p-6" />
 			</main>
 		</div>
 	</div>

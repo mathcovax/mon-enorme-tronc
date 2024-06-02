@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ContentDropdown from "@/domains/content/components/ContentDropdown.vue";
+import ContentDropdown from "@/domains/navigation/components/AccountDropdown.vue";
 import ContentMobileNavbar from "@/domains/content/components/ContentMobileNavbar.vue";
 
 const userStore = useUserStore();

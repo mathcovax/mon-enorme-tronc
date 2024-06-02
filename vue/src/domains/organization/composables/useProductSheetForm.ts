@@ -19,7 +19,7 @@ export function useProductSheetForm(productSheetId?: string) {
 	
 	function onSearchCategories(categoryName: string) {
 		duploTo.enriched.
-			get("/categories", { query: { name: categoryName } })
+			get("/categories", { query: { name: categoryName, withDisabled: true } })
 			.s((categories) => {
 				suggestedCategories.value = categories.map(
 					(category) => ({ label: category.name, value: category.name })

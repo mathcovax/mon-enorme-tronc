@@ -15,7 +15,8 @@ export function useGetProducts(organizationId: string) {
 						withProductSheet: "true", 
 						withWarehouse: "true" 
 					} 
-				}
+				},
+				{ disabledLoader: true }
 			)
 			.info("products.found", (data) => {
 				products.value = data;

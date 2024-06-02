@@ -5,7 +5,6 @@ const {
 	USER_EDIT_PROFIL,
 	USER_ORGANIZATIONS,
 	ADMIN_PANEL_HOME,
-	ORGANIZATION_HOME,
 	CONTENT_PANEL_HOME
 } = routerPageName;
 </script>
@@ -57,12 +56,6 @@ const {
 			<DropdownMenuItem v-if="userStore.hasPrimordialRole('ADMIN')">
 				<RouterLink :to="{ name: ADMIN_PANEL_HOME }">
 					{{ $t("layout.default.header.dropdown.admin") }}
-				</RouterLink>
-			</DropdownMenuItem>
-
-			<DropdownMenuItem v-if="userStore.hasPrimordialRole('MODERATOR')">
-				<RouterLink :to="{ name: ORGANIZATION_HOME }">
-					{{ $t("layout.default.header.dropdown.organizations") }}
 				</RouterLink>
 			</DropdownMenuItem>
 

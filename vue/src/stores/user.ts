@@ -33,6 +33,9 @@ export const useUserStore = defineStore(
 				.info("user.notfound", () => {
 					removeAccessToken();
 				})
+				.info("access.token.invalid", () => {
+					setAccessToken(null);
+				})
 				.e(() => {
 					reject();
 					promiseFetching = null;
@@ -64,6 +67,7 @@ export const useUserStore = defineStore(
 				);
 			}
 			else {
+				accessToken.value = null;
 				localStorage.removeItem(KEY_ACCESS_TOKEN_LOCAL_STORAGE);
 			}
 		}

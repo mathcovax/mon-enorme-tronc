@@ -21,7 +21,8 @@ export function useSearchAddresses() {
 				{ 
 					query: { address }, 
 					signal: abortController.signal 
-				}
+				},
+				{ disabledLoader: true }
 			)
 			.s((resultAddresses) => {
 				addresses.value = resultAddresses;

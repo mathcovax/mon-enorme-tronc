@@ -7,7 +7,8 @@ export function useGetUsers() {
 		return duploTo.enriched
 			.get(
 				"/users",
-				{ query: { page, email, primordialRole } }
+				{ query: { page, email, primordialRole } },
+				{ disabledLoader: true }
 			)
 			.info("users", (data) => {
 				users.value = data;

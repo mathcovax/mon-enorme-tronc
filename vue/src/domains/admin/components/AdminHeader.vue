@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AdminDropdown from "../components/AdminDropdown.vue";
+import AdminDropdown from "@/domains/navigation/components/AccountDropdown.vue";
 import AdminMobileNavbar from "../components/AdminMobileNavbar.vue";
 
 const userStore = useUserStore();

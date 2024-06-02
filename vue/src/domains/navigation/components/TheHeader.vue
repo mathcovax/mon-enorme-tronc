@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import AccountDropdown from "@/domains/navigation/components/AccountDropdown.vue";
 import MobileNavbar from "@/domains/navigation/components/MobileNavbar.vue";
-
+const { AUTH_LOGIN } = routerPageName;
 const userStore = useUserStore();
 </script>
 
@@ -70,7 +70,7 @@ const userStore = useUserStore();
 					</RouterLink>
 
 					<RouterLink
-						to="/login"
+						:to="{name: AUTH_LOGIN}"
 						v-if="!userStore.isConnected"
 					>
 						<TheButton
@@ -83,7 +83,7 @@ const userStore = useUserStore();
 								size="2xl"
 							/>
 						</TheButton>
-					</routerlink>
+					</Routerlink>
 				
 					<AccountDropdown v-else />
 				</div>

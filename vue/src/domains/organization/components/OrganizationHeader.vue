@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import OrganizationDropdown from "../components/OrganizationDropdown.vue";
+import OrganizationDropdown from "@/domains/navigation/components/AccountDropdown.vue";
 import OrganizationMobileNavbar from "../components/OrganizationMobileNavbar.vue";
+import { useOrganizationUserStore } from "../stores/organizationUser";
 
-const userStore = useUserStore();
+const organizationUserStore = useOrganizationUserStore();
 </script>
 
 <template>
@@ -10,7 +11,13 @@ const userStore = useUserStore();
 		<OrganizationMobileNavbar />
 
 		<div class="w-full flex-1 text-center md:text-start">
-			<span class=" text-xl">Bonjour {{ userStore.user?.firstname }} ! Vous êtes <strong>{{ userStore.user?.primordialRole }}</strong>.</span>
+			<span class=" text-xl">
+				Bonjour {{ organizationUserStore.organizationUser?.firstname }} ! 
+				Vous êtes 
+				<strong>
+					{{ $t(`organizationRole.${organizationUserStore.organizationUser?.organizationRole}`) }}
+				</strong>.
+			</span>
 		</div>
 
 		<OrganizationDropdown />

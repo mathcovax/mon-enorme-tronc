@@ -27,7 +27,13 @@ export const contentPanelEntry = hasPrimordialRole({ options: { primordialRole: 
 	);
 
 export const organizationOwnerEntry = mustBeConnected({ pickup: ["accessTokenContent"] })
-	.declareRoute("GET", ["/entry/organization/{organizationId}/manage-user", "/entry/organization/{organizationId}/manage"])
+	.declareRoute(
+		"GET", 
+		[
+			"/entry/organization-panel/{organizationId}/manage-user", 
+			"/entry/organization-panel/{organizationId}/manage"
+		]
+	)
 	.extract({
 		params: {
 			organizationId: zod.string(),
@@ -52,9 +58,9 @@ export const organizationWarehouseManagerEntry = mustBeConnected({ pickup: ["acc
 	.declareRoute(
 		"GET", 
 		[
-			"/entry/organization/{organizationId}/warehouses",
-			"/entry/organization/{organizationId}/create-warehouse",
-			"/entry/organization/{organizationId}/edited-warehouse/{warehouseId}",
+			"/entry/organization-panel/{organizationId}/warehouses",
+			"/entry/organization-panel/{organizationId}/create-warehouse",
+			"/entry/organization-panel/{organizationId}/edited-warehouse/{warehouseId}",
 		]
 	)
 	.extract({
@@ -98,9 +104,9 @@ export const organizationProductSheetManagerEntry = mustBeConnected({ pickup: ["
 	.declareRoute(
 		"GET", 
 		[
-			"/entry/organization/{organizationId}/product-sheets",
-			"/entry/organization/{organizationId}/edit-product-sheet/{productSheetId}",
-			"/entry/organization/{organizationId}/create-product-sheet"
+			"/entry/organization-panel/{organizationId}/product-sheets",
+			"/entry/organization-panel/{organizationId}/edit-product-sheet/{productSheetId}",
+			"/entry/organization-panel/{organizationId}/create-product-sheet"
 		]
 	)
 	.extract({
@@ -141,7 +147,7 @@ export const organizationProductSheetManagerEntry = mustBeConnected({ pickup: ["
 	);
 
 export const organizationEntry = mustBeConnected({ pickup: ["accessTokenContent"] })
-	.declareRoute("GET", "/entry/organization/{organizationId}*")
+	.declareRoute("GET", "/entry/organization-panel/{organizationId}*")
 	.extract({
 		params: {
 			organizationId: zod.string(),

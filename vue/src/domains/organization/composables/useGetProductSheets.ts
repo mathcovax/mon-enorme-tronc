@@ -7,7 +7,8 @@ export function useGetProductSheets(organizationId: string) {
 		return duploTo.enriched
 			.get(
 				"/organization/{organizationId}/product-sheets",
-				{ params: { organizationId }, query: { page, name } }
+				{ params: { organizationId }, query: { page, name } },
+				{ disabledLoader: true }
 			)
 			.info("productSheets.found", (data) => {
 				productSheets.value = data;

@@ -22,7 +22,8 @@ export function useSearchCategories() {
 				{ 
 					query: { page, name, withDisabled }, 
 					signal: abortController.signal
-				}
+				},
+				{ disabledLoader: true }
 			)
 			.info("categories", (data) => {
 				categories.value = data;

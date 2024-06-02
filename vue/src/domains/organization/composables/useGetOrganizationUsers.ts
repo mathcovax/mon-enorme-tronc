@@ -8,6 +8,7 @@ export function useGetOrganizationUsers(organizationId: string) {
 			.get(
 				"/organization/{organizationId}/users",
 				{ params: { organizationId }, query: { page, email } },
+				{ disabledLoader: true }
 			)
 			.info("organization.users", (data) => {
 				organisationUsers.value = data;
