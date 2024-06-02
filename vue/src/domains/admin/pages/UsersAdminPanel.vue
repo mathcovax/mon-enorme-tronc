@@ -102,57 +102,63 @@ watch(
 </script>
 
 <template>
-	<div class="flex flex-col items-center w-full gap-6 p-6">
-		<div class="flex justify-center w-full gap-6">
-			<PrimaryInput
-				class="max-w-[300px]"
-				:placeholder="$pt('table.searchPlaceholder')"
-				v-model="search.email"
-			/>
+	<section>
+		<h1 class="mb-12 text-2xl font-semibold">
+			{{ $pt("title") }}
+		</h1>
 
-			<PrimarySelect
-				class="max-w-[300px]"
-				:items="primordialRoles.map(r => ({ label: $t(`role.${r}`), value: r }))"
-				:placeholder="$pt('table.searchPlaceholderRole')"
-				v-model="search.role"
-			/>
+		<div class="flex flex-col items-center w-full gap-6 p-6">
+			<div class="flex justify-center w-full gap-6">
+				<PrimaryInput
+					class="max-w-[300px]"
+					:placeholder="$pt('table.searchPlaceholder')"
+					v-model="search.email"
+				/>
 
-			<SecondaryButton @click="clear">
-				{{ $t("button.clear") }}
-			</SecondaryButton>
+				<PrimarySelect
+					class="max-w-[300px]"
+					:items="primordialRoles.map(r => ({ label: $t(`role.${r}`), value: r }))"
+					:placeholder="$pt('table.searchPlaceholderRole')"
+					v-model="search.role"
+				/>
+
+				<SecondaryButton @click="clear">
+					{{ $t("button.clear") }}
+				</SecondaryButton>
+			</div>
+
+			<BigTable
+				:items="users"
+				:cols="cols"
+				:current-page="currentPage + 1"
+				:action-label="$pt('table.cols.actions')"
+				@click-next="next"
+				@click-previous="previous"
+				@click-on-row="openPopup"
+			/>
 		</div>
 
-		<BigTable
-			:items="users"
-			:cols="cols"
-			:current-page="currentPage + 1"
-			:action-label="$pt('table.cols.actions')"
-			@click-next="next"
-			@click-previous="previous"
-			@click-on-row="openPopup"
-		/>
-	</div>
-
-	<ThePopup
-		ref="popup"
-		class="max-w-[500px] w-[80%]"
-	>
-		<template #popupContent>
-			<UserForm
-				@submit="submit"
-				class="items-center"
-			>
-				<template #user="{ modelValue }">
-					<span class="text-center">{{ modelValue?.email }}</span>
-				</template>
-
-				<PrimaryButton
-					type="submit"
-					class="col-span-12"
+		<ThePopup
+			ref="popup"
+			class="max-w-[500px] w-[80%]"
+		>
+			<template #popupContent>
+				<UserForm
+					@submit="submit"
+					class="items-center"
 				>
-					{{ $t("button.send") }}
-				</PrimaryButton>
-			</UserForm>
-		</template>
-	</ThePopup>
+					<template #user="{ modelValue }">
+						<span class="text-center">{{ modelValue?.email }}</span>
+					</template>
+
+					<PrimaryButton
+						type="submit"
+						class="col-span-12"
+					>
+						{{ $t("button.send") }}
+					</PrimaryButton>
+				</UserForm>
+			</template>
+		</ThePopup>
+	</section>
 </template>

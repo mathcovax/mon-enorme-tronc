@@ -1,9 +1,6 @@
-export function useSignUpForm() {
-
-	const timestamp18year = 568036800000;
+export function useEditUserProfilForm(userId?: string) {
 	const { searchAddresses, addresses } = useSearchAddresses();
-
-	const { Form, checkForm } = useFormBuilder({
+	const { Form, checkForm, values } = useFormBuilder({
 		lastname: {
 			cols: 6,
 			type: "text",
@@ -12,22 +9,13 @@ export function useSignUpForm() {
 				.min(2, $t("form.rules.minLength", { value: 2 }))
 				.max(255, $t("form.rules.maxLength", { value: 255 })),
 		},
-		fistname: {
+		firstname: {
 			cols: 6,
 			type: "text",
 			label: $t("label.firstname"),
 			zodSchema: zod.string({ message: $t("form.rule.required") })
 				.min(2, $t("form.rule.minLength", { value: 2 }))
 				.max(255, $t("form.rule.maxLength", { value: 255 })),
-		},
-		dateOfBirth: {
-			type: "date",
-			label: $t("label.birthDate"),
-			zodSchema: zod.coerce.date({ message: $t("form.rule.required") })
-				.refine(
-					(userDateOfBirth) => Date.now() - userDateOfBirth.getTime() >= timestamp18year, 
-					{ message: $t("form.rule.minAge") }
-				)
 		},
 		address: computed(() => ({
 			type: "combo",
@@ -42,15 +30,23 @@ export function useSignUpForm() {
 			textButton: $t("button.add"),
 			onUpdateSearchTerm: searchAddresses
 		})),
-		terms: {
-			type: "checkbox",
-			desc: $t("label.terms"),
-			zodSchema: zod.literal(true, { message: $t("form.rule.required") }),
-		}
 	});
 
+	if (userId) {
+		duploTo.enriched
+			.get("/user")
+			.info("user", (data) => {
+				const address = { label: data.address, identifier: data.address }; 
+
+				values.lastname.value = data.lastname;
+				values.firstname.value = data.firstname;
+				values.address.value = address;
+			});
+	}
+
 	return {
-		SignUpForm: Form,
-		checkSignUpForm: checkForm,
+		EditUserProfilForm: Form,
+		checkEditUserProfilForm: checkForm,
+		valuesEditUserProfilForm: values,
 	};
 }

@@ -162,60 +162,26 @@ async function submitPatch() {
 </script>
 
 <template>
-	<div class="w-full flex flex-col items-center p-6 gap-10">
-		<ParentCategoryForm
-			@submit="submitCreate"
-			class="max-w-[500px] w-[80%]"
-		>
-			<template #categories="{onUpdate, modelValue}">
-				<MultiComboBox
-					:model-value="modelValue"
-					@update:model-value="onUpdate"
-					:items="suggestedCategories"
-					@update:search-term="onSearchCategories"
-					:placeholder="$pt('label.placeholder')"
-					:empty-label="$t('label.empty')"
-				/>
-			</template>
+	<section>
+		<h1 class="mb-12 text-2xl font-semibold">
+			{{ $pt("title") }}
+		</h1>
 
-			<PrimaryButton
-				type="submit"
-				class="col-span-12"
+		<div class="w-full flex flex-col items-center p-6 gap-10">
+			<h2 class="text-xl font-semibold">
+				{{ $pt("form.title") }}
+			</h2>
+
+			<ParentCategoryForm
+				@submit="submitCreate"
+				class="max-w-[500px] w-[80%]"
 			>
-				{{ $t("button.validate") }}
-			</PrimaryButton>
-		</ParentCategoryForm>
-		
-		<div class="flex flex-col items-center w-full gap-3">
-			<PrimaryInput
-				class="max-w-[300px]"
-				:placeholder="$pt('table.searchPlaceholder')"
-				v-model="parentCategoriesQuery.name"
-			/>
-
-			<BigTable
-				:items="parentCategories"
-				:cols="cols"
-				:current-page="(parentCategoriesQuery.page ?? 0) + 1"
-				@click-next="next"
-				@click-previous="previous"
-				@click-on-row="openPopup"
-			/>
-		</div>
-	</div>
-
-	<ThePopup
-		ref="popup"
-		class="max-w-[500px] w-[80%]"
-	>
-		<template #popupContent>
-			<ParentCategoryPatchForm @submit="submitPatch">
 				<template #categories="{onUpdate, modelValue}">
 					<MultiComboBox
 						:model-value="modelValue"
 						@update:model-value="onUpdate"
-						:items="suggestedCategoriesPatch"
-						@update:search-term="onSearchCategoriesPatch"
+						:items="suggestedCategories"
+						@update:search-term="onSearchCategories"
 						:placeholder="$pt('label.placeholder')"
 						:empty-label="$t('label.empty')"
 					/>
@@ -227,7 +193,51 @@ async function submitPatch() {
 				>
 					{{ $t("button.validate") }}
 				</PrimaryButton>
-			</parentcategorypatchform>
-		</template>
-	</ThePopup>
+			</ParentCategoryForm>
+		
+			<div class="flex flex-col items-center w-full gap-3">
+				<PrimaryInput
+					class="max-w-[300px]"
+					:placeholder="$pt('table.searchPlaceholder')"
+					v-model="parentCategoriesQuery.name"
+				/>
+
+				<BigTable
+					:items="parentCategories"
+					:cols="cols"
+					:current-page="(parentCategoriesQuery.page ?? 0) + 1"
+					@click-next="next"
+					@click-previous="previous"
+					@click-on-row="openPopup"
+				/>
+			</div>
+		</div>
+
+		<ThePopup
+			ref="popup"
+			class="max-w-[500px] w-[80%]"
+		>
+			<template #popupContent>
+				<ParentCategoryPatchForm @submit="submitPatch">
+					<template #categories="{onUpdate, modelValue}">
+						<MultiComboBox
+							:model-value="modelValue"
+							@update:model-value="onUpdate"
+							:items="suggestedCategoriesPatch"
+							@update:search-term="onSearchCategoriesPatch"
+							:placeholder="$pt('label.placeholder')"
+							:empty-label="$t('label.empty')"
+						/>
+					</template>
+
+					<PrimaryButton
+						type="submit"
+						class="col-span-12"
+					>
+						{{ $t("button.validate") }}
+					</PrimaryButton>
+				</parentcategorypatchform>
+			</template>
+		</ThePopup>
+	</section>
 </template>

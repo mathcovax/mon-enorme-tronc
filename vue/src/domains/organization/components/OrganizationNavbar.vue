@@ -2,11 +2,12 @@
 import { useOrganizationUserStore } from "@/domains/organization/stores/organizationUser";
 
 const { 
+	ORGANIZATION_HOME,
 	ORGANIZATION_MANAGE_USER,
-	ORGANIZATION_GET_PRODUCT_SHEET,
-	ORGANIZATION_GET_WAREHOUSE, 
 	ORGANIZATION_EDIT,
-	ORGANIZATION_MANAGE_PRODUCT
+	ORGANIZATION_MANAGE_PRODUCT,
+	ORGANIZATION_GET_PRODUCT_SHEET,
+	ORGANIZATION_GET_WAREHOUSE
 } = routerPageName;
 const route = useRoute();
 const organizationUserStore = useOrganizationUserStore();
@@ -17,8 +18,8 @@ const organizationUserStore = useOrganizationUserStore();
 		<div class="flex flex-col h-full max-h-screen gap-2">
 			<div class="flex items-center justify-center h-24 px-4 border-b lg:px-6">
 				<RouterLink
-					to="/organization"
-					class="flex items-center gap-2 font-semibold text-center"
+					:to="{ name: ORGANIZATION_HOME }"
+					class="flex items-center gap-2 text-center font-semibold"
 				>
 					<span>{{ $t("layout.organization.title") }}</span>
 				</RouterLink>
@@ -27,10 +28,10 @@ const organizationUserStore = useOrganizationUserStore();
 			<div class="flex-1">
 				<nav class="grid items-start px-2 text-sm font-medium lg:px-4">
 					<RouterLink
-						to="#"
-						class="flex items-center gap-3 px-3 py-2 transition-all rounded-lg hover:text-primary"
+						:to="{ name: ORGANIZATION_HOME }"
+						class="px-3 py-2 flex items-center gap-3 rounded-lg transition-all hover:text-primary"
 						:class="
-							!route.name ?
+							route.name === ORGANIZATION_HOME ?
 								'bg-muted text-primary'
 								:
 								'text-muted-foreground'

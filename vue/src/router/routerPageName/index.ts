@@ -3,6 +3,7 @@ import { routerPageNameAuth } from "@/domains/auth/router";
 import { routerPageNameContentPanel } from "@/domains/content/router";
 import { routerPageNameEdito } from "@/domains/edito/router";
 import { routerPageNameOrganization } from "@/domains/organization/router";
+import { routerPageNameUser } from "@/domains/user/router";
 
 export const routerPageName = Object.freeze({
 	...routerPageNameAdminPanel,
@@ -10,4 +11,5 @@ export const routerPageName = Object.freeze({
 	...routerPageNameEdito,
 	...routerPageNameContentPanel,
 	...routerPageNameOrganization,
+	...routerPageNameUser,
 });

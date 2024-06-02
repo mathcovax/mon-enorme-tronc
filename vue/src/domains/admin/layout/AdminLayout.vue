@@ -10,7 +10,7 @@ import AdminNavbar from "../components/AdminNavbar.vue";
 		<div class="flex flex-col">
 			<AdminHeader />
 
-			<main class="p-4 lg:p-6 flex flex-1 flex-col gap-4 lg:gap-6 bg-whiteless">
+			<main class="p-4 lg:p-6 flex flex-1 flex-col gap-4 lg:gap-6 shadow-inner-top-left">
 				<RouterView />
 			</main>
 		</div>

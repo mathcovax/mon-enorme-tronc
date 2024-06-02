@@ -1,14 +1,21 @@
-import { promiseWithResolvers, type User } from "@/lib/utils";
+import { promiseWithResolvers, type User, type PrimordialRole } from "@/lib/utils";
 import { defineStore } from "pinia";
 
 const KEY_ACCESS_TOKEN_LOCAL_STORAGE = "access-token";
+
+const primordialRolesHierarchy: Record<PrimordialRole, PrimordialRole[]> = {
+	CUSTOMER: [],
+	MODERATOR: ["CUSTOMER"],
+	CONTENTS_MASTER: ["CUSTOMER"],
+	ADMIN: ["CONTENTS_MASTER", "MODERATOR", "CUSTOMER"],
+};
 
 export const useUserStore = defineStore(
 	"user",
 	() => {
 		const user = ref<null | User>(null);
 		const accessToken = ref<null | string>(localStorage.getItem(KEY_ACCESS_TOKEN_LOCAL_STORAGE));
-		const isConnected = computed(() => !!accessToken);
+		const isConnected = computed(() => !!accessToken.value);
 
 		let promiseFetching: null | Promise<void> = null;
 		const getPromiseFetching = () => promiseFetching;
@@ -24,13 +31,29 @@ export const useUserStore = defineStore(
 					resolve();
 				})
 				.info("user.notfound", () => {
-					setAccessToken(null);
-					window.location.reload();
+					removeAccessToken();
 				})
 				.e(() => {
 					reject();
 					promiseFetching = null;
 				});
+		}
+
+		function hasPrimordialRole(wantedPrimordialRole: PrimordialRole) {
+			const userPrimordialRole = user.value?.primordialRole;
+
+			if (!userPrimordialRole) {
+				return false;
+			}
+
+			if (
+				userPrimordialRole !== wantedPrimordialRole &&
+				!primordialRolesHierarchy[userPrimordialRole].includes(wantedPrimordialRole)
+			) {
+				return false;
+			}
+
+			return true;
 		}
 
 		function setAccessToken(newAccessToken: string | null) {
@@ -45,13 +68,20 @@ export const useUserStore = defineStore(
 			}
 		}
 
+		function removeAccessToken() {
+			setAccessToken(null);
+			window.location.reload();
+		}
+
 		if (accessToken.value !== null) {
 			setTimeout(fetchUserValue);
 		}
 
 		return {
 			getPromiseFetching,
+			hasPrimordialRole,
 			setAccessToken,
+			removeAccessToken,
 			fetchUserValue,
 			user,
 			accessToken,

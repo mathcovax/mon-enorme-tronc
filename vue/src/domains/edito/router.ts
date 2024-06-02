@@ -1,7 +1,7 @@
 import type { RouteRecordRaw } from "vue-router";
 
 export const routerPageNameEdito = Object.freeze({
-	EDITO_HOME: "home",
+	EDITO_HOME: "/",
 });
 
 export default (): RouteRecordRaw[] => [

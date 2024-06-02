@@ -109,79 +109,89 @@ watch(searchName, () => getWarehouses(0, searchName.value));
 </script>
 
 <template>
-	<div class="flex flex-col items-center w-full gap-6 p-6">
-		<div
-			v-if="creatForm"
-			class="w-full flex flex-col items-center p-6 gap-6"
-		>
-			<WarehouseForm
-				@submit="submitPost"
-				class="max-w-[500px] w-[80%]"
+	<section>
+		<h1 class="mb-12 text-2xl font-semibold">
+			{{ $pt("title") }}
+		</h1>
+
+		<div class="flex flex-col items-center w-full gap-6 p-6">
+			<div
+				v-if="creatForm"
+				class="w-full flex flex-col items-center p-6 gap-6"
 			>
-				<PrimaryButton
-					type="submit"
-					class="col-span-12"
+				<h2 class="text-xl font-semibold">
+					{{ $pt("form.title") }}
+				</h2>
+
+				<WarehouseForm
+					@submit="submitPost"
+					class="max-w-[500px] w-[80%]"
 				>
-					{{ $t("button.create") }}
+					<PrimaryButton
+						type="submit"
+						class="col-span-12"
+					>
+						{{ $t("button.create") }}
+					</PrimaryButton>
+				</WarehouseForm>
+			</div>
+
+			<div class="flex justify-center w-full gap-[1rem]">
+				<PrimaryInput
+					class="max-w-[300px]"
+					:placeholder="$pt('searchPlaceholder')"
+					v-model="searchName"
+				/>
+
+				<PrimaryButton @click="openCreateForm">
+					<div v-if="creatForm">
+						<TheIcon icon="menu-down" />
+						{{ $t("button.cancel") }}
+					</div>
+
+					<div v-else>
+						<TheIcon icon="menu-up" />
+						{{ $t("button.create") }}
+					</div>
 				</PrimaryButton>
-			</WarehouseForm>
-		</div>
+			</div>
 
-		<div class="flex justify-center w-full gap-[1rem]">
-			<PrimaryInput
-				class="max-w-[300px]"
-				:placeholder="$pt('searchPlaceholder')"
-				v-model="searchName"
-			/>
-
-			<PrimaryButton @click="openCreateForm">
-				<div v-if="creatForm">
-					<TheIcon icon="menu-down" />
-					{{ $t("button.cancel") }}
-				</div>
-
-				<div v-else>
-					<TheIcon icon="menu-up" />
-					{{ $t("button.create") }}
-				</div>
-			</PrimaryButton>
-		</div>
-
-		<BigTable
-			:items="warehouses"
-			:cols="cols"
-			:current-page="currentPage + 1"
-			@click-next="next"
-			@click-previous="previous"
-		>
-			<template #actions="{item}">
-				<SecondaryButton @click="openPopup(item)">
-					<TheIcon icon="square-edit-outline" />
-				</SecondaryButton>
-			</template>
-		</BigTable>
-	</div>
-
-	<ThePopup
-		ref="popup"
-		class="max-w-[500px] w-[80%]"
-	>
-		<template #popupContent>
-			<WarehouseForm
-				@submit="submitPatch"
-				class="items-center"
+			<BigTable
+				:items="warehouses"
+				:cols="cols"
+				:current-page="currentPage + 1"
+				@click-next="next"
+				@click-previous="previous"
 			>
-				<template #warehouse="{modelValue}">
-					<span class="text-center">{{ modelValue?.name }}</span>
+				<template #actions="{item}">
+					<SecondaryButton @click="openPopup(item)">
+						<TheIcon icon="square-edit-outline" />
+					</SecondaryButton>
 				</template>
+			</BigTable>
+		</div>
 
-				<PrimaryButton
-					type="submit"
-					class="col-span-12"
+		<ThePopup
+			ref="popup"
+			class="max-w-[500px] w-[80%]"
+		>
+			<template #popupContent>
+				<WarehouseForm
+					@submit="submitPatch"
+					class="items-center"
 				>
-					{{ $t("form.submit") }}
-				</PrimaryButton>
-			</WarehouseForm>
-		</template>
-	</ThePopup>
+					<template #warehouse="{modelValue}">
+						<span class="text-center">Modifier <strong>{{ modelValue?.name }}</strong></span>
+					</template>
+
+					<PrimaryButton
+						type="submit"
+						class="col-span-12"
+					>
+						{{ $t("form.submit") }}
+					</PrimaryButton>
+				</WarehouseForm>
+			</template>
+		</ThePopup>
+	</section>
 </template>

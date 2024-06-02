@@ -19,8 +19,19 @@ export default {
 			title: "Première visite ?",
 			subtitle: "Créez un compte pour accéder à nos services.",
 		},
+		[routerPageName.USER_EDIT_PROFIL]: {
+			title: "Mon profil",
+		},
+		[routerPageName.USER_CART]: {
+			title: "Mon panier",
+			emptyTitle: "Votre panier est vide.",
+			emptySubtitle: "Commencez à ajouter des produits pour les retrouver ici",
+			browseButton: "Parcourir les produits",
+		},
 		[routerPageName.ADMIN_PANEL_ORGANIZATIONS]: {
+			title: "Liste des organisations",
 			form: {
+				title: "Créer une organisation",
 				name: {
 					label: "Nom de l'organisation",
 				},
@@ -45,6 +56,7 @@ export default {
 			},
 		},
 		[routerPageName.ADMIN_PANEL_USERS]: {
+			title: "Liste des utilisateurs",
 			form: {
 				primordialRole: {
 					label: "Role Primordial",
@@ -60,7 +72,9 @@ export default {
 			btnClear: "Clear"
 		},
 		[routerPageName.CONTENT_PANEL_CATEGORIES]: {
+			title: "Liste des catégories",
 			form: {
+				title: "Créer une catégorie",
 				oldName: {
 					label: "Nom actuel : {currentName}"
 				},
@@ -82,15 +96,21 @@ export default {
 			}
 		},
 		[routerPageName.ORGANIZATION_MANAGE_USER]: {
+			title: "Gestion des utilisateurs",
+			form: {
+				title: "Ajouter un utilisateur",
+			},
 			table: {
 				searchPlaceholder: "Chercher une email",
 			},
 		},
 		[routerPageName.ORGANIZATION_GET_PRODUCT_SHEET]: {
+			title: "Liste des produits",
 			searchPlaceholder: "Chercher un produit",
 			price: "Prix",
 		},
 		[routerPageName.ORGANIZATION_EDIT_PRODUCT_SHEET]: {
+			title: "Editer la fiche produit",
 			shortDescription: "Description courte",
 			price: "Prix",
 			form: {
@@ -107,6 +127,7 @@ export default {
 			}
 		},
 		[routerPageName.ORGANIZATION_CREATE_PRODUCT_SHEET]: {
+			title: "Créer une fiche produit",
 			shortDescription: "Description courte",
 			price: "Prix",
 			form: {
@@ -116,12 +137,20 @@ export default {
 			}
 		},
 		[routerPageName.ORGANIZATION_GET_WAREHOUSE]: {
+			title: "Liste des entrepôts",
 			searchPlaceholder: "Chercher un entrepôt",
+			form: {
+				title: "Créer un entrepôt",
+			},
 			placeholder: {
 				name: "nom de l'entrepôt"
 			}
 		},
 		[routerPageName.CONTENT_PANEL_PARENT_CATEGORIES]: {
+			title: "Liste des catégories parent",
+			form: {
+				title: "Créer une catégorie parent",
+			},
 			label: {
 				name: "Nom de la catégorie parent",
 				linkCategories: "Categories associées",
@@ -133,6 +162,10 @@ export default {
 			}
 		},
 		[routerPageName.CONTENT_PANEL_NAVIGATION_BAR]: {
+			title: "Éléments de la barre de navigation",
+			form: {
+				title: "Ajouter un élément",
+			},
 			label: {
 				priority: "Priorité",
 				select: "Selectioner",
@@ -177,11 +210,14 @@ export default {
 				bestSeller: "Meilleures ventes",
 				new: "Contact",
 				products: "Produits",
-				dropdownAccount: {
+				dropdown: {
 					myAccount: "Mon compte",
-					settings: "Paramètres",
+					editProfil: "Editer mon profil",
 					support: "Support",
+					management: "Gestion",
 					admin: "Administration",
+					organizations: "Mes organisations",
+					content: "Gestion du contenu",
 					login: "Connexion",
 					logout: "Déconnexion"
 				},
@@ -218,6 +254,14 @@ export default {
 				organizations: "Organisations",
 				users: "Utilisateurs",
 			},
+			dropdown: {
+				management: "Gestion",
+				admin: "Administration",
+				organizations: "Mes organisations",
+				content: "Gestion du contenu",
+				backHome: "Retour à l'accueil",
+				logout: "Déconnexion"
+			}
 		},
 		organization: {
 			title: "Mon organisation",
@@ -231,6 +275,23 @@ export default {
 				warehouse: "Entrepôts",
 				productSheets: "Fiche produits"
 			},
+		},
+		content: {
+			title: "Gestion du contenu",
+			nav: {
+				dashboard: "Tableau de bord",
+				navbar: "Barre de navigation",
+				parentCategories: "Catégories parent",
+				categories: "Catégories",
+			},
+			dropdown: {
+				management: "Gestion",
+				admin: "Administration",
+				organizations: "Mes organisations",
+				content: "Gestion du contenu",
+				backHome: "Retour à l'accueil",
+				logout: "Déconnexion"
+			}
 		}
 	},
 	productStatus: {
@@ -303,6 +364,7 @@ export default {
 		save: "Enregister",
 		send: "Envoyer",
 		add: "Ajouter",
+		edit: "Modifier",
 		clear: "Effacer",
 		remove: "Retirer",
 		delete: "Supprimer",

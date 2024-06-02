@@ -163,103 +163,33 @@ getCategories(currentPage.value, searchName.value);
 </script>
 
 <template>
-	<div class="w-full flex flex-col items-center p-6 gap-10">
-		<CreateCategoryForm
-			@submit="submitCreate"
-			class="max-w-[500px] w-[80%]"
-		>
-			<template #image="{modelValue}">
-				<div class="flex flex-col items-start gap-3">
-					<input
-						ref="inputFileCreate"
-						type="file"
-						class="fixed top-full left-full"
-						accept="image/png, image/jpeg"
-						@input="addImageCreate"
-					>
+	<section>
+		<h1 class="mb-12 text-2xl font-semibold">
+			{{ $pt("title") }}
+		</h1>
 
-					<SecondaryButton
-						type="button"
-						@click="inputFileCreate?.click()"
-					>
-						<TheIcon icon="plus" />
-						{{ $pt("form.selectImage") }}
-					</SecondaryButton>
+		<div class="w-full flex flex-col items-center p-6 gap-10">
+			<h2 class="text-xl font-semibold">
+				{{ $pt("form.title") }}
+			</h2>
 
-					<div
-						v-if="modelValue"
-						class="aspect-square overflow-hidden w-[100px]"
-					>
-						<img :src="modelValue.url">
-					</div>
-				</div>
-			</template>
-
-			<PrimaryButton
-				type="submit"
-				class="col-span-12"
+			<CreateCategoryForm
+				@submit="submitCreate"
+				class="max-w-[500px] w-[80%]"
 			>
-				{{ $t("button.validate") }}
-			</PrimaryButton>
-		</CreateCategoryForm>
-
-		<div class="flex flex-col items-center w-full gap-3">
-			<PrimaryInput
-				class="max-w-[300px]"
-				:placeholder="$pt('table.searchPlaceholder')"
-				v-model="searchName"
-			/>
-
-			<BigTable
-				:items="categories"
-				:cols="cols"
-				:current-page="currentPage + 1"
-				@click-next="next"
-				@click-previous="previous"
-				@click-on-row="openPopup"
-			>
-				<template #disabled="{item}">
-					<TheIcon
-						:icon="item.disabled ? 'close' : 'check'"
-						:class="{
-							'text-green-400': !item.disabled, 
-							'text-red-400': item.disabled
-						}"
-					/>
-				</template>
-
-				<template #image="{item}">
-					<div class="aspect-square overflow-hidden w-[30px]">
-						<img :src="item.imageUrl || ''">
-					</div>
-				</template>
-			</BigTable>
-		</div>
-	</div>
-
-	<ThePopup
-		ref="popup"
-		class="max-w-[500px] w-[80%]"
-	>
-		<template #popupContent>
-			<PatchCategoryForm @submit="submitPatch">
-				<template #oldName="{modelValue}">
-					<span class="text-center">{{ $pt("form.oldName.label", { currentName: modelValue }) }}</span>
-				</template>
-
 				<template #image="{modelValue}">
 					<div class="flex flex-col items-start gap-3">
 						<input
-							ref="inputFilePatch"
+							ref="inputFileCreate"
 							type="file"
 							class="fixed top-full left-full"
 							accept="image/png, image/jpeg"
-							@input="addImagePatch"
+							@input="addImageCreate"
 						>
 
 						<SecondaryButton
 							type="button"
-							@click="inputFilePatch?.click()"
+							@click="inputFileCreate?.click()"
 						>
 							<TheIcon icon="plus" />
 							{{ $pt("form.selectImage") }}
@@ -269,10 +199,7 @@ getCategories(currentPage.value, searchName.value);
 							v-if="modelValue"
 							class="aspect-square overflow-hidden w-[100px]"
 						>
-							<img
-								:src="modelValue.url"
-								class="col-span-1 row-span-1"
-							>
+							<img :src="modelValue.url">
 						</div>
 					</div>
 				</template>
@@ -283,7 +210,90 @@ getCategories(currentPage.value, searchName.value);
 				>
 					{{ $t("button.validate") }}
 				</PrimaryButton>
-			</PatchCategoryForm>
-		</template>
-	</ThePopup>
+			</CreateCategoryForm>
+
+			<div class="flex flex-col items-center w-full gap-3">
+				<PrimaryInput
+					class="max-w-[300px]"
+					:placeholder="$pt('table.searchPlaceholder')"
+					v-model="searchName"
+				/>
+
+				<BigTable
+					:items="categories"
+					:cols="cols"
+					:current-page="currentPage + 1"
+					@click-next="next"
+					@click-previous="previous"
+					@click-on-row="openPopup"
+				>
+					<template #disabled="{item}">
+						<TheIcon
+							:icon="item.disabled ? 'close' : 'check'"
+							:class="{
+								'text-green-400': !item.disabled, 
+								'text-red-400': item.disabled
+							}"
+						/>
+					</template>
+
+					<template #image="{item}">
+						<div class="aspect-square overflow-hidden w-[30px]">
+							<img :src="item.imageUrl || ''">
+						</div>
+					</template>
+				</BigTable>
+			</div>
+		</div>
+
+		<ThePopup
+			ref="popup"
+			class="max-w-[500px] w-[80%]"
+		>
+			<template #popupContent>
+				<PatchCategoryForm @submit="submitPatch">
+					<template #oldName="{modelValue}">
+						<span class="text-center">{{ $pt("form.oldName.label", { currentName: modelValue }) }}</span>
+					</template>
+
+					<template #image="{modelValue}">
+						<div class="flex flex-col items-start gap-3">
+							<input
+								ref="inputFilePatch"
+								type="file"
+								class="fixed top-full left-full"
+								accept="image/png, image/jpeg"
+								@input="addImagePatch"
+							>
+
+							<SecondaryButton
+								type="button"
+								@click="inputFilePatch?.click()"
+							>
+								<TheIcon icon="plus" />
+								{{ $pt("form.selectImage") }}
+							</SecondaryButton>
+
+							<div
+								v-if="modelValue"
+								class="aspect-square overflow-hidden w-[100px]"
+							>
+								<img
+									:src="modelValue.url"
+									class="col-span-1 row-span-1"
+								>
+							</div>
+						</div>
+					</template>
+
+					<PrimaryButton
+						type="submit"
+						class="col-span-12"
+					>
+						{{ $t("button.validate") }}
+					</PrimaryButton>
+				</PatchCategoryForm>
+			</template>
+		</ThePopup>
+	</section>
 </template>

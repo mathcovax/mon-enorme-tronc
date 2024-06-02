@@ -19,6 +19,7 @@ const {
 	resetFormOrganizationUserEdit,
 	valuesFormOrganizationUserEdit
 } = useOrganizationUserEditForm();
+const $pt = usePageTranslate();
 const { getOrganizationUsers, organisationUsers } = useGetOrganizationUsers(organizationId);
 const currentPage = ref(0);
 const searchEmail = ref("");
@@ -138,66 +139,76 @@ watch(searchEmail, () => getOrganizationUsers(currentPage.value = 0, searchEmail
 </script>
 
 <template>
-	<div class="flex flex-col items-center w-full gap-6 p-6">
-		<FormOrganizationUserAdd
-			@submit="submit"
-			class="max-w-[500px] w-[80%]"
-		>
-			<PrimaryButton
-				type="submit"
-				class="col-span-12"
+	<section>
+		<h1 class="mb-12 text-2xl font-semibold">
+			{{ $pt("title") }}
+		</h1>
+
+		<div class="w-full flex flex-col items-center p-6 gap-6">
+			<h2 class="text-xl font-semibold">
+				{{ $pt("form.title") }}
+			</h2>
+
+			<FormOrganizationUserAdd
+				@submit="submit"
+				class="max-w-[500px] w-[80%]"
 			>
-				{{ $t("form.submit") }}
-			</PrimaryButton>
-		</FormOrganizationUserAdd>
-
-		<div class="flex flex-col items-center w-full gap-3">
-			<PrimaryInput
-				class="max-w-[300px]"
-				:placeholder="$t('placeholder.search')"
-				v-model="searchEmail"
-			/>
-
-			<BigTable 
-				:items="organisationUsers"
-				:cols="cols"
-				@click-next="next"
-				@click-previous="previous"
-				@click-on-row="openPopup"
-				:current-page="currentPage"
-			/>
-		</div>
-	</div>
-
-	<ThePopup
-		ref="popup"
-		class="max-w-[500px] w-[80%]"
-	>
-		<template #popupContent>
-			<FormOrganizationUserEdit
-				@submit="submitPatch"
-				class="items-center"
-			>
-				<template #user="{modelValue}">
-					<span class="text-center">{{ modelValue?.email }}</span>
-				</template>
-
 				<PrimaryButton
 					type="submit"
-					class="col-span-8"
+					class="col-span-12"
 				>
 					{{ $t("form.submit") }}
 				</PrimaryButton>
+			</FormOrganizationUserAdd>
 
-				<TheButton
-					type="button"
-					@click="deleteUser"
-					class="col-span-4"
-					variant="destructive"
+			<div class="flex flex-col items-center w-full gap-3">
+				<PrimaryInput
+					class="max-w-[300px]"
+					:placeholder="$t('placeholder.search')"
+					v-model="searchEmail"
+				/>
+
+				<BigTable 
+					:items="organisationUsers"
+					:cols="cols"
+					@click-next="next"
+					@click-previous="previous"
+					@click-on-row="openPopup"
+					:current-page="currentPage"
+				/>
+			</div>
+		</div>
+
+		<ThePopup
+			ref="popup"
+			class="max-w-[500px] w-[80%]"
+		>
+			<template #popupContent>
+				<FormOrganizationUserEdit
+					@submit="submitPatch"
+					class="items-center"
 				>
-					{{ $t("form.remove") }}
-				</TheButton>
-			</FormOrganizationUserEdit>
-		</template>
-	</ThePopup>
+					<template #user="{modelValue}">
+						<span class="text-center">{{ modelValue?.email }}</span>
+					</template>
+
+					<PrimaryButton
+						type="submit"
+						class="col-span-8"
+					>
+						{{ $t("form.submit") }}
+					</PrimaryButton>
+
+					<TheButton
+						type="button"
+						@click="deleteUser"
+						class="col-span-4"
+						variant="destructive"
+					>
+						{{ $t("form.remove") }}
+					</TheButton>
+				</FormOrganizationUserEdit>
+			</template>
+		</ThePopup>
+	</section>
 </template>

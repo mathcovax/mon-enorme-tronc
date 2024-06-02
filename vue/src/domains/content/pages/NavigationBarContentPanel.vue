@@ -116,48 +116,58 @@ function deleteItem() {
 </script>
 
 <template>
-	<div class="w-full flex flex-col items-center p-6 gap-10">
-		<NavigationItemForm
-			@click="submitCreate"
+	<section>
+		<h1 class="mb-12 text-2xl font-semibold">
+			{{ $pt("title") }}
+		</h1>
+
+		<div class="w-full flex flex-col items-center p-6 gap-10">
+			<h2 class="text-xl font-semibold">
+				{{ $pt("form.title") }}
+			</h2>
+
+			<NavigationItemForm
+				@click="submitCreate"
+				class="max-w-[500px] w-[80%]"
+			>
+				<PrimaryButton class="col-span-12">
+					{{ $t("button.create") }}
+				</PrimaryButton>
+			</NavigationItemForm>
+		
+			<BigTable
+				:items="navigationItems"
+				:cols="cols"
+				@click-on-row="openPopup"
+			/>
+		</div>
+
+		<ThePopup
+			ref="popup"
 			class="max-w-[500px] w-[80%]"
 		>
-			<PrimaryButton class="col-span-12">
-				{{ $t("button.create") }}
-			</PrimaryButton>
-		</NavigationItemForm>
-		
-		<BigTable
-			:items="navigationItems"
-			:cols="cols"
-			@click-on-row="openPopup"
-		/>
-	</div>
-
-	<ThePopup
-		ref="popup"
-		class="max-w-[500px] w-[80%]"
-	>
-		<template #popupContent>
-			<NavigationItemPatchForm @submit="submitPatch">
-				<PrimaryButton class="col-span-8">
-					{{ $t("button.save") }}
-				</PrimaryButton>
+			<template #popupContent>
+				<NavigationItemPatchForm @submit="submitPatch">
+					<PrimaryButton class="col-span-8">
+						{{ $t("button.save") }}
+					</PrimaryButton>
 					
-				<WithValidation
-					:title="$pt('popup.title')"
-					:content="$pt('popup.content')"
-					class="col-span-4"
-					@validate="deleteItem"
-				>
-					<TheButton
-						type="button"
-						class="w-full"
-						variant="destructive"
+					<WithValidation
+						:title="$pt('popup.title')"
+						:content="$pt('popup.content')"
+						class="col-span-4"
+						@validate="deleteItem"
 					>
-						{{ $t("button.remove") }}
-					</TheButton>
-				</WithValidation>
-			</NavigationItemPatchForm>
-		</template>
-	</ThePopup>
+						<TheButton
+							type="button"
+							class="w-full"
+							variant="destructive"
+						>
+							{{ $t("button.remove") }}
+						</TheButton>
+					</WithValidation>
+				</NavigationItemPatchForm>
+			</template>
+		</ThePopup>
+	</section>
 </template>

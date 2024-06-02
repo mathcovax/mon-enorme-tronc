@@ -70,31 +70,37 @@ getProductSheets(currentPage.value, searchName.value);
 watch(searchName, () => getProductSheets(0, searchName.value));
 </script>
 <template>
-	<div class="flex flex-col items-center w-full gap-6 p-6">
-		<div class="flex justify-center w-full gap-[1rem]">
-			<PrimaryInput
-				class="max-w-[300px]"
-				:placeholder="$pt('searchPlaceholder')"
-				v-model="searchName"
-			/>
+	<section>
+		<h1 class="mb-12 text-2xl font-semibold">
+			{{ $pt("title") }}
+		</h1>
 
-			<PrimaryButton @click="redirectToCreatedPage">
-				{{ $t("button.create") }}
-			</PrimaryButton>
+		<div class="flex flex-col items-center w-full gap-6 p-6">
+			<div class="flex justify-center w-full gap-[1rem]">
+				<PrimaryInput
+					class="max-w-[300px]"
+					:placeholder="$pt('searchPlaceholder')"
+					v-model="searchName"
+				/>
+
+				<PrimaryButton @click="redirectToCreatedPage">
+					{{ $t("button.create") }}
+				</PrimaryButton>
+			</div>
+
+			<BigTable
+				:items="productSheets"
+				:cols="cols"
+				:current-page="currentPage + 1"
+				@click-next="next"
+				@click-previous="previous"
+			>
+				<template #actions="{item}">
+					<SecondaryButton @click="redirectToEditPage(item)">
+						<TheIcon icon="square-edit-outline" />
+					</SecondaryButton>
+				</template>
+			</BigTable>
 		</div>
-
-		<BigTable
-			:items="productSheets"
-			:cols="cols"
-			:current-page="currentPage + 1"
-			@click-next="next"
-			@click-previous="previous"
-		>
-			<template #actions="{item}">
-				<SecondaryButton @click="redirectToEditPage(item)">
-					<TheIcon icon="square-edit-outline" />
-				</SecondaryButton>
-			</template>
-		</BigTable>
-	</div>
+	</section>
 </template>
