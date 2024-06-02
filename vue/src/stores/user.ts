@@ -1,4 +1,4 @@
-import { promiseWithResolvers, type User, type PrimordialRole } from "@/lib/utils";
+import { promiseWithResolvers, type SelfUser, type PrimordialRole } from "@/lib/utils";
 import { defineStore } from "pinia";
 
 const KEY_ACCESS_TOKEN_LOCAL_STORAGE = "access-token";
@@ -13,7 +13,7 @@ const primordialRolesHierarchy: Record<PrimordialRole, PrimordialRole[]> = {
 export const useUserStore = defineStore(
 	"user",
 	() => {
-		const user = ref<null | User>(null);
+		const user = ref<null | SelfUser>(null);
 		const accessToken = ref<null | string>(localStorage.getItem(KEY_ACCESS_TOKEN_LOCAL_STORAGE));
 		const isConnected = computed(() => !!accessToken.value);
 

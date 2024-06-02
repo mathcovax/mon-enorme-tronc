@@ -1,5 +1,6 @@
 import { inputUser, userExistCheck } from "@checkers/user";
-import { userSchema } from "@schemas/user";
+import { addressValidCheck } from "@checkers/address";
+import { selfUserSchema } from "@schemas/user";
 import { mustBeConnected } from "@security/mustBeConnected";
 
 /* METHOD : GET, PATH : /user */
@@ -19,9 +20,15 @@ export const GET = (method: Methods, path: string) => mustBeConnected({ pickup: 
 		async ({ pickup }) => {
 			const user = pickup("user");
 
-			throw new OkHttpException("user", user);
+			const userOrganizationCount = await prisma.user_to_organization.count({
+				where: {
+					userId: user.id
+				}
+			});
+
+			throw new OkHttpException("user", { ...user, hasOrganization: !!userOrganizationCount });
 		},
-		new IHaveSentThis(OkHttpException.code, "user", userSchema)
+		new IHaveSentThis(OkHttpException.code, "user", selfUserSchema)
 	);
 
 /* METHOD : PATCH, PATH : /user */
@@ -37,18 +44,21 @@ export const PATCH = (method: Methods, path: string) => mustBeConnected({ pickup
 		}
 	)
 	.check(
-		userExistCheck,
+		addressValidCheck,
 		{
-			input: p => inputUser.id(
-				p("accessTokenContent").id
-			),
-			...userExistCheck.preCompletions.mustExist
+			input: p => p("body").address || "",
+			result: "address.valid",
+			catch: () => {
+				throw new BadRequestHttpException("user.address.invalid");
+			},
+			skip: p => !p("body").address
 		},
-		new IHaveSentThis(NotFoundHttpException.code, "user.notfound")
+		new IHaveSentThis(BadRequestHttpException.code, "user.address.invalid")
+
 	)
 	.handler(
 		async ({ pickup }) => {
-			const { id } = pickup("user");
+			const { id } = pickup("accessTokenContent");
 			const { lastname, firstname, address } = pickup("body");
 
 			await prisma.user.update({

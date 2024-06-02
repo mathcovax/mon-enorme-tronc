@@ -11,6 +11,12 @@ const {
 } = routerPageName;
 const route = useRoute();
 const organizationUserStore = useOrganizationUserStore();
+
+organizationUserStore.fetchOrganizationValue();
+
+onUnmounted(() => {
+	organizationUserStore.resetOrganizationValue();
+});
 </script>
 
 <template>

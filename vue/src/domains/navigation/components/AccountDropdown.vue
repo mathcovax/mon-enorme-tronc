@@ -1,6 +1,13 @@
 <script setup lang="ts">
 const userStore = useUserStore();
-const { USER_EDIT_PROFIL, ADMIN_PANEL_HOME, ORGANIZATION_HOME, CONTENT_PANEL_HOME } = routerPageName;
+const {
+	EDITO_HOME,
+	USER_EDIT_PROFIL,
+	USER_ORGANIZATIONS,
+	ADMIN_PANEL_HOME,
+	ORGANIZATION_HOME,
+	CONTENT_PANEL_HOME
+} = routerPageName;
 </script>
 
 <template>
@@ -28,6 +35,12 @@ const { USER_EDIT_PROFIL, ADMIN_PANEL_HOME, ORGANIZATION_HOME, CONTENT_PANEL_HOM
 			<DropdownMenuItem>
 				<RouterLink :to="{ name: USER_EDIT_PROFIL }">
 					{{ $t("layout.default.header.dropdown.editProfil") }}
+				</RouterLink>
+			</DropdownMenuItem>
+
+			<DropdownMenuItem v-if="userStore.user?.hasOrganization">
+				<RouterLink :to="{ name: USER_ORGANIZATIONS }">
+					{{ $t("layout.default.header.dropdown.myOrganizations") }}
 				</RouterLink>
 			</DropdownMenuItem>
 
@@ -60,6 +73,12 @@ const { USER_EDIT_PROFIL, ADMIN_PANEL_HOME, ORGANIZATION_HOME, CONTENT_PANEL_HOM
 			</DropdownMenuItem>
 
 			<DropdownMenuSeparator />
+
+			<DropdownMenuItem>
+				<RouterLink :to="{ name: EDITO_HOME }">
+					{{ $t("layout.admin.dropdown.backHome") }}
+				</RouterLink>
+			</DropdownMenuItem>
 
 			<DropdownMenuItem @click="userStore.removeAccessToken">
 				{{ $t("layout.default.header.dropdown.logout") }}

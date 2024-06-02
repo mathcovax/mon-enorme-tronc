@@ -21,3 +21,7 @@ export const userSchema = zod.object({
 	primordialRole: zod.enum(primordialRolesTuple),
 	muted: zod.boolean(),
 });
+
+export const selfUserSchema = userSchema.extend({
+	hasOrganization: zod.boolean(),
+});
