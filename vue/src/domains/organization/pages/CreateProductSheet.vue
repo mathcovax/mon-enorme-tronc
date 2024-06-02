@@ -101,79 +101,85 @@ function addImage() {
 </script>
 
 <template>
-	<div class="w-full flex flex-col items-center gap-6">
-		<ProductSheetForm
-			@submit="submit"
-			class="max-w-[500px] w-[80%]"
-		>
-			<template #categories="{onUpdate, modelValue}">
-				<MultiComboBox
-					:model-value="modelValue"
-					@update:model-value="onUpdate"
-					:items="suggestedCategories"
-					@update:search-term="onSearchCategories"
-					:placeholder="$pt('form.placeholder')"
-					:empty-label="$t('label.empty')"
-				/>
-			</template>
+	<section>
+		<h1 class="mb-12 text-2xl font-semibold">
+			{{ $pt("title") }}
+		</h1>
 
-			<template #description="{onUpdate, modelValue}">
-				<VMarkdownEditor
-					:model-value="modelValue"
-					@update:model-value="onUpdate"
-				/>
-			</template>
+		<div class="w-full flex flex-col items-center gap-6">
+			<ProductSheetForm
+				@submit="submit"
+				class="max-w-[500px] w-[80%]"
+			>
+				<template #categories="{onUpdate, modelValue}">
+					<MultiComboBox
+						:model-value="modelValue"
+						@update:model-value="onUpdate"
+						:items="suggestedCategories"
+						@update:search-term="onSearchCategories"
+						:placeholder="$pt('form.placeholder')"
+						:empty-label="$t('label.empty')"
+					/>
+				</template>
 
-			<template #images="{modelValue, onUpdate}">
-				<div class="flex flex-col items-center gap-3">
-					<input
-						ref="inputFile"
-						type="file"
-						class="fixed top-full left-full"
-						accept="image/png, image/jpeg"
-						@input="addImage"
-					>
+				<template #description="{onUpdate, modelValue}">
+					<VMarkdownEditor
+						:model-value="modelValue"
+						@update:model-value="onUpdate"
+					/>
+				</template>
 
-					<SecondaryButton
-						type="button"
-						@click="inputFile?.click()"
-						:disabled="ProductSheetValues.images.value.length > 5"
-					>
-						<TheIcon icon="plus" />
-						{{ $pt("form.addImage") }}
-					</SecondaryButton>
-
-					<div class="w-full overflow-hidden grid grid-cols-3 grid-row-2 gap-3">
-						<div
-							v-for="(itemImage, index) of modelValue"
-							:key="'id' in itemImage? itemImage.id : index"
-							class=" w-full aspect-square overflow-hidden relative"
+				<template #images="{modelValue, onUpdate}">
+					<div class="flex flex-col items-center gap-3">
+						<input
+							ref="inputFile"
+							type="file"
+							class="fixed top-full left-full"
+							accept="image/png, image/jpeg"
+							@input="addImage"
 						>
-							<TheIcon
-								icon="delete"
-								class="absolute top-2 right-2 rounded-sm bg-white hover:opacity-80 transition-all cursor-pointer"
-								@click="onUpdate(modelValue.filter(i => i!==itemImage))"
-							/>
 
-							<img
-								:src="itemImage.url"
-								class="col-span-1 row-span-1"
+						<SecondaryButton
+							type="button"
+							@click="inputFile?.click()"
+							:disabled="ProductSheetValues.images.value.length > 5"
+						>
+							<TheIcon icon="plus" />
+							{{ $pt("form.addImage") }}
+						</SecondaryButton>
+
+						<div class="w-full overflow-hidden grid grid-cols-3 grid-row-2 gap-3">
+							<div
+								v-for="(itemImage, index) of modelValue"
+								:key="'id' in itemImage? itemImage.id : index"
+								class=" w-full aspect-square overflow-hidden relative"
 							>
+								<TheIcon
+									icon="delete"
+									class="absolute top-2 right-2 rounded-sm bg-white hover:opacity-80 transition-all cursor-pointer"
+									@click="onUpdate(modelValue.filter(i => i!==itemImage))"
+								/>
+
+								<img
+									:src="itemImage.url"
+									class="col-span-1 row-span-1"
+								>
+							</div>
 						</div>
 					</div>
-				</div>
-			</template>
+				</template>
 
-			<PrimaryButton
-				type="submit"
-				class="col-span-12"
-			>
-				{{ $t("button.create") }}
-			</PrimaryButton>
-		</ProductSheetForm>
+				<PrimaryButton
+					type="submit"
+					class="col-span-12"
+				>
+					{{ $t("button.create") }}
+				</PrimaryButton>
+			</ProductSheetForm>
 
-		<SecondaryButton @click="back">
-			{{ $t("button.back") }}
-		</secondarybutton>
-	</div>
+			<SecondaryButton @click="back">
+				{{ $t("button.back") }}
+			</secondarybutton>
+		</div>
+	</section>
 </template>

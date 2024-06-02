@@ -29,7 +29,9 @@ export default {
 			browseButton: "Parcourir les produits",
 		},
 		[routerPageName.ADMIN_PANEL_ORGANIZATIONS]: {
+			title: "Liste des organisations",
 			form: {
+				title: "Créer une organisation",
 				name: {
 					label: "Nom de l'organisation",
 				},
@@ -54,6 +56,7 @@ export default {
 			},
 		},
 		[routerPageName.ADMIN_PANEL_USERS]: {
+			title: "Liste des utilisateurs",
 			form: {
 				primordialRole: {
 					label: "Role Primordial",
@@ -91,15 +94,21 @@ export default {
 			}
 		},
 		[routerPageName.ORGANIZATION_MANAGE_USER]: {
+			title: "Gestion des utilisateurs",
+			form: {
+				title: "Ajouter un utilisateur",
+			},
 			table: {
 				searchPlaceholder: "Chercher une email",
 			},
 		},
 		[routerPageName.ORGANIZATION_GET_PRODUCT_SHEET]: {
+			title: "Liste des produits",
 			searchPlaceholder: "Chercher un produit",
 			price: "Prix",
 		},
 		[routerPageName.ORGANIZATION_EDIT_PRODUCT_SHEET]: {
+			title: "Editer la fiche produit",
 			shortDescription: "Description courte",
 			price: "Prix",
 			form: {
@@ -116,6 +125,7 @@ export default {
 			}
 		},
 		[routerPageName.ORGANIZATION_CREATE_PRODUCT_SHEET]: {
+			title: "Créer une fiche produit",
 			shortDescription: "Description courte",
 			price: "Prix",
 			form: {
@@ -125,7 +135,11 @@ export default {
 			}
 		},
 		[routerPageName.ORGANIZATION_GET_WAREHOUSE]: {
+			title: "Liste des entrepôts",
 			searchPlaceholder: "Chercher un entrepôt",
+			form: {
+				title: "Créer un entrepôt",
+			},
 			placeholder: {
 				name: "nom de l'entrepôt"
 			}

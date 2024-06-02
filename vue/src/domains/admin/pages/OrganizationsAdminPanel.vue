@@ -87,50 +87,60 @@ watch(searchName, () => getOrganizations(currentPage.value = 0, searchName.value
 </script>
 
 <template>
-	<div class="flex flex-col items-center w-full gap-10 p-6">
-		<CreateOrganizationForm
-			@submit="submit"
-			class="max-w-[500px] w-[80%]"
-		>
-			<PrimaryButton
-				type="submit"
-				class="col-span-12"
+	<section>
+		<h1 class="mb-12 text-2xl font-semibold">
+			{{ $pt("title") }}
+		</h1>
+
+		<div class="flex flex-col items-center w-full gap-10 p-6">
+			<h2 class="text-xl font-semibold">
+				{{ $pt("form.title") }}
+			</h2>
+
+			<CreateOrganizationForm
+				@submit="submit"
+				class="max-w-[500px] w-[80%]"
 			>
-				{{ $t("button.add") }}
-			</PrimaryButton>
-		</CreateOrganizationForm>
+				<PrimaryButton
+					type="submit"
+					class="col-span-12"
+				>
+					{{ $t("button.add") }}
+				</PrimaryButton>
+			</CreateOrganizationForm>
 
-		<div class="flex flex-col items-center w-full gap-3">
-			<PrimaryInput
-				class="max-w-[300px]"
-				:placeholder="$pt('table.searchPlaceholder')"
-				v-model="searchName"
-			/>
+			<div class="flex flex-col items-center w-full gap-3">
+				<PrimaryInput
+					class="max-w-[300px]"
+					:placeholder="$pt('table.searchPlaceholder')"
+					v-model="searchName"
+				/>
 
-			<BigTable
-				:items="organizations"
-				:cols="cols"
-				:current-page="currentPage + 1"
-				:action-label="$pt('table.col.actions')"
-				@click-next="next"
-				@click-previous="previous"
-			>
-				<template #suspended="{item}">
-					<TheIcon
-						:icon="item.suspended ? 'close' : 'check'"
-						:class="{
-							'text-green-400': !item.suspended, 
-							'text-red-400': item.suspended
-						}"
-					/>
-				</template>
+				<BigTable
+					:items="organizations"
+					:cols="cols"
+					:current-page="currentPage + 1"
+					:action-label="$pt('table.col.actions')"
+					@click-next="next"
+					@click-previous="previous"
+				>
+					<template #suspended="{item}">
+						<TheIcon
+							:icon="item.suspended ? 'close' : 'check'"
+							:class="{
+								'text-green-400': !item.suspended, 
+								'text-red-400': item.suspended
+							}"
+						/>
+					</template>
 
-				<template #actions="{item}">
-					<SecondaryButton @click="suspended(item)">
-						{{ $pt(item.suspended ? "table.action.activate" : "table.action.suspend") }}
-					</SecondaryButton>
-				</template>
-			</BigTable>
+					<template #actions="{item}">
+						<SecondaryButton @click="suspended(item)">
+							{{ $pt(item.suspended ? "table.action.activate" : "table.action.suspend") }}
+						</SecondaryButton>
+					</template>
+				</BigTable>
+			</div>
 		</div>
-	</div>
+	</section>
 </template>
