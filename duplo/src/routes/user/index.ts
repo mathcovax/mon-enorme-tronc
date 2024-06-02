@@ -44,16 +44,6 @@ export const PATCH = (method: Methods, path: string) => mustBeConnected({ pickup
 		}
 	)
 	.check(
-		userExistCheck,
-		{
-			input: p => inputUser.id(
-				p("accessTokenContent").id
-			),
-			...userExistCheck.preCompletions.mustExist
-		},
-		new IHaveSentThis(NotFoundHttpException.code, "user.notfound")
-	)
-	.check(
 		addressValidCheck,
 		{
 			input: p => p("body").address || "",
@@ -68,7 +58,7 @@ export const PATCH = (method: Methods, path: string) => mustBeConnected({ pickup
 	)
 	.handler(
 		async ({ pickup }) => {
-			const { id } = pickup("user");
+			const { id } = pickup("accessTokenContent");
 			const { lastname, firstname, address } = pickup("body");
 
 			await prisma.user.update({

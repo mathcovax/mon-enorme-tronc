@@ -56,24 +56,28 @@ describe("/user", () => {
 
 
 	describe("PATCH", () => {
-		it("patch user notfound", async () => {
+		it("patch user address invalid", async () => {
 			const res = await duploTesting
 				.testRoute(PATCH("PATCH", ""))
 				.setDefaultFloorValue({
-					accessTokenContent: { id: "" }
+					accessTokenContent: { id: userData.id }
+				})
+				.setRequestProperties({
+					body: {
+						address: "test"
+					}
 				})
 				.mockChecker(
 					0,
 					{
-						info: "user.notfound",
+						info: "user.address.invalid",
 						data: null
 					}
 				)
 				.launch();
-
-			expect(res.information).toBe("user.notfound");
+	
+			expect(res.information).toBe("user.address.invalid");
 		});
-
 		it("patch user", async () => {
 			const spy = vi.fn(async () => userData);
 			MockPrisma.set("user", "update", spy);
@@ -81,7 +85,7 @@ describe("/user", () => {
 			const res = await duploTesting
 				.testRoute(PATCH("PATCH", ""))
 				.setDefaultFloorValue({
-					accessTokenContent: { id: "" }
+					accessTokenContent: { id: userData.id }
 				})
 				.setRequestProperties({
 					body: {
@@ -92,13 +96,6 @@ describe("/user", () => {
 				})
 				.mockChecker(
 					0,
-					{
-						info: "user.exist",
-						data: userData
-					}
-				)
-				.mockChecker(
-					1,
 					{ 
 						info: "address.valid",
 						data: true 

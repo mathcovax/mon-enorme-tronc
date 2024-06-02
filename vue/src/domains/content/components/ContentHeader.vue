@@ -2,7 +2,7 @@
 import ContentDropdown from "@/domains/content/components/ContentDropdown.vue";
 import ContentMobileNavbar from "@/domains/content/components/ContentMobileNavbar.vue";
 
-const user = useUserStore().user;
+const userStore = useUserStore();
 </script>
 
 <template>
@@ -10,7 +10,7 @@ const user = useUserStore().user;
 		<ContentMobileNavbar />
 
 		<div class="w-full flex-1 text-center md:text-start">
-			<span class=" text-xl">Bonjour {{ user?.firstname }} ! Vous êtes <strong>{{ user?.primordialRole }}</strong>.</span>
+			<span class=" text-xl">Bonjour {{ userStore.user?.firstname }} ! Vous êtes <strong>{{ userStore.user?.primordialRole }}</strong>.</span>
 		</div>
 
 		<ContentDropdown />
