@@ -3,7 +3,7 @@ const currentYear = ref(new Date().getFullYear());
 </script>
 
 <template>
-	<footer class="px-4 md:px-6 py-10 lg:py-16 bg-whiteless">
+	<footer class="py-10 lg:py-16 bg-whiteless">
 		<div>
 			<div class="container flex flex-col lg:flex-row gap-16 lg:gap-0 justify-between">
 				<div class="flex flex-col gap-6">
@@ -156,9 +156,11 @@ const currentYear = ref(new Date().getFullYear());
 				</div>
 			</div>
 
-			<hr class="h-px my-6 border-0 bg-black opacity-10">
+			<div class="container">
+				<hr class="h-px my-6 border-0 bg-black opacity-10">
 
-			<span class="opacity-60">Mon Énorme Tronc &#169; 2024-{{ currentYear }}. {{ $t("layout.default.footer.copyrights") }} </span>
+				<span class="opacity-60">Mon Énorme Tronc &#169; 2024-{{ currentYear }}. {{ $t("layout.default.footer.copyrights") }}</span>
+			</div>
 		</div>
 	</footer>
 </template>

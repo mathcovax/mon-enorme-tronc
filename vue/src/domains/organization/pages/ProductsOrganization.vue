@@ -107,65 +107,75 @@ watch(searchName, () => getProducts(0, searchName.value));
 </script>
 
 <template>
-	<div class="flex flex-col items-center w-full gap-6 p-6">
-		<div
-			v-if="toggleBtnCreateForm"
-			class="w-full flex flex-col items-center p-6 gap-6"
-		>
-			<ProductForm
-				@submit="submitPost"
-				class="max-w-[500px] w-[80%]"
+	<section>
+		<h1 class="mb-12 text-2xl font-semibold">
+			{{ $pt("title") }}
+		</h1>
+
+		<div class="flex flex-col items-center w-full gap-6 p-6">
+			<div
+				v-if="toggleBtnCreateForm"
+				class="w-full flex flex-col items-center p-6 gap-6"
 			>
-				<PrimaryButton
-					type="submit"
-					class="col-span-12"
+				<h2 class="text-xl font-semibold">
+					{{ $pt("form.title") }}
+				</h2>
+
+				<ProductForm
+					@submit="submitPost"
+					class="max-w-[500px] w-[80%]"
 				>
-					{{ $t("button.create") }}
-				</PrimaryButton>
-			</ProductForm>
-		</div>
-
-		<div class="flex justify-center w-full gap-[1rem]">
-			<PrimaryInput
-				class="max-w-[300px]"
-				:placeholder="$pt('searchPlaceholder')"
-				v-model="searchName"
-			/>
-
-			<PrimaryButton @click="openCreateForm">
-				<div v-if="toggleBtnCreateForm">
-					<TheIcon icon="menu-down" />
-					{{ $t("button.cancel") }}
-				</div>
-
-				<div v-else>
-					<TheIcon icon="menu-up" />
-					{{ $t("button.create") }}
-				</div>
-			</PrimaryButton>
-		</div>
-
-		<BigTable
-			:items="products"
-			:cols="cols"
-			:current-page="currentPage + 1"
-			@click-next="next"
-			@click-previous="previous"
-		>
-			<template #status="{item}">
-				<div>
-					<WithValidation
-						:title="$pt('popupWrongMessage')"
-						@validate="toggleStatus(item)"
-						:disabled="item.status !== 'WRONG' && item.status !== 'IN_STOCK'"
+					<PrimaryButton
+						type="submit"
+						class="col-span-12"
 					>
-						<TheSheep
-							:text="$t(`productStatus.${item.status}`)"
-							:color="getColorForStatus(item.status)"
-						/>
-					</WithValidation>
-				</div>
-			</template>
-		</BigTable>
-	</div>
+						{{ $t("button.create") }}
+					</PrimaryButton>
+				</ProductForm>
+			</div>
+
+			<div class="flex justify-center w-full gap-[1rem]">
+				<PrimaryInput
+					class="max-w-[300px]"
+					:placeholder="$pt('searchPlaceholder')"
+					v-model="searchName"
+				/>
+
+				<PrimaryButton @click="openCreateForm">
+					<div v-if="toggleBtnCreateForm">
+						<TheIcon icon="menu-down" />
+						{{ $t("button.cancel") }}
+					</div>
+
+					<div v-else>
+						<TheIcon icon="menu-up" />
+						{{ $t("button.create") }}
+					</div>
+				</PrimaryButton>
+			</div>
+
+			<BigTable
+				:items="products"
+				:cols="cols"
+				:current-page="currentPage + 1"
+				@click-next="next"
+				@click-previous="previous"
+			>
+				<template #status="{item}">
+					<div>
+						<WithValidation
+							:title="$pt('popupWrongMessage')"
+							@validate="toggleStatus(item)"
+							:disabled="item.status !== 'WRONG' && item.status !== 'IN_STOCK'"
+						>
+							<TheSheep
+								:text="$t(`productStatus.${item.status}`)"
+								:color="getColorForStatus(item.status)"
+							/>
+						</WithValidation>
+					</div>
+				</template>
+			</BigTable>
+		</div>
+	</section>
 </template>
