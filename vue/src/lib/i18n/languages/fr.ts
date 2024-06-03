@@ -346,6 +346,7 @@ export default {
 			minAge: "Vous devez avoir au moins {value} ans.",
 			maxItems: "Vous pouvez selectionner au plus {value} éléments.",
 			blobToLarge: "L'image est superirére a {value}.",
+			url: "Doit être sous la forme /path/to/page",
 		}
 	},
 	label: {
