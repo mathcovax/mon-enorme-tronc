@@ -3,9 +3,7 @@ import { useGetNavigationBar } from "../composables/useGetNavigationBar";
 
 const { PRODUCT_CATEGORY } = routerPageName;
 
-const { items, getNavbarItems } = useGetNavigationBar();
-
-getNavbarItems();
+const { items } = useGetNavigationBar();
 </script>
 
 <template>
