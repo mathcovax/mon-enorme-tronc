@@ -7,6 +7,9 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    AccordionContent: typeof import('./src/components/ui/accordion/AccordionContent.vue')['default']
+    AccordionItem: typeof import('./src/components/ui/accordion/AccordionItem.vue')['default']
+    AccordionTrigger: typeof import('./src/components/ui/accordion/AccordionTrigger.vue')['default']
     BigTable: typeof import('./src/components/BigTable/BigTable.vue')['default']
     BurgerButton: typeof import('./src/components/BurgerButton.vue')['default']
     ButtonPopup: typeof import('./src/components/ThePopup.vue')['default']
@@ -61,6 +64,14 @@ declare module 'vue' {
     DropdownMenuTrigger: typeof import('./src/components/ui/dropdown-menu/DropdownMenuTrigger.vue')['default']
     Label: typeof import('./src/components/ui/label/Label.vue')['default']
     MultiComboBox: typeof import('./src/components/MultiComboBox/MultiComboBox.vue')['default']
+    NavigationMenu: typeof import('./src/components/ui/navigation-menu/NavigationMenu.vue')['default']
+    NavigationMenuContent: typeof import('./src/components/ui/navigation-menu/NavigationMenuContent.vue')['default']
+    NavigationMenuIndicator: typeof import('./src/components/ui/navigation-menu/NavigationMenuIndicator.vue')['default']
+    NavigationMenuItem: typeof import('./src/components/ui/navigation-menu/NavigationMenuItem.vue')['default']
+    NavigationMenuLink: typeof import('./src/components/ui/navigation-menu/NavigationMenuLink.vue')['default']
+    NavigationMenuList: typeof import('./src/components/ui/navigation-menu/NavigationMenuList.vue')['default']
+    NavigationMenuTrigger: typeof import('./src/components/ui/navigation-menu/NavigationMenuTrigger.vue')['default']
+    NavigationMenuViewport: typeof import('./src/components/ui/navigation-menu/NavigationMenuViewport.vue')['default']
     PopoverContent: typeof import('./src/components/ui/popover/PopoverContent.vue')['default']
     PopoverTrigger: typeof import('./src/components/ui/popover/PopoverTrigger.vue')['default']
     PrimaryButton: typeof import('./src/components/PrimaryButton.vue')['default']
@@ -111,6 +122,7 @@ declare module 'vue' {
     TagsInputItem: typeof import('./src/components/ui/tags-input/TagsInputItem.vue')['default']
     TagsInputItemDelete: typeof import('./src/components/ui/tags-input/TagsInputItemDelete.vue')['default']
     TagsInputItemText: typeof import('./src/components/ui/tags-input/TagsInputItemText.vue')['default']
+    TheAccordion: typeof import('./src/components/ui/accordion/TheAccordion.vue')['default']
     TheButton: typeof import('./src/components/ui/button/TheButton.vue')['default']
     TheCalendar: typeof import('./src/components/ui/calendar/TheCalendar.vue')['default']
     TheCard: typeof import('./src/components/ui/card/TheCard.vue')['default']
