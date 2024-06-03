@@ -8,6 +8,6 @@ export default (): RouteRecordRaw[] => [
 	{
 		name: routerPageNameCategory.PRODUCT_CATEGORY,
 		path: "/category/:categoryName",
-		component: () => import("./pages/ProductPage.vue"),
+		component: () => import("./pages/ProductsPage.vue"),
 	},
 ];
