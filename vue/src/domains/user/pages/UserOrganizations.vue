@@ -78,19 +78,6 @@ getUserOrganizations(currentPage.value);
 						</SecondaryButton>
 					</template>
 				</BigTable>
-
-				<!-- <div
-					v-else
-					class="flex flex-col items-center gap-1 text-center"
-				>
-					<h2 class="text-2xl font-bold tracking-tight">
-						{{ $pt("emptyTitle") }}
-					</h2>
-
-					<p class="text-sm text-muted-foreground">
-						{{ $pt("emptySubtitle") }}
-					</p>
-				</div> -->
 			</div>
 		</div>
 	</section>

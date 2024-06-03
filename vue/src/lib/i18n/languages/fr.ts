@@ -121,7 +121,7 @@ export default {
 			},
 		},
 		[routerPageName.ORGANIZATION_GET_PRODUCT_SHEET]: {
-			title: "Liste des produits",
+			title: "Liste des fiches produit",
 			searchPlaceholder: "Chercher un produit",
 			price: "Prix",
 		},
@@ -200,6 +200,7 @@ export default {
 			buttonText: "Retourner à l'accueil"
 		},
 		[routerPageName.ORGANIZATION_MANAGE_PRODUCT]: {
+			title: "Liste des produits",
 			table: {
 				ref: "Ref°",
 				productSheetName: "Fiche Produit",
@@ -208,6 +209,7 @@ export default {
 				warehouseName: "Entrepôt"
 			},
 			form: {
+				title: "Ajouter un produit",
 				sku: "Reference",
 				skuPlaceholder: "Entrer une reference",
 				productSheetLabel: "Fiche produit",
@@ -344,6 +346,7 @@ export default {
 			minAge: "Vous devez avoir au moins {value} ans.",
 			maxItems: "Vous pouvez selectionner au plus {value} éléments.",
 			blobToLarge: "L'image est superirére a {value}.",
+			url: "Doit être sous la forme /path/to/page",
 		}
 	},
 	label: {

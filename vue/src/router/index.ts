@@ -28,9 +28,6 @@ const router = createRouter({
 		...organization(),
 		notFound(),
 	],
-	scrollBehavior() {
-		return { top: 0 };
-	},
 });
 
 export default router;

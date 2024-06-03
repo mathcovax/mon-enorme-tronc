@@ -54,7 +54,7 @@ function addLogo() {
 </script>
 <template>
 	<div class="flex flex-col items-start gap-24 w-ful">
-		<h1 class="text-2xl font-bold lg:text-3xl">
+		<h1 class="mb-12 text-2xl font-semibold">
 			Modification de l'organisation
 		</h1>
 

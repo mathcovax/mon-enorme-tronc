@@ -122,3 +122,8 @@ export type ProductSheet = GetResponseByInfo<
 	GetDef<"GET", "/organization/{organizationId}/product-sheets">,
 	"productSheets.found"
 >["body"][number]
+
+export type NavigationBar = GetResponseByInfo<
+	GetDef<"GET", "/navigation-bar">,
+	"navigationBar"
+>["body"]

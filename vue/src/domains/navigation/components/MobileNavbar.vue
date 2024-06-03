@@ -1,5 +1,9 @@
 <script setup lang="ts">
+import { useGetNavigationBar } from "../composables/useGetNavigationBar";
 
+const { PRODUCT_CATEGORY } = routerPageName;
+
+const { items } = useGetNavigationBar();
 </script>
 
 <template>
@@ -29,49 +33,63 @@
 					<span>MET</span>
 				</RouterLink>
 
-				<RouterLink
-					to="/"
-					class="mx-[-0.65rem] flex items-center gap-4 rounded-xl bg-muted px-3 py-2 text-foreground hover:text-foreground"
+				<template
+					v-for="item in items"
+					:key="item.type"
 				>
-					<TheIcon
-						icon="home-outline"
-						size="2xl"
-					/>
-					{{ $t("layout.default.header.home") }}
-				</RouterLink>
+					<TheAccordion
+						v-if="item.type === 'PARENT_CATEGORY'"
+						type="single"
+						collapsible
+						class="w-full"
+					>
+						<AccordionItem 
+							class="border-b-0"
+							:value="item.parentCategoryName"
+						>
+							<AccordionTrigger class="hover:no-underline	">
+								{{ item.parentCategoryName }}
+							</AccordionTrigger>
 
-				<RouterLink
-					to="#"
-					class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-				>
-					<TheIcon
-						icon="sale-outline"
-						size="2xl"
-					/>
-					{{ $t("layout.default.header.bestSeller") }}
-				</RouterLink>
+							<AccordionContent>
+								<ul class="flex flex-col gap-2">
+									<li
+										v-for="category in item.categories"
+										:key="category.categoryName"
+										class="px-3 py-2 rounded-md bg-gradient-to-b from-muted/50 to-muted no-underline outline-none focus:shadow-md text-muted-foreground hover:text-foreground"
+									>
+										<RouterLink
+											:to="{ name: PRODUCT_CATEGORY, params: { categoryName: category.categoryName } }"
+											class="flex items-center gap-4"
+										>
+											<img
+												:src="category.categoryImageUrl"
+												class="w-24 aspect-video object-cover"
+											>
+											{{ category.categoryName }}
+										</RouterLink>
+									</li>
+								</ul>
+							</AccordionContent>
+						</AccordionItem>
+					</TheAccordion>
 
-				<RouterLink
-					to="#"
-					class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-				>
-					<TheIcon
-						icon="new-box"
-						size="2xl"
-					/>
-					{{ $t("layout.default.header.new") }}
-				</RouterLink>
+					<RouterLink
+						v-else-if="item.type === 'CATEGORY'"
+						:to="{ name: PRODUCT_CATEGORY, params: { categoryName: item.categoryName } }"
+						class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+					>
+						{{ item.categoryName }}
+					</RouterLink>
 
-				<RouterLink
-					to="#"
-					class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-				>
-					<TheIcon
-						icon="package-variant-closed"
-						size="2xl"
-					/>
-					{{ $t("layout.default.header.products") }}
-				</RouterLink>
+					<RouterLink
+						v-else
+						:to="item.url"
+						class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+					>
+						{{ item.title }}
+					</RouterLink>
+				</template>
 			</nav>
 		</SheetContent>
 	</TheSheet>
