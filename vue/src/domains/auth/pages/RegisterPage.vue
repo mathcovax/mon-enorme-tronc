@@ -35,7 +35,7 @@ async function submit() {
 
 <template>
 	<section class="h-screen-no-header flex justify-center items-center">
-		<div class="w-full h-full flex items-center justify-center lg:grid lg:items-stretch lg:justify-normal lg:grid-cols-2">
+		<div class="container w-full h-full flex items-center justify-center lg:grid lg:items-stretch lg:justify-normal lg:grid-cols-2">
 			<div class="flex items-center justify-center py-12">
 				<div class="mx-auto grid w-[350px] gap-6">
 					<div class="grid gap-2 text-center">

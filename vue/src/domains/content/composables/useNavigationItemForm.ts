@@ -69,7 +69,7 @@ export function useNavigationItemForm() {
 			type: "text",
 			label: $t("navigationItemType.LINK"),
 			zodSchema: zod.string({ message: $t("form.rule.required") })
-				.regex(/^\/[a-zA-Z0-9-_/]+$/, { message: $t("form.rule.url") })
+				.regex(/^\/[a-zA-Z0-9-_/]*$/, { message: $t("form.rule.url") })
 				.max(400),
 			disabled: debugRefType.value !== "LINK"
 		})),

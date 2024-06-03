@@ -7,7 +7,7 @@ const organizationUserStore = useOrganizationUserStore();
 </script>
 
 <template>
-	<header class="flex h-24 items-center gap-4 border-b bg-muted/40 px-4 lg:px-6">
+	<header class="h-24 px-8 flex gap-4 items-center border-b bg-muted/40">
 		<OrganizationMobileNavbar />
 
 		<div class="w-full flex-1 text-center md:text-start">

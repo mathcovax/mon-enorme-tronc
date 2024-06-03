@@ -6,7 +6,7 @@ const userStore = useUserStore();
 </script>
 
 <template>
-	<header class="container h-24 flex gap-4 items-center border-b bg-muted/40">
+	<header class="h-24 px-8 flex gap-4 items-center border-b bg-muted/40">
 		<AdminMobileNavbar />
 
 		<div class="w-full flex-1 text-center md:text-start">
