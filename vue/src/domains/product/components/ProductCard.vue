@@ -13,7 +13,7 @@ defineProps<{
 </script>
 
 <template>
-	<TheCard class="w-72 border-0">
+	<TheCard class="border-0 rounded-md bg-gradient-to-b from-muted/50 to-muted">
 		<RouterLink :to="product.url">
 			<CardHeader>
 				<img

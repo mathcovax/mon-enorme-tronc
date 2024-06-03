@@ -7,6 +7,7 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    '(feat(92)': add ProductsPage)
     AccordionContent: typeof import('./src/components/ui/accordion/AccordionContent.vue')['default']
     AccordionItem: typeof import('./src/components/ui/accordion/AccordionItem.vue')['default']
     AccordionTrigger: typeof import('./src/components/ui/accordion/AccordionTrigger.vue')['default']
@@ -40,7 +41,6 @@ declare module 'vue' {
     CommandList: typeof import('./src/components/ui/command/CommandList.vue')['default']
     CommandSeparator: typeof import('./src/components/ui/command/CommandSeparator.vue')['default']
     CommandShortcut: typeof import('./src/components/ui/command/CommandShortcut.vue')['default']
-    copy: typeof import('./src/components/PrimaryButton copy.vue')['default']
     DateInput: typeof import('./src/components/DateInput.vue')['default']
     DialogClose: typeof import('./src/components/ui/dialog/DialogClose.vue')['default']
     DialogContent: typeof import('./src/components/ui/dialog/DialogContent.vue')['default']
@@ -64,7 +64,6 @@ declare module 'vue' {
     DropdownMenuSubContent: typeof import('./src/components/ui/dropdown-menu/DropdownMenuSubContent.vue')['default']
     DropdownMenuSubTrigger: typeof import('./src/components/ui/dropdown-menu/DropdownMenuSubTrigger.vue')['default']
     DropdownMenuTrigger: typeof import('./src/components/ui/dropdown-menu/DropdownMenuTrigger.vue')['default']
-    Label: typeof import('./src/components/ui/label/Label.vue')['default']
     MultiComboBox: typeof import('./src/components/MultiComboBox/MultiComboBox.vue')['default']
     NavigationMenu: typeof import('./src/components/ui/navigation-menu/NavigationMenu.vue')['default']
     NavigationMenuContent: typeof import('./src/components/ui/navigation-menu/NavigationMenuContent.vue')['default']
@@ -83,7 +82,6 @@ declare module 'vue' {
     PopoverTrigger: typeof import('./src/components/ui/popover/PopoverTrigger.vue')['default']
     PrimaryButton: typeof import('./src/components/PrimaryButton.vue')['default']
     PrimaryComboBox: typeof import('./src/components/PrimaryComboBox.vue')['default']
-    PrimaryDate: typeof import('./src/components/PrimaryDate.vue')['default']
     PrimaryDateInput: typeof import('./src/components/PrimaryDateInput.vue')['default']
     PrimaryDatePicker: typeof import('./src/components/PrimaryDatePicker.vue')['default']
     PrimaryInput: typeof import('./src/components/PrimaryInput.vue')['default']

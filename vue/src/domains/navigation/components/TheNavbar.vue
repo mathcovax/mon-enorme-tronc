@@ -47,7 +47,7 @@ const { items } = useGetNavigationBar();
 				<RouterLink
 					v-else-if="item.type === 'CATEGORY'"
 					:to="{ name: PRODUCT_CATEGORY, params: { categoryName: item.categoryName } }"
-					class="rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
+					class="inline-block rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
 				>
 					{{ item.categoryName }}
 				</RouterLink>
@@ -55,7 +55,7 @@ const { items } = useGetNavigationBar();
 				<RouterLink
 					v-else
 					:to="item.url"
-					class="rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
+					class="inline-block rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
 				>
 					{{ item.title }}
 				</RouterLink>

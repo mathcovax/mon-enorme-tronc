@@ -32,6 +32,9 @@ module.exports = {
 				"192": "48rem",
 				"screen-no-header": "calc(100vh - 6rem)",
 			},
+			minHeight: {
+				"screen-no-header": "calc(100vh - 6rem)",
+			},
 			colors: {
 				border: "hsl(var(--border))",
 				input: "hsl(var(--input))",

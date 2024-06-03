@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import ProductCard from "@/domains/product/components/ProductCard.vue";
+
 const $pt = usePageTranslate(); 
 
 const products = ref([
@@ -70,11 +72,12 @@ const products = ref([
 			</h2>
 
 			<ScrollArea class="w-full">
-				<div class="flex justify-center">
+				<div class="flex gap-6 justify-center">
 					<ProductCard
 						v-for="product in products"
 						:key="product.title"
 						:product="product"
+						class="w-72"
 					/>
 				</div>
 
@@ -100,11 +103,12 @@ const products = ref([
 			</h2>
 
 			<ScrollArea class="w-full">
-				<div class="flex justify-center">
+				<div class="flex gap-6 justify-center">
 					<ProductCard
 						v-for="product in products"
 						:key="product.title"
 						:product="product"
+						class="w-72"
 					/>
 				</div>
 
