@@ -38,6 +38,11 @@ export default {
 				}
 			},
 		},
+		[routerPageName.PRODUCT_CATEGORY]: {
+			emptyTitle: "Cette catégorie n'a pas encore de produits.",
+			emptySubtitle: "Revenez plus tard pour voir les nouveautés.",
+			buttonBack: "Revenir aux catégories",
+		},
 		[routerPageName.USER_CART]: {
 			title: "Mon panier",
 			emptyTitle: "Votre panier est vide.",

@@ -1,37 +1,39 @@
 <script setup lang="ts">
-import ProductCard from "../components/ProductCard.vue";
+import { useGetCategoryProductSheets } from "../composables/useGetCategoryProductSheets";
 import { ThePagination, PaginationList, PaginationListItem } from "@/components/ui/pagination";
+import ProductCard from "../components/ProductCard.vue";
 
 const route = useRoute();
-
-// TODO: Replace with real data
-const productData = {
-	image: "https://picsum.photos/250",
-	title: "Petit tronc",
-	description: "Pour un moment tranquille sans écorce.",
-	price: "59.99€",
-	url: "/products/1",
-};
-const allProducts = Array(63).fill(productData);
-//
+const $pt = usePageTranslate();
 
 const itemsPerPage = ref(10);
 const currentPage = ref(1);
+
+const { categoryName } = useRouteParams({ 
+	categoryName: zod.string(), 
+});
+const { productSheets, getCategoryProductSheets } = useGetCategoryProductSheets(categoryName);
+
+getCategoryProductSheets();
+
 const paginatedProducts = computed(() => {
 	const start = (currentPage.value - 1) * itemsPerPage.value;
 	const end = start + itemsPerPage.value;
-	return allProducts.slice(start, end);
+
+	console.log(productSheets.value);
+	return productSheets.value.slice(start, end);
 });
 
 const updatePage = (page: number) => {
 	currentPage.value = page;
+	getCategoryProductSheets(currentPage.value);
 };
 </script>
 
 <template>
-	<section>
+	<section class="min-h-screen-no-header flex">
 		<div 
-			class="container h-[calc(100%-3rem)] mt-12 lg:mt-16 flex flex-col gap-12"
+			class="grow container my-12 lg:my-16 flex flex-col gap-12"
 		>
 			<div class="flex flex-col gap-4 sm:gap-0 sm:flex-row justify-between items-center">
 				<h1 class="text-2xl lg:text-3xl font-bold">
@@ -43,7 +45,7 @@ const updatePage = (page: number) => {
 						Affiche les produits de 
 						{{ (currentPage - 1) * itemsPerPage + 1 }} 
 						à
-						{{ Math.min(currentPage * itemsPerPage, allProducts.length) }}
+						{{ Math.min(currentPage * itemsPerPage, productSheets.length) }}
 					</span>
 
 					<TheSelect default-value="popular">
@@ -74,12 +76,15 @@ const updatePage = (page: number) => {
 				</div>
 			</div>
 
-			<div>
-				<div>
+			<div
+				:class="{ 'flex justify-center items-center': productSheets.length === 0 }"
+				class="h-full"
+			>
+				<div v-if="productSheets.length > 0">
 					<ThePagination
 						v-slot="{ page }"
 						:item-per-page="itemsPerPage"
-						:total="allProducts.length"
+						:total="productSheets.length"
 						:sibling-count="1"
 						show-edges
 						:default-page="currentPage"
@@ -122,19 +127,19 @@ const updatePage = (page: number) => {
 						</PaginationList>
 					</ThePagination>
 
-					<div class="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+					<div class="my-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 						<ProductCard
 							v-for="(product, index) in paginatedProducts"
 							:key="index"
 							:product="product"
-							class="mx-auto"
+							class="w-44 lg:w-64"
 						/>
 					</div>
 
 					<ThePagination
 						v-slot="{ page }"
 						:item-per-page="itemsPerPage"
-						:total="allProducts.length"
+						:total="productSheets.length"
 						:sibling-count="1"
 						show-edges
 						:default-page="currentPage"
@@ -176,6 +181,23 @@ const updatePage = (page: number) => {
 							<PaginationLast />
 						</PaginationList>
 					</ThePagination>
+				</div>
+
+				<div
+					v-else
+					class="flex flex-col items-center gap-1 text-center"
+				>
+					<h2 class="text-2xl font-bold tracking-tight">
+						{{ $pt("emptyTitle") }}
+					</h2>
+
+					<p class="text-sm text-muted-foreground">
+						{{ $pt("emptySubtitle") }}
+					</p>
+
+					<TheButton class="mt-4">
+						{{ $pt("buttonBack") }}
+					</TheButton>
 				</div>
 			</div>
 		</div>
