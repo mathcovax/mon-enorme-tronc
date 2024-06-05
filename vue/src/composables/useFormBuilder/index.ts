@@ -13,13 +13,16 @@ const inputMapper = {
 	custom: CustomInput,
 };
 
+let count = 0;
+
 export function useFormBuilder<
 	inputDef extends Record<string, FormInputDef | Ref<FormInputDef>>,
 >(
-	formInputs: inputDef
+	formInputs: inputDef,
+	tag: keyof HTMLElementTagNameMap = "form",
 )
 {
-	const formId = Date.now().toString();
+	const formId = `${count+=1}`;
 
 	const values =  Object.fromEntries(
 		Object.keys(formInputs).map((name) => [name,  ref()])
@@ -119,7 +122,7 @@ export function useFormBuilder<
 		const slots = wrongTypedSlots as {default?: () => never};
 
 		return h(
-			"form",
+			tag,
 			{
 				class: "grid grid-cols-12 gap-3",
 				onSubmit: (event) => {

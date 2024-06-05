@@ -1,6 +1,7 @@
 import { facetSchema, facetTypeTuple } from "@schemas/facet";
 import { hasOrganizationRoleByProductSheetId } from "@security/hasOrganizationRole/byProductSheetId";
 
+/* METHOD : GET, PATH : /product-sheet/{productSheetId}/facets */
 export const GET = (method: Methods, path: string) => 
 	hasOrganizationRoleByProductSheetId({ pickup: ["productSheet"] })
 		.declareRoute(method, path)
@@ -15,7 +16,7 @@ export const GET = (method: Methods, path: string) =>
 					take: facetTypeTuple.length
 				});
 
-				throw new OkHttpException("facets", facets);
+				throw new OkHttpException("productSheet.facets", facets);
 			},
-			new IHaveSentThis(OkHttpException.code, "facets", facetSchema.array())
+			new IHaveSentThis(OkHttpException.code, "productSheet.facets", facetSchema.array())
 		);

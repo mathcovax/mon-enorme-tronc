@@ -2,13 +2,14 @@ import { facetExistCheck } from "@checkers/facet";
 import { facetSchema, facetTypeSchema } from "@schemas/facet";
 import { hasOrganizationRoleByProductSheetId } from "@security/hasOrganizationRole/byProductSheetId";
 
+/* METHOD : POST, PATH : /product-sheet/{productSheetId}/facet */
 export const POST = (method: Methods, path: string) => 
 	hasOrganizationRoleByProductSheetId({ pickup: ["productSheet"] })
 		.declareRoute(method, path)
 		.extract({
 			body: zod.object({
 				type: facetTypeSchema,
-				value: zod.string().max(50),
+				value: zod.string().min(2).max(50),
 			}).strip()
 		})
 		.check(

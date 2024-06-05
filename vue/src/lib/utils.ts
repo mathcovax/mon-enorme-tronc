@@ -111,7 +111,7 @@ export type Product = GetResponseByInfo<
 
 export type ProductStatus = Product["status"]
 
-export const productStatus: TuplifyUnion<Product["status"]> = [
+export const productStatus: TuplifyUnion<ProductStatus> = [
 	"ORDER",
 	"WRONG",
 	"SOLD",
@@ -127,3 +127,20 @@ export type NavigationBar = GetResponseByInfo<
 	GetDef<"GET", "/navigation-bar">,
 	"navigationBar"
 >["body"]
+
+export type Facet = GetResponseByInfo<
+	GetDef<"GET", "/product-sheet/{productSheetId}/facets">,
+	"productSheet.facets"
+>["body"][number]
+
+export type FacetType = Facet["type"];
+
+export const facetType: TuplifyUnion<FacetType> = [
+	"COLOR",
+	"SIZE",
+	"DIAMETER",
+	"TARGET",
+	"ACCESSORY",
+	"MATERIAL",
+	"STIMULATION",
+];
