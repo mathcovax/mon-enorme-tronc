@@ -472,6 +472,16 @@ export type response_14_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 >>>>>>> 3a5ea5d (feat(92): add product page)
+=======
+    code: 201;
+    ok: true;
+    info: "user.registered";
+} & {body: response_body_14_4};
+
+export type request_body_15 = {
+    organizationRole?: ("STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT") | undefined;
+}
+>>>>>>> 1761d72 (feat(92): add mardown renderer)
 
 export type parameters_15 = {
     params: {
@@ -480,6 +490,9 @@ export type parameters_15 = {
         userId: string;
 =======
 >>>>>>> 3a5ea5d (feat(92): add product page)
+=======
+        userId: string;
+>>>>>>> 1761d72 (feat(92): add mardown renderer)
     };
 }
 
@@ -491,30 +504,34 @@ export type response_15_0 = {
 
 export type response_15_1 = {
 <<<<<<< HEAD
+<<<<<<< HEAD
     code: 404;
 =======
     code: 406;
 >>>>>>> 3a5ea5d (feat(92): add product page)
+=======
+    code: 404;
+>>>>>>> 96e2c92 (feat(92): improve ui)
     ok: false;
-    info: "organization.notfound";
+    info: "organization.hasNotUser";
 } & {body: undefined};
 
 <<<<<<< HEAD
 <<<<<<< HEAD
 export type response_15_2 = {
-    code: 406;
+    code: 401;
     ok: false;
-    info: "organization.hasNotUser";
+    info: "organization.user.organizationRole.owner";
 } & {body: undefined};
 
 export type response_15_3 = {
-    code: 403;
-    ok: false;
-    info: "user.role.organization.invalid";
+    code: 204;
+    ok: true;
+    info: "organization.user.edited";
 } & {body: undefined};
 
 export type response_15_4 = {
-    code: 404;
+    code: 406;
     ok: false;
     info: "user.notfound";
 } & {body: undefined};
@@ -572,7 +589,7 @@ export type response_15_4 = {
     info: "organization.hasNotUser";
 } & {body: undefined};
 
-export type response_15_5 = {
+export type response_15_4 = {
     code: 403;
     ok: false;
     info: "user.role.organization.invalid";
@@ -582,7 +599,6 @@ export type response_15_5 = {
 export type parameters_16 = {
     params: {
         organizationId: string;
-        userId: string;
     };
 }
 
@@ -598,6 +614,7 @@ export type response_16_1 = {
     info: "organization.hasNotUser";
 } & {body: undefined};
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -631,21 +648,28 @@ export type response_17_1 = {
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
 export type response_16_3 = {
     code: 204;
+=======
+export type response_body_16_2 = {
+    id: string;
+    email: string;
+    lastname: string;
+    firstname: string;
+    organizationRole: "STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT" | "OWNER";
+}
+
+export type response_16_2 = {
+    code: 200;
+>>>>>>> 96e2c92 (feat(92): improve ui)
     ok: true;
-    info: "organization.user.deleted";
-} & {body: undefined};
+    info: "organization.user";
+} & {body: response_body_16_2};
 
-export type response_16_4 = {
-    code: 406;
-    ok: false;
-    info: "organization.hasNotUser";
-} & {body: undefined};
-
-export type response_16_5 = {
-    code: 403;
-    ok: false;
-    info: "user.role.organization.invalid";
-} & {body: undefined};
+export type request_body_17 = {
+    email: string;
+    firstname: string;
+    lastname: string;
+    organizationRole: "STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT";
+}
 
 <<<<<<< HEAD
 export type response_16_4 = {
@@ -673,7 +697,7 @@ export type request_body_17 = {
 
 export type parameters_17 = {
     params: {
-        imageProductSheetId: string;
+        organizationId: string;
     };
 }
 
@@ -686,7 +710,7 @@ export type response_17_0 = {
 export type response_17_1 = {
     code: 404;
     ok: false;
-    info: "imageProductSheet.notfound";
+    info: "organization.notfound";
 } & {body: undefined};
 
 export type response_body_17_2 = {
@@ -712,27 +736,47 @@ export type request_body_18 = {
 
 =======
 export type response_17_2 = {
-    code: 204;
-    ok: true;
-    info: "imageProductSheet.deleted";
-} & {body: undefined};
-
-export type response_17_3 = {
     code: 406;
     ok: false;
     info: "organization.hasNotUser";
 } & {body: undefined};
 
-export type response_17_4 = {
+export type response_17_3 = {
     code: 403;
     ok: false;
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
+<<<<<<< HEAD
 >>>>>>> 3a5ea5d (feat(92): add product page)
+=======
+export type response_17_4 = {
+    code: 404;
+    ok: false;
+    info: "user.notfound";
+} & {body: undefined};
+
+export type response_17_5 = {
+    code: 409;
+    ok: false;
+    info: "organization.hasAlreadyUser";
+} & {body: undefined};
+
+export type response_17_6 = {
+    code: 201;
+    ok: true;
+    info: "organization.user.add";
+} & {body: undefined};
+
+export type request_body_18 = {
+    organizationRole?: ("STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT") | undefined;
+}
+
+>>>>>>> 96e2c92 (feat(92): improve ui)
 export type parameters_18 = {
     params: {
         organizationId: string;
+        userId: string;
     };
 }
 
@@ -796,6 +840,7 @@ export type response_18_1 = {
     info: "parentCategory.notfound";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_body_18_2 = {
     id: string;
     name: string;
@@ -827,11 +872,36 @@ export type request_body_19 = {
     organizationRole: "STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT";
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
 }
+=======
+export type response_18_2 = {
+    code: 401;
+    ok: false;
+    info: "organization.user.organizationRole.owner";
+} & {body: undefined};
+
+export type response_18_3 = {
+    code: 204;
+    ok: true;
+    info: "organization.user.edited";
+} & {body: undefined};
+
+export type response_18_4 = {
+    code: 406;
+    ok: false;
+    info: "organization.hasNotUser";
+} & {body: undefined};
+
+export type response_18_5 = {
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+} & {body: undefined};
+>>>>>>> 96e2c92 (feat(92): improve ui)
 
 export type parameters_19 = {
-    query?: {
-        page?: number;
-    } | undefined;
+    params: {
+        organizationId: string;
+    };
 }
 
 export type response_19_0 = {
@@ -841,6 +911,7 @@ export type response_19_0 = {
 } & {body: undefined};
 
 export type response_19_1 = {
+<<<<<<< HEAD
     code: 406;
     ok: false;
     info: "organization.hasNotUser";
@@ -920,26 +991,35 @@ export type response_20_1 = {
     info: "user.alreadyExist";
 } & {body: undefined};
 
-export type response_body_19_2 = {
-    id: string;
-    name: string;
-    label: string | null;
-    ownerId: string;
-    suspended: boolean;
-    logoKey: string | null;
-    logoUrl: string | null;
-}[]
-
 export type response_19_2 = {
-    code: 200;
-    ok: true;
-    info: "user.organizations";
-} & {body: response_body_19_2};
+    code: 406;
+    ok: false;
+    info: "organization.hasNotUser";
+} & {body: undefined};
 
-export type request_body_20 = {
-    name: string;
-    disabled: boolean;
-}
+export type response_19_3 = {
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+} & {body: undefined};
+
+export type response_19_4 = {
+    code: 404;
+    ok: false;
+    info: "user.notfound";
+} & {body: undefined};
+
+export type response_19_5 = {
+    code: 409;
+    ok: false;
+    info: "organization.hasAlreadyUser";
+} & {body: undefined};
+
+export type response_19_6 = {
+    code: 201;
+    ok: true;
+    info: "organization.user.add";
+} & {body: undefined};
 
 export type response_20_0 = {
     code: 401;
@@ -953,34 +1033,28 @@ export type response_20_1 = {
     info: "user.role.invalid";
 } & {body: undefined};
 
-export type response_20_2 = {
-    code: 409;
-    ok: false;
-    info: "category.alreadyExist";
-} & {body: undefined};
-
-export type response_body_20_3 = {
-    name: string;
-    disabled: boolean;
-    imageKey: string | null;
-    imageUrl: string | null;
+export type response_body_20_2 = {
+    id: string;
+    email: string;
+    lastname: string;
+    firstname: string;
+    dateOfBirth?: string;
+    address: string;
+    primordialRole: "CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN";
+    muted: boolean;
+    hasOrganization: boolean;
 }
 
 export type response_20_3 = {
     code: 201;
     ok: true;
-    info: "category.created";
-} & {body: response_body_20_3};
+    info: "user";
+} & {body: response_body_20_2};
 
 export type request_body_21 = {
-    name?: string | undefined;
-    disabled?: boolean | undefined;
-} | undefined
-
-export type parameters_21 = {
-    params: {
-        categoryName: string;
-    };
+    lastname?: string | undefined;
+    firstname?: string | undefined;
+    address?: string | undefined;
 }
 
 export type response_21_0 = {
@@ -990,37 +1064,23 @@ export type response_21_0 = {
 } & {body: undefined};
 
 export type response_21_1 = {
-    code: 403;
+    code: 400;
     ok: false;
-    info: "user.role.invalid";
+    info: "user.address.invalid";
 } & {body: undefined};
+
+export type response_body_21_2 = string
 
 export type response_21_2 = {
-    code: 404;
-    ok: false;
-    info: "category.notfound";
-} & {body: undefined};
-
-export type response_21_3 = {
-    code: 409;
-    ok: false;
-    info: "category.alreadyExist";
-} & {body: undefined};
-
-export type response_21_4 = {
-    code: 204;
+    code: 201;
     ok: true;
-    info: "category.edited";
-} & {body: undefined};
-
-export type request_body_22 = {
-    suspended?: boolean | undefined;
-}
+    info: "user.edited";
+} & {body: response_body_21_2};
 
 export type parameters_22 = {
-    params: {
-        organizationId: string;
-    };
+    query?: {
+        page?: number;
+    } | undefined;
 }
 
 export type response_22_0 = {
@@ -1030,6 +1090,7 @@ export type response_22_0 = {
 } & {body: undefined};
 
 export type response_22_1 = {
+<<<<<<< HEAD
     code: 403;
     ok: false;
 <<<<<<< HEAD
@@ -1049,25 +1110,33 @@ export type response_19_4 = {
 
 export type response_22_2 = {
     code: 404;
+=======
+    code: 400;
+>>>>>>> 96e2c92 (feat(92): improve ui)
     ok: false;
-    info: "organization.notfound";
+    info: "user.notfound";
 } & {body: undefined};
 >>>>>>> 3a5ea5d (feat(92): add product page)
 
-export type response_22_3 = {
-    code: 204;
-    ok: true;
-    info: "organization.edited";
-} & {body: undefined};
+export type response_body_22_2 = {
+    id: string;
+    name: string;
+    label: string | null;
+    ownerId: string;
+    suspended: boolean;
+    logoKey: string | null;
+    logoUrl: string | null;
+}[]
 
-export type parameters_23 = {
-    headers: {
-        "content-type": string;
-        "content-length": number;
-    };
-    params: {
-        categoryName: string;
-    };
+export type response_22_2 = {
+    code: 200;
+    ok: true;
+    info: "user.organizations";
+} & {body: response_body_22_2};
+
+export type request_body_23 = {
+    name: string;
+    disabled: boolean;
 }
 
 export type response_23_0 = {
@@ -1083,6 +1152,7 @@ export type response_23_1 = {
 } & {body: undefined};
 
 export type response_23_2 = {
+<<<<<<< HEAD
 <<<<<<< HEAD
     code: 406;
     ok: false;
@@ -1116,24 +1186,21 @@ export type parameters_24 = {
 =======
     code: 409;
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
+=======
+    code: 404;
+>>>>>>> 96e2c92 (feat(92): improve ui)
     ok: false;
-    info: "category.alreadyExist";
+    info: "organization.notfound";
 } & {body: undefined};
 
-export type response_body_23_3 = {
-    name: string;
-    disabled: boolean;
-    imageKey: string | null;
-    imageUrl: string | null;
-}
-
 export type response_23_3 = {
-    code: 201;
+    code: 204;
     ok: true;
-    info: "category.created";
-} & {body: response_body_23_3};
+    info: "organization.edited";
+} & {body: undefined};
 
 export type request_body_24 = {
+<<<<<<< HEAD
 <<<<<<< HEAD
     name: string;
     ownerId: string;
@@ -1148,6 +1215,10 @@ export type parameters_24 = {
         categoryName: string;
     };
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
+=======
+    name: string;
+    ownerId: string;
+>>>>>>> 96e2c92 (feat(92): improve ui)
 }
 
 export type response_24_0 = {
@@ -1163,6 +1234,7 @@ export type response_24_1 = {
 } & {body: undefined};
 
 export type response_24_2 = {
+<<<<<<< HEAD
 <<<<<<< HEAD
     code: 406;
     ok: false;
@@ -1235,7 +1307,13 @@ export type response_25_3 = {
 } & {body: undefined};
 
 export type response_25_4 = {
-    code: 204;
+    code: 404;
+    ok: false;
+    info: "category.notfound";
+} & {body: undefined};
+
+export type response_25_5 = {
+    code: 200;
     ok: true;
     info: "productSheet.category.untied";
 } & {body: undefined};
@@ -1470,40 +1548,57 @@ export type request_body_29 = {
     id: string;
 =======
 export type response_24_3 = {
-    code: 409;
+    code: 404;
     ok: false;
-    info: "category.alreadyExist";
+    info: "user.notfound";
 } & {body: undefined};
 
 export type response_24_4 = {
-    code: 204;
-    ok: true;
-    info: "category.edited";
+    code: 409;
+    ok: false;
+    info: "user.alreadyOwner";
 } & {body: undefined};
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export type request_body_25 = {
 >>>>>>> 3a5ea5d (feat(92): add product page)
+=======
+export type response_24_5 = {
+    code: 201;
+    ok: true;
+    info: "organization.created";
+} & {body: undefined};
+
+export type request_body_25 = {
+>>>>>>> 96e2c92 (feat(92): improve ui)
     priority: number;
     type: "PARENT_CATEGORY";
     parentCategoryName: string;
 } | {
 <<<<<<< HEAD
+<<<<<<< HEAD
     id: string;
 =======
 >>>>>>> 3a5ea5d (feat(92): add product page)
+=======
+>>>>>>> 96e2c92 (feat(92): improve ui)
     priority: number;
     type: "CATEGORY";
     categoryName: string;
 } | {
 <<<<<<< HEAD
+<<<<<<< HEAD
     id: string;
 =======
 >>>>>>> 3a5ea5d (feat(92): add product page)
+=======
+>>>>>>> 96e2c92 (feat(92): improve ui)
     priority: number;
     type: "LINK";
     url: string;
     title: string;
+<<<<<<< HEAD
 <<<<<<< HEAD
 }
 
@@ -1520,6 +1615,8 @@ export type parameters_31 = {
 >>>>>>> 3a5ea5d (feat(92): add product page)
 =======
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
+=======
+>>>>>>> 96e2c92 (feat(92): improve ui)
 }
 
 export type response_25_0 = {
@@ -1570,20 +1667,33 @@ export type parameters_26 = {
 }
 =======
 export type response_25_2 = {
-    code: 404;
+    code: 409;
     ok: false;
-    info: "category.notfound";
+    info: "navigationItem.limit";
 } & {body: undefined};
+
+export type response_body_25_3 = {
+    id: string;
+    priority: number;
+    type: "PARENT_CATEGORY";
+    parentCategoryName: string;
+} | {
+    id: string;
+    priority: number;
+    type: "CATEGORY";
+    categoryName: string;
+} | {
+    id: string;
+    priority: number;
+    type: "LINK";
+    url: string;
+    title: string;
+}
 
 export type response_25_3 = {
-    code: 400;
-    ok: false;
-    info: "category.image.missing";
-} & {body: undefined};
-
-export type response_25_4 = {
-    code: 204;
+    code: 201;
     ok: true;
+<<<<<<< HEAD
     info: "category.image.updated";
 } & {body: undefined};
 
@@ -1605,6 +1715,10 @@ export type parameters_26 = {
     };
 }
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
+=======
+    info: "navigationItem.created";
+} & {body: response_body_25_3};
+>>>>>>> 96e2c92 (feat(92): improve ui)
 
 export type response_32_0 = {
     code: 401;
@@ -1618,6 +1732,7 @@ export type response_32_1 = {
     info: "user.role.invalid";
 } & {body: undefined};
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 export type response_32_2 = {
@@ -1659,8 +1774,31 @@ export type response_31_1 = {
     info: "organization.notfound";
 } & {body: undefined};
 
-export type response_body_33_2 = ({
-    id: string;
+export type response_33_2 = {
+    code: 409;
+    ok: false;
+    info: "organization.alreadyExist";
+} & {body: undefined};
+
+export type response_33_3 = {
+    code: 404;
+    ok: false;
+    info: "user.notfound";
+} & {body: undefined};
+
+export type response_33_4 = {
+    code: 409;
+    ok: false;
+    info: "user.alreadyOwner";
+} & {body: undefined};
+
+export type response_33_5 = {
+    code: 201;
+    ok: true;
+    info: "organization.created";
+} & {body: undefined};
+
+export type request_body_34 = {
     priority: number;
     type: "PARENT_CATEGORY";
     parentCategoryName: string;
@@ -1676,6 +1814,7 @@ export type response_body_33_2 = ({
     url: string;
     title: string;
 })[]
+<<<<<<< HEAD
 
 export type response_31_3 = {
     code: 200;
@@ -1729,13 +1868,38 @@ export type response_body_34_3 = {
     title: string;
 }
 =======
+=======
+>>>>>>> 96e2c92 (feat(92): improve ui)
 
-export type response_26_3 = {
-    code: 204;
+export type response_26_2 = {
+    code: 200;
     ok: true;
+<<<<<<< HEAD
     info: "organization.edited";
 } & {body: undefined};
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
+=======
+    info: "navigationItems";
+} & {body: response_body_26_2};
+
+export type request_body_27 = {
+    id: string;
+    priority: number;
+    type: "PARENT_CATEGORY";
+    parentCategoryName: string;
+} | {
+    id: string;
+    priority: number;
+    type: "CATEGORY";
+    categoryName: string;
+} | {
+    id: string;
+    priority: number;
+    type: "LINK";
+    url: string;
+    title: string;
+}
+>>>>>>> 96e2c92 (feat(92): improve ui)
 
 export type parameters_35 = {
     params: {
@@ -1806,7 +1970,7 @@ export type request_body_36 = {
 
 export type parameters_36 = {
     params: {
-        parentCategoryName: string;
+        navigationItemId: string;
     };
 }
 
@@ -1825,29 +1989,30 @@ export type response_27_1 = {
 export type response_27_2 = {
     code: 404;
     ok: false;
+    info: "navigationItem.notfound";
+} & {body: undefined};
+
+export type response_27_3 = {
+    code: 404;
+    ok: false;
+    info: "category.notfound";
+} & {body: undefined};
+
+export type response_27_4 = {
+    code: 404;
+    ok: false;
     info: "parentCategory.notfound";
 } & {body: undefined};
 
-export type response_body_27_3 = {
-    name: string;
-    disabled: boolean;
-    imageKey: string | null;
-    imageUrl: string | null;
-}[]
-
-export type response_27_3 = {
-    code: 200;
+export type response_27_5 = {
+    code: 204;
     ok: true;
-    info: "parentCategory.categories";
-} & {body: response_body_27_3};
-
-export type request_body_28 = {
-    categoryName: string;
-}
+    info: "navigationItem.edited";
+} & {body: undefined};
 
 export type parameters_28 = {
     params: {
-        parentCategoryName: string;
+        navigationItemId: string;
     };
 }
 
@@ -1866,31 +2031,18 @@ export type response_28_1 = {
 export type response_28_2 = {
     code: 404;
     ok: false;
-    info: "parentCategory.notfound";
+    info: "navigationItem.notfound";
 } & {body: undefined};
 
 export type response_28_3 = {
-    code: 404;
-    ok: false;
-    info: "category.notfound";
-} & {body: undefined};
-
-export type response_28_4 = {
-    code: 409;
-    ok: false;
-    info: "parentCategory.categories.limit";
-} & {body: undefined};
-
-export type response_28_5 = {
     code: 204;
     ok: true;
-    info: "parentCategory.category.linked";
+    info: "navigationItem.delete";
 } & {body: undefined};
 
 export type parameters_29 = {
     params: {
         parentCategoryName: string;
-        categoryName: string;
     };
 }
 
@@ -1912,14 +2064,21 @@ export type response_29_2 = {
     info: "parentCategory.notfound";
 } & {body: undefined};
 
+export type response_body_29_3 = {
+    name: string;
+    disabled: boolean;
+    imageKey: string | null;
+    imageUrl: string | null;
+}[]
+
 export type response_29_3 = {
     code: 200;
     ok: true;
-    info: "parentCategory.category.untied";
-} & {body: undefined};
+    info: "parentCategory.categories";
+} & {body: response_body_29_3};
 
 export type request_body_30 = {
-    name?: string | undefined;
+    categoryName: string;
 }
 
 export type parameters_30 = {
@@ -1949,7 +2108,11 @@ export type response_36_2 = {
 export type response_30_3 = {
     code: 404;
     ok: false;
+<<<<<<< HEAD
     info: "user.notfound";
+=======
+    info: "parentCategory.name.alreadyUse";
+>>>>>>> 1761d72 (feat(92): add mardown renderer)
 } & {body: undefined};
 
 <<<<<<< HEAD
@@ -1959,6 +2122,7 @@ export type response_36_4 = {
     info: "user.alreadyOwner";
 =======
 export type response_30_4 = {
+<<<<<<< HEAD
     code: 409;
     ok: false;
     info: "user.alreadyOwner";
@@ -1975,17 +2139,32 @@ export type parameters_37 = {
         navigationItemId: string;
     };
 =======
+=======
+    code: 409;
+    ok: false;
+    info: "parentCategory.categories.limit";
+} & {body: undefined};
+
+export type response_30_5 = {
+>>>>>>> 96e2c92 (feat(92): improve ui)
     code: 204;
     ok: true;
-    info: "parentCategory.edited";
+    info: "parentCategory.category.linked";
 } & {body: undefined};
 
 export type parameters_31 = {
+<<<<<<< HEAD
     query?: {
         page?: number;
         name?: string | undefined;
     } | undefined;
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
+=======
+    params: {
+        parentCategoryName: string;
+        categoryName: string;
+    };
+>>>>>>> 96e2c92 (feat(92): improve ui)
 }
 
 export type response_37_0 = {
@@ -2000,6 +2179,7 @@ export type response_37_1 = {
     info: "user.role.invalid";
 } & {body: undefined};
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 export type response_37_2 = {
     code: 409;
@@ -2047,13 +2227,26 @@ export type response_body_31_2 = {
 }[]
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
 
+=======
+>>>>>>> 96e2c92 (feat(92): improve ui)
 export type response_31_2 = {
+    code: 404;
+    ok: false;
+    info: "parentCategory.notfound";
+} & {body: undefined};
+
+export type response_31_3 = {
     code: 200;
     ok: true;
-    info: "organizations";
-} & {body: response_body_31_2};
+    info: "parentCategory.category.untied";
+} & {body: undefined};
+
+export type request_body_32 = {
+    name?: string | undefined;
+}
 
 export type parameters_32 = {
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 3a5ea5d (feat(92): add product page)
     params: {
@@ -2066,6 +2259,11 @@ export type parameters_32 = {
         primordialRole?: (("CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN") | ("CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN")[]) | undefined;
     } | undefined;
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
+=======
+    params: {
+        parentCategoryName: string;
+    };
+>>>>>>> 96e2c92 (feat(92): improve ui)
 }
 
 export type response_38_0 = {
@@ -2080,23 +2278,14 @@ export type response_38_1 = {
     info: "user.role.invalid";
 } & {body: undefined};
 
-export type response_body_32_2 = {
-    id: string;
-    email: string;
-    lastname: string;
-    firstname: string;
-    dateOfBirth?: string;
-    address: string;
-    primordialRole: "CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN";
-    muted: boolean;
-}[]
-
 export type response_32_2 = {
+<<<<<<< HEAD
     code: 404;
     ok: false;
     info: "organization.hasNotUser";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_body_38_3 = {
     name: string;
 }
@@ -2111,6 +2300,8 @@ export type request_body_39 = {
     label?: (string | null) | undefined;
 }
 =======
+=======
+>>>>>>> 96e2c92 (feat(92): improve ui)
 export type response_32_3 = {
     code: 409;
     ok: false;
@@ -2119,6 +2310,7 @@ export type response_32_3 = {
 
 export type response_32_4 = {
     code: 204;
+<<<<<<< HEAD
     ok: true;
     info: "parentCategory.edited";
 } & {body: undefined};
@@ -2129,6 +2321,11 @@ export type response_32_4 = {
     info: "users";
 } & {body: response_body_32_2};
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
+=======
+    ok: true;
+    info: "parentCategory.edited";
+} & {body: undefined};
+>>>>>>> 96e2c92 (feat(92): improve ui)
 
 export type parameters_33 = {
     query?: {
@@ -2237,6 +2434,7 @@ export type response_34_3 = {
     info: "parentCategory.created";
 } & {body: response_body_34_3};
 
+<<<<<<< HEAD
 export type request_body_35 = {
     primordialRole?: ("CUSTOMER" | "CONTENTS_MASTER" | "MODERATOR") | undefined;
     muted?: boolean | undefined;
@@ -2247,6 +2445,9 @@ export type parameters_41 = {
     params: {
         userId: string;
     };
+=======
+export type parameters_35 = {
+>>>>>>> 96e2c92 (feat(92): improve ui)
     query?: {
         page?: number;
         name?: string | undefined;
@@ -2265,7 +2466,17 @@ export type response_41_1 = {
     info: "user.role.invalid";
 } & {body: undefined};
 
-export type response_41_2 = {
+export type response_body_35_2 = {
+    id: string;
+    name: string;
+    label: string | null;
+    ownerId: string;
+    suspended: boolean;
+    logoKey: string | null;
+    logoUrl: string | null;
+}[]
+
+export type response_35_2 = {
     code: 404;
     ok: false;
     info: "user.notfound";
@@ -2296,15 +2507,16 @@ export type response_41_4 = {
     info: "user.edited";
 } & {body: undefined};
 >>>>>>> 3a5ea5d (feat(92): add product page)
+=======
+    code: 200;
+    ok: true;
+    info: "organizations";
+} & {body: response_body_35_2};
+>>>>>>> 96e2c92 (feat(92): improve ui)
 
-export type parameters_36 = {
-    headers: {
-        "content-type": string;
-        "content-length": number;
-    };
-    params: {
-        organizationId: string;
-    };
+export type request_body_36 = {
+    name: string;
+    ownerId: string;
 }
 
 export type response_42_0 = {
@@ -2320,29 +2532,30 @@ export type response_36_1 = {
 } & {body: undefined};
 
 export type response_36_2 = {
-    code: 406;
+    code: 409;
     ok: false;
-    info: "organization.hasNotUser";
+    info: "organization.alreadyExist";
 } & {body: undefined};
 
 export type response_36_3 = {
-    code: 403;
+    code: 404;
     ok: false;
     info: "user.notfound";
 } & {body: undefined};
 
 export type response_36_4 = {
-    code: 400;
+    code: 409;
     ok: false;
-    info: "organization.logo.missing";
+    info: "user.alreadyOwner";
 } & {body: undefined};
 
 export type response_36_5 = {
-    code: 204;
+    code: 201;
     ok: true;
-    info: "organization.logo.edited";
+    info: "organization.created";
 } & {body: undefined};
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 export type request_body_43 = {
     name: string;
@@ -2355,6 +2568,21 @@ export type parameters_37 = {
     params: {
         organizationId: string;
     };
+=======
+export type request_body_37 = {
+    priority: number;
+    type: "PARENT_CATEGORY";
+    parentCategoryName: string;
+} | {
+    priority: number;
+    type: "CATEGORY";
+    categoryName: string;
+} | {
+    priority: number;
+    type: "LINK";
+    url: string;
+    title: string;
+>>>>>>> 1761d72 (feat(92): add mardown renderer)
 }
 
 export type response_43_0 = {
@@ -2369,7 +2597,19 @@ export type response_37_1 = {
     info: "user.role.invalid";
 } & {body: undefined};
 
+export type response_body_37_2 = {
+    id: string;
+    email: string;
+    lastname: string;
+    firstname: string;
+    dateOfBirth?: string;
+    address: string;
+    primordialRole: "CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN";
+    muted: boolean;
+}[]
+
 export type response_37_2 = {
+<<<<<<< HEAD
     code: 409;
     ok: false;
     info: "navigationItem.limit";
@@ -2407,11 +2647,36 @@ export type request_body_44 = {
 
 export type response_37_4 = {
     code: 201;
+=======
+    code: 200;
+>>>>>>> 96e2c92 (feat(92): improve ui)
     ok: true;
-    info: "productSheet.created";
-} & {body: response_body_37_4};
+    info: "navigationItem.created";
+} & {body: response_body_37_3};
+
+export type request_body_38 = {
+    id: string;
+    priority: number;
+    type: "PARENT_CATEGORY";
+    parentCategoryName: string;
+} | {
+    id: string;
+    priority: number;
+    type: "CATEGORY";
+    categoryName: string;
+} | {
+    id: string;
+    priority: number;
+    type: "LINK";
+    url: string;
+    title: string;
+}
 
 export type parameters_38 = {
+    headers: {
+        "content-type": string;
+        "content-length": number;
+    };
     params: {
         organizationId: string;
     };
@@ -2458,14 +2723,20 @@ export type response_body_38_4 = {
 }[]
 
 export type response_38_4 = {
-    code: 200;
+    code: 404;
+    ok: false;
+    info: "parentCategory.notfound";
+} & {body: undefined};
+
+export type response_38_5 = {
+    code: 204;
     ok: true;
-    info: "productSheets.found";
-} & {body: response_body_38_4};
+    info: "navigationItem.edited";
+} & {body: undefined};
 
 export type parameters_39 = {
     params: {
-        navigationItemId: string;
+        organizationId: string;
     };
 }
 
@@ -2478,16 +2749,17 @@ export type response_44_0 = {
 export type response_39_1 = {
     code: 404;
     ok: false;
-    info: "user.role.invalid";
+    info: "organization.notfound";
 } & {body: undefined};
 
 export type response_39_2 = {
     code: 406;
     ok: false;
-    info: "navigationItem.notfound";
+    info: "organization.hasNotUser";
 } & {body: undefined};
 
 export type response_39_3 = {
+<<<<<<< HEAD
     code: 403;
     ok: false;
     info: "user.role.organization.invalid";
@@ -2543,8 +2815,40 @@ export type parameters_45 = {
     code: 204;
     ok: true;
     info: "navigationItem.delete";
+=======
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+>>>>>>> 96e2c92 (feat(92): improve ui)
 } & {body: undefined};
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
+
+export type response_body_39_4 = {
+    id: string;
+    name: string;
+    description: string;
+    shortDescription: string;
+    price: number;
+    createdAt?: string;
+    updatedAt?: string;
+    organizationId: string;
+}
+
+export type response_39_4 = {
+    code: 201;
+    ok: true;
+    info: "productSheet.created";
+} & {body: response_body_39_4};
+
+export type parameters_40 = {
+    params: {
+        organizationId: string;
+    };
+    query?: {
+        page?: number;
+        name?: string | undefined;
+    } | undefined;
+}
 
 export type response_45_0 = {
     code: 401;
@@ -2566,11 +2870,18 @@ export type response_45_2 = {
 } & {body: undefined};
 
 export type response_40_3 = {
+=======
+export type response_40_1 = {
+>>>>>>> 1761d72 (feat(92): add mardown renderer)
     code: 403;
+=======
+    code: 404;
+>>>>>>> 96e2c92 (feat(92): improve ui)
     ok: false;
-    info: "user.role.invalid";
+    info: "organization.notfound";
 } & {body: undefined};
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 export type response_body_45_4 = {
@@ -2630,12 +2941,42 @@ export type response_body_40_2 = ({
     title: string;
 })[]
 
+=======
+>>>>>>> 96e2c92 (feat(92): improve ui)
 export type response_40_2 = {
+    code: 406;
+    ok: false;
+    info: "organization.hasNotUser";
+} & {body: undefined};
+
+export type response_40_3 = {
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+} & {body: undefined};
+
+export type response_body_40_4 = {
+    id: string;
+    name: string;
+    description: string;
+    shortDescription: string;
+    price: number;
+    createdAt?: string;
+    updatedAt?: string;
+    organizationId: string;
+}[]
+
+export type response_40_4 = {
     code: 200;
     ok: true;
+<<<<<<< HEAD
     info: "navigationItems";
 } & {body: response_body_40_2};
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
+=======
+    info: "productSheets.found";
+} & {body: response_body_40_4};
+>>>>>>> 96e2c92 (feat(92): improve ui)
 
 export type parameters_41 = {
     headers: {
@@ -2645,6 +2986,7 @@ export type parameters_41 = {
     params: {
         organizationId: string;
     };
+<<<<<<< HEAD
 <<<<<<< HEAD
     query?: {
         page?: number;
@@ -2656,6 +2998,14 @@ export type parameters_41 = {
     } | undefined;
 =======
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
+=======
+    query?: {
+        page?: number;
+        sku?: string | undefined;
+        withProductSheet?: ("true" | "false") | undefined;
+        withWarehouse?: ("true" | "false") | undefined;
+    } | undefined;
+>>>>>>> 96e2c92 (feat(92): improve ui)
 }
 
 export type response_46_0 = {
@@ -2687,16 +3037,18 @@ export type response_body_46_4 = {
 =======
 export type response_body_41_4 = {
     id: string;
-    email: string;
-    lastname: string;
-    firstname: string;
-    organizationRole: "STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT" | "OWNER";
-}[]
+    name: string;
+    label: string | null;
+    ownerId: string;
+    suspended: boolean;
+    logoKey: string | null;
+    logoUrl: string | null;
+}
 
 export type response_41_4 = {
     code: 200;
     ok: true;
-    info: "organization.users";
+    info: "organization.found";
 } & {body: response_body_41_4};
 
 export type parameters_42 = {
@@ -2721,12 +3073,17 @@ export type response_42_1 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_body_42_4 = {
 >>>>>>> 3a5ea5d (feat(92): add product page)
+=======
+export type response_body_42_4 = {
+>>>>>>> 96e2c92 (feat(92): improve ui)
     id: string;
     name: string;
     address: string;
     organizationId: string;
+<<<<<<< HEAD
 <<<<<<< HEAD
 }
 =======
@@ -2751,6 +3108,19 @@ export type parameters_47 = {
 
 export type parameters_43 = {
 >>>>>>> 3a5ea5d (feat(92): add product page)
+=======
+export type response_42_4 = {
+    code: 204;
+    ok: true;
+    info: "organization.edited";
+} & {body: undefined};
+
+export type parameters_43 = {
+    headers: {
+        "content-type": string;
+        "content-length": number;
+    };
+>>>>>>> 1761d72 (feat(92): add mardown renderer)
     params: {
         userId: string;
     };
@@ -2783,12 +3153,20 @@ export type response_47_3 = {
 export type response_43_4 = {
     code: 400;
     ok: false;
-    info: "organization.logo.missing";
+    info: "warehouse.address.invalid";
 } & {body: undefined};
 
+export type response_body_43_5 = {
+    id: string;
+    name: string;
+    address: string;
+    organizationId: string;
+}
+
 export type response_43_5 = {
-    code: 204;
+    code: 201;
     ok: true;
+<<<<<<< HEAD
 <<<<<<< HEAD
     info: "user.edited";
 } & {body: undefined};
@@ -2824,6 +3202,10 @@ export type response_47_5 = {
 export type request_body_48 = {
     status?: ("IN_STOCK" | "WRONG") | undefined;
 }
+=======
+    info: "warehouse.created";
+} & {body: response_body_43_5};
+>>>>>>> 96e2c92 (feat(92): improve ui)
 
 export type parameters_48 = {
     params: {
@@ -2862,20 +3244,20 @@ export type response_48_3 = {
 export type response_body_44_4 = {
     id: string;
     name: string;
-    description: string;
-    shortDescription: string;
-    price: number;
-    createdAt?: string;
-    updatedAt?: string;
-    organizationId: string;
+    label: string | null;
+    ownerId: string;
+    suspended: boolean;
+    logoKey: string | null;
+    logoUrl: string | null;
 }
 
 export type response_44_4 = {
-    code: 201;
+    code: 200;
     ok: true;
-    info: "productSheet.created";
+    info: "organization.found";
 } & {body: response_body_44_4};
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 export type request_body_45 = {
     fireBaseIdToken: string;
@@ -2891,18 +3273,16 @@ export type request_body_45 = {
 export type response_48_2 = {
     code: 200;
     ok: true;
-    info: "users";
-} & {body: response_body_48_2};
+    info: "organization.users";
+} & {body: response_body_48_4};
 
-export type request_body_49 = {
-    name?: string | undefined;
-    address?: string | undefined;
-}
-
+=======
+>>>>>>> 1761d72 (feat(92): add mardown renderer)
 export type parameters_45 = {
     params: {
         productSheetId: string;
     };
+<<<<<<< HEAD
     query?: {
         page?: number;
 <<<<<<< HEAD
@@ -2918,6 +3298,8 @@ export type parameters_45 = {
         name?: string | undefined;
     } | undefined;
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
+=======
+>>>>>>> 96e2c92 (feat(92): improve ui)
 }
 
 export type response_49_0 = {
@@ -2985,12 +3367,21 @@ export type response_45_3 = {
     info: "user.dateOfBirth.invalid";
 } & {body: undefined};
 
-export type response_body_45_4 = string
+export type response_body_45_4 = {
+    id: string;
+    name: string;
+    description: string;
+    shortDescription: string;
+    price: number;
+    createdAt?: string;
+    updatedAt?: string;
+    organizationId: string;
+}[]
 
 export type response_45_4 = {
-    code: 201;
+    code: 200;
     ok: true;
-    info: "user.registered";
+    info: "productSheets.found";
 } & {body: response_body_45_4};
 
 >>>>>>> 3a5ea5d (feat(92): add product page)
@@ -3057,13 +3448,19 @@ export type response_body_46_2 = {
 export type response_46_2 = {
     code: 200;
     ok: true;
-    info: "user";
-} & {body: response_body_46_2};
+    info: "organization.users";
+} & {body: response_body_46_4};
 
-export type request_body_47 = {
-    lastname?: string | undefined;
-    firstname?: string | undefined;
-    address?: string | undefined;
+export type parameters_47 = {
+    params: {
+        organizationId: string;
+    };
+    query?: {
+        page?: number;
+        sku?: string | undefined;
+        withProductSheet?: ("true" | "false") | undefined;
+        withWarehouse?: ("true" | "false") | undefined;
+    } | undefined;
 }
 
 export type response_51_0 = {
@@ -3076,6 +3473,7 @@ export type response_47_1 = {
 <<<<<<< HEAD
     code: 404;
     ok: false;
+<<<<<<< HEAD
     info: "productSheet.notfound";
 } & {body: undefined};
 
@@ -3097,7 +3495,7 @@ export type response_47_4 = {
     code: 404;
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
     ok: false;
-    info: "user.address.invalid";
+    info: "organization.notfound";
 } & {body: undefined};
 
 <<<<<<< HEAD
@@ -3115,20 +3513,59 @@ export type request_body_52 = {
 }
 =======
 export type response_47_2 = {
-    code: 201;
+    code: 406;
+    ok: false;
+    info: "organization.hasNotUser";
+} & {body: undefined};
+
+export type response_47_3 = {
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+} & {body: undefined};
+
+export type response_body_47_4 = {
+    sku: string;
+    productSheetId: string;
+    organizationId: string;
+    warehouseId: string;
+    createdAt?: string;
+    updatedAt?: string;
+    status: "ORDER" | "WRONG" | "SOLD" | "IN_STOCK";
+    productSheet?: {
+        id: string;
+        name: string;
+        description: string;
+        shortDescription: string;
+        price: number;
+        createdAt?: string;
+        updatedAt?: string;
+        organizationId: string;
+    } | undefined;
+    warehouse?: {
+        id: string;
+        name: string;
+        address: string;
+        organizationId: string;
+    } | undefined;
+}[]
+
+export type response_47_4 = {
+    code: 200;
     ok: true;
+<<<<<<< HEAD
     info: "user.edited";
 } & {body: response_body_47_2};
 >>>>>>> 3a5ea5d (feat(92): add product page)
+=======
+    info: "products.found";
+} & {body: response_body_47_4};
+>>>>>>> 1761d72 (feat(92): add mardown renderer)
 
 export type parameters_48 = {
     params: {
-        organizationId: string;
+        productSheetId: string;
     };
-    query?: {
-        page?: number;
-        name?: string | undefined;
-    } | undefined;
 }
 
 export type response_52_0 = {
@@ -3158,8 +3595,12 @@ export type response_52_3 = {
 export type response_48_1 = {
     code: 403;
     ok: false;
+<<<<<<< HEAD
     info: "user.role.invalid";
 >>>>>>> 3a5ea5d (feat(92): add product page)
+=======
+    info: "organization.notfound";
+>>>>>>> 1761d72 (feat(92): add mardown renderer)
 } & {body: undefined};
 
 export type response_48_2 = {
@@ -3175,10 +3616,10 @@ export type response_48_3 = {
 } & {body: undefined};
 
 export type response_body_48_4 = {
-    id: string;
     name: string;
-    address: string;
-    organizationId: string;
+    disabled: boolean;
+    imageKey: string | null;
+    imageUrl: string | null;
 }[]
 
 <<<<<<< HEAD
@@ -3216,15 +3657,18 @@ export type response_48_2 = {
 >>>>>>> 3a5ea5d (feat(92): add product page)
     code: 200;
     ok: true;
-    info: "parentCategories";
-} & {body: response_body_48_2};
+    info: "warehouses.found";
+} & {body: response_body_48_4};
+
+export type request_body_49 = {
+    name: string;
+    address: string;
+}
 
 export type parameters_49 = {
-    query?: {
-        page?: number;
-        email?: string | undefined;
-        primordialRole?: (("CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN") | ("CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN")[]) | undefined;
-    } | undefined;
+    params: {
+        organizationId: string;
+    };
 }
 
 export type response_53_0 = {
@@ -3236,7 +3680,7 @@ export type response_53_0 = {
 export type response_49_1 = {
     code: 404;
     ok: false;
-    info: "organization.notfound";
+    info: "productSheet.notfound";
 } & {body: undefined};
 
 export type response_49_2 = {
@@ -3252,31 +3696,27 @@ export type response_49_3 = {
 } & {body: undefined};
 
 export type response_49_4 = {
-    code: 400;
+    code: 404;
     ok: false;
-    info: "warehouse.address.invalid";
+    info: "category.notfound";
 } & {body: undefined};
 
-export type response_body_49_5 = {
-    id: string;
-    name: string;
-    address: string;
-    organizationId: string;
-}
-
 export type response_49_5 = {
-    code: 201;
-    ok: true;
-    info: "warehouse.created";
-} & {body: response_body_49_5};
+    code: 409;
+    ok: false;
+    info: "productSheet.categories.limit";
+} & {body: undefined};
 
-export type request_body_50 = {
-    status?: ("IN_STOCK" | "WRONG") | undefined;
-}
+export type response_49_6 = {
+    code: 200;
+    ok: true;
+    info: "productSheet.category.linked";
+} & {body: undefined};
 
 export type parameters_50 = {
     params: {
-        sku: string;
+        productSheetId: string;
+        categoryName: string;
     };
 }
 
@@ -3289,7 +3729,7 @@ export type response_50_0 = {
 export type response_50_1 = {
     code: 404;
     ok: false;
-    info: "product.notfound";
+    info: "productSheet.notfound";
 } & {body: undefined};
 
 export type response_53_3 = {
@@ -3329,7 +3769,7 @@ export type response_50_4 = {
 export type response_50_5 = {
     code: 200;
     ok: true;
-    info: "product.edited";
+    info: "productSheet.category.untied";
 } & {body: undefined};
 
 export type parameters_55 = {
@@ -3452,13 +3892,8 @@ export type response_52_4 = {
 } & {body: response_body_52_4};
 
 export type request_body_53 = {
-    categoryName: string;
-}
-
-export type parameters_53 = {
-    params: {
-        productSheetId: string;
-    };
+    name: string;
+    disabled: boolean;
 }
 
 export type response_53_0 = {
@@ -3468,10 +3903,17 @@ export type response_53_0 = {
     info: "productSheet.categories.limit";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_55_5 = {
     code: 400;
     ok: false;
     info: "productSheet.image.missing";
+=======
+export type response_53_1 = {
+    code: 403;
+    ok: false;
+    info: "user.role.invalid";
+>>>>>>> 96e2c92 (feat(92): improve ui)
 } & {body: undefined};
 
 export type response_body_55_6 = {
@@ -3483,6 +3925,19 @@ export type response_body_55_6 = {
     key: string;
     alt: string | null;
 }
+=======
+export type response_53_2 = {
+    code: 406;
+    ok: false;
+    info: "organization.hasNotUser";
+} & {body: undefined};
+
+export type response_53_3 = {
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+} & {body: undefined};
+>>>>>>> 3a5ea5d (feat(92): add product page)
 
 export type response_53_4 = {
     code: 404;
@@ -3491,9 +3946,15 @@ export type response_53_4 = {
 } & {body: undefined};
 
 export type response_53_5 = {
+    code: 409;
+    ok: false;
+    info: "productSheet.categories.limit";
+} & {body: undefined};
+
+export type response_53_6 = {
     code: 200;
     ok: true;
-    info: "productSheet.category.untied";
+    info: "productSheet.category.linked";
 } & {body: undefined};
 
 export type parameters_57 = {
@@ -3503,6 +3964,7 @@ export type parameters_57 = {
     };
     params: {
         productSheetId: string;
+        categoryName: string;
     };
 }
 
@@ -3512,29 +3974,35 @@ export type response_60_0 = {
     info: "access.token.invalid";
 } & {body: undefined};
 
-export type response_60_1 = {
-    code: 403;
-    ok: false;
-    info: "product.notfound";
-} & {body: undefined};
-
-export type response_60_2 = {
+export type response_54_1 = {
     code: 404;
     ok: false;
-    info: "organization.hasNotUser";
+    info: "productSheet.notfound";
 } & {body: undefined};
 
-export type response_60_3 = {
-    code: 401;
+export type response_54_2 = {
+    code: 406;
     ok: false;
-    info: "user.primordialRole.admin";
+    info: "category.notfound";
+} & {body: undefined};
+
+export type response_54_3 = {
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
 } & {body: undefined};
 
 export type response_54_4 = {
+    code: 404;
+    ok: false;
+    info: "category.notfound";
+} & {body: undefined};
+
+export type response_54_5 = {
     code: 200;
     ok: true;
-    info: "productSheet.found";
-} & {body: response_body_54_4};
+    info: "productSheet.category.untied";
+} & {body: undefined};
 
 export type request_body_55 = {
     sku: string;
@@ -3571,13 +4039,38 @@ export type response_55_3 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
-export type response_body_55_4 = string
-
 export type response_55_4 = {
+    code: 404;
+    ok: false;
+    info: "warehouse.notfound";
+} & {body: undefined};
+
+export type response_55_5 = {
+    code: 409;
+    ok: false;
+    info: "product.sku.alreadyUse";
+} & {body: undefined};
+
+export type response_body_55_6 = {
+    sku: string;
+    productSheetId: string;
+    organizationId: string;
+    warehouseId: string;
+    createdAt?: string;
+    updatedAt?: string;
+    status: "ORDER" | "WRONG" | "SOLD" | "IN_STOCK";
+}
+
+export type response_55_6 = {
     code: 201;
     ok: true;
-    info: "productSheet.edited";
-} & {body: response_body_55_4};
+    info: "product.created";
+} & {body: response_body_55_6};
+
+export type request_body_56 = {
+    name?: string | undefined;
+    address?: string | undefined;
+}
 
 export type parameters_56 = {
     params: {
@@ -3673,14 +4166,10 @@ export type response_body_56_4 = {
 export type response_56_4 = {
     code: 200;
     ok: true;
-    info: "productSheet.images";
-} & {body: response_body_56_4};
+    info: "warehouse.edited";
+} & {body: undefined};
 
 export type parameters_57 = {
-    headers: {
-        "content-type": string;
-        "content-length": number;
-    };
     params: {
         productSheetId: string;
 >>>>>>> 3a5ea5d (feat(92): add product page)
@@ -3736,30 +4225,31 @@ export type parameters_58 = {
     } | undefined;
 =======
 export type response_57_4 = {
-    code: 409;
+    code: 404;
     ok: false;
-    info: "product.images.limit";
+    info: "warehouse.notfound";
 } & {body: undefined};
 
 export type response_57_5 = {
-    code: 400;
+    code: 409;
     ok: false;
-    info: "productSheet.image.missing";
+    info: "product.sku.alreadyUse";
 } & {body: undefined};
 
 export type response_body_57_6 = {
-    id: string;
+    sku: string;
     productSheetId: string;
     organizationId: string;
-    url: string;
-    key: string;
-    alt: string | null;
+    warehouseId: string;
+    createdAt?: string;
+    updatedAt?: string;
+    status: "ORDER" | "WRONG" | "SOLD" | "IN_STOCK";
 }
 
 export type response_57_6 = {
     code: 201;
     ok: true;
-    info: "productSheet.image.create";
+    info: "product.created";
 } & {body: response_body_57_6};
 
 export type request_body_58 = {
@@ -3768,6 +4258,10 @@ export type request_body_58 = {
 }
 
 export type parameters_58 = {
+    headers: {
+        "content-type": string;
+        "content-length": number;
+    };
     params: {
         productSheetId: string;
     };
@@ -3786,6 +4280,7 @@ export type response_59_1 = {
     info: "productSheet.notfound";
 } & {body: undefined};
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 export type response_body_58_2 = {
     name: string;
@@ -3814,17 +4309,21 @@ export type response_58_5 = {
 
 export type response_body_58_6 = {
     sku: string;
+=======
+export type response_body_58_4 = {
+    id: string;
+>>>>>>> 1761d72 (feat(92): add mardown renderer)
     productSheetId: string;
     organizationId: string;
-    warehouseId: string;
-    createdAt?: string;
-    updatedAt?: string;
-    status: "ORDER" | "WRONG" | "SOLD" | "IN_STOCK";
-}
+    url: string;
+    key: string;
+    alt: string | null;
+}[]
 
 export type response_58_6 = {
     code: 201;
     ok: true;
+<<<<<<< HEAD
     info: "product.created";
 } & {body: response_body_58_6};
 
@@ -3842,10 +4341,18 @@ export type parameters_59 = {
 =======
     info: "productSheet.images";
 } & {body: response_body_58_4};
+=======
+    info: "productSheet.image.create";
+} & {body: response_body_58_6};
+>>>>>>> 96e2c92 (feat(92): improve ui)
 
 export type parameters_59 = {
+    headers: {
+        "content-type": string;
+        "content-length": number;
+    };
     params: {
-        productSheetId: string;
+        categoryName: string;
     };
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
 }
@@ -3853,15 +4360,34 @@ export type parameters_59 = {
 export type response_63_0 = {
     code: 401;
     ok: false;
-    info: "organization.hasNotUser";
+    info: "access.token.invalid";
 } & {body: undefined};
 
 export type response_59_1 = {
-    code: 403;
+<<<<<<< HEAD
+=======
+    code: 404;
     ok: false;
-    info: "user.role.organization.invalid";
+    info: "productSheet.notfound";
 } & {body: undefined};
 
+export type response_59_2 = {
+    code: 406;
+    ok: false;
+    info: "category.notfound";
+} & {body: undefined};
+
+export type response_59_3 = {
+>>>>>>> 1761d72 (feat(92): add mardown renderer)
+    code: 403;
+=======
+    code: 400;
+>>>>>>> 96e2c92 (feat(92): improve ui)
+    ok: false;
+    info: "category.image.missing";
+} & {body: undefined};
+
+<<<<<<< HEAD
 export type response_body_59_2 = {
     id: string;
     productSheetId: string;
@@ -3876,6 +4402,20 @@ export type response_59_4 = {
     ok: true;
     info: "organizations";
 } & {body: response_body_59_2};
+=======
+export type response_body_59_4 = {
+    name: string;
+    disabled: boolean;
+    imageKey: string | null;
+    imageUrl: string | null;
+}[]
+
+export type response_59_4 = {
+    code: 200;
+    ok: true;
+    info: "productSheet.categories";
+} & {body: response_body_59_4};
+>>>>>>> 1761d72 (feat(92): add mardown renderer)
 
 export type GetDef<
 	method extends DefEnrichedDuplojsTo["method"],
@@ -4058,14 +4598,15 @@ export type DefEnrichedDuplojsTo = {
 		| response_14_3
 		| response_14_4,
 } | {
-	path: "/organization/{organizationId}/user",
-	method: "POST",
+	path: "/organization/{organizationId}/user/{userId}",
+	method: "PATCH",
 	body: request_body_15,
 	parameters: parameters_15,
 	response: response_15_0
 		| response_15_1
 		| response_15_2
 		| response_15_3
+<<<<<<< HEAD
 		| response_15_4
 		| response_15_5,
 =======
@@ -4113,16 +4654,20 @@ export type DefEnrichedDuplojsTo = {
 =======
 	path: "/organization/{organizationId}/user/{userId}",
 	method: "DELETE",
+=======
+		| response_15_4,
+} | {
+	path: "/organization/{organizationId}/user",
+	method: "GET",
+>>>>>>> 96e2c92 (feat(92): improve ui)
 	body: unknown,
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
 	parameters: parameters_16,
 	response: response_16_0
 		| response_16_1
-		| response_16_2
-		| response_16_3
-		| response_16_4
-		| response_16_5,
+		| response_16_2,
 } | {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	path: "/organization/{organizationId}/user/{userId}",
 	method: "PATCH",
@@ -4133,49 +4678,59 @@ export type DefEnrichedDuplojsTo = {
 	method: "DELETE",
 	body: unknown,
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
+=======
+	path: "/organization/{organizationId}/user",
+	method: "POST",
+	body: request_body_17,
+>>>>>>> 96e2c92 (feat(92): improve ui)
 	parameters: parameters_17,
 	response: response_17_0
 		| response_17_1
 		| response_17_2
 		| response_17_3
-		| response_17_4,
+		| response_17_4
+		| response_17_5
+		| response_17_6,
 } | {
-	path: "/organization/{organizationId}/user/{userId}",
-	method: "DELETE",
+	path: "/organization/{organizationId}/user",
+	method: "GET",
 	body: unknown,
 	parameters: parameters_18,
 	response: response_18_0
 		| response_18_1
-		| response_18_2,
+		| response_18_2
+		| response_18_3
+		| response_18_4
+		| response_18_5,
 } | {
-	path: "/organization/{organizationId}/user",
-	method: "POST",
-	body: request_body_19,
+	path: "/organization/{organizationId}/user/{userId}",
+	method: "DELETE",
+	body: unknown,
 	parameters: parameters_19,
 	response: response_19_0
 		| response_19_1
 		| response_19_2
 		| response_19_3
 		| response_19_4
-		| response_19_5
-		| response_19_6,
+		| response_19_5,
 } | {
-	path: "/user",
+	path: "/user/organizations",
 	method: "GET",
 	body: unknown,
-	parameters: undefined,
+	parameters: parameters_20,
 	response: response_20_0
 		| response_20_1
 		| response_20_2,
 } | {
 	path: "/user",
-	method: "PATCH",
-	body: request_body_21,
+	method: "GET",
+	body: unknown,
 	parameters: undefined,
 	response: response_21_0
 		| response_21_1
 		| response_21_2,
 } | {
+<<<<<<< HEAD
 	path: "/organization/{organizationId}/user/{userId}",
 	method: "PATCH",
 	body: request_body_19,
@@ -4253,10 +4808,17 @@ export type DefEnrichedDuplojsTo = {
 =======
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
 	parameters: parameters_22,
+=======
+	path: "/user",
+	method: "PATCH",
+	body: request_body_22,
+	parameters: undefined,
+>>>>>>> 96e2c92 (feat(92): improve ui)
 	response: response_22_0
 		| response_22_1
 		| response_22_2,
 } | {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	path: "/category/{categoryName}/image",
 	method: "PUT",
@@ -4289,52 +4851,62 @@ export type DefEnrichedDuplojsTo = {
 	body: request_body_23,
 	parameters: undefined,
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
+=======
+	path: "/organization/{organizationId}@admin",
+	method: "PATCH",
+	body: request_body_23,
+	parameters: parameters_23,
+>>>>>>> 96e2c92 (feat(92): improve ui)
 	response: response_23_0
 		| response_23_1
 		| response_23_2
 		| response_23_3,
 } | {
-	path: "/category/{categoryName}",
-	method: "PATCH",
+	path: "/organization",
+	method: "POST",
 	body: request_body_24,
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 3a5ea5d (feat(92): add product page)
 	parameters: undefined,
 =======
 	parameters: parameters_24,
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
+=======
+	parameters: undefined,
+>>>>>>> 96e2c92 (feat(92): improve ui)
 	response: response_24_0
 		| response_24_1
 		| response_24_2
 		| response_24_3
-		| response_24_4,
+		| response_24_4
+		| response_24_5,
 } | {
-	path: "/category/{categoryName}/image",
-	method: "PUT",
-	body: unknown,
-	parameters: parameters_25,
+	path: "/navigation-item",
+	method: "POST",
+	body: request_body_25,
+	parameters: undefined,
 	response: response_25_0
 		| response_25_1
 		| response_25_2
-		| response_25_3
-		| response_25_4,
+		| response_25_3,
 } | {
-	path: "/organization/{organizationId}@admin",
-	method: "PATCH",
-	body: request_body_26,
-	parameters: parameters_26,
-	response: response_26_0
-		| response_26_1
-		| response_26_2
-		| response_26_3,
-} | {
-	path: "/parent-category/{parentCategoryName}/categories",
+	path: "/navigation-items",
 	method: "GET",
 	body: unknown,
+	parameters: undefined,
+	response: response_26_0
+		| response_26_1
+		| response_26_2,
+} | {
+	path: "/navigation-item/{navigationItemId}",
+	method: "PATCH",
+	body: request_body_27,
 	parameters: parameters_27,
 	response: response_27_0
 		| response_27_1
 		| response_27_2
+<<<<<<< HEAD
 		| response_27_3
 		| response_27_4,
 } | {
@@ -4348,10 +4920,20 @@ export type DefEnrichedDuplojsTo = {
 	method: "POST",
 	body: request_body_28,
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
+=======
+		| response_27_3
+		| response_27_4
+		| response_27_5,
+} | {
+	path: "/navigation-item/{navigationItemId}",
+	method: "DELETE",
+	body: unknown,
+>>>>>>> 96e2c92 (feat(92): improve ui)
 	parameters: parameters_28,
 	response: response_28_0
 		| response_28_1
 		| response_28_2
+<<<<<<< HEAD
 		| response_28_3
 		| response_28_4,
 } | {
@@ -4362,6 +4944,13 @@ export type DefEnrichedDuplojsTo = {
 =======
 	path: "/parent-category/{parentCategoryName}/categories",
 	method: "GET",
+=======
+		| response_28_4
+		| response_28_5,
+} | {
+	path: "/parent-category/{parentCategoryName}/category/{categoryName}",
+	method: "DELETE",
+>>>>>>> 1761d72 (feat(92): add mardown renderer)
 	body: unknown,
 	parameters: parameters_29,
 >>>>>>> 3a5ea5d (feat(92): add product page)
@@ -4373,20 +4962,27 @@ export type DefEnrichedDuplojsTo = {
 		| response_29_5,
 } | {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	path: "/category/{categoryName}",
 	method: "PATCH",
 =======
 	path: "/parent-category/{parentCategoryName}/category",
 	method: "POST",
 >>>>>>> 3a5ea5d (feat(92): add product page)
+=======
+	path: "/parent-category/{parentCategoryName}",
+	method: "PATCH",
+>>>>>>> 1761d72 (feat(92): add mardown renderer)
 	body: request_body_30,
 	parameters: undefined,
 	response: response_30_0
 		| response_30_1
 		| response_30_2
 		| response_30_3
-		| response_30_4,
+		| response_30_4
+		| response_30_5,
 } | {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	path: "/category/{categoryName}/image",
 	method: "PUT",
@@ -4394,10 +4990,15 @@ export type DefEnrichedDuplojsTo = {
 	path: "/parent-category/{parentCategoryName}/category/{categoryName}",
 	method: "DELETE",
 >>>>>>> 3a5ea5d (feat(92): add product page)
+=======
+	path: "/organizations",
+	method: "GET",
+>>>>>>> 1761d72 (feat(92): add mardown renderer)
 	body: unknown,
 	parameters: parameters_31,
 	response: response_31_0
 		| response_31_1
+<<<<<<< HEAD
 <<<<<<< HEAD
 		| response_31_2
 		| response_31_3
@@ -4429,11 +5030,22 @@ export type DefEnrichedDuplojsTo = {
 	path: "/navigation-item",
 =======
 		| response_32_4,
+=======
+		| response_31_2,
 } | {
-	path: "/organizations",
+	path: "/users",
 	method: "GET",
 	body: unknown,
-	parameters: undefined,
+	parameters: parameters_32,
+	response: response_32_0
+		| response_32_1
+		| response_32_2,
+>>>>>>> 1761d72 (feat(92): add mardown renderer)
+} | {
+	path: "/parent-categories",
+	method: "GET",
+	body: unknown,
+	parameters: parameters_33,
 	response: response_33_0
 		| response_33_1
 		| response_33_2,
@@ -4446,14 +5058,22 @@ export type DefEnrichedDuplojsTo = {
 		| response_34_1
 		| response_34_2,
 } | {
+<<<<<<< HEAD
 	path: "/navigation-items",
 	method: "GET",
 	body: unknown,
 	parameters: undefined,
+=======
+	path: "/user/{userId}@admin",
+	method: "PATCH",
+	body: request_body_35,
+	parameters: parameters_35,
+>>>>>>> 3a5ea5d (feat(92): add product page)
 	response: response_35_0
 		| response_35_1
 		| response_35_2,
 } | {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	path: "/navigation-item/{navigationItemId}",
 	method: "PATCH",
@@ -4465,16 +5085,26 @@ export type DefEnrichedDuplojsTo = {
 	body: request_body_36,
 	parameters: undefined,
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
+=======
+	path: "/user/{userId}@admin",
+	method: "PATCH",
+	body: request_body_36,
+	parameters: parameters_36,
+>>>>>>> 96e2c92 (feat(92): improve ui)
 	response: response_36_0
 		| response_36_1
-		| response_36_2,
+		| response_36_2
+		| response_36_3
+		| response_36_4
+		| response_36_5,
 } | {
-	path: "/organization/{organizationId}/product-sheet",
+	path: "/navigation-item",
 	method: "POST",
 	body: request_body_37,
 	parameters: undefined,
 	response: response_37_0
 		| response_37_1
+<<<<<<< HEAD
 		| response_37_2,
 } | {
 	path: "/parent-category/{parentCategoryName}/categories",
@@ -4492,6 +5122,13 @@ export type DefEnrichedDuplojsTo = {
 	method: "PATCH",
 	body: request_body_38,
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
+=======
+		| response_37_2,
+} | {
+	path: "/organization/{organizationId}/logo",
+	method: "PUT",
+	body: unknown,
+>>>>>>> 96e2c92 (feat(92): improve ui)
 	parameters: parameters_38,
 	response: response_38_0
 		| response_38_1
@@ -4507,16 +5144,24 @@ export type DefEnrichedDuplojsTo = {
 		| response_38_4
 		| response_38_5,
 } | {
+<<<<<<< HEAD
 	path: "/navigation-item/{navigationItemId}",
 	method: "DELETE",
 	body: unknown,
 >>>>>>> 3a5ea5d (feat(92): add product page)
+=======
+	path: "/organization/{organizationId}/product-sheet",
+	method: "POST",
+	body: request_body_39,
+>>>>>>> 96e2c92 (feat(92): improve ui)
 	parameters: parameters_39,
 	response: response_39_0
 		| response_39_1
 		| response_39_2
-		| response_39_3,
+		| response_39_3
+		| response_39_4,
 } | {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	path: "/parent-category/{parentCategoryName}/category/{categoryName}",
 	method: "DELETE",
@@ -4533,12 +5178,19 @@ export type DefEnrichedDuplojsTo = {
 	body: unknown,
 	parameters: undefined,
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
+=======
+	path: "/organization/{organizationId}/product-sheets",
+	method: "GET",
+	body: unknown,
+	parameters: parameters_40,
+>>>>>>> 96e2c92 (feat(92): improve ui)
 	response: response_40_0
 		| response_40_1
 		| response_40_2
 		| response_40_3
 		| response_40_4,
 } | {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	path: "/parent-category/{parentCategoryName}",
 	method: "PATCH",
@@ -4548,6 +5200,9 @@ export type DefEnrichedDuplojsTo = {
 =======
 	path: "/organization/{organizationId}",
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
+=======
+	path: "/organization/{organizationId}/products",
+>>>>>>> 96e2c92 (feat(92): improve ui)
 	method: "GET",
 	body: unknown,
 >>>>>>> 3a5ea5d (feat(92): add product page)
@@ -4559,6 +5214,7 @@ export type DefEnrichedDuplojsTo = {
 		| response_41_4,
 } | {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	path: "/organization/{organizationId}/logo",
 	method: "PUT",
 	body: unknown,
@@ -4567,6 +5223,11 @@ export type DefEnrichedDuplojsTo = {
 	method: "PATCH",
 	body: request_body_42,
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
+=======
+	path: "/organization/{organizationId}/warehouses",
+	method: "GET",
+	body: unknown,
+>>>>>>> 96e2c92 (feat(92): improve ui)
 	parameters: parameters_42,
 	response: response_42_0
 		| response_42_1
@@ -4574,6 +5235,7 @@ export type DefEnrichedDuplojsTo = {
 		| response_42_3
 		| response_42_4,
 } | {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	path: "/parent-category",
 	method: "POST",
@@ -4583,6 +5245,11 @@ export type DefEnrichedDuplojsTo = {
 	path: "/organization/{organizationId}/products",
 	method: "GET",
 	body: unknown,
+=======
+	path: "/organization/{organizationId}/warehouse",
+	method: "POST",
+	body: request_body_43,
+>>>>>>> 96e2c92 (feat(92): improve ui)
 	parameters: parameters_43,
 >>>>>>> 3a5ea5d (feat(92): add product page)
 	response: response_43_0
@@ -4592,7 +5259,7 @@ export type DefEnrichedDuplojsTo = {
 		| response_43_4
 		| response_43_5,
 } | {
-	path: "/organization/{organizationId}/warehouse",
+	path: "/organization/{organizationId}/product-sheet",
 	method: "POST",
 	body: request_body_44,
 	parameters: parameters_44,
@@ -4602,10 +5269,10 @@ export type DefEnrichedDuplojsTo = {
 		| response_44_3
 		| response_44_4,
 } | {
-	path: "/register",
-	method: "POST",
-	body: request_body_45,
-	parameters: undefined,
+	path: "/organization/{organizationId}/product-sheets",
+	method: "GET",
+	body: unknown,
+	parameters: parameters_45,
 	response: response_45_0
 		| response_45_1
 		| response_45_2
@@ -4627,6 +5294,7 @@ export type DefEnrichedDuplojsTo = {
 		| response_46_4,
 } | {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	path: "/organization/{organizationId}",
 	method: "PATCH",
 	body: request_body_47,
@@ -4635,6 +5303,11 @@ export type DefEnrichedDuplojsTo = {
 	path: "/organization/{organizationId}/products",
 	method: "GET",
 	body: unknown,
+=======
+	path: "/product/{sku}",
+	method: "PATCH",
+	body: request_body_47,
+>>>>>>> 96e2c92 (feat(92): improve ui)
 	parameters: parameters_47,
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
 	response: response_47_0
@@ -4644,10 +5317,14 @@ export type DefEnrichedDuplojsTo = {
 		| response_47_4,
 } | {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	path: "/organization/{organizationId}/users",
 =======
 	path: "/parent-categories",
 >>>>>>> 3a5ea5d (feat(92): add product page)
+=======
+	path: "/organization/{organizationId}/warehouses",
+>>>>>>> 1761d72 (feat(92): add mardown renderer)
 	method: "GET",
 	body: unknown,
 	parameters: parameters_48,
@@ -4658,11 +5335,15 @@ export type DefEnrichedDuplojsTo = {
 		| response_48_4,
 } | {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	path: "/organization/{organizationId}/products",
 	method: "GET",
 	body: unknown,
 =======
 	path: "/organization/{organizationId}/warehouse",
+=======
+	path: "/product-sheet/{productSheetId}/category",
+>>>>>>> 96e2c92 (feat(92): improve ui)
 	method: "POST",
 	body: request_body_49,
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
@@ -4672,8 +5353,10 @@ export type DefEnrichedDuplojsTo = {
 		| response_49_2
 		| response_49_3
 		| response_49_4
-		| response_49_5,
+		| response_49_5
+		| response_49_6,
 } | {
+<<<<<<< HEAD
 	path: "/organization/{organizationId}/warehouses",
 	method: "GET",
 	body: unknown,
@@ -4682,6 +5365,11 @@ export type DefEnrichedDuplojsTo = {
 	method: "PATCH",
 	body: request_body_50,
 >>>>>>> 3a5ea5d (feat(92): add product page)
+=======
+	path: "/product-sheet/{productSheetId}/category/{categoryName}",
+	method: "DELETE",
+	body: unknown,
+>>>>>>> 96e2c92 (feat(92): improve ui)
 	parameters: parameters_50,
 	response: response_50_0
 		| response_50_1
@@ -4723,28 +5411,29 @@ export type DefEnrichedDuplojsTo = {
 		| response_52_3
 		| response_52_4,
 } | {
-	path: "/product-sheet/{productSheetId}/category/{categoryName}",
-	method: "DELETE",
-	body: unknown,
+	path: "/product-sheet/{productSheetId}/category",
+	method: "POST",
+	body: request_body_53,
 	parameters: parameters_53,
 	response: response_53_0
 		| response_53_1
 		| response_53_2
 		| response_53_3
 		| response_53_4
-		| response_53_5,
+		| response_53_5
+		| response_53_6,
 } | {
-	path: "/product-sheet/{productSheetId}",
-	method: "GET",
+	path: "/product-sheet/{productSheetId}/category/{categoryName}",
+	method: "DELETE",
 	body: unknown,
 	parameters: parameters_54,
 	response: response_54_0
 		| response_54_1
 		| response_54_2
 		| response_54_3
-		| response_54_4
-		| response_54_5,
+		| response_54_4,
 } | {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	path: "/product-sheet/{productSheetId}/image",
 	method: "POST",
@@ -4758,14 +5447,17 @@ export type DefEnrichedDuplojsTo = {
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
 	body: request_body_55,
 >>>>>>> 3a5ea5d (feat(92): add product page)
+=======
+	path: "/product-sheet/{productSheetId}/images",
+	method: "GET",
+	body: unknown,
+>>>>>>> 96e2c92 (feat(92): improve ui)
 	parameters: parameters_55,
 	response: response_55_0
 		| response_55_1
 		| response_55_2
 		| response_55_3
-		| response_55_4
-		| response_55_5
-		| response_55_6,
+		| response_55_4,
 } | {
 <<<<<<< HEAD
 	path: "/product-sheet/{productSheetId}/product",
@@ -4789,8 +5481,8 @@ export type DefEnrichedDuplojsTo = {
 		| response_56_4
 		| response_56_5,
 } | {
-	path: "/users",
-	method: "GET",
+	path: "/product-sheet/{productSheetId}/image",
+	method: "POST",
 	body: unknown,
 	parameters: parameters_57,
 	response: response_57_0
@@ -4802,6 +5494,7 @@ export type DefEnrichedDuplojsTo = {
 		| response_57_6,
 } | {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	path: "/parent-categories",
 	method: "GET",
 	body: unknown,
@@ -4811,7 +5504,24 @@ export type DefEnrichedDuplojsTo = {
 		| response_58_2,
 } | {
 	path: "/organizations",
+=======
+	path: "/product-sheet/{productSheetId}/images",
 	method: "GET",
+	body: unknown,
+	parameters: parameters_58,
+	response: response_58_0
+		| response_58_1
+		| response_58_2
+		| response_58_3
+		| response_58_4,
+} | {
+	path: "/product-sheet/{productSheetId}/categories",
+>>>>>>> 1761d72 (feat(92): add mardown renderer)
+	method: "GET",
+=======
+	path: "/category/{categoryName}/image",
+	method: "PUT",
+>>>>>>> 96e2c92 (feat(92): improve ui)
 	body: unknown,
 	parameters: parameters_59,
 	response: response_59_0
@@ -5119,6 +5829,7 @@ export interface EnrichedDuploTo<
 	>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	get(
 		path: "/organization/{organizationId}/user", 
 >>>>>>> 3a5ea5d (feat(92): add product page)
@@ -5127,6 +5838,10 @@ export interface EnrichedDuploTo<
 		path: "/organization/{organizationId}/user/{userId}", 
 		body: request_body_15,
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
+=======
+	delete(
+		path: "/image-product-sheet/{imageProductSheetId}", 
+>>>>>>> 96e2c92 (feat(92): improve ui)
 		parameters : parameters_15 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -5138,10 +5853,9 @@ export interface EnrichedDuploTo<
 		| response_15_3
 		| response_15_4
 		| response_15_5
-		| response_15_6
 	>
 
-	patch(
+	delete(
 		path: "/organization/{organizationId}/user/{userId}", 
 =======
 	>
@@ -5150,6 +5864,15 @@ export interface EnrichedDuploTo<
 		path: "/organization/{organizationId}/user", 
 		body: request_body_16,
 >>>>>>> 3a5ea5d (feat(92): add product page)
+=======
+		| response_15_3
+		| response_15_4
+		| response_15_5
+	>
+
+	delete(
+		path: "/organization/{organizationId}/user/{userId}", 
+>>>>>>> 1761d72 (feat(92): add mardown renderer)
 		parameters : parameters_16 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -5159,9 +5882,9 @@ export interface EnrichedDuploTo<
 		| response_16_3
 		| response_16_4
 		| response_16_5
-		| response_16_6
 	>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	get(
 		path: "/organization/{organizationId}/user", 
@@ -5170,6 +5893,10 @@ export interface EnrichedDuploTo<
 		path: "/organization/{organizationId}/user/{userId}", 
 		body: request_body_17,
 >>>>>>> 3a5ea5d (feat(92): add product page)
+=======
+	delete(
+		path: "/image-product-sheet/{imageProductSheetId}", 
+>>>>>>> 1761d72 (feat(92): add mardown renderer)
 		parameters : parameters_17 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -5178,18 +5905,24 @@ export interface EnrichedDuploTo<
 		| response_17_2
 		| response_17_3
 		| response_17_4
+		| response_17_5
+		| response_17_6
 	>
 
-	delete(
-		path: "/organization/{organizationId}/user/{userId}", 
+	get(
+		path: "/organization/{organizationId}/user", 
 		parameters : parameters_18 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_18_0
 		| response_18_1
 		| response_18_2
+		| response_18_3
+		| response_18_4
+		| response_18_5
 	>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	patch(
 		path: "/organization/{organizationId}/user/{userId}", 
@@ -5200,6 +5933,12 @@ export interface EnrichedDuploTo<
 		path: "/user/organizations", 
 		parameters ?: parameters_19 & BaseRequestParameters,
 >>>>>>> 3a5ea5d (feat(92): add product page)
+=======
+	post(
+		path: "/organization/{organizationId}/user", 
+		body: request_body_19,
+		parameters : parameters_19 & BaseRequestParameters,
+>>>>>>> 1761d72 (feat(92): add mardown renderer)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_19_0
@@ -5208,7 +5947,6 @@ export interface EnrichedDuploTo<
 		| response_19_3
 		| response_19_4
 		| response_19_5
-		| response_19_6
 	>
 
 <<<<<<< HEAD
@@ -5222,10 +5960,15 @@ export interface EnrichedDuploTo<
 		body: request_body_20,
 =======
 	get(
+<<<<<<< HEAD
 		path: "/user", 
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 >>>>>>> 3a5ea5d (feat(92): add product page)
+=======
+		path: "/user/organizations", 
+		parameters ?: parameters_20 & BaseRequestParameters,
+>>>>>>> 96e2c92 (feat(92): improve ui)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_20_0
@@ -5243,7 +5986,7 @@ export interface EnrichedDuploTo<
 	>
 
 	patch(
-		path: "/category/{categoryName}", 
+		path: "/user", 
 		body: request_body_21,
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
@@ -5256,6 +5999,7 @@ export interface EnrichedDuploTo<
 	>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	put(
 		path: "/category/{categoryName}/image", 
 		body: unknown,
@@ -5265,6 +6009,12 @@ export interface EnrichedDuploTo<
 		path: "/user/organizations", 
 		parameters ?: parameters_22 & BaseRequestParameters,
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
+=======
+	patch(
+		path: "/user", 
+		body: request_body_22,
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+>>>>>>> 96e2c92 (feat(92): improve ui)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_22_0
@@ -5277,10 +6027,10 @@ export interface EnrichedDuploTo<
 >>>>>>> 3a5ea5d (feat(92): add product page)
 	>
 
-	post(
-		path: "/category", 
+	patch(
+		path: "/organization/{organizationId}@admin", 
 		body: request_body_23,
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+		parameters : parameters_23 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_23_0
@@ -5289,10 +6039,10 @@ export interface EnrichedDuploTo<
 		| response_23_3
 	>
 
-	patch(
-		path: "/category/{categoryName}", 
+	post(
+		path: "/organization", 
 		body: request_body_24,
-		parameters : parameters_24 & BaseRequestParameters,
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_24_0
@@ -5300,21 +6050,22 @@ export interface EnrichedDuploTo<
 		| response_24_2
 		| response_24_3
 		| response_24_4
+		| response_24_5
 	>
 
-	put(
-		path: "/category/{categoryName}/image", 
-		body: unknown,
-		parameters : parameters_25 & BaseRequestParameters,
+	post(
+		path: "/navigation-item", 
+		body: request_body_25,
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_25_0
 		| response_25_1
 		| response_25_2
 		| response_25_3
-		| response_25_4
 	>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	get(
 		path: "/product-sheet/{productSheetId}", 
@@ -5329,14 +6080,19 @@ export interface EnrichedDuploTo<
 		body: request_body_26,
 		parameters : parameters_26 & BaseRequestParameters,
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
+=======
+	get(
+		path: "/navigation-items", 
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+>>>>>>> 96e2c92 (feat(92): improve ui)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_26_0
 		| response_26_1
 		| response_26_2
-		| response_26_3
 	>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	patch(
 		path: "/product-sheet/{productSheetId}", 
@@ -5345,6 +6101,11 @@ export interface EnrichedDuploTo<
 	get(
 		path: "/parent-category/{parentCategoryName}/categories", 
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
+=======
+	patch(
+		path: "/navigation-item/{navigationItemId}", 
+		body: request_body_27,
+>>>>>>> 96e2c92 (feat(92): improve ui)
 		parameters : parameters_27 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -5352,6 +6113,7 @@ export interface EnrichedDuploTo<
 		| response_27_1
 		| response_27_2
 		| response_27_3
+<<<<<<< HEAD
 		| response_27_4
 	>
 
@@ -5361,6 +6123,13 @@ export interface EnrichedDuploTo<
 	delete(
 		path: "/navigation-item/{navigationItemId}", 
 >>>>>>> 3a5ea5d (feat(92): add product page)
+=======
+	>
+
+	post(
+		path: "/parent-category/{parentCategoryName}/category", 
+		body: request_body_28,
+>>>>>>> 1761d72 (feat(92): add mardown renderer)
 		parameters : parameters_28 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -5368,6 +6137,7 @@ export interface EnrichedDuploTo<
 		| response_28_1
 		| response_28_2
 		| response_28_3
+<<<<<<< HEAD
 		| response_28_4
 	>
 
@@ -5378,6 +6148,13 @@ export interface EnrichedDuploTo<
 =======
 	get(
 		path: "/parent-category/{parentCategoryName}/categories", 
+=======
+		| response_28_5
+	>
+
+	delete(
+		path: "/parent-category/{parentCategoryName}/category/{categoryName}", 
+>>>>>>> 1761d72 (feat(92): add mardown renderer)
 		parameters : parameters_29 & BaseRequestParameters,
 >>>>>>> 3a5ea5d (feat(92): add product page)
 		interceptorParams?: interceptorParameter
@@ -5391,12 +6168,17 @@ export interface EnrichedDuploTo<
 	>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	patch(
 		path: "/category/{categoryName}", 
 =======
 	post(
 		path: "/parent-category/{parentCategoryName}/category", 
 >>>>>>> 3a5ea5d (feat(92): add product page)
+=======
+	patch(
+		path: "/parent-category/{parentCategoryName}", 
+>>>>>>> 1761d72 (feat(92): add mardown renderer)
 		body: request_body_30,
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
@@ -5406,8 +6188,10 @@ export interface EnrichedDuploTo<
 		| response_30_2
 		| response_30_3
 		| response_30_4
+		| response_30_5
 	>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	put(
 		path: "/category/{categoryName}/image", 
@@ -5418,11 +6202,17 @@ export interface EnrichedDuploTo<
 		path: "/organizations", 
 		parameters ?: parameters_31 & BaseRequestParameters,
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
+=======
+	delete(
+		path: "/parent-category/{parentCategoryName}/category/{categoryName}", 
+		parameters : parameters_31 & BaseRequestParameters,
+>>>>>>> 96e2c92 (feat(92): improve ui)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_31_0
 		| response_31_1
 		| response_31_2
+<<<<<<< HEAD
 <<<<<<< HEAD
 		| response_31_3
 		| response_31_4
@@ -5440,11 +6230,21 @@ export interface EnrichedDuploTo<
 		path: "/users", 
 		parameters ?: parameters_32 & BaseRequestParameters,
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
+=======
+		| response_31_3
+	>
+
+	patch(
+		path: "/parent-category/{parentCategoryName}", 
+		body: request_body_32,
+		parameters : parameters_32 & BaseRequestParameters,
+>>>>>>> 96e2c92 (feat(92): improve ui)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_32_0
 		| response_32_1
 		| response_32_2
+<<<<<<< HEAD
 <<<<<<< HEAD
 		| response_32_3
 		| response_32_4
@@ -5457,6 +6257,10 @@ export interface EnrichedDuploTo<
 =======
 =======
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
+=======
+		| response_32_3
+		| response_32_4
+>>>>>>> 96e2c92 (feat(92): improve ui)
 	>
 
 	get(
@@ -5484,9 +6288,16 @@ export interface EnrichedDuploTo<
 		| response_34_2
 	>
 
+<<<<<<< HEAD
 	get(
 		path: "/navigation-items", 
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+=======
+	patch(
+		path: "/user/{userId}@admin", 
+		body: request_body_35,
+		parameters : parameters_35 & BaseRequestParameters,
+>>>>>>> 3a5ea5d (feat(92): add product page)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_35_0
@@ -5494,6 +6305,7 @@ export interface EnrichedDuploTo<
 		| response_35_2
 	>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	patch(
 		path: "/navigation-item/{navigationItemId}", 
@@ -5505,15 +6317,24 @@ export interface EnrichedDuploTo<
 		body: request_body_36,
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
+=======
+	patch(
+		path: "/user/{userId}@admin", 
+		body: request_body_36,
+		parameters : parameters_36 & BaseRequestParameters,
+>>>>>>> 96e2c92 (feat(92): improve ui)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_36_0
 		| response_36_1
 		| response_36_2
+		| response_36_3
+		| response_36_4
+		| response_36_5
 	>
 
 	post(
-		path: "/organization/{organizationId}/product-sheet", 
+		path: "/navigation-item", 
 		body: request_body_37,
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
@@ -5521,6 +6342,7 @@ export interface EnrichedDuploTo<
 		response_37_0
 		| response_37_1
 		| response_37_2
+<<<<<<< HEAD
 	>
 
 	get(
@@ -5533,6 +6355,11 @@ export interface EnrichedDuploTo<
 	get(
 		path: "/organization/{organizationId}/product-sheets", 
 >>>>>>> 3a5ea5d (feat(92): add product page)
+=======
+	patch(
+		path: "/navigation-item/{navigationItemId}", 
+		body: request_body_38,
+>>>>>>> 1761d72 (feat(92): add mardown renderer)
 		parameters : parameters_38 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -5552,6 +6379,7 @@ export interface EnrichedDuploTo<
 	>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	get(
 		path: "/organization/{organizationId}", 
 >>>>>>> 3a5ea5d (feat(92): add product page)
@@ -5559,6 +6387,11 @@ export interface EnrichedDuploTo<
 	delete(
 		path: "/navigation-item/{navigationItemId}", 
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
+=======
+	post(
+		path: "/organization/{organizationId}/product-sheet", 
+		body: request_body_39,
+>>>>>>> 96e2c92 (feat(92): improve ui)
 		parameters : parameters_39 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -5566,6 +6399,7 @@ export interface EnrichedDuploTo<
 		| response_39_1
 		| response_39_2
 		| response_39_3
+		| response_39_4
 	>
 
 <<<<<<< HEAD
@@ -5574,9 +6408,14 @@ export interface EnrichedDuploTo<
 		parameters : parameters_40 & BaseRequestParameters,
 =======
 	get(
+<<<<<<< HEAD
 		path: "/navigation-items", 
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
+=======
+		path: "/organization/{organizationId}/product-sheets", 
+		parameters : parameters_40 & BaseRequestParameters,
+>>>>>>> 96e2c92 (feat(92): improve ui)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_40_0
@@ -5592,11 +6431,15 @@ export interface EnrichedDuploTo<
 =======
 	get(
 <<<<<<< HEAD
+<<<<<<< HEAD
 		path: "/organization/{organizationId}/users", 
 >>>>>>> 3a5ea5d (feat(92): add product page)
 =======
 		path: "/organization/{organizationId}", 
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
+=======
+		path: "/organization/{organizationId}/products", 
+>>>>>>> 96e2c92 (feat(92): improve ui)
 		parameters : parameters_41 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -5608,6 +6451,7 @@ export interface EnrichedDuploTo<
 	>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	put(
 		path: "/organization/{organizationId}/logo", 
 		body: unknown,
@@ -5615,6 +6459,11 @@ export interface EnrichedDuploTo<
 	get(
 		path: "/organization/{organizationId}/warehouses", 
 >>>>>>> 3a5ea5d (feat(92): add product page)
+=======
+	patch(
+		path: "/organization/{organizationId}", 
+		body: request_body_42,
+>>>>>>> 1761d72 (feat(92): add mardown renderer)
 		parameters : parameters_42 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -5626,6 +6475,7 @@ export interface EnrichedDuploTo<
 	>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	post(
 		path: "/parent-category", 
 		body: request_body_43,
@@ -5633,6 +6483,11 @@ export interface EnrichedDuploTo<
 =======
 	get(
 		path: "/organization/{organizationId}/products", 
+=======
+	put(
+		path: "/organization/{organizationId}/logo", 
+		body: unknown,
+>>>>>>> 1761d72 (feat(92): add mardown renderer)
 		parameters : parameters_43 & BaseRequestParameters,
 >>>>>>> 3a5ea5d (feat(92): add product page)
 		interceptorParams?: interceptorParameter
@@ -5646,7 +6501,7 @@ export interface EnrichedDuploTo<
 	>
 
 	post(
-		path: "/organization/{organizationId}/warehouse", 
+		path: "/organization/{organizationId}/product-sheet", 
 		body: request_body_44,
 		parameters : parameters_44 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
@@ -5658,10 +6513,9 @@ export interface EnrichedDuploTo<
 		| response_44_4
 	>
 
-	post(
-		path: "/register", 
-		body: request_body_45,
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+	get(
+		path: "/organization/{organizationId}/product-sheets", 
+		parameters : parameters_45 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_45_0
@@ -5693,6 +6547,7 @@ export interface EnrichedDuploTo<
 	>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	patch(
 		path: "/organization/{organizationId}", 
 		body: request_body_47,
@@ -5700,6 +6555,11 @@ export interface EnrichedDuploTo<
 =======
 	get(
 		path: "/organization/{organizationId}/products", 
+=======
+	patch(
+		path: "/product/{sku}", 
+		body: request_body_47,
+>>>>>>> 96e2c92 (feat(92): improve ui)
 		parameters : parameters_47 & BaseRequestParameters,
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
 		interceptorParams?: interceptorParameter
@@ -5713,12 +6573,17 @@ export interface EnrichedDuploTo<
 
 	get(
 <<<<<<< HEAD
+<<<<<<< HEAD
 		path: "/organization/{organizationId}/users", 
 		parameters : parameters_48 & BaseRequestParameters,
 =======
 		path: "/parent-categories", 
 		parameters ?: parameters_48 & BaseRequestParameters,
 >>>>>>> 3a5ea5d (feat(92): add product page)
+=======
+		path: "/organization/{organizationId}/warehouses", 
+		parameters : parameters_48 & BaseRequestParameters,
+>>>>>>> 1761d72 (feat(92): add mardown renderer)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_48_0
@@ -5738,7 +6603,7 @@ export interface EnrichedDuploTo<
 >>>>>>> 3a5ea5d (feat(92): add product page)
 =======
 	post(
-		path: "/organization/{organizationId}/warehouse", 
+		path: "/product-sheet/{productSheetId}/category", 
 		body: request_body_49,
 		parameters : parameters_49 & BaseRequestParameters,
 >>>>>>> 1761d72 (feat(92): add mardown renderer)
@@ -5750,11 +6615,18 @@ export interface EnrichedDuploTo<
 		| response_49_3
 		| response_49_4
 		| response_49_5
+		| response_49_6
 	>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	get(
 		path: "/organization/{organizationId}/warehouses", 
+=======
+	patch(
+		path: "/product/{sku}", 
+		body: request_body_50,
+>>>>>>> 3a5ea5d (feat(92): add product page)
 		parameters : parameters_50 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -5803,8 +6675,9 @@ export interface EnrichedDuploTo<
 		| response_52_4
 	>
 
-	delete(
-		path: "/product-sheet/{productSheetId}/category/{categoryName}", 
+	post(
+		path: "/product-sheet/{productSheetId}/category", 
+		body: request_body_53,
 		parameters : parameters_53 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -5814,10 +6687,11 @@ export interface EnrichedDuploTo<
 		| response_53_3
 		| response_53_4
 		| response_53_5
+		| response_53_6
 	>
 
-	get(
-		path: "/product-sheet/{productSheetId}", 
+	delete(
+		path: "/product-sheet/{productSheetId}/category/{categoryName}", 
 		parameters : parameters_54 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -5826,9 +6700,9 @@ export interface EnrichedDuploTo<
 		| response_54_2
 		| response_54_3
 		| response_54_4
-		| response_54_5
 	>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	post(
 		path: "/product-sheet/{productSheetId}/image", 
@@ -5838,6 +6712,10 @@ export interface EnrichedDuploTo<
 		path: "/product-sheet/{productSheetId}", 
 		body: request_body_55,
 >>>>>>> 3a5ea5d (feat(92): add product page)
+=======
+	get(
+		path: "/product-sheet/{productSheetId}/images", 
+>>>>>>> 96e2c92 (feat(92): improve ui)
 		parameters : parameters_55 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -5846,8 +6724,6 @@ export interface EnrichedDuploTo<
 		| response_55_2
 		| response_55_3
 		| response_55_4
-		| response_55_5
-		| response_55_6
 	>
 
 <<<<<<< HEAD
@@ -5875,9 +6751,10 @@ export interface EnrichedDuploTo<
 		| response_56_5
 	>
 
-	get(
-		path: "/users", 
-		parameters ?: parameters_57 & BaseRequestParameters,
+	post(
+		path: "/product-sheet/{productSheetId}/image", 
+		body: unknown,
+		parameters : parameters_57 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_57_0
@@ -5890,6 +6767,7 @@ export interface EnrichedDuploTo<
 	>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	get(
 		path: "/parent-categories", 
 		parameters ?: parameters_58 & BaseRequestParameters,
@@ -5897,6 +6775,10 @@ export interface EnrichedDuploTo<
 	post(
 		path: "/product-sheet/{productSheetId}/product", 
 		body: request_body_58,
+=======
+	get(
+		path: "/product-sheet/{productSheetId}/images", 
+>>>>>>> 1761d72 (feat(92): add mardown renderer)
 		parameters : parameters_58 & BaseRequestParameters,
 >>>>>>> 3a5ea5d (feat(92): add product page)
 		interceptorParams?: interceptorParameter
@@ -5910,6 +6792,15 @@ export interface EnrichedDuploTo<
 	get(
 		path: "/organizations", 
 		parameters ?: parameters_59 & BaseRequestParameters,
+=======
+		| response_58_3
+		| response_58_4
+	>
+
+	get(
+		path: "/product-sheet/{productSheetId}/categories", 
+		parameters : parameters_59 & BaseRequestParameters,
+>>>>>>> 1761d72 (feat(92): add mardown renderer)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_59_0

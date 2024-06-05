@@ -43,10 +43,10 @@ getProductData();
 <template>
 	<section>
 		<div class="container my-12 lg:my-16">
-			<div class="flex flex-col lg:flex-row gap-10">
-				<div class="lg:shrink-0 w-full lg:w-[450px] lg:h-[530px]">
+			<div class="flex flex-col sm:flex-row gap-10">
+				<div class="lg:shrink-0 w-full max-w-80 aspect-square sm:aspect-portrait">
 					<img
-						v-if="imageUrl"
+						v-if="!imageUrl"
 						:src="imageUrl"
 						alt="product"
 						class="w-full h-full object-cover"
