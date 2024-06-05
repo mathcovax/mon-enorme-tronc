@@ -105,6 +105,13 @@ model product_sheet {
     organizationId   String
     products         product[]
     facets           facet[]
+    status           product_sheet_status        @default(UNVERIFIED)
+}
+
+enum product_sheet_status {
+    VERIFIED
+    UNVERIFIED
+    REMOVE
 }
 
 model product_sheet_to_category {
