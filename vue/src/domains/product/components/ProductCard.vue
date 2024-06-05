@@ -1,32 +1,22 @@
 <script setup lang="ts">
 import type { CategoryProductSheet } from "@/lib/utils";
+import { useGetCategoryProductImage } from "../composables/useGetCategoryProductImage";
+
+const { PRODUCT_PAGE } = routerPageName;
 
 const props = defineProps<{
 	product: CategoryProductSheet;
 }>();
 
-const imageUrl = ref<string>("");
+const productSheetId = props.product.id;
+const { imageUrl, getCategoryProductImage } = useGetCategoryProductImage(productSheetId);
 
-onBeforeMount(() => {
-	const productSheetId = props.product.id;
-
-	duploTo.enriched
-		.get(
-			"/product-sheet/{productSheetId}/images",
-			{ params: { productSheetId } },
-			{ disabledToast: ["productSheet.notfound"] }
-		)
-		.info("productSheet.images", (data) => {
-			const itemImages = data.map(({ id, url }) => ({ id, url }));
-
-			imageUrl.value = itemImages[itemImages.length - 1].url;
-		});
-});
+getCategoryProductImage();
 </script>
 
 <template>
 	<TheCard class="border-0 rounded-md bg-gradient-to-b from-muted/50 to-muted">
-		<RouterLink to="#">
+		<RouterLink :to="{ name: PRODUCT_PAGE, params: { productSheetId: product.id } }">
 			<CardHeader>
 				<img
 					v-if="imageUrl"

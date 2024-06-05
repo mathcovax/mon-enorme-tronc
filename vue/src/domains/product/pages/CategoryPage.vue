@@ -40,7 +40,10 @@ const updatePage = (page: number) => {
 					{{ route.params.categoryName }}
 				</h1>
 
-				<div class="flex gap-4 items-center text-sm opacity-50">
+				<div
+					v-if="productSheets.length > 0"
+					class="flex gap-4 items-center text-sm opacity-50"
+				>
 					<span>
 						Affiche les produits de 
 						{{ (currentPage - 1) * itemsPerPage + 1 }} 

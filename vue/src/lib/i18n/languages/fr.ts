@@ -43,6 +43,14 @@ export default {
 			emptySubtitle: "Revenez plus tard pour voir les nouveautés.",
 			buttonBack: "Revenir aux catégories",
 		},
+		[routerPageName.PRODUCT_PAGE]: {
+			addCartButton: "Ajouter au panier",
+			label: {
+				productDetails: "Détails du produit",
+				comments: "Commentaires",
+			}
+
+		},
 		[routerPageName.USER_CART]: {
 			title: "Mon panier",
 			emptyTitle: "Votre panier est vide.",
