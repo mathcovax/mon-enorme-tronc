@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { marked } from "marked";
 import type { CategoryProductSheet } from "@/lib/utils";
 import { useGetCategoryProductImage } from "../composables/useGetCategoryProductImage";
 
@@ -28,9 +29,12 @@ function getProductData() {
 		)
 		.info("productSheet.found", (data) => {
 			product.value = data;
-			console.log(product.value);
 		})
 		.result;
+}
+
+function renderDescription() {
+	return marked.parse(product.value.description);
 }
 
 getProductData();
@@ -68,7 +72,7 @@ getProductData();
 					<span class="text-xl font-semibold">{{ product.price }} €</span>
 
 					<p class="mt-1 opacity-50">
-						{{ product.description }}
+						{{ product.shortDescription }}
 					</p>
 
 					<div>
@@ -95,7 +99,10 @@ getProductData();
 				</TabsList>
 
 				<TabsContent value="product-details">
-					{{ $pt("label.productDetails") }}
+					<div 
+						class="prose" 
+						v-html="renderDescription()"
+					/>
 				</TabsContent>
 
 				<TabsContent value="client-rates">

@@ -20,7 +20,6 @@ const paginatedProducts = computed(() => {
 	const start = (currentPage.value - 1) * itemsPerPage.value;
 	const end = start + itemsPerPage.value;
 
-	console.log(productSheets.value);
 	return productSheets.value.slice(start, end);
 });
 

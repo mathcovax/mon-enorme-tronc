@@ -13,8 +13,6 @@ const {
 async function submit() {
 	const formFields = await checkEditUserProfilForm();
 
-	console.log(formFields);
-
 	if (!formFields) {
 		return;
 	}

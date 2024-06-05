@@ -139,6 +139,7 @@ function addImage() {
 					<VMarkdownEditor
 						:model-value="modelValue"
 						@update:model-value="onUpdate"
+						class="min-h-96"
 					/>
 				</template>
 
