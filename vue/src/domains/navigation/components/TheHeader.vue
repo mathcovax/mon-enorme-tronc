@@ -20,10 +20,10 @@ const userStore = useUserStore();
 					MET
 				</RouterLink>
 
-				<div class="flex-1 flex gap-6 justify-between items-center">
+				<div class="md:flex-1 flex gap-6 justify-between items-center">
 					<TheNavbar class="hidden md:block" />
 
-					<div class="flex-1 flex gap-3 justify-end items-center">
+					<div class="lg:flex-1 flex gap-3 justify-end items-center">
 						<div class="hidden lg:block grow max-w-144">
 							<input
 								type="text"
