@@ -38,7 +38,7 @@ export default {
 				}
 			},
 		},
-		[routerPageName.PRODUCT_CATEGORY]: {
+		[routerPageName.CATEGORY_PAGE]: {
 			emptyTitle: "Cette catégorie n'a pas encore de produits.",
 			emptySubtitle: "Revenez plus tard pour voir les nouveautés.",
 			buttonBack: "Revenir aux catégories",

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useGetNavigationBar } from "../composables/useGetNavigationBar";
 
-const { PRODUCT_CATEGORY } = routerPageName;
+const { CATEGORY_PAGE } = routerPageName;
 
 const { items } = useGetNavigationBar();
 </script>
@@ -27,7 +27,7 @@ const { items } = useGetNavigationBar();
 								>
 									<RouterLink
 										class="h-full w-full p-4 lg:p-6 flex gap-4 lg:gap-0 lg:flex-col lg:justify-end items-center lg:items-start rounded-md bg-gradient-to-b from-muted/50 to-muted no-underline outline-none focus:shadow-md"
-										:to="{ name: PRODUCT_CATEGORY, params: { categoryName: category.categoryName } }"
+										:to="{ name: CATEGORY_PAGE, params: { categoryName: category.categoryName } }"
 									>
 										<img
 											:src="category.categoryImageUrl"
@@ -46,7 +46,7 @@ const { items } = useGetNavigationBar();
 
 				<RouterLink
 					v-else-if="item.type === 'CATEGORY'"
-					:to="{ name: PRODUCT_CATEGORY, params: { categoryName: item.categoryName } }"
+					:to="{ name: CATEGORY_PAGE, params: { categoryName: item.categoryName } }"
 					class="inline-block rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
 				>
 					{{ item.categoryName }}

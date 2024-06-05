@@ -1,13 +1,13 @@
 import type { RouteRecordRaw } from "vue-router";
 
 export const routerPageNameCategory = Object.freeze({
-	PRODUCT_CATEGORY: "category",
+	CATEGORY_PAGE: "category",
 });
 
 export default (): RouteRecordRaw[] => [
 	{
-		name: routerPageNameCategory.PRODUCT_CATEGORY,
+		name: routerPageNameCategory.CATEGORY_PAGE,
 		path: "/category/:categoryName",
-		component: () => import("./pages/ProductsPage.vue"),
+		component: () => import("./pages/CategoryPage.vue"),
 	},
 ];
