@@ -12,6 +12,7 @@ declare module 'vue' {
     AccordionTrigger: typeof import('./src/components/ui/accordion/AccordionTrigger.vue')['default']
     BigTable: typeof import('./src/components/BigTable/BigTable.vue')['default']
     BurgerButton: typeof import('./src/components/BurgerButton.vue')['default']
+    ButtonCarousel: typeof import('./src/components/TheCarousel/ButtonCarousel.vue')['default']
     ButtonPopup: typeof import('./src/components/ThePopup.vue')['default']
     CalendarCell: typeof import('./src/components/ui/calendar/CalendarCell.vue')['default']
     CalendarCellTrigger: typeof import('./src/components/ui/calendar/CalendarCellTrigger.vue')['default']
