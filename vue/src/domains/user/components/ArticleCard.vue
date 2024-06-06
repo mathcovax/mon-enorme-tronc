@@ -10,6 +10,10 @@ defineProps<{
 	addArticle:(productSheetId: string) => void;
 	removeArticle:(productSheetId: string) => void;
 }>();
+
+const updateQuantity = (amount: number, product: Product) => {
+	product.quantity += amount;
+};
 </script>
 
 <template>
@@ -40,25 +44,11 @@ defineProps<{
 
 		<CardFooter class="p-0 flex items-center gap-8">
 			<div class="flex items-center gap-4">
-				<TheButton
-					class="text-xl aspect-square"
-					variant="secondary"
-					@click="removeArticle(article.productSheetId)"
-				>
-					-
-				</TheButton>
-
-				<p class="text-lg font-semibold">
-					{{ article.quantity }}
-				</p>
-
-				<TheButton
-					class="text-xl aspect-square"
-					variant="secondary"
-					@click="addArticle(article.productSheetId)"
-				>
-					+
-				</TheButton>
+				<TheQuantity 
+					:quantity="product.quantity"
+					@increment="updateQuantity(1, product)"
+					@decrement="updateQuantity(-1, product)"
+				/>
 			</div>
 
 			<p class="text-lg font-semibold">

@@ -37,6 +37,8 @@ function renderDescription() {
 	return marked.parse(product.value.description);
 }
 
+const productQuantity = ref(1);
+
 getProductData();
 </script>
 
@@ -46,7 +48,7 @@ getProductData();
 			<div class="flex flex-col sm:flex-row gap-10">
 				<div class="lg:shrink-0 w-full max-w-80 aspect-square sm:aspect-portrait">
 					<img
-						v-if="!imageUrl"
+						v-if="imageUrl"
 						:src="imageUrl"
 						alt="product"
 						class="w-full h-full object-cover"
@@ -75,7 +77,14 @@ getProductData();
 						{{ product.shortDescription }}
 					</p>
 
-					<div>
+					<div class="flex gap-12 items-center">
+						<TheQuantity 
+							:quantity="productQuantity"
+							:max="10"
+							@increment="productQuantity++"
+							@decrement="productQuantity--"
+						/>
+
 						<TheButton>{{ $pt("addCartButton") }}</TheButton>
 					</div>
 				</div>
@@ -106,7 +115,7 @@ getProductData();
 				</TabsContent>
 
 				<TabsContent value="client-rates">
-					{{ $pt("label.comments") }}
+					Les commentaires arrivent bientôt !
 				</TabsContent>
 			</TheTabs>
 		</div>
