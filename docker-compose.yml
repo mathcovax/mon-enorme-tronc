@@ -62,6 +62,16 @@ services:
     env_file: ./duplo/.env
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
+  mongo-viwer:
+    image: mongo-express
+    ports:
+      - 6666:8081
+    env_file: ./duplo/.env
+    environment:
+      ME_CONFIG_BASICAUTH_USERNAME: "mongo"
+      ME_CONFIG_BASICAUTH_PASSWORD: "mongo"
+
   mongo:
     image: mongo
     env_file: ./duplo/.env

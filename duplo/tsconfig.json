@@ -39,8 +39,14 @@
 			"@schemas/*": [
 				"./src/schemas/*"
 			],
+			"@mongoose/*": [
+				"./src/mongoose/*"
+			],
 			"@utils/*": [
 				"./src/utils/*"
+			],
+			"@/*": [
+				"./src/*"
 			],
 			"@test/*": [
 				"./test/*"

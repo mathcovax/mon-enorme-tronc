@@ -1,4 +1,24 @@
+import "./setup";
 import { FindSlice } from "@utils/findSlice";
+import { mongoose } from "./mongoose";
+import { prisma } from "./prismaClient";
+import { fullProductSheetModel } from "@mongoose/model";
+import { fullProductSheetSchema } from "@schemas/fullProductSheet";
+import { facetTypeTuple } from "@schemas/facet";
+import { facet_type } from "@prisma/client";
+import { JsonDB, Config } from "node-json-db";
+
+const newLastIndexing = Date.now();
+
+const lastIndexingDB = new JsonDB(
+	new Config("src/filesDB/lastIndexing.json"),
+);
+
+if (!await lastIndexingDB.exists("/timestamp")) {
+	lastIndexingDB.push("/timestamp", 0);
+}
+
+const lastIndexing = new Date(await lastIndexingDB.getData("/timestamp"));
 
 const generator = FindSlice(
 	50, 
@@ -9,6 +29,9 @@ const generator = FindSlice(
 			},
 			status: {
 				not: "REMOVE"
+			},
+			updatedAt: {
+				gte: lastIndexing
 			}
 		},
 		include: {
@@ -34,11 +57,6 @@ const generator = FindSlice(
 				select: {
 					categoryName: true
 				}
-			},
-			_count: {
-				select: {
-					products: true
-				}
 			}
 		},
 		take: size,
@@ -46,6 +64,43 @@ const generator = FindSlice(
 	})
 );
 
+const promiseList: unknown[] = [];
+
 for await (const productSheet of generator) {
+	const fullProductSheet: Zod.infer<typeof fullProductSheetSchema> = {
+		id: productSheet.id,
+		name: productSheet.name,
+		description: productSheet.description,
+		shortDescription: productSheet.shortDescription,
+		price: productSheet.price,
+		categories: productSheet.categories.map(c => c.categoryName),
+		images: productSheet.images.map(i => i.url),
+		organization: {
+			id: productSheet.organizationId,
+			name: productSheet.organization.name,
+			label: productSheet.organization.label ?? undefined,
+			logoUrl: productSheet.organization.logoUrl ?? undefined
+		},
+		facets: facetTypeTuple.reduce(
+			(pv, ft) => ({
+				...pv, 
+				[ft]: productSheet.facets.find(f => f.type === ft)?.value
+			}),
+			{} as { [P in facet_type]?: string}
+		)
+	};
 	
+	promiseList.push(
+		fullProductSheetModel.findOneAndUpdate(
+			{ id: productSheet.id }, 
+			fullProductSheet, 
+			{ new: true, upsert: true }
+		)
+	);
 }
+
+await Promise.all(promiseList);
+lastIndexingDB.push("/timestamp", newLastIndexing);
+
+mongoose.connection.close();
+
