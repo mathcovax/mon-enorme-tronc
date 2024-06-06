@@ -7,6 +7,7 @@ export const fullProductSheetSchema = zod.object({
 	shortDescription: zod.string(),
 	description: zod.string(),
 
+	quantity: zod.number(),
 	categories: zod.string().array(),
 	images: zod.string().array(),
 	organization: zod.object({

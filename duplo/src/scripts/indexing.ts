@@ -57,6 +57,15 @@ const generator = FindSlice(
 				select: {
 					categoryName: true
 				}
+			},
+			_count: {
+				select: {
+					products: {
+						where: {
+							status: "IN_STOCK"
+						}
+					}
+				}
 			}
 		},
 		take: size,
@@ -73,6 +82,7 @@ for await (const productSheet of generator) {
 		description: productSheet.description,
 		shortDescription: productSheet.shortDescription,
 		price: productSheet.price,
+		quantity: productSheet._count.products,
 		categories: productSheet.categories.map(c => c.categoryName),
 		images: productSheet.images.map(i => i.url),
 		organization: {

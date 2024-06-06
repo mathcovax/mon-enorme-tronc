@@ -35,7 +35,8 @@ describe("/product-sheet/{productSheetId}", () => {
 					name: "test",
 					description: "la grosse tete de mathieu",
 					shortDescription: "la grosse tete de mathieu",
-					price: 10
+					price: 10,
+					status: "UNVERIFIED",
 				},
 			});
 		});

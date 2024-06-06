@@ -42,6 +42,9 @@
 			"@mongoose/*": [
 				"./src/mongoose/*"
 			],
+			"@prisma/*": [
+				"./src/prisma/*"
+			],
 			"@utils/*": [
 				"./src/utils/*"
 			],
