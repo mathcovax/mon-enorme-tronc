@@ -1,5 +1,6 @@
 <script setup lang="ts"  generic="T extends string | Record<string, unknown>">
-  
+import ButtonCarousel from "./ButtonCarousel.vue";
+
 interface Props {
 	items: T[];
 	visibleItems: number;
@@ -79,17 +80,17 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-	<div class="carousel-container relative group">
+	<div class="relative group">
 		<div
-			class="carousel overflow-hidden"
+			class="overflow-hidden"
 			ref="carouselContainer"
 		>
 			<div
-				class="carousel-track flex transition-transform mg"
+				class="flex transition-transform"
 				:style="carouselStyle"
 			>
 				<div
-					class="carousel-item flex-none"
+					class="flex-none"
 					v-for="(item, index) in items"
 					:key="index"
 					:style="itemStyle"
@@ -99,57 +100,14 @@ onBeforeUnmount(() => {
 			</div>
 		</div>
 
-		<button
+		<ButtonCarousel
 			@click="prev"
-			class="carousel-btn left-0"
-		>
-			<TheIcon icon="chevron-left" />
-		</button>
+			class="absolute top-0 left-0 h-full"
+		/>
 
-		<button
+		<ButtonCarousel
 			@click="next"
-			class="carousel-btn right-0"
-		>
-			<TheIcon icon="chevron-right" />
-		</button>
+			class="absolute top-0 right-0 h-full rotate-180"
+		/>
 	</div>
 </template>
-  
-<style scoped>
-.carousel-container {
-	@apply relative;
-}
-
-.carousel {
-	@apply overflow-hidden;
-}
-
-.carousel-track {
-	@apply flex transition-transform;
-}
-
-.carousel-item {
-	@apply flex-none;
-}
-
-.carousel-btn {
-	@apply absolute top-0 bottom-0 w-12 bg-gray-700 bg-opacity-75 text-white flex items-center justify-center opacity-0 transition-opacity duration-300 h-full;
-
-	.right-0 {
-		right: 0;
-	}
-
-	.left-0 {
-		left: 0;
-	}
-}
-
-.carousel-btn:hover {
-	@apply bg-opacity-100;
-}
-
-.carousel-container:hover .carousel-btn {
-	@apply opacity-100;
-}
-</style>
-  

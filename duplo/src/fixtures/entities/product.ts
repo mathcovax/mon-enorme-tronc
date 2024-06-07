@@ -1,11 +1,8 @@
 import { prisma } from "../prismaClient";
-import { faker } from "@faker-js/faker";
 import { product, product_sheet, product_status } from "@prisma/client";
+import { uuidv7 } from "uuidv7";
 
 const status = Object.values(product_status);
-
-const generateSku = () => 
-	`${faker.random.alpha({ count: 3 })}${faker.random.alphaNumeric(4).toUpperCase()}${faker.datatype.number({ min: 1000, max: 9999 })}`;
 
 const getRandomWarehouse = async (organizationId: string) => {
 	const warehouses = await prisma.warehouse.findMany({ where: { organizationId } });
@@ -17,7 +14,7 @@ export const makeProduct = async (
 	product?: product
 ) => prisma.product.create({
 	data: {
-		sku: product?.sku || generateSku(),
+		sku: product?.sku || uuidv7(),
 		productSheetId: product?.productSheetId || productSheet.id,
 		organizationId: product?.organizationId || productSheet.organizationId,
 		warehouseId: product?.warehouseId || (await getRandomWarehouse(productSheet.organizationId))?.id as string,
