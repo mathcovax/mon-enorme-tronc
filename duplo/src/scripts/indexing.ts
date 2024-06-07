@@ -3,7 +3,7 @@ import { FindSlice } from "@utils/findSlice";
 import { mongoose } from "./mongoose";
 import { prisma } from "./prismaClient";
 import { fullProductSheetModel } from "@mongoose/model";
-import { fullProductSheetSchema } from "@schemas/fullProductSheet";
+import { FullProductSheetSchema } from "@schemas/fullProductSheet";
 import { facetTypeTuple } from "@schemas/facet";
 import { facet_type } from "@prisma/client";
 import { JsonDB, Config } from "node-json-db";
@@ -76,7 +76,7 @@ const generator = FindSlice(
 const promiseList: unknown[] = [];
 
 for await (const productSheet of generator) {
-	const fullProductSheet: Zod.infer<typeof fullProductSheetSchema> = {
+	const fullProductSheet: FullProductSheetSchema = {
 		id: productSheet.id,
 		name: productSheet.name,
 		description: productSheet.description,

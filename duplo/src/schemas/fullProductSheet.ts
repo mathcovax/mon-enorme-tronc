@@ -26,3 +26,5 @@ export const fullProductSheetSchema = zod.object({
 		TARGET: zod.string().optional(),
 	}),
 });
+
+export type FullProductSheetSchema = Zod.infer<typeof fullProductSheetSchema>

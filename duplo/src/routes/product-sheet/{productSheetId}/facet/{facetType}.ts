@@ -33,9 +33,9 @@ export const DELETE = (method: Methods, path: string) =>
 					}
 				});
 
-				throw new NoContentHttpException("facet.delete");
+				throw new NoContentHttpException("facet.deleted");
 			},
-			new IHaveSentThis(NoContentHttpException.code, "facet.delete")
+			new IHaveSentThis(NoContentHttpException.code, "facet.deleted")
 		);
 
 /* METHOD : PATCH, PATH : /product-sheet/{productSheetId}/facet/{facetType} */

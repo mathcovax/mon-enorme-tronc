@@ -15,7 +15,7 @@ export const GET = (method: Methods, path: string) =>
 				const { page } = pickup("query");
 
 				const fullProductSheets = await fullProductSheetModel.aggregate([
-					{ $skip: page*50 },
+					{ $skip: page * 50 },
 					{ $limit: 50 }
 				]);
 
