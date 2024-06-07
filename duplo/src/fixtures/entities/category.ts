@@ -1,7 +1,6 @@
 import type { category } from "@prisma/client";
 import { prisma } from "../prismaClient";
 import { faker } from "@faker-js/faker";
-import { getRandomImage } from "./image_product_sheet";
 import { uuidv7 } from "uuidv7";
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import * as env from "../../env";
@@ -17,6 +16,7 @@ const S3 = new S3Client({
 });
 
 export const makeCategory = async (
+	imageBuffer: Buffer,
 	category?: Partial<category>
 ) => {
 	const imageId = uuidv7();
@@ -26,7 +26,7 @@ export const makeCategory = async (
 		new PutObjectCommand({
 			Bucket: env.default.MINIO_BUCKET_CONTENT,
 			Key: imageKey,
-			Body: await getRandomImage(),
+			Body: imageBuffer,
 		})
 	);
 
@@ -39,3 +39,11 @@ export const makeCategory = async (
 		}
 	});
 };
+
+export const addProductSheetToCategory = (productSheetId: string, categoryName: string) =>
+	prisma.product_sheet_to_category.create({
+		data: {
+			categoryName,
+			productSheetId
+		}
+	});

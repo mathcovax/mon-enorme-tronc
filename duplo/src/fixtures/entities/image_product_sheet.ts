@@ -3,7 +3,6 @@ import { uuidv7 } from "uuidv7";
 import type { product_sheet } from "@prisma/client";
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import * as env from "../../env";
-import { Buffer } from "buffer";
 
 const S3 = new S3Client({
 	region: "local",
@@ -15,12 +14,10 @@ const S3 = new S3Client({
 	}
 });
 
-export const getRandomImage = async () => 
-	Buffer.from(await (await fetch("https://picsum.photos/200")).arrayBuffer());
-
 
 export const makeImageProductSheet = async (
 	productSheet: product_sheet,
+	imageBuffer: Buffer,
 ) => {
 	const imageId = uuidv7();
 	const imageKey = `/${productSheet.organizationId}/${productSheet.id}/${imageId}image${Date.now()}.jpg`;
@@ -29,7 +26,7 @@ export const makeImageProductSheet = async (
 		new PutObjectCommand({
 			Bucket: env.default.MINIO_BUCKET_PRODUCT_SHEET_IMAGES,
 			Key: imageKey,
-			Body: await getRandomImage(),
+			Body: imageBuffer,
 		})
 	);
 

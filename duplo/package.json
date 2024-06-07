@@ -13,13 +13,7 @@
 		"migrate:dev": "prisma migrate dev",
 		"studio": "prisma studio -n 0.0.0.0",
 		"indexing": "tsx src/scripts/indexing",
-		"fixture:user": "tsx src/fixtures --user",
-		"fixture:organization": "tsx src/fixtures --organization",
-		"fixture:category": "tsx src/fixtures --category",
-		"fixture:product": "tsx src/fixtures --product-sheet",
-		"fixture:category-with-products": "tsx src/fixtures --category --with-product",
-		"fixture:category-with-parent": "tsx src/fixtures --category --with-parent",
-		"fixture:all": "tsx src/fixtures --category --with-product --with-parent --with-product-sheet --with-images --with-user-in-org --with-product"
+		"fixture": "tsx src/fixtures"
 	},
 	"prisma": {
 		"schema": "src/prisma/schema.prisma"

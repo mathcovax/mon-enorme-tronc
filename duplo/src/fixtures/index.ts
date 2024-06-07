@@ -1,81 +1,101 @@
-import { AnyFunction } from "@duplojs/duplojs";
 import { makeUser } from "./entities/user";
-import { makeOrganization } from "./entities/organization";
-import { makeCategory } from "./entities/category";
-import { makeCategoryToParentCategory } from "./entities/category_to_parent_category";
+import { addUserToOrganization, makeOrganization, organizationRolesTuple } from "./entities/organization";
+import { addProductSheetToCategory, makeCategory } from "./entities/category";
 import { makeProductSheet } from "./entities/product_sheet";
-import { makeProductSheetToCategory } from "./entities/product_sheet_to_category";
-import { makeParentCategory } from "./entities/parent_category";
-import { makeUserToOrganization } from "./entities/user_to_organization";
+import { addCategoryToParentCategory, makeParentCategory } from "./entities/parent_category";
 import { makeImageProductSheet } from "./entities/image_product_sheet";
 import { makeWarehouse } from "./entities/warehouse";
 import { makeProduct } from "./entities/product";
+import categoryData from "./data/category.json";
+import productData from "./data/product.json";
+import { facetType, makeFacet } from "./entities/facet";
 
-const repeater = <cb extends AnyFunction>(length: number, callback: cb) =>
-	Promise.all<Awaited<ReturnType<cb>>>(Array.from({ length }).map(callback));
+const repeater = <
+	F extends ((index: number) => Promise<unknown>)
+>(length: number, callback: F) =>
+		Promise.all<Awaited<ReturnType<F>>>(Array.from({ length }).map((value, index) => callback(index) as never));
 
-// USERS
-if (process.argv.includes("--user")) {
-	await repeater(35, makeUser);
+const mapAsync = <
+	A, F extends ((value: A, index: number) => Promise<unknown>)
+>(arr: A[], callback: F) => 
+		Promise.all<Awaited<ReturnType<F>>>(arr.map((value, index) => callback(value, index) as never));
+
+const getRandomImage = (size = 200) => fetch(`https://picsum.photos/${size}`)
+	.then(r => r.arrayBuffer())
+	.then(r => Buffer.from(r));
+
+const imageBuffers = await repeater(100, () => getRandomImage());
+
+const users = await repeater(150, () => makeUser());
+
+const organizationOwner = users.splice(0, 5);
+const organizations = await mapAsync(organizationOwner, ({ id }) => makeOrganization(id));
+
+const warehouses = await mapAsync(
+	organizations, 
+	({ id }) => repeater(
+		Math.floor(Math.random() * 2) + 1,
+		() => makeWarehouse(id)
+	)
+);
+
+for (let index = 0; index <= (organizations.length*organizationRolesTuple.length) - 1; index++) {
+	const currentIndexOrganization = Math.floor(index/organizationRolesTuple.length);
+
+	await addUserToOrganization(
+		users[index].id, 
+		organizations[currentIndexOrganization].id, 
+		organizationRolesTuple[index % organizationRolesTuple.length]
+	);
 }
 
-// ORGANIZATION
-const createUsersAndOrganizations = async () => {
-	const users = await repeater(15, makeUser);
-	const organizations = await Promise.all(users.map(({ id }) => makeOrganization(id)));
-	return { organizations, users };
-};
-
-// USER IN ORGANIZATION
-const createUserInOrganization = async (organizationId: string) => {
-	const users = await repeater(15, makeUser);
-	await Promise.all(users.map(({ id }) => makeUserToOrganization(id, organizationId)));
-};
-
-if (process.argv.includes("--organization")) {
-	await createUsersAndOrganizations();
-}
-
-// CATEGORY
-if (process.argv.includes("--category")) {
-	const categories = await repeater(10, makeCategory);
-
-	if (process.argv.includes("--with-parent")) {
-		const parentCategories = await repeater(5, makeParentCategory);
-		await Promise.all(categories.map(category => makeCategoryToParentCategory(
-			category.name, parentCategories[Math.floor(Math.random() * parentCategories.length)].name
-		)));
+await mapAsync(
+	Object.entries(categoryData),
+	async ([parentName, categories]) => {
+		await makeParentCategory({ name: parentName });
+		await mapAsync(
+			categories,
+			async (name) => {
+				await makeCategory(imageBuffers[Math.floor(Math.random() * imageBuffers.length)], { name });
+				await addCategoryToParentCategory(name, parentName);
+			}
+		);
 	}
+);
 
-	if (process.argv.includes("--with-product-sheet")) {
-		const { organizations } = await createUsersAndOrganizations();
-		const productSheets = await Promise.all(
-			organizations.map(org => repeater(10, () => makeProductSheet(org.id)))
-		).then(results => results.flat());
+const entries = Object.entries(productData);
+repeater(
+	1500,
+	(index) => {
+		const [categoryName, product_sheet] = entries[index % entries.length];
+		const currentWarehouses = warehouses[index % organizations.length];
 		
-		await Promise.all(productSheets.map(
-			productSheet => makeProductSheetToCategory(
-				productSheet.id, categories[Math.floor(Math.random() * categories.length)].name
+		return makeProductSheet(
+			organizations[index % organizations.length].id,
+			{
+				name: `${product_sheet} ${index}` 
+			}
+		).then((productSheet) => Promise.all([
+			addProductSheetToCategory(productSheet.id, categoryName),
+			repeater(
+				Math.floor(Math.random() * 5) + 1, 
+				(ii) => makeImageProductSheet(productSheet, imageBuffers[(index + ii) % imageBuffers.length])
+			),
+			repeater(
+				Math.floor(Math.random() * 500), 
+				(index) => makeProduct(productSheet, currentWarehouses[index % currentWarehouses.length])
+			),
+			mapAsync(
+				facetType.slice(
+					Math.floor(Math.random() * facetType.length), 
+					facetType.length
+				),
+				(value) => makeFacet(
+					productSheet.id, 
+					value,
+					"this is facet value"
+				)
 			)
-		));
-		if (process.argv.includes("--with-images")) {
-			await Promise.all(productSheets.map(
-				productSheet => makeImageProductSheet(productSheet)
-			));
-		}
-		if (process.argv.includes("--with-user-in-org")) {
-			await Promise.all(organizations.map(
-				organization => createUserInOrganization(organization.id)
-			));
-		}
-		if (process.argv.includes("--with-product")) {
-			await Promise.all(
-				organizations.map(org => repeater(10, () => makeWarehouse(org.id)))
-			).then(results => results.flat());
-
-			await Promise.all(
-				productSheets.map(productSheet => repeater(10, () => makeProduct(productSheet)))
-			).then(results => results.flat());
-		}
+		]));
 	}
-}
+);

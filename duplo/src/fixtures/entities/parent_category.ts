@@ -10,3 +10,11 @@ export const makeParentCategory = (
 			name: parent_category?.name || `${faker.commerce.department()}${Date.now()}`
 		}
 	});
+
+export const addCategoryToParentCategory = (categoryName: string, parentCategoryName: string) => 
+	prisma.category_to_parent_category.create({
+		data: {
+			categoryName,
+			parentCategoryName,
+		}
+	});
