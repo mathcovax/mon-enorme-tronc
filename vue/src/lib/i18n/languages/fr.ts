@@ -133,6 +133,9 @@ export default {
 				placeholder: "Chercher des catégories.",
 				image: "Image du produit",
 				addImage: "Ajouter une image",
+				facet: {
+					add: "Ajouter une Facet",
+				}
 			}
 		},
 		[routerPageName.ORGANIZATION_EDIT]: {
@@ -150,6 +153,9 @@ export default {
 				placeholder: "Chercher des catégories.",
 				image: "Image du produit",
 				addImage: "Ajouter une image",
+				facet: {
+					add: "Ajouter une Facet",
+				}
 			}
 		},
 		[routerPageName.ORGANIZATION_GET_WAREHOUSE]: {
@@ -395,6 +401,15 @@ export default {
 		PARENT_CATEGORY: "Catégorie parent",
 		CATEGORY: "Catégorie",
 		LINK: "Lien",
+	},
+	facetType: {
+		COLOR: "Couler",
+		SIZE: "Taile",
+		DIAMETER: "Diamétre",
+		TARGET: "Cible",
+		ACCESSORY: "Accessoire",
+		MATERIAL: "Marértiaux",
+		STIMULATION: "Stimulation",
 	},
 	response: {
 		organization: {

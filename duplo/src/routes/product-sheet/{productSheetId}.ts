@@ -26,6 +26,7 @@ export const PATCH = (method: Methods, path: string) =>
 						description,
 						shortDescription,
 						price,
+						status: "UNVERIFIED",
 					},
 				});
 				throw new CreatedHttpException("productSheet.edited", id);

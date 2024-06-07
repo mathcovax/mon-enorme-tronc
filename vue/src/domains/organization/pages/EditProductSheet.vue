@@ -4,6 +4,7 @@ import { useProductSheetForm } from "../composables/useProductSheetForm";
 //@ts-expect-error missing déclaration vue3-markdown
 import { VMarkdownEditor } from "vue3-markdown";
 import "vue3-markdown/dist/style.css";
+import FacetsForm from "../components/FacetsForm.vue";
 
 const { productSheetId, organizationId } = useRouteParams({ 
 	organizationId: zod.string(), 
@@ -42,6 +43,54 @@ async function submit() {
 		.result;
 
 	if (result.success && result.info === "productSheet.edited") {
+		const promiseDeleteList: unknown[] = [];
+
+		formFields.oldCategories?.forEach((c) => {
+			if (formFields.categories?.find(({ value }) => value === c.value)) {
+				return;
+			}
+
+			promiseDeleteList.push(
+				duploTo.enriched
+					.delete(
+						"/product-sheet/{productSheetId}/category/{categoryName}",
+						{ params: { categoryName: c.value.toString(), productSheetId } }
+					)
+					.result
+			);
+		});
+
+		formFields.oldImages?.forEach(item => { 
+			if (formFields.images.find(i => item === i)) {
+				return;
+			}
+
+			promiseDeleteList.push(
+				duploTo.enriched
+					.delete(
+						"/image-product-sheet/{imageProductSheetId}",
+						{ params: { imageProductSheetId: item.id } }
+					)
+					.result
+			);
+		});
+
+		formFields.oldFacets?.forEach(item => {
+			if (formFields.facets.find(({ type }) => item.type === type)) {
+				return;
+			}
+
+			promiseDeleteList.push(
+				duploTo.enriched
+					.delete(
+						"/product-sheet/{productSheetId}/facet/{facetType}",
+						{ params: { facetType: item.type, productSheetId 	} }
+					)
+					.result
+			);
+		});
+
+		await Promise.all(promiseDeleteList);
 		const promiseList: unknown[] = [];
 
 		formFields.categories.forEach((c) => {
@@ -57,21 +106,6 @@ async function submit() {
 							categoryName: c.value.toString()
 						},
 						{ params: { productSheetId } }
-					)
-					.result
-			);
-		});
-
-		formFields.oldCategories?.forEach((c) => {
-			if (formFields.categories?.find(({ value }) => value === c.value)) {
-				return;
-			}
-
-			promiseList.push(
-				duploTo.enriched
-					.delete(
-						"/product-sheet/{productSheetId}/category/{categoryName}",
-						{ params: { categoryName: c.value.toString(), productSheetId } }
 					)
 					.result
 			);
@@ -96,16 +130,30 @@ async function submit() {
 			);
 		});
 
-		formFields.oldImages?.forEach(item => { 
-			if (formFields.images.find(i => item === i)) {
+		formFields.facets.forEach(item => {
+			const oldFacet = formFields.oldFacets?.find(({ type }) => type === item.type);
+			if (oldFacet) {
+				if (oldFacet.value !== item.value) {
+					promiseList.push(
+						duploTo.enriched
+							.patch(
+								"/product-sheet/{productSheetId}/facet/{facetType}",
+								{ value: item.value },
+								{ params: { productSheetId, facetType: item.type } }
+							)
+							.result
+					);
+				}
+				
 				return;
 			}
 
 			promiseList.push(
 				duploTo.enriched
-					.delete(
-						"/image-product-sheet/{imageProductSheetId}",
-						{ params: { imageProductSheetId: item.id } }
+					.post(
+						"/product-sheet/{productSheetId}/facet",
+						{ type: item.type, value: item.value },
+						{ params: { productSheetId } }
 					)
 					.result
 			);
@@ -114,7 +162,7 @@ async function submit() {
 		await Promise.all(promiseList);
 	}
 
-	router.push({ name: routerPageName.ORGANIZATION_GET_PRODUCT_SHEET, params: { organizationId } });
+	back();
 }
 
 function back() {
@@ -203,6 +251,13 @@ function addImage() {
 							</div>
 						</div>
 					</div>
+				</template>
+
+				<template #facets="{modelValue, onUpdate}">
+					<FacetsForm
+						:model-value="modelValue"
+						@update:model-value="onUpdate"
+					/>
 				</template>
 			
 				<PrimaryButton

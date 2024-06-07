@@ -3,6 +3,7 @@ import { useProductSheetForm } from "../composables/useProductSheetForm";
 //@ts-expect-error missing déclaration vue3-markdown
 import { VMarkdownEditor } from "vue3-markdown";
 import "vue3-markdown/dist/style.css";
+import FacetsForm from "../components/FacetsForm.vue";
 
 const { organizationId } = useRouteParams({ 
 	organizationId: zod.string(), 
@@ -70,6 +71,18 @@ async function submit() {
 					.post(
 						"/product-sheet/{productSheetId}/image",
 						formData,
+						{ params: { productSheetId: result.data.id } }
+					)
+					.result
+			);
+		});
+
+		formFields.facets.forEach(item => {
+			promiseList.push(
+				duploTo.enriched
+					.post(
+						"/product-sheet/{productSheetId}/facet",
+						{ type: item.type, value: item.value },
 						{ params: { productSheetId: result.data.id } }
 					)
 					.result
@@ -167,6 +180,13 @@ function addImage() {
 							</div>
 						</div>
 					</div>
+				</template>
+
+				<template #facets="{modelValue, onUpdate}">
+					<FacetsForm
+						:model-value="modelValue"
+						@update:model-value="onUpdate"
+					/>
 				</template>
 
 				<PrimaryButton

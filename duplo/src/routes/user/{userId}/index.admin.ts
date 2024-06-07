@@ -56,5 +56,6 @@ export const PATCH = (method: Methods, path: string) => hasPrimordialRole({ opti
 
 			throw new NoContentHttpException("user.edited");
 		},
-		new IHaveSentThis(NoContentHttpException.code, "user.edited")
+		new IHaveSentThis(NoContentHttpException.code, "user.edited"),
+		new SwaggerIgnore(),
 	);

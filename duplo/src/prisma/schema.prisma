@@ -104,6 +104,14 @@ model product_sheet {
     organization     organization                @relation(fields: [organizationId], references: [id])
     organizationId   String
     products         product[]
+    facets           facet[]
+    status           product_sheet_status        @default(UNVERIFIED)
+}
+
+enum product_sheet_status {
+    VERIFIED
+    UNVERIFIED
+    REMOVE
 }
 
 model product_sheet_to_category {
@@ -171,4 +179,23 @@ enum product_status {
     WRONG
     SOLD
     IN_STOCK
+}
+
+model facet {
+    type           facet_type
+    productSheet   product_sheet @relation(fields: [productSheetId], references: [id])
+    productSheetId String
+    value          String        @db.VarChar(50)
+
+    @@unique([type, productSheetId])
+}
+
+enum facet_type {
+    COLOR
+    SIZE
+    DIAMETER
+    TARGET
+    ACCESSORY
+    MATERIAL
+    STIMULATION
 }

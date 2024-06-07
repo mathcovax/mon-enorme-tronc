@@ -1,3 +1,5 @@
+import { facetType, type Facet, type FacetType } from "@/lib/utils";
+
 interface ItemMultiComBox {
 	label: string,
 	value: string | number
@@ -12,12 +14,16 @@ export interface ItemImageNew {
 	url: string
 }
 
+export interface FacetItem{
+	type: FacetType | undefined
+	value: string | undefined
+}
 
 export function useProductSheetForm(productSheetId?: string) {
 	const $pt = usePageTranslate();
 	const suggestedCategories = ref<ItemMultiComBox[]>([]);
 	
-	function onSearchCategories(categoryName: string) {
+	function onSearchCategories(categoryName?: string) {
 		duploTo.enriched.
 			get("/categories", { query: { name: categoryName, withDisabled: true } })
 			.s((categories) => {
@@ -26,6 +32,7 @@ export function useProductSheetForm(productSheetId?: string) {
 				);
 			});
 	}
+	onSearchCategories();
 
 	const { Form, checkForm, resetForm, values } = useFormBuilder({
 		name: {
@@ -69,6 +76,20 @@ export function useProductSheetForm(productSheetId?: string) {
 			type: "custom",
 			label: $t("label.description"),
 			defaultValue: "",
+		},
+		oldFacets: {
+			type: "custom",
+			defaultValue: undefined as Pick<Facet, "type" | "value">[] | undefined,
+		},
+		facets: {
+			type: "custom",
+			defaultValue: [] as FacetItem[],
+			zodSchema: zod.object({
+				type: zod.enum(facetType, { message: $t("form.rule.required") }),
+				value: zod.string({ message: $t("form.rule.required") })
+					.min(2, { message: $t("form.rule.minLength", { value: 2 }) })
+					.max(50, { message: $t("form.rule.maxLength", { value: 50 }) }),
+			}).array()
 		},
 		oldImages: {
 			type: "custom",
@@ -120,6 +141,17 @@ export function useProductSheetForm(productSheetId?: string) {
 				const itemImages = data.map(({ id, url }) => ({ id, url }));
 				values.images.value = itemImages;
 				values.oldImages.value = itemImages;
+			});
+
+		duploTo.enriched
+			.get(
+				"/product-sheet/{productSheetId}/facets",
+				{ params: { productSheetId } }
+			)
+			.info("productSheet.facets", (data) => {
+				const itemFacets = data.map(({ type, value }) => ({ type, value }));
+				values.facets.value = itemFacets;
+				values.oldFacets.value = itemFacets;
 			});
 	}
 

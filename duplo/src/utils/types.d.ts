@@ -6,6 +6,6 @@ declare global {
 	type LastOf<T> =
 		UnionToIntersection<T extends unknown ? () => T : never> extends () => (infer R) ? R : never
 	type Push<T extends unknown[], V> = [...T, V];
-	export type TuplifyUnion<T, L = LastOf<T>, N = [T] extends [never] ? true : false> =
+	type TuplifyUnion<T, L = LastOf<T>, N = [T] extends [never] ? true : false> =
 		true extends N ? [] : Push<TuplifyUnion<Exclude<T, L>>, L>
 }
