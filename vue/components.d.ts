@@ -7,14 +7,11 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    '(feat(92)': add quantity component)
     AccordionContent: typeof import('./src/components/ui/accordion/AccordionContent.vue')['default']
     AccordionItem: typeof import('./src/components/ui/accordion/AccordionItem.vue')['default']
     AccordionTrigger: typeof import('./src/components/ui/accordion/AccordionTrigger.vue')['default']
     BigTable: typeof import('./src/components/BigTable/BigTable.vue')['default']
-    BurgerButton: typeof import('./src/components/BurgerButton.vue')['default']
     ButtonCarousel: typeof import('./src/components/TheCarousel/ButtonCarousel.vue')['default']
-    ButtonPopup: typeof import('./src/components/ThePopup.vue')['default']
     CalendarCell: typeof import('./src/components/ui/calendar/CalendarCell.vue')['default']
     CalendarCellTrigger: typeof import('./src/components/ui/calendar/CalendarCellTrigger.vue')['default']
     CalendarGrid: typeof import('./src/components/ui/calendar/CalendarGrid.vue')['default']
@@ -41,7 +38,6 @@ declare module 'vue' {
     CommandList: typeof import('./src/components/ui/command/CommandList.vue')['default']
     CommandSeparator: typeof import('./src/components/ui/command/CommandSeparator.vue')['default']
     CommandShortcut: typeof import('./src/components/ui/command/CommandShortcut.vue')['default']
-    DateInput: typeof import('./src/components/DateInput.vue')['default']
     DialogClose: typeof import('./src/components/ui/dialog/DialogClose.vue')['default']
     DialogContent: typeof import('./src/components/ui/dialog/DialogContent.vue')['default']
     DialogDescription: typeof import('./src/components/ui/dialog/DialogDescription.vue')['default']
@@ -89,7 +85,6 @@ declare module 'vue' {
     PrimarySelect: typeof import('./src/components/PrimarySelect.vue')['default']
     PrimaryTagsInput: typeof import('./src/components/PrimaryTagsInput.vue')['default']
     PrimaryTextarea: typeof import('./src/components/PrimaryTextarea.vue')['default']
-    ProductCard: typeof import('./src/components/ProductCard.vue')['default']
     RadioFilter: typeof import('./src/components/ui/products-filter/RadioFilter.vue')['default']
     RadioGroup: typeof import('./src/components/ui/radio-group/RadioGroup.vue')['default']
     RadioGroupItem: typeof import('./src/components/ui/radio-group/RadioGroupItem.vue')['default']
@@ -116,7 +111,6 @@ declare module 'vue' {
     SheetHeader: typeof import('./src/components/ui/sheet/SheetHeader.vue')['default']
     SheetTitle: typeof import('./src/components/ui/sheet/SheetTitle.vue')['default']
     SheetTrigger: typeof import('./src/components/ui/sheet/SheetTrigger.vue')['default']
-    SubButtonCarousel: typeof import('./src/components/TheCarousel/SubButtonCarousel.vue')['default']
     TableBody: typeof import('./src/components/ui/table/TableBody.vue')['default']
     TableCaption: typeof import('./src/components/ui/table/TableCaption.vue')['default']
     TableCell: typeof import('./src/components/ui/table/TableCell.vue')['default']
@@ -156,7 +150,6 @@ declare module 'vue' {
     TheSpinner: typeof import('./src/components/TheSpinner.vue')['default']
     TheTable: typeof import('./src/components/ui/table/TheTable.vue')['default']
     TheTabs: typeof import('./src/components/ui/tabs/TheTabs.vue')['default']
-    TheTag: typeof import('./src/components/TheTag.vue')['default']
     TheTextarea: typeof import('./src/components/ui/textarea/TheTextarea.vue')['default']
     TheToast: typeof import('./src/components/ui/toast/TheToast.vue')['default']
     TheToaster: typeof import('./src/components/ui/toast/TheToaster.vue')['default']
