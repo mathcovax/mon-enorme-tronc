@@ -1,0 +1,41 @@
+{
+	"COLOR": [
+		"red",
+		"blue",
+		"green",
+		"yellow",
+		"black",
+		"white"
+	],
+	"SIZE": [
+		"small",
+		"medium",
+		"large"
+	],
+	"DIAMETER": [
+		"20mm",
+		"30mm",
+		"40mm",
+		"50mm",
+		"60mm"
+	],
+	"TARGET": [
+		"man",
+		"woman",
+		"man/woman"
+	],
+	"ACCESSORY": [
+		"true",
+		"false"
+	],
+	"MATERIAL": [
+		"wood",
+		"plastic"
+	],
+	"STIMULATION": [
+		"anal",
+		"vaginal",
+		"clitoral",
+		"prostate"
+	]
+}

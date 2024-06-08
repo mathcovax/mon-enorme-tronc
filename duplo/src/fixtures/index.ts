@@ -8,6 +8,7 @@ import { makeWarehouse } from "./entities/warehouse";
 import { makeProduct } from "./entities/product";
 import categoryData from "./data/category.json";
 import productData from "./data/product.json";
+import facetsData from "./data/facets.json";
 import { facetType, makeFacet } from "./entities/facet";
 
 const repeater = <
@@ -93,7 +94,7 @@ repeater(
 				(value) => makeFacet(
 					productSheet.id, 
 					value,
-					"this is facet value"
+					facetsData[value][index % facetsData[value].length]
 				)
 			)
 		]));

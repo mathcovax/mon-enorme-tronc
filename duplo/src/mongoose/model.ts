@@ -5,5 +5,9 @@ import { model } from "mongoose";
 const fullProductSheetMongooseSchema = zodToMongooseSchema(fullProductSheetSchema);
 export const fullProductSheetModel = model(
 	"FullProductSheet",
-	fullProductSheetMongooseSchema
+	fullProductSheetMongooseSchema.index({ 
+		name: "text", 
+		shortDescription: "text",
+		description: "text",
+	})
 );

@@ -1,5 +1,5 @@
 declare global {
-	const filters: (typeof import("./filters"))["filters"];
+	const filterDefs: (typeof import("./filters"))["filterDefs"];
 
 	interface FilterDefBase<T extends string> {
 		type: T
@@ -18,14 +18,17 @@ declare global {
 
 	type FilterDefRange = FilterDefBase<"range">
 
+	type FilterDefSearch = Omit<FilterDefBase<"full-text">, "path">
+
 	type FilterDef = 
 		| FilterDefCheckbox 
 		| FilterDefRadio 
 		| FilterDefToggle 
 		| FilterDefRange
+		| FilterDefSearch
 }
 
-export const filters: FilterDef[] = [
+export const filterDefs: FilterDef[] = [
 	{
 		type: "checkbox",
 		name: "color",
@@ -56,7 +59,7 @@ export const filters: FilterDef[] = [
 	},
 	{
 		type: "toggle",
-		name: "Accessory",
+		name: "accessory",
 		path: "facets.ACCESSORY",
 	},
 	{
@@ -77,8 +80,12 @@ export const filters: FilterDef[] = [
 		type: "range",
 		name: "price",
 		path: "price"
-	}
+	},
+	{
+		type: "full-text",
+		name: "search",
+	},
 ];
 
 //@ts-expect-error var 'global' cause type error.
-global.filters = filters;
+global.filterDefs = filterDefs;
