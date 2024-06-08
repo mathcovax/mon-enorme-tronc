@@ -1,48 +1,84 @@
 declare global {
 	const filters: (typeof import("./filters"))["filters"];
+
+	interface FilterDefBase<T extends string> {
+		type: T
+		name: string
+		path: string
+	}
+	interface FilterDefCheckbox extends FilterDefBase<"checkbox"> {
+		values: string[]
+	}
+	
+	interface FilterDefRadio extends FilterDefBase<"radio"> {
+		values: string[]
+	}
+	
+	type FilterDefToggle = FilterDefBase<"toggle">
+
+	type FilterDefRange = FilterDefBase<"range">
+
+	type FilterDef = 
+		| FilterDefCheckbox 
+		| FilterDefRadio 
+		| FilterDefToggle 
+		| FilterDefRange
 }
 
-//@ts-expect-error var 'global' cause type error.
-export const filters = global.filters = [
+export const filters: FilterDef[] = [
 	{
-		type: "Checkbox",
-		name: "Color",
+		type: "checkbox",
+		name: "color",
+		path: "facets.COLOR",
 		values: [
 			"red", "blue", "green", "yellow", "black", "white"
 		]
 	},
 	{
-		type: "Radio",
-		name: "Size",
+		type: "checkbox",
+		name: "size",
+		path: "facets.SIZE",
 		values: ["small", "medium", "large"]
 	},
 	{
-		type: "Toggle",
-		name: "Diameter",
+		type: "checkbox",
+		name: "diameter",
+		path: "facets.DIAMETER",
 		values: [
 			"20mm", "30mm", "40mm", "50mm", "60mm"
 		]
 	},
 	{
-		type: "Checkbox",
-		name: "Target",
+		type: "radio",
+		name: "target",
+		path: "facets.TARGET",
 		values: ["man", "woman", "man/woman"]
 	},
 	{
-		type: "Checkbox",
+		type: "toggle",
 		name: "Accessory",
-		values: [
-			"case", "bag", "stand", "gloves"
-		]
+		path: "facets.ACCESSORY",
 	},
 	{
-		type: "Checkbox",
-		name: "Material",
+		type: "checkbox",
+		name: "material",
+		path: "facets.MATERIAL",
 		values: ["wood", "plastic"]
 	},
 	{
-		type: "Toggle",
-		name: "Stimulation",
-		value: "vibrating"
+		type: "checkbox",
+		name: "stimulation",
+		path: "facets.STIMULATION",
+		values: [
+			"anal", "vaginal", "clitoral", "prostate"
+		]
+	},
+	{
+		type: "range",
+		name: "price",
+		path: "price"
 	}
 ];
+
+//@ts-expect-error var 'global' cause type error.
+global.filters = filters;
