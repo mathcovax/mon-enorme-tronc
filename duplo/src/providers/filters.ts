@@ -1,34 +1,45 @@
 declare global {
 	const filterDefs: (typeof import("./filters"))["filterDefs"];
 
-	interface FilterDefBase<T extends string> {
+	interface FilterDefBase<
+		T extends string, 
+		N extends string = string
+	> {
 		type: T
-		name: string
+		name: N
 		path: string
 	}
-	interface FilterDefCheckbox extends FilterDefBase<"checkbox"> {
+	interface FilterDefCheckbox<N extends string = string> extends FilterDefBase<"checkbox", N> {
 		values: string[]
 	}
 	
-	interface FilterDefRadio extends FilterDefBase<"radio"> {
+	interface FilterDefRadio<N extends string = string> extends FilterDefBase<"radio", N> {
 		values: string[]
 	}
 	
-	type FilterDefToggle = FilterDefBase<"toggle">
+	type FilterDefToggle<N extends string = string> = FilterDefBase<"toggle", N>
 
-	type FilterDefRange = FilterDefBase<"range">
+	type FilterDefRange<N extends string = string> = FilterDefBase<"range", N>
 
-	type FilterDefSearch = Omit<FilterDefBase<"full-text">, "path">
+	type FilterDefSearch<N extends string = string> = Omit<FilterDefBase<"full-text", N>, "path">
 
-	type FilterDef = 
-		| FilterDefCheckbox 
-		| FilterDefRadio 
-		| FilterDefToggle 
-		| FilterDefRange
-		| FilterDefSearch
+	type FilterDef<N extends string = string> = 
+		| FilterDefCheckbox<N>
+		| FilterDefRadio<N>
+		| FilterDefToggle<N> 
+		| FilterDefRange<N>
+		| FilterDefSearch<N>
 }
 
-export const filterDefs: FilterDef[] = [
+function defineFilters<
+	N extends string,
+	F extends FilterDef<N>
+>(filtersDef: F[]): F[]
+{
+	return filtersDef;
+}
+
+export const filterDefs = defineFilters([
 	{
 		type: "checkbox",
 		name: "color",
@@ -85,7 +96,7 @@ export const filterDefs: FilterDef[] = [
 		type: "full-text",
 		name: "search",
 	},
-];
+]);
 
 //@ts-expect-error var 'global' cause type error.
 global.filterDefs = filterDefs;
