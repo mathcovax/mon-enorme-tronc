@@ -9,19 +9,19 @@ declare global {
 		name: N
 		path: string
 	}
-	interface FilterDefCheckbox<N extends string = string> extends FilterDefBase<"checkbox", N> {
+	interface FilterDefCheckbox<N extends string = string> extends FilterDefBase<"CHECKBOX", N> {
 		values: string[]
 	}
 	
-	interface FilterDefRadio<N extends string = string> extends FilterDefBase<"radio", N> {
+	interface FilterDefRadio<N extends string = string> extends FilterDefBase<"RADIO", N> {
 		values: string[]
 	}
 	
-	type FilterDefToggle<N extends string = string> = FilterDefBase<"toggle", N>
+	type FilterDefToggle<N extends string = string> = FilterDefBase<"TOGGLE", N>
 
-	type FilterDefRange<N extends string = string> = FilterDefBase<"range", N>
+	type FilterDefRange<N extends string = string> = FilterDefBase<"RANGE", N>
 
-	type FilterDefSearch<N extends string = string> = Omit<FilterDefBase<"full-text", N>, "path">
+	type FilterDefSearch<N extends string = string> = Omit<FilterDefBase<"FULL-TEXT", N>, "path">
 
 	type FilterDef<N extends string = string> = 
 		| FilterDefCheckbox<N>
@@ -41,7 +41,7 @@ function defineFilters<
 
 export const filterDefs = defineFilters([
 	{
-		type: "checkbox",
+		type: "CHECKBOX",
 		name: "color",
 		path: "facets.COLOR",
 		values: [
@@ -49,13 +49,13 @@ export const filterDefs = defineFilters([
 		]
 	},
 	{
-		type: "checkbox",
+		type: "CHECKBOX",
 		name: "size",
 		path: "facets.SIZE",
 		values: ["small", "medium", "large"]
 	},
 	{
-		type: "checkbox",
+		type: "CHECKBOX",
 		name: "diameter",
 		path: "facets.DIAMETER",
 		values: [
@@ -63,24 +63,24 @@ export const filterDefs = defineFilters([
 		]
 	},
 	{
-		type: "radio",
+		type: "RADIO",
 		name: "target",
 		path: "facets.TARGET",
 		values: ["man", "woman", "man/woman"]
 	},
 	{
-		type: "toggle",
+		type: "TOGGLE",
 		name: "accessory",
 		path: "facets.ACCESSORY",
 	},
 	{
-		type: "checkbox",
+		type: "CHECKBOX",
 		name: "material",
 		path: "facets.MATERIAL",
 		values: ["wood", "plastic"]
 	},
 	{
-		type: "checkbox",
+		type: "CHECKBOX",
 		name: "stimulation",
 		path: "facets.STIMULATION",
 		values: [
@@ -88,12 +88,12 @@ export const filterDefs = defineFilters([
 		]
 	},
 	{
-		type: "range",
+		type: "RANGE",
 		name: "price",
 		path: "price"
 	},
 	{
-		type: "full-text",
+		type: "FULL-TEXT",
 		name: "search",
 	},
 ]);

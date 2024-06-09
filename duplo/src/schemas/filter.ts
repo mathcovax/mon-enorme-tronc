@@ -1,13 +1,14 @@
-export const filtersSchema = zod.object({
-	type: zod.enum([
-		"COLOR",
-		"SIZE",
-		"DIAMETER",
-		"TARGET",
-		"ACCESSORY",
-		"MATERIAL",
-		"STIMULATION"
-	]),
-	name: zod.string(),
-	values: zod.array(zod.string()) //valeur de l'enum
-});
+export const filtersSchema = zod.array(
+	zod.object({
+		type: zod.enum([
+			"CHECKBOX",
+			"TOGGLE",
+			"RANGE",
+			"RADIO",
+			"FULL-TEXT"
+		]),
+		name: zod.string(),
+		path: zod.string().or(zod.undefined()),
+		values: zod.array(zod.string()).or(zod.undefined())
+	})
+);

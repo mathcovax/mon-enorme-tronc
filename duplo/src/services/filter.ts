@@ -12,7 +12,7 @@ export class FilterService {
 			(filterDef) => {
 				const filterValue = filtersValues[filterDef.name];
 
-				if (filterDef.type === "checkbox") {
+				if (filterDef.type === "CHECKBOX") {
 					const result = FilterService.filtersValueSchema[filterDef.type]
 						.accelerator?.safeParse(filterValue);
 
@@ -26,7 +26,7 @@ export class FilterService {
 						};
 					}
 				}
-				else if (filterDef.type === "radio") {
+				else if (filterDef.type === "RADIO") {
 					const result = FilterService.filtersValueSchema[filterDef.type]
 						.accelerator?.safeParse(filterValue);
 
@@ -38,7 +38,7 @@ export class FilterService {
 						};
 					}
 				}
-				else if (filterDef.type === "toggle") {
+				else if (filterDef.type === "TOGGLE") {
 					const result = FilterService.filtersValueSchema[filterDef.type]
 						.accelerator?.safeParse(filterValue);
 
@@ -48,7 +48,7 @@ export class FilterService {
 						};
 					}
 				}
-				else if (filterDef.type === "range") {
+				else if (filterDef.type === "RANGE") {
 					const result = FilterService.filtersValueSchema[filterDef.type]
 						.accelerator?.safeParse(filterValue);
 
@@ -63,7 +63,7 @@ export class FilterService {
 						};
 					}
 				}
-				else if (filterDef.type === "full-text") {
+				else if (filterDef.type === "FULL-TEXT") {
 					const result = FilterService.filtersValueSchema[filterDef.type]
 						.accelerator?.safeParse(filterValue);
 						
@@ -99,11 +99,11 @@ export class FilterService {
 	}
 
 	static filtersValueSchema = contract<{[P in FilterDef["type"]]: Zod.ZodType}>()({
-		checkbox: zodToArray(zod.string()),
-		radio: zod.string(),
-		toggle: zod.enum(["true", "false"]),
-		range: zod.tuple([zod.coerce.number(), zod.coerce.number()]),
-		"full-text": zod.string(),
+		CHECKBOX: zodToArray(zod.string()),
+		RADIO: zod.string(),
+		TOGGLE: zod.enum(["true", "false"]),
+		RANGE: zod.tuple([zod.coerce.number(), zod.coerce.number()]),
+		"FULL-TEXT": zod.string(),
 	});
 
 	static {
