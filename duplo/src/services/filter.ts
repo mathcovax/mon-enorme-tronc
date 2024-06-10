@@ -5,10 +5,17 @@ import { FilterQuery, PipelineStage } from "mongoose";
 
 export class FilterService {
 	static makePipelinesStage(
+		filtersValues: Zod.infer<typeof FilterService.filtersQuerySchema>, 
+		keepNull: true
+	): (PipelineStage | null)[]
+	static makePipelinesStage(
 		filtersValues: Zod.infer<typeof FilterService.filtersQuerySchema>
 	): PipelineStage[]
-	{
-		return filterDefs.map<PipelineStage | null>(
+	static makePipelinesStage(
+		filtersValues: Zod.infer<typeof FilterService.filtersQuerySchema>,
+		keepNull?: boolean,
+	) {
+		const pipelines = filterDefs.map<PipelineStage | null>(
 			(filterDef) => {
 				const filterValue = filtersValues[filterDef.name];
 
@@ -80,7 +87,14 @@ export class FilterService {
 
 				return null;
 			}
-		).filter((v): v is PipelineStage => !!v);
+		);
+
+		if (keepNull) {
+			return pipelines;
+		}
+		else {
+			return pipelines.filter((v): v is PipelineStage => !!v);
+		}
 	}
 
 	static get filtersQuerySchema() {
