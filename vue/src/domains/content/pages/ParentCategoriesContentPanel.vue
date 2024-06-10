@@ -35,6 +35,10 @@ const cols: BigTableColDef<ParentCategory>[] = [
 		title: $t("label.categories"),
 		getter: i => i.categories?.map(({ categoryName }) => categoryName).join(", ")
 	},
+	{
+		title: $t("label.actions"),
+		slotName: "actions"
+	},
 ];
 
 async function submitCreate() {
@@ -208,8 +212,13 @@ async function submitPatch() {
 					:current-page="(parentCategoriesQuery.page ?? 0) + 1"
 					@click-next="next"
 					@click-previous="previous"
-					@click-on-row="openPopup"
-				/>
+				>
+					<template #actions="{item}">
+						<SecondaryButton @click="openPopup(item)">
+							<TheIcon icon="square-edit-outline" />
+						</SecondaryButton>
+					</template>
+				</BigTable>
 			</div>
 		</div>
 

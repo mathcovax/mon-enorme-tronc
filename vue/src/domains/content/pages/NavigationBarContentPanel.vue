@@ -23,7 +23,11 @@ const cols: BigTableColDef<NavigationItem>[] = [
 			: i.type === "CATEGORY"
 				? i.categoryName
 				: `${i.title} : ${i.url}`
-	}
+	},
+	{
+		title: $t("label.actions"),
+		slotName: "actions"
+	},
 ];  
 
 async function submitCreate() {
@@ -138,8 +142,13 @@ function deleteItem() {
 			<BigTable
 				:items="navigationItems"
 				:cols="cols"
-				@click-on-row="openPopup"
-			/>
+			>
+				<template #actions="{item}">
+					<SecondaryButton @click="openPopup(item)">
+						<TheIcon icon="square-edit-outline" />
+					</SecondaryButton>
+				</template>
+			</BigTable>
 		</div>
 
 		<ThePopup

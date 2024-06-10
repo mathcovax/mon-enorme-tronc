@@ -1,35 +1,35 @@
 <script setup lang="ts">
-import type { CategoryProductSheet } from "@/lib/utils";
-import ProductCard from "@/domains/product/components/ProductCard.vue";
+// import type { CategoryProductSheet } from "@/lib/utils";
+// import ProductCard from "@/domains/product/components/ProductCard.vue";
 
 const $pt = usePageTranslate(); 
 
-const products = ref<CategoryProductSheet[]>([
-	{
-		id: "1",
-		name: "Petit tronc",
-		description: "Pour un moment tranquille sans écorce.",
-		shortDescription: "Pour un moment tranquille sans écorce.",
-		price: 59,
-		organizationId: "1",
-	},
-	{
-		id: "2",
-		name: "Grand tronc",
-		description: "Pour un moment tranquille avec écorce.",
-		shortDescription: "Pour un moment tranquille avec écorce.",
-		price: 99,
-		organizationId: "1",
-	},
-	{
-		id: "3",
-		name: "Énorme tronc",
-		description: "Pour un moment tranquille avec écorce, feuilles et fruits.",
-		shortDescription: "Pour un moment tranquille avec écorce, feuilles et fruits.",
-		price: 199,
-		organizationId: "1",
-	},
-]);
+// const products = ref<CategoryProductSheet[]>([
+// 	{
+// 		id: "1",
+// 		name: "Petit tronc",
+// 		description: "Pour un moment tranquille sans écorce.",
+// 		shortDescription: "Pour un moment tranquille sans écorce.",
+// 		price: 59,
+// 		organizationId: "1",
+// 	},
+// 	{
+// 		id: "2",
+// 		name: "Grand tronc",
+// 		description: "Pour un moment tranquille avec écorce.",
+// 		shortDescription: "Pour un moment tranquille avec écorce.",
+// 		price: 99,
+// 		organizationId: "1",
+// 	},
+// 	{
+// 		id: "3",
+// 		name: "Énorme tronc",
+// 		description: "Pour un moment tranquille avec écorce, feuilles et fruits.",
+// 		shortDescription: "Pour un moment tranquille avec écorce, feuilles et fruits.",
+// 		price: 199,
+// 		organizationId: "1",
+// 	},
+// ]);
 </script>
 
 <template>
@@ -70,12 +70,12 @@ const products = ref<CategoryProductSheet[]>([
 
 			<ScrollArea class="w-full">
 				<div class="flex gap-6 justify-center">
-					<ProductCard
+					<!-- <ProductCard
 						v-for="product in products"
 						:key="product.name"
 						:product="product"
 						class="w-44 lg:w-64"
-					/>
+					/> -->
 				</div>
 
 				<ScrollBar orientation="horizontal" />
@@ -101,12 +101,12 @@ const products = ref<CategoryProductSheet[]>([
 
 			<ScrollArea class="w-full">
 				<div class="flex gap-6 justify-center">
-					<ProductCard
+					<!-- <ProductCard
 						v-for="product in products"
 						:key="product.name"
 						:product="product"
 						class="w-44 lg:w-64"
-					/>
+					/> -->
 				</div>
 
 				<ScrollBar orientation="horizontal" />

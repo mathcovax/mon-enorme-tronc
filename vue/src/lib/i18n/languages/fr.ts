@@ -221,7 +221,7 @@ export default {
 		[routerPageName.ORGANIZATION_MANAGE_PRODUCT]: {
 			title: "Liste des produits",
 			table: {
-				ref: "Ref°",
+				ref: "Ref",
 				productSheetName: "Fiche Produit",
 				lastEdit: "Modifiée le",
 				status: "Status",
