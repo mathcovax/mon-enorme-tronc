@@ -1,33 +1,36 @@
 <script setup lang="ts">
 import { marked } from "marked";
 import type { CategoryProductSheet } from "@/lib/utils";
-import { useGetCategoryProductImage } from "../composables/useGetCategoryProductImage";
 
 const $pt = usePageTranslate();
 
 const product = ref<CategoryProductSheet>({
 	id: "",
 	name: "",
-	description: "",
-	shortDescription: "",
 	price: 0,
-	organizationId: ""
+	shortDescription: "",
+	description: "",
+	quantity: 0,
+	categories: [""],
+	images: [""],
+	organization: {
+		id: "",
+		name: "",
+	},
+	facets: {},
 });
 
-const { productSheetId } = useRouteParams({ 
+const { productSheetId: id } = useRouteParams({ 
 	productSheetId: zod.string(), 
 });
-const { imageUrl, getCategoryProductImage } = useGetCategoryProductImage(productSheetId);
 
 function getProductData() {
-	getCategoryProductImage();
-
 	return duploTo.enriched
 		.get(
-			"/product-sheet/{productSheetId}",
-			{ params: { productSheetId } }
+			"/full-product-sheet/{id}",
+			{ params: { id } }
 		)
-		.info("productSheet.found", (data) => {
+		.info("fullProductSheet", (data) => {
 			product.value = data;
 		})
 		.result;
@@ -48,8 +51,8 @@ getProductData();
 			<div class="flex flex-col sm:flex-row gap-10">
 				<div class="lg:shrink-0 w-full max-w-80 aspect-square sm:aspect-portrait">
 					<img
-						v-if="imageUrl"
-						:src="imageUrl"
+						v-if="product.images.length > 0"
+						:src="product.images[0]"
 						alt="product"
 						class="w-full h-full object-cover"
 					>

@@ -6,10 +6,10 @@ export function useGetCategoryProductSheets(categoryName: string) {
 	function getCategoryProductSheets(page?: number) {
 		return duploTo.enriched
 			.get(
-				"/category/{categoryName}/product-sheets",
+				"/category/{categoryName}/full-product-sheets",
 				{ params: { categoryName }, query: { page } }
 			)
-			.info("category.products", (data) => {
+			.info("fullProductSheets", (data) => {
 				productSheets.value = data;
 			})
 			.result;

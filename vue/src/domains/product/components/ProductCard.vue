@@ -1,17 +1,11 @@
 <script setup lang="ts">
 import type { CategoryProductSheet } from "@/lib/utils";
-import { useGetCategoryProductImage } from "../composables/useGetCategoryProductImage";
 
 const { PRODUCT_PAGE } = routerPageName;
 
-const props = defineProps<{
+defineProps<{
 	product: CategoryProductSheet;
 }>();
-
-const productSheetId = props.product.id;
-const { imageUrl, getCategoryProductImage } = useGetCategoryProductImage(productSheetId);
-
-getCategoryProductImage();
 </script>
 
 <template>
@@ -19,9 +13,9 @@ getCategoryProductImage();
 		<RouterLink :to="{ name: PRODUCT_PAGE, params: { productSheetId: product.id } }">
 			<CardHeader>
 				<img
-					v-if="imageUrl"
-					:src="imageUrl"
-					alt="placeholder"
+					v-if="product.images.length > 0"
+					:src="product.images[0]"
+					alt="product"
 					class="w-full aspect-square rounded-2xl"
 				>
 
