@@ -76,3 +76,31 @@ export const PATCH = (method: Methods, path: string) => mustBeConnected({ pickup
 		},
 		new IHaveSentThis(CreatedHttpException.code, "user.edited", zod.string())
 	);
+
+/* METHOD : DELETE, PATH : /user */
+export const DELETE = (method: Methods, path: string) => mustBeConnected({ pickup: ["accessTokenContent"] })
+	.declareRoute(method, path)
+	.check(
+		userExistCheck,
+		{
+			input: p => inputUser.id(
+				p("accessTokenContent").id
+			),
+			...userExistCheck.preCompletions.mustExist
+		},
+		new IHaveSentThis(NotFoundHttpException.code, "user.notfound")
+	)
+	.handler(
+		async ({ pickup }) => {
+			const { id } = pickup("accessTokenContent");
+
+			await prisma.user.delete({
+				where: {
+					id,
+				},
+			});
+
+			throw new OkHttpException("user.deleted");
+		},
+		new IHaveSentThis(OkHttpException.code, "user.deleted")
+	);
