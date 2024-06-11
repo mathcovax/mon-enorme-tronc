@@ -1,16 +1,14 @@
 
 <script setup lang="ts">
-interface Product {
-	name: string;
-	description: string;
-	quantity: number;
-	price: number;
-	url: string;
-}
+import type { ItemsCart } from "@/lib/utils";
+
+// supprimer si existe déja (pas trouvé d'équivalent)
+type ElementType<T extends readonly unknown[]> = T extends readonly (infer U)[] ? U : never;
 
 defineProps<{
-	product: Product;
-
+	product: ElementType<ItemsCart>;
+	addProduct:(productSheetId: string) => void;
+	removeProduct:(productSheetId: string) => void;
 }>();
 </script>
 
@@ -19,7 +17,7 @@ defineProps<{
 		<div class="flex gap-8 items-center">
 			<CardHeader class="p-0">
 				<img
-					src="https://via.placeholder.com/250"
+					:src="product.imageUrl"
 					alt="placeholder"
 					width="64"
 					height="64"
@@ -28,14 +26,14 @@ defineProps<{
 			</CardHeader>
 
 			<CardContent class="p-0 flex flex-col gap-1">
-				<RouterLink :to="product.url">
+				<RouterLink :to="'/product/' + product.productSheetId">
 					<CardTitle>
 						{{ product.name }}
 					</CardTitle>
 				</RouterLink>
 
 				<CardDescription>
-					{{ product.description }}
+					{{ product.shortDescription }}
 				</CardDescription>
 			</CardContent>
 		</div>
@@ -45,6 +43,7 @@ defineProps<{
 				<TheButton
 					class="text-xl aspect-square"
 					variant="secondary"
+					@click="removeProduct(product.productSheetId)"
 				>
 					-
 				</TheButton>
@@ -56,6 +55,7 @@ defineProps<{
 				<TheButton
 					class="text-xl aspect-square"
 					variant="secondary"
+					@click="addProduct(product.productSheetId)"
 				>
 					+
 				</TheButton>

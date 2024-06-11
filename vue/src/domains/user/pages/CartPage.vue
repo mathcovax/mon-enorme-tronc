@@ -1,28 +1,30 @@
 <script setup lang="ts">
 import ProductCard from "../components/ProductCard.vue";
+import { useGetItemsCart } from "../composables/useGetItemsCart";
 
 const $pt = usePageTranslate();
+const { itemsCart, getItemsCart } = useGetItemsCart();
 
-const products = ref(
-	[
-		{
-			id: 1,
-			name: "Product 1",
-			description: "Description of product 1",
-			quantity: 1,
-			price: 10,
-			url: "#"
-		},
-		{
-			id: 2,
-			name: "Product 2",
-			description: "Description of product 2",
-			quantity: 1,
-			price: 20,
-			url: "#"
-		},
-	],
-); // TODO: replace with real data
+const addProduct = (productSheetId: string) => 
+	duploTo.enriched
+		.post(
+			"/user/article",
+			{
+				productSheetId,
+			},
+		)
+		.info("article.created", () => getItemsCart());
+
+const removeProduct = (productSheetId: string) =>
+	duploTo.enriched
+		.delete(
+			"/article/{productSheetId}",
+			{ params: { productSheetId } }
+		)
+		.info("article.deleted", () => getItemsCart());
+
+
+getItemsCart();
 </script>
 
 <template>
@@ -34,10 +36,10 @@ const products = ref(
 
 			<div
 				class="mb-12 flex flex-1 justify-center rounded-lg border border-dashed shadow-sm"
-				:class="{ 'items-center': products.length === 0 }"
+				:class="{ 'items-center': itemsCart.length === 0 }"
 			>
 				<div
-					v-if="products.length === 0"
+					v-if="itemsCart.length === 0"
 					class="flex flex-col items-center gap-1 text-center"
 				>
 					<h2 class="text-2xl font-bold tracking-tight">
@@ -58,11 +60,13 @@ const products = ref(
 					class="w-full"
 				>
 					<li
-						v-for="product in products"
-						:key="product.id"
+						v-for="item in itemsCart"
+						:key="item.productSheetId"
 					>
 						<ProductCard 
-							:product="product"
+							:product="item"
+							:add-product="addProduct"
+							:remove-product="removeProduct"
 						/>
 					</li>
 				</ul>

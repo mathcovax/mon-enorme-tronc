@@ -24,6 +24,7 @@ model user {
     organization       organization?
     muted              Boolean                @default(false)
     userToOrganization user_to_organization[]
+    article            article[]
 }
 
 enum primordial_role {
@@ -106,6 +107,7 @@ model product_sheet {
     products         product[]
     facets           facet[]
     status           product_sheet_status        @default(UNVERIFIED)
+    article          article[]
 }
 
 enum product_sheet_status {
@@ -198,4 +200,13 @@ enum facet_type {
     ACCESSORY
     MATERIAL
     STIMULATION
+}
+
+model article {
+    id             String        @id @default(uuid())
+    user           user          @relation(fields: [userId], references: [id])
+    userId         String
+    productSheet   product_sheet @relation(fields: [productSheetId], references: [id])
+    productSheetId String
+    createdAt      DateTime      @default(now())
 }
