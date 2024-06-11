@@ -7,7 +7,11 @@ import { PipelineStage } from "mongoose";
 export const GET = async (method: Methods, path: string) => duplo
 	.declareRoute(method, path)
 	.extract({
-		query: FilterService.filtersQuerySchema
+		query: zod.object({
+			categoryName: zod.string().optional()
+		})
+			.and(FilterService.filtersQuerySchema)
+			.default({})
 	})
 	.cut(
 		({ pickup }) => {
@@ -121,11 +125,12 @@ export const GET = async (method: Methods, path: string) => duplo
 	)
 	.handler(
 		async ({ pickup }) => {
-			const query = pickup("query");
+			const { categoryName, ...query } = pickup("query");
 			const pipelinesStages = FilterService.makePipelinesStage(query);
 			const quantityFiltersPipelineStage = pickup("quantityFiltersPipelineStage");
 
 			const filters = await fullProductSheetModel.aggregate([
+				...(categoryName ? [{ $match: { categories: categoryName } }] : []),
 				...pipelinesStages,
 				...quantityFiltersPipelineStage
 			]).then(([quantitys]: Record<string, number>[]) => {
@@ -210,7 +215,7 @@ export const GET = async (method: Methods, path: string) => duplo
 					}
 
 					return null;
-				}).filter((filter): filter is DeepFilter | SimpleFilter => !!filter)
+				}).filter((filter): filter is DeepFilter | SimpleFilter | RangeFilterSchema => !!filter)
 			);
 
 			throw new OkHttpException("filters", filters);

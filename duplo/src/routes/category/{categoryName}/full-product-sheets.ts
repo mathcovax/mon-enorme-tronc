@@ -46,7 +46,7 @@ export const GET = (method: Methods, path: string) =>
 				const filters = FilterService.makePipelinesStage(filtersValue);
 
 				const fullProductSheets = await fullProductSheetModel.aggregate([
-					{ $match: { "categories": categoryName } },
+					{ $match: { categories: categoryName } },
 					...filters,
 					{ $skip: page * take },
 					{ $limit: take },
