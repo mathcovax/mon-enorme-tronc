@@ -1,14 +1,37 @@
-export const filtersSchema = zod.array(
-	zod.object({
-		type: zod.enum([
-			"CHECKBOX",
-			"TOGGLE",
-			"RANGE",
-			"RADIO",
-			"FULL-TEXT"
-		]),
-		name: zod.string(),
-		path: zod.string().or(zod.undefined()),
-		values: zod.array(zod.string()).or(zod.undefined())
-	})
-);
+type SimpleFilterType = Extract<FilterDef["type"], "FULL-TEXT" | "TOGGLE">
+type DeepFilterType = Extract<FilterDef["type"], "CHECKBOX" | "RADIO">
+
+export const simpleFilterSchema = zod.object({
+	type: zod.enum<string, TuplifyUnion<SimpleFilterType>>(["FULL-TEXT", "TOGGLE"]),
+	name: zod.string(),
+	quantity: zod.number(),
+});
+
+export type SimpleFilter = Zod.infer<typeof simpleFilterSchema>
+
+export const rangeFilterSchema = zod.object({
+	type: zod.literal("RANGE"),
+	name: zod.string(),
+	quantity: zod.number(),
+	min: zod.number(),
+	max: zod.number(),
+});
+
+export type RangeFilterSchema = Zod.infer<typeof rangeFilterSchema>
+
+export const deepFilterSchema = zod.object({
+	type: zod.enum<string, TuplifyUnion<DeepFilterType>>(["CHECKBOX", "RADIO"]),
+	name: zod.string(),
+	values: zod.object({
+		value: zod.string(),
+		quantity: zod.number(),
+	}).array()
+});
+
+export type DeepFilter = Zod.infer<typeof deepFilterSchema>
+
+export const filterSchema = zod.union([
+	deepFilterSchema,
+	simpleFilterSchema,
+	rangeFilterSchema,
+]);
