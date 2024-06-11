@@ -1,14 +1,23 @@
 <script setup lang="ts">
+import PrimaryButton from "@/components/PrimaryButton.vue";
 import { useEditUserProfilForm } from "../composables/useEditUserProfilForm";
 
 const $pt = usePageTranslate();
 
-const user = useUserStore().user;
+const userStore = useUserStore();
 
 const {
 	EditUserProfilForm,
 	checkEditUserProfilForm,
-} = useEditUserProfilForm(user?.id);
+} = useEditUserProfilForm(userStore.user?.id);
+
+function deleteAccount() { // TODO: check relation with other entities
+	duploTo.enriched
+		.delete("/user")
+		.result;
+
+	// userStore.removeAccessToken();
+}
 
 async function submit() {
 	const formFields = await checkEditUserProfilForm();
@@ -49,7 +58,7 @@ async function submit() {
 					</div>
 
 					<div class="text-center">
-						{{ user?.firstname }} {{ user?.lastname }}
+						{{ userStore.user?.firstname }} {{ userStore.user?.lastname }}
 					</div>
 				</aside>
 
@@ -64,6 +73,19 @@ async function submit() {
 							{{ $t("button.save") }}
 						</PrimaryButton>
 					</EditUserProfilForm>
+
+					<WithValidation
+						:title="$pt('popup.title')"
+						:content="$pt('popup.content')"
+						@validate="deleteAccount"
+					>
+						<PrimaryButton
+							variant="destructive"
+							class="w-full"
+						>
+							{{ $pt("deletAccount") }}
+						</PrimaryButton>
+					</WithValidation>
 				</div>
 			</div>
 		</div>

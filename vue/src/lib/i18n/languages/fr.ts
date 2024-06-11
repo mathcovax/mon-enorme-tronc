@@ -21,6 +21,11 @@ export default {
 		},
 		[routerPageName.USER_EDIT_PROFIL]: {
 			title: "Mon profil",
+			deletAccount: "Supprimer mon compte",
+			popup: {
+				title: "Supprimer mon compte",
+				content: "Etes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.",
+			}
 		},
 		[routerPageName.USER_ORGANIZATIONS]: {
 			title: "Mes organisations",
