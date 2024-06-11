@@ -25,7 +25,7 @@ const route = useRoute();
 			<nav class="grid gap-2 text-lg font-medium">
 				<RouterLink
 					:to="{ name: ADMIN_PANEL_HOME }"
-					class="text-center text-2xl font-bold"
+					class="mb-6 text-center text-2xl font-bold"
 				>
 					<span>{{ $t("layout.admin.title") }}</span>
 				</RouterLink>

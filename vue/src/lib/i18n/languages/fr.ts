@@ -30,7 +30,7 @@ export default {
 				searchPlaceholder: "Chercher une organization",
 				col: {
 					name: "Nom",
-					active: "Actif",
+					label: "Label",
 					actions: "Actions"
 				},
 				action: {

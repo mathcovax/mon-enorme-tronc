@@ -117,7 +117,7 @@ const $pt = usePageTranslate();
 				variant="outline"
 				class="w-min"
 			>
-				{{ $pt("buttonMore") }}
+				{{ $pt("button.more") }}
 			</TheButton>
 		</div>
 	</section>
