@@ -2,23 +2,44 @@
 import { useGetCategoryProductSheets } from "../composables/useGetCategoryProductSheets";
 import ProductPagination from "../components/ProductPagination.vue";
 import ProductCard from "../components/ProductCard.vue";
+import { useGetComputedFilters } from "../composables/useGetComputedFilters";
+import { useGetFullProductSheetCount } from "../composables/useGetFullProductSheetCount";
+import type { QueryFilters } from "@/lib/utils";
 
 const route = useRoute();
 const { CATEGORIES_PAGE } = routerPageName;
 const $pt = usePageTranslate();
 
-const currentPage = ref(0);
-
 const { categoryName } = useRouteParams({ 
 	categoryName: zod.string(), 
 });
-const { productSheets, totalProductSheets, getCategoryProductSheets } = useGetCategoryProductSheets(categoryName);
 
-getCategoryProductSheets(currentPage.value);
+const { 
+	productSheets, 
+	categoryProductSheetsRefQuery
+} = useGetCategoryProductSheets(categoryName);
+const { 
+	computedFilters, 
+	ComputedFiltersRefQuery
+} = useGetComputedFilters(categoryName);
+const { 
+	fullProductSheetCount, 
+	fullProductSheetCountRefQuery
+} = useGetFullProductSheetCount(categoryName);
+
+const currentPage = computed({
+	get: () => categoryProductSheetsRefQuery.value.page ?? 0,
+	set: (value: number) => categoryProductSheetsRefQuery.value.page = value
+});
+
+function filters(query: QueryFilters) {
+	fullProductSheetCountRefQuery.value;
+	ComputedFiltersRefQuery.value;
+	categoryProductSheetsRefQuery.value;
+}
 
 const updatePage = (page: number) => {
-	currentPage.value = page;
-	getCategoryProductSheets(currentPage.value - 1);
+	currentPage.value = page - 1;
 };
 </script>
 
@@ -34,13 +55,6 @@ const updatePage = (page: number) => {
 					v-if="productSheets.length > 0"
 					class="flex gap-4 items-center text-sm opacity-50"
 				>
-					<span>
-						Affiche les produits de 
-						{{ productSheets.length * currentPage + 1 }} 
-						à
-						{{ Math.min(productSheets.length * (currentPage + 1), totalProductSheets) }}
-					</span>
-
 					<TheSelect default-value="popular">
 						<SelectTrigger class="w-[180px]">
 							<SelectValue />
@@ -69,14 +83,14 @@ const updatePage = (page: number) => {
 				</div>
 			</div>
 
-			<div
-				v-if="totalProductSheets > 0"
-			>
+			<div>
 				<ProductPagination 
-					:items-per-page="productSheets.length"
-					:total-product-sheets="totalProductSheets"
+					v-if="currentPage > 0"
+					:items-per-page="50"
+					:total-product-sheets="fullProductSheetCount"
 					:current-page="currentPage + 1"
 					@update="updatePage($event)"
+					:key="'top-pagination-' + currentPage"
 				/>
 
 				<div class="my-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -89,13 +103,15 @@ const updatePage = (page: number) => {
 				</div>
 
 				<ProductPagination 
-					:items-per-page="productSheets.length"
-					:total-product-sheets="totalProductSheets"
+					v-if="fullProductSheetCount > 50"
+					:items-per-page="50"
+					:total-product-sheets="fullProductSheetCount"
 					:current-page="currentPage + 1"
 					@update="updatePage($event)"
+					:key="'bottom-pagination-' + currentPage"
 				/>
 			</div>
-
+			<!-- 
 			<div
 				v-else
 				class="h-full flex flex-col justify-center items-center gap-1 text-center"
@@ -116,7 +132,7 @@ const updatePage = (page: number) => {
 						{{ $pt("buttonBack") }}
 					</RouterLink>
 				</TheButton>
-			</div>
+			</div> -->
 		</div>
 	</section>
 </template>

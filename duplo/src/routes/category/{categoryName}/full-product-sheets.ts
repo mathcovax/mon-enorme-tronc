@@ -45,7 +45,6 @@ export const GET = (method: Methods, path: string) =>
 				const { page, take, ...filtersValue } = pickup("query");
 				const filters = FilterService.makePipelinesStage(filtersValue);
 		
-				const totalFullProductSheets = await fullProductSheetModel.countDocuments({ categories: categoryName });
 				const fullProductSheets = await fullProductSheetModel.aggregate([
 					{ $match: { categories: categoryName } },
 					...filters,
@@ -53,10 +52,7 @@ export const GET = (method: Methods, path: string) =>
 					{ $limit: take },
 				]);
 		
-				throw new OkHttpException("fullProductSheets", { fullProductSheets, total: totalFullProductSheets });
+				throw new OkHttpException("fullProductSheets", fullProductSheets);
 			},
-			new IHaveSentThis(OkHttpException.code, "fullProductSheets", zod.object({
-				fullProductSheets: fullProductSheetSchema.array(),
-				total: zod.number(),
-			}))
+			new IHaveSentThis(OkHttpException.code, "fullProductSheets", fullProductSheetSchema.array())
 		);

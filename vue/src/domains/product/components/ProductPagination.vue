@@ -5,18 +5,14 @@ const emit = defineEmits<{
 	update: [value: number]
 }>();
 
-const props = defineProps<{
+defineProps<{
 	itemsPerPage: number,
 	totalProductSheets: number,
 	currentPage: number,
 }>();
 
-const newPage = ref(0);
-newPage.value = props.currentPage;
-
-const updatePage = (page: number) => {
-	newPage.value = page + 1;
-	emit("update", newPage.value);
+const update = (page: number) => {
+	emit("update", page);
 };
 </script>
 
@@ -25,9 +21,10 @@ const updatePage = (page: number) => {
 		v-slot="{ page }"
 		:item-per-page="itemsPerPage"
 		:total="totalProductSheets"
+		:sibling-count="1"
 		show-edges
-		:default-page="currentPage"
-		@update:page="updatePage(currentPage)"
+		:page="currentPage"
+		@update:page="update"
 		class="flex justify-center my-8"
 	>
 		<PaginationList
