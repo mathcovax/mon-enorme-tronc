@@ -44,15 +44,19 @@ export const GET = (method: Methods, path: string) =>
 				const { name: categoryName } = pickup("category");
 				const { page, take, ...filtersValue } = pickup("query");
 				const filters = FilterService.makePipelinesStage(filtersValue);
-
+		
+				const totalFullProductSheets = await fullProductSheetModel.countDocuments({ categories: categoryName });
 				const fullProductSheets = await fullProductSheetModel.aggregate([
 					{ $match: { categories: categoryName } },
 					...filters,
 					{ $skip: page * take },
 					{ $limit: take },
 				]);
-
-				throw new OkHttpException("fullProductSheets", fullProductSheets);
+		
+				throw new OkHttpException("fullProductSheets", { fullProductSheets, total: totalFullProductSheets });
 			},
-			new IHaveSentThis(OkHttpException.code, "fullProductSheets", fullProductSheetSchema.array())
+			new IHaveSentThis(OkHttpException.code, "fullProductSheets", zod.object({
+				fullProductSheets: fullProductSheetSchema.array(),
+				total: zod.number(),
+			}))
 		);

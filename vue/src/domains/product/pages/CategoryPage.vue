@@ -1,32 +1,24 @@
 <script setup lang="ts">
 import { useGetCategoryProductSheets } from "../composables/useGetCategoryProductSheets";
-import { ThePagination, PaginationList, PaginationListItem } from "@/components/ui/pagination";
+import ProductPagination from "../components/ProductPagination.vue";
 import ProductCard from "../components/ProductCard.vue";
 
 const route = useRoute();
 const { CATEGORIES_PAGE } = routerPageName;
 const $pt = usePageTranslate();
 
-const itemsPerPage = ref(10);
-const currentPage = ref(1);
+const currentPage = ref(0);
 
 const { categoryName } = useRouteParams({ 
 	categoryName: zod.string(), 
 });
-const { productSheets, getCategoryProductSheets } = useGetCategoryProductSheets(categoryName);
+const { productSheets, totalProductSheets, getCategoryProductSheets } = useGetCategoryProductSheets(categoryName);
 
-getCategoryProductSheets();
-
-const paginatedProducts = computed(() => {
-	const start = (currentPage.value - 1) * itemsPerPage.value;
-	const end = start + itemsPerPage.value;
-
-	return productSheets.value.slice(start, end);
-});
+getCategoryProductSheets(currentPage.value);
 
 const updatePage = (page: number) => {
 	currentPage.value = page;
-	getCategoryProductSheets(currentPage.value);
+	getCategoryProductSheets(currentPage.value - 1);
 };
 </script>
 
@@ -44,9 +36,9 @@ const updatePage = (page: number) => {
 				>
 					<span>
 						Affiche les produits de 
-						{{ (currentPage - 1) * itemsPerPage + 1 }} 
+						{{ productSheets.length * currentPage + 1 }} 
 						à
-						{{ Math.min(currentPage * itemsPerPage, productSheets.length) }}
+						{{ Math.min(productSheets.length * (currentPage + 1), totalProductSheets) }}
 					</span>
 
 					<TheSelect default-value="popular">
@@ -78,108 +70,30 @@ const updatePage = (page: number) => {
 			</div>
 
 			<div
-				v-if="productSheets.length > 0"
+				v-if="totalProductSheets > 0"
 			>
-				<ThePagination
-					v-slot="{ page }"
-					:item-per-page="itemsPerPage"
-					:total="productSheets.length"
-					:sibling-count="1"
-					show-edges
-					:default-page="currentPage"
-					@update:page="updatePage"
-					class="flex justify-center my-8"
-				>
-					<PaginationList
-						v-slot="{ items }"
-						class="flex items-center gap-1"
-					>
-						<PaginationFirst />
-
-						<PaginationPrev />
-
-						<template v-for="(item, index) in items">
-							<PaginationListItem
-								v-if="item.type === 'page'"
-								:key="index"
-								:value="item.value"
-								as-child
-							>
-								<TheButton
-									class="w-10 h-10 p-0"
-									:variant="item.value === page ? 'default' : 'outline'"
-								>
-									{{ item.value }}
-								</TheButton>
-							</PaginationListItem>
-
-							<PaginationEllipsis
-								v-else
-								:key="item.type"
-								:index="index"
-							/>
-						</template>
-
-						<PaginationNext />
-
-						<PaginationLast />
-					</PaginationList>
-				</ThePagination>
+				<ProductPagination 
+					:items-per-page="productSheets.length"
+					:total-product-sheets="totalProductSheets"
+					:current-page="currentPage + 1"
+					@update="updatePage($event)"
+				/>
 
 				<div class="my-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 					<ProductCard
-						v-for="(product, index) in paginatedProducts"
+						v-for="(product, index) in productSheets"
 						:key="index"
 						:product="product"
 						class="w-full max-w-80 mx-auto"
 					/>
 				</div>
 
-				<ThePagination
-					v-slot="{ page }"
-					:item-per-page="itemsPerPage"
-					:total="productSheets.length"
-					:sibling-count="1"
-					show-edges
-					:default-page="currentPage"
-					@update:page="updatePage"
-					class="flex justify-center my-8"
-				>
-					<PaginationList
-						v-slot="{ items }"
-						class="flex items-center gap-1"
-					>
-						<PaginationFirst />
-
-						<PaginationPrev />
-
-						<template v-for="(item, index) in items">
-							<PaginationListItem
-								v-if="item.type === 'page'"
-								:key="index"
-								:value="item.value"
-								as-child
-							>
-								<TheButton
-									class="w-10 h-10 p-0"
-									:variant="item.value === page ? 'default' : 'outline'"
-								>
-									{{ item.value }}
-								</TheButton>
-							</PaginationListItem>
-
-							<PaginationEllipsis
-								v-else
-								:key="item.type"
-								:index="index"
-							/>
-						</template>
-
-						<PaginationNext />
-
-						<PaginationLast />
-					</PaginationList>
-				</ThePagination>
+				<ProductPagination 
+					:items-per-page="productSheets.length"
+					:total-product-sheets="totalProductSheets"
+					:current-page="currentPage + 1"
+					@update="updatePage($event)"
+				/>
 			</div>
 
 			<div
