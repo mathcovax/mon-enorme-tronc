@@ -1,14 +1,14 @@
 
 <script setup lang="ts">
-import type { ItemsCart } from "@/lib/utils";
+import type { Cart } from "@/lib/utils";
 
 // supprimer si existe déja (pas trouvé d'équivalent)
 type ElementType<T extends readonly unknown[]> = T extends readonly (infer U)[] ? U : never;
 
 defineProps<{
-	product: ElementType<ItemsCart>;
-	addProduct:(productSheetId: string) => void;
-	removeProduct:(productSheetId: string) => void;
+	article: ElementType<Cart>;
+	addArticle:(productSheetId: string) => void;
+	removeArticle:(productSheetId: string) => void;
 }>();
 </script>
 
@@ -17,7 +17,7 @@ defineProps<{
 		<div class="flex gap-8 items-center">
 			<CardHeader class="p-0">
 				<img
-					:src="product.imageUrl"
+					:src="article.imageUrl"
 					alt="placeholder"
 					width="64"
 					height="64"
@@ -26,14 +26,14 @@ defineProps<{
 			</CardHeader>
 
 			<CardContent class="p-0 flex flex-col gap-1">
-				<RouterLink :to="'/product/' + product.productSheetId">
+				<RouterLink :to="'/product/' + article.productSheetId">
 					<CardTitle>
-						{{ product.name }}
+						{{ article.name }}
 					</CardTitle>
 				</RouterLink>
 
 				<CardDescription>
-					{{ product.shortDescription }}
+					{{ article.shortDescription }}
 				</CardDescription>
 			</CardContent>
 		</div>
@@ -43,26 +43,26 @@ defineProps<{
 				<TheButton
 					class="text-xl aspect-square"
 					variant="secondary"
-					@click="removeProduct(product.productSheetId)"
+					@click="removeArticle(article.productSheetId)"
 				>
 					-
 				</TheButton>
 
 				<p class="text-lg font-semibold">
-					{{ product.quantity }}
+					{{ article.quantity }}
 				</p>
 
 				<TheButton
 					class="text-xl aspect-square"
 					variant="secondary"
-					@click="addProduct(product.productSheetId)"
+					@click="addArticle(article.productSheetId)"
 				>
 					+
 				</TheButton>
 			</div>
 
 			<p class="text-lg font-semibold">
-				{{ product.price }} €
+				{{ article.price }} €
 			</p>
 		</CardFooter>
 	</TheCard>

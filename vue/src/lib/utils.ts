@@ -145,7 +145,7 @@ export const facetType: TuplifyUnion<FacetType> = [
 	"STIMULATION",
 ];
 
-export type ItemsCart = GetResponseByInfo<
+export type Cart = GetResponseByInfo<
 	GetDef<"GET", "/cart">,
 	"cart.fetched"
 >["body"]

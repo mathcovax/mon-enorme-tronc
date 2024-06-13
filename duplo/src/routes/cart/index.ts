@@ -1,6 +1,5 @@
 import { mustBeConnected } from "@security/mustBeConnected";
 import { cartSchema } from "@schemas/cart";
-import { type getZodOutput } from "@utils/zod";
 
 /* METHOD : GET, PATH : /cart */
 export const GET = (method: Methods, path: string) => mustBeConnected({ pickup: ["accessTokenContent"] })
@@ -9,7 +8,7 @@ export const GET = (method: Methods, path: string) => mustBeConnected({ pickup: 
 		async ({ pickup }) => {
 			const { id: userId } = pickup("accessTokenContent");
 
-			const cart = await prisma.$queryRaw<getZodOutput<typeof cartSchema>[]>`
+			const cart = await prisma.$queryRaw<Zod.infer<typeof cartSchema>[]>`
 				WITH user_article AS (
 					SELECT 
 						"productSheetId", 
@@ -39,7 +38,6 @@ export const GET = (method: Methods, path: string) => mustBeConnected({ pickup: 
 					ps."id" = ua."productSheetId"
 			`;
 
-			console.log(cart);
 			throw new OkHttpException("cart.fetched", cart);
 		},
 		new IHaveSentThis(OkHttpException.code, "cart.fetched", cartSchema.array())

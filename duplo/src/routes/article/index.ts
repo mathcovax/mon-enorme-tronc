@@ -3,7 +3,7 @@ import { articleSchema } from "@schemas/article";
 import { mustBeConnected } from "@security/mustBeConnected";
 import { ProductAvailability } from "@services/productAvailability";
 
-/* METHOD : POST, PATH : /user/article */
+/* METHOD : POST, PATH : /article */
 export const POST = (method: Methods, path: string) => mustBeConnected({ pickup: ["accessTokenContent"] })
 	.declareRoute(method, path)
 	.extract({
@@ -26,13 +26,13 @@ export const POST = (method: Methods, path: string) => mustBeConnected({ pickup:
 			const quantity = await ProductAvailability.quantity(productSheetId);
 
 			if (quantity < 1) {
-				throw new ConflictHttpException("quantity.empty");
+				throw new ConflictHttpException("article.quantity.empty");
 			}
 
 			return {};
 		},
 		[],
-		new IHaveSentThis(ConflictHttpException.code, "quantity.empty")
+		new IHaveSentThis(ConflictHttpException.code, "article.quantity.empty")
 	)
 	.handler(
 		async ({ pickup }) => {

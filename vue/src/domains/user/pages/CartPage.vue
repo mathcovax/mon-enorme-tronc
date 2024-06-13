@@ -1,30 +1,30 @@
 <script setup lang="ts">
-import ProductCard from "../components/ProductCard.vue";
-import { useGetItemsCart } from "../composables/useGetItemsCart";
+import ArticleCard from "../components/ArticleCard.vue";
+import { useGetCart } from "../composables/useGetCart";
 
 const $pt = usePageTranslate();
-const { itemsCart, getItemsCart } = useGetItemsCart();
+const { cart, getCart } = useGetCart();
 
-const addProduct = (productSheetId: string) => 
+const addArticle = (productSheetId: string) => 
 	duploTo.enriched
 		.post(
-			"/user/article",
+			"/article",
 			{
 				productSheetId,
 			},
 		)
-		.info("article.created", () => getItemsCart());
+		.info("article.created", () => getCart());
 
-const removeProduct = (productSheetId: string) =>
+const removeArticle = (productSheetId: string) =>
 	duploTo.enriched
 		.delete(
 			"/article/{productSheetId}",
 			{ params: { productSheetId } }
 		)
-		.info("article.deleted", () => getItemsCart());
+		.info("article.deleted", () => getCart());
 
 
-getItemsCart();
+getCart();
 </script>
 
 <template>
@@ -36,10 +36,10 @@ getItemsCart();
 
 			<div
 				class="mb-12 flex flex-1 justify-center rounded-lg border border-dashed shadow-sm"
-				:class="{ 'items-center': itemsCart.length === 0 }"
+				:class="{ 'items-center': cart.length === 0 }"
 			>
 				<div
-					v-if="itemsCart.length === 0"
+					v-if="cart.length === 0"
 					class="flex flex-col items-center gap-1 text-center"
 				>
 					<h2 class="text-2xl font-bold tracking-tight">
@@ -60,13 +60,13 @@ getItemsCart();
 					class="w-full"
 				>
 					<li
-						v-for="item in itemsCart"
-						:key="item.productSheetId"
+						v-for="article in cart"
+						:key="article.productSheetId"
 					>
-						<ProductCard 
-							:product="item"
-							:add-product="addProduct"
-							:remove-product="removeProduct"
+						<ArticleCard 
+							:article="article"
+							:add-article="addArticle"
+							:remove-article="removeArticle"
 						/>
 					</li>
 				</ul>
