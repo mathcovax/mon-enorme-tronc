@@ -12,7 +12,6 @@ export type SimpleFilter = Zod.infer<typeof simpleFilterSchema>
 export const rangeFilterSchema = zod.object({
 	type: zod.literal("RANGE"),
 	name: zod.string(),
-	quantity: zod.number(),
 	min: zod.number(),
 	max: zod.number(),
 });
