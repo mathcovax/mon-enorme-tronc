@@ -7,7 +7,8 @@ export const GET = (method: Methods, path: string) =>
 		.declareRoute(method, path)
 		.extract({
 			query: zod.object({
-				categoryName: zod.string().optional()
+				categoryName: zod.string().optional(),
+				search: zod.string().optional(),
 			})
 				.and(FilterService.filtersQuerySchema)
 				.default({})

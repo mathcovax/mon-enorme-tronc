@@ -1,8 +1,8 @@
-type SimpleFilterType = Extract<FilterDef["type"], "FULL-TEXT" | "TOGGLE">
+type SimpleFilterType = Extract<FilterDef["type"], "TOGGLE">
 type DeepFilterType = Extract<FilterDef["type"], "CHECKBOX" | "RADIO">
 
 export const simpleFilterSchema = zod.object({
-	type: zod.enum<string, TuplifyUnion<SimpleFilterType>>(["FULL-TEXT", "TOGGLE"]),
+	type: zod.enum<string, TuplifyUnion<SimpleFilterType>>(["TOGGLE"]),
 	name: zod.string(),
 	quantity: zod.number(),
 });

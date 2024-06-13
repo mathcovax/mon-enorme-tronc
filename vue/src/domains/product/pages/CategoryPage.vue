@@ -26,7 +26,8 @@ const {
 });
 const { 
 	computedFilters, 
-	ComputedFiltersRefQuery
+	computedFiltersRefQuery,
+	
 } = useGetComputedFilters(params.value.categoryName);
 const { 
 	fullProductSheetCount, 
@@ -53,7 +54,7 @@ watch(
 
 function filters(query: QueryFilters) {
 	fullProductSheetCountRefQuery.value;
-	ComputedFiltersRefQuery.value;
+	computedFiltersRefQuery.value;
 	categoryProductSheetsRefQuery.value;
 }
 </script>

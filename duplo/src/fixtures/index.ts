@@ -30,7 +30,7 @@ const numberOf = Object.freeze({
 	randomImage: 100,
 	user: 150,
 	organization: 5,
-	productSheetRound: 2,
+	productSheetRound: 50,
 });
 
 const imageBuffers = await repeater(numberOf.randomImage, () => getRandomImage());

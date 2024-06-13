@@ -8,7 +8,8 @@ export const GET = async (method: Methods, path: string) => duplo
 	.declareRoute(method, path)
 	.extract({
 		query: zod.object({
-			categoryName: zod.string().optional()
+			categoryName: zod.string().optional(),
+			search: zod.string().optional(),
 		})
 			.and(FilterService.filtersQuerySchema)
 			.default({})
@@ -76,7 +77,6 @@ export const GET = async (method: Methods, path: string) => duplo
 					}
 					else if (
 						(
-							filterDef.type === "FULL-TEXT" ||
 							filterDef.type === "TOGGLE"
 						) &&
 						typeof filterQuantity === "number"

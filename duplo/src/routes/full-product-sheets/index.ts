@@ -10,6 +10,7 @@ export const GET = (method: Methods, path: string) =>
 		.extract({
 			query: zod.object({
 				categoryName: zod.string().optional(),
+				search: zod.string().optional(),
 				page: zod.coerce.number().default(1).transform(v => v < 1 ? 0 : v - 1),
 				take: zod.coerce.number().min(1).max(40).default(40),
 			})

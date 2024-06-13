@@ -66,24 +66,6 @@ export const productSheetsQuantityComputedPiplineStageByFiltersDefs = transform(
 					[`${filterDef.name}`]: { $sum: `$${filterDef.name}` }
 				};
 			}
-			else if (filterDef.type === "FULL-TEXT") {
-				pv.$project[`${filterDef.name}`] = {
-					$cond: {
-						if: {
-							$not: {
-								$eq: ["$default", 1]
-							},
-						},
-						then: 1,
-						else: 0
-					}
-				};
-
-				pv.$group = {
-					...pv.$group,
-					[`${filterDef.name}`]: { $sum: `$${filterDef.name}` }
-				};
-			}
 
 			return pv;
 		},

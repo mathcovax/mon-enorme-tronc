@@ -21,14 +21,11 @@ declare global {
 
 	type FilterDefRange<N extends string = string> = FilterDefBase<"RANGE", N>
 
-	type FilterDefSearch<N extends string = string> = Omit<FilterDefBase<"FULL-TEXT", N>, "path">
-
 	type FilterDef<N extends string = string> = 
 		| FilterDefCheckbox<N>
 		| FilterDefRadio<N>
 		| FilterDefToggle<N> 
 		| FilterDefRange<N>
-		| FilterDefSearch<N>
 }
 
 function defineFilters<
@@ -91,10 +88,6 @@ export const filterDefs = defineFilters([
 		type: "RANGE",
 		name: "price",
 		path: "price"
-	},
-	{
-		type: "FULL-TEXT",
-		name: "search",
 	},
 ]);
 

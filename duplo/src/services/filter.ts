@@ -70,20 +70,6 @@ export class FilterService {
 						};
 					}
 				}
-				else if (filterDef.type === "FULL-TEXT") {
-					const result = FilterService.filtersValueSchema[filterDef.type]
-						.accelerator?.safeParse(filterValue);
-						
-					if (result?.success) {
-						return {
-							$match: {
-								$text: {
-									$search: result.data
-								}
-							}
-						};
-					}
-				}
 
 				return null;
 			}
