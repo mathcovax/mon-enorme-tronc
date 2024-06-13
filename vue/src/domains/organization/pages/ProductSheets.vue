@@ -2,11 +2,11 @@
 import type { ProductSheet } from "@/lib/utils";
 import { useGetProductSheets } from "../composables/useGetProductSheets";
 
-const { organizationId } = useRouteParams({ 
+const params = useRouteParams({ 
 	organizationId: zod.string(), 
 });
 const router = useRouter();
-const { productSheets, getProductSheets } = useGetProductSheets(organizationId);
+const { productSheets, getProductSheets } = useGetProductSheets(params.value.organizationId);
 const $pt = usePageTranslate();
 
 const currentPage = ref(0);
@@ -56,14 +56,17 @@ function redirectToEditPage(productSheet: ProductSheet) {
 	router.push({
 		name: routerPageName.ORGANIZATION_EDIT_PRODUCT_SHEET,
 		params: {
-			organizationId,
+			organizationId: params.value.organizationId,
 			productSheetId: productSheet.id
 		},
 	});
 }
 
 function redirectToCreatedPage() {
-	router.push({ name: routerPageName.ORGANIZATION_CREATE_PRODUCT_SHEET, params: { organizationId } });
+	router.push({ 
+		name: routerPageName.ORGANIZATION_CREATE_PRODUCT_SHEET, 
+		params: { organizationId: params.value.organizationId } 
+	});
 }
 
 getProductSheets(currentPage.value, searchName.value);

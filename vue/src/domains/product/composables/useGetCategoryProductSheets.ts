@@ -1,13 +1,13 @@
 import type { GetDef } from "../../../lib/duploTo/EnrichedDuploTo";
-import type { CategoryProductSheet } from "@/lib/utils";
+import type { FullProductSheet } from "@/lib/utils";
 
 type Query = GetDef<
 	"GET",
-	"/category/{categoryName}/full-product-sheets"
+	"/full-product-sheets"
 >["parameters"]["query"]
 
-export function useGetCategoryProductSheets(categoryName: string) {
-	const productSheets = ref<CategoryProductSheet[]>([]);
+export function useGetCategoryProductSheets(query?: Query) {
+	const productSheets = ref<FullProductSheet[]>([]);
 
 	let abortController: AbortController | undefined;
 	function getCategoryProductSheets(query?: Query) {
@@ -18,8 +18,8 @@ export function useGetCategoryProductSheets(categoryName: string) {
 
 		return duploTo.enriched
 			.get(
-				"/category/{categoryName}/full-product-sheets",
-				{ params: { categoryName }, query, signal: abortController.signal }
+				"/full-product-sheets",
+				{ query, signal: abortController.signal }
 			)
 			.info("fullProductSheets", (data) => {
 				productSheets.value = data;
@@ -27,11 +27,18 @@ export function useGetCategoryProductSheets(categoryName: string) {
 			.result;
 	}
 
-	const categoryProductSheetsRefQuery = ref<Exclude<Query, undefined>>({});
+	const categoryProductSheetsRefQuery = ref<Exclude<Query, undefined>>(query ?? {});
 	
-	watchEffect(() => {
-		getCategoryProductSheets(categoryProductSheetsRefQuery.value);
-	});
+	watch(
+		categoryProductSheetsRefQuery,
+		() => {
+			getCategoryProductSheets(categoryProductSheetsRefQuery.value);
+		},
+		{
+			deep: true
+		}
+	);
+	getCategoryProductSheets(query);
 	
 	return {
 		productSheets,

@@ -1,11 +1,11 @@
 import { duploTesting } from "@test/setup";
-import { GET } from "./{id}";
+import { GET } from "./{productSheetId}";
 import { fullProductSheetModel } from "@mongoose/model";
 import { fullProductSheetData } from "@test/data/fullProductSheet";
 
 vi.mock("@mongoose/model");
 
-describe("GET /full-product-sheet/{id}", () => {
+describe("GET /full-product-sheet/{fullProductSheetId}", () => {
 	it("fullProductSheet notfound", async () => {
 		const spy = vi.spyOn(fullProductSheetModel, "findOne").mockResolvedValue(null);
 

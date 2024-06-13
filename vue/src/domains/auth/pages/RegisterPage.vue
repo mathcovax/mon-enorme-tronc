@@ -3,7 +3,7 @@ import { useSignUpForm } from "../composables/useSignUpForm";
 
 const $pt = usePageTranslate(); 
 const { SignUpForm, checkSignUpForm } = useSignUpForm();
-const { fireBaseIdToken } = useRouteQuery({ fireBaseIdToken: zod.string() });
+const query = useRouteQuery({ fireBaseIdToken: zod.string() });
 const router = useRouter();
 const { setAccessToken, fetchUserValue } = useUserStore();
 
@@ -17,7 +17,7 @@ async function submit() {
 	await duploTo.enriched.post(
 		"/register", 
 		{
-			fireBaseIdToken: fireBaseIdToken,
+			fireBaseIdToken: query.value.fireBaseIdToken,
 			firstname: formFields.fistname,
 			lastname: formFields.lastname,
 			address: formFields.address,

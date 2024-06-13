@@ -47,6 +47,7 @@ services:
     depends_on:
       - vue
       - duplo
+    attach: false
 
   minio:
     image: minio/minio:latest
@@ -62,6 +63,7 @@ services:
     env_file: ./duplo/.env
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    attach: false
 
   mongo-viewer:
     image: mongo-express
@@ -74,6 +76,7 @@ services:
     env_file: ./duplo/.env
     volumes:
       - "mongo_data:/data/db"
+    attach: false
 
 volumes:
   postgres_data:

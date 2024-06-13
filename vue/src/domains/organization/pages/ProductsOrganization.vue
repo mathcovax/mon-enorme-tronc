@@ -4,11 +4,11 @@ import type { Product, ProductStatus } from "@/lib/utils";
 import { useProductForm } from "../composables/useProductForm";
 import WithValidation from "@/components/WithValidation.vue";
 
-const { organizationId } = useRouteParams({ 
+const params = useRouteParams({ 
 	organizationId: zod.string(), 
 });
-const { products, getProducts } = useGetProducts(organizationId);
-const { ProductForm, checkProductForm, resetProductForm } = useProductForm(organizationId);
+const { products, getProducts } = useGetProducts(params.value.organizationId);
+const { ProductForm, checkProductForm, resetProductForm } = useProductForm(params.value.organizationId);
 const currentPage = ref(0);
 const searchName = ref("");
 const $pt = usePageTranslate();

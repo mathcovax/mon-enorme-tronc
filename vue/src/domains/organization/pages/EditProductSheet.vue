@@ -6,7 +6,7 @@ import { VMarkdownEditor } from "vue3-markdown";
 import "vue3-markdown/dist/style.css";
 import FacetsForm from "../components/FacetsForm.vue";
 
-const { productSheetId, organizationId } = useRouteParams({ 
+const params = useRouteParams({ 
 	organizationId: zod.string(), 
 	productSheetId: zod.string() 
 });
@@ -16,7 +16,7 @@ const {
 	suggestedCategories,
 	onSearchCategories,
 	ProductSheetValues,
-} = useProductSheetForm(productSheetId);
+} = useProductSheetForm(params.value.productSheetId);
 const $pt = usePageTranslate();
 
 const router = useRouter();
@@ -38,7 +38,7 @@ async function submit() {
 				shortDescription: formFields.shortDescription,
 				price: formFields.price,
 			},
-			{ params: { productSheetId } }
+			{ params: { productSheetId: params.value.productSheetId } }
 		)
 		.result;
 
@@ -54,7 +54,7 @@ async function submit() {
 				duploTo.enriched
 					.delete(
 						"/product-sheet/{productSheetId}/category/{categoryName}",
-						{ params: { categoryName: c.value.toString(), productSheetId } }
+						{ params: { categoryName: c.value.toString(), productSheetId: params.value.productSheetId } }
 					)
 					.result
 			);
@@ -84,7 +84,7 @@ async function submit() {
 				duploTo.enriched
 					.delete(
 						"/product-sheet/{productSheetId}/facet/{facetType}",
-						{ params: { facetType: item.type, productSheetId 	} }
+						{ params: { facetType: item.type, productSheetId: params.value.productSheetId } }
 					)
 					.result
 			);
@@ -105,7 +105,7 @@ async function submit() {
 						{
 							categoryName: c.value.toString()
 						},
-						{ params: { productSheetId } }
+						{ params: { productSheetId: params.value.productSheetId } }
 					)
 					.result
 			);
@@ -124,7 +124,7 @@ async function submit() {
 					.post(
 						"/product-sheet/{productSheetId}/image",
 						formData,
-						{ params: { productSheetId } }
+						{ params: { productSheetId: params.value.productSheetId } }
 					)
 					.result
 			);
@@ -139,7 +139,7 @@ async function submit() {
 							.patch(
 								"/product-sheet/{productSheetId}/facet/{facetType}",
 								{ value: item.value },
-								{ params: { productSheetId, facetType: item.type } }
+								{ params: { productSheetId: params.value.productSheetId, facetType: item.type } }
 							)
 							.result
 					);
@@ -153,7 +153,7 @@ async function submit() {
 					.post(
 						"/product-sheet/{productSheetId}/facet",
 						{ type: item.type, value: item.value },
-						{ params: { productSheetId } }
+						{ params: { productSheetId: params.value.productSheetId } }
 					)
 					.result
 			);
@@ -166,7 +166,10 @@ async function submit() {
 }
 
 function back() {
-	router.push({ name: routerPageName.ORGANIZATION_GET_PRODUCT_SHEET, params: { organizationId } });
+	router.push({ 
+		name: routerPageName.ORGANIZATION_GET_PRODUCT_SHEET, 
+		params: { organizationId: params.value.organizationId } 
+	});
 }
 
 const inputFile = ref<null | HTMLInputElement>(null);

@@ -6,30 +6,38 @@ import { useGetComputedFilters } from "../composables/useGetComputedFilters";
 import { useGetFullProductSheetCount } from "../composables/useGetFullProductSheetCount";
 import type { QueryFilters } from "@/lib/utils";
 
-const route = useRoute();
-const { CATEGORIES_PAGE } = routerPageName;
+const router = useRouter();
 const $pt = usePageTranslate();
 
-const { categoryName } = useRouteParams({ 
+const params = useRouteParams({ 
 	categoryName: zod.string(), 
+});
+const query = useRouteQuery({
+	page: zod.coerce.number().default(1)
 });
 
 const { 
 	productSheets, 
 	categoryProductSheetsRefQuery
-} = useGetCategoryProductSheets(categoryName);
+} = useGetCategoryProductSheets({
+	page: query.value.page, 
+	categoryName: params.value.categoryName
+});
 const { 
 	computedFilters, 
 	ComputedFiltersRefQuery
-} = useGetComputedFilters(categoryName);
+} = useGetComputedFilters(params.value.categoryName);
 const { 
 	fullProductSheetCount, 
 	fullProductSheetCountRefQuery
-} = useGetFullProductSheetCount(categoryName);
+} = useGetFullProductSheetCount(params.value.categoryName);
 
 const currentPage = computed({
-	get: () => categoryProductSheetsRefQuery.value.page ?? 0,
-	set: (value: number) => categoryProductSheetsRefQuery.value.page = value
+	get: () => categoryProductSheetsRefQuery.value.page ?? 1,
+	set: (value: number) => {
+		categoryProductSheetsRefQuery.value.page = value;
+		router.push({ query: { page: value } });
+	}
 });
 
 function filters(query: QueryFilters) {
@@ -39,7 +47,7 @@ function filters(query: QueryFilters) {
 }
 
 const updatePage = (page: number) => {
-	currentPage.value = page - 1;
+	currentPage.value = page;
 };
 </script>
 
@@ -48,7 +56,7 @@ const updatePage = (page: number) => {
 		<div class="grow container my-12 lg:my-16 flex flex-col gap-12">
 			<div class="flex flex-col gap-4 sm:gap-0 sm:flex-row justify-between items-center">
 				<h1 class="text-2xl lg:text-3xl font-bold">
-					{{ route.params.categoryName }}
+					{{ params.categoryName }}
 				</h1>
 
 				<div
@@ -85,10 +93,10 @@ const updatePage = (page: number) => {
 
 			<div>
 				<ProductPagination 
-					v-if="currentPage > 0"
+					v-if="currentPage > 1"
 					:items-per-page="50"
 					:total-product-sheets="fullProductSheetCount"
-					:current-page="currentPage + 1"
+					:current-page="currentPage"
 					@update="updatePage($event)"
 					:key="'top-pagination-' + currentPage"
 				/>
@@ -103,10 +111,10 @@ const updatePage = (page: number) => {
 				</div>
 
 				<ProductPagination 
-					v-if="fullProductSheetCount > 50"
+					v-if="fullProductSheetCount >= 50"
 					:items-per-page="50"
 					:total-product-sheets="fullProductSheetCount"
-					:current-page="currentPage + 1"
+					:current-page="currentPage"
 					@update="updatePage($event)"
 					:key="'bottom-pagination-' + currentPage"
 				/>

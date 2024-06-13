@@ -61,8 +61,8 @@ export const primordialRoles: TuplifyUnion<PrimordialRole> = [
 	"ADMIN",
 ];
 
-export type CategoryProductSheet = GetResponseByInfo<
-    GetDef<"GET", "/category/{categoryName}/full-product-sheets">,
+export type FullProductSheet = GetResponseByInfo<
+    GetDef<"GET", "/full-product-sheets">,
     "fullProductSheets"
 >["body"][number];
 

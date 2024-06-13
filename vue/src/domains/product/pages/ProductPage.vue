@@ -20,15 +20,15 @@ const product = ref<CategoryProductSheet>({
 	facets: {},
 });
 
-const { productSheetId: id } = useRouteParams({ 
+const params = useRouteParams({ 
 	productSheetId: zod.string(), 
 });
 
 function getProductData() {
 	return duploTo.enriched
 		.get(
-			"/full-product-sheet/{id}",
-			{ params: { id } }
+			"/full-product-sheet/{productSheetId}",
+			{ params: { productSheetId: params.value.productSheetId } }
 		)
 		.info("fullProductSheet", (data) => {
 			product.value = data;

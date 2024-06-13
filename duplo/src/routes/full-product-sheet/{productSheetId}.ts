@@ -1,19 +1,19 @@
 import { fullProductSheetModel } from "@mongoose/model";
 import { fullProductSheetSchema } from "@schemas/fullProductSheet";
 
-/* METHOD : GET, PATH : /full-product-sheet/{id} */
+/* METHOD : GET, PATH : /full-product-sheet/{productSheetId} */
 export const GET = (method: Methods, path: string) => 
 	duplo
 		.declareRoute(method, path)
 		.extract({
 			params: {
-				id: zod.string()
+				productSheetId: zod.string()
 			}
 		})
 		.cut(
 			async ({ pickup }) => {
-				const fullProductSheetId = pickup("id");
-				const fullProductSheet = await fullProductSheetModel.findOne({ id: fullProductSheetId });
+				const productSheetId = pickup("productSheetId");
+				const fullProductSheet = await fullProductSheetModel.findOne({ id: productSheetId });
 
 				if (!fullProductSheet) {
 					throw new NotFoundHttpException("fullProductSheet.notfound");

@@ -5,7 +5,7 @@ import { VMarkdownEditor } from "vue3-markdown";
 import "vue3-markdown/dist/style.css";
 import FacetsForm from "../components/FacetsForm.vue";
 
-const { organizationId } = useRouteParams({ 
+const params = useRouteParams({ 
 	organizationId: zod.string(), 
 });
 const { 
@@ -37,7 +37,7 @@ async function submit() {
 				shortDescription: formFields.shortDescription,
 				price: formFields.price,
 			},
-			{ params: { organizationId: organizationId } }
+			{ params: { organizationId: params.value.organizationId } }
 		)
 		.result;
 	
@@ -95,7 +95,10 @@ async function submit() {
 }
 
 function back() {
-	router.push({ name: routerPageName.ORGANIZATION_GET_PRODUCT_SHEET, params: { organizationId } });
+	router.push({ 
+		name: routerPageName.ORGANIZATION_GET_PRODUCT_SHEET, 
+		params: { organizationId: params.value.organizationId } 
+	});
 }
 
 const inputFile = ref<null | HTMLInputElement>(null);

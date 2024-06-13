@@ -13,10 +13,10 @@ const {
 const route = useRoute();
 const organizationUserStore = useOrganizationUserStore();
 
-const { organizationId } = useRouteParams({ 
+const params = useRouteParams({ 
 	organizationId: zod.string(), 
 });
-const { organization, getOrganization } = useGetOrganization(organizationId);
+const { organization, getOrganization } = useGetOrganization(params.value.organizationId);
 
 getOrganization();
 </script>
