@@ -7,7 +7,7 @@ type Query = GetDef<
 >["parameters"]["query"]
 
 export function useGetCategoryProductSheets(query?: Query) {
-	const productSheets = ref<FullProductSheet[]>([]);
+	const productSheets = ref<FullProductSheet[] | false>([]);
 
 	let abortController: AbortController | undefined;
 	function getCategoryProductSheets(query?: Query) {
@@ -23,6 +23,9 @@ export function useGetCategoryProductSheets(query?: Query) {
 			)
 			.info("fullProductSheets", (data) => {
 				productSheets.value = data;
+			})
+			.e(() => {
+				productSheets.value = false;
 			})
 			.result;
 	}

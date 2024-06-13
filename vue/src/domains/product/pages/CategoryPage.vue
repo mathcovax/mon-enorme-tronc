@@ -8,6 +8,7 @@ import type { QueryFilters } from "@/lib/utils";
 
 const router = useRouter();
 const $pt = usePageTranslate();
+const { CATEGORIES_PAGE } = routerPageName;
 
 const params = useRouteParams({ 
 	categoryName: zod.string(), 
@@ -40,15 +41,18 @@ const currentPage = computed({
 	}
 });
 
+watch(
+	() => query.value.page !== categoryProductSheetsRefQuery.value.page,
+	() => {
+		categoryProductSheetsRefQuery.value.page = query.value.page;
+	}
+);
+
 function filters(query: QueryFilters) {
 	fullProductSheetCountRefQuery.value;
 	ComputedFiltersRefQuery.value;
 	categoryProductSheetsRefQuery.value;
 }
-
-const updatePage = (page: number) => {
-	currentPage.value = page;
-};
 </script>
 
 <template>
@@ -58,46 +62,14 @@ const updatePage = (page: number) => {
 				<h1 class="text-2xl lg:text-3xl font-bold">
 					{{ params.categoryName }}
 				</h1>
-
-				<div
-					v-if="productSheets.length > 0"
-					class="flex gap-4 items-center text-sm opacity-50"
-				>
-					<TheSelect default-value="popular">
-						<SelectTrigger class="w-[180px]">
-							<SelectValue />
-						</SelectTrigger>
-
-						<SelectContent>
-							<SelectGroup>
-								<SelectItem value="popular">
-									Le plus populaire
-								</SelectItem>
-
-								<SelectItem value="new">
-									Nouveautés
-								</SelectItem>
-
-								<SelectItem value="price-asc">
-									Du moins cher au plus cher
-								</SelectItem>
-
-								<SelectItem value="price-des">
-									Du plus cher au moins cher
-								</SelectItem>
-							</SelectGroup>
-						</SelectContent>
-					</TheSelect>
-				</div>
 			</div>
 
-			<div>
+			<div v-if="productSheets">
 				<ProductPagination 
 					v-if="currentPage > 1"
-					:items-per-page="50"
-					:total-product-sheets="fullProductSheetCount"
+					:total="fullProductSheetCount"
 					:current-page="currentPage"
-					@update="updatePage($event)"
+					@update="page => currentPage = page"
 					:key="'top-pagination-' + currentPage"
 				/>
 
@@ -111,15 +83,14 @@ const updatePage = (page: number) => {
 				</div>
 
 				<ProductPagination 
-					v-if="fullProductSheetCount >= 50"
-					:items-per-page="50"
-					:total-product-sheets="fullProductSheetCount"
+					v-if="fullProductSheetCount >= 40"
+					:total="fullProductSheetCount"
 					:current-page="currentPage"
-					@update="updatePage($event)"
+					@update="page => currentPage = page"
 					:key="'bottom-pagination-' + currentPage"
 				/>
 			</div>
-			<!-- 
+			
 			<div
 				v-else
 				class="h-full flex flex-col justify-center items-center gap-1 text-center"
@@ -140,7 +111,7 @@ const updatePage = (page: number) => {
 						{{ $pt("buttonBack") }}
 					</RouterLink>
 				</TheButton>
-			</div> -->
+			</div>
 		</div>
 	</section>
 </template>
