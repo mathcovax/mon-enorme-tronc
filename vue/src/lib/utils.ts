@@ -144,3 +144,8 @@ export const facetType: TuplifyUnion<FacetType> = [
 	"MATERIAL",
 	"STIMULATION",
 ];
+
+export type Cart = GetResponseByInfo<
+	GetDef<"GET", "/cart">,
+	"cart.fetched"
+>["body"]
