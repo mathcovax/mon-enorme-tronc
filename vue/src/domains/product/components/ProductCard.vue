@@ -21,7 +21,7 @@ defineProps<{
 
 				<div
 					v-else
-					class="w-full aspect-square flex items-center justify-center rounded-2xl"
+					class="flex items-center justify-center w-full aspect-square rounded-2xl"
 				>
 					<TheIcon
 						icon="image-outline"

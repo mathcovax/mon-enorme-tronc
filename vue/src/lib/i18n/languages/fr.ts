@@ -42,6 +42,48 @@ export default {
 			emptyTitle: "Cette catégorie n'a pas encore de produits.",
 			emptySubtitle: "Revenez plus tard pour voir les nouveautés.",
 			buttonBack: "Revenir aux catégories",
+			filters: {
+				title: "Filtres",
+				price: "Prix",
+				color: "Couleur",
+				size: "Taille",
+				diameter: "Diamètre",
+				target: "Cible",
+				accessory: "Accessoire",
+				material: "Matériaux",
+				stimulation: "Stimulation",
+				colors: {
+					red: "Rouge",
+					blue: "Bleu",
+					green: "Vert",
+					yellow: "Jaune",
+					black: "Noir",
+					white: "Blanc",
+				},
+				sizes: {
+					small: "Petit",
+					medium: "Moyen",
+					large: "Grand"
+				},
+				targets: {
+					man: "Homme",
+					woman: "Femme",
+					"man/woman": "Homme/Femme"
+				},
+				accessories: {
+					accessory: "Accessoires"
+				},
+				materials: {
+					wood: "Bois",
+					plastic: "Plastique"
+				},
+				stimulations: {
+					anal: "Anale",
+					vaginal: "Vaginale",
+					clitoral: "Clitorale",
+					prostate: "Prostate"
+				}
+			}
 		},
 		[routerPageName.PRODUCT_PAGE]: {
 			addCartButton: "Ajouter au panier",
@@ -475,10 +517,6 @@ export default {
 			sku: {
 				alreadyUse: "Ce sku est déjà utilisé.",
 			}
-		},
-		article: {
-			created: "L'article à bien été ajouter au panier",
-			deleted: "L'article à été supprimé du panier",
 		},
 		TYPE_ERROR: "L'une des données envoyées est erronée. (Erreur provenant du site)",
 		NOTFOUND: "La route utilisée n'existe pas. (Erreur provenant du site)",

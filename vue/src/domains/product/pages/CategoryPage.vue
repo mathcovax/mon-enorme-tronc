@@ -2,6 +2,7 @@
 import { useGetCategoryProductSheets } from "../composables/useGetCategoryProductSheets";
 import ProductPagination from "../components/ProductPagination.vue";
 import ProductCard from "../components/ProductCard.vue";
+import TheFilters from "../components/TheFilters.vue";
 import { useGetComputedFilters } from "../composables/useGetComputedFilters";
 import { useGetFullProductSheetCount } from "../composables/useGetFullProductSheetCount";
 import type { QueryFilters } from "@/lib/utils";
@@ -56,20 +57,25 @@ watch(
 );
 
 function filters(query: QueryFilters) {
-	fullProductSheetCountRefQuery.value ;
-	computedFiltersRefQuery.value;
-	categoryProductSheetsRefQuery.value;
+	fullProductSheetCountRefQuery.value = query ;
+	computedFiltersRefQuery.value = query;
+	categoryProductSheetsRefQuery.value = query;
 }
 </script>
 
 <template>
-	<section class="min-h-screen-no-header flex">
-		<div class="grow container my-12 lg:my-16 flex flex-col gap-12">
-			<div class="flex flex-col gap-4 sm:gap-0 sm:flex-row justify-between items-center">
-				<h1 class="text-2xl lg:text-3xl font-bold">
+	<section class="flex min-h-screen-no-header">
+		<div class="container flex flex-col gap-12 my-12 grow lg:my-16">
+			<div class="flex flex-col items-center justify-between gap-4 sm:gap-0 sm:flex-row">
+				<h1 class="text-2xl font-bold lg:text-3xl">
 					{{ params.categoryName }}
 				</h1>
 			</div>
+
+			<TheFilters
+				:filters="computedFilters"
+				@filters="filters"
+			/>
 
 			<div v-if="productSheets">
 				<ProductPagination 
@@ -80,12 +86,12 @@ function filters(query: QueryFilters) {
 					:key="'top-pagination-' + currentPage"
 				/>
 
-				<div class="my-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+				<div class="grid grid-cols-1 gap-6 my-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 					<ProductCard
 						v-for="(product, index) in productSheets"
 						:key="index"
 						:product="product"
-						class="w-full max-w-80 mx-auto"
+						class="w-full mx-auto max-w-80"
 					/>
 				</div>
 
@@ -100,7 +106,7 @@ function filters(query: QueryFilters) {
 			
 			<div
 				v-else
-				class="h-full flex flex-col justify-center items-center gap-1 text-center"
+				class="flex flex-col items-center justify-center h-full gap-1 text-center"
 			>
 				<h2 class="text-2xl font-bold tracking-tight">
 					{{ $pt("emptyTitle") }}
