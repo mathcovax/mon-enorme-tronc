@@ -13,7 +13,7 @@ describe("GET /full-product-sheet/{fullProductSheetId}", () => {
 			.testRoute(GET("GET", ""))
 			.setRequestProperties({
 				params: {
-					id: "test"
+					productSheetId: "test"
 				}
 			})
 			.launch();
@@ -29,7 +29,7 @@ describe("GET /full-product-sheet/{fullProductSheetId}", () => {
 			.testRoute(GET("GET", ""))
 			.setRequestProperties({
 				params: {
-					id: "test"
+					productSheetId: "test"
 				}
 			})
 			.launch();

@@ -103,7 +103,6 @@ export class FilterService {
 		RADIO: zod.string(),
 		TOGGLE: zod.enum(["true", "false"]),
 		RANGE: zod.tuple([zod.coerce.number(), zod.coerce.number()]),
-		"FULL-TEXT": zod.string(),
 	});
 
 	static {

@@ -6,11 +6,11 @@ export type Query = GetDef<
 	"/computed-filters"
 >["parameters"]["query"]
 
-export function useGetComputedFilters(categoryName?: string) {
+export function useGetComputedFilters(query?: Query) {
 	const computedFilters = ref<ComputedFilter[]>([]); 
 	
 	let abortController: AbortController | undefined;
-	function getComputedFilters(query?: Omit<Query, "categoryName">) {
+	function getComputedFilters(query?: Query) {
 		if (abortController) {
 			abortController.abort();
 		}
@@ -20,10 +20,7 @@ export function useGetComputedFilters(categoryName?: string) {
 			.get(
 				"/computed-filters",
 				{
-					query: {
-						...query,
-						categoryName,
-					},
+					query,
 					signal: abortController.signal
 				}
 			)
@@ -33,11 +30,18 @@ export function useGetComputedFilters(categoryName?: string) {
 			.result;
 	}
 
-	const computedFiltersRefQuery = ref<Omit<Exclude<Query, undefined>, "categoryName">>({});
+	const computedFiltersRefQuery = ref<Exclude<Query, undefined>>(query ?? {});
 	
-	watchEffect(() => {
-		getComputedFilters(computedFiltersRefQuery.value);
-	});
+	watch(
+		computedFiltersRefQuery, 
+		() => {
+			getComputedFilters(computedFiltersRefQuery.value);
+		},
+		{
+			deep: true
+		}
+	);
+	getComputedFilters(query);
 
 	return {
 		getComputedFilters,

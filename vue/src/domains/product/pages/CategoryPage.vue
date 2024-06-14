@@ -11,7 +11,7 @@ const $pt = usePageTranslate();
 const { CATEGORIES_PAGE } = routerPageName;
 
 const params = useRouteParams({ 
-	categoryName: zod.string(), 
+	categoryName: zod.string().optional(), 
 });
 const query = useRouteQuery({
 	page: zod.coerce.number().default(1)
@@ -27,12 +27,15 @@ const {
 const { 
 	computedFilters, 
 	computedFiltersRefQuery,
-	
-} = useGetComputedFilters(params.value.categoryName);
+} = useGetComputedFilters({
+	categoryName: params.value.categoryName
+});
 const { 
 	fullProductSheetCount, 
 	fullProductSheetCountRefQuery
-} = useGetFullProductSheetCount(params.value.categoryName);
+} = useGetFullProductSheetCount({
+	categoryName: params.value.categoryName
+});
 
 const currentPage = computed({
 	get: () => categoryProductSheetsRefQuery.value.page ?? 1,
@@ -53,7 +56,7 @@ watch(
 );
 
 function filters(query: QueryFilters) {
-	fullProductSheetCountRefQuery.value;
+	fullProductSheetCountRefQuery.value ;
 	computedFiltersRefQuery.value;
 	categoryProductSheetsRefQuery.value;
 }

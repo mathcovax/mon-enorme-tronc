@@ -5,11 +5,11 @@ type Query = GetDef<
 	"/full-product-sheets-count"
 >["parameters"]["query"]
 
-export function useGetFullProductSheetCount(categoryName?: string) {
+export function useGetFullProductSheetCount(query?: Query) {
 	const fullProductSheetCount = ref<number>(0); 
 
 	let abortController: AbortController | undefined;
-	function getFullProductSheetCount(query?: Omit<Query, "categoryName">) {
+	function getFullProductSheetCount(query?: Query) {
 		if (abortController) {
 			abortController.abort();
 		}
@@ -19,10 +19,7 @@ export function useGetFullProductSheetCount(categoryName?: string) {
 			.get(
 				"/full-product-sheets-count",
 				{
-					query: {
-						...query,
-						categoryName,
-					},
+					query,
 					signal: abortController.signal
 				}
 			)
@@ -32,11 +29,18 @@ export function useGetFullProductSheetCount(categoryName?: string) {
 			.result;
 	}
 
-	const fullProductSheetCountRefQuery = ref<Omit<Exclude<Query, undefined>, "categoryName">>({});
+	const fullProductSheetCountRefQuery = ref<Exclude<Query, undefined>>(query ?? {});
 	
-	watchEffect(() => {
-		getFullProductSheetCount(fullProductSheetCountRefQuery.value);
-	});
+	watch(
+		fullProductSheetCountRefQuery,
+		() => {
+			getFullProductSheetCount(fullProductSheetCountRefQuery.value);
+		}, 
+		{ 
+			deep: true 
+		}
+	);
+	getFullProductSheetCount(query);
 
 	return {
 		getFullProductSheetCount,
