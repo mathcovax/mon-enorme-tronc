@@ -160,7 +160,7 @@ GetDef<"GET", "/computed-filters">,
 "filters"
 >["body"][number]
 
-export type QueryFilters =Exclude<
+export type QueryFilters = Exclude<
 	GetDef<"GET", "/computed-filters">["parameters"]["query"], 
 	undefined
 >

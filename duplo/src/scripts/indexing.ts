@@ -21,7 +21,7 @@ if (!await lastIndexingDB.exists("/timestamp")) {
 const lastIndexing = new Date(await lastIndexingDB.getData("/timestamp"));
 
 const generator = FindSlice(
-	100, 
+	500, 
 	(slice, size) => prisma.product_sheet.findMany({
 		where: {
 			organization: {

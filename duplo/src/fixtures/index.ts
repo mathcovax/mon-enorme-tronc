@@ -31,6 +31,7 @@ const numberOf = Object.freeze({
 	user: 150,
 	organization: 5,
 	productSheetRound: 50,
+	productSheetByRound: 1000
 });
 
 const imageBuffers = await repeater(numberOf.randomImage, () => getRandomImage());
@@ -75,16 +76,14 @@ await mapAsync(
 const entries = Object.entries(productData);
 for (let round = 0; round < numberOf.productSheetRound; round++) {
 	await repeater(
-		1000,
+		numberOf.productSheetByRound,
 		(index) => {
-			const [categoryName, product_sheet] = entries[index % entries.length];
+			const [categoryName, productSheet] = entries[index % entries.length];
 			const currentWarehouses = warehouses[index % organizations.length];
 			
 			return makeProductSheet(
 				organizations[index % organizations.length].id,
-				{
-					name: `${product_sheet} ${round}-${index}` 
-				}
+				{ name: `${productSheet} ${round}-${index}` }
 			).then((productSheet) => Promise.all([
 				addProductSheetToCategory(productSheet.id, categoryName),
 				repeater(

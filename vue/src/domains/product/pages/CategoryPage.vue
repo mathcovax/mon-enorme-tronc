@@ -47,12 +47,9 @@ const currentPage = computed({
 });
 
 watch(
-	() => query.value.page,
+	() => params.value.categoryName,
 	() => {
-		if (query.value.page !== categoryProductSheetsRefQuery.value.page) {
-			return; 
-		}
-		categoryProductSheetsRefQuery.value.page = query.value.page;
+		categoryProductSheetsRefQuery.value.categoryName = params.value.categoryName;
 	}
 );
 
