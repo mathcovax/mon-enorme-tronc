@@ -71,7 +71,7 @@ function filters(query: QueryFilters) {
 
 			<TheFilters
 				:filters="computedFilters"
-				@filters="filters"
+				@update="filters($event)"
 			/>
 
 			<div v-if="productSheets">

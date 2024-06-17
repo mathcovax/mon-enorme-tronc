@@ -42,48 +42,6 @@ export default {
 			emptyTitle: "Cette catégorie n'a pas encore de produits.",
 			emptySubtitle: "Revenez plus tard pour voir les nouveautés.",
 			buttonBack: "Revenir aux catégories",
-			filters: {
-				title: "Filtres",
-				price: "Prix",
-				color: "Couleur",
-				size: "Taille",
-				diameter: "Diamètre",
-				target: "Cible",
-				accessory: "Accessoire",
-				material: "Matériaux",
-				stimulation: "Stimulation",
-				colors: {
-					red: "Rouge",
-					blue: "Bleu",
-					green: "Vert",
-					yellow: "Jaune",
-					black: "Noir",
-					white: "Blanc",
-				},
-				sizes: {
-					small: "Petit",
-					medium: "Moyen",
-					large: "Grand"
-				},
-				targets: {
-					man: "Homme",
-					woman: "Femme",
-					"man/woman": "Homme/Femme"
-				},
-				accessories: {
-					accessory: "Accessoires"
-				},
-				materials: {
-					wood: "Bois",
-					plastic: "Plastique"
-				},
-				stimulations: {
-					anal: "Anale",
-					vaginal: "Vaginale",
-					clitoral: "Clitorale",
-					prostate: "Prostate"
-				}
-			}
 		},
 		[routerPageName.PRODUCT_PAGE]: {
 			addCartButton: "Ajouter au panier",
@@ -281,6 +239,58 @@ export default {
 			searchPlaceholder: "Chercher un produit",
 			popupWrongMessage: "Etes-vous sur de vouloir supprimer cette reference ?"
 		},
+	},
+	filters: {
+		name: {
+			title: "Filtres",
+			price: "Prix",
+			color: "Couleur",
+			size: "Taille",
+			diameter: "Diamètre",
+			target: "Cible",
+			accessory: "Accessoire",
+			material: "Matériaux",
+			stimulation: "Stimulation",
+		},
+		color: {
+			red: "Rouge",
+			blue: "Bleu",
+			green: "Vert",
+			yellow: "Jaune",
+			black: "Noir",
+			white: "Blanc",
+		},
+		size: {
+			small: "Petit",
+			medium: "Moyen",
+			large: "Grand"
+		},
+		diameter: {
+			"20mm": "20mm",
+			"30mm": "30mm",
+			"40mm": "40mm",
+			"50mm": "50mm",
+			"60mm": "60mm",
+		},
+		targets: {
+			man: "Homme",
+			woman: "Femme",
+			"man/woman": "Homme/Femme",
+			undefined: "Aucun"
+		},
+		accessorie: {
+			accessory: "Accessoires"
+		},
+		material: {
+			wood: "Bois",
+			plastic: "Plastique"
+		},
+		stimulation: {
+			anal: "Anale",
+			vaginal: "Vaginale",
+			clitoral: "Clitorale",
+			prostate: "Prostate"
+		}
 	},
 	layout: {
 		default: {
