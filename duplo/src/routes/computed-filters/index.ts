@@ -17,7 +17,7 @@ export const GET = async (method: Methods, path: string) => duplo
 		async ({ pickup }) => {
 			const { categoryName, search, searchByRegex, ...filtersValue } = pickup("query");
 			const pipelinesStages = FilterService.makePipelinesStage(filtersValue);
-			const searchs = SearchService.makePipelinesStage({ categoryName, search, searchByRegex });
+			const searchs = SearchService.makePipelinesStage({ categoryName, search, searchByRegex }, false);
 
 			const filters = await fullProductSheetModel.aggregate([
 				...searchs,
@@ -31,7 +31,7 @@ export const GET = async (method: Methods, path: string) => duplo
 				return Object.entries(quantitys).reduce<Record<string, number | Record<string, number>>>(
 					(pv, [key, value]) => {
 						if (value === null) {
-							return pv;
+							value = 0;
 						}
 						
 						const [first, second] = key.split("\\");

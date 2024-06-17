@@ -26,7 +26,7 @@ export class FilterService {
 					if (result?.success) {
 						return {
 							$match: {
-								$or: result.data.map<FilterQuery<unknown>>(value => ({
+								$and: result.data.map<FilterQuery<unknown>>(value => ({
 									[filterDef.path]: { $regex: new RegExp(value, "i") }
 								}))
 							},

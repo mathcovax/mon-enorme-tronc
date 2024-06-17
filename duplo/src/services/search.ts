@@ -15,6 +15,7 @@ export class SearchService {
 			search,
 			searchByRegex
 		}: Zod.infer<typeof SearchService.searchQuerySchema>,
+		sort = true,
 	) {
 		const pipelines: PipelineStage[] = [];
 		
@@ -23,59 +24,82 @@ export class SearchService {
 		}
 
 		if (search !== undefined) {
-			pipelines.push({ $match: { $text: { $search: search } } });
+			pipelines.push({ 
+				$match: { 
+					$text: { $search: search } 
+				} 
+			});
+
+			if (sort) {
+				pipelines.push({ 
+					$sort: { score: { $meta: "textScore" }, posts: -1 } 
+				});
+			}
 		}
 
 		if (searchByRegex !== undefined) {
-			pipelines.push(
-				{
-					$addFields: SearchService.indexes.reduce<PipelineStage.AddFields["$addFields"]>(
-						(pv, cv) => {
-							pv[`match-${cv}`] = {
-								$cond: {
-									if: {
-										$regexMatch: { 
-											input: `$${cv}`, 
-											regex: new RegExp(searchByRegex, "i")
-										}
-									},
-									then: 1,
-									else: 0
+			if (sort) {
+				pipelines.push(
+					{
+						$addFields: SearchService.indexes.reduce<PipelineStage.AddFields["$addFields"]>(
+							(pv, cv) => {
+								pv[`match-${cv}`] = {
+									$cond: {
+										if: {
+											$regexMatch: { 
+												input: `$${cv}`, 
+												regex: new RegExp(searchByRegex, "i")
+											}
+										},
+										then: 1,
+										else: 0
+									}
+								};
+								return pv;
+							},
+							{}
+						)
+					},
+					{
+						$match: {
+							$or: SearchService.indexes.map(value => ({
+								[`match-${value}`]: {
+									$eq: 1
 								}
-							};
-							return pv;
+							}))
 						},
-						{}
-					)
-				},
-				{
+					},
+					{
+						$sort: SearchService.indexes.reduce<PipelineStage.Sort["$sort"]>(
+							(pv, cv) => {
+								pv[`match-${cv}`] = -1;
+								return pv;
+							},
+							{}
+						)
+					},
+					{
+						$project: SearchService.indexes.reduce<PipelineStage.Project["$project"]>(
+							(pv, cv) => {
+								pv[`match-${cv}`] = 0;
+								return pv;
+							},
+							{}
+						)
+					}
+				);
+			}
+			else {
+				pipelines.push({
 					$match: {
 						$or: SearchService.indexes.map(value => ({
-							[`match-${value}`]: {
-								$eq: 1
+							[value]: {
+								$regex: new RegExp(searchByRegex, "i")
 							}
 						}))
 					},
-				},
-				{
-					$sort: SearchService.indexes.reduce<PipelineStage.Sort["$sort"]>(
-						(pv, cv) => {
-							pv[`match-${cv}`] = -1;
-							return pv;
-						},
-						{}
-					)
-				},
-				{
-					$project: SearchService.indexes.reduce<PipelineStage.Project["$project"]>(
-						(pv, cv) => {
-							pv[`match-${cv}`] = 0;
-							return pv;
-						},
-						{}
-					)
-				}
-			);
+				});
+			}
 		}
 
 		return pipelines;

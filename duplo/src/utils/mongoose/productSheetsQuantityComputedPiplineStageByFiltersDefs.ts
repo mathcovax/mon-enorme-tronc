@@ -82,5 +82,5 @@ export const productSheetsQuantityComputedPiplineStageByFiltersDefs = transform(
 
 		}
 	),
-	({ $densify, $project, $group }) => [{ $densify }, { $project }, { $group }]
+	({ $densify, $project, $group }) => [{ $densify }, { $project }, { $group }] as const
 );
