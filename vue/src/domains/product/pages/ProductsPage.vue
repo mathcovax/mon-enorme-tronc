@@ -110,14 +110,14 @@ watch(
 				<aside>
 					<div
 						v-if="fullProductSheetCount !== 0"
-						class="sticky top-28"
+						class="sticky top-28 flex flex-col items-center"
 					>
 						<TheFilters
 							:filters="computedFilters"
 							v-model:filters-value="filtersValue"
 						/>
 
-						<span class="pt-4">{{ $pt('quantityProduct', {count: fullProductSheetCount}) }}</span>
+						<span class="pt-4 opacity-50">{{ $pt('quantityProduct', {count: fullProductSheetCount}) }}</span>
 					</div>
 				</aside>
 
@@ -130,7 +130,7 @@ watch(
 						:key="'top-pagination-' + currentPage"
 					/>
 
-					<div class="grid grid-cols-1 gap-6 my-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+					<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 						<ProductCard
 							v-for="(product, index) in productSheets"
 							:key="index"

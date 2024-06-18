@@ -19,9 +19,9 @@ const filtersValue = defineModel<
 
 <template>
 	<TheAccordion
-		type="single"
+		type="multiple"
 		collapsible
-		class="w-full"
+		class="w-full p-4 border-2 border-muted rounded-lg"
 	>
 		<template
 			v-for="filter in filters"
@@ -61,7 +61,7 @@ const filtersValue = defineModel<
 
 			<div
 				v-else-if="filter.type === 'RANGE'"
-				class="py-4 border-b"
+				class="py-4"
 			>
 				<h1 class="font-medium">
 					{{ $t(`filters.name.${filter.name}`) }}
@@ -79,7 +79,7 @@ const filtersValue = defineModel<
 				v-else-if="filter.type === 'RADIO'"
 				:value="filter.name"
 			>
-				<AccordionTrigger class="hover:no-underline ">
+				<AccordionTrigger class="hover:no-underline">
 					{{ $t(`filters.name.${filter.name}`) }}
 				</AccordionTrigger>
 

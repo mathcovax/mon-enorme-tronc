@@ -27,15 +27,21 @@ function onUpdate(valueFilter: string, value: boolean) {
 	<div
 		v-for="item in props.values"
 		:key="item.value"
-		class="flex gap-2 m-[0.5rem]"
+		class="m-[0.5rem] flex gap-2 items-center"
 	>
 		<TheCheckbox
 			@update:checked="onUpdate(item.value, $event)"
 			:checked="!!filterValue?.includes(item.value)"
 			:disabled="item.quantity === 0"
+			:id="`checkbox-${item.value}`"
 		/>
 
-		<span>{{ $t(`filters.values.${props.name}.${item.value}`) }}</span>
+		<label
+			:for="`checkbox-${item.value}`"
+			:class="{ 'cursor-not-allowed opacity-50': item.quantity === 0}"
+		>
+			{{ $t(`filters.values.${props.name}.${item.value}`) }}
+		</label>
 
 		<span :class="item.quantity === 0 ? `text-red-500` : `text-gray-500`">({{ item.quantity }})</span>
 	</div>

@@ -43,7 +43,7 @@ export default {
 			emptySubtitle: "Revenez plus tard pour voir les nouveautés.",
 			buttonBack: "Revenir aux catégories",
 			quantityProduct: "{count} produit(s) trouvé(s).",
-			title: "{value}.",
+			title: "{value}",
 		},
 		get [routerPageName.SEARCH_PAGE]() {
 			return {
