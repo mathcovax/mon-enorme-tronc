@@ -15,7 +15,7 @@ export default (): RouteRecordRaw[] => [
 	{
 		name: routerPageNameCategory.CATEGORY_PAGE,
 		path: "/category/:categoryName",
-		component: () => import("./pages/CategoryPage.vue"),
+		component: () => import("./pages/ProductsPage.vue"),
 	},
 	{
 		name: routerPageNameCategory.PRODUCT_PAGE,

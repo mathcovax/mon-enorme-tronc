@@ -4,83 +4,92 @@ import ToggleFilter from "./ToggleFilter.vue";
 import CheckboxFilter from "./CheckboxFilter.vue";
 import RangeFilter from "./RangeFilter.vue";
 import RadioFilter from "./RadioFilter.vue";
-
-const filtersValue = ref<Record<string, QueryFilters[keyof QueryFilters]>>({});
-
 defineProps<{
 	filters: ComputedFilter[];
 }>();
-const emits = defineEmits<{
-	update: [value: Record<string, QueryFilters[keyof QueryFilters]>]
-}>();
 
-watch(filtersValue, () => {
-	emits("update", filtersValue.value);
-}, { deep: true });
+const filtersValue = defineModel<
+	Record<string, QueryFilters[keyof QueryFilters]>
+>(
+	"filtersValue",
+	{ required: true }
+);
+
 </script>
 <template>
-	<div
-		class="flex flex-col gap-4"
+	<TheAccordion
+		type="single"
+		collapsible
+		class="w-full"
 	>
 		<template
-			v-for="(filter, index) in filters"
+			v-for="filter in filters"
 			:key="filter.name"
 		>
 			<div
-				class="flex flex-col gap-2 pb-2 mb-2 border-b border-gray-200 dark:border-slate-950"
+				v-if="filter.type === 'TOGGLE'"
+				class="flex justify-between gap-4 py-4 border-b"
 			>
+				<h1 class="font-medium">
+					{{ $t(`filters.name.	${filter.name}`) }}
+				</h1>
+
 				<ToggleFilter
-					v-if="filter.type === 'TOGGLE'"
-					:key="filter.name"
 					:name="filter.name"
 					:quantity="filter.quantity"
-					@update="value => filtersValue[filter.name] = value"
+					v-model:filter-value="(filtersValue[filter.name] as 'true' | undefined)"
 				/>
-
-				<TheAccordion
-					type="single"
-					collapsible
-					class="w-full"
-					v-else
-				>
-					<AccordionItem 
-						class="border-b-0"
-						:value="filter.name"
-					>
-						<AccordionTrigger class="hover:no-underline ">
-							{{ $t(`filters.name.${filter.name}`) }}
-						</AccordionTrigger>
-
-						<AccordionContent>
-							<CheckboxFilter
-								v-if="filter.type === 'CHECKBOX'"
-								:key="filter.name"
-								:name="filter.name"
-								:values="filter.values"
-								@update="value => filtersValue[filter.name] = value"
-							/>
-
-							<RangeFilter
-								v-if="filter.type === 'RANGE'"
-								:key="filter.name"
-								:name="filter.name"
-								:min="filter.min"
-								:max="filter.max"
-								@update="value => filtersValue[filter.name] = value"
-							/>
-
-							<RadioFilter
-								v-if="filter.type === 'RADIO'"
-								:key="filter.name"
-								:name="filter.name"
-								:values="filter.values"
-								:radio-index="index"
-								@update="value => filtersValue[filter.name] = value"
-							/>
-						</AccordionContent>
-					</AccordionItem>
-				</TheAccordion>
 			</div>
+
+			<AccordionItem 
+				v-else-if="filter.type === 'CHECKBOX'"
+				:value="filter.name"
+			>
+				<AccordionTrigger class="hover:no-underline">
+					{{ $t(`filters.name.${filter.name}`) }}
+				</AccordionTrigger>
+				
+				<AccordionContent>
+					<CheckboxFilter
+						:name="filter.name"
+						:values="filter.values"
+						v-model:filter-value="(filtersValue[filter.name] as string[] | undefined)"
+					/>
+				</AccordionContent>
+			</AccordionItem>
+
+			<div
+				v-else-if="filter.type === 'RANGE'"
+				class="py-4 border-b"
+			>
+				<h1 class="font-medium">
+					{{ $t(`filters.name.${filter.name}`) }}
+				</h1>
+
+				<RangeFilter
+					:name="filter.name"
+					:min="filter.min"
+					:max="filter.max"
+					v-model:filter-value="(filtersValue[filter.name] as [number, number] | undefined)"
+				/>
+			</div>
+
+			<AccordionItem 
+				v-else-if="filter.type === 'RADIO'"
+				:value="filter.name"
+			>
+				<AccordionTrigger class="hover:no-underline ">
+					{{ $t(`filters.name.${filter.name}`) }}
+				</AccordionTrigger>
+
+				<AccordionContent>
+					<RadioFilter
+						:name="filter.name"
+						:values="filter.values"
+						v-model:filter-value="(filtersValue[filter.name] as string | undefined)"
+					/>
+				</AccordionContent>
+			</AccordionItem>
 		</template>
-	</div>
+	</TheAccordion>
 </template>

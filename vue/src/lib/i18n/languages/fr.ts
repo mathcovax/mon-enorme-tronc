@@ -241,8 +241,8 @@ export default {
 		},
 	},
 	filters: {
+		title: "Filtres",
 		name: {
-			title: "Filtres",
 			price: "Prix",
 			color: "Couleur",
 			size: "Taille",
@@ -252,44 +252,51 @@ export default {
 			material: "Matériaux",
 			stimulation: "Stimulation",
 		},
-		color: {
-			red: "Rouge",
-			blue: "Bleu",
-			green: "Vert",
-			yellow: "Jaune",
-			black: "Noir",
-			white: "Blanc",
+		type: {
+			range: {
+				price: "{value} €"
+			}
 		},
-		size: {
-			small: "Petit",
-			medium: "Moyen",
-			large: "Grand"
-		},
-		diameter: {
-			"20mm": "20mm",
-			"30mm": "30mm",
-			"40mm": "40mm",
-			"50mm": "50mm",
-			"60mm": "60mm",
-		},
-		targets: {
-			man: "Homme",
-			woman: "Femme",
-			"man/woman": "Homme/Femme",
-			undefined: "Aucun"
-		},
-		accessorie: {
-			accessory: "Accessoires"
-		},
-		material: {
-			wood: "Bois",
-			plastic: "Plastique"
-		},
-		stimulation: {
-			anal: "Anale",
-			vaginal: "Vaginale",
-			clitoral: "Clitorale",
-			prostate: "Prostate"
+		values: {
+			color: {
+				red: "Rouge",
+				blue: "Bleu",
+				green: "Vert",
+				yellow: "Jaune",
+				black: "Noir",
+				white: "Blanc",
+			},
+			size: {
+				small: "Petit",
+				medium: "Moyen",
+				large: "Grand"
+			},
+			diameter: {
+				"20mm": "20mm",
+				"30mm": "30mm",
+				"40mm": "40mm",
+				"50mm": "50mm",
+				"60mm": "60mm",
+			},
+			target: {
+				man: "Homme",
+				woman: "Femme",
+				"man/woman": "Homme/Femme",
+				undefined: "Aucun"
+			},
+			accessorie: {
+				accessory: "Accessoires"
+			},
+			material: {
+				wood: "Bois",
+				plastic: "Plastique"
+			},
+			stimulation: {
+				anal: "Anale",
+				vaginal: "Vaginale",
+				clitoral: "Clitorale",
+				prostate: "Prostate"
+			}
 		}
 	},
 	layout: {

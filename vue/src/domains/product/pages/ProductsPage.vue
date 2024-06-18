@@ -46,6 +46,8 @@ const currentPage = computed({
 	}
 });
 
+const filtersValue = ref<Record<string, QueryFilters[keyof QueryFilters]>>({});
+
 watch(
 	() => params.value.categoryName,
 	() => {
@@ -53,11 +55,28 @@ watch(
 	}
 );
 
-function filters(query: QueryFilters) {
-	fullProductSheetCountRefQuery.value = query ;
-	computedFiltersRefQuery.value = query;
-	categoryProductSheetsRefQuery.value = query;
-}
+watch(
+	filtersValue,
+	() => {
+		const newQuery = filtersValue.value as QueryFilters;
+
+		fullProductSheetCountRefQuery.value = {
+			...fullProductSheetCountRefQuery.value,
+			...newQuery
+		};
+		
+		computedFiltersRefQuery.value = {
+			...computedFiltersRefQuery.value,
+			...newQuery
+		};
+
+		categoryProductSheetsRefQuery.value = {
+			...categoryProductSheetsRefQuery.value,
+			...newQuery
+		};
+	},
+	{ deep: true }
+);
 </script>
 
 <template>
@@ -71,7 +90,7 @@ function filters(query: QueryFilters) {
 
 			<TheFilters
 				:filters="computedFilters"
-				@update="filters($event)"
+				v-model:filters-value="filtersValue"
 			/>
 
 			<div v-if="productSheets">
