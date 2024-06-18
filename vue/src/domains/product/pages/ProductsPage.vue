@@ -57,6 +57,17 @@ watch(
 	() => params.value.categoryName,
 	() => {
 		categoryProductSheetsRefQuery.value.categoryName = params.value.categoryName;
+		fullProductSheetCountRefQuery.value.categoryName = params.value.categoryName;
+		computedFiltersRefQuery.value.categoryName = params.value.categoryName;
+	}
+);
+
+watch(
+	() => params.value.productSheetName,
+	() => {
+		categoryProductSheetsRefQuery.value.searchByRegex = params.value.productSheetName;
+		fullProductSheetCountRefQuery.value.searchByRegex = params.value.productSheetName;
+		computedFiltersRefQuery.value.searchByRegex = params.value.productSheetName;
 	}
 );
 
@@ -110,7 +121,7 @@ watch(
 					</div>
 				</aside>
 
-				<div v-if="productSheets">
+				<div v-if="productSheets && productSheets.length">
 					<ProductPagination 
 						v-if="currentPage > 1"
 						:total="fullProductSheetCount"
