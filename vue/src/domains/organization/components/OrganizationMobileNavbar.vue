@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useGetOrganization } from "../composables/useGetOrganization";
 import { useOrganizationUserStore } from "@/domains/organization/stores/organizationUser";
 
 const { 
@@ -11,6 +12,13 @@ const {
 } = routerPageName;
 const route = useRoute();
 const organizationUserStore = useOrganizationUserStore();
+
+const params = useRouteParams({ 
+	organizationId: zod.string(), 
+});
+const { organization, getOrganization } = useGetOrganization(params.value.organizationId);
+
+getOrganization();
 </script>
 
 <template>
@@ -35,8 +43,17 @@ const organizationUserStore = useOrganizationUserStore();
 			<nav class="grid gap-2 text-lg font-medium">
 				<RouterLink
 					:to="{ name: ORGANIZATION_HOME }"
-					class="text-center text-2xl font-bold"
+					class="mb-6 flex flex-col items-center text-center text-2xl font-bold"
 				>
+					<img
+						v-if="organization.logoUrl"
+						width="48"
+						height="48"
+						:src="organization.logoUrl"
+						alt="logo"
+						class="rounded-full"
+					>
+
 					<span>{{ $t("layout.organization.title") }}</span>
 				</RouterLink>
 

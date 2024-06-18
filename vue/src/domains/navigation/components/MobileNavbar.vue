@@ -1,9 +1,13 @@
 <script setup lang="ts">
-import { useGetNavigationBar } from "../composables/useGetNavigationBar";
+import type { NavigationBar } from "@/lib/utils";
 
-const { PRODUCT_CATEGORY } = routerPageName;
+interface Props {
+	navigationItems: NavigationBar
+}
 
-const { items } = useGetNavigationBar();
+defineProps<Props>();
+
+const { CATEGORY_PAGE } = routerPageName;
 </script>
 
 <template>
@@ -34,7 +38,7 @@ const { items } = useGetNavigationBar();
 				</RouterLink>
 
 				<template
-					v-for="item in items"
+					v-for="item in navigationItems"
 					:key="item.type"
 				>
 					<TheAccordion
@@ -59,7 +63,7 @@ const { items } = useGetNavigationBar();
 										class="px-3 py-2 rounded-md bg-gradient-to-b from-muted/50 to-muted no-underline outline-none focus:shadow-md text-muted-foreground hover:text-foreground"
 									>
 										<RouterLink
-											:to="{ name: PRODUCT_CATEGORY, params: { categoryName: category.categoryName } }"
+											:to="{ name: CATEGORY_PAGE, params: { categoryName: category.categoryName } }"
 											class="flex items-center gap-4"
 										>
 											<img
@@ -76,7 +80,7 @@ const { items } = useGetNavigationBar();
 
 					<RouterLink
 						v-else-if="item.type === 'CATEGORY'"
-						:to="{ name: PRODUCT_CATEGORY, params: { categoryName: item.categoryName } }"
+						:to="{ name: CATEGORY_PAGE, params: { categoryName: item.categoryName } }"
 						class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
 					>
 						{{ item.categoryName }}

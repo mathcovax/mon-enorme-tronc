@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 import { useOrganizationEditForm } from "../composables/useOrganizationEditForm";
-const { organizationId } = useRouteParams({
+const params = useRouteParams({
 	organizationId: zod.string()
 });
 const {
 	FormOrganizationEdit,
 	checkFormOrganizationEdit,
 	valuesFormOrganziationEdit
-} = useOrganizationEditForm(organizationId);
+} = useOrganizationEditForm(params.value.organizationId);
 const $pt = usePageTranslate();
 
 async function submit () {
@@ -23,7 +23,7 @@ async function submit () {
 			{
 				label: formFields.label === "" ? null : formFields.label
 			},
-			{ params: { organizationId } }
+			{ params: { organizationId: params.value.organizationId } }
 		);
 
 	if (!formFields.logo?.blob) {
@@ -37,7 +37,7 @@ async function submit () {
 		.put(
 			"/organization/{organizationId}/logo",
 			formData,
-			{ params: { organizationId } }
+			{ params: { organizationId: params.value.organizationId } }
 		);
 }
 const inputFile = ref<null | HTMLInputElement>(null);

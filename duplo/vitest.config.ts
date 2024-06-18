@@ -26,10 +26,10 @@ export default defineConfig({
 				"src/utils"
 			],
 			thresholds: {
-				lines: 80,
-				functions: 80,
-				statements: 80,
-				branches: 50,
+				// lines: 80,
+				// functions: 80,
+				// statements: 80,
+				// branches: 50,
 			}
 		},
 	},

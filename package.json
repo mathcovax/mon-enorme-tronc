@@ -5,6 +5,7 @@
 		"duplo"
 	],
 	"scripts": {
+		"test:duplo": "npm -w duplo run test:tu:watch",
 		"dev:duplo": "npm -w duplo run dev",
 		"dev:vue": "npm -w vue run dev",
 		"dev": "docker compose up",

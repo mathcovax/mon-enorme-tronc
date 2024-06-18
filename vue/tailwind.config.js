@@ -32,6 +32,12 @@ module.exports = {
 				"192": "48rem",
 				"screen-no-header": "calc(100vh - 6rem)",
 			},
+			minHeight: {
+				"screen-no-header": "calc(100vh - 6rem)",
+			},
+			aspectRatio:{
+				portrait: "3 / 4",
+			},
 			colors: {
 				border: "hsl(var(--border))",
 				input: "hsl(var(--input))",
@@ -108,5 +114,8 @@ module.exports = {
 			},
 		},
 	},
-	plugins: [animate],
+	plugins: [
+		animate,
+		require('@tailwindcss/typography'),
+	],
 }

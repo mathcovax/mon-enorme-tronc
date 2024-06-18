@@ -4,10 +4,10 @@ import type { Warehouse } from "@/lib/utils";
 import type ThePopup from "@/components/ThePopup.vue";
 import { useWarehouseForm } from "../composables/useWarehouseForm";
 
-const { organizationId } = useRouteParams({ 
+const params = useRouteParams({ 
 	organizationId: zod.string(), 
 });
-const { warehouses, getWarehouses } = useGetWarehouses(organizationId);
+const { warehouses, getWarehouses } = useGetWarehouses(params.value.organizationId);
 const { WarehouseForm, warehouseValues, checkWarehouseForm, resetWarehouseForm } = useWarehouseForm();
 const $pt = usePageTranslate();
 const currentPage = ref(0);
@@ -91,7 +91,7 @@ async function submitPost() {
 				name: formFields.name,
 				address: formFields.address
 			},
-			{ params: { organizationId } }
+			{ params: { organizationId: params.value.organizationId } }
 		)
 		.info("warehouse.created", () => {
 			resetWarehouseForm();

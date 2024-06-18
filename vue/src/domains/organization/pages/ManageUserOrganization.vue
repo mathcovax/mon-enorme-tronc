@@ -5,7 +5,7 @@ import { useOrganizationUserAddForm } from "../composables/useOrganizationUserAd
 import type { OrganizationUser } from "@/lib/utils";
 import type ThePopup from "@/components/ThePopup.vue";
 
-const { organizationId } = useRouteParams({ 
+const params = useRouteParams({ 
 	organizationId: zod.string() 
 });
 const {
@@ -20,7 +20,7 @@ const {
 	valuesFormOrganizationUserEdit
 } = useOrganizationUserEditForm();
 const $pt = usePageTranslate();
-const { getOrganizationUsers, organisationUsers } = useGetOrganizationUsers(organizationId);
+const { getOrganizationUsers, organisationUsers } = useGetOrganizationUsers(params.value.organizationId);
 const currentPage = ref(0);
 const searchEmail = ref("");
 const popup = ref<InstanceType<typeof ThePopup>>();
@@ -59,7 +59,7 @@ async function submit() {
 				firstname: formFields.firstname,
 				organizationRole: formFields.organizationRole
 			},
-			{ params: { organizationId } }
+			{ params: { organizationId: params.value.organizationId } }
 		)
 		.info("organization.user.add", () => {
 			resetFormOrganizationUserAdd();
@@ -89,7 +89,7 @@ async function submitPatch() {
 			{
 				organizationRole: formFields.organizationRole
 			},
-			{ params: { organizationId, userId: formFields.user.id } }
+			{ params: { organizationId: params.value.organizationId, userId: formFields.user.id } }
 		)
 		.info("organization.user.edited", () => {
 			popup.value?.close();
@@ -108,7 +108,7 @@ function deleteUser() {
 			"/organization/{organizationId}/user/{userId}",
 			{
 				params: { 
-					organizationId, 
+					organizationId: params.value.organizationId, 
 					userId: valuesFormOrganizationUserEdit.user.value.id 
 				} 
 			}

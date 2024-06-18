@@ -21,7 +21,7 @@ if (!await lastIndexingDB.exists("/timestamp")) {
 const lastIndexing = new Date(await lastIndexingDB.getData("/timestamp"));
 
 const generator = FindSlice(
-	50, 
+	500, 
 	(slice, size) => prisma.product_sheet.findMany({
 		where: {
 			organization: {
@@ -73,7 +73,7 @@ const generator = FindSlice(
 	})
 );
 
-const promiseList: unknown[] = [];
+let promiseList: unknown[] = [];
 
 for await (const productSheet of generator) {
 	const fullProductSheet: FullProductSheetSchema = {
@@ -107,6 +107,11 @@ for await (const productSheet of generator) {
 			{ new: true, upsert: true }
 		)
 	);
+
+	if (promiseList.length > 1000) {
+		await Promise.all(promiseList);
+		promiseList = [];
+	}
 }
 
 await Promise.all(promiseList);

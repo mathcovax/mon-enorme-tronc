@@ -1,20 +1,31 @@
 import type { ZodObject, ZodTypeAny, infer as zodInfer } from "zod";
+import type { Ref } from "vue";
 
 export function useRouteQuery<
 	T extends Record<string, ZodTypeAny>
->(objectSchemas: T): zodInfer<ZodObject<T>>
+>(objectSchemas: T): Ref<zodInfer<ZodObject<T>>>
 {
-	const zodSchema = zod.object(objectSchemas);
-
-	const { query } = useRoute();
+	const route = useRoute();
 	const router = useRouter();
+	const currentRouteName = route.name;
 
-	const { success, data } = zodSchema.safeParse(query);
+	const params = computed(() => {
+		const zodSchema = zod.object(objectSchemas);
 
-	if (!success) {
-		router.push({ name: routerPageName.EDITO_HOME });
-		throw new Error("Query is invalid.");
-	}
+		const { success, data } = zodSchema.safeParse(route.query);
 
-	return data; 
+		if (currentRouteName !== route.name) {
+			throw new Error("Route change.");
+		}
+
+		if (!success) {
+			router.push({ name: routerPageName.EDITO_HOME });
+			throw new Error("Query is invalid.");
+		}
+
+		return data;
+	});
+	
+
+	return params; 
 }

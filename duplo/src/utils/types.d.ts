@@ -8,4 +8,5 @@ declare global {
 	type Push<T extends unknown[], V> = [...T, V];
 	type TuplifyUnion<T, L = LastOf<T>, N = [T] extends [never] ? true : false> =
 		true extends N ? [] : Push<TuplifyUnion<Exclude<T, L>>, L>
+	type NoInfer<T> = [T][T extends never ? number : never]
 }

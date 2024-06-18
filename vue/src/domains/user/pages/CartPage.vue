@@ -35,8 +35,8 @@ getCart();
 			</h1>
 
 			<div
-				class="mb-12 flex flex-1 justify-center rounded-lg border border-dashed shadow-sm"
-				:class="{ 'items-center': cart.length === 0 }"
+				class="mb-12 flex flex-1 justify-center rounded-lg border shadow-sm"
+				:class="{ 'items-center border-dashed': cart.length === 0 }"
 			>
 				<div
 					v-if="cart.length === 0"

@@ -11,8 +11,8 @@ export function useGetNavigationBar() {
 			})
 			.result;
 	}
-
 	getNavbarItems();
+	
 	return {
 		items,
 		getNavbarItems

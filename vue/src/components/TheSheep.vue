@@ -7,7 +7,7 @@ defineProps<{
 
 <template>
 	<span
-		:class="`inline-block px-4 py-2 border-2 b-${color || 'black'} t-${color || 'black'} rounded-3xl cursor-pointer`"
+		:class="`inline-block px-2 py-1 border b-${color || 'black'} text-sm t-${color || 'black'} rounded-3xl`"
 	>
 		{{ text }}
 	</span>

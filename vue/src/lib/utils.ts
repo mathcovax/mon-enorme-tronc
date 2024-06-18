@@ -61,6 +61,11 @@ export const primordialRoles: TuplifyUnion<PrimordialRole> = [
 	"ADMIN",
 ];
 
+export type FullProductSheet = GetResponseByInfo<
+    GetDef<"GET", "/full-product-sheets">,
+    "fullProductSheets"
+>["body"][number];
+
 export type Category = GetResponseByInfo<
   GetDef<"GET", "/categories">,
   "categories"
@@ -149,3 +154,13 @@ export type Cart = GetResponseByInfo<
 	GetDef<"GET", "/cart">,
 	"cart.fetched"
 >["body"]
+
+export type ComputedFilter = GetResponseByInfo<
+GetDef<"GET", "/computed-filters">,
+"filters"
+>["body"][number]
+
+export type QueryFilters = Exclude<
+	GetDef<"GET", "/computed-filters">["parameters"]["query"], 
+	undefined
+>

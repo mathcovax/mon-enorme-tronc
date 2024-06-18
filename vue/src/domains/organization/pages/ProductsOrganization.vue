@@ -4,11 +4,11 @@ import type { Product, ProductStatus } from "@/lib/utils";
 import { useProductForm } from "../composables/useProductForm";
 import WithValidation from "@/components/WithValidation.vue";
 
-const { organizationId } = useRouteParams({ 
+const params = useRouteParams({ 
 	organizationId: zod.string(), 
 });
-const { products, getProducts } = useGetProducts(organizationId);
-const { ProductForm, checkProductForm, resetProductForm } = useProductForm(organizationId);
+const { products, getProducts } = useGetProducts(params.value.organizationId);
+const { ProductForm, checkProductForm, resetProductForm } = useProductForm(params.value.organizationId);
 const currentPage = ref(0);
 const searchName = ref("");
 const $pt = usePageTranslate();
@@ -39,6 +39,10 @@ const cols: BigTableColDef<Product>[] = [
 	{
 		title: $pt("table.status"),
 		slotName: "status"
+	},
+	{
+		title: $t("label.actions"),
+		slotName: "actions"
 	},
 ];
 
@@ -162,18 +166,22 @@ watch(searchName, () => getProducts(0, searchName.value));
 				@click-previous="previous"
 			>
 				<template #status="{item}">
-					<div>
-						<WithValidation
-							:title="$pt('popupWrongMessage')"
-							@validate="toggleStatus(item)"
-							:disabled="item.status !== 'WRONG' && item.status !== 'IN_STOCK'"
-						>
-							<TheSheep
-								:text="$t(`productStatus.${item.status}`)"
-								:color="getColorForStatus(item.status)"
-							/>
-						</WithValidation>
-					</div>
+					<TheSheep
+						:text="$t(`productStatus.${item.status}`)"
+						:color="getColorForStatus(item.status)"
+					/>
+				</template>
+
+				<template #actions="{item}">
+					<WithValidation
+						:title="$pt('popupWrongMessage')"
+						@validate="toggleStatus(item)"
+						:disabled="item.status !== 'WRONG' && item.status !== 'IN_STOCK'"
+					>
+						<SecondaryButton>
+							<TheIcon icon="square-edit-outline" />
+						</SecondaryButton>
+					</WithValidation>
 				</template>
 			</BigTable>
 		</div>

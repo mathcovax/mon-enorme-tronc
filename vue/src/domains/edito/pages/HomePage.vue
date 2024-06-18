@@ -1,36 +1,35 @@
 <script setup lang="ts">
+// import type { CategoryProductSheet } from "@/lib/utils";
+// import ProductCard from "@/domains/product/components/ProductCard.vue";
+
 const $pt = usePageTranslate(); 
 
-const products = ref([
-	{
-		image: "https://via.placeholder.com/250",
-		title: "Petit tronc",
-		description: "Pour un moment tranquille sans écorce.",
-		price: "59.99€",
-		url: "/products/1",
-	},
-	{
-		image: "https://via.placeholder.com/250",
-		title: "Grand tronc",
-		description: "Pour un moment tranquille avec écorce.",
-		price: "99.99€",
-		url: "/products/2",
-	},
-	{
-		image: "https://via.placeholder.com/250",
-		title: "Tronc géant",
-		description: "Pour un moment tranquille avec écorce et feuilles.",
-		price: "199.99€",
-		url: "/products/3",
-	},
-	{
-		image: "https://via.placeholder.com/250",
-		title: "Tronc de luxe",
-		description: "Pour un moment tranquille avec écorce, feuilles et fruits.",
-		price: "399.99€",
-		url: "/products/4",
-	},
-]);
+// const products = ref<CategoryProductSheet[]>([
+// 	{
+// 		id: "1",
+// 		name: "Petit tronc",
+// 		description: "Pour un moment tranquille sans écorce.",
+// 		shortDescription: "Pour un moment tranquille sans écorce.",
+// 		price: 59,
+// 		organizationId: "1",
+// 	},
+// 	{
+// 		id: "2",
+// 		name: "Grand tronc",
+// 		description: "Pour un moment tranquille avec écorce.",
+// 		shortDescription: "Pour un moment tranquille avec écorce.",
+// 		price: 99,
+// 		organizationId: "1",
+// 	},
+// 	{
+// 		id: "3",
+// 		name: "Énorme tronc",
+// 		description: "Pour un moment tranquille avec écorce, feuilles et fruits.",
+// 		shortDescription: "Pour un moment tranquille avec écorce, feuilles et fruits.",
+// 		price: 199,
+// 		organizationId: "1",
+// 	},
+// ]);
 </script>
 
 <template>
@@ -70,12 +69,13 @@ const products = ref([
 			</h2>
 
 			<ScrollArea class="w-full">
-				<div class="flex justify-center">
-					<ProductCard
+				<div class="flex gap-6 justify-center">
+					<!-- <ProductCard
 						v-for="product in products"
-						:key="product.title"
+						:key="product.name"
 						:product="product"
-					/>
+						class="w-44 lg:w-64"
+					/> -->
 				</div>
 
 				<ScrollBar orientation="horizontal" />
@@ -100,12 +100,13 @@ const products = ref([
 			</h2>
 
 			<ScrollArea class="w-full">
-				<div class="flex justify-center">
-					<ProductCard
+				<div class="flex gap-6 justify-center">
+					<!-- <ProductCard
 						v-for="product in products"
-						:key="product.title"
+						:key="product.name"
 						:product="product"
-					/>
+						class="w-44 lg:w-64"
+					/> -->
 				</div>
 
 				<ScrollBar orientation="horizontal" />
@@ -116,7 +117,7 @@ const products = ref([
 				variant="outline"
 				class="w-min"
 			>
-				{{ $pt("buttonMore") }}
+				{{ $pt("button.more") }}
 			</TheButton>
 		</div>
 	</section>

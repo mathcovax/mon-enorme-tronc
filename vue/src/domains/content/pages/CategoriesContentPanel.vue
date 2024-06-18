@@ -35,6 +35,10 @@ const cols: BigTableColDef<Category>[] = [
 		title: $t("label.image"),
 		slotName: "image", 
 	},
+	{
+		title: $t("label.actions"),
+		slotName: "actions"
+	},
 ];
 
 const inputFileCreate = ref<null | HTMLInputElement>(null);
@@ -225,7 +229,6 @@ getCategories(currentPage.value, searchName.value);
 					:current-page="currentPage + 1"
 					@click-next="next"
 					@click-previous="previous"
-					@click-on-row="openPopup"
 				>
 					<template #disabled="{item}">
 						<TheIcon
@@ -241,6 +244,12 @@ getCategories(currentPage.value, searchName.value);
 						<div class="aspect-square overflow-hidden w-[30px]">
 							<img :src="item.imageUrl || ''">
 						</div>
+					</template>
+
+					<template #actions="{item}">
+						<SecondaryButton @click="openPopup(item)">
+							<TheIcon icon="square-edit-outline" />
+						</SecondaryButton>
 					</template>
 				</BigTable>
 			</div>

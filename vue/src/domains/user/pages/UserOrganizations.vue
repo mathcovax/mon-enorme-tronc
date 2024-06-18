@@ -14,7 +14,12 @@ const currentPage = ref(0);
 const cols: BigTableColDef<Organization>[] = [
 	{
 		title: $pt("table.col.name"),
+		slotName: "name",
 		getter: i => i.name
+	},
+	{
+		title: $pt("table.col.label"),
+		getter: i => i.label
 	},
 	{
 		title: $pt("table.col.actions"),
@@ -66,6 +71,21 @@ getUserOrganizations(currentPage.value);
 					@click-next="next"
 					@click-previous="previous"
 				>
+					<template #name="{item}">
+						<div class="flex gap-2 items-center">
+							<img
+								v-if="item.logoUrl"
+								:src="item.logoUrl"
+								width="32"
+								height="32"
+								alt="logo"
+								class="rounded-full"
+							>
+
+							<span>{{ item.name }}</span>
+						</div>
+					</template>
+				
 					<template #actions="{item}">
 						<SecondaryButton
 							as-child

@@ -32,7 +32,7 @@ async function googleSign() {
 
 <template>
 	<section class="flex items-center justify-center h-screen-no-header">
-		<div class="flex items-center justify-center w-full h-full lg:grid lg:items-stretch lg:justify-normal lg:grid-cols-2">
+		<div class="container flex items-center justify-center w-full h-full lg:grid lg:items-stretch lg:justify-normal lg:grid-cols-2">
 			<div class="flex items-center justify-center py-12">
 				<div class="mx-auto grid w-[350px] gap-6">
 					<div class="grid gap-2 text-center">
