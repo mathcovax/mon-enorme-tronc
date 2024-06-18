@@ -16,6 +16,7 @@ const filtersValue = defineModel<
 );
 
 </script>
+
 <template>
 	<TheAccordion
 		type="single"

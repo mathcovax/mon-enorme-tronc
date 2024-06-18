@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { marked } from "marked";
-import type { CategoryProductSheet } from "@/lib/utils";
+import type { FullProductSheet } from "@/lib/utils";
 
 const $pt = usePageTranslate();
 
-const product = ref<CategoryProductSheet>({
+const product = ref<FullProductSheet>({
 	id: "",
 	name: "",
 	price: 0,

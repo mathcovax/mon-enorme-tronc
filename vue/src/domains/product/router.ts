@@ -4,6 +4,7 @@ export const routerPageNameCategory = Object.freeze({
 	CATEGORIES_PAGE: "categories",
 	CATEGORY_PAGE: "category",
 	PRODUCT_PAGE: "product",
+	SEARCH_PAGE: "search",
 });
 
 export default (): RouteRecordRaw[] => [
@@ -21,5 +22,10 @@ export default (): RouteRecordRaw[] => [
 		name: routerPageNameCategory.PRODUCT_PAGE,
 		path: "/product/:productSheetId",
 		component: () => import("./pages/ProductPage.vue"),
+	},
+	{
+		name: routerPageNameCategory.SEARCH_PAGE,
+		path: "/search/:productSheetName",
+		component: () => import("./pages/ProductsPage.vue"),
 	},
 ];

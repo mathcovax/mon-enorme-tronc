@@ -19,7 +19,11 @@ export function useGetCategoryProductSheets(query?: Query) {
 		return duploTo.enriched
 			.get(
 				"/full-product-sheets",
-				{ query, signal: abortController.signal }
+				{ 
+					query, 
+					signal: abortController.signal 
+				},
+				{ disabledToast: true }
 			)
 			.info("fullProductSheets", (data) => {
 				productSheets.value = data;

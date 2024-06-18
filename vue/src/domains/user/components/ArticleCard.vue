@@ -2,16 +2,16 @@
 <script setup lang="ts">
 import type { Cart } from "@/lib/utils";
 
-// supprimer si existe déja (pas trouvé d'équivalent)
-type ElementType<T extends readonly unknown[]> = T extends readonly (infer U)[] ? U : never;
-
-defineProps<{
-	article: ElementType<Cart>;
+interface Props {
+	article: Cart[number];
 	addArticle:(productSheetId: string) => void;
 	removeArticle:(productSheetId: string) => void;
-}>();
+}
 
-const updateQuantity = (amount: number, product: Product) => {
+const { PRODUCT_PAGE } = routerPageName;
+defineProps<Props>();
+
+const updateQuantity = (amount: number, product: Cart[number]) => {
 	product.quantity += amount;
 };
 </script>
@@ -30,7 +30,7 @@ const updateQuantity = (amount: number, product: Product) => {
 			</CardHeader>
 
 			<CardContent class="p-0 flex flex-col gap-1">
-				<RouterLink :to="'/product/' + article.productSheetId">
+				<RouterLink :to="{name: PRODUCT_PAGE, params: {productSheetId: article.productSheetId}}">
 					<CardTitle>
 						{{ article.name }}
 					</CardTitle>
@@ -45,14 +45,14 @@ const updateQuantity = (amount: number, product: Product) => {
 		<CardFooter class="p-0 flex items-center gap-8">
 			<div class="flex items-center gap-4">
 				<TheQuantity 
-					:quantity="product.quantity"
-					@increment="updateQuantity(1, product)"
-					@decrement="updateQuantity(-1, product)"
+					:quantity="article.quantity"
+					@increment="updateQuantity(1, article)"
+					@decrement="updateQuantity(-1, article)"
 				/>
 			</div>
 
 			<p class="text-lg font-semibold">
-				{{ product.price * product.quantity }} €
+				{{ article.price * article.quantity }} €
 			</p>
 		</CardFooter>
 	</TheCard>

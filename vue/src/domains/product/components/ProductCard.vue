@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type { CategoryProductSheet } from "@/lib/utils";
+import type { FullProductSheet } from "@/lib/utils";
 
 const { PRODUCT_PAGE } = routerPageName;
 
 defineProps<{
-	product: CategoryProductSheet;
+	product: FullProductSheet;
 }>();
 </script>
 

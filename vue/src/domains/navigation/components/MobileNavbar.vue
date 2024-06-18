@@ -1,9 +1,13 @@
 <script setup lang="ts">
-import { useGetNavigationBar } from "../composables/useGetNavigationBar";
+import type { NavigationBar } from "@/lib/utils";
+
+interface Props {
+	navigationItems: NavigationBar
+}
+
+defineProps<Props>();
 
 const { CATEGORY_PAGE } = routerPageName;
-
-const { items } = useGetNavigationBar();
 </script>
 
 <template>
@@ -34,7 +38,7 @@ const { items } = useGetNavigationBar();
 				</RouterLink>
 
 				<template
-					v-for="item in items"
+					v-for="item in navigationItems"
 					:key="item.type"
 				>
 					<TheAccordion

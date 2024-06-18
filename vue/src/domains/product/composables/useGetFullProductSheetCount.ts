@@ -21,7 +21,8 @@ export function useGetFullProductSheetCount(query?: Query) {
 				{
 					query,
 					signal: abortController.signal
-				}
+				},
+				{ disabledToast: true }
 			)
 			.info("fullProductSheetCount", (data) => {
 				fullProductSheetCount.value = Number(data);

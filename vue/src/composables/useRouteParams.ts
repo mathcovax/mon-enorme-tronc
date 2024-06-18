@@ -11,19 +11,21 @@ export function useRouteParams<
 
 	const params = computed(() => {
 		const zodSchema = zod.object(objectSchemas);
-	
-		const { success, data } = zodSchema.safeParse(route.params);
-	
+		
 		if (currentRouteName !== route.name) {
 			throw new Error("Route change.");
 		}
+
+		const result = zodSchema.safeParse(route.params);
 		
-		if (!success) {
+		if (!result.success) {
 			router.push({ name: routerPageName.EDITO_HOME });
+			console.log(result);
+			
 			throw new Error("Params is invalid.");
 		}
 
-		return data;
+		return result.data;
 	});
 	
 

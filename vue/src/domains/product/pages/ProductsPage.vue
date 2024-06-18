@@ -9,11 +9,13 @@ import type { QueryFilters } from "@/lib/utils";
 
 const router = useRouter();
 const $pt = usePageTranslate();
-const { CATEGORIES_PAGE } = routerPageName;
+const { CATEGORIES_PAGE, SEARCH_PAGE } = routerPageName;
 
 const params = useRouteParams({ 
 	categoryName: zod.string().optional(), 
+	productSheetName: zod.string().optional(),
 });
+
 const query = useRouteQuery({
 	page: zod.coerce.number().default(1)
 });
@@ -23,19 +25,22 @@ const {
 	categoryProductSheetsRefQuery
 } = useGetCategoryProductSheets({
 	page: query.value.page, 
-	categoryName: params.value.categoryName
+	categoryName: params.value.categoryName,
+	searchByRegex: params.value.productSheetName,
 });
 const { 
 	computedFilters, 
 	computedFiltersRefQuery,
 } = useGetComputedFilters({
-	categoryName: params.value.categoryName
+	categoryName: params.value.categoryName,
+	searchByRegex: params.value.productSheetName,
 });
 const { 
 	fullProductSheetCount, 
 	fullProductSheetCountRefQuery
 } = useGetFullProductSheetCount({
-	categoryName: params.value.categoryName
+	categoryName: params.value.categoryName,
+	searchByRegex: params.value.productSheetName,
 });
 
 const currentPage = computed({
@@ -84,7 +89,7 @@ watch(
 		<div class="container flex flex-col gap-12 my-12 grow lg:my-16">
 			<div class="flex flex-col items-center justify-between gap-4 sm:gap-0 sm:flex-row">
 				<h1 class="text-2xl font-bold lg:text-3xl">
-					{{ params.categoryName }}
+					{{ $pt("title", {value: params.categoryName ?? params.productSheetName}) }}
 				</h1>
 			</div>
 
@@ -92,11 +97,17 @@ watch(
 				class="grid gap-6 sm:grid-cols-[180px_1fr] lg:grid-cols-[250px_1fr]"
 			>
 				<aside>
-					<TheFilters
-						:filters="computedFilters"
-						v-model:filters-value="filtersValue"
+					<div
+						v-if="fullProductSheetCount !== 0"
 						class="sticky top-28"
-					/>
+					>
+						<TheFilters
+							:filters="computedFilters"
+							v-model:filters-value="filtersValue"
+						/>
+
+						<span class="pt-4">{{ $pt('quantityProduct', {count: fullProductSheetCount}) }}</span>
+					</div>
 				</aside>
 
 				<div v-if="productSheets">
@@ -142,7 +153,7 @@ watch(
 						class="mt-4"
 						as-child
 					>
-						<RouterLink :to="{ name: CATEGORIES_PAGE }">
+						<RouterLink :to="{ name: params.categoryName ? CATEGORIES_PAGE : SEARCH_PAGE }">
 							{{ $pt("buttonBack") }}
 						</RouterLink>
 					</TheButton>

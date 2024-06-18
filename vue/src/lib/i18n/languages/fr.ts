@@ -42,6 +42,16 @@ export default {
 			emptyTitle: "Cette catégorie n'a pas encore de produits.",
 			emptySubtitle: "Revenez plus tard pour voir les nouveautés.",
 			buttonBack: "Revenir aux catégories",
+			quantityProduct: "{count} produit(s) trouvé(s).",
+			title: "{value}.",
+		},
+		get [routerPageName.SEARCH_PAGE]() {
+			return {
+				...this[routerPageName.CATEGORY_PAGE],
+				emptyTitle: "Aucun produit trouvé.",
+				buttonBack: "Revenir a l'acceil.",
+				title: "Resultas \"{value}\".",
+			};
 		},
 		[routerPageName.PRODUCT_PAGE]: {
 			addCartButton: "Ajouter au panier",

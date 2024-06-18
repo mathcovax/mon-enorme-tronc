@@ -22,7 +22,8 @@ export function useGetComputedFilters(query?: Query) {
 				{
 					query,
 					signal: abortController.signal
-				}
+				},
+				{ disabledToast: true }
 			)
 			.info("filters", (data) => {
 				computedFilters.value = data;
