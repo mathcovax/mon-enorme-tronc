@@ -88,58 +88,65 @@ watch(
 				</h1>
 			</div>
 
-			<TheFilters
-				:filters="computedFilters"
-				v-model:filters-value="filtersValue"
-			/>
+			<div
+				class="grid gap-6 sm:grid-cols-[180px_1fr] lg:grid-cols-[250px_1fr]"
+			>
+				<aside>
+					<TheFilters
+						:filters="computedFilters"
+						v-model:filters-value="filtersValue"
+						class="sticky top-28"
+					/>
+				</aside>
 
-			<div v-if="productSheets">
-				<ProductPagination 
-					v-if="currentPage > 1"
-					:total="fullProductSheetCount"
-					:current-page="currentPage"
-					@update="page => currentPage = page"
-					:key="'top-pagination-' + currentPage"
-				/>
+				<div v-if="productSheets">
+					<ProductPagination 
+						v-if="currentPage > 1"
+						:total="fullProductSheetCount"
+						:current-page="currentPage"
+						@update="page => currentPage = page"
+						:key="'top-pagination-' + currentPage"
+					/>
 
-				<div class="grid grid-cols-1 gap-6 my-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-					<ProductCard
-						v-for="(product, index) in productSheets"
-						:key="index"
-						:product="product"
-						class="w-full mx-auto max-w-80"
+					<div class="grid grid-cols-1 gap-6 my-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+						<ProductCard
+							v-for="(product, index) in productSheets"
+							:key="index"
+							:product="product"
+							class="w-full mx-auto max-w-80"
+						/>
+					</div>
+
+					<ProductPagination 
+						v-if="fullProductSheetCount >= 40"
+						:total="fullProductSheetCount"
+						:current-page="currentPage"
+						@update="page => currentPage = page"
+						:key="'bottom-pagination-' + currentPage"
 					/>
 				</div>
-
-				<ProductPagination 
-					v-if="fullProductSheetCount >= 40"
-					:total="fullProductSheetCount"
-					:current-page="currentPage"
-					@update="page => currentPage = page"
-					:key="'bottom-pagination-' + currentPage"
-				/>
-			</div>
 			
-			<div
-				v-else
-				class="flex flex-col items-center justify-center h-full gap-1 text-center"
-			>
-				<h2 class="text-2xl font-bold tracking-tight">
-					{{ $pt("emptyTitle") }}
-				</h2>
-
-				<p class="text-sm text-muted-foreground">
-					{{ $pt("emptySubtitle") }}
-				</p>
-
-				<TheButton 
-					class="mt-4"
-					as-child
+				<div
+					v-else
+					class="flex flex-col items-center justify-center h-full gap-1 text-center"
 				>
-					<RouterLink :to="{ name: CATEGORIES_PAGE }">
-						{{ $pt("buttonBack") }}
-					</RouterLink>
-				</TheButton>
+					<h2 class="text-2xl font-bold tracking-tight">
+						{{ $pt("emptyTitle") }}
+					</h2>
+
+					<p class="text-sm text-muted-foreground">
+						{{ $pt("emptySubtitle") }}
+					</p>
+
+					<TheButton 
+						class="mt-4"
+						as-child
+					>
+						<RouterLink :to="{ name: CATEGORIES_PAGE }">
+							{{ $pt("buttonBack") }}
+						</RouterLink>
+					</TheButton>
+				</div>
 			</div>
 		</div>
 	</section>
