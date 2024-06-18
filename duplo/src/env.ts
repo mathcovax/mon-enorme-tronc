@@ -28,7 +28,9 @@ export default global.ENV = zod
 		MINIO_BUCKET_ORGANIZATION_LOGO: zod.string(),
 		FIREBASE_CREDENTIAL_PATH: zod.string(),
 		JWT_KEY: zod.string(),
-		JWT_TIME: zod.string()
+		JWT_TIME: zod.string(),
+		MAIL_HOST: zod.string(),
+		MAIL_FROM: zod.string(),
 	})
 	.readonly()
 	.parse(process.env);
