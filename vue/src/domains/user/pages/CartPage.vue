@@ -2,7 +2,11 @@
 import ArticleCard from "../components/ArticleCard.vue";
 import { useGetCart } from "../composables/useGetCart";
 
+const { 
+	CATEGORIES_PAGE,
+} = routerPageName;
 const $pt = usePageTranslate();
+
 const { cart, getCart } = useGetCart();
 
 const addArticle = (productSheetId: string) => 
@@ -50,8 +54,13 @@ getCart();
 						{{ $pt("emptySubtitle") }}
 					</p>
 
-					<TheButton class="mt-4">
-						{{ $pt("browseButton") }}
+					<TheButton
+						class="mt-4"
+						as-child
+					>
+						<RouterLink :to="{ name: CATEGORIES_PAGE }">
+							{{ $pt("browseButton") }}
+						</RouterLink>
 					</TheButton>
 				</div>
 
