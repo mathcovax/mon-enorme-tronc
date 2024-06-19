@@ -25,7 +25,10 @@ export class ProductAvailability {
 					article
 				WHERE 
 					"createdAt" >= NOW() - INTERVAL '15 minutes'
-					AND "userId" != ${userId}
+					AND (
+						"userId" != ${userId} 
+						OR "commandId" IS NOT NULL
+					)
 					AND article."productSheetId" = ${productSheetId}
 				GROUP BY article."productSheetId"
 			)

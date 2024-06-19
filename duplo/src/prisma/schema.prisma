@@ -208,5 +208,12 @@ model article {
     userId         String
     productSheet   product_sheet @relation(fields: [productSheetId], references: [id])
     productSheetId String
+    command        command?      @relation(fields: [commandId], references: [id])
+    commandId      String?
     createdAt      DateTime      @default(now())
+}
+
+model command {
+    id      String    @id @default(uuid())
+    article article[]
 }
