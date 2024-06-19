@@ -57,37 +57,39 @@ function submit() {
 						</form>
 					</div>
 
-					<button class="lg:hidden">
-						<TheIcon
-							icon="magnify"
-							size="2xl"
-						/>
-					</button>
-
-					<RouterLink to="/cart">
-						<TheIcon
-							icon="cart-outline"
-							size="2xl"
-						/>
-					</RouterLink>
-
-					<RouterLink
-						:to="{name: AUTH_LOGIN}"
-						v-if="!userStore.isConnected"
-					>
-						<TheButton
-							variant="secondary"
-							size="icon"
-							class="rounded-full"
-						>
+					<div class="flex gap-6 items-center">
+						<button class="lg:hidden">
 							<TheIcon
-								icon="account-plus-outline"
+								icon="magnify"
 								size="2xl"
 							/>
-						</TheButton>
-					</Routerlink>
-				
-					<AccountDropdown v-else />
+						</button>
+
+						<RouterLink to="/cart">
+							<TheIcon
+								icon="cart-outline"
+								size="2xl"
+							/>
+						</RouterLink>
+
+						<RouterLink
+							:to="{name: AUTH_LOGIN}"
+							v-if="!userStore.isConnected"
+						>
+							<TheButton
+								variant="secondary"
+								size="icon"
+								class="rounded-full"
+							>
+								<TheIcon
+									icon="account-plus-outline"
+									size="2xl"
+								/>
+							</TheButton>
+						</Routerlink>
+
+						<AccountDropdown v-else />
+					</div>
 				</div>
 			</div>
 		</div>

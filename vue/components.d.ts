@@ -128,6 +128,7 @@ declare module 'vue' {
     TagsInputItemDelete: typeof import('./src/components/ui/tags-input/TagsInputItemDelete.vue')['default']
     TagsInputItemText: typeof import('./src/components/ui/tags-input/TagsInputItemText.vue')['default']
     TheAccordion: typeof import('./src/components/ui/accordion/TheAccordion.vue')['default']
+    TheBadge: typeof import('./src/components/ui/badge/TheBadge.vue')['default']
     TheButton: typeof import('./src/components/ui/button/TheButton.vue')['default']
     TheCalendar: typeof import('./src/components/ui/calendar/TheCalendar.vue')['default']
     TheCard: typeof import('./src/components/ui/card/TheCard.vue')['default']
