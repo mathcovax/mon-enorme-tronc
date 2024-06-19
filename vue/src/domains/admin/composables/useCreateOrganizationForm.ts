@@ -6,7 +6,11 @@ export function useCreateOrganizationForm() {
 
 	function onSearchUser(userEmail: string) {
 		duploTo.enriched.
-			get("/users", { query: { email: userEmail } })
+			get(
+				"/users", 
+				{ query: { email: userEmail } },
+				{ disabledLoader: true }
+			)
 			.s((users) => {
 				suggestedUser.value = users.map(
 					(user) => ({ label: user.email, identifier: user.id })

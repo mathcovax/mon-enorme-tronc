@@ -18,7 +18,7 @@ const items = computed(
 			value,
 		})),
 		{
-			label: `${$t(`filters.values.${props.name}.undefined`)}`,
+			label: `${$t("filters.type.radio.undefined")}`,
 			value: ""
 		}
 	]

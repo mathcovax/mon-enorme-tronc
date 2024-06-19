@@ -1,4 +1,4 @@
-import { fullProductSheetModel } from "@mongoose/model";
+import { fullProductSheetModel, productStatusChangeModel } from "@mongoose/model";
 import mongooseClient from "mongoose";
 
 declare global {
@@ -11,4 +11,5 @@ duplo.addHook("beforeListenHttpServer", async () => {
 	//@ts-expect-error var 'global' cause type error.
 	mongoose = global.mongoose = await mongooseClient.connect(ENV.MONGO_DATABASE_URL);
 	fullProductSheetModel.base = mongoose;
+	productStatusChangeModel.base = mongoose;
 });

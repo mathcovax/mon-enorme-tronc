@@ -247,7 +247,7 @@ export default {
 				warehousePlaceholder: "Entrer un entrepôt",
 			},
 			searchPlaceholder: "Chercher un produit",
-			popupWrongMessage: "Etes-vous sur de vouloir supprimer cette reference ?"
+			popupWrongMessage: "Etes-vous sur de vouloir changer le status de cette reference ?"
 		},
 	},
 	filters: {
@@ -265,6 +265,9 @@ export default {
 		type: {
 			range: {
 				price: "{value} €"
+			},
+			radio: {
+				undefined: "Aucun"
 			}
 		},
 		values: {
@@ -292,7 +295,6 @@ export default {
 				man: "Homme",
 				woman: "Femme",
 				"man/woman": "Homme/Femme",
-				undefined: "Aucun"
 			},
 			accessorie: {
 				accessory: "Accessoires"

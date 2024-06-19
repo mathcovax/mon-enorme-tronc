@@ -32,7 +32,7 @@ const generator = FindSlice(
 			},
 			updatedAt: {
 				gte: lastIndexing
-			}
+			},
 		},
 		include: {
 			organization: {
@@ -76,6 +76,10 @@ const generator = FindSlice(
 let promiseList: unknown[] = [];
 
 for await (const productSheet of generator) {
+	if (productSheet.images.length === 0) {
+		continue;
+	}
+
 	const fullProductSheet: FullProductSheetSchema = {
 		id: productSheet.id,
 		name: productSheet.name,

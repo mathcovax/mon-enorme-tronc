@@ -46,13 +46,13 @@ export const filterDefs = defineFilters([
 		]
 	},
 	{
-		type: "CHECKBOX",
+		type: "RADIO",
 		name: "size",
 		path: "facets.SIZE",
 		values: ["small", "medium", "large"]
 	},
 	{
-		type: "CHECKBOX",
+		type: "RADIO",
 		name: "diameter",
 		path: "facets.DIAMETER",
 		values: [
