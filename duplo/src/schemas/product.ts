@@ -7,6 +7,7 @@ export const productStatusTuple: TuplifyUnion<product_status> = [
 	"WRONG",
 	"SOLD",
 	"IN_STOCK",
+	"WAITING_PAYMENT"
 ];
 
 export const productStatusEnum: UninonToEnum<product_status> = {
@@ -14,6 +15,7 @@ export const productStatusEnum: UninonToEnum<product_status> = {
 	WRONG: "WRONG",
 	SOLD: "SOLD",
 	IN_STOCK: "IN_STOCK",
+	WAITING_PAYMENT: "WAITING_PAYMENT",
 };
 
 export const productSchema = zod.object({

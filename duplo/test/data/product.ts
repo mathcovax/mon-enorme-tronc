@@ -6,6 +6,7 @@ export const productData: product = {
 	organizationId: "",
 	productSheetId: "",
 	warehouseId: "",
+	commandId: null,
 	createdAt: new Date(),
 	updatedAt: new Date(),
 };

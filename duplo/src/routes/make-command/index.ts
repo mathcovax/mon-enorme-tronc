@@ -92,6 +92,7 @@ export const POST = (method: Methods, path: string) =>
 		)
 		.handler(
 			async ({ pickup }) => {
+				const articleInCart = pickup("articleInCart");
 				const userId = pickup("userId");
 				const commandId = pickup("commandId");
 				const { firstname, lastname, address } = pickup("body");
@@ -113,6 +114,37 @@ export const POST = (method: Methods, path: string) =>
 						sessionId: session.id,
 					}
 				});
+
+
+				await Promise.all(
+					articleInCart.map(
+						aic => prisma.product.findMany({
+							where: {
+								status: "IN_STOCK",
+								productSheetId: aic.productSheetId
+							},
+							select: {
+								sku: true
+							},
+							take: aic._count.productSheetId,
+						}).then(
+							products => Promise.all(
+								products.map(
+									p => prisma.product.update({
+										where: {
+											sku: p.sku,
+											status: "IN_STOCK",
+										},
+										data: {
+											status: "WAITING_PAYMENT",
+											commandId
+										}
+									})
+								)
+							)
+						)
+					)
+				);
 
 				throw new CreatedHttpException("session", { sessionUrl: session.url });
 			},

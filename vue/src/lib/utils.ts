@@ -121,6 +121,7 @@ export const productStatus: TuplifyUnion<ProductStatus> = [
 	"WRONG",
 	"SOLD",
 	"IN_STOCK",
+	"WAITING_PAYMENT"
 ];
 
 export type ProductSheet = GetResponseByInfo<

@@ -52,45 +52,10 @@ const removeArticle = (productSheetId: string) =>
 				class="mt-4"
 				as-child
 			>
-				<div
-					v-if="cart.length === 0"
-					class="flex flex-col items-center gap-1 text-center"
-				>
-					<h2 class="text-2xl font-bold tracking-tight">
-						{{ $pt("emptyTitle") }}
-					</h2>
-
-					<p class="text-sm text-muted-foreground">
-						{{ $pt("emptySubtitle") }}
-					</p>
-
-					<TheButton
-						class="mt-4"
-						as-child
-					>
-						<RouterLink :to="{ name: CATEGORIES_PAGE }">
-							{{ $pt("browseButton") }}
-						</RouterLink>
-					</TheButton>
-				</div>
-
-				<ul
-					v-else
-					class="w-full"
-				>
-					<li
-						v-for="article in cart"
-						:key="article.productSheetId"
-					>
-						<ArticleCard 
-							:article="article"
-							:add-article="addArticle"
-							:remove-article="removeArticle"
-						/>
-					</li>
-				</ul>
-			</thebutton>
-		</div>
+				<RouterLink :to="{ name: CATEGORIES_PAGE }">
+					{{ $pt("browseButton") }}
+				</RouterLink>
+			</TheButton>
 		</div>
 
 		<ul

@@ -2,12 +2,11 @@
 import CommandSteps from "../components/CommandSteps.vue";
 import { useUserCommandForm } from "../../user/composables/useUserCommandForm";
 import { useGetCart } from "../../user/composables/useGetCart";
-import type { LocationQueryValue } from "vue-router";
 
 const $pt = usePageTranslate();
 
 const { cart } = useGetCart();
-const query = useRouteQuery({ sessionId: zod.string().optional() });
+// const query = useRouteQuery({ sessionId: zod.string().optional() });
 //const checkoutSession = ref<CheckoutSession | null>(null);
 
 interface CommandInfo {
@@ -57,28 +56,7 @@ function submitPayment() {
 		.result;
 }
 
-function getCheckoutSession(sessionId: string | LocationQueryValue[]) {
-
-	// return duploTo.enriched
-	// 	.get(
-	// 		"/checkout-session",
-	// 		{ 
-	// 			query: { sessionId: sessionId }
-	// 		}
-	// 	)
-	// 	.info("stripe.session.get", (data) => {
-	// 		//checkoutSession.value = data;
-	// 	})
-	// 	.result;
-}
-
 const step = ref(1);
-
-if (query.value.sessionId) {
-	step.value = 4;
-	getCheckoutSession(query.value.sessionId);
-}
-
 </script>
 
 <template>

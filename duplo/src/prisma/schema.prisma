@@ -171,6 +171,8 @@ model product {
     organization   organization   @relation(fields: [organizationId], references: [id])
     organizationId String
     status         product_status @default(IN_STOCK)
+    command        command?       @relation(fields: [commandId], references: [id])
+    commandId      String?
     warehouseId    String
     warehouse      warehouse      @relation(fields: [warehouseId], references: [id])
     createdAt      DateTime       @default(now())
@@ -182,6 +184,7 @@ enum product_status {
     WRONG
     SOLD
     IN_STOCK
+    WAITING_PAYMENT
 }
 
 model facet {
@@ -224,6 +227,7 @@ model command {
     address   String         @db.VarChar(400)
     sessionId String         @db.VarChar(255)
     status    command_status @default(WAITING_PAYMENT)
+    product   product[]
 }
 
 enum command_status {
