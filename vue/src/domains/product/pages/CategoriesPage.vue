@@ -27,7 +27,7 @@ getCategories();
 					v-for="category in categories"
 					:category="category"
 					:key="category.name"
-					class="max-w-80 mx-auto"
+					class="w-full max-w-80 mx-auto"
 				/>
 			</div>
 		</div>
