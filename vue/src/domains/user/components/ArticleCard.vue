@@ -7,6 +7,7 @@ interface Props {
 }
 
 const { PRODUCT_PAGE } = routerPageName;
+const $pt = usePageTranslate();
 
 defineProps<Props>();
 const emit = defineEmits<{
@@ -15,7 +16,7 @@ const emit = defineEmits<{
 	deleteArticle: [];
 }>();
 
-const updateQuantity = (amount: number, product: Cart[number]) => {
+const updateQuantity = (amount: number) => {
 	if (amount === 1) {
 		emit("addArticle");
 	}
@@ -23,8 +24,6 @@ const updateQuantity = (amount: number, product: Cart[number]) => {
 	if (amount === -1) {
 		emit("removeArticle");
 	}
-
-	product.quantity += amount;
 };
 </script>
 
@@ -56,16 +55,36 @@ const updateQuantity = (amount: number, product: Cart[number]) => {
 
 		<CardFooter class="p-0 flex items-center gap-8">
 			<div class="flex items-center gap-4">
-				<TheQuantity 
-					:quantity="article.quantity"
-					can-delete
-					@increment="updateQuantity(1, article)"
-					@decrement="updateQuantity(-1, article)"
-				/>
+				<WithValidation
+					:title="$pt('popup.title')"
+					:content="$pt('popup.content')"
+					class="col-span-4"
+					:disabled="article.quantity > 1"
+					@disabled-click="updateQuantity(-1)"
+					@validate="updateQuantity(-1)"
+				>
+					<PrimaryButton
+						type="button"
+						class="w-[40px] h-[40px] rounded-full"
+						:variant="article.quantity > 1 ? undefined : 'destructive'"
+					>
+						<TheIcon :icon="article.quantity > 1 ? 'minus' : 'delete-outline'" />
+					</PrimaryButton>
+				</WithValidation>
+
+				<span class="text-lg font-bold">{{ article.quantity }}</span>
+
+				<PrimaryButton
+					@click="updateQuantity(1)"
+					class="cursor-pointer w-[40px] h-[40px] flex items-center justify-center rounded-full bg-primary text-white"
+					as-child
+				>
+					<TheIcon icon="plus" />
+				</PrimaryButton>
 			</div>
 
 			<p class="text-lg font-semibold">
-				{{ article.price * article.quantity }} €
+				{{ article.price * article.quantity }}&nbsp;€
 			</p>
 		</CardFooter>
 	</TheCard>

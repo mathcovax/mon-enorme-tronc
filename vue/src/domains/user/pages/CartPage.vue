@@ -19,7 +19,7 @@ const addArticle = (productSheetId: string) =>
 			undefined,
 			{ disabledToast: true }
 		)
-		.info("article.created", () => getCart());
+		.then(getCart);
 
 const removeArticle = (productSheetId: string) =>
 	duploTo.enriched
@@ -27,10 +27,7 @@ const removeArticle = (productSheetId: string) =>
 			"/article/{productSheetId}",
 			{ params: { productSheetId } }
 		)
-		.info("article.deleted", () => getCart());
-
-
-getCart();
+		.then(getCart);
 </script>
 
 <template>

@@ -33,7 +33,7 @@ export const POST = (method: Methods, path: string) => mustBeConnected({ pickup:
 			return {};
 		},
 		[],
-		new IHaveSentThis(ConflictHttpException.code, "article.quantity.empty")
+		new IHaveSentThis(ConflictHttpException.code, "product.unavailable")
 	)
 	.handler(
 		async ({ pickup }) => {

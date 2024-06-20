@@ -2,6 +2,7 @@
 import { marked } from "marked";
 import type { FullProductSheet } from "@/lib/utils";
 import ProductSlider from "../components/ProductSlider.vue";
+import ProductSheetQuantity from "../components/ProductSheetQuantity.vue";
 
 const { CATEGORY_PAGE } = routerPageName;
 
@@ -106,7 +107,7 @@ getProductData();
 					</p>
 
 					<div class="mt-4 flex gap-12 items-center">
-						<TheQuantity 
+						<productSheetQuantity
 							:quantity="productQuantity"
 							:max="product.quantity"
 							@increment="productQuantity++"
