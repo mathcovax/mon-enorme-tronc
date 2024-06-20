@@ -2,13 +2,15 @@
 import { marked } from "marked";
 import type { FullProductSheet } from "@/lib/utils";
 import ProductSlider from "../components/ProductSlider.vue";
-import TheIcon from "@/components/TheIcon.vue";
 
 const { CATEGORY_PAGE } = routerPageName;
 
 const $pt = usePageTranslate();
+const router = useRouter();
+const { EDITO_HOME } = routerPageName;
 
 const product = ref<FullProductSheet | null>(null);
+const productQuantity = ref(1);
 
 const params = useRouteParams({ 
 	productSheetId: zod.string(), 
@@ -22,9 +24,23 @@ function getProductData() {
 		)
 		.info("fullProductSheet", (data) => {
 			product.value = data;
-			console.log(product.value);
+		})
+		.e(() => {
+			router.push({ name: EDITO_HOME });
 		})
 		.result;
+}
+
+function createArticle() {
+	duploTo.enriched.post(
+		"/article",
+		{ 
+			productSheetId: params.value.productSheetId,
+			quantity: productQuantity.value
+		}
+	);
+
+	productQuantity.value = 1;
 }
 
 const renderDescription = computed(() => {
@@ -34,8 +50,6 @@ const renderDescription = computed(() => {
 
 	return marked.parse(product.value.description);
 });
-
-const productQuantity = ref(1);
 
 getProductData();
 </script>
@@ -94,12 +108,14 @@ getProductData();
 					<div class="mt-4 flex gap-12 items-center">
 						<TheQuantity 
 							:quantity="productQuantity"
-							:max="10"
+							:max="product.quantity"
 							@increment="productQuantity++"
 							@decrement="productQuantity--"
 						/>
 
-						<TheButton>{{ $pt("addCartButton") }}</TheButton>
+						<PrimaryButton @click="createArticle">
+							{{ $pt("addCartButton") }}
+						</PrimaryButton>
 					</div>
 
 					<div class="self-end mt-auto flex gap-2 items-center">

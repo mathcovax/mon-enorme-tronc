@@ -6,7 +6,7 @@ export const DELETE = (method: Methods, path: string) => mustBeConnected({ picku
 	.declareRoute(method, path)
 	.extract({
 		params: zod.object({
-			productSheetId: zod.string()
+			productSheetId: zod.string(),
 		}).strip()
 	})
 	.check(

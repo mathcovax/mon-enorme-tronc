@@ -543,9 +543,13 @@ export default {
 			notfound: "Le produit n'existe pas.",
 			edited: "Le produit a correctement été modifié.",
 			created: "Le produit a correctement été créé.",
+			unavailable: "Le produit n'est pas disponible quand la quantité souéter.",
 			sku: {
 				alreadyUse: "Ce sku est déjà utilisé.",
 			}
+		},
+		article: {
+			created: "Les article on bien étais ajouter au panier.",
 		},
 		TYPE_ERROR: "L'une des données envoyées est erronée. (Erreur provenant du site)",
 		NOTFOUND: "La route utilisée n'existe pas. (Erreur provenant du site)",

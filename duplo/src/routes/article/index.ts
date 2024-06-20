@@ -1,5 +1,5 @@
 import { productSheetExistCheck, inputProductSheet } from "@checkers/productSheet";
-import { articleSchema } from "@schemas/article";
+import { articleCreatedSchema } from "@schemas/article";
 import { mustBeConnected } from "@security/mustBeConnected";
 import { ProductAvailability } from "@services/productAvailability";
 
@@ -9,6 +9,7 @@ export const POST = (method: Methods, path: string) => mustBeConnected({ pickup:
 	.extract({
 		body: zod.object({
 			productSheetId: zod.string(),
+			quantity: zod.number().min(1).default(1),
 		}).strip()
 	})
 	.check(
@@ -21,12 +22,12 @@ export const POST = (method: Methods, path: string) => mustBeConnected({ pickup:
 	)
 	.cut(
 		async ({ pickup }) => {
-			const { productSheetId } = pickup("body");
+			const { productSheetId, quantity } = pickup("body");
 
-			const quantity = await ProductAvailability.quantity(productSheetId);
+			const quantityAvailable = await ProductAvailability.quantity(productSheetId);
 
-			if (quantity < 1) {
-				throw new ConflictHttpException("article.quantity.empty");
+			if (quantityAvailable < quantity) {
+				throw new ConflictHttpException("product.unavailable");
 			}
 
 			return {};
@@ -36,17 +37,21 @@ export const POST = (method: Methods, path: string) => mustBeConnected({ pickup:
 	)
 	.handler(
 		async ({ pickup }) => {
-			const { productSheetId } = pickup("body");
+			const { productSheetId, quantity } = pickup("body");
 			const { id: userId } = pickup("accessTokenContent");
+			const createdAt = new Date();
 
-			const article = await prisma.article.create({
-				data: {
+			await prisma.article.createMany({
+				data: Array.from({ length: quantity }, () => ({
+					productSheetId,
 					userId,
-					productSheetId
-				}
+					createdAt,
+				})),
 			});
 
-			throw new CreatedHttpException("article.created", article);
+			throw new CreatedHttpException("article.created", {
+				productSheetId, quantity, userId, createdAt 
+			});
 		},
-		new IHaveSentThis(CreatedHttpException.code, "article.created", articleSchema)
+		new IHaveSentThis(CreatedHttpException.code, "article.created", articleCreatedSchema)
 	);
