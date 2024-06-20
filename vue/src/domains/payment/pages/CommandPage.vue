@@ -1,62 +1,101 @@
 <script setup lang="ts">
 import CommandSteps from "../components/CommandSteps.vue";
-import { useUserCommandForm } from "../composables/useUserCommandForm";
-import { useGetCart } from "../composables/useGetCart";
+import { useUserCommandForm } from "../../user/composables/useUserCommandForm";
+import { useGetCart } from "../../user/composables/useGetCart";
+import { useGetCheckoutSession } from "../composables/useGetCheckoutSession";
+import type { LocationQueryValue } from "vue-router";
 
 const $pt = usePageTranslate();
 
-const user = useUserStore().user;
 const { cart } = useGetCart();
+const query = useRouteQuery({ sessionId: zod.string().optional() });
+//const checkoutSession = ref<CheckoutSession | null>(null);
+
+interface CommandInfo {
+	firstname: string;
+	lastname: string;
+	address: string;
+}
+
+const commandInfos = ref<CommandInfo | undefined>();
 
 const {
 	UserCommandForm,
-	//checkUserCommandForm,
-} = useUserCommandForm(user?.id);
+	checkUserCommandForm,
+} = useUserCommandForm();
 
-function submitForm() {
-	// const formFields = await checkUserCommandForm();
+async function submitForm() {
+	const formFields = await checkUserCommandForm();
 
-	// if (!formFields) {
-	// 	return;
-	// }
+	if (!formFields) {
+		return;
+	}
 
-	// await duploTo.enriched
-	// 	.patch(
-	// 		"/user",
-	// 		{
-	// 			lastname: formFields.lastname,
-	// 			firstname: formFields.firstname,
-	// 			address: formFields.address,
-	// 		},
-	// 	)
-	// 	.result;
+	commandInfos.value = formFields;
 
 	step.value = 2;
 }
 
 const products = ref(cart);
 
-function submitPayement() {
-	step.value = 4;
+function submitPayment() {
+	if (!commandInfos.value) {
+		return;
+	}
+
+	duploTo.enriched
+		.post(
+			"/make-command",
+			{
+				firstname: commandInfos.value.firstname,
+				lastname: commandInfos.value.lastname,
+				address: commandInfos.value.address,
+			}
+		)
+		.info("session", (data) => {
+			window.location.href = data.sessionUrl;
+		})
+		.result;
+}
+
+function getCheckoutSession(sessionId: string | LocationQueryValue[]) {
+
+	// return duploTo.enriched
+	// 	.get(
+	// 		"/checkout-session",
+	// 		{ 
+	// 			query: { sessionId: sessionId }
+	// 		}
+	// 	)
+	// 	.info("stripe.session.get", (data) => {
+	// 		//checkoutSession.value = data;
+	// 	})
+	// 	.result;
 }
 
 const step = ref(1);
+
+if (query.value.sessionId) {
+	step.value = 4;
+	getCheckoutSession(query.value.sessionId);
+}
+
 </script>
 
 <template>
 	<section class="h-screen-no-header">
 		<div class="container h-[calc(100%-3rem)] mt-12 lg:mt-16 flex flex-col gap-12">
-			<h1 class="text-2xl lg:text-3xl font-bold">
+			<h1 class="text-2xl font-bold lg:text-3xl">
 				{{ $pt("title") }}
 			</h1>
 
 			<div class="mx-auto grid w-full items-start gap-6 md:grid-cols-[180px_1fr] lg:grid-cols-[250px_1fr]">
-				<aside class="mb-12 md:mb-0 rounded shadow p-4">
+				<aside class="p-4 mb-12 rounded shadow md:mb-0">
 					<CommandSteps :step="step" />
 				</aside>
 
 				<div
-					class="h-full flex flex-col gap-6"
+					class="flex flex-col h-full gap-6"
 				>
 					<div
 						v-if="step > 1 && step < 4"
@@ -71,7 +110,7 @@ const step = ref(1);
 					</div>
 
 					<template v-if="step === 1">
-						<h2 class="text-xl lg:text-2xl font-bold mb-4">
+						<h2 class="mb-4 text-xl font-bold lg:text-2xl">
 							{{ $pt("stepTitle.address") }}
 						</h2>
 
@@ -88,7 +127,7 @@ const step = ref(1);
 					</template>
 
 					<template v-if="step === 2">
-						<h2 class="text-xl lg:text-2xl font-bold mb-4">
+						<h2 class="mb-4 text-xl font-bold lg:text-2xl">
 							{{ $pt("stepTitle.cart") }}
 						</h2>
 
@@ -119,25 +158,25 @@ const step = ref(1);
 					</template>
 
 					<template v-if="step === 3">
-						<h2 class="text-xl lg:text-2xl font-bold mb-4">
+						<h2 class="mb-4 text-xl font-bold lg:text-2xl">
 							{{ $pt("stepTitle.payment") }}
 						</h2>
 
 						<PrimaryButton
 							type="submit"
 							class="col-span-12"
-							@click="submitPayement"
+							@click="submitPayment"
 						>
 							{{ $t("button.pay") }}
 						</PrimaryButton>
 					</template>
 
 					<template v-if="step === 4">
-						<h2 class="text-xl lg:text-2xl font-bold mb-4">
+						<h2 class="mb-4 text-xl font-bold lg:text-2xl">
 							{{ $pt("stepTitle.success") }}
 						</h2>
 
-						<div class="flex-1 flex flex-col gap-4 justify-center items-center">
+						<div class="flex flex-col items-center justify-center flex-1 gap-4">
 							<TheIcon
 								icon="check-circle"
 								class="w-24 h-24 text-[96px] flex items-center justify-center "

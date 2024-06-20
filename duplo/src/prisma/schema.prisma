@@ -215,12 +215,15 @@ model article {
 }
 
 model command {
-    id      String         @id @default(uuid())
-    article article[]
-    user    user           @relation(fields: [userId], references: [id])
-    userId  String
-    session String         @db.VarChar(50)
-    status  command_status @default(WAITING_PAYMENT)
+    id        String         @id @default(uuid())
+    article   article[]
+    user      user           @relation(fields: [userId], references: [id])
+    userId    String
+    lastname  String         @db.VarChar(32)
+    firstname String         @db.VarChar(36)
+    address   String         @db.VarChar(400)
+    sessionId String         @db.VarChar(255)
+    status    command_status @default(WAITING_PAYMENT)
 }
 
 enum command_status {

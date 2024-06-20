@@ -1,4 +1,5 @@
-export function useUserCommandForm(userId?: string) {
+export function useUserCommandForm() {
+	const userStore = useUserStore();
 	const { searchAddresses, addresses } = useSearchAddresses();
 	const { Form, checkForm, values } = useFormBuilder({
 		lastname: {
@@ -32,17 +33,11 @@ export function useUserCommandForm(userId?: string) {
 		})),
 	});
 
-	if (userId) {
-		duploTo.enriched
-			.get("/user")
-			.info("user", (data) => {
-				const address = { label: data.address, identifier: data.address }; 
-
-				values.lastname.value = data.lastname;
-				values.firstname.value = data.firstname;
-				values.address.value = address;
-			});
-	}
+	userStore.getPromiseFetching()?.then((data) => {
+		values.lastname.value = data.lastname;
+		values.firstname.value = data.firstname;
+		values.address.value = { label: data.address, identifier: data.address };
+	});
 
 	return {
 		UserCommandForm: Form,

@@ -426,7 +426,13 @@ export type response_12_0 = {
     info: "navigationBar";
 } & {body: response_body_12_0};
 
-export type request_body_13 = string
+export type request_body_13 = {
+    fireBaseIdToken: string;
+    lastname: string;
+    firstname: string;
+    address: string;
+    dateOfBirth: Date;
+}
 
 export type response_13_0 = {
     code: 401;
@@ -435,6 +441,7 @@ export type response_13_0 = {
 } & {body: undefined};
 
 export type response_13_1 = {
+<<<<<<< HEAD
     code: 404;
     ok: false;
     info: "user.notfound";
@@ -467,18 +474,27 @@ export type response_14_0 = {
 
 export type response_14_1 = {
     code: 406;
+=======
+    code: 409;
+>>>>>>> 831755c (feat(105): add functional payment on front)
     ok: false;
     info: "organization.hasNotUser";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_body_14_2 = string
 
 export type response_14_2 = {
     code: 401;
+=======
+export type response_13_2 = {
+    code: 400;
+>>>>>>> 831755c (feat(105): add functional payment on front)
     ok: false;
     info: "organization.user.organizationRole.owner";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_14_3 = {
     code: 204;
     ok: true;
@@ -512,11 +528,35 @@ export type parameters_15 = {
 =======
 >>>>>>> f3ccc06 (feat(105): create session)
 export type response_15_0 = {
+=======
+export type response_13_3 = {
+    code: 400;
+    ok: false;
+    info: "user.dateOfBirth.invalid";
+} & {body: undefined};
+
+export type response_body_13_4 = string
+
+export type response_13_4 = {
+    code: 201;
+    ok: true;
+    info: "user.registered";
+} & {body: response_body_13_4};
+
+export type parameters_14 = {
+    params: {
+        productSheetId: string;
+    };
+}
+
+export type response_14_0 = {
+>>>>>>> 831755c (feat(105): add functional payment on front)
     code: 401;
     ok: false;
     info: "access.token.invalid";
 } & {body: undefined};
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 export type response_15_1 = {
     code: 404;
@@ -591,12 +631,46 @@ export type request_body_16 = string
 } & {body: undefined};
 
 export type response_15_2 = {
+=======
+export type response_14_1 = {
+    code: 404;
+    ok: false;
+    info: "productSheet.notfound";
+} & {body: undefined};
+
+export type response_14_2 = {
+>>>>>>> 831755c (feat(105): add functional payment on front)
     code: 200;
     ok: true;
     info: "article.deleted";
 } & {body: undefined};
 
+<<<<<<< HEAD
 >>>>>>> cc7d315 (feat(105): start make command)
+=======
+export type request_body_15 = string
+
+export type response_15_0 = {
+    code: 401;
+    ok: false;
+    info: "firebase.token.invalid";
+} & {body: undefined};
+
+export type response_15_1 = {
+    code: 404;
+    ok: false;
+    info: "user.notfound";
+} & {body: undefined};
+
+export type response_body_15_2 = string
+
+export type response_15_2 = {
+    code: 200;
+    ok: true;
+    info: "user.logged";
+} & {body: response_body_15_2};
+
+>>>>>>> 831755c (feat(105): add functional payment on front)
 export type response_16_0 = {
     code: 401;
     ok: false;
@@ -611,9 +685,12 @@ export type response_16_1 = {
 } & {body: undefined};
 =======
 export type response_body_16_1 = {
+<<<<<<< HEAD
 =======
 export type response_body_15_1 = {
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+>>>>>>> 831755c (feat(105): add functional payment on front)
     productSheetId: string;
     quantity: number;
     name: string;
@@ -624,6 +701,7 @@ export type response_body_15_1 = {
 }[]
 >>>>>>> f41a079 (feat(105): start make command)
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 export type response_16_2 = {
@@ -665,18 +743,22 @@ export type response_16_1 = {
 =======
 export type response_15_1 = {
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+export type response_16_1 = {
+>>>>>>> 831755c (feat(105): add functional payment on front)
     code: 200;
     ok: true;
     info: "cart.fetched";
-} & {body: response_body_15_1};
+} & {body: response_body_16_1};
 
-export type parameters_16 = {
+export type parameters_17 = {
     params: {
-        productSheetId: string;
+        imageProductSheetId: string;
     };
 >>>>>>> cc7d315 (feat(105): start make command)
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 export type response_16_3 = {
     code: 201;
@@ -707,6 +789,8 @@ export type request_body_17 = {
 }
 >>>>>>> f3ccc06 (feat(105): create session)
 
+=======
+>>>>>>> 831755c (feat(105): add functional payment on front)
 export type response_17_0 = {
     code: 401;
     ok: false;
@@ -734,22 +818,32 @@ export type response_body_17_2 = {
 =======
     code: 404;
     ok: false;
-    info: "productSheet.notfound";
+    info: "imageProductSheet.notfound";
 } & {body: undefined};
 
 export type response_17_2 = {
-    code: 409;
-    ok: false;
-    info: "article.quantity.empty";
+    code: 204;
+    ok: true;
+    info: "imageProductSheet.deleted";
 } & {body: undefined};
 
-export type response_body_17_3 = {
-    id: string;
-    userId: string;
-    producSheetId?: string;
-    createdAt?: string;
+export type response_17_3 = {
+    code: 406;
+    ok: false;
+    info: "organization.hasNotUser";
+} & {body: undefined};
+
+export type response_17_4 = {
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+} & {body: undefined};
+
+export type request_body_18 = {
+    organizationRole?: ("STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT") | undefined;
 }
 
+<<<<<<< HEAD
 export type response_17_3 = {
 <<<<<<< HEAD
 >>>>>>> f41a079 (feat(105): start make command)
@@ -790,18 +884,23 @@ export type request_body_18 = {
 }
 >>>>>>> 94ee503 (feat(105): commad)
 
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 export type parameters_18 = {
     params: {
         organizationId: string;
         userId: string;
     };
 }
+<<<<<<< HEAD
 =======
     code: 201;
     ok: true;
     info: "article.created";
 } & {body: response_body_17_3};
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 
 export type response_18_0 = {
     code: 401;
@@ -810,6 +909,7 @@ export type response_18_0 = {
 } & {body: undefined};
 
 export type response_18_1 = {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     code: 404;
@@ -854,8 +954,11 @@ export type response_18_2 = {
 =======
     code: 409;
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+    code: 406;
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
     ok: false;
-    info: "cart.empty";
+    info: "organization.hasNotUser";
 } & {body: undefined};
 
 <<<<<<< HEAD
@@ -870,19 +973,18 @@ export type response_18_3 = {
 >>>>>>> 94ee503 (feat(105): commad)
 =======
 export type response_18_2 = {
-    code: 409;
+    code: 401;
     ok: false;
-    info: "product.unavailable";
+    info: "organization.user.organizationRole.owner";
 } & {body: undefined};
 
-export type response_body_18_3 = {
-    sessionUrl: string;
-}
-
 export type response_18_3 = {
-    code: 201;
+    code: 204;
     ok: true;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
     info: "organization.user.edited";
 } & {body: undefined};
 
@@ -893,19 +995,26 @@ export type response_18_4 = {
 } & {body: undefined};
 
 export type response_18_5 = {
+<<<<<<< HEAD
 >>>>>>> f41a079 (feat(105): start make command)
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
     code: 403;
     ok: false;
     info: "user.role.organization.invalid";
 } & {body: undefined};
+<<<<<<< HEAD
 =======
     info: "session";
 } & {body: response_body_18_3};
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 
 export type parameters_19 = {
     params: {
-        imageProductSheetId: string;
+        organizationId: string;
+        userId: string;
     };
 }
 
@@ -916,6 +1025,7 @@ export type response_19_0 = {
 } & {body: undefined};
 
 export type response_19_1 = {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     code: 404;
@@ -963,11 +1073,14 @@ export type response_19_4 = {
 >>>>>>> b5f9a7c (feat(105): init strip provider)
 =======
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
     code: 406;
     ok: false;
     info: "organization.hasNotUser";
 } & {body: undefined};
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 export type response_19_6 = {
@@ -977,15 +1090,36 @@ export type response_19_5 = {
 =======
 export type response_19_4 = {
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+export type response_19_2 = {
+    code: 401;
+    ok: false;
+    info: "organization.user.organizationRole.owner";
+} & {body: undefined};
+
+export type response_19_3 = {
+    code: 204;
+    ok: true;
+    info: "organization.user.deleted";
+} & {body: undefined};
+
+export type response_19_4 = {
+    code: 406;
+    ok: false;
+    info: "organization.hasNotUser";
+} & {body: undefined};
+
+export type response_19_5 = {
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
     code: 403;
     ok: false;
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
 export type parameters_20 = {
-    params: {
-        organizationId: string;
-    };
+    query?: {
+        page?: number;
+    } | undefined;
 }
 
 export type response_20_0 = {
@@ -996,6 +1130,7 @@ export type response_20_0 = {
 
 export type response_20_1 = {
 <<<<<<< HEAD
+<<<<<<< HEAD
     code: 404;
     ok: false;
     info: "user.notfound";
@@ -1005,8 +1140,11 @@ export type response_20_2 = {
 =======
 >>>>>>> b5f9a7c (feat(105): init strip provider)
     code: 406;
+=======
+    code: 404;
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
     ok: false;
-    info: "organization.hasNotUser";
+    info: "user.notfound";
 } & {body: undefined};
 
 <<<<<<< HEAD
@@ -1034,25 +1172,20 @@ export type response_20_3 = {
 =======
 export type response_body_20_2 = {
     id: string;
-    email: string;
-    lastname: string;
-    firstname: string;
-    organizationRole: "STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT" | "OWNER";
-}
+    name: string;
+    label: string | null;
+    ownerId: string;
+    suspended: boolean;
+    logoKey: string | null;
+    logoUrl: string | null;
+}[]
 
 export type response_20_2 = {
     code: 200;
 >>>>>>> f41a079 (feat(105): start make command)
     ok: true;
-    info: "organization.user";
+    info: "user.organizations";
 } & {body: response_body_20_2};
-
-export type request_body_21 = {
-    email: string;
-    firstname: string;
-    lastname: string;
-    organizationRole: "STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT";
-}
 
 export type parameters_21 = {
     params: {
@@ -1073,6 +1206,7 @@ export type response_20_4 = {
 <<<<<<< HEAD
 =======
 export type response_21_1 = {
+<<<<<<< HEAD
     code: 404;
     ok: false;
     info: "organization.notfound";
@@ -1080,11 +1214,14 @@ export type response_21_1 = {
 
 export type response_21_2 = {
 >>>>>>> f41a079 (feat(105): start make command)
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
     code: 406;
     ok: false;
     info: "organization.hasNotUser";
 } & {body: undefined};
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 export type response_20_6 = {
@@ -1107,6 +1244,17 @@ export type parameters_21 = {
     };
 =======
 =======
+=======
+export type response_body_21_2 = {
+    id: string;
+    email: string;
+    lastname: string;
+    firstname: string;
+    organizationRole: "STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT" | "OWNER";
+}
+
+<<<<<<< HEAD
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 export type response_21_4 = {
     code: 404;
     ok: false;
@@ -1122,12 +1270,19 @@ export type response_21_5 = {
 
 export type response_21_6 = {
     code: 201;
+=======
+export type response_21_2 = {
+    code: 200;
+>>>>>>> 831755c (feat(105): add functional payment on front)
     ok: true;
-    info: "organization.user.add";
-} & {body: undefined};
+    info: "organization.user";
+} & {body: response_body_21_2};
 
 export type request_body_22 = {
-    organizationRole?: ("STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT") | undefined;
+    email: string;
+    firstname: string;
+    lastname: string;
+    organizationRole: "STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT";
 }
 
 export type parameters_22 = {
@@ -1140,7 +1295,6 @@ export type parameters_22 = {
 =======
     params: {
         organizationId: string;
-        userId: string;
     };
 >>>>>>> 89402b7 (feat(105): create session)
 }
@@ -1156,10 +1310,14 @@ export type response_21_1 = {
     code: 404;
 =======
 export type response_22_1 = {
+<<<<<<< HEAD
     code: 406;
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+    code: 404;
+>>>>>>> 831755c (feat(105): add functional payment on front)
     ok: false;
-    info: "organization.hasNotUser";
+    info: "organization.notfound";
 } & {body: undefined};
 
 <<<<<<< HEAD
@@ -1210,24 +1368,12 @@ export type request_body_22 = {
 =======
 =======
 export type response_22_2 = {
-    code: 401;
-    ok: false;
-    info: "organization.user.organizationRole.owner";
-} & {body: undefined};
-
-export type response_22_3 = {
-    code: 204;
-    ok: true;
-    info: "organization.user.edited";
-} & {body: undefined};
-
-export type response_22_4 = {
     code: 406;
     ok: false;
     info: "organization.hasNotUser";
 } & {body: undefined};
 
-export type response_22_5 = {
+export type response_22_3 = {
     code: 403;
     ok: false;
     info: "user.role.organization.invalid";
@@ -1235,6 +1381,7 @@ export type response_22_5 = {
 >>>>>>> f3ccc06 (feat(105): create session)
 >>>>>>> 89402b7 (feat(105): create session)
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 export type parameters_22 = {
     params: {
@@ -1250,6 +1397,25 @@ export type parameters_23 = {
         userId: string;
     };
 }
+=======
+export type response_22_4 = {
+    code: 404;
+    ok: false;
+    info: "user.notfound";
+} & {body: undefined};
+
+export type response_22_5 = {
+    code: 409;
+    ok: false;
+    info: "organization.hasAlreadyUser";
+} & {body: undefined};
+
+export type response_22_6 = {
+    code: 201;
+    ok: true;
+    info: "organization.user.add";
+} & {body: undefined};
+>>>>>>> 831755c (feat(105): add functional payment on front)
 
 export type response_23_0 = {
 >>>>>>> cc7d315 (feat(105): start make command)
@@ -1266,53 +1432,12 @@ export type response_22_1 = {
     code: 406;
 =======
 export type response_23_1 = {
-    code: 406;
-    ok: false;
-    info: "organization.hasNotUser";
-} & {body: undefined};
-
-export type response_23_2 = {
-    code: 401;
-    ok: false;
-    info: "organization.user.organizationRole.owner";
-} & {body: undefined};
-
-export type response_23_3 = {
-    code: 204;
-    ok: true;
-    info: "organization.user.deleted";
-} & {body: undefined};
-
-export type response_23_4 = {
-    code: 406;
-    ok: false;
-    info: "organization.hasNotUser";
-} & {body: undefined};
-
-export type response_23_5 = {
-    code: 403;
-    ok: false;
-    info: "user.role.organization.invalid";
-} & {body: undefined};
-
-export type parameters_24 = {
-    query?: {
-        page?: number;
-    } | undefined;
-}
-
-export type response_24_0 = {
-    code: 401;
-    ok: false;
-    info: "access.token.invalid";
-} & {body: undefined};
-
-export type response_24_1 = {
     code: 404;
     ok: false;
     info: "user.notfound";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_body_24_2 = {
     id: string;
     name: string;
@@ -1348,6 +1473,9 @@ export type response_body_22_2 = {
 =======
 export type response_body_25_2 = {
 >>>>>>> cc7d315 (feat(105): start make command)
+=======
+export type response_body_23_2 = {
+>>>>>>> 831755c (feat(105): add functional payment on front)
     id: string;
     email: string;
     lastname: string;
@@ -1355,6 +1483,7 @@ export type response_body_25_2 = {
     organizationRole: "STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT" | "OWNER";
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 export type response_22_2 = {
 <<<<<<< HEAD
@@ -1404,14 +1533,24 @@ export type response_25_2 = {
     info: "user";
 } & {body: response_body_25_2};
 >>>>>>> cc7d315 (feat(105): start make command)
+=======
+export type response_23_2 = {
+    code: 200;
+    ok: true;
+    info: "user";
+} & {body: response_body_23_2};
+>>>>>>> 831755c (feat(105): add functional payment on front)
 
-export type request_body_26 = {
+export type request_body_24 = {
     lastname?: string | undefined;
     firstname?: string | undefined;
     address?: string | undefined;
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 831755c (feat(105): add functional payment on front)
 export type response_24_0 = {
     code: 401;
     ok: false;
@@ -1432,6 +1571,7 @@ export type response_24_2 = {
     info: "user.edited";
 } & {body: response_body_24_2};
 
+<<<<<<< HEAD
 export type parameters_23 = {
     params: {
         organizationId: string;
@@ -1440,12 +1580,21 @@ export type parameters_23 = {
 >>>>>>> b5f9a7c (feat(105): init strip provider)
 
 export type response_23_0 = {
+=======
+export type request_body_25 = {
+    name: string;
+    disabled: boolean;
+}
+
+export type response_25_0 = {
+>>>>>>> 831755c (feat(105): add functional payment on front)
     code: 401;
     ok: false;
     info: "access.token.invalid";
 } & {body: undefined};
 
 export type response_25_1 = {
+<<<<<<< HEAD
     code: 404;
     ok: false;
     info: "productSheet.notfound";
@@ -1458,11 +1607,14 @@ export type response_25_2 = {
 } & {body: undefined};
 
 export type response_25_3 = {
+=======
+>>>>>>> 831755c (feat(105): add functional payment on front)
     code: 403;
     ok: false;
     info: "user.role.invalid";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_25_4 = {
     code: 404;
     ok: false;
@@ -1535,6 +1687,38 @@ export type parameters_26 = {
 
 export type response_24_0 = {
 =======
+=======
+export type response_25_2 = {
+    code: 409;
+    ok: false;
+    info: "category.alreadyExist";
+} & {body: undefined};
+
+export type response_body_25_3 = {
+    name: string;
+    disabled: boolean;
+    imageKey: string | null;
+    imageUrl: string | null;
+}
+
+export type response_25_3 = {
+    code: 201;
+    ok: true;
+    info: "category.created";
+} & {body: response_body_25_3};
+
+export type request_body_26 = {
+    name?: string | undefined;
+    disabled?: boolean | undefined;
+} | undefined
+
+export type parameters_26 = {
+    params: {
+        categoryName: string;
+    };
+}
+
+>>>>>>> 831755c (feat(105): add functional payment on front)
 export type response_26_0 = {
 >>>>>>> cc7d315 (feat(105): start make command)
     code: 401;
@@ -1543,6 +1727,7 @@ export type response_26_0 = {
 } & {body: undefined};
 
 export type response_26_1 = {
+<<<<<<< HEAD
 <<<<<<< HEAD
     code: 404;
     ok: false;
@@ -1568,13 +1753,15 @@ export type response_26_4 = {
 } & {body: undefined};
 =======
     code: 400;
+=======
+    code: 403;
+>>>>>>> 831755c (feat(105): add functional payment on front)
     ok: false;
-    info: "user.address.invalid";
+    info: "user.role.invalid";
 } & {body: undefined};
 
-export type response_body_26_2 = string
-
 export type response_26_2 = {
+<<<<<<< HEAD
     code: 201;
     ok: true;
     info: "user.edited";
@@ -1753,6 +1940,33 @@ export type request_body_27 = {
     name: string;
     disabled: boolean;
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+    code: 404;
+    ok: false;
+    info: "category.notfound";
+} & {body: undefined};
+
+export type response_26_3 = {
+    code: 409;
+    ok: false;
+    info: "category.alreadyExist";
+} & {body: undefined};
+
+export type response_26_4 = {
+    code: 204;
+    ok: true;
+    info: "category.edited";
+} & {body: undefined};
+
+export type parameters_27 = {
+    headers: {
+        "content-type": string;
+        "content-length": number;
+    };
+    params: {
+        categoryName: string;
+    };
+>>>>>>> 831755c (feat(105): add functional payment on front)
 }
 
 export type response_27_0 = {
@@ -1787,12 +2001,17 @@ export type response_27_3 = {
 >>>>>>> b5f9a7c (feat(105): init strip provider)
 =======
 export type response_27_2 = {
+<<<<<<< HEAD
 >>>>>>> 89402b7 (feat(105): create session)
     code: 409;
+=======
+    code: 404;
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
     ok: false;
-    info: "category.alreadyExist";
+    info: "category.notfound";
 } & {body: undefined};
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 export type response_27_5 = {
     code: 204;
@@ -1807,11 +2026,22 @@ export type response_body_27_3 = {
 export type response_27_3 = {
     code: 201;
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+export type response_27_3 = {
+    code: 400;
+    ok: false;
+    info: "category.image.missing";
+} & {body: undefined};
+
+export type response_27_4 = {
+    code: 204;
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
     ok: true;
-    info: "category.created";
-} & {body: response_body_27_3};
+    info: "category.image.updated";
+} & {body: undefined};
 
 export type request_body_28 = {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1836,6 +2066,10 @@ export type parameters_28 = {
 >>>>>>> b5f9a7c (feat(105): init strip provider)
 =======
 >>>>>>> f41a079 (feat(105): start make command)
+=======
+    name: string;
+    ownerId: string;
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 }
 
 export type response_28_0 = {
@@ -1863,12 +2097,13 @@ export type response_28_3 = {
     info: "organization.notfound";
 =======
 export type response_28_2 = {
-    code: 404;
+    code: 409;
     ok: false;
-    info: "category.notfound";
+    info: "organization.alreadyExist";
 } & {body: undefined};
 
 export type response_28_3 = {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     code: 404;
@@ -1901,6 +2136,11 @@ export type response_28_5 = {
     ok: false;
     info: "category.alreadyExist";
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+    code: 404;
+    ok: false;
+    info: "user.notfound";
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 } & {body: undefined};
 
 <<<<<<< HEAD
@@ -1932,18 +2172,24 @@ export type parameters_29 = {
 =======
 =======
 export type response_28_4 = {
-    code: 204;
-    ok: true;
-    info: "category.edited";
+    code: 409;
+    ok: false;
+    info: "user.alreadyOwner";
 } & {body: undefined};
 
+export type response_28_5 = {
+    code: 201;
+    ok: true;
+    info: "organization.created";
+} & {body: undefined};
+
+export type request_body_29 = {
+    suspended?: boolean | undefined;
+}
+
 export type parameters_29 = {
-    headers: {
-        "content-type": string;
-        "content-length": number;
-    };
     params: {
-        categoryName: string;
+        organizationId: string;
     };
 >>>>>>> f3ccc06 (feat(105): create session)
 >>>>>>> 89402b7 (feat(105): create session)
@@ -2019,24 +2265,28 @@ export type response_29_5 = {
 =======
     code: 404;
     ok: false;
-    info: "category.notfound";
+    info: "organization.notfound";
 } & {body: undefined};
 
 export type response_29_3 = {
-    code: 400;
-    ok: false;
-    info: "category.image.missing";
-} & {body: undefined};
-
-export type response_29_4 = {
     code: 204;
     ok: true;
-    info: "category.image.updated";
+    info: "organization.edited";
 } & {body: undefined};
 
 export type request_body_30 = {
-    name: string;
-    ownerId: string;
+    priority: number;
+    type: "PARENT_CATEGORY";
+    parentCategoryName: string;
+} | {
+    priority: number;
+    type: "CATEGORY";
+    categoryName: string;
+} | {
+    priority: number;
+    type: "LINK";
+    url: string;
+    title: string;
 }
 
 export type response_30_0 = {
@@ -2055,6 +2305,7 @@ export type response_30_2 = {
 >>>>>>> f3ccc06 (feat(105): create session)
     code: 409;
     ok: false;
+<<<<<<< HEAD
     info: "product.sku.alreadyUse";
 } & {body: undefined};
 
@@ -2084,40 +2335,34 @@ export type parameters_30 = {
         facetType: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
 =======
     info: "organization.alreadyExist";
+=======
+    info: "navigationItem.limit";
+>>>>>>> 831755c (feat(105): add functional payment on front)
 } & {body: undefined};
 
-export type response_30_3 = {
-    code: 404;
-    ok: false;
-    info: "user.notfound";
-} & {body: undefined};
-
-export type response_30_4 = {
-    code: 409;
-    ok: false;
-    info: "user.alreadyOwner";
-} & {body: undefined};
-
-export type response_30_5 = {
-    code: 201;
-    ok: true;
-    info: "organization.created";
-} & {body: undefined};
-
-export type request_body_31 = {
+export type response_body_30_3 = {
+    id: string;
     priority: number;
     type: "PARENT_CATEGORY";
     parentCategoryName: string;
 } | {
+    id: string;
     priority: number;
     type: "CATEGORY";
     categoryName: string;
 } | {
+    id: string;
     priority: number;
     type: "LINK";
     url: string;
     title: string;
 }
+
+export type response_30_3 = {
+    code: 201;
+    ok: true;
+    info: "navigationItem.created";
+} & {body: response_body_30_3};
 
 export type response_31_0 = {
     code: 401;
@@ -2131,13 +2376,31 @@ export type response_31_1 = {
     info: "user.role.invalid";
 } & {body: undefined};
 
-export type response_31_2 = {
-    code: 409;
-    ok: false;
-    info: "navigationItem.limit";
-} & {body: undefined};
+export type response_body_31_2 = ({
+    id: string;
+    priority: number;
+    type: "PARENT_CATEGORY";
+    parentCategoryName: string;
+} | {
+    id: string;
+    priority: number;
+    type: "CATEGORY";
+    categoryName: string;
+} | {
+    id: string;
+    priority: number;
+    type: "LINK";
+    url: string;
+    title: string;
+})[]
 
-export type response_body_31_3 = {
+export type response_31_2 = {
+    code: 200;
+    ok: true;
+    info: "navigationItems";
+} & {body: response_body_31_2};
+
+export type request_body_32 = {
     id: string;
     priority: number;
     type: "PARENT_CATEGORY";
@@ -2155,6 +2418,7 @@ export type response_body_31_3 = {
     title: string;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 export type parameters_30 = {
     params: {
@@ -2352,6 +2616,11 @@ export type parameters_32 = {
     params: {
         organizationId: string;
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+export type parameters_32 = {
+    params: {
+        navigationItemId: string;
+>>>>>>> 831755c (feat(105): add functional payment on front)
     };
 }
 
@@ -2417,6 +2686,7 @@ export type request_body_32 = {
 export type response_32_2 = {
     code: 406;
     ok: false;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     info: "organization.hasNotUser";
@@ -2536,11 +2806,35 @@ export type parameters_33 = {
 >>>>>>> cc7d315 (feat(105): start make command)
 }
 =======
+=======
+    info: "navigationItem.notfound";
+} & {body: undefined};
+
+export type response_32_3 = {
+    code: 404;
+    ok: false;
+    info: "category.notfound";
+} & {body: undefined};
+
+export type response_32_4 = {
+    code: 404;
+    ok: false;
+    info: "parentCategory.notfound";
+} & {body: undefined};
+
+export type response_32_5 = {
+>>>>>>> 831755c (feat(105): add functional payment on front)
     code: 204;
     ok: true;
-    info: "organization.edited";
+    info: "navigationItem.edited";
 } & {body: undefined};
 >>>>>>> f3ccc06 (feat(105): create session)
+
+export type parameters_33 = {
+    params: {
+        navigationItemId: string;
+    };
+}
 
 export type response_33_0 = {
     code: 401;
@@ -2562,10 +2856,13 @@ export type response_33_2 = {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 export type response_33_3 = {
 =======
 =======
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 export type response_33_2 = {
 <<<<<<< HEAD
 >>>>>>> f41a079 (feat(105): start make command)
@@ -2623,19 +2920,23 @@ export type response_body_33_2 = ({
     title: string;
 })[]
 
+=======
+>>>>>>> 831755c (feat(105): add functional payment on front)
 export type response_33_2 = {
-    code: 200;
-    ok: true;
-    info: "navigationItems";
-} & {body: response_body_33_2};
+    code: 404;
+    ok: false;
+    info: "navigationItem.notfound";
+} & {body: undefined};
 
-export type request_body_34 = {
-    primordialRole?: ("CUSTOMER" | "CONTENTS_MASTER" | "MODERATOR") | undefined;
-    muted?: boolean | undefined;
-}
+export type response_33_3 = {
+    code: 204;
+    ok: true;
+    info: "navigationItem.delete";
+} & {body: undefined};
 
 export type parameters_34 = {
     params: {
+<<<<<<< HEAD
 <<<<<<< HEAD
         parentCategoryName: string;
 >>>>>>> cc7d315 (feat(105): start make command)
@@ -2645,7 +2946,13 @@ export type parameters_34 = {
 =======
         userId: string;
 >>>>>>> f3ccc06 (feat(105): create session)
+<<<<<<< HEAD
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+=======
+        parentCategoryName: string;
+>>>>>>> 831755c (feat(105): add functional payment on front)
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
     };
 }
 
@@ -2672,6 +2979,7 @@ export type response_34_3 = {
     ok: false;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     info: "parentCategory.notfound";
 } & {body: undefined};
 
@@ -2694,6 +3002,8 @@ export type request_body_35 = {
 =======
 =======
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
     info: "organization.hasNotUser";
 } & {body: undefined};
 
@@ -2720,9 +3030,20 @@ export type response_34_4 = {
     code: 404;
 =======
     info: "user.notfound";
+=======
+    info: "parentCategory.notfound";
+>>>>>>> 831755c (feat(105): add functional payment on front)
 } & {body: undefined};
 
+export type response_body_34_3 = {
+    name: string;
+    disabled: boolean;
+    imageKey: string | null;
+    imageUrl: string | null;
+}[]
+
 export type response_34_3 = {
+<<<<<<< HEAD
     code: 401;
 >>>>>>> f3ccc06 (feat(105): create session)
     ok: false;
@@ -2735,28 +3056,20 @@ export type response_34_4 = {
     info: "user.edited";
 } & {body: undefined};
 >>>>>>> cc7d315 (feat(105): start make command)
+=======
+    code: 200;
+    ok: true;
+    info: "parentCategory.categories";
+} & {body: response_body_34_3};
+>>>>>>> 831755c (feat(105): add functional payment on front)
 
 export type request_body_35 = {
-    id: string;
-    priority: number;
-    type: "PARENT_CATEGORY";
-    parentCategoryName: string;
-} | {
-    id: string;
-    priority: number;
-    type: "CATEGORY";
     categoryName: string;
-} | {
-    id: string;
-    priority: number;
-    type: "LINK";
-    url: string;
-    title: string;
 }
 
 export type parameters_35 = {
     params: {
-        navigationItemId: string;
+        parentCategoryName: string;
     };
 }
 
@@ -2781,7 +3094,7 @@ export type response_35_2 = {
 export type response_35_3 = {
     code: 404;
     ok: false;
-    info: "navigationItem.notfound";
+    info: "parentCategory.notfound";
 } & {body: undefined};
 
 <<<<<<< HEAD
@@ -2852,20 +3165,24 @@ export type parameters_36 = {
 } & {body: undefined};
 
 export type response_35_4 = {
-    code: 404;
+    code: 409;
     ok: false;
-    info: "parentCategory.notfound";
+    info: "parentCategory.categories.limit";
 } & {body: undefined};
 
 export type response_35_5 = {
     code: 204;
     ok: true;
-    info: "navigationItem.edited";
+    info: "parentCategory.category.linked";
 } & {body: undefined};
+
+export type request_body_36 = {
+    name?: string | undefined;
+}
 
 export type parameters_36 = {
     params: {
-        navigationItemId: string;
+        parentCategoryName: string;
     };
 }
 
@@ -2984,23 +3301,26 @@ export type request_body_37 = {
 export type response_36_2 = {
     code: 404;
     ok: false;
-    info: "navigationItem.notfound";
+    info: "parentCategory.notfound";
 } & {body: undefined};
 
 export type response_36_3 = {
-    code: 204;
-    ok: true;
-    info: "navigationItem.delete";
+    code: 409;
+    ok: false;
+    info: "parentCategory.name.alreadyUse";
 } & {body: undefined};
 >>>>>>> f3ccc06 (feat(105): create session)
 
-export type request_body_37 = {
-    categoryName: string;
-}
+export type response_36_4 = {
+    code: 204;
+    ok: true;
+    info: "parentCategory.edited";
+} & {body: undefined};
 
 export type parameters_37 = {
     params: {
         parentCategoryName: string;
+        categoryName: string;
     };
 }
 
@@ -3054,6 +3374,7 @@ export type response_37_3 = {
 } & {body: response_body_37_3};
 =======
 export type response_37_3 = {
+<<<<<<< HEAD
     code: 404;
     ok: false;
     info: "category.notfound";
@@ -3085,11 +3406,15 @@ export type response_37_4 = {
 
 export type response_37_5 = {
     code: 204;
+=======
+    code: 200;
+>>>>>>> 831755c (feat(105): add functional payment on front)
     ok: true;
-    info: "parentCategory.category.linked";
+    info: "parentCategory.category.untied";
 } & {body: undefined};
 
 export type parameters_38 = {
+<<<<<<< HEAD
 <<<<<<< HEAD
     query?: {
         page?: number;
@@ -3105,7 +3430,16 @@ export type parameters_38 = {
         parentCategoryName: string;
     };
 >>>>>>> f3ccc06 (feat(105): create session)
+<<<<<<< HEAD
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+=======
+    query?: {
+        page?: number;
+        name?: string | undefined;
+    } | undefined;
+>>>>>>> 831755c (feat(105): add functional payment on front)
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 }
 
 export type response_38_0 = {
@@ -3126,6 +3460,7 @@ export type response_38_2 = {
     info: "user.role.invalid";
 } & {body: undefined};
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -3152,6 +3487,8 @@ export type response_38_3 = {
 >>>>>>> f41a079 (feat(105): start make command)
 =======
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 export type response_38_2 = {
 >>>>>>> 94ee503 (feat(105): commad)
     code: 409;
@@ -3172,12 +3509,19 @@ export type response_38_2 = {
 
 export type response_body_38_3 = {
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+export type response_body_38_2 = {
+    id: string;
+>>>>>>> 831755c (feat(105): add functional payment on front)
     name: string;
-    disabled: boolean;
-    imageKey: string | null;
-    imageUrl: string | null;
+    label: string | null;
+    ownerId: string;
+    suspended: boolean;
+    logoKey: string | null;
+    logoUrl: string | null;
 }[]
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 export type response_38_3 = {
@@ -3200,16 +3544,16 @@ export type response_38_2 = {
 =======
 export type response_38_3 = {
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+export type response_38_2 = {
+>>>>>>> 831755c (feat(105): add functional payment on front)
     code: 200;
     ok: true;
-    info: "parentCategory.categories";
-} & {body: response_body_38_3};
-
-export type request_body_39 = {
-    name?: string | undefined;
-}
+    info: "organizations";
+} & {body: response_body_38_2};
 
 export type parameters_39 = {
+<<<<<<< HEAD
 <<<<<<< HEAD
     query?: {
         page?: number;
@@ -3221,6 +3565,13 @@ export type parameters_39 = {
         parentCategoryName: string;
     };
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+    query?: {
+        page?: number;
+        name?: string | undefined;
+        withCategories?: ("true" | "false") | undefined;
+    } | undefined;
+>>>>>>> 831755c (feat(105): add functional payment on front)
 }
 
 export type response_39_0 = {
@@ -3244,6 +3595,7 @@ export type response_39_2 = {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 export type response_body_39_3 = {
     id: string;
     name: string;
@@ -3258,6 +3610,8 @@ export type response_body_39_3 = {
 >>>>>>> f41a079 (feat(105): start make command)
 =======
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 export type response_39_2 = {
     code: 404;
     ok: false;
@@ -3330,8 +3684,23 @@ export type response_39_4 = {
 export type parameters_40 = {
     params: {
         parentCategoryName: string;
+=======
+export type response_body_39_2 = {
+    name: string;
+    categories?: {
+>>>>>>> 831755c (feat(105): add functional payment on front)
         categoryName: string;
-    };
+    }[] | undefined;
+}[]
+
+export type response_39_2 = {
+    code: 200;
+    ok: true;
+    info: "parentCategories";
+} & {body: response_body_39_2};
+
+export type request_body_40 = {
+    name: string;
 }
 
 export type response_40_0 = {
@@ -3377,11 +3746,12 @@ export type parameters_41 = {
     };
 =======
 export type response_40_2 = {
-    code: 404;
+    code: 409;
     ok: false;
-    info: "parentCategory.notfound";
+    info: "parentCategory.name.alreadyUse";
 } & {body: undefined};
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 export type response_body_40_3 = {
     name: string;
@@ -3390,9 +3760,16 @@ export type response_body_40_3 = {
 
 =======
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+export type response_body_40_3 = {
+    name: string;
+}
+
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 export type response_40_3 = {
-    code: 200;
+    code: 201;
     ok: true;
+<<<<<<< HEAD
 <<<<<<< HEAD
     info: "parentCategory.created";
 } & {body: response_body_40_3};
@@ -3410,6 +3787,19 @@ export type parameters_41 = {
         name?: string | undefined;
     } | undefined;
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+    info: "parentCategory.created";
+} & {body: response_body_40_3};
+
+export type parameters_41 = {
+    headers: {
+        "content-type": string;
+        "content-length": number;
+    };
+    params: {
+        organizationId: string;
+    };
+>>>>>>> 831755c (feat(105): add functional payment on front)
 }
 
 export type response_41_0 = {
@@ -3420,16 +3810,20 @@ export type response_41_0 = {
 
 export type response_41_1 = {
     code: 404;
+<<<<<<< HEAD
     ok: false;
     info: "user.notfound";
 } & {body: undefined};
 
 export type response_41_2 = {
     code: 403;
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
     ok: false;
-    info: "user.role.invalid";
+    info: "organization.notfound";
 } & {body: undefined};
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -3467,6 +3861,8 @@ export type response_41_2 = {
 =======
 =======
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 export type response_41_2 = {
     code: 409;
     ok: false;
@@ -3506,18 +3902,43 @@ export type response_body_41_2 = {
     logoUrl: string | null;
 }[]
 
+=======
+>>>>>>> 831755c (feat(105): add functional payment on front)
 export type response_41_2 = {
-    code: 200;
+    code: 406;
+    ok: false;
+    info: "organization.hasNotUser";
+} & {body: undefined};
+
+export type response_41_3 = {
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+} & {body: undefined};
+
+export type response_41_4 = {
+    code: 400;
+    ok: false;
+    info: "organization.logo.missing";
+} & {body: undefined};
+
+export type response_41_5 = {
+    code: 204;
     ok: true;
-    info: "organizations";
-} & {body: response_body_41_2};
+    info: "organization.logo.edited";
+} & {body: undefined};
+
+export type request_body_42 = {
+    name: string;
+    description: string;
+    shortDescription: string;
+    price: number;
+}
 
 export type parameters_42 = {
-    query?: {
-        page?: number;
-        email?: string | undefined;
-        primordialRole?: (("CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN") | ("CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN")[]) | undefined;
-    } | undefined;
+    params: {
+        organizationId: string;
+    };
 }
 >>>>>>> cc7d315 (feat(105): start make command)
 
@@ -3528,6 +3949,7 @@ export type response_42_0 = {
 } & {body: undefined};
 
 export type response_42_1 = {
+<<<<<<< HEAD
 <<<<<<< HEAD
     code: 404;
 <<<<<<< HEAD
@@ -3571,10 +3993,14 @@ export type response_42_3 = {
 =======
 >>>>>>> 89402b7 (feat(105): create session)
     code: 403;
+=======
+    code: 404;
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
     ok: false;
-    info: "user.role.invalid";
+    info: "organization.notfound";
 } & {body: undefined};
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 export type response_body_42_2 = ({
@@ -3651,10 +4077,49 @@ export type request_body_43 = {
 =======
     info: "users";
 } & {body: response_body_42_2};
+=======
+export type response_42_2 = {
+    code: 406;
+    ok: false;
+    info: "organization.hasNotUser";
+} & {body: undefined};
+>>>>>>> 831755c (feat(105): add functional payment on front)
 
-export type request_body_43 = {
+export type response_42_3 = {
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+} & {body: undefined};
+
+export type response_body_42_4 = {
+    id: string;
     name: string;
+<<<<<<< HEAD
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+    description: string;
+    shortDescription: string;
+    price: number;
+    createdAt?: string;
+    updatedAt?: string;
+    organizationId: string;
+}
+
+export type response_42_4 = {
+    code: 201;
+    ok: true;
+    info: "productSheet.created";
+} & {body: response_body_42_4};
+
+export type parameters_43 = {
+    params: {
+        organizationId: string;
+    };
+    query?: {
+        page?: number;
+        name?: string | undefined;
+    } | undefined;
+>>>>>>> 831755c (feat(105): add functional payment on front)
 }
 
 export type response_43_0 = {
@@ -3668,17 +4133,26 @@ export type response_43_1 = {
 <<<<<<< HEAD
 =======
     ok: false;
+<<<<<<< HEAD
     info: "product.notfound";
+=======
+    info: "organization.notfound";
+>>>>>>> 831755c (feat(105): add functional payment on front)
 } & {body: undefined};
 
 export type response_43_2 = {
+<<<<<<< HEAD
 <<<<<<< HEAD
     code: 406;
 >>>>>>> b5f9a7c (feat(105): init strip provider)
 =======
     code: 409;
 >>>>>>> 94ee503 (feat(105): commad)
+=======
+    code: 406;
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
     ok: false;
+<<<<<<< HEAD
 <<<<<<< HEAD
     info: "navigationItem.limit";
 } & {body: undefined};
@@ -3728,10 +4202,21 @@ export type response_body_43_3 = {
     title: string;
 =======
     info: "parentCategory.name.alreadyUse";
+=======
+    info: "organization.hasNotUser";
+>>>>>>> 831755c (feat(105): add functional payment on front)
 } & {body: undefined};
 
-export type response_body_43_3 = {
+export type response_43_3 = {
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+} & {body: undefined};
+
+export type response_body_43_4 = {
+    id: string;
     name: string;
+<<<<<<< HEAD
 >>>>>>> f3ccc06 (feat(105): create session)
 }
 
@@ -3771,6 +4256,27 @@ export type parameters_44 = {
         name?: string | undefined;
         withCategories?: ("true" | "false") | undefined;
     } | undefined;
+=======
+    address: string;
+    organizationId: string;
+}[]
+
+export type response_43_4 = {
+    code: 200;
+    ok: true;
+    info: "warehouses.found";
+} & {body: response_body_43_4};
+
+export type request_body_44 = {
+    name: string;
+    address: string;
+}
+
+export type parameters_44 = {
+    params: {
+        organizationId: string;
+    };
+>>>>>>> 831755c (feat(105): add functional payment on front)
 }
 
 export type response_44_0 = {
@@ -3780,6 +4286,7 @@ export type response_44_0 = {
 } & {body: undefined};
 
 export type response_44_1 = {
+<<<<<<< HEAD
 <<<<<<< HEAD
     code: 404;
     ok: false;
@@ -3866,10 +4373,14 @@ export type response_44_3 = {
 =======
 >>>>>>> f3ccc06 (feat(105): create session)
     code: 403;
+=======
+    code: 404;
+>>>>>>> 831755c (feat(105): add functional payment on front)
     ok: false;
-    info: "user.role.invalid";
+    info: "organization.notfound";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_body_44_2 = {
     name: string;
 <<<<<<< HEAD
@@ -3908,19 +4419,50 @@ export type request_body_45 = {
     }[] | undefined;
 }[]
 
+=======
+>>>>>>> 831755c (feat(105): add functional payment on front)
 export type response_44_2 = {
-    code: 200;
+    code: 406;
+    ok: false;
+    info: "organization.hasNotUser";
+} & {body: undefined};
+
+export type response_44_3 = {
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+} & {body: undefined};
+
+export type response_44_4 = {
+    code: 400;
+    ok: false;
+    info: "warehouse.address.invalid";
+} & {body: undefined};
+
+export type response_body_44_5 = {
+    id: string;
+    name: string;
+    address: string;
+    organizationId: string;
+}
+
+export type response_44_5 = {
+    code: 201;
     ok: true;
+<<<<<<< HEAD
     info: "parentCategories";
 } & {body: response_body_44_2};
 >>>>>>> f3ccc06 (feat(105): create session)
+<<<<<<< HEAD
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+=======
+    info: "warehouse.created";
+} & {body: response_body_44_5};
+>>>>>>> 831755c (feat(105): add functional payment on front)
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 
 export type parameters_45 = {
-    headers: {
-        "content-type": string;
-        "content-length": number;
-    };
     params: {
         parentCategoryName: string;
     };
@@ -3967,6 +4509,7 @@ export type response_45_4 = {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 export type response_45_5 = {
     code: 204;
     ok: true;
@@ -3982,6 +4525,8 @@ export type response_body_45_4 = {
 =======
 =======
 >>>>>>> f41a079 (feat(105): start make command)
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 export type response_45_4 = {
     code: 409;
     ok: false;
@@ -4008,20 +4553,36 @@ export type response_45_4 = {
     ok: false;
     info: "organization.logo.missing";
 } & {body: undefined};
+=======
+export type response_body_45_4 = {
+    id: string;
+    name: string;
+    label: string | null;
+    ownerId: string;
+    suspended: boolean;
+    logoKey: string | null;
+    logoUrl: string | null;
+}
+>>>>>>> 831755c (feat(105): add functional payment on front)
 
-export type response_45_5 = {
-    code: 204;
+export type response_45_4 = {
+    code: 200;
     ok: true;
+<<<<<<< HEAD
     info: "organization.logo.edited";
 >>>>>>> cc7d315 (feat(105): start make command)
 } & {body: undefined};
+<<<<<<< HEAD
 >>>>>>> 94ee503 (feat(105): commad)
+=======
+=======
+    info: "organization.found";
+} & {body: response_body_45_4};
+>>>>>>> 831755c (feat(105): add functional payment on front)
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 
 export type request_body_46 = {
-    name: string;
-    description: string;
-    shortDescription: string;
-    price: number;
+    label?: (string | null) | undefined;
 }
 
 export type parameters_46 = {
@@ -4134,22 +4695,11 @@ export type request_body_47 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
-export type response_body_46_4 = {
-    id: string;
-    name: string;
-    description: string;
-    shortDescription: string;
-    price: number;
-    createdAt?: string;
-    updatedAt?: string;
-    organizationId: string;
-}
-
 export type response_46_4 = {
-    code: 201;
+    code: 204;
     ok: true;
-    info: "productSheet.created";
-} & {body: response_body_46_4};
+    info: "organization.edited";
+} & {body: undefined};
 
 <<<<<<< HEAD
 export type request_body_47 = {
@@ -4286,6 +4836,12 @@ export type parameters_48 = {
     params: {
         navigationItemId: string;
     };
+    query?: {
+        page?: number;
+        sku?: string | undefined;
+        withProductSheet?: ("true" | "false") | undefined;
+        withWarehouse?: ("true" | "false") | undefined;
+    } | undefined;
 }
 
 export type response_48_0 = {
@@ -4384,31 +4940,53 @@ export type request_body_49 = {
     name: string;
 =======
 export type response_body_48_4 = {
-    id: string;
-    name: string;
-    label: string | null;
-    ownerId: string;
-    suspended: boolean;
-    logoKey: string | null;
-    logoUrl: string | null;
-}
+    sku: string;
+    productSheetId: string;
+    organizationId: string;
+    warehouseId: string;
+    createdAt?: string;
+    updatedAt?: string;
+    status: "ORDER" | "WRONG" | "SOLD" | "IN_STOCK";
+    productSheet?: {
+        id: string;
+        name: string;
+        description: string;
+        shortDescription: string;
+        price: number;
+        createdAt?: string;
+        updatedAt?: string;
+        organizationId: string;
+    } | undefined;
+    warehouse?: {
+        id: string;
+        name: string;
+        address: string;
+        organizationId: string;
+    } | undefined;
+}[]
 
 export type response_48_4 = {
     code: 200;
     ok: true;
-    info: "organization.found";
+    info: "products.found";
 } & {body: response_body_48_4};
-
-export type request_body_49 = {
-    label?: (string | null) | undefined;
-}
 
 export type parameters_49 = {
     params: {
         organizationId: string;
     };
+<<<<<<< HEAD
 >>>>>>> f3ccc06 (feat(105): create session)
+<<<<<<< HEAD
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+=======
+    query?: {
+        page?: number;
+        email?: string | undefined;
+    } | undefined;
+>>>>>>> 831755c (feat(105): add functional payment on front)
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 }
 
 export type response_49_0 = {
@@ -4451,6 +5029,7 @@ export type response_49_4 = {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 export type response_body_49_5 = {
     id: string;
     name: string;
@@ -4472,6 +5051,8 @@ export type request_body_50 = {
 =======
 =======
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 export type response_body_49_4 = {
     id: string;
     name: string;
@@ -4485,9 +5066,20 @@ export type response_body_49_4 = {
 
 =======
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+export type response_body_49_4 = {
+    id: string;
+    email: string;
+    lastname: string;
+    firstname: string;
+    organizationRole: "STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT" | "OWNER";
+}[]
+
+>>>>>>> 831755c (feat(105): add functional payment on front)
 export type response_49_4 = {
-    code: 204;
+    code: 200;
     ok: true;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -4506,6 +5098,8 @@ export type request_body_50 = {
 >>>>>>> f41a079 (feat(105): start make command)
 =======
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
     info: "parentCategory.created";
 } & {body: response_body_49_3};
 >>>>>>> 94ee503 (feat(105): commad)
@@ -4522,16 +5116,28 @@ export type parameters_50 = {
     info: "organization.edited";
 } & {body: undefined};
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+    info: "organization.users";
+} & {body: response_body_49_4};
+
+export type request_body_50 = {
+    primordialRole?: ("CUSTOMER" | "CONTENTS_MASTER" | "MODERATOR") | undefined;
+    muted?: boolean | undefined;
+}
+>>>>>>> 831755c (feat(105): add functional payment on front)
 
 export type parameters_50 = {
     params: {
-        organizationId: string;
+        userId: string;
     };
+<<<<<<< HEAD
     query?: {
         page?: number;
         email?: string | undefined;
 >>>>>>> cc7d315 (feat(105): start make command)
     } | undefined;
+=======
+>>>>>>> 831755c (feat(105): add functional payment on front)
 }
 
 export type response_50_0 = {
@@ -4567,10 +5173,26 @@ export type response_50_4 = {
 =======
 >>>>>>> 94ee503 (feat(105): commad)
     code: 403;
+<<<<<<< HEAD
+=======
     ok: false;
-    info: "user.role.organization.invalid";
+    info: "user.role.invalid";
 } & {body: undefined};
 
+export type response_50_2 = {
+    code: 404;
+    ok: false;
+    info: "user.notfound";
+} & {body: undefined};
+
+export type response_50_3 = {
+    code: 401;
+>>>>>>> 831755c (feat(105): add functional payment on front)
+    ok: false;
+    info: "user.primordialRole.admin";
+} & {body: undefined};
+
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -5510,11 +6132,13 @@ export type response_body_50_4 = {
     organizationRole: "STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT" | "OWNER";
 }[]
 
+=======
+>>>>>>> 831755c (feat(105): add functional payment on front)
 export type response_50_4 = {
-    code: 200;
+    code: 204;
     ok: true;
-    info: "organization.users";
-} & {body: response_body_50_4};
+    info: "user.edited";
+} & {body: undefined};
 
 <<<<<<< HEAD
 export type request_body_51 = {
@@ -5531,15 +6155,17 @@ export type parameters_51 = {
 >>>>>>> cc7d315 (feat(105): start make command)
 =======
 export type parameters_51 = {
+<<<<<<< HEAD
     params: {
         organizationId: string;
 >>>>>>> f3ccc06 (feat(105): create session)
     };
+=======
+>>>>>>> 831755c (feat(105): add functional payment on front)
     query?: {
         page?: number;
-        sku?: string | undefined;
-        withProductSheet?: ("true" | "false") | undefined;
-        withWarehouse?: ("true" | "false") | undefined;
+        email?: string | undefined;
+        primordialRole?: (("CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN") | ("CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN")[]) | undefined;
     } | undefined;
 }
 
@@ -5550,6 +6176,7 @@ export type response_51_0 = {
 } & {body: undefined};
 
 export type response_51_1 = {
+<<<<<<< HEAD
     code: 404;
     ok: false;
 <<<<<<< HEAD
@@ -5570,11 +6197,14 @@ export type response_51_2 = {
 } & {body: undefined};
 
 export type response_51_3 = {
+=======
+>>>>>>> 831755c (feat(105): add functional payment on front)
     code: 403;
     ok: false;
-    info: "user.role.organization.invalid";
+    info: "user.role.invalid";
 } & {body: undefined};
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 export type response_51_4 = {
     code: 204;
@@ -5616,19 +6246,35 @@ export type response_body_51_4 = {
         address: string;
         organizationId: string;
     } | undefined;
+=======
+export type response_body_51_2 = {
+    id: string;
+    email: string;
+    lastname: string;
+    firstname: string;
+    dateOfBirth?: string;
+    address: string;
+    primordialRole: "CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN";
+    muted: boolean;
+>>>>>>> 831755c (feat(105): add functional payment on front)
 }[]
 >>>>>>> f3ccc06 (feat(105): create session)
 
-export type response_51_4 = {
+export type response_51_2 = {
     code: 200;
     ok: true;
-    info: "products.found";
-} & {body: response_body_51_4};
+    info: "users";
+} & {body: response_body_51_2};
+
+export type request_body_52 = {
+    categoryName: string;
+}
 
 export type parameters_52 = {
     params: {
-        organizationId: string;
+        productSheetId: string;
     };
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> cc7d315 (feat(105): start make command)
 =======
@@ -5637,6 +6283,8 @@ export type parameters_52 = {
         name?: string | undefined;
     } | undefined;
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+>>>>>>> 831755c (feat(105): add functional payment on front)
 }
 
 export type response_52_0 = {
@@ -5650,7 +6298,7 @@ export type response_52_1 = {
 =======
     code: 404;
     ok: false;
-    info: "organization.notfound";
+    info: "productSheet.notfound";
 } & {body: undefined};
 
 export type response_52_2 = {
@@ -5666,6 +6314,7 @@ export type response_52_3 = {
     info: "user.role.invalid";
 } & {body: undefined};
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 export type response_body_52_2 = {
@@ -5701,20 +6350,29 @@ export type response_body_52_4 = {
     organizationId: string;
 }[]
 
+=======
+>>>>>>> 831755c (feat(105): add functional payment on front)
 export type response_52_4 = {
+    code: 404;
+    ok: false;
+    info: "category.notfound";
+} & {body: undefined};
+
+export type response_52_5 = {
+    code: 409;
+    ok: false;
+    info: "productSheet.categories.limit";
+} & {body: undefined};
+
+export type response_52_6 = {
     code: 200;
     ok: true;
-    info: "warehouses.found";
-} & {body: response_body_52_4};
-
-export type request_body_53 = {
-    name: string;
-    address: string;
-}
+    info: "productSheet.category.linked";
+} & {body: undefined};
 
 export type parameters_53 = {
     params: {
-        organizationId: string;
+        productSheetId: string;
     };
 }
 
@@ -5727,7 +6385,7 @@ export type response_53_0 = {
 export type response_53_1 = {
     code: 404;
     ok: false;
-    info: "organization.notfound";
+    info: "productSheet.notfound";
 } & {body: undefined};
 
 export type response_53_2 = {
@@ -5744,6 +6402,7 @@ export type response_53_3 = {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 export type response_body_53_4 = {
 =======
@@ -5756,11 +6415,16 @@ export type response_53_4 = {
 export type response_body_53_5 = {
 >>>>>>> f3ccc06 (feat(105): create session)
     id: string;
+=======
+export type response_body_53_4 = {
+>>>>>>> 831755c (feat(105): add functional payment on front)
     name: string;
-    address: string;
-    organizationId: string;
-}
+    disabled: boolean;
+    imageKey: string | null;
+    imageUrl: string | null;
+}[]
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> cc7d315 (feat(105): start make command)
 export type response_53_4 = {
@@ -5802,6 +6466,13 @@ export type request_body_54 = {
     status?: ("IN_STOCK" | "WRONG") | undefined;
 >>>>>>> f3ccc06 (feat(105): create session)
 }
+=======
+export type response_53_4 = {
+    code: 200;
+    ok: true;
+    info: "productSheet.categories";
+} & {body: response_body_53_4};
+>>>>>>> 831755c (feat(105): add functional payment on front)
 
 export type parameters_54 = {
     headers: {
@@ -5809,7 +6480,7 @@ export type parameters_54 = {
         "content-length": number;
     };
     params: {
-        sku: string;
+        productSheetId: string;
     };
 }
 
@@ -5822,7 +6493,7 @@ export type response_54_0 = {
 export type response_54_1 = {
     code: 404;
     ok: false;
-    info: "product.notfound";
+    info: "productSheet.notfound";
 } & {body: undefined};
 
 export type response_54_2 = {
@@ -5837,9 +6508,16 @@ export type response_54_3 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
+export type response_body_54_4 = {
+    type: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
+    productSheetId: string;
+    value: string;
+}[]
+
 export type response_54_4 = {
-    code: 204;
+    code: 200;
     ok: true;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     info: "productSheet.created";
@@ -5857,6 +6535,10 @@ export type request_body_55 = {
     info: "product.edited";
 } & {body: undefined};
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+    info: "productSheet.facets";
+} & {body: response_body_54_4};
+>>>>>>> 831755c (feat(105): add functional payment on front)
 
 export type parameters_55 = {
     params: {
@@ -5889,10 +6571,12 @@ export type response_55_3 = {
 } & {body: undefined};
 
 export type response_body_55_4 = {
-    name: string;
-    disabled: boolean;
-    imageKey: string | null;
-    imageUrl: string | null;
+    id: string;
+    productSheetId: string;
+    organizationId: string;
+    url: string;
+    key: string;
+    alt: string | null;
 }[]
 
 export type response_55_4 = {
@@ -5941,7 +6625,7 @@ export type request_body_56 = {
 =======
     code: 200;
     ok: true;
-    info: "productSheet.categories";
+    info: "productSheet.images";
 } & {body: response_body_55_4};
 >>>>>>> f3ccc06 (feat(105): create session)
 
@@ -6010,7 +6694,8 @@ export type response_56_5 = {
 } & {body: undefined};
 
 export type request_body_57 = {
-    categoryName: string;
+    type: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
+    value: string;
 }
 >>>>>>> f3ccc06 (feat(105): create session)
 
@@ -6045,22 +6730,27 @@ export type response_57_3 = {
 } & {body: undefined};
 
 export type response_57_4 = {
-    code: 404;
-    ok: false;
-    info: "category.notfound";
-} & {body: undefined};
-
-export type response_57_5 = {
     code: 409;
     ok: false;
-    info: "productSheet.categories.limit";
+    info: "productSheet.facet.alreadyExist";
 } & {body: undefined};
 
-export type response_57_6 = {
-    code: 200;
+export type response_body_57_5 = {
+    type: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
+    productSheetId: string;
+    value: string;
+}
+
+export type response_57_5 = {
+    code: 201;
     ok: true;
-    info: "productSheet.category.linked";
-} & {body: undefined};
+    info: "facet.created";
+} & {body: response_body_57_5};
+
+export type request_body_58 = {
+    sku: string;
+    warehouseId: string;
+}
 
 export type parameters_58 = {
     params: {
@@ -6093,6 +6783,7 @@ export type response_58_3 = {
 } & {body: undefined};
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export type response_58_4 = {
 <<<<<<< HEAD
     code: 200;
@@ -6116,15 +6807,35 @@ export type response_body_58_4 = {
     description: string;
     shortDescription: string;
     price: number;
+=======
+export type response_58_4 = {
+    code: 404;
+    ok: false;
+    info: "warehouse.notfound";
+} & {body: undefined};
+
+export type response_58_5 = {
+    code: 409;
+    ok: false;
+    info: "product.sku.alreadyUse";
+} & {body: undefined};
+
+export type response_body_58_6 = {
+    sku: string;
+    productSheetId: string;
+    organizationId: string;
+    warehouseId: string;
+>>>>>>> 831755c (feat(105): add functional payment on front)
     createdAt?: string;
     updatedAt?: string;
-    organizationId: string;
+    status: "ORDER" | "WRONG" | "SOLD" | "IN_STOCK";
 }
 >>>>>>> f3ccc06 (feat(105): create session)
 
-export type response_58_4 = {
-    code: 200;
+export type response_58_6 = {
+    code: 201;
     ok: true;
+<<<<<<< HEAD
 <<<<<<< HEAD
     info: "facet.edited";
 } & {body: undefined};
@@ -6132,18 +6843,20 @@ export type response_58_4 = {
 =======
     info: "productSheet.found";
 } & {body: response_body_58_4};
+=======
+    info: "product.created";
+} & {body: response_body_58_6};
+>>>>>>> 831755c (feat(105): add functional payment on front)
 
 export type request_body_59 = {
-    name?: string | undefined;
-    description?: string | undefined;
-    shortDescription?: string | undefined;
-    price?: number | undefined;
+    value?: string | undefined;
 }
 >>>>>>> f3ccc06 (feat(105): create session)
 
 export type parameters_59 = {
     params: {
         productSheetId: string;
+        facetType: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
     };
     query?: {
         page?: number;
@@ -6176,6 +6889,7 @@ export type response_59_3 = {
 } & {body: undefined};
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export type response_59_4 = {
     code: 400;
     ok: false;
@@ -6205,22 +6919,36 @@ export type parameters_60 = {
 =======
 export type response_body_59_4 = string
 
+=======
+>>>>>>> 831755c (feat(105): add functional payment on front)
 export type response_59_4 = {
-    code: 201;
-    ok: true;
-    info: "productSheet.edited";
-} & {body: response_body_59_4};
+    code: 404;
+    ok: false;
+    info: "facet.notfound";
+} & {body: undefined};
 
+<<<<<<< HEAD
 export type request_body_60 = {
     type: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
     value: string;
 }
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+export type response_59_5 = {
+    code: 204;
+    ok: true;
+    info: "facet.edited";
+} & {body: undefined};
+>>>>>>> 831755c (feat(105): add functional payment on front)
 
 export type parameters_60 = {
     params: {
         productSheetId: string;
+<<<<<<< HEAD
 >>>>>>> cc7d315 (feat(105): start make command)
+=======
+        facetType: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
+>>>>>>> 831755c (feat(105): add functional payment on front)
     };
     query?: {
         page?: number;
@@ -6293,20 +7021,15 @@ export type response_body_60_4 = {
 =======
 >>>>>>> f3ccc06 (feat(105): create session)
 export type response_60_4 = {
-    code: 409;
+    code: 404;
     ok: false;
-    info: "productSheet.facet.alreadyExist";
+    info: "facet.notfound";
 } & {body: undefined};
 
-export type response_body_60_5 = {
-    type: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
-    productSheetId: string;
-    value: string;
-}
-
 export type response_60_5 = {
-    code: 201;
+    code: 204;
     ok: true;
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     info: "products.found";
@@ -6318,10 +7041,18 @@ export type response_60_5 = {
     info: "facet.created";
 } & {body: response_body_60_5};
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+    info: "facet.deleted";
+} & {body: undefined};
+
+export type request_body_61 = {
+    status?: ("IN_STOCK" | "WRONG") | undefined;
+}
+>>>>>>> 831755c (feat(105): add functional payment on front)
 
 export type parameters_61 = {
     params: {
-        productSheetId: string;
+        sku: string;
     };
 }
 
@@ -6334,7 +7065,7 @@ export type response_61_0 = {
 export type response_61_1 = {
     code: 404;
     ok: false;
-    info: "productSheet.notfound";
+    info: "product.notfound";
 } & {body: undefined};
 
 export type response_61_2 = {
@@ -6349,19 +7080,14 @@ export type response_61_3 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
-export type response_body_61_4 = {
-    type: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
-    productSheetId: string;
-    value: string;
-}[]
-
 export type response_61_4 = {
-    code: 200;
+    code: 204;
     ok: true;
-    info: "productSheet.facets";
-} & {body: response_body_61_4};
+    info: "product.edited";
+} & {body: undefined};
 
 export type request_body_62 = {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     status?: ("IN_STOCK" | "WRONG") | undefined;
@@ -6372,10 +7098,15 @@ export type request_body_62 = {
 =======
     value?: string | undefined;
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+    name?: string | undefined;
+    address?: string | undefined;
+>>>>>>> 831755c (feat(105): add functional payment on front)
 }
 
 export type parameters_62 = {
     params: {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         sku: string;
@@ -6386,6 +7117,9 @@ export type parameters_62 = {
         productSheetId: string;
         facetType: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+        warehouseId: string;
+>>>>>>> 831755c (feat(105): add functional payment on front)
     };
 }
 
@@ -6400,6 +7134,7 @@ export type response_62_1 = {
     ok: false;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     info: "product.notfound";
 =======
     info: "warehouse.notfound";
@@ -6407,6 +7142,9 @@ export type response_62_1 = {
 =======
     info: "productSheet.notfound";
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+    info: "warehouse.notfound";
+>>>>>>> 831755c (feat(105): add functional payment on front)
 } & {body: undefined};
 
 export type response_62_2 = {
@@ -6422,6 +7160,7 @@ export type response_62_3 = {
 } & {body: undefined};
 
 export type response_62_4 = {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     code: 204;
@@ -6442,25 +7181,31 @@ export type parameters_63 = {
 =======
     code: 404;
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+    code: 400;
+>>>>>>> 831755c (feat(105): add functional payment on front)
     ok: false;
-    info: "facet.notfound";
+    info: "warehouse.address.invalid";
 } & {body: undefined};
 
 export type response_62_5 = {
     code: 204;
     ok: true;
-    info: "facet.edited";
+    info: "warehouse.edited";
 } & {body: undefined};
 
 export type parameters_63 = {
     params: {
         productSheetId: string;
 <<<<<<< HEAD
+<<<<<<< HEAD
         categoryName: string;
 >>>>>>> cc7d315 (feat(105): start make command)
 =======
         facetType: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+>>>>>>> 831755c (feat(105): add functional payment on front)
     };
 }
 
@@ -6493,6 +7238,7 @@ export type response_63_3 = {
 } & {body: undefined};
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export type response_body_63_4 = {
     type: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
     productSheetId: string;
@@ -6509,10 +7255,23 @@ export type response_63_4 = {
     ok: false;
     info: "facet.notfound";
 } & {body: undefined};
+=======
+export type response_body_63_4 = {
+    id: string;
+    name: string;
+    description: string;
+    shortDescription: string;
+    price: number;
+    createdAt?: string;
+    updatedAt?: string;
+    organizationId: string;
+}
+>>>>>>> 831755c (feat(105): add functional payment on front)
 
-export type response_63_5 = {
-    code: 204;
+export type response_63_4 = {
+    code: 200;
     ok: true;
+<<<<<<< HEAD
 <<<<<<< HEAD
     info: "productSheet.category.untied";
 >>>>>>> cc7d315 (feat(105): start make command)
@@ -6520,12 +7279,19 @@ export type response_63_5 = {
     info: "facet.deleted";
 >>>>>>> f3ccc06 (feat(105): create session)
 } & {body: undefined};
+=======
+    info: "productSheet.found";
+} & {body: response_body_63_4};
+
+export type request_body_64 = {
+    name?: string | undefined;
+    description?: string | undefined;
+    shortDescription?: string | undefined;
+    price?: number | undefined;
+}
+>>>>>>> 831755c (feat(105): add functional payment on front)
 
 export type parameters_64 = {
-    headers: {
-        "content-type": string;
-        "content-length": number;
-    };
     params: {
         productSheetId: string;
     };
@@ -6555,7 +7321,10 @@ export type response_64_3 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
+export type response_body_64_4 = string
+
 export type response_64_4 = {
+<<<<<<< HEAD
     code: 409;
     ok: false;
     info: "product.images.limit";
@@ -6585,12 +7354,18 @@ export type response_body_64_6 = {
 }
 
 export type response_64_6 = {
+=======
+>>>>>>> 831755c (feat(105): add functional payment on front)
     code: 201;
     ok: true;
-    info: "productSheet.image.create";
-} & {body: response_body_64_6};
+    info: "productSheet.edited";
+} & {body: response_body_64_4};
 
 export type parameters_65 = {
+    headers: {
+        "content-type": string;
+        "content-length": number;
+    };
     params: {
         productSheetId: string;
     };
@@ -6640,13 +7415,26 @@ export type response_65_3 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
-export type response_body_65_4 = {
+export type response_65_4 = {
+    code: 409;
+    ok: false;
+    info: "product.images.limit";
+} & {body: undefined};
+
+export type response_65_5 = {
+    code: 400;
+    ok: false;
+    info: "productSheet.image.missing";
+} & {body: undefined};
+
+export type response_body_65_6 = {
     id: string;
     productSheetId: string;
     organizationId: string;
     url: string;
     key: string;
     alt: string | null;
+<<<<<<< HEAD
 }[]
 
 export type response_65_4 = {
@@ -6678,6 +7466,18 @@ export type parameters_66 = {
         productSheetId: string;
 >>>>>>> f3ccc06 (feat(105): create session)
     };
+=======
+}
+
+export type response_65_6 = {
+    code: 201;
+    ok: true;
+    info: "productSheet.image.create";
+} & {body: response_body_65_6};
+
+export type request_body_66 = {
+    productSheetId: string;
+>>>>>>> 831755c (feat(105): add functional payment on front)
 }
 
 export type response_66_0 = {
@@ -6693,54 +7493,28 @@ export type response_66_1 = {
 } & {body: undefined};
 
 export type response_66_2 = {
-    code: 406;
-    ok: false;
-    info: "organization.hasNotUser";
-} & {body: undefined};
-
-export type response_66_3 = {
-    code: 403;
-    ok: false;
-    info: "user.role.organization.invalid";
-} & {body: undefined};
-
-export type response_66_4 = {
-    code: 404;
-    ok: false;
-    info: "warehouse.notfound";
-} & {body: undefined};
-
-export type response_66_5 = {
     code: 409;
     ok: false;
-    info: "product.sku.alreadyUse";
+    info: "article.quantity.empty";
 } & {body: undefined};
 
-export type response_body_66_6 = {
-    sku: string;
-    productSheetId: string;
-    organizationId: string;
-    warehouseId: string;
+export type response_body_66_3 = {
+    id: string;
+    userId: string;
+    producSheetId?: string;
     createdAt?: string;
-    updatedAt?: string;
-    status: "ORDER" | "WRONG" | "SOLD" | "IN_STOCK";
 }
 
-export type response_66_6 = {
+export type response_66_3 = {
     code: 201;
     ok: true;
-    info: "product.created";
-} & {body: response_body_66_6};
+    info: "article.created";
+} & {body: response_body_66_3};
 
 export type request_body_67 = {
-    name?: string | undefined;
-    address?: string | undefined;
-}
-
-export type parameters_67 = {
-    params: {
-        warehouseId: string;
-    };
+    lastname: string;
+    firstname: string;
+    address: string;
 }
 
 export type response_67_0 = {
@@ -6750,34 +7524,26 @@ export type response_67_0 = {
 } & {body: undefined};
 
 export type response_67_1 = {
-    code: 404;
+    code: 409;
     ok: false;
-    info: "warehouse.notfound";
+    info: "cart.empty";
 } & {body: undefined};
 
 export type response_67_2 = {
-    code: 406;
+    code: 409;
     ok: false;
-    info: "organization.hasNotUser";
+    info: "product.unavailable";
 } & {body: undefined};
+
+export type response_body_67_3 = {
+    sessionUrl: string;
+}
 
 export type response_67_3 = {
-    code: 403;
-    ok: false;
-    info: "user.role.organization.invalid";
-} & {body: undefined};
-
-export type response_67_4 = {
-    code: 400;
-    ok: false;
-    info: "warehouse.address.invalid";
-} & {body: undefined};
-
-export type response_67_5 = {
-    code: 204;
+    code: 201;
     ok: true;
-    info: "warehouse.edited";
-} & {body: undefined};
+    info: "session";
+} & {body: response_body_67_3};
 
 export type parameters_68 = {
     query?: ({} & {
@@ -6799,12 +7565,28 @@ export type parameters_68 = {
     };
 }
 
-export type response_body_68_0 = string
+export type response_body_68_0 = ({
+    type: "CHECKBOX" | "RADIO";
+    name: string;
+    values: {
+        value: string;
+        quantity: number;
+    }[];
+} | {
+    type: "TOGGLE";
+    name: string;
+    quantity: number;
+} | {
+    type: "RANGE";
+    name: string;
+    min: number;
+    max: number;
+})[]
 
 export type response_68_0 = {
     code: 200;
     ok: true;
-    info: "fullProductSheetCount";
+    info: "filters";
 } & {body: response_body_68_0};
 
 export type parameters_69 = {
@@ -6827,28 +7609,12 @@ export type parameters_69 = {
     };
 }
 
-export type response_body_69_0 = ({
-    type: "CHECKBOX" | "RADIO";
-    name: string;
-    values: {
-        value: string;
-        quantity: number;
-    }[];
-} | {
-    type: "TOGGLE";
-    name: string;
-    quantity: number;
-} | {
-    type: "RANGE";
-    name: string;
-    min: number;
-    max: number;
-})[]
+export type response_body_69_0 = string
 
 export type response_69_0 = {
     code: 200;
     ok: true;
-    info: "filters";
+    info: "fullProductSheetCount";
 } & {body: response_body_69_0};
 
 export type parameters_70 = {
@@ -7543,14 +8309,17 @@ export type DefEnrichedDuplojsTo = {
 	parameters: undefined,
 	response: response_12_0,
 } | {
-	path: "/login",
+	path: "/register",
 	method: "POST",
 	body: request_body_13,
 	parameters: undefined,
 	response: response_13_0
 		| response_13_1
-		| response_13_2,
+		| response_13_2
+		| response_13_3
+		| response_13_4,
 } | {
+<<<<<<< HEAD
 	path: "/organization/{organizationId}/user/{userId}",
 	method: "PATCH",
 	body: request_body_14,
@@ -7567,7 +8336,27 @@ export type DefEnrichedDuplojsTo = {
 		| response_14_3
 		| response_14_4
 		| response_14_5,
+<<<<<<< HEAD
 >>>>>>> 94ee503 (feat(105): commad)
+=======
+=======
+	path: "/article/{productSheetId}",
+	method: "DELETE",
+	body: unknown,
+	parameters: parameters_14,
+	response: response_14_0
+		| response_14_1
+		| response_14_2,
+} | {
+	path: "/login",
+	method: "POST",
+	body: request_body_15,
+	parameters: undefined,
+	response: response_15_0
+		| response_15_1
+		| response_15_2,
+>>>>>>> 831755c (feat(105): add functional payment on front)
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 } | {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -7621,33 +8410,27 @@ export type DefEnrichedDuplojsTo = {
 	method: "GET",
 	body: unknown,
 	parameters: undefined,
-	response: response_15_0
-		| response_15_1,
+	response: response_16_0
+		| response_16_1,
 } | {
-	path: "/article/{productSheetId}",
+	path: "/image-product-sheet/{imageProductSheetId}",
 	method: "DELETE",
 	body: unknown,
-	parameters: parameters_16,
-	response: response_16_0
-		| response_16_1
-		| response_16_2,
-} | {
-	path: "/article",
-	method: "POST",
-	body: request_body_17,
-	parameters: undefined,
+	parameters: parameters_17,
 	response: response_17_0
 		| response_17_1
 		| response_17_2
-		| response_17_3,
+		| response_17_3
+		| response_17_4,
 } | {
-	path: "/make-command",
-	method: "POST",
-	body: unknown,
-	parameters: undefined,
+	path: "/organization/{organizationId}/user/{userId}",
+	method: "PATCH",
+	body: request_body_18,
+	parameters: parameters_18,
 	response: response_18_0
 		| response_18_1
 		| response_18_2
+<<<<<<< HEAD
 <<<<<<< HEAD
 		| response_18_3
 <<<<<<< HEAD
@@ -7669,8 +8452,13 @@ export type DefEnrichedDuplojsTo = {
 =======
 		| response_18_3,
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+		| response_18_3
+		| response_18_4
+		| response_18_5,
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 } | {
-	path: "/image-product-sheet/{imageProductSheetId}",
+	path: "/organization/{organizationId}/user/{userId}",
 	method: "DELETE",
 	body: unknown,
 	parameters: parameters_19,
@@ -7678,9 +8466,10 @@ export type DefEnrichedDuplojsTo = {
 		| response_19_1
 		| response_19_2
 		| response_19_3
-		| response_19_4,
+		| response_19_4
+		| response_19_5,
 } | {
-	path: "/organization/{organizationId}/user",
+	path: "/user/organizations",
 	method: "GET",
 	body: unknown,
 	parameters: parameters_20,
@@ -7695,6 +8484,7 @@ export type DefEnrichedDuplojsTo = {
 		| response_20_6,
 } | {
 	path: "/organization/{organizationId}/user",
+<<<<<<< HEAD
 =======
 		| response_20_5,
 =======
@@ -7740,7 +8530,16 @@ export type DefEnrichedDuplojsTo = {
 		| response_21_5
 		| response_21_6,
 >>>>>>> 94ee503 (feat(105): commad)
+=======
+	method: "GET",
+	body: unknown,
+	parameters: parameters_21,
+	response: response_21_0
+		| response_21_1
+		| response_21_2,
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 } | {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	path: "/organization/{organizationId}/user",
 	method: "GET",
@@ -7748,6 +8547,10 @@ export type DefEnrichedDuplojsTo = {
 =======
 	path: "/organization/{organizationId}/user/{userId}",
 	method: "PATCH",
+=======
+	path: "/organization/{organizationId}/user",
+	method: "POST",
+>>>>>>> 831755c (feat(105): add functional payment on front)
 	body: request_body_22,
 >>>>>>> f3ccc06 (feat(105): create session)
 	parameters: parameters_22,
@@ -7756,8 +8559,10 @@ export type DefEnrichedDuplojsTo = {
 		| response_22_2
 		| response_22_3
 		| response_22_4
-		| response_22_5,
+		| response_22_5
+		| response_22_6,
 } | {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 	path: "/organization/{organizationId}/user",
@@ -7791,9 +8596,20 @@ export type DefEnrichedDuplojsTo = {
 >>>>>>> f3ccc06 (feat(105): create session)
 } | {
 	path: "/user/organizations",
+=======
+	path: "/user",
+>>>>>>> 831755c (feat(105): add functional payment on front)
 	method: "GET",
 	body: unknown,
-	parameters: parameters_24,
+	parameters: undefined,
+	response: response_23_0
+		| response_23_1
+		| response_23_2,
+} | {
+	path: "/user",
+	method: "PATCH",
+	body: request_body_24,
+	parameters: undefined,
 	response: response_24_0
 		| response_24_1
 <<<<<<< HEAD
@@ -7804,6 +8620,7 @@ export type DefEnrichedDuplojsTo = {
 		| response_24_2,
 >>>>>>> 89402b7 (feat(105): create session)
 } | {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	path: "/product-sheet/{productSheetId}/category/{categoryName}",
 	method: "DELETE",
@@ -7909,10 +8726,21 @@ export type DefEnrichedDuplojsTo = {
 	path: "/organization/{organizationId}@admin",
 =======
 		| response_27_3,
+=======
+	path: "/category",
+	method: "POST",
+	body: request_body_25,
+	parameters: undefined,
+	response: response_25_0
+		| response_25_1
+		| response_25_2
+		| response_25_3,
+>>>>>>> 831755c (feat(105): add functional payment on front)
 } | {
 	path: "/category/{categoryName}",
 >>>>>>> 89402b7 (feat(105): create session)
 	method: "PATCH",
+<<<<<<< HEAD
 =======
 	path: "/organization",
 	method: "POST",
@@ -7928,6 +8756,15 @@ export type DefEnrichedDuplojsTo = {
 		| response_28_2
 		| response_28_3
 		| response_28_4,
+=======
+	body: request_body_26,
+	parameters: parameters_26,
+	response: response_26_0
+		| response_26_1
+		| response_26_2
+		| response_26_3
+		| response_26_4,
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 } | {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -7951,17 +8788,41 @@ export type DefEnrichedDuplojsTo = {
 	path: "/category/{categoryName}/image",
 	method: "PUT",
 	body: unknown,
+	parameters: parameters_27,
+	response: response_27_0
+		| response_27_1
+		| response_27_2
+		| response_27_3
+		| response_27_4,
+} | {
+	path: "/organization",
+	method: "POST",
+	body: request_body_28,
+	parameters: undefined,
+	response: response_28_0
+		| response_28_1
+		| response_28_2
+		| response_28_3
+		| response_28_4
+		| response_28_5,
+} | {
+	path: "/organization/{organizationId}@admin",
+	method: "PATCH",
+	body: request_body_29,
 	parameters: parameters_29,
 >>>>>>> f3ccc06 (feat(105): create session)
 	response: response_29_0
 		| response_29_1
 		| response_29_2
 <<<<<<< HEAD
+<<<<<<< HEAD
 		| response_29_3
 		| response_29_4
 		| response_29_5
 		| response_29_6,
 =======
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 <<<<<<< HEAD
 		| response_29_3,
 >>>>>>> f41a079 (feat(105): start make command)
@@ -7994,18 +8855,20 @@ export type DefEnrichedDuplojsTo = {
 =======
 		| response_29_3
 		| response_29_4,
+=======
+		| response_29_3,
+>>>>>>> 831755c (feat(105): add functional payment on front)
 } | {
-	path: "/organization",
+	path: "/navigation-item",
 	method: "POST",
 	body: request_body_30,
 	parameters: undefined,
 	response: response_30_0
 		| response_30_1
 		| response_30_2
-		| response_30_3
-		| response_30_4
-		| response_30_5,
+		| response_30_3,
 } | {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	path: "/navigation-item/{navigationItemId}",
 >>>>>>> cc7d315 (feat(105): start make command)
@@ -8019,11 +8882,17 @@ export type DefEnrichedDuplojsTo = {
 	path: "/navigation-item",
 	method: "POST",
 	body: request_body_31,
+=======
+	path: "/navigation-items",
+	method: "GET",
+	body: unknown,
+>>>>>>> 831755c (feat(105): add functional payment on front)
 	parameters: undefined,
 >>>>>>> f3ccc06 (feat(105): create session)
 >>>>>>> 89402b7 (feat(105): create session)
 	response: response_31_0
 		| response_31_1
+<<<<<<< HEAD
 		| response_31_2
 <<<<<<< HEAD
 		| response_31_3
@@ -8044,6 +8913,11 @@ export type DefEnrichedDuplojsTo = {
 	parameters: undefined,
 =======
 	path: "/organization/{organizationId}@admin",
+=======
+		| response_31_2,
+} | {
+	path: "/navigation-item/{navigationItemId}",
+>>>>>>> 831755c (feat(105): add functional payment on front)
 	method: "PATCH",
 	body: request_body_32,
 	parameters: parameters_32,
@@ -8052,6 +8926,7 @@ export type DefEnrichedDuplojsTo = {
 		| response_32_1
 		| response_32_2
 		| response_32_3
+<<<<<<< HEAD
 		| response_32_4,
 } | {
 <<<<<<< HEAD
@@ -8095,16 +8970,30 @@ export type DefEnrichedDuplojsTo = {
 	body: unknown,
 >>>>>>> f3ccc06 (feat(105): create session)
 	parameters: undefined,
+=======
+		| response_32_4
+		| response_32_5,
+} | {
+	path: "/navigation-item/{navigationItemId}",
+	method: "DELETE",
+	body: unknown,
+	parameters: parameters_33,
+>>>>>>> 831755c (feat(105): add functional payment on front)
 	response: response_33_0
 		| response_33_1
-		| response_33_2,
+		| response_33_2
+		| response_33_3,
 } | {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> f41a079 (feat(105): start make command)
 =======
 <<<<<<< HEAD
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+<<<<<<< HEAD
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	path: "/product-sheet/{productSheetId}/facets",
 >>>>>>> 94ee503 (feat(105): commad)
 	method: "GET",
@@ -8118,10 +9007,16 @@ export type DefEnrichedDuplojsTo = {
 >>>>>>> f3ccc06 (feat(105): create session)
 	body: request_body_34,
 >>>>>>> cc7d315 (feat(105): start make command)
+=======
+	path: "/parent-category/{parentCategoryName}/categories",
+	method: "GET",
+	body: unknown,
+>>>>>>> 831755c (feat(105): add functional payment on front)
 	parameters: parameters_34,
 	response: response_34_0
 		| response_34_1
 		| response_34_2
+<<<<<<< HEAD
 		| response_34_3
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -8133,7 +9028,11 @@ export type DefEnrichedDuplojsTo = {
 =======
 		| response_34_4,
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+		| response_34_3,
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 } | {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 	path: "/product-sheet/{productSheetId}/images",
@@ -8146,6 +9045,10 @@ export type DefEnrichedDuplojsTo = {
 =======
 	path: "/navigation-item/{navigationItemId}",
 	method: "PATCH",
+=======
+	path: "/parent-category/{parentCategoryName}/category",
+	method: "POST",
+>>>>>>> 831755c (feat(105): add functional payment on front)
 	body: request_body_35,
 >>>>>>> f3ccc06 (feat(105): create session)
 	parameters: parameters_35,
@@ -8201,14 +9104,21 @@ export type DefEnrichedDuplojsTo = {
 		| response_35_4
 		| response_35_5,
 } | {
+<<<<<<< HEAD
 	path: "/navigation-item/{navigationItemId}",
 	method: "DELETE",
 >>>>>>> f3ccc06 (feat(105): create session)
 	body: unknown,
+=======
+	path: "/parent-category/{parentCategoryName}",
+	method: "PATCH",
+	body: request_body_36,
+>>>>>>> 831755c (feat(105): add functional payment on front)
 	parameters: parameters_36,
 	response: response_36_0
 		| response_36_1
 		| response_36_2
+<<<<<<< HEAD
 <<<<<<< HEAD
 		| response_36_3
 		| response_36_4
@@ -8217,14 +9127,19 @@ export type DefEnrichedDuplojsTo = {
 =======
 		| response_36_3,
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+		| response_36_3
+		| response_36_4,
+>>>>>>> 831755c (feat(105): add functional payment on front)
 } | {
-	path: "/parent-category/{parentCategoryName}/category",
-	method: "POST",
-	body: request_body_37,
+	path: "/parent-category/{parentCategoryName}/category/{categoryName}",
+	method: "DELETE",
+	body: unknown,
 	parameters: parameters_37,
 	response: response_37_0
 		| response_37_1
 		| response_37_2
+<<<<<<< HEAD
 <<<<<<< HEAD
 		| response_37_3,
 } | {
@@ -8253,23 +9168,26 @@ export type DefEnrichedDuplojsTo = {
 =======
 		| response_37_4
 		| response_37_5,
+=======
+		| response_37_3,
+>>>>>>> 831755c (feat(105): add functional payment on front)
 } | {
-	path: "/parent-category/{parentCategoryName}/categories",
+	path: "/organizations",
 	method: "GET",
 >>>>>>> f3ccc06 (feat(105): create session)
 	body: unknown,
 	parameters: parameters_38,
 	response: response_38_0
 		| response_38_1
-		| response_38_2
-		| response_38_3,
+		| response_38_2,
 } | {
-	path: "/parent-category/{parentCategoryName}",
-	method: "PATCH",
-	body: request_body_39,
+	path: "/parent-categories",
+	method: "GET",
+	body: unknown,
 	parameters: parameters_39,
 	response: response_39_0
 		| response_39_1
+<<<<<<< HEAD
 		| response_39_2
 <<<<<<< HEAD
 		| response_39_3,
@@ -8277,16 +9195,20 @@ export type DefEnrichedDuplojsTo = {
 		| response_39_3
 		| response_39_4,
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+		| response_39_2,
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 } | {
-	path: "/parent-category/{parentCategoryName}/category/{categoryName}",
-	method: "DELETE",
-	body: unknown,
-	parameters: parameters_40,
+	path: "/parent-category",
+	method: "POST",
+	body: request_body_40,
+	parameters: undefined,
 	response: response_40_0
 		| response_40_1
 		| response_40_2
 		| response_40_3,
 } | {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 	path: "/parent-categories",
@@ -8318,6 +9240,8 @@ export type DefEnrichedDuplojsTo = {
 =======
 =======
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	path: "/organization",
 	method: "POST",
 	body: request_body_41,
@@ -8359,28 +9283,45 @@ export type DefEnrichedDuplojsTo = {
 =======
 	path: "/organizations",
 	method: "GET",
+=======
+	path: "/organization/{organizationId}/logo",
+	method: "PUT",
+>>>>>>> 831755c (feat(105): add functional payment on front)
 	body: unknown,
 	parameters: parameters_41,
 	response: response_41_0
 		| response_41_1
-		| response_41_2,
+		| response_41_2
+		| response_41_3
+		| response_41_4
+		| response_41_5,
 } | {
-	path: "/users",
-	method: "GET",
-	body: unknown,
+	path: "/organization/{organizationId}/product-sheet",
+	method: "POST",
+	body: request_body_42,
 	parameters: parameters_42,
 	response: response_42_0
 		| response_42_1
-		| response_42_2,
+		| response_42_2
+		| response_42_3
+		| response_42_4,
 } | {
+<<<<<<< HEAD
 	path: "/parent-category",
 >>>>>>> f3ccc06 (feat(105): create session)
 	method: "POST",
 	body: request_body_43,
 	parameters: undefined,
+=======
+	path: "/organization/{organizationId}/warehouses",
+	method: "GET",
+	body: unknown,
+	parameters: parameters_43,
+>>>>>>> 831755c (feat(105): add functional payment on front)
 	response: response_43_0
 		| response_43_1
 		| response_43_2
+<<<<<<< HEAD
 <<<<<<< HEAD
 		| response_43_3
 		| response_43_4
@@ -8397,7 +9338,12 @@ export type DefEnrichedDuplojsTo = {
 >>>>>>> b5f9a7c (feat(105): init strip provider)
 =======
 		| response_43_3,
+=======
+		| response_43_3
+		| response_43_4,
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 } | {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 	path: "/parent-category/{parentCategoryName}/categories",
@@ -8409,15 +9355,27 @@ export type DefEnrichedDuplojsTo = {
 >>>>>>> f3ccc06 (feat(105): create session)
 	method: "GET",
 	body: unknown,
+<<<<<<< HEAD
 >>>>>>> 94ee503 (feat(105): commad)
 	parameters: parameters_44,
 	response: response_44_0
 		| response_44_1
 <<<<<<< HEAD
+=======
+=======
+	path: "/organization/{organizationId}/warehouse",
+	method: "POST",
+	body: request_body_44,
+>>>>>>> 831755c (feat(105): add functional payment on front)
+	parameters: parameters_44,
+	response: response_44_0
+		| response_44_1
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 		| response_44_2
 		| response_44_3
 		| response_44_4
 		| response_44_5,
+<<<<<<< HEAD
 =======
 		| response_44_2,
 >>>>>>> 89402b7 (feat(105): create session)
@@ -8439,12 +9397,21 @@ export type DefEnrichedDuplojsTo = {
 	body: request_body_45,
 >>>>>>> 94ee503 (feat(105): commad)
 =======
+=======
+} | {
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	path: "/parent-category/{parentCategoryName}/category",
 	method: "POST",
 	body: request_body_45,
 =======
 	path: "/organization/{organizationId}/logo",
 	method: "PUT",
+=======
+	path: "/organization/{organizationId}",
+	method: "GET",
+>>>>>>> 831755c (feat(105): add functional payment on front)
 	body: unknown,
 >>>>>>> cc7d315 (feat(105): start make command)
 >>>>>>> f41a079 (feat(105): start make command)
@@ -8453,9 +9420,9 @@ export type DefEnrichedDuplojsTo = {
 		| response_45_1
 		| response_45_2
 		| response_45_3
-		| response_45_4
-		| response_45_5,
+		| response_45_4,
 } | {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -8473,6 +9440,8 @@ export type DefEnrichedDuplojsTo = {
 >>>>>>> f41a079 (feat(105): start make command)
 =======
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	path: "/parent-category/{parentCategoryName}/category/{categoryName}",
 	method: "DELETE",
 =======
@@ -8486,6 +9455,10 @@ export type DefEnrichedDuplojsTo = {
 =======
 	path: "/organization/{organizationId}/product-sheet",
 	method: "POST",
+=======
+	path: "/organization/{organizationId}",
+	method: "PATCH",
+>>>>>>> 831755c (feat(105): add functional payment on front)
 	body: request_body_46,
 >>>>>>> f3ccc06 (feat(105): create session)
 >>>>>>> 89402b7 (feat(105): create session)
@@ -8536,6 +9509,7 @@ export type DefEnrichedDuplojsTo = {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	path: "/organization/{organizationId}/warehouse",
 =======
 	path: "/product-sheet/{productSheetId}/facet",
@@ -8545,10 +9519,15 @@ export type DefEnrichedDuplojsTo = {
 =======
 =======
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	path: "/navigation-item/{navigationItemId}",
 	method: "DELETE",
 =======
 	path: "/organization/{organizationId}",
+=======
+	path: "/organization/{organizationId}/products",
+>>>>>>> 831755c (feat(105): add functional payment on front)
 	method: "GET",
 >>>>>>> f3ccc06 (feat(105): create session)
 	body: unknown,
@@ -8578,6 +9557,7 @@ export type DefEnrichedDuplojsTo = {
 } | {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	path: "/parent-category",
 	method: "POST",
 	body: request_body_49,
@@ -8594,6 +9574,11 @@ export type DefEnrichedDuplojsTo = {
 	method: "PATCH",
 	body: request_body_49,
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+	path: "/organization/{organizationId}/users",
+	method: "GET",
+	body: unknown,
+>>>>>>> 831755c (feat(105): add functional payment on front)
 	parameters: parameters_49,
 >>>>>>> cc7d315 (feat(105): start make command)
 >>>>>>> f41a079 (feat(105): start make command)
@@ -8604,6 +9589,7 @@ export type DefEnrichedDuplojsTo = {
 		| response_49_4
 		| response_49_5,
 } | {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -8631,12 +9617,19 @@ export type DefEnrichedDuplojsTo = {
 =======
 =======
 >>>>>>> f41a079 (feat(105): start make command)
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	path: "/parent-categories",
 =======
 	path: "/organization/{organizationId}/users",
 >>>>>>> cc7d315 (feat(105): start make command)
 	method: "GET",
 	body: unknown,
+=======
+	path: "/user/{userId}@admin",
+	method: "PATCH",
+	body: request_body_50,
+>>>>>>> 831755c (feat(105): add functional payment on front)
 	parameters: parameters_50,
 	response: response_50_0
 		| response_50_1
@@ -8653,6 +9646,7 @@ export type DefEnrichedDuplojsTo = {
 		| response_50_4,
 } | {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	path: "/product/{sku}",
 >>>>>>> cc7d315 (feat(105): start make command)
 >>>>>>> f41a079 (feat(105): start make command)
@@ -8663,6 +9657,9 @@ export type DefEnrichedDuplojsTo = {
 =======
 =======
 	path: "/organization/{organizationId}/products",
+=======
+	path: "/users",
+>>>>>>> 831755c (feat(105): add functional payment on front)
 	method: "GET",
 	body: unknown,
 >>>>>>> f3ccc06 (feat(105): create session)
@@ -8670,6 +9667,7 @@ export type DefEnrichedDuplojsTo = {
 	parameters: parameters_51,
 	response: response_51_0
 		| response_51_1
+<<<<<<< HEAD
 		| response_51_2
 		| response_51_3
 		| response_51_4
@@ -8717,13 +9715,23 @@ export type DefEnrichedDuplojsTo = {
 	method: "GET",
 	body: unknown,
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+		| response_51_2,
+} | {
+	path: "/product-sheet/{productSheetId}/category",
+	method: "POST",
+	body: request_body_52,
+>>>>>>> 831755c (feat(105): add functional payment on front)
 	parameters: parameters_52,
 	response: response_52_0
 		| response_52_1
 		| response_52_2
 		| response_52_3
-		| response_52_4,
+		| response_52_4
+		| response_52_5
+		| response_52_6,
 } | {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	path: "/product-sheet/{productSheetId}",
 	method: "GET",
@@ -8734,11 +9742,17 @@ export type DefEnrichedDuplojsTo = {
 	method: "POST",
 	body: request_body_53,
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+	path: "/product-sheet/{productSheetId}/categories",
+	method: "GET",
+	body: unknown,
+>>>>>>> 831755c (feat(105): add functional payment on front)
 	parameters: parameters_53,
 	response: response_53_0
 		| response_53_1
 		| response_53_2
 		| response_53_3
+<<<<<<< HEAD
 		| response_53_4
 <<<<<<< HEAD
 		| response_53_5
@@ -8755,7 +9769,11 @@ export type DefEnrichedDuplojsTo = {
 	body: unknown,
 =======
 		| response_53_5,
+=======
+		| response_53_4,
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 } | {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 	path: "/organization/{organizationId}/product-sheet",
@@ -8768,7 +9786,15 @@ export type DefEnrichedDuplojsTo = {
 	method: "PATCH",
 >>>>>>> cc7d315 (feat(105): start make command)
 	body: request_body_54,
+<<<<<<< HEAD
 >>>>>>> 94ee503 (feat(105): commad)
+=======
+=======
+	path: "/product-sheet/{productSheetId}/facets",
+	method: "GET",
+	body: unknown,
+>>>>>>> 831755c (feat(105): add functional payment on front)
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	parameters: parameters_54,
 	response: response_54_0
 		| response_54_1
@@ -8776,6 +9802,7 @@ export type DefEnrichedDuplojsTo = {
 		| response_54_3
 		| response_54_4,
 } | {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -8794,6 +9821,8 @@ export type DefEnrichedDuplojsTo = {
 =======
 =======
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	path: "/organization/{organizationId}/product-sheets",
 	method: "GET",
 	body: unknown,
@@ -8807,6 +9836,9 @@ export type DefEnrichedDuplojsTo = {
 =======
 =======
 	path: "/product-sheet/{productSheetId}/categories",
+=======
+	path: "/product-sheet/{productSheetId}/images",
+>>>>>>> 831755c (feat(105): add functional payment on front)
 	method: "GET",
 	body: unknown,
 >>>>>>> f3ccc06 (feat(105): create session)
@@ -8867,12 +9899,16 @@ export type DefEnrichedDuplojsTo = {
 >>>>>>> f41a079 (feat(105): start make command)
 } | {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	path: "/product-sheet/{productSheetId}/facets",
 	method: "GET",
 	body: unknown,
 >>>>>>> b5f9a7c (feat(105): init strip provider)
 =======
 	path: "/product-sheet/{productSheetId}/category",
+=======
+	path: "/product-sheet/{productSheetId}/facet",
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	method: "POST",
 	body: request_body_57,
 >>>>>>> 89402b7 (feat(105): create session)
@@ -8913,20 +9949,28 @@ export type DefEnrichedDuplojsTo = {
 >>>>>>> f41a079 (feat(105): start make command)
 =======
 		| response_57_4
-		| response_57_5
-		| response_57_6,
+		| response_57_5,
 } | {
+<<<<<<< HEAD
 	path: "/product-sheet/{productSheetId}",
 	method: "GET",
 	body: unknown,
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+	path: "/product-sheet/{productSheetId}/product",
+	method: "POST",
+	body: request_body_58,
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	parameters: parameters_58,
 	response: response_58_0
 		| response_58_1
 		| response_58_2
 		| response_58_3
-		| response_58_4,
+		| response_58_4
+		| response_58_5
+		| response_58_6,
 } | {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -8947,6 +9991,8 @@ export type DefEnrichedDuplojsTo = {
 =======
 =======
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	path: "/organization/{organizationId}/warehouse",
 	method: "POST",
 	body: request_body_59,
@@ -8960,6 +10006,9 @@ export type DefEnrichedDuplojsTo = {
 =======
 =======
 	path: "/product-sheet/{productSheetId}",
+=======
+	path: "/product-sheet/{productSheetId}/facet/{facetType}",
+>>>>>>> 831755c (feat(105): add functional payment on front)
 	method: "PATCH",
 	body: request_body_59,
 >>>>>>> f3ccc06 (feat(105): create session)
@@ -8974,6 +10023,7 @@ export type DefEnrichedDuplojsTo = {
 } | {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	path: "/organization/{organizationId}/products",
 =======
 	path: "/product-sheet/{productSheetId}/images",
@@ -8985,6 +10035,11 @@ export type DefEnrichedDuplojsTo = {
 	method: "POST",
 	body: request_body_60,
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+	path: "/product-sheet/{productSheetId}/facet/{facetType}",
+	method: "DELETE",
+	body: unknown,
+>>>>>>> 831755c (feat(105): add functional payment on front)
 	parameters: parameters_60,
 	response: response_60_0
 		| response_60_1
@@ -9012,9 +10067,9 @@ export type DefEnrichedDuplojsTo = {
 		| response_60_5,
 >>>>>>> 89402b7 (feat(105): create session)
 } | {
-	path: "/product-sheet/{productSheetId}/facets",
-	method: "GET",
-	body: unknown,
+	path: "/product/{sku}",
+	method: "PATCH",
+	body: request_body_61,
 	parameters: parameters_61,
 	response: response_61_0
 		| response_61_1
@@ -9047,6 +10102,7 @@ export type DefEnrichedDuplojsTo = {
 } | {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	path: "/product/{sku}",
 =======
 	path: "/warehouse/{warehouseId}",
@@ -9054,6 +10110,9 @@ export type DefEnrichedDuplojsTo = {
 =======
 	path: "/product-sheet/{productSheetId}/facet/{facetType}",
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+	path: "/warehouse/{warehouseId}",
+>>>>>>> 831755c (feat(105): add functional payment on front)
 	method: "PATCH",
 	body: request_body_62,
 >>>>>>> b5f9a7c (feat(105): init strip provider)
@@ -9086,8 +10145,8 @@ export type DefEnrichedDuplojsTo = {
 		| response_62_4
 		| response_62_5,
 } | {
-	path: "/product-sheet/{productSheetId}/facet/{facetType}",
-	method: "DELETE",
+	path: "/product-sheet/{productSheetId}",
+	method: "GET",
 	body: unknown,
 >>>>>>> cc7d315 (feat(105): start make command)
 >>>>>>> f41a079 (feat(105): start make command)
@@ -9096,6 +10155,7 @@ export type DefEnrichedDuplojsTo = {
 		| response_63_1
 		| response_63_2
 		| response_63_3
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 		| response_63_4
@@ -9112,20 +10172,22 @@ export type DefEnrichedDuplojsTo = {
 		| response_63_4
 		| response_63_5,
 >>>>>>> 94ee503 (feat(105): commad)
+=======
+		| response_63_4,
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 } | {
-	path: "/product-sheet/{productSheetId}/image",
-	method: "POST",
-	body: unknown,
+	path: "/product-sheet/{productSheetId}",
+	method: "PATCH",
+	body: request_body_64,
 	parameters: parameters_64,
 >>>>>>> b5f9a7c (feat(105): init strip provider)
 	response: response_64_0
 		| response_64_1
 		| response_64_2
 		| response_64_3
-		| response_64_4
-		| response_64_5
-		| response_64_6,
+		| response_64_4,
 } | {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -9159,6 +10221,8 @@ export type DefEnrichedDuplojsTo = {
 >>>>>>> f41a079 (feat(105): start make command)
 =======
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	path: "/article",
 	method: "POST",
 	body: request_body_65,
@@ -9170,6 +10234,10 @@ export type DefEnrichedDuplojsTo = {
 =======
 	path: "/product-sheet/{productSheetId}/images",
 	method: "GET",
+=======
+	path: "/product-sheet/{productSheetId}/image",
+	method: "POST",
+>>>>>>> 831755c (feat(105): add functional payment on front)
 	body: unknown,
 >>>>>>> f3ccc06 (feat(105): create session)
 	parameters: parameters_65,
@@ -9184,26 +10252,30 @@ export type DefEnrichedDuplojsTo = {
 	method: "PATCH",
 =======
 		| response_65_3
-		| response_65_4,
+		| response_65_4
+		| response_65_5
+		| response_65_6,
 } | {
-	path: "/product-sheet/{productSheetId}/product",
+	path: "/article",
 	method: "POST",
 >>>>>>> f3ccc06 (feat(105): create session)
 	body: request_body_66,
+<<<<<<< HEAD
 <<<<<<< HEAD
 	parameters: undefined,
 >>>>>>> 94ee503 (feat(105): commad)
 =======
 	parameters: parameters_66,
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+	parameters: undefined,
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	response: response_66_0
 		| response_66_1
 		| response_66_2
-		| response_66_3
-		| response_66_4
-		| response_66_5
-		| response_66_6,
+		| response_66_3,
 } | {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 	path: "/full-product-sheets-count",
@@ -9220,13 +10292,18 @@ export type DefEnrichedDuplojsTo = {
 	body: request_body_67,
 	parameters: parameters_67,
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+	path: "/make-command",
+	method: "POST",
+	body: request_body_67,
+	parameters: undefined,
+>>>>>>> 831755c (feat(105): add functional payment on front)
 	response: response_67_0
 		| response_67_1
 		| response_67_2
-		| response_67_3
-		| response_67_4
-		| response_67_5,
+		| response_67_3,
 } | {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -9247,6 +10324,8 @@ export type DefEnrichedDuplojsTo = {
 =======
 =======
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	path: "/computed-filters",
 =======
 	path: "/full-product-sheets",
@@ -9257,12 +10336,19 @@ export type DefEnrichedDuplojsTo = {
 =======
 	path: "/full-product-sheets-count",
 >>>>>>> f3ccc06 (feat(105): create session)
+<<<<<<< HEAD
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+=======
+	path: "/computed-filters",
+>>>>>>> 831755c (feat(105): add functional payment on front)
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	method: "GET",
 	body: unknown,
 	parameters: parameters_68,
 	response: response_68_0,
 } | {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 	path: "/full-product-sheet/{productSheetId}",
@@ -9272,6 +10358,9 @@ export type DefEnrichedDuplojsTo = {
 =======
 	path: "/computed-filters",
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+	path: "/full-product-sheets-count",
+>>>>>>> 831755c (feat(105): add functional payment on front)
 	method: "GET",
 	body: unknown,
 	parameters: parameters_69,
@@ -9658,7 +10747,7 @@ export interface EnrichedDuploTo<
 	>
 
 	post(
-		path: "/login", 
+		path: "/register", 
 		body: request_body_13,
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
@@ -9666,20 +10755,42 @@ export interface EnrichedDuploTo<
 		response_13_0
 		| response_13_1
 		| response_13_2
+		| response_13_3
+		| response_13_4
 	>
 
+<<<<<<< HEAD
 	patch(
 		path: "/organization/{organizationId}/user/{userId}", 
 		body: request_body_14,
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+=======
+	delete(
+		path: "/article/{productSheetId}", 
+		parameters : parameters_14 & BaseRequestParameters,
+>>>>>>> 831755c (feat(105): add functional payment on front)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_14_0
 		| response_14_1
 		| response_14_2
+<<<<<<< HEAD
 		| response_14_3
 		| response_14_4
 		| response_14_5
+=======
+	>
+
+	post(
+		path: "/login", 
+		body: request_body_15,
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+		interceptorParams?: interceptorParameter
+	): EnrichedRequestor<
+		response_15_0
+		| response_15_1
+		| response_15_2
+>>>>>>> 831755c (feat(105): add functional payment on front)
 	>
 
 <<<<<<< HEAD
@@ -9692,6 +10803,7 @@ export interface EnrichedDuploTo<
 		parameters : parameters_15 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
+<<<<<<< HEAD
 		response_15_0
 		| response_15_1
 		| response_15_2
@@ -9733,40 +10845,35 @@ export interface EnrichedDuploTo<
 		response_15_0
 		| response_15_1
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+		response_16_0
+		| response_16_1
+>>>>>>> 831755c (feat(105): add functional payment on front)
 	>
 
 	delete(
-		path: "/article/{productSheetId}", 
-		parameters : parameters_16 & BaseRequestParameters,
-		interceptorParams?: interceptorParameter
-	): EnrichedRequestor<
-		response_16_0
-		| response_16_1
-		| response_16_2
-	>
-
-	post(
-		path: "/article", 
-		body: request_body_17,
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+		path: "/image-product-sheet/{imageProductSheetId}", 
+		parameters : parameters_17 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_17_0
 		| response_17_1
 		| response_17_2
 		| response_17_3
+		| response_17_4
 	>
 
-	post(
-		path: "/make-command", 
-		body: unknown,
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+	patch(
+		path: "/organization/{organizationId}/user/{userId}", 
+		body: request_body_18,
+		parameters : parameters_18 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_18_0
 		| response_18_1
 		| response_18_2
 		| response_18_3
+<<<<<<< HEAD
 <<<<<<< HEAD
 		| response_18_4
 <<<<<<< HEAD
@@ -9783,10 +10890,14 @@ export interface EnrichedDuploTo<
 >>>>>>> f41a079 (feat(105): start make command)
 =======
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+		| response_18_4
+		| response_18_5
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	>
 
 	delete(
-		path: "/image-product-sheet/{imageProductSheetId}", 
+		path: "/organization/{organizationId}/user/{userId}", 
 		parameters : parameters_19 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -9795,11 +10906,12 @@ export interface EnrichedDuploTo<
 		| response_19_2
 		| response_19_3
 		| response_19_4
+		| response_19_5
 	>
 
 	get(
-		path: "/organization/{organizationId}/user", 
-		parameters : parameters_20 & BaseRequestParameters,
+		path: "/user/organizations", 
+		parameters ?: parameters_20 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_20_0
@@ -9816,6 +10928,7 @@ export interface EnrichedDuploTo<
 	>
 
 	get(
+<<<<<<< HEAD
 		path: "/organization/{organizationId}/user", 
 		parameters : parameters_21 & BaseRequestParameters,
 =======
@@ -9828,8 +10941,9 @@ export interface EnrichedDuploTo<
 >>>>>>> b5f9a7c (feat(105): init strip provider)
 =======
 	post(
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 		path: "/organization/{organizationId}/user", 
-		body: request_body_21,
 		parameters : parameters_21 & BaseRequestParameters,
 >>>>>>> 94ee503 (feat(105): commad)
 		interceptorParams?: interceptorParameter
@@ -9837,6 +10951,7 @@ export interface EnrichedDuploTo<
 		response_21_0
 		| response_21_1
 		| response_21_2
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 		| response_21_3
@@ -9852,8 +10967,11 @@ export interface EnrichedDuploTo<
 		| response_21_5
 		| response_21_6
 >>>>>>> 94ee503 (feat(105): commad)
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	get(
 		path: "/organization/{organizationId}/user", 
@@ -9863,6 +10981,10 @@ export interface EnrichedDuploTo<
 =======
 	patch(
 		path: "/organization/{organizationId}/user/{userId}", 
+=======
+	post(
+		path: "/organization/{organizationId}/user", 
+>>>>>>> 831755c (feat(105): add functional payment on front)
 		body: request_body_22,
 >>>>>>> f3ccc06 (feat(105): create session)
 >>>>>>> 89402b7 (feat(105): create session)
@@ -9878,6 +11000,7 @@ export interface EnrichedDuploTo<
 		| response_22_4
 		| response_22_5
 		| response_22_6
+<<<<<<< HEAD
 		| response_22_7
 =======
 =======
@@ -9885,8 +11008,11 @@ export interface EnrichedDuploTo<
 		| response_22_4
 		| response_22_5
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 	post(
@@ -9902,11 +11028,17 @@ export interface EnrichedDuploTo<
 		path: "/organization/{organizationId}/user/{userId}", 
 >>>>>>> f3ccc06 (feat(105): create session)
 		parameters : parameters_23 & BaseRequestParameters,
+=======
+	get(
+		path: "/user", 
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+>>>>>>> 831755c (feat(105): add functional payment on front)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_23_0
 		| response_23_1
 		| response_23_2
+<<<<<<< HEAD
 		| response_23_3
 		| response_23_4
 <<<<<<< HEAD
@@ -9924,12 +11056,18 @@ export interface EnrichedDuploTo<
 =======
 		| response_23_5
 >>>>>>> f3ccc06 (feat(105): create session)
+<<<<<<< HEAD
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+=======
+>>>>>>> 831755c (feat(105): add functional payment on front)
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	>
 
-	get(
-		path: "/user/organizations", 
-		parameters ?: parameters_24 & BaseRequestParameters,
+	patch(
+		path: "/user", 
+		body: request_body_24,
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 <<<<<<< HEAD
@@ -9959,6 +11097,7 @@ export interface EnrichedDuploTo<
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	post(
 		path: "/category", 
 		body: request_body_25,
@@ -9971,12 +11110,19 @@ export interface EnrichedDuploTo<
 		parameters : parameters_25 & BaseRequestParameters,
 >>>>>>> 94ee503 (feat(105): commad)
 =======
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	delete(
 		path: "/product-sheet/{productSheetId}/category/{categoryName}", 
 		parameters : parameters_25 & BaseRequestParameters,
 =======
 	get(
 		path: "/user", 
+=======
+	post(
+		path: "/category", 
+		body: request_body_25,
+>>>>>>> 831755c (feat(105): add functional payment on front)
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 >>>>>>> cc7d315 (feat(105): start make command)
 >>>>>>> f41a079 (feat(105): start make command)
@@ -9985,6 +11131,7 @@ export interface EnrichedDuploTo<
 		response_25_0
 		| response_25_1
 		| response_25_2
+<<<<<<< HEAD
 <<<<<<< HEAD
 		| response_25_3
 		| response_25_4
@@ -10014,19 +11161,30 @@ export interface EnrichedDuploTo<
 >>>>>>> 94ee503 (feat(105): commad)
 =======
 =======
+=======
+		| response_25_3
+>>>>>>> 831755c (feat(105): add functional payment on front)
 	>
 
 	patch(
-		path: "/user", 
+		path: "/category/{categoryName}", 
 		body: request_body_26,
+<<<<<<< HEAD
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 >>>>>>> cc7d315 (feat(105): start make command)
+<<<<<<< HEAD
 >>>>>>> f41a079 (feat(105): start make command)
+=======
+=======
+		parameters : parameters_26 & BaseRequestParameters,
+>>>>>>> 831755c (feat(105): add functional payment on front)
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_26_0
 		| response_26_1
 		| response_26_2
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -10038,6 +11196,8 @@ export interface EnrichedDuploTo<
 =======
 =======
 >>>>>>> f41a079 (feat(105): start make command)
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 		| response_26_3
 		| response_26_4
 		| response_26_5
@@ -10047,19 +11207,27 @@ export interface EnrichedDuploTo<
 =======
 =======
 >>>>>>> cc7d315 (feat(105): start make command)
+<<<<<<< HEAD
 >>>>>>> f41a079 (feat(105): start make command)
+=======
+=======
+		| response_26_3
+		| response_26_4
+>>>>>>> 831755c (feat(105): add functional payment on front)
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	>
 
-	post(
-		path: "/category", 
-		body: request_body_27,
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+	put(
+		path: "/category/{categoryName}/image", 
+		body: unknown,
+		parameters : parameters_27 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_27_0
 		| response_27_1
 		| response_27_2
 		| response_27_3
+<<<<<<< HEAD
 <<<<<<< HEAD
 		| response_27_4
 		| response_27_5
@@ -10083,8 +11251,15 @@ export interface EnrichedDuploTo<
 =======
 		path: "/category/{categoryName}", 
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+		| response_27_4
+	>
+
+	post(
+		path: "/organization", 
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 		body: request_body_28,
-		parameters : parameters_28 & BaseRequestParameters,
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_28_0
@@ -10092,8 +11267,10 @@ export interface EnrichedDuploTo<
 		| response_28_2
 		| response_28_3
 		| response_28_4
+		| response_28_5
 	>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	post(
 <<<<<<< HEAD
@@ -10114,6 +11291,11 @@ export interface EnrichedDuploTo<
 	put(
 		path: "/category/{categoryName}/image", 
 		body: unknown,
+=======
+	patch(
+		path: "/organization/{organizationId}@admin", 
+		body: request_body_29,
+>>>>>>> 831755c (feat(105): add functional payment on front)
 		parameters : parameters_29 & BaseRequestParameters,
 >>>>>>> f3ccc06 (feat(105): create session)
 		interceptorParams?: interceptorParameter
@@ -10122,6 +11304,7 @@ export interface EnrichedDuploTo<
 		| response_29_1
 		| response_29_2
 		| response_29_3
+<<<<<<< HEAD
 		| response_29_4
 <<<<<<< HEAD
 		| response_29_5
@@ -10131,6 +11314,8 @@ export interface EnrichedDuploTo<
 >>>>>>> f41a079 (feat(105): start make command)
 =======
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	>
 
 <<<<<<< HEAD
@@ -10142,8 +11327,12 @@ export interface EnrichedDuploTo<
 >>>>>>> cc7d315 (feat(105): start make command)
 =======
 	post(
+<<<<<<< HEAD
 		path: "/organization", 
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+		path: "/navigation-item", 
+>>>>>>> 831755c (feat(105): add functional payment on front)
 		body: request_body_30,
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
@@ -10152,6 +11341,7 @@ export interface EnrichedDuploTo<
 		| response_30_1
 		| response_30_2
 		| response_30_3
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 		| response_30_4
@@ -10165,8 +11355,11 @@ export interface EnrichedDuploTo<
 		| response_30_4
 		| response_30_5
 >>>>>>> 94ee503 (feat(105): commad)
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	delete(
 <<<<<<< HEAD
@@ -10182,6 +11375,10 @@ export interface EnrichedDuploTo<
 	post(
 		path: "/navigation-item", 
 		body: request_body_31,
+=======
+	get(
+		path: "/navigation-items", 
+>>>>>>> 831755c (feat(105): add functional payment on front)
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 >>>>>>> f3ccc06 (feat(105): create session)
 >>>>>>> 89402b7 (feat(105): create session)
@@ -10190,9 +11387,12 @@ export interface EnrichedDuploTo<
 		response_31_0
 		| response_31_1
 		| response_31_2
+<<<<<<< HEAD
 		| response_31_3
 <<<<<<< HEAD
 		| response_31_4
+=======
+>>>>>>> 831755c (feat(105): add functional payment on front)
 	>
 
 <<<<<<< HEAD
@@ -10217,7 +11417,7 @@ export interface EnrichedDuploTo<
 =======
 =======
 	patch(
-		path: "/organization/{organizationId}@admin", 
+		path: "/navigation-item/{navigationItemId}", 
 		body: request_body_32,
 >>>>>>> f3ccc06 (feat(105): create session)
 >>>>>>> 89402b7 (feat(105): create session)
@@ -10230,6 +11430,7 @@ export interface EnrichedDuploTo<
 		| response_32_3
 		| response_32_4
 <<<<<<< HEAD
+<<<<<<< HEAD
 		| response_32_5
 		| response_32_6
 	>
@@ -10237,6 +11438,8 @@ export interface EnrichedDuploTo<
 	delete(
 		path: "/navigation-item/{navigationItemId}", 
 =======
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	>
 
 <<<<<<< HEAD
@@ -10260,12 +11463,24 @@ export interface EnrichedDuploTo<
 >>>>>>> f3ccc06 (feat(105): create session)
 >>>>>>> 89402b7 (feat(105): create session)
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+<<<<<<< HEAD
 >>>>>>> f41a079 (feat(105): start make command)
+=======
+=======
+		| response_32_5
+	>
+
+	delete(
+		path: "/navigation-item/{navigationItemId}", 
+		parameters : parameters_33 & BaseRequestParameters,
+>>>>>>> 831755c (feat(105): add functional payment on front)
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_33_0
 		| response_33_1
 		| response_33_2
+<<<<<<< HEAD
 <<<<<<< HEAD
 		| response_33_3
 <<<<<<< HEAD
@@ -10274,8 +11489,12 @@ export interface EnrichedDuploTo<
 >>>>>>> f41a079 (feat(105): start make command)
 =======
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+		| response_33_3
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 	get(
@@ -10295,7 +11514,14 @@ export interface EnrichedDuploTo<
 >>>>>>> f3ccc06 (feat(105): create session)
 		body: request_body_34,
 >>>>>>> cc7d315 (feat(105): start make command)
+<<<<<<< HEAD
 >>>>>>> f41a079 (feat(105): start make command)
+=======
+=======
+	get(
+		path: "/parent-category/{parentCategoryName}/categories", 
+>>>>>>> 831755c (feat(105): add functional payment on front)
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 		parameters : parameters_34 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -10303,6 +11529,7 @@ export interface EnrichedDuploTo<
 		| response_34_1
 		| response_34_2
 		| response_34_3
+<<<<<<< HEAD
 		| response_34_4
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -10311,8 +11538,11 @@ export interface EnrichedDuploTo<
 >>>>>>> f41a079 (feat(105): start make command)
 =======
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 	get(
@@ -10324,6 +11554,10 @@ export interface EnrichedDuploTo<
 =======
 	patch(
 		path: "/navigation-item/{navigationItemId}", 
+=======
+	post(
+		path: "/parent-category/{parentCategoryName}/category", 
+>>>>>>> 831755c (feat(105): add functional payment on front)
 		body: request_body_35,
 >>>>>>> f3ccc06 (feat(105): create session)
 		parameters : parameters_35 & BaseRequestParameters,
@@ -10359,8 +11593,9 @@ export interface EnrichedDuploTo<
 		| response_35_5
 	>
 
-	delete(
-		path: "/navigation-item/{navigationItemId}", 
+	patch(
+		path: "/parent-category/{parentCategoryName}", 
+		body: request_body_36,
 		parameters : parameters_36 & BaseRequestParameters,
 >>>>>>> f3ccc06 (feat(105): create session)
 		interceptorParams?: interceptorParameter
@@ -10369,6 +11604,7 @@ export interface EnrichedDuploTo<
 		| response_36_1
 		| response_36_2
 		| response_36_3
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -10381,17 +11617,24 @@ export interface EnrichedDuploTo<
 		| response_36_6
 >>>>>>> 94ee503 (feat(105): commad)
 =======
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 		| response_36_4
 		| response_36_5
 		| response_36_6
 =======
 >>>>>>> f3ccc06 (feat(105): create session)
+<<<<<<< HEAD
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+=======
+		| response_36_4
+>>>>>>> 831755c (feat(105): add functional payment on front)
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	>
 
-	post(
-		path: "/parent-category/{parentCategoryName}/category", 
-		body: request_body_37,
+	delete(
+		path: "/parent-category/{parentCategoryName}/category/{categoryName}", 
 		parameters : parameters_37 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -10399,6 +11642,7 @@ export interface EnrichedDuploTo<
 		| response_37_1
 		| response_37_2
 		| response_37_3
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 		| response_37_4
@@ -10416,6 +11660,8 @@ export interface EnrichedDuploTo<
 >>>>>>> f41a079 (feat(105): start make command)
 =======
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	>
 
 <<<<<<< HEAD
@@ -10433,6 +11679,7 @@ export interface EnrichedDuploTo<
 =======
 	get(
 <<<<<<< HEAD
+<<<<<<< HEAD
 		path: "/parent-categories", 
 		parameters ?: parameters_38 & BaseRequestParameters,
 >>>>>>> cc7d315 (feat(105): start make command)
@@ -10443,12 +11690,20 @@ export interface EnrichedDuploTo<
 		path: "/parent-category/{parentCategoryName}/categories", 
 		parameters : parameters_38 & BaseRequestParameters,
 >>>>>>> f3ccc06 (feat(105): create session)
+<<<<<<< HEAD
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+=======
+		path: "/organizations", 
+		parameters ?: parameters_38 & BaseRequestParameters,
+>>>>>>> 831755c (feat(105): add functional payment on front)
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_38_0
 		| response_38_1
 		| response_38_2
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 		| response_38_3
@@ -10475,21 +11730,32 @@ export interface EnrichedDuploTo<
 		body: request_body_39,
 		parameters : parameters_39 & BaseRequestParameters,
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+	>
+
+	get(
+		path: "/parent-categories", 
+		parameters ?: parameters_39 & BaseRequestParameters,
+>>>>>>> 831755c (feat(105): add functional payment on front)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_39_0
 		| response_39_1
 		| response_39_2
+<<<<<<< HEAD
 		| response_39_3
 <<<<<<< HEAD
 =======
 		| response_39_4
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	>
 
-	delete(
-		path: "/parent-category/{parentCategoryName}/category/{categoryName}", 
-		parameters : parameters_40 & BaseRequestParameters,
+	post(
+		path: "/parent-category", 
+		body: request_body_40,
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_40_0
@@ -10498,6 +11764,7 @@ export interface EnrichedDuploTo<
 		| response_40_3
 	>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -10513,6 +11780,8 @@ export interface EnrichedDuploTo<
 =======
 =======
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	post(
 		path: "/organization", 
 		body: request_body_41,
@@ -10525,7 +11794,16 @@ export interface EnrichedDuploTo<
 		path: "/organizations", 
 		parameters ?: parameters_41 & BaseRequestParameters,
 >>>>>>> f3ccc06 (feat(105): create session)
+<<<<<<< HEAD
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+=======
+	put(
+		path: "/organization/{organizationId}/logo", 
+		body: unknown,
+		parameters : parameters_41 & BaseRequestParameters,
+>>>>>>> 831755c (feat(105): add functional payment on front)
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_41_0
@@ -10534,8 +11812,11 @@ export interface EnrichedDuploTo<
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 		| response_41_3
 		| response_41_4
 		| response_41_5
@@ -10565,11 +11846,23 @@ export interface EnrichedDuploTo<
 		path: "/users", 
 		parameters ?: parameters_42 & BaseRequestParameters,
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+		| response_41_3
+		| response_41_4
+		| response_41_5
+	>
+
+	post(
+		path: "/organization/{organizationId}/product-sheet", 
+		body: request_body_42,
+		parameters : parameters_42 & BaseRequestParameters,
+>>>>>>> 831755c (feat(105): add functional payment on front)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_42_0
 		| response_42_1
 		| response_42_2
+<<<<<<< HEAD
 <<<<<<< HEAD
 		| response_42_3
 <<<<<<< HEAD
@@ -10582,8 +11875,13 @@ export interface EnrichedDuploTo<
 >>>>>>> f41a079 (feat(105): start make command)
 =======
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+		| response_42_3
+		| response_42_4
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	>
 
+<<<<<<< HEAD
 	post(
 <<<<<<< HEAD
 		path: "/navigation-item", 
@@ -10592,12 +11890,18 @@ export interface EnrichedDuploTo<
 >>>>>>> f3ccc06 (feat(105): create session)
 		body: request_body_43,
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+=======
+	get(
+		path: "/organization/{organizationId}/warehouses", 
+		parameters : parameters_43 & BaseRequestParameters,
+>>>>>>> 831755c (feat(105): add functional payment on front)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_43_0
 		| response_43_1
 		| response_43_2
 		| response_43_3
+<<<<<<< HEAD
 <<<<<<< HEAD
 		| response_43_4
 		| response_43_5
@@ -10612,8 +11916,12 @@ export interface EnrichedDuploTo<
 		body: request_body_44,
 >>>>>>> b5f9a7c (feat(105): init strip provider)
 =======
+=======
+		| response_43_4
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	>
 
+<<<<<<< HEAD
 	get(
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -10630,19 +11938,32 @@ export interface EnrichedDuploTo<
 		path: "/parent-categories", 
 		parameters ?: parameters_44 & BaseRequestParameters,
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+	post(
+		path: "/organization/{organizationId}/warehouse", 
+		body: request_body_44,
+		parameters : parameters_44 & BaseRequestParameters,
+>>>>>>> 831755c (feat(105): add functional payment on front)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_44_0
 		| response_44_1
 		| response_44_2
 <<<<<<< HEAD
+<<<<<<< HEAD
 		| response_44_3
 		| response_44_4
 		| response_44_5
 =======
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+		| response_44_3
+		| response_44_4
+		| response_44_5
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -10659,6 +11980,8 @@ export interface EnrichedDuploTo<
 		body: request_body_45,
 >>>>>>> 94ee503 (feat(105): commad)
 =======
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	post(
 		path: "/parent-category/{parentCategoryName}/category", 
 		body: request_body_45,
@@ -10667,7 +11990,14 @@ export interface EnrichedDuploTo<
 		path: "/organization/{organizationId}/logo", 
 		body: unknown,
 >>>>>>> cc7d315 (feat(105): start make command)
+<<<<<<< HEAD
 >>>>>>> f41a079 (feat(105): start make command)
+=======
+=======
+	get(
+		path: "/organization/{organizationId}", 
+>>>>>>> 831755c (feat(105): add functional payment on front)
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 		parameters : parameters_45 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -10676,9 +12006,9 @@ export interface EnrichedDuploTo<
 		| response_45_2
 		| response_45_3
 		| response_45_4
-		| response_45_5
 	>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -10698,6 +12028,8 @@ export interface EnrichedDuploTo<
 =======
 =======
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	delete(
 		path: "/parent-category/{parentCategoryName}/category/{categoryName}", 
 =======
@@ -10710,6 +12042,10 @@ export interface EnrichedDuploTo<
 =======
 	post(
 		path: "/organization/{organizationId}/product-sheet", 
+=======
+	patch(
+		path: "/organization/{organizationId}", 
+>>>>>>> 831755c (feat(105): add functional payment on front)
 		body: request_body_46,
 >>>>>>> f3ccc06 (feat(105): create session)
 >>>>>>> 89402b7 (feat(105): create session)
@@ -10777,9 +12113,16 @@ export interface EnrichedDuploTo<
 		path: "/navigation-item/{navigationItemId}", 
 =======
 	get(
+<<<<<<< HEAD
 		path: "/organization/{organizationId}", 
 >>>>>>> f3ccc06 (feat(105): create session)
+<<<<<<< HEAD
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+=======
+		path: "/organization/{organizationId}/products", 
+>>>>>>> 831755c (feat(105): add functional payment on front)
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 		parameters : parameters_48 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -10808,6 +12151,7 @@ export interface EnrichedDuploTo<
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	post(
 		path: "/parent-category", 
 		body: request_body_49,
@@ -10823,6 +12167,10 @@ export interface EnrichedDuploTo<
 		path: "/organization/{organizationId}", 
 		body: request_body_49,
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+	get(
+		path: "/organization/{organizationId}/users", 
+>>>>>>> 831755c (feat(105): add functional payment on front)
 		parameters : parameters_49 & BaseRequestParameters,
 >>>>>>> cc7d315 (feat(105): start make command)
 >>>>>>> f41a079 (feat(105): start make command)
@@ -10838,6 +12186,7 @@ export interface EnrichedDuploTo<
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	post(
 		path: "/organization/{organizationId}/product-sheet", 
 =======
@@ -10847,6 +12196,8 @@ export interface EnrichedDuploTo<
 		body: request_body_50,
 		parameters : parameters_50 & BaseRequestParameters,
 =======
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	get(
 <<<<<<< HEAD
 		path: "/parent-categories", 
@@ -10856,6 +12207,11 @@ export interface EnrichedDuploTo<
 =======
 =======
 		path: "/organization/{organizationId}/users", 
+=======
+	patch(
+		path: "/user/{userId}@admin", 
+		body: request_body_50,
+>>>>>>> 831755c (feat(105): add functional payment on front)
 		parameters : parameters_50 & BaseRequestParameters,
 >>>>>>> cc7d315 (feat(105): start make command)
 >>>>>>> f41a079 (feat(105): start make command)
@@ -10896,15 +12252,21 @@ export interface EnrichedDuploTo<
 =======
 =======
 	get(
+<<<<<<< HEAD
 		path: "/organization/{organizationId}/products", 
 >>>>>>> f3ccc06 (feat(105): create session)
 >>>>>>> 89402b7 (feat(105): create session)
 		parameters : parameters_51 & BaseRequestParameters,
+=======
+		path: "/users", 
+		parameters ?: parameters_51 & BaseRequestParameters,
+>>>>>>> 831755c (feat(105): add functional payment on front)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_51_0
 		| response_51_1
 		| response_51_2
+<<<<<<< HEAD
 		| response_51_3
 		| response_51_4
 		| response_51_5
@@ -10939,6 +12301,13 @@ export interface EnrichedDuploTo<
 	get(
 		path: "/organization/{organizationId}/warehouses", 
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+	>
+
+	post(
+		path: "/product-sheet/{productSheetId}/category", 
+		body: request_body_52,
+>>>>>>> 831755c (feat(105): add functional payment on front)
 		parameters : parameters_52 & BaseRequestParameters,
 >>>>>>> cc7d315 (feat(105): start make command)
 >>>>>>> f41a079 (feat(105): start make command)
@@ -10965,8 +12334,11 @@ export interface EnrichedDuploTo<
 =======
 		| response_52_3
 		| response_52_4
+		| response_52_5
+		| response_52_6
 	>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	get(
 		path: "/product-sheet/{productSheetId}", 
@@ -10976,6 +12348,10 @@ export interface EnrichedDuploTo<
 		path: "/organization/{organizationId}/warehouse", 
 		body: request_body_53,
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+	get(
+		path: "/product-sheet/{productSheetId}/categories", 
+>>>>>>> 831755c (feat(105): add functional payment on front)
 		parameters : parameters_53 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -10984,6 +12360,7 @@ export interface EnrichedDuploTo<
 		| response_53_2
 		| response_53_3
 		| response_53_4
+<<<<<<< HEAD
 		| response_53_5
 <<<<<<< HEAD
 		| response_53_6
@@ -10999,8 +12376,11 @@ export interface EnrichedDuploTo<
 		body: unknown,
 >>>>>>> b5f9a7c (feat(105): init strip provider)
 =======
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	post(
 		path: "/organization/{organizationId}/product-sheet", 
@@ -11013,7 +12393,14 @@ export interface EnrichedDuploTo<
 		path: "/product/{sku}", 
 >>>>>>> f3ccc06 (feat(105): create session)
 		body: request_body_54,
+<<<<<<< HEAD
 >>>>>>> 94ee503 (feat(105): commad)
+=======
+=======
+	get(
+		path: "/product-sheet/{productSheetId}/facets", 
+>>>>>>> 831755c (feat(105): add functional payment on front)
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 		parameters : parameters_54 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -11053,9 +12440,16 @@ export interface EnrichedDuploTo<
 =======
 =======
 	get(
+<<<<<<< HEAD
 		path: "/product-sheet/{productSheetId}/categories", 
 >>>>>>> f3ccc06 (feat(105): create session)
+<<<<<<< HEAD
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+=======
+		path: "/product-sheet/{productSheetId}/images", 
+>>>>>>> 831755c (feat(105): add functional payment on front)
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 		parameters : parameters_55 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -11105,6 +12499,7 @@ export interface EnrichedDuploTo<
 
 	post(
 		path: "/product-sheet/{productSheetId}/facet", 
+<<<<<<< HEAD
 		body: request_body_57,
 =======
 	>
@@ -11128,6 +12523,8 @@ export interface EnrichedDuploTo<
 =======
 	post(
 		path: "/product-sheet/{productSheetId}/category", 
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 		body: request_body_57,
 >>>>>>> 89402b7 (feat(105): create session)
 		parameters : parameters_57 & BaseRequestParameters,
@@ -11168,12 +12565,17 @@ export interface EnrichedDuploTo<
 >>>>>>> f41a079 (feat(105): start make command)
 =======
 		| response_57_5
-		| response_57_6
 	>
 
+<<<<<<< HEAD
 	get(
 		path: "/product-sheet/{productSheetId}", 
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+	post(
+		path: "/product-sheet/{productSheetId}/product", 
+		body: request_body_58,
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 		parameters : parameters_58 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -11182,6 +12584,8 @@ export interface EnrichedDuploTo<
 		| response_58_2
 		| response_58_3
 		| response_58_4
+		| response_58_5
+		| response_58_6
 	>
 
 <<<<<<< HEAD
@@ -11215,7 +12619,7 @@ export interface EnrichedDuploTo<
 =======
 =======
 	patch(
-		path: "/product-sheet/{productSheetId}", 
+		path: "/product-sheet/{productSheetId}/facet/{facetType}", 
 		body: request_body_59,
 >>>>>>> f3ccc06 (feat(105): create session)
 >>>>>>> 89402b7 (feat(105): create session)
@@ -11231,6 +12635,7 @@ export interface EnrichedDuploTo<
 	>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	get(
 <<<<<<< HEAD
 		path: "/organization/{organizationId}/products", 
@@ -11242,6 +12647,10 @@ export interface EnrichedDuploTo<
 		path: "/product-sheet/{productSheetId}/facet", 
 		body: request_body_60,
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+	delete(
+		path: "/product-sheet/{productSheetId}/facet/{facetType}", 
+>>>>>>> 831755c (feat(105): add functional payment on front)
 		parameters : parameters_60 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -11268,8 +12677,9 @@ export interface EnrichedDuploTo<
 >>>>>>> 89402b7 (feat(105): create session)
 	>
 
-	get(
-		path: "/product-sheet/{productSheetId}/facets", 
+	patch(
+		path: "/product/{sku}", 
+		body: request_body_61,
 		parameters : parameters_61 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -11301,6 +12711,7 @@ export interface EnrichedDuploTo<
 	patch(
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		path: "/product/{sku}", 
 =======
 		path: "/warehouse/{warehouseId}", 
@@ -11308,6 +12719,9 @@ export interface EnrichedDuploTo<
 =======
 		path: "/product-sheet/{productSheetId}/facet/{facetType}", 
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+		path: "/warehouse/{warehouseId}", 
+>>>>>>> 831755c (feat(105): add functional payment on front)
 		body: request_body_62,
 >>>>>>> b5f9a7c (feat(105): init strip provider)
 		parameters : parameters_62 & BaseRequestParameters,
@@ -11341,6 +12755,7 @@ export interface EnrichedDuploTo<
 		| response_62_5
 	>
 
+<<<<<<< HEAD
 	delete(
 <<<<<<< HEAD
 		path: "/product-sheet/{productSheetId}/category/{categoryName}", 
@@ -11351,7 +12766,14 @@ export interface EnrichedDuploTo<
 =======
 		path: "/product-sheet/{productSheetId}/facet/{facetType}", 
 >>>>>>> f3ccc06 (feat(105): create session)
+<<<<<<< HEAD
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+=======
+	get(
+		path: "/product-sheet/{productSheetId}", 
+>>>>>>> 831755c (feat(105): add functional payment on front)
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 		parameters : parameters_63 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -11360,6 +12782,7 @@ export interface EnrichedDuploTo<
 		| response_63_2
 		| response_63_3
 		| response_63_4
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 		| response_63_5
@@ -11374,11 +12797,13 @@ export interface EnrichedDuploTo<
 =======
 		| response_63_5
 >>>>>>> 94ee503 (feat(105): commad)
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	>
 
-	post(
-		path: "/product-sheet/{productSheetId}/image", 
-		body: unknown,
+	patch(
+		path: "/product-sheet/{productSheetId}", 
+		body: request_body_64,
 		parameters : parameters_64 & BaseRequestParameters,
 >>>>>>> b5f9a7c (feat(105): init strip provider)
 		interceptorParams?: interceptorParameter
@@ -11388,10 +12813,9 @@ export interface EnrichedDuploTo<
 		| response_64_2
 		| response_64_3
 		| response_64_4
-		| response_64_5
-		| response_64_6
 	>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 	get(
@@ -11404,6 +12828,8 @@ export interface EnrichedDuploTo<
 =======
 =======
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 	post(
 <<<<<<< HEAD
 		path: "/article", 
@@ -11419,6 +12845,11 @@ export interface EnrichedDuploTo<
 	get(
 		path: "/product-sheet/{productSheetId}/images", 
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+	post(
+		path: "/product-sheet/{productSheetId}/image", 
+		body: unknown,
+>>>>>>> 831755c (feat(105): add functional payment on front)
 		parameters : parameters_65 & BaseRequestParameters,
 >>>>>>> cc7d315 (feat(105): start make command)
 >>>>>>> f41a079 (feat(105): start make command)
@@ -11452,29 +12883,37 @@ export interface EnrichedDuploTo<
 		path: "/warehouse/{warehouseId}", 
 =======
 		| response_65_4
+		| response_65_5
+		| response_65_6
 	>
 
 	post(
+<<<<<<< HEAD
 		path: "/product-sheet/{productSheetId}/product", 
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+		path: "/article", 
+>>>>>>> 831755c (feat(105): add functional payment on front)
 		body: request_body_66,
+<<<<<<< HEAD
 <<<<<<< HEAD
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 >>>>>>> 94ee503 (feat(105): commad)
 =======
 		parameters : parameters_66 & BaseRequestParameters,
 >>>>>>> 89402b7 (feat(105): create session)
+=======
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+>>>>>>> bcf39c0 (feat(105): add functional payment on front)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_66_0
 		| response_66_1
 		| response_66_2
 		| response_66_3
-		| response_66_4
-		| response_66_5
-		| response_66_6
 	>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 	get(
@@ -11492,11 +12931,18 @@ export interface EnrichedDuploTo<
 		body: request_body_67,
 		parameters : parameters_67 & BaseRequestParameters,
 >>>>>>> f3ccc06 (feat(105): create session)
+=======
+	post(
+		path: "/make-command", 
+		body: request_body_67,
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+>>>>>>> 831755c (feat(105): add functional payment on front)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_67_0
 		| response_67_1
 		| response_67_2
+<<<<<<< HEAD
 <<<<<<< HEAD
 	>
 
@@ -11540,6 +12986,13 @@ export interface EnrichedDuploTo<
 		parameters : parameters_69 & BaseRequestParameters,
 =======
 		path: "/full-product-sheets-count", 
+=======
+		| response_67_3
+	>
+
+	get(
+		path: "/computed-filters", 
+>>>>>>> 831755c (feat(105): add functional payment on front)
 		parameters ?: parameters_68 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -11547,7 +13000,7 @@ export interface EnrichedDuploTo<
 	>
 
 	get(
-		path: "/computed-filters", 
+		path: "/full-product-sheets-count", 
 		parameters ?: parameters_69 & BaseRequestParameters,
 >>>>>>> cc7d315 (feat(105): start make command)
 		interceptorParams?: interceptorParameter

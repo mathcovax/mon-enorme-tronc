@@ -7,6 +7,13 @@ import { uuidv7 } from "uuidv7";
 export const POST = (method: Methods, path: string) => 
 	mustBeConnected({ pickup: ["accessTokenContent"] })
 		.declareRoute(method, path)
+		.extract({
+			body: zod.object({
+				lastname: zod.string().max(32).toUpperCase(),
+				firstname: zod.string().max(36).toLowerCase(),
+				address: zod.string().max(400),
+			}).strip()
+		})
 		.cut(({ pickup }) => ({ userId: pickup("accessTokenContent").id }), ["userId"])
 		.cut(
 			async ({ pickup }) => {
@@ -71,9 +78,12 @@ export const POST = (method: Methods, path: string) =>
 
 				const price = await stripe.prices.create({
 					currency: "eur",
-					unit_amount_decimal: priceAndQuantity.reduce((pv, cv) => pv + cv.price * cv.quantity, 0).toFixed(2),
+					unit_amount_decimal: priceAndQuantity.reduce(
+						(pv, cv) => pv + cv.price * cv.quantity * 100,
+						0
+					).toFixed(2),
 					product_data: {
-						name: `${userId} ${commandId}`
+						name: "Mon énorme tronc"
 					}
 				});
 
@@ -85,10 +95,11 @@ export const POST = (method: Methods, path: string) =>
 			async ({ pickup }) => {
 				const userId = pickup("userId");
 				const commandId = pickup("commandId");
+				const { firstname, lastname, address } = pickup("body");
 				const price = pickup("price");
 				const session = await stripe.checkout.sessions.create({
 					mode: "payment",
-					line_items: [{ price: price.id }],
+					line_items: [{ price: price.id, quantity: 1 }],
 					success_url: `${ENV.ORIGIN}/command?sessionId={CHECKOUT_SESSION_ID}`,
 					cancel_url: `${ENV.ORIGIN}/command?sessionId=canceled`,
 				});
@@ -96,8 +107,11 @@ export const POST = (method: Methods, path: string) =>
 				await prisma.command.create({
 					data: {
 						id: commandId,
+						firstname,
+						lastname,
+						address,
 						userId,
-						session: session.id,
+						sessionId: session.id,
 					}
 				});
 
