@@ -13,30 +13,28 @@ export class ProductAvailability {
 				SELECT
 					COUNT(*) AS total
 				FROM
-					product
+					product AS p
 				WHERE 
-					product.status = 'IN_STOCK'
-					AND product."productSheetId" = ${productSheetId}
-				GROUP BY product."productSheetId"
+					p.status = 'IN_STOCK'
+					AND p."productSheetId" = ${productSheetId}
+				GROUP BY p."productSheetId"
 			), reservedProductCount (total) AS (
 				SELECT
 					COUNT(*) AS total
 				FROM
-					article
+					article AS a
 				WHERE 
 					"createdAt" >= NOW() - INTERVAL '15 minutes'
-					AND (
-						"userId" != ${userId} 
-						OR "commandId" IS NOT NULL
-					)
-					AND article."productSheetId" = ${productSheetId}
-				GROUP BY article."productSheetId"
+					AND a."productSheetId" = ${productSheetId}
+					AND a."userId" != ${userId}
+				GROUP BY a."productSheetId"
 			)
 
 			SELECT 
-				COALESCE((SELECT total from inStockProductCount), 0) - 
-				COALESCE((SELECT total from reservedProductCount), 0) as count
+				COALESCE((SELECT total from inStockProductCount), 0)
+				- COALESCE((SELECT total from reservedProductCount), 0) as count
 		`;
+		
 		return this.quantityResultSchema.parse(result); 
 	}
 }
