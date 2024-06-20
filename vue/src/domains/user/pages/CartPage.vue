@@ -16,6 +16,8 @@ const addArticle = (productSheetId: string) =>
 			{
 				productSheetId,
 			},
+			undefined,
+			{ disabledToast: true }
 		)
 		.info("article.created", () => getCart());
 
@@ -74,8 +76,8 @@ getCart();
 					>
 						<ArticleCard 
 							:article="article"
-							:add-article="addArticle"
-							:remove-article="removeArticle"
+							@add-article="addArticle(article.productSheetId)"
+							@remove-article="removeArticle(article.productSheetId)"
 						/>
 					</li>
 				</ul>

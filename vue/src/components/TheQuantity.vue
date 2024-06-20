@@ -2,8 +2,11 @@
 interface TheQuantityProps {
 	quantity: number;
 	max?: number;
+	canDelete?: boolean;
 }
 const props = defineProps<TheQuantityProps>();
+
+const $pt = usePageTranslate();
 
 const quantity = ref(props.quantity || 1);
 
@@ -31,6 +34,7 @@ const decrement = () => {
 	<div class="flex items-center gap-2">
 		<TheButton
 			@click="decrement"
+			v-if="!canDelete || canDelete && quantity > 1"
 			:disabled="quantity === 1"
 			:class="quantity === 1 ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'"
 			class="w-[40px] h-[40px] flex items-center justify-center rounded-full bg-primary text-white"
@@ -38,6 +42,22 @@ const decrement = () => {
 		>
 			<TheIcon icon="minus" />
 		</TheButton>
+
+		<WithValidation
+			v-else
+			:title="$pt('popup.title')"
+			:content="$pt('popup.content')"
+			class="col-span-4"
+			@validate="emit('decrement')"
+		>
+			<TheButton
+				type="button"
+				class="w-[40px] h-[40px] rounded-full"
+				variant="destructive"
+			>
+				<TheIcon icon="delete-outline" />
+			</TheButton>
+		</WithValidation>
 
 		<span class="text-lg font-bold">{{ quantity }}</span>
 

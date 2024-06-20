@@ -66,6 +66,10 @@ export default {
 			emptyTitle: "Votre panier est vide.",
 			emptySubtitle: "Commencez à ajouter des produits pour les retrouver ici.",
 			browseButton: "Parcourir les produits",
+			popup: {
+				title: "Voulez-vous vraiment supprimer ce produit ?",
+				content: "Si vous validez, ce produit sera retiré de votre panier."
+			}
 		},
 		[routerPageName.ADMIN_PANEL_ORGANIZATIONS]: {
 			title: "Liste des organisations",

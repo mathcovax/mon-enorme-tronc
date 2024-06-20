@@ -4,14 +4,26 @@ import type { Cart } from "@/lib/utils";
 
 interface Props {
 	article: Cart[number];
-	addArticle:(productSheetId: string) => void;
-	removeArticle:(productSheetId: string) => void;
 }
 
 const { PRODUCT_PAGE } = routerPageName;
+
 defineProps<Props>();
+const emit = defineEmits<{
+	addArticle: [];
+	removeArticle: [];
+	deleteArticle: [];
+}>();
 
 const updateQuantity = (amount: number, product: Cart[number]) => {
+	if (amount === 1) {
+		emit("addArticle");
+	}
+	
+	if (amount === -1) {
+		emit("removeArticle");
+	}
+
 	product.quantity += amount;
 };
 </script>
@@ -46,6 +58,7 @@ const updateQuantity = (amount: number, product: Cart[number]) => {
 			<div class="flex items-center gap-4">
 				<TheQuantity 
 					:quantity="article.quantity"
+					can-delete
 					@increment="updateQuantity(1, article)"
 					@decrement="updateQuantity(-1, article)"
 				/>
