@@ -2,7 +2,6 @@
 import CommandSteps from "../components/CommandSteps.vue";
 import { useUserCommandForm } from "../../user/composables/useUserCommandForm";
 import { useGetCart } from "../../user/composables/useGetCart";
-import { useGetCheckoutSession } from "../composables/useGetCheckoutSession";
 import type { LocationQueryValue } from "vue-router";
 
 const $pt = usePageTranslate();

@@ -60,7 +60,6 @@ export const POST = (method: Methods, path: string) =>
 		.cut(
 			async ({ pickup }) => {
 				const articleInCart = pickup("articleInCart");
-				const userId = pickup("userId");
 				const commandId = uuidv7();
 				const priceAndQuantity = await Promise.all(
 					articleInCart.map(
