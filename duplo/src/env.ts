@@ -32,6 +32,9 @@ export default global.ENV = zod
 		MAIL_HOST: zod.string(),
 		MAIL_FROM: zod.string(),
 		STRIPE_PRIVATE_API_KEY: zod.string(),
+		ORIGIN: zod.string().url(),
 	})
 	.readonly()
 	.parse(process.env);
+
+	
