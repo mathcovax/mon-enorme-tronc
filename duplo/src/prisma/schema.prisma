@@ -26,6 +26,7 @@ model user {
     userToOrganization user_to_organization[]
     article            article[]
     command            command[]
+    commandItems       command_item[]
 }
 
 enum primordial_role {
@@ -109,6 +110,7 @@ model product_sheet {
     facets           facet[]
     status           product_sheet_status        @default(UNVERIFIED)
     article          article[]
+    commandItems     command_item[]
 }
 
 enum product_sheet_status {
@@ -212,22 +214,20 @@ model article {
     userId         String
     productSheet   product_sheet @relation(fields: [productSheetId], references: [id])
     productSheetId String
-    command        command?      @relation(fields: [commandId], references: [id])
-    commandId      String?
     createdAt      DateTime      @default(now())
 }
 
 model command {
-    id        String         @id @default(uuid())
-    article   article[]
-    user      user           @relation(fields: [userId], references: [id])
-    userId    String
-    lastname  String         @db.VarChar(32)
-    firstname String         @db.VarChar(36)
-    address   String         @db.VarChar(400)
-    sessionId String         @db.VarChar(255)
-    status    command_status @default(WAITING_PAYMENT)
-    product   product[]
+    id           String         @id @default(uuid())
+    user         user           @relation(fields: [userId], references: [id])
+    userId       String
+    lastname     String         @db.VarChar(32)
+    firstname    String         @db.VarChar(36)
+    address      String         @db.VarChar(400)
+    sessionId    String         @db.VarChar(255)
+    status       command_status @default(WAITING_PAYMENT)
+    product      product[]
+    commandItems command_item[]
 }
 
 enum command_status {
@@ -235,4 +235,17 @@ enum command_status {
     WAITING_PAYMENT
     IN_PROGESS
     DONE
+}
+
+model command_item {
+    id                 Int           @id @default(autoincrement())
+    command            command       @relation(fields: [commandId], references: [id])
+    commandId          String
+    productSheet       product_sheet @relation(fields: [productSheetId], references: [id])
+    productSheetId     String
+    user               user          @relation(fields: [userId], references: [id])
+    userId             String
+    quantity           Int
+    processQuantity    Int           @default(0)
+    freezeProductSheet String
 }

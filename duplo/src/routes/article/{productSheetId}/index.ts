@@ -28,8 +28,7 @@ export const DELETE = (method: Methods, path: string) => mustBeConnected({ picku
 				SELECT id
 				FROM article AS a
 				WHERE 
-					a."productSheetId" = ${productSheetId} 
-					AND a."commandId" = null
+					a."productSheetId" = ${productSheetId}
 				AND "userId" = ${userId}
 				LIMIT 1
 			)

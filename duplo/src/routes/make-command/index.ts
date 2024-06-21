@@ -1,11 +1,13 @@
+import { addressValidCheck } from "@checkers/address";
+import { fullProductSheetModel } from "@mongoose/model";
 import { sessionSchema } from "@schemas/session";
 import { mustBeConnected } from "@security/mustBeConnected";
-import { ProductAvailability } from "@services/productAvailability";
+import { CartService } from "@services/cart";
 import { uuidv7 } from "uuidv7";
 
 /* METHOD : POST, PATH : /make-command */
 export const POST = (method: Methods, path: string) => 
-	mustBeConnected({ pickup: ["accessTokenContent"] })
+	mustBeConnected({ pickup: ["user"] })
 		.declareRoute(method, path)
 		.extract({
 			body: zod.object({
@@ -14,94 +16,69 @@ export const POST = (method: Methods, path: string) =>
 				address: zod.string().max(400),
 			}).strip()
 		})
-		.cut(({ pickup }) => ({ userId: pickup("accessTokenContent").id }), ["userId"])
+		.check(
+			addressValidCheck,
+			{
+				input: p => p("body").address,
+				result: "address.valid",
+				catch: () => {
+					throw new BadRequestHttpException("user.address.invalid");
+				}
+			},
+			new IHaveSentThis(BadRequestHttpException.code, "user.address.invalid")
+		)
+		.cut(({ pickup }) => ({ cartService: new CartService(pickup("user").id) }), ["cartService"])
 		.cut(
 			async ({ pickup }) => {
-				const userId = pickup("userId");
-				const articleInCart = await prisma.article.groupBy({
-					by: "productSheetId",
-					where: {
-						userId,
-						commandId: null
-					},
-					_count: { productSheetId: true },
-				});
+				const articlesInCart = await pickup("cartService").getArticlesInCart();
 
-				if (articleInCart.length < 1) {
+				if (articlesInCart.length < 1) {
 					throw new ConflictHttpException("cart.empty");
 				}
 
-				return { articleInCart };
+				return { articlesInCart };
 			},
-			["articleInCart"],
+			["articlesInCart"],
 			new IHaveSentThis(ConflictHttpException.code, "cart.empty"),
 		)
 		.cut(
 			async ({ pickup }) => {
-				const articleInCart = pickup("articleInCart");
-				const userId = pickup("userId");
-				await Promise.all(
-					articleInCart.map(
-						({ productSheetId, _count: { productSheetId: count } }) => 
-							ProductAvailability
-								.quantity(productSheetId, userId)
-								.then(quantity => {
-									if (quantity < count) {
-										throw new ConflictHttpException("product.unavailable");
-									}
-								})
-					)
-				);
+				const articlesAvailable = await pickup("cartService").articlesAvailableInCart();
+
+				if (!articlesAvailable) {
+					throw new ConflictHttpException("product.unavailable");
+				}
+				
 				return {};
 			},
 			[],
 			new IHaveSentThis(ConflictHttpException.code, "product.unavailable"),
 		)
-		.cut(
+		.handler(
 			async ({ pickup }) => {
-				const articleInCart = pickup("articleInCart");
+				const user = pickup("user");
+				const articlesInCart = pickup("articlesInCart");
+				const computedPrice = await pickup("cartService").computedPrice();
 				const commandId = uuidv7();
-				const priceAndQuantity = await Promise.all(
-					articleInCart.map(
-						aic => prisma.product_sheet.findUniqueOrThrow({
-							where: { id: aic.productSheetId },
-							select: { price: true },
-						}).then(
-							ps => ({ 
-								quantity: aic._count.productSheetId, 
-								price: ps.price
-							})
-						)
-					)
-				);
+				const { firstname, lastname, address } = pickup("body");
 
 				const price = await stripe.prices.create({
 					currency: "eur",
-					unit_amount_decimal: priceAndQuantity.reduce(
-						(pv, cv) => pv + cv.price * cv.quantity * 100,
-						0
-					).toFixed(2),
+					unit_amount_decimal: computedPrice,
 					product_data: {
 						name: "Mon énorme tronc"
 					}
 				});
 
-				return { price, commandId };
-			},
-			["price", "commandId"]
-		)
-		.handler(
-			async ({ pickup }) => {
-				const articleInCart = pickup("articleInCart");
-				const userId = pickup("userId");
-				const commandId = pickup("commandId");
-				const { firstname, lastname, address } = pickup("body");
-				const price = pickup("price");
 				const session = await stripe.checkout.sessions.create({
-					mode: "payment",
+					mode: "setup",
 					line_items: [{ price: price.id, quantity: 1 }],
-					success_url: `${ENV.ORIGIN}/orders?sessionId={CHECKOUT_SESSION_ID}`,
-					cancel_url: `${ENV.ORIGIN}/orders?sessionId=canceled`,
+					success_url: `${ENV.ORIGIN}/command?sessionId={CHECKOUT_SESSION_ID}`,
+					cancel_url: `${ENV.ORIGIN}/command?sessionId=canceled`,
+					customer_email: user.email,
+					metadata: {
+						commandId
+					}
 				});
 				
 				await prisma.command.create({
@@ -110,41 +87,35 @@ export const POST = (method: Methods, path: string) =>
 						firstname,
 						lastname,
 						address,
-						userId,
+						userId: user.id,
 						sessionId: session.id,
 					}
 				});
 
-
-				await Promise.all(
-					articleInCart.map(
-						aic => prisma.product.findMany({
-							where: {
-								status: "IN_STOCK",
-								productSheetId: aic.productSheetId
-							},
-							select: {
-								sku: true
-							},
-							take: aic._count.productSheetId,
-						}).then(
-							products => Promise.all(
-								products.map(
-									p => prisma.product.update({
-										where: {
-											sku: p.sku,
-											status: "IN_STOCK",
-										},
+				await Promise.all([
+					...articlesInCart.map(
+						aic =>
+							fullProductSheetModel
+								.findOne({ id: aic.productSheetId })
+								.then(
+									fps => prisma.command_item.create({
 										data: {
-											status: "WAITING_PAYMENT",
-											commandId
+											commandId,
+											userId: user.id,
+											productSheetId: aic.productSheetId,
+											quantity: aic.quantity,
+											freezeProductSheet: JSON.stringify(fps),
 										}
 									})
 								)
-							)
-						)
-					)
-				);
+							
+					),
+					prisma.article.deleteMany({
+						where: {
+							userId: user.id
+						}
+					})
+				]);
 
 				throw new CreatedHttpException("session", { sessionUrl: session.url });
 			},

@@ -28,11 +28,21 @@ export class ProductAvailability {
 					AND a."productSheetId" = ${productSheetId}
 					AND a."userId" != ${userId}
 				GROUP BY a."productSheetId"
+			), commandedProductCount (total) AS (
+				SELECT
+					SUM(ci.quantity - ci."processQuantity") AS total
+				FROM
+					command_item AS ci
+				WHERE 
+					ci."productSheetId" = ${productSheetId}
+					AND ci."processQuantity" != ci.quantity
+				GROUP BY a."productSheetId"
 			)
 
 			SELECT 
 				COALESCE((SELECT total from inStockProductCount), 0)
-				- COALESCE((SELECT total from reservedProductCount), 0) as count
+				- COALESCE((SELECT total from reservedProductCount), 0)
+				- COALESCE((SELECT total from commandedProductCount), 0) as count
 		`;
 		
 		return this.quantityResultSchema.parse(result); 
