@@ -79,18 +79,17 @@ export class CartService {
 			articlesInCart
 				? Promise.resolve(articlesInCart)
 				: this.getUserArticlesInCart(userId)
-		).then( 
+		).then(
 			articlesInCart => Promise.all(
 				articlesInCart.map(
-					({ productSheetId, quantity: quantityAvailable }) => 
+					({ productSheetId, quantity: quantityRequested }) => 
 						ProductAvailability
 							.quantity(productSheetId, userId)
-							.then(quantity => {
-								if (quantity < quantityAvailable) {
-									return false;
-								}
-								else {
+							.then(quantityAvailable => {
+								if (quantityRequested <= quantityAvailable) {
 									return true;
+								} else {
+									return false;
 								}
 							})
 				))
