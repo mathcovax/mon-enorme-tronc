@@ -71,6 +71,26 @@ export default {
 				content: "Si vous validez, ce produit sera retiré de votre panier."
 			}
 		},
+		[routerPageName.USER_ORDER]: {
+			title: "Mes commandes",
+			stepTitle: {
+				address: "Adresse",
+				cart: "Panier",
+				payment: "Paiement",
+				success: "Succès",
+			},
+			step: {
+				successMessage: "Votre commande a bien été enregistrée.",
+				info: "Vos informations",
+				cart: {
+					title: "Votre panier",
+					productName: "Nom du produit : {value}",
+					price: "Prix : {value} €",
+					quantity: "Quantité : {value}",
+				},
+				payment: "Paiement",
+			}
+		},
 		[routerPageName.ADMIN_PANEL_ORGANIZATIONS]: {
 			title: "Liste des organisations",
 			form: {
@@ -478,6 +498,7 @@ export default {
 		save: "Enregister",
 		send: "Envoyer",
 		add: "Ajouter",
+		pay: "Payer",
 		edit: "Modifier",
 		clear: "Effacer",
 		remove: "Retirer",

@@ -28,19 +28,19 @@ const updateQuantity = (amount: number) => {
 </script>
 
 <template>
-	<TheCard class="p-6 flex flex-col sm:flex-row gap-4 sm:gap-0 justify-between items-center border-b transition-colors hover:bg-muted/50">
-		<div class="flex flex-col sm:flex-row gap-8 items-center">
+	<TheCard class="flex flex-col items-center justify-between gap-4 p-6 transition-colors border-b sm:flex-row sm:gap-0 hover:bg-muted/50">
+		<div class="flex items-center gap-8">
 			<CardHeader class="p-0">
 				<img
 					:src="article.imageUrl"
 					alt="placeholder"
 					width="64"
 					height="64"
-					class="aspect-square rounded-md object-cover"
+					class="object-cover rounded-md aspect-square"
 				>
 			</CardHeader>
 
-			<CardContent class="p-0 flex flex-col gap-1">
+			<CardContent class="flex flex-col gap-1 p-0">
 				<RouterLink :to="{name: PRODUCT_PAGE, params: {productSheetId: article.productSheetId}}">
 					<CardTitle>
 						{{ article.name }}
@@ -53,7 +53,7 @@ const updateQuantity = (amount: number) => {
 			</CardContent>
 		</div>
 
-		<CardFooter class="p-0 flex items-center gap-8">
+		<CardFooter class="flex items-center gap-8 p-0">
 			<div class="flex items-center gap-4">
 				<WithValidation
 					:title="$pt('popup.title')"

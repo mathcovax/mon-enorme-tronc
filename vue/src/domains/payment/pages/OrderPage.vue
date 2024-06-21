@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import CommandSteps from "../components/CommandSteps.vue";
+import OrderSteps from "../components/OrderSteps.vue";
+import OrderCard from "../components/OrderCard.vue";
 import { useUserCommandForm } from "../../user/composables/useUserCommandForm";
 import { useGetCart } from "../../user/composables/useGetCart";
 
 const $pt = usePageTranslate();
 
 const { cart } = useGetCart();
-// const query = useRouteQuery({ sessionId: zod.string().optional() });
-//const checkoutSession = ref<CheckoutSession | null>(null);
+const step = ref(1);
 
 interface CommandInfo {
 	firstname: string;
@@ -55,8 +55,6 @@ function submitPayment() {
 		})
 		.result;
 }
-
-const step = ref(1);
 </script>
 
 <template>
@@ -68,7 +66,10 @@ const step = ref(1);
 
 			<div class="mx-auto grid w-full items-start gap-6 md:grid-cols-[180px_1fr] lg:grid-cols-[250px_1fr]">
 				<aside class="p-4 mb-12 rounded shadow md:mb-0">
-					<CommandSteps :step="step" />
+					<OrderSteps
+						:step="step"
+						@update:step="v => step = v"
+					/>
 				</aside>
 
 				<div
@@ -112,9 +113,10 @@ const step = ref(1);
 							<div
 								v-for="product in products"
 								:key="product.productSheetId"
-								class="flex items-center gap-4"
 							>
-								{{ product.name }}
+								<OrderCard
+									:article="product"
+								/>
 							</div>
 
 							<SecondaryButton

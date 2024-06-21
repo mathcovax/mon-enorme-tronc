@@ -100,8 +100,8 @@ export const POST = (method: Methods, path: string) =>
 				const session = await stripe.checkout.sessions.create({
 					mode: "payment",
 					line_items: [{ price: price.id, quantity: 1 }],
-					success_url: `${ENV.ORIGIN}/command?sessionId={CHECKOUT_SESSION_ID}`,
-					cancel_url: `${ENV.ORIGIN}/command?sessionId=canceled`,
+					success_url: `${ENV.ORIGIN}/orders?sessionId={CHECKOUT_SESSION_ID}`,
+					cancel_url: `${ENV.ORIGIN}/orders?sessionId=canceled`,
 				});
 				
 				await prisma.command.create({

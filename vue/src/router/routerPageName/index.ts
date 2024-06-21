@@ -5,6 +5,7 @@ import { routerPageNameEdito } from "@/domains/edito/router";
 import { routerPageNameOrganization } from "@/domains/organization/router";
 import { routerPageNameUser } from "@/domains/user/router";
 import { routerPageNameCategory } from "@/domains/product/router";
+import { routerPageNamePayment } from "@/domains/payment/router";
 
 export const routerPageName = Object.freeze({
 	...routerPageNameAdminPanel,
@@ -14,4 +15,5 @@ export const routerPageName = Object.freeze({
 	...routerPageNameOrganization,
 	...routerPageNameUser,
 	...routerPageNameCategory,
+	...routerPageNamePayment,
 });
