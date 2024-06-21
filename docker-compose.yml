@@ -84,6 +84,17 @@ services:
       - 1080:1080
       - 1025:1025
 
+  stripe:
+    image: stripe/stripe-cli
+    env_file:
+      - ./duplo/.env.local
+    volumes:
+      - ./stripe/:/root/.config/stripe/
+    environment:
+      - STRIPE_API_KEY_TEST_LIVE = ${STRIPE_API_KEY_TEST_LIVE}
+      - STRIPE_DEVICE_NAME = ${STRIPE_DEVICE_NAME}
+    command: /root/.config/stripe/start.sh #listen --api-key ${STRIPE_API_KEY_TEST_LIVE} --device-name ${STRIPE_DEVICE_NAME} --forward-to 
+
 volumes:
   postgres_data:
   mongo_data:
