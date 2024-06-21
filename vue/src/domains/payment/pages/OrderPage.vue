@@ -55,6 +55,11 @@ function submitPayment() {
 		})
 		.result;
 }
+
+const totalPriceCart = computed(() => {
+	return products.value.reduce((acc, product) => acc + (product.price * product.quantity), 0).toFixed(2);
+});
+
 </script>
 
 <template>
@@ -113,10 +118,20 @@ function submitPayment() {
 							<div
 								v-for="product in products"
 								:key="product.productSheetId"
-							>
+							>	
 								<OrderCard
 									:article="product"
 								/>
+							</div>
+
+							<div
+								class="flex justify-end col-span-12"
+							>
+								<span
+									class="p-2 text-right bg-gray-100 border border-gray-200 rounded-sm"
+								>
+									{{ $pt("step.cart.total", { value: totalPriceCart }) }}
+								</span>
 							</div>
 
 							<SecondaryButton

@@ -36,7 +36,7 @@ export class ProductAvailability {
 				WHERE 
 					ci."productSheetId" = ${productSheetId}
 					AND ci."processQuantity" != ci.quantity
-				GROUP BY a."productSheetId"
+				GROUP BY ci."productSheetId"
 			)
 
 			SELECT 
@@ -44,7 +44,6 @@ export class ProductAvailability {
 				- COALESCE((SELECT total from reservedProductCount), 0)
 				- COALESCE((SELECT total from commandedProductCount), 0) as count
 		`;
-		
 		return this.quantityResultSchema.parse(result); 
 	}
 }

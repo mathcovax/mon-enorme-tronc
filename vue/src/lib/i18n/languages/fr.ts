@@ -87,6 +87,7 @@ export default {
 					productName: "Nom du produit : {value}",
 					price: "Prix : {value} €",
 					quantity: "Quantité : {value}",
+					total: "Prix total : {value} €",
 				},
 				payment: "Paiement",
 			}
