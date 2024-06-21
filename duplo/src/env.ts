@@ -31,7 +31,7 @@ export default global.ENV = zod
 		JWT_TIME: zod.string(),
 		MAIL_HOST: zod.string(),
 		MAIL_FROM: zod.string(),
-		STRIPE_PRIVATE_API_KEY: zod.string(),
+		STRIPE_API_KEY: zod.string(),
 		ORIGIN: zod.string().url(),
 	})
 	.readonly()

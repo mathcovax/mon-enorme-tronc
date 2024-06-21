@@ -1,5 +1,3 @@
-import { mustBeConnected } from "@security/mustBeConnected";
-
 /* METHOD : POST, PATH : /stripe-webhook */
 export const POST = (method: Methods, path: string) => duplo
 	.declareRoute(method, path)

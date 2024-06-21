@@ -5,4 +5,4 @@ firebase.credential.json
 coverage
 migrations
 lastIndexing.json
-stripe/config.toml
+stripe/cli

@@ -15,7 +15,9 @@
 		"prepare": "husky",
 		"studio": "docker compose exec duplo npm -w duplo run studio",
 		"indexing": "docker compose exec duplo npm -w duplo run indexing",
-		"fixture": "docker compose exec duplo npm -w duplo run fixture"
+		"fixture": "docker compose exec duplo npm -w duplo run fixture",
+		"stripe:listen": "bash stripe/listen.sh",
+		"stripe:trigger": "bash stripe/trigger.sh"
 	},
 	"prisma": {
 		"schema": "duplo/src/prisma/schema.prisma"

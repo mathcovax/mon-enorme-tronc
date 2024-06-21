@@ -86,14 +86,11 @@ services:
 
   stripe:
     image: stripe/stripe-cli
-    env_file:
-      - ./duplo/.env.local
+    env_file: ./duplo/.env.local
     volumes:
-      - ./stripe/:/root/.config/stripe/
-    environment:
-      - STRIPE_API_KEY_TEST_LIVE = ${STRIPE_API_KEY_TEST_LIVE}
-      - STRIPE_DEVICE_NAME = ${STRIPE_DEVICE_NAME}
-    command: /root/.config/stripe/start.sh #listen --api-key ${STRIPE_API_KEY_TEST_LIVE} --device-name ${STRIPE_DEVICE_NAME} --forward-to 
+      - ./stripe:/home
+    entrypoint: /bin/sh
+    command: /home/cp.sh
 
 volumes:
   postgres_data:
