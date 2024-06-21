@@ -46,13 +46,13 @@ export const POST = (method: Methods, path: string) =>
 				const articlesAvailable = await pickup("cartService").articlesAvailableInCart();
 
 				if (!articlesAvailable) {
-					throw new ConflictHttpException("product.unavailable");
+					throw new ConflictHttpException("products.unavailable");
 				}
 				
 				return {};
 			},
 			[],
-			new IHaveSentThis(ConflictHttpException.code, "product.unavailable"),
+			new IHaveSentThis(ConflictHttpException.code, "products.unavailable"),
 		)
 		.handler(
 			async ({ pickup }) => {
@@ -73,8 +73,8 @@ export const POST = (method: Methods, path: string) =>
 				const session = await stripe.checkout.sessions.create({
 					mode: "setup",
 					line_items: [{ price: price.id, quantity: 1 }],
-					success_url: `${ENV.ORIGIN}/command?sessionId={CHECKOUT_SESSION_ID}`,
-					cancel_url: `${ENV.ORIGIN}/command?sessionId=canceled`,
+					success_url: `${ENV.ORIGIN}/orders?sessionId={CHECKOUT_SESSION_ID}`,
+					cancel_url: `${ENV.ORIGIN}/orders?sessionId=canceled`,
 					customer_email: user.email,
 					metadata: {
 						commandId
