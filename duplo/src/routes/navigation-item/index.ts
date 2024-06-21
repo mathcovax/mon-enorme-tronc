@@ -16,7 +16,7 @@ export const POST = (method: Methods, path: string) =>
 			async () => {
 				const navigationItemCount = await prisma.navigation_item.count();
 
-				if (navigationItemCount > 9) {
+				if (navigationItemCount >= MetConfig.navigationBar.itemsLimit) {
 					throw new ConflictHttpException("navigationItem.limit");
 				}
 

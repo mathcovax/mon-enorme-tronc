@@ -27,7 +27,7 @@ export const POST = (method: Methods, path: string) =>
 					}
 				});
 
-				if (categoriesProductSheetCount > 4) {
+				if (categoriesProductSheetCount >= MetConfig.productSheet.categoriesLimit) {
 					throw new ConflictHttpException("productSheet.categories.limit");
 				}
 

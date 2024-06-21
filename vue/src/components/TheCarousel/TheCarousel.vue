@@ -82,11 +82,11 @@ onBeforeUnmount(() => {
 <template>
 	<div class="relative group">
 		<div
-			class="overflow-hidden"
+			class="overflow-hidden h-full"
 			ref="carouselContainer"
 		>
 			<div
-				class="flex transition-transform"
+				class="flex transition-transform h-full"
 				:style="carouselStyle"
 			>
 				<div

@@ -32,7 +32,7 @@ const emit = defineEmits<{"update:modelValue": [value: string]}>();
 				:value="item.value"
 			/>
 
-			<TheLabel for="r1">
+			<TheLabel :for="`radio-${index}`">
 				{{ item.label }}
 			</TheLabel>
 		</div>

@@ -1,0 +1,110 @@
+<script setup lang="ts">
+defineProps<{
+  step: number;
+}>();
+
+const $pt = usePageTranslate();
+</script>
+
+<template>
+	<div class="flex md:flex-col md:gap-20 md:items-center">
+		<div class="w-full">
+			<div class="relative mb-2">
+				<div
+					class="w-10 h-10 mx-auto flex justify-center items-center rounded-full"
+					:class="{
+						'bg-muted border-2 border-primary text-primary': step === 1,
+						'bg-primary text-white': step > 1,
+					}"
+				>
+					<TheIcon
+						icon="map-marker-outline"
+						size="2xl"
+					/>
+				</div>
+			</div>
+
+			<div
+				class="text-xs text-center md:text-base"
+			>
+				{{ $pt('step.info') }}
+			</div>
+		</div>
+
+		<div class="w-full">
+			<div class="relative mb-2">
+				<div class="absolute top-1/2 md:-top-full w-[calc(100%-2.5rem-1rem)] md:w-[calc(50%-2.5rem-1rem)] md:left-1/2 flex align-center items-center align-middle content-center -translate-x-1/2 -translate-y-1/2 md:rotate-90">
+					<div class="w-full bg-muted rounded items-center align-middle align-center flex-1">
+						<div
+							class="bg-primary py-1 rounded"
+							:class="step > 1 ? 'w-full' : 'w-0'"
+						/>
+					</div>
+				</div>
+
+				<div
+					class="w-10 h-10 mx-auto flex justify-center items-center rounded-full"
+					:class="{
+						'border-2 border-muted text-muted': step < 2,
+						'border-2 border-primary text-primary': step === 2,
+						'bg-primary text-white': step > 2,
+					}"
+				>
+					<TheIcon
+						icon="cart-outline"
+						size="2xl"
+					/>
+				</div>
+			</div>
+
+			<div
+				class="text-xs text-center md:text-base"
+				:class="{
+					'text-muted': step < 2,
+					'text-primary': step === 2,
+				}"
+			>
+				{{ $pt('step.cart') }}
+			</div>
+		</div>
+
+		<div class="w-full">
+			<div class="relative mb-2">
+				<div
+					class="absolute top-1/2 md:-top-full w-[calc(100%-2.5rem-1rem)] md:w-[calc(50%-2.5rem-1rem)] md:left-1/2 flex align-center items-center align-middle content-center -translate-x-1/2 -translate-y-1/2 md:rotate-90"
+				>
+					<div class="w-full bg-muted rounded items-center align-middle align-center flex-1">
+						<div
+							class="bg-primary py-1 rounded"
+							:class="step > 2 ? 'w-full' : 'w-0'"
+						/>
+					</div>
+				</div>
+
+				<div
+					class="w-10 h-10 mx-auto flex justify-center items-center rounded-full"
+					:class="{
+						'border-2 border-muted text-muted': step < 3,
+						'bg-muted border-2 border-primary text-primary': step === 3,
+						'bg-primary text-white': step > 3,
+					}"
+				>
+					<TheIcon
+						icon="credit-card-outline"
+						size="2xl"
+					/>
+				</div>
+			</div>
+
+			<div
+				class="text-xs text-center md:text-base"
+				:class="{
+					'text-muted': step < 3,
+					'text-primary': step === 3,
+				}"
+			>
+				{{ $pt('step.payment') }}
+			</div>
+		</div>
+	</div>
+</template>

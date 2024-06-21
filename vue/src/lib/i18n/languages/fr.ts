@@ -43,7 +43,7 @@ export default {
 			emptySubtitle: "Revenez plus tard pour voir les nouveautés.",
 			buttonBack: "Revenir aux catégories",
 			quantityProduct: "{count} produit(s) trouvé(s).",
-			title: "{value}.",
+			title: "{value}",
 		},
 		get [routerPageName.SEARCH_PAGE]() {
 			return {
@@ -66,6 +66,10 @@ export default {
 			emptyTitle: "Votre panier est vide.",
 			emptySubtitle: "Commencez à ajouter des produits pour les retrouver ici.",
 			browseButton: "Parcourir les produits",
+			popup: {
+				title: "Voulez-vous vraiment supprimer ce produit ?",
+				content: "Si vous validez, ce produit sera retiré de votre panier."
+			}
 		},
 		[routerPageName.ADMIN_PANEL_ORGANIZATIONS]: {
 			title: "Liste des organisations",
@@ -543,8 +547,20 @@ export default {
 			notfound: "Le produit n'existe pas.",
 			edited: "Le produit a correctement été modifié.",
 			created: "Le produit a correctement été créé.",
+			unavailable: "Le produit n'est pas disponible quand la quantité souéter.",
 			sku: {
 				alreadyUse: "Ce sku est déjà utilisé.",
+			}
+		},
+		article: {
+			created: "Les article on bien étais ajouter au panier.",
+		},
+		cart: {
+			quantity: {
+				limit: "Vous ne pouver pas avoir plus de 15 fois le même produit dans votre panier."
+			},
+			article: {
+				limit: "Vous ne pouvez pas avoir plus de 10 article dans votre panier."
 			}
 		},
 		TYPE_ERROR: "L'une des données envoyées est erronée. (Erreur provenant du site)",

@@ -40,7 +40,7 @@ export const POST = (method: Methods, path: string) =>
 					}
 				});
 
-				if (categoriesCount > 9) {
+				if (categoriesCount >= MetConfig.parentCategory.categoriesLimit) {
 					throw new ConflictHttpException("parentCategory.categories.limit");
 				}
 

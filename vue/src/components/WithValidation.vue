@@ -10,6 +10,7 @@ const props = defineProps<Props>();
 
 const emit = defineEmits<{
 	validate: []
+	disabledClick: []
 }>();
 </script>
 
@@ -18,7 +19,7 @@ const emit = defineEmits<{
 		<template #trigger="{ open }">
 			<div
 				:class="props.class"
-				@click="disabled || open()"
+				@click="disabled ? emit('disabledClick') : open()"
 			>
 				<slot />
 			</div>

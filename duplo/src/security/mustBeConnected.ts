@@ -1,4 +1,5 @@
 import { accessTokenCheck } from "@checkers/token";
+import { inputUser, userExistCheck } from "@checkers/user";
 
 export const mustBeConnected = duplo
 	.declareAbstractRoute("mustBeConnected")
@@ -20,4 +21,13 @@ export const mustBeConnected = duplo
 		},
 		new IHaveSentThis(UnauthorizedHttpException.code, "access.token.invalid")
 	)
-	.build(["accessTokenContent"]);
+	.check(
+		userExistCheck,
+		{
+			input: p => inputUser.id(p("accessTokenContent").id),
+			...userExistCheck.preCompletions.mustExist
+		},
+		new IHaveSentThis(NotFoundHttpException.code, "user.notfound")
+	)
+	.cut(({ pickup }) => ({ userId: pickup("user").id }), ["userId"])
+	.build(["accessTokenContent", "user", "userId"]);

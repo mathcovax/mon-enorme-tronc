@@ -1,38 +1,40 @@
-interface ProductAvailabilityResult {
-	productSheetId: string;
-	available_stock: bigint;
-  }
+import ZodAccelerator from "@duplojs/zod-accelerator";
+
 export class ProductAvailability {
-	static async quantity(productSheetId: string): Promise<number> {
-		const result = await prisma.$queryRaw<ProductAvailabilityResult[]>`
-			SELECT
-			ps.id AS "productSheetId",
-			COALESCE(p.total_count, 0) - COALESCE(a.reserved_count, 0) AS "available_stock"
-			FROM
-			product_sheet ps
-			LEFT JOIN (
-			SELECT
-				"productSheetId",
-				COUNT(*) AS total_count
-			FROM
-				product
-			GROUP BY
-				"productSheetId"
-			) p ON ps.id = p."productSheetId"
-			LEFT JOIN (
-			SELECT
-				"productSheetId",
-				COUNT(*) AS reserved_count
-			FROM
-				article
-			WHERE
-				"createdAt" >= NOW() - INTERVAL '15 minutes'
-			GROUP BY
-				"productSheetId"
-			) a ON ps.id = a."productSheetId"
-			WHERE
-			ps.id = ${productSheetId};
+	private static quantityResultSchema = ZodAccelerator.build(
+		zod.object({
+			count: zod.coerce.number()
+		}).transform(({ count }) => count)
+	);	
+
+	static async quantity(productSheetId: string, userId = "") {
+		const [result] = await prisma.$queryRaw<[{count: number} | undefined]>`
+			WITH inStockProductCount (total) AS (
+				SELECT
+					COUNT(*) AS total
+				FROM
+					product AS p
+				WHERE 
+					p."productSheetId" = ${productSheetId}
+					AND p.status = 'IN_STOCK'
+				GROUP BY p."productSheetId"
+			), reservedProductCount (total) AS (
+				SELECT
+					COUNT(*) AS total
+				FROM
+					article AS a
+				WHERE 
+					"createdAt" >= NOW() - INTERVAL '15 minutes'
+					AND a."productSheetId" = ${productSheetId}
+					AND a."userId" != ${userId}
+				GROUP BY a."productSheetId"
+			)
+
+			SELECT 
+				COALESCE((SELECT total from inStockProductCount), 0)
+				- COALESCE((SELECT total from reservedProductCount), 0) as count
 		`;
-		return Number(result?.[0]?.available_stock ?? 0); 
+		
+		return this.quantityResultSchema.parse(result); 
 	}
 }

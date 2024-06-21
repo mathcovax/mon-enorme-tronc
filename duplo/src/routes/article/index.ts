@@ -1,14 +1,16 @@
 import { productSheetExistCheck, inputProductSheet } from "@checkers/productSheet";
-import { articleSchema } from "@schemas/article";
+import { articleCreatedSchema } from "@schemas/article";
 import { mustBeConnected } from "@security/mustBeConnected";
+import { CartService } from "@services/cart";
 import { ProductAvailability } from "@services/productAvailability";
 
 /* METHOD : POST, PATH : /article */
-export const POST = (method: Methods, path: string) => mustBeConnected({ pickup: ["accessTokenContent"] })
+export const POST = (method: Methods, path: string) => mustBeConnected({ pickup: ["userId"] })
 	.declareRoute(method, path)
 	.extract({
 		body: zod.object({
 			productSheetId: zod.string(),
+			quantity: zod.number().min(1).default(1),
 		}).strip()
 	})
 	.check(
@@ -22,31 +24,73 @@ export const POST = (method: Methods, path: string) => mustBeConnected({ pickup:
 	.cut(
 		async ({ pickup }) => {
 			const { productSheetId } = pickup("body");
+			const userId = pickup("userId");
+			const articlesInCard = await CartService.getArticle(userId);
+			const articleInCard = articlesInCard.find(aic => aic.productSheetId === productSheetId);
 
-			const quantity = await ProductAvailability.quantity(productSheetId);
+			if (
+				!articleInCard &&
+				articlesInCard.length >= MetConfig.Cart.articlesLimit
+			) {
+				throw new UnauthorizedHttpException("cart.article.limit");
+			}
 
-			if (quantity < 1) {
-				throw new ConflictHttpException("article.quantity.empty");
+			return { articleInCard: articleInCard ?? { quantity: 0 } };
+		},
+		["articleInCard"],
+		new IHaveSentThis(UnauthorizedHttpException.code, "cart.article.limit")
+	)
+	.cut(
+		({ pickup }) => {
+			const articleInCard = pickup("articleInCard");
+			const { quantity } = pickup("body");
+
+			if (
+				quantity > MetConfig.Cart.quantityLimit ||
+				articleInCard.quantity + quantity > MetConfig.Cart.quantityLimit
+			) {
+				throw new UnauthorizedHttpException("cart.quantity.limit");
 			}
 
 			return {};
 		},
 		[],
-		new IHaveSentThis(ConflictHttpException.code, "article.quantity.empty")
+		new IHaveSentThis(UnauthorizedHttpException.code, "cart.quantity.limit")
+	)
+	.cut(
+		async ({ pickup }) => {
+			const { productSheetId, quantity } = pickup("body");
+			const articleInCard = pickup("articleInCard");
+			const userId = pickup("userId");
+
+			const quantityAvailable = await ProductAvailability.quantity(productSheetId, userId);
+
+			if (quantityAvailable < quantity + articleInCard.quantity) {
+				throw new ConflictHttpException("product.unavailable");
+			}
+
+			return {};
+		},
+		[],
+		new IHaveSentThis(ConflictHttpException.code, "product.unavailable")
 	)
 	.handler(
 		async ({ pickup }) => {
-			const { productSheetId } = pickup("body");
-			const { id: userId } = pickup("accessTokenContent");
+			const { productSheetId, quantity } = pickup("body");
+			const userId = pickup("userId");
+			const createdAt = new Date();
 
-			const article = await prisma.article.create({
-				data: {
+			await prisma.article.createMany({
+				data: Array.from({ length: quantity }, () => ({
+					productSheetId,
 					userId,
-					productSheetId
-				}
+					createdAt,
+				})),
 			});
 
-			throw new CreatedHttpException("article.created", article);
+			throw new CreatedHttpException("article.created", {
+				productSheetId, quantity, userId, createdAt 
+			});
 		},
-		new IHaveSentThis(CreatedHttpException.code, "article.created", articleSchema)
+		new IHaveSentThis(CreatedHttpException.code, "article.created", articleCreatedSchema)
 	);

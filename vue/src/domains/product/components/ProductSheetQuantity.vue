@@ -29,7 +29,7 @@ const decrement = () => {
 
 <template>
 	<div class="flex items-center gap-2">
-		<TheButton
+		<PrimaryButton
 			@click="decrement"
 			:disabled="quantity === 1"
 			:class="quantity === 1 ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'"
@@ -37,11 +37,11 @@ const decrement = () => {
 			as-child
 		>
 			<TheIcon icon="minus" />
-		</TheButton>
+		</PrimaryButton>
 
 		<span class="text-lg font-bold">{{ quantity }}</span>
 
-		<TheButton
+		<PrimaryButton
 			@click="increment"
 			:disabled="props.max !== undefined && props.max <= quantity"
 			:class="props.max !== undefined && props.max <= quantity ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'"
@@ -49,6 +49,6 @@ const decrement = () => {
 			as-child
 		>
 			<TheIcon icon="plus" />
-		</TheButton>
+		</PrimaryButton>
 	</div>
 </template>

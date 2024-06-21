@@ -20,9 +20,45 @@ describe("mustBeConnected", () => {
 				},
 				{ passCatch: true }
 			)
+			.mockChecker(
+				1,
+				{
+					info: "user.exist",
+					data: { id: "toto" }
+				},
+				{ passCatch: true }
+			)
 			.launch();
 
-		expect(floorValue).toStrictEqual({ accessTokenContent: "test" });
+		expect(floorValue).toStrictEqual({ accessTokenContent: "test", user: { id: "toto" }, userId: "toto" });
+	});
+
+	it("user is not exist", async () => {
+		const res: Response = await duploTesting
+			.testAbstractRoute(mustBeConnected.abstractRoute)
+			.setRequestProperties({
+				headers: {
+					"access-token": "test"
+				}
+			})
+			.mockChecker(
+				0,
+				{
+					info: "access.token.valid",
+					data: "test"
+				},
+				{ passCatch: true }
+			)
+			.mockChecker(
+				1,
+				{
+					info: "user.notfound",
+					data: null
+				},
+			)
+			.launch();
+
+		expect(res.information).toStrictEqual("user.notfound");
 	});
 
 	it("user is not connected", async () => {
