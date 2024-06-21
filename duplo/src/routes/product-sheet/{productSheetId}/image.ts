@@ -18,7 +18,7 @@ export const POST = (method: Methods, path: string) =>
 					}
 				});
 
-				if (imageProductSheetCount > 5) {
+				if (imageProductSheetCount >= MetConfig.productSheet.imagesLimit) {
 					throw new ConflictHttpException("product.images.limit");
 				}
 

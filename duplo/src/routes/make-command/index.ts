@@ -47,19 +47,19 @@ export const POST = (method: Methods, path: string) =>
 			},
 			[],
 			new IHaveSentThis(ConflictHttpException.code, "product.unavailable"),
-		)
-		.handler(
-			async ({ pickup }) => {
-				const userId = pickup("userId");
-				const session = await stripe.checkout.sessions.create({
-					
-				});
-				
-				await prisma.command.create({
-					data: {
-						userId,
-						session: session.id,
-					}
-				});
-			}
 		);
+// .handler(
+// 	async ({  }) => {
+// 		// const userId = pickup("userId");
+// 		// const session = await stripe.checkout.sessions.create({
+					
+// 		// });
+				
+// 		// await prisma.command.create({
+// 		// 	data: {
+// 		// 		userId,
+// 		// 		session: session.id,
+// 		// 	}
+// 		// });
+// 	}
+// );

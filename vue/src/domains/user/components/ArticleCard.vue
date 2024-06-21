@@ -29,7 +29,7 @@ const updateQuantity = (amount: number) => {
 
 <template>
 	<TheCard class="p-6 flex flex-col sm:flex-row gap-4 sm:gap-0 justify-between items-center border-b transition-colors hover:bg-muted/50">
-		<div class="flex gap-8 items-center">
+		<div class="flex flex-col sm:flex-row gap-8 items-center">
 			<CardHeader class="p-0">
 				<img
 					:src="article.imageUrl"

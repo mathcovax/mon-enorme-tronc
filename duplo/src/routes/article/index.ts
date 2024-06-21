@@ -1,10 +1,11 @@
 import { productSheetExistCheck, inputProductSheet } from "@checkers/productSheet";
 import { articleCreatedSchema } from "@schemas/article";
 import { mustBeConnected } from "@security/mustBeConnected";
+import { CartService } from "@services/cart";
 import { ProductAvailability } from "@services/productAvailability";
 
 /* METHOD : POST, PATH : /article */
-export const POST = (method: Methods, path: string) => mustBeConnected({ pickup: ["accessTokenContent"] })
+export const POST = (method: Methods, path: string) => mustBeConnected({ pickup: ["userId"] })
 	.declareRoute(method, path)
 	.extract({
 		body: zod.object({
@@ -22,11 +23,49 @@ export const POST = (method: Methods, path: string) => mustBeConnected({ pickup:
 	)
 	.cut(
 		async ({ pickup }) => {
+			const { productSheetId } = pickup("body");
+			const userId = pickup("userId");
+			const articlesInCard = await CartService.getArticle(userId);
+			const articleInCard = articlesInCard.find(aic => aic.productSheetId === productSheetId);
+
+			if (
+				!articleInCard &&
+				articlesInCard.length >= MetConfig.Cart.articlesLimit
+			) {
+				throw new UnauthorizedHttpException("cart.article.limit");
+			}
+
+			return { articleInCard: articleInCard ?? { quantity: 0 } };
+		},
+		["articleInCard"],
+		new IHaveSentThis(UnauthorizedHttpException.code, "cart.article.limit")
+	)
+	.cut(
+		({ pickup }) => {
+			const articleInCard = pickup("articleInCard");
+			const { quantity } = pickup("body");
+
+			if (
+				quantity > MetConfig.Cart.quantityLimit ||
+				articleInCard.quantity + quantity > MetConfig.Cart.quantityLimit
+			) {
+				throw new UnauthorizedHttpException("cart.quantity.limit");
+			}
+
+			return {};
+		},
+		[],
+		new IHaveSentThis(UnauthorizedHttpException.code, "cart.quantity.limit")
+	)
+	.cut(
+		async ({ pickup }) => {
 			const { productSheetId, quantity } = pickup("body");
+			const articleInCard = pickup("articleInCard");
+			const userId = pickup("userId");
 
-			const quantityAvailable = await ProductAvailability.quantity(productSheetId);
+			const quantityAvailable = await ProductAvailability.quantity(productSheetId, userId);
 
-			if (quantityAvailable < quantity) {
+			if (quantityAvailable < quantity + articleInCard.quantity) {
 				throw new ConflictHttpException("product.unavailable");
 			}
 
@@ -38,7 +77,7 @@ export const POST = (method: Methods, path: string) => mustBeConnected({ pickup:
 	.handler(
 		async ({ pickup }) => {
 			const { productSheetId, quantity } = pickup("body");
-			const { id: userId } = pickup("accessTokenContent");
+			const userId = pickup("userId");
 			const createdAt = new Date();
 
 			await prisma.article.createMany({

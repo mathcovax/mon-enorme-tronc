@@ -555,6 +555,14 @@ export default {
 		article: {
 			created: "Les article on bien étais ajouter au panier.",
 		},
+		cart: {
+			quantity: {
+				limit: "Vous ne pouver pas avoir plus de 15 fois le même produit dans votre panier."
+			},
+			article: {
+				limit: "Vous ne pouvez pas avoir plus de 10 article dans votre panier."
+			}
+		},
 		TYPE_ERROR: "L'une des données envoyées est erronée. (Erreur provenant du site)",
 		NOTFOUND: "La route utilisée n'existe pas. (Erreur provenant du site)",
 		INTERNAL_SERVER_ERROR: "Le serveur a eu un problème. (Erreur provenant du site)",

@@ -5,6 +5,8 @@ import duploHttpException from "@duplojs/http-exception";
 import duploZodAccelerator from "@duplojs/zod-accelerator/plugin";
 import "@duplojs/to/plugin";
 import "../src/env";
+import "../src/providers/filters";
+import "../src/providers/MetConfig";
 import duploSwagger from "@duplojs/swagger";
 
 export const duploTesting = new DuploTesting(

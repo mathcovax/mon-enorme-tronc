@@ -15,8 +15,8 @@ export class ProductAvailability {
 				FROM
 					product AS p
 				WHERE 
-					p.status = 'IN_STOCK'
-					AND p."productSheetId" = ${productSheetId}
+					p."productSheetId" = ${productSheetId}
+					AND p.status = 'IN_STOCK'
 				GROUP BY p."productSheetId"
 			), reservedProductCount (total) AS (
 				SELECT
