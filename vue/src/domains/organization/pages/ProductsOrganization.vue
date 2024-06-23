@@ -18,6 +18,7 @@ const statusToColor: Record<ProductStatus, string> = {
 	WRONG: "red",
 	SOLD: "green",
 	IN_STOCK: "purple",
+	WAITING_PAYMENT: "blue"
 };
 const cols: BigTableColDef<Product>[] = [
 	{

@@ -10,7 +10,6 @@ export function useGetCart() {
 			)
 			.info("cart.fetched", (data) => {
 				cart.value = data;
-				console.log(data);
 			});
 	}
 

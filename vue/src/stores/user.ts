@@ -17,18 +17,18 @@ export const useUserStore = defineStore(
 		const accessToken = ref<null | string>(localStorage.getItem(KEY_ACCESS_TOKEN_LOCAL_STORAGE));
 		const isConnected = computed(() => !!accessToken.value);
 
-		let promiseFetching: null | Promise<void> = null;
+		let promiseFetching: null | Promise<SelfUser> = null;
 		const getPromiseFetching = () => promiseFetching;
 
 		function fetchUserValue() {
-			const { promise, resolve, reject } = promiseWithResolvers();
+			const { promise, resolve, reject } = promiseWithResolvers<SelfUser>();
 			promiseFetching = promise;
 
 			duploTo.enriched
 				.get("/user", undefined, { disabledToast: true })
 				.info("user", (data) => {
 					user.value = data;
-					resolve();
+					resolve(data);
 				})
 				.info("user.notfound", () => {
 					removeAccessToken();
@@ -38,7 +38,6 @@ export const useUserStore = defineStore(
 				})
 				.e(() => {
 					reject();
-					promiseFetching = null;
 				});
 		}
 

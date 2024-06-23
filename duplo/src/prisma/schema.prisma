@@ -26,6 +26,7 @@ model user {
     userToOrganization user_to_organization[]
     article            article[]
     command            command[]
+    commandItems       command_item[]
 }
 
 enum primordial_role {
@@ -36,19 +37,19 @@ enum primordial_role {
 }
 
 model organization {
-    id                  String                 @id @default(uuid())
-    name                String                 @unique @db.VarChar(255)
-    label               String?                @db.VarChar(36)
-    ownerId             String                 @unique
-    owner               user                   @relation(fields: [ownerId], references: [id])
-    suspended           Boolean                @default(false)
-    userToOrganization  user_to_organization[]
-    product_sheet       product_sheet[]
-    image_product_sheet image_product_sheet[]
-    warehouses          warehouse[]
-    logoKey             String?                @db.VarChar(255)
-    logoUrl             String?                @db.VarChar(400)
-    products            product[]
+    id                 String                 @id @default(uuid())
+    name               String                 @unique @db.VarChar(255)
+    label              String?                @db.VarChar(36)
+    ownerId            String                 @unique
+    owner              user                   @relation(fields: [ownerId], references: [id])
+    suspended          Boolean                @default(false)
+    userToOrganization user_to_organization[]
+    productSheet       product_sheet[]
+    imageProductSheet  image_product_sheet[]
+    warehouses         warehouse[]
+    logoKey            String?                @db.VarChar(255)
+    logoUrl            String?                @db.VarChar(400)
+    products           product[]
 }
 
 model user_to_organization {
@@ -109,6 +110,7 @@ model product_sheet {
     facets           facet[]
     status           product_sheet_status        @default(UNVERIFIED)
     article          article[]
+    commandItems     command_item[]
 }
 
 enum product_sheet_status {
@@ -171,6 +173,8 @@ model product {
     organization   organization   @relation(fields: [organizationId], references: [id])
     organizationId String
     status         product_status @default(IN_STOCK)
+    command        command?       @relation(fields: [commandId], references: [id])
+    commandId      String?
     warehouseId    String
     warehouse      warehouse      @relation(fields: [warehouseId], references: [id])
     createdAt      DateTime       @default(now())
@@ -182,6 +186,7 @@ enum product_status {
     WRONG
     SOLD
     IN_STOCK
+    WAITING_PAYMENT
 }
 
 model facet {
@@ -209,18 +214,21 @@ model article {
     userId         String
     productSheet   product_sheet @relation(fields: [productSheetId], references: [id])
     productSheetId String
-    command        command?      @relation(fields: [commandId], references: [id])
-    commandId      String?
     createdAt      DateTime      @default(now())
 }
 
 model command {
-    id      String         @id @default(uuid())
-    article article[]
-    user    user           @relation(fields: [userId], references: [id])
-    userId  String
-    session String         @db.VarChar(50)
-    status  command_status @default(WAITING_PAYMENT)
+    id                         String                         @id @default(uuid())
+    user                       user                           @relation(fields: [userId], references: [id])
+    userId                     String
+    lastname                   String                         @db.VarChar(32)
+    firstname                  String                         @db.VarChar(36)
+    address                    String                         @db.VarChar(400)
+    stripeSessionId            String                         @db.VarChar(255)
+    status                     command_status                 @default(WAITING_PAYMENT)
+    product                    product[]
+    commandItems               command_item[]
+    stripeNotificationCheckout stripe_notification_checkout[]
 }
 
 enum command_status {
@@ -228,4 +236,25 @@ enum command_status {
     WAITING_PAYMENT
     IN_PROGESS
     DONE
+}
+
+model command_item {
+    id                 Int           @id @default(autoincrement())
+    command            command       @relation(fields: [commandId], references: [id])
+    commandId          String
+    productSheet       product_sheet @relation(fields: [productSheetId], references: [id])
+    productSheetId     String
+    user               user          @relation(fields: [userId], references: [id])
+    userId             String
+    quantity           Int
+    processQuantity    Int           @default(0)
+    freezeProductSheet String
+}
+
+model stripe_notification_checkout {
+    id              Int     @id @default(autoincrement())
+    type            String
+    stripeSessionId String  @db.VarChar(255)
+    command         command @relation(fields: [commandId], references: [id])
+    commandId       String
 }

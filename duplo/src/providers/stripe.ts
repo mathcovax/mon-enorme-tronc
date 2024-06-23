@@ -5,7 +5,7 @@ declare global {
 }
 
 //@ts-expect-error var 'global' cause type error.
-export const stripe = global.stripe = new Stripe(ENV.STRIPE_PRIVATE_API_KEY);
+export const stripe = global.stripe = new Stripe(ENV.STRIPE_API_KEY);
 
 duplo.addHook("beforeListenHttpServer", async () => {
 	try {

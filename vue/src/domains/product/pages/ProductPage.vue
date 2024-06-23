@@ -60,9 +60,9 @@ getProductData();
 		<div class="container my-12 lg:my-16">
 			<div
 				v-if="product"
-				class="flex flex-col sm:flex-row gap-10"
+				class="flex flex-col gap-10 sm:flex-row"
 			>
-				<div class="lg:shrink-0 w-full max-w-80 aspect-square sm:aspect-portrait">
+				<div class="w-full lg:shrink-0 max-w-80 aspect-square sm:aspect-portrait">
 					<ProductSlider
 						v-if="product.images.length > 0"
 						:image-urls="product.images"
@@ -70,7 +70,7 @@ getProductData();
 
 					<div
 						v-else
-						class="w-full h-full flex items-center justify-center bg-muted/80"
+						class="flex items-center justify-center w-full h-full bg-muted/80"
 					>
 						<TheIcon
 							icon="image-outline"
@@ -81,7 +81,7 @@ getProductData();
 				</div>
 
 				<div class="flex flex-col gap-4">
-					<h1 class="text-2xl lg:text-4xl font-bold">
+					<h1 class="text-2xl font-bold lg:text-4xl">
 						{{ product.name }}
 					</h1>
 
@@ -106,7 +106,7 @@ getProductData();
 						{{ product.shortDescription }}
 					</p>
 
-					<div class="mt-4 flex gap-12 items-center">
+					<div class="flex items-center gap-12 mt-4">
 						<productSheetQuantity
 							:quantity="productQuantity"
 							:max="product.quantity"
@@ -119,24 +119,24 @@ getProductData();
 						</PrimaryButton>
 					</div>
 
-					<div class="self-end mt-auto flex gap-2 items-center">
+					<div class="flex items-center self-end gap-2 mt-auto">
 						<span class="inline-block opacity-50">Vendu par :</span>
 
-						<div class="flex gap-1 items-center">
+						<div class="flex items-center gap-1">
 							<span class="inline-block opacity-50">{{ product.organization.name }}</span>
 
 							<img
 								v-if="product.organization.logoUrl"
 								:src="product.organization.logoUrl"
 								alt="seller"
-								class="w-8 h-8 rounded-full object-cover"
+								class="object-cover w-8 h-8 rounded-full"
 							>
 
 							<TheIcon
 								v-else
 								icon="storefront-outline"
 								size="lg"
-								class="w-8 h-8 flex justify-center items-center bg-muted/80 text-muted-foreground p-1 rounded-full"
+								class="flex items-center justify-center w-8 h-8 p-1 rounded-full bg-muted/80 text-muted-foreground"
 							/>
 						</div>
 					</div>
@@ -150,7 +150,7 @@ getProductData();
 			<TheTabs
 				default-value="product-details"
 			>
-				<TabsList class="mb-6 grid w-full grid-cols-2">
+				<TabsList class="grid w-full grid-cols-2 mb-6">
 					<TabsTrigger value="product-details">
 						{{ $pt("label.productDetails") }}
 					</TabsTrigger>

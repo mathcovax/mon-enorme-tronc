@@ -16,6 +16,9 @@ export const MetConfig = {
 	productSheet: {
 		imagesLimit: 6,
 		categoriesLimit: 5
+	},
+	stripe: {
+		timestampSession: 30*60, // 30 min
 	}
 };
 //@ts-expect-error var 'global' cause type error.

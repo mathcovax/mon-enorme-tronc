@@ -3,10 +3,11 @@ import { productSheetSchema } from "./productSheet";
 import { warehouseSchema } from "./warehouseSchema";
 
 export const productStatusTuple: TuplifyUnion<product_status> = [
+	"WAITING_PAYMENT",
 	"ORDER",
 	"WRONG",
 	"SOLD",
-	"IN_STOCK",
+	"IN_STOCK"
 ];
 
 export const productStatusEnum: UninonToEnum<product_status> = {
@@ -14,6 +15,7 @@ export const productStatusEnum: UninonToEnum<product_status> = {
 	WRONG: "WRONG",
 	SOLD: "SOLD",
 	IN_STOCK: "IN_STOCK",
+	WAITING_PAYMENT: "WAITING_PAYMENT",
 };
 
 export const productSchema = zod.object({

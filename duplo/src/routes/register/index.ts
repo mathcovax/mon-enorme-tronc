@@ -46,7 +46,6 @@ export const POST = (method: Methods, path: string) => duplo
 			}
 		},
 		new IHaveSentThis(BadRequestHttpException.code, "user.address.invalid")
-
 	)
 	.cut(
 		({ pickup }) => {

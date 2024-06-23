@@ -25,7 +25,7 @@ export const POST = (method: Methods, path: string) => mustBeConnected({ pickup:
 		async ({ pickup }) => {
 			const { productSheetId } = pickup("body");
 			const userId = pickup("userId");
-			const articlesInCard = await CartService.getArticle(userId);
+			const articlesInCard = await CartService.getUserArticlesInCart(userId);
 			const articleInCard = articlesInCard.find(aic => aic.productSheetId === productSheetId);
 
 			if (

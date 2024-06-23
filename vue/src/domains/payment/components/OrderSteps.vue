@@ -1,9 +1,21 @@
 <script setup lang="ts">
 defineProps<{
   step: number;
+  paymentState: string;
 }>();
 
 const $pt = usePageTranslate();
+
+const emits = defineEmits<{
+	"update:step": [number];
+}>();
+
+function updateStep(currentStep: number, step: number) {
+	if (currentStep === step || step > currentStep) {
+		return;
+	}
+	emits("update:step", step);
+}
 </script>
 
 <template>
@@ -11,7 +23,7 @@ const $pt = usePageTranslate();
 		<div class="w-full">
 			<div class="relative mb-2">
 				<div
-					class="w-10 h-10 mx-auto flex justify-center items-center rounded-full"
+					class="flex items-center justify-center w-10 h-10 mx-auto rounded-full"
 					:class="{
 						'bg-muted border-2 border-primary text-primary': step === 1,
 						'bg-primary text-white': step > 1,
@@ -20,6 +32,8 @@ const $pt = usePageTranslate();
 					<TheIcon
 						icon="map-marker-outline"
 						size="2xl"
+						class="cursor-pointer"
+						@click="updateStep(step, 1)"
 					/>
 				</div>
 			</div>
@@ -34,16 +48,16 @@ const $pt = usePageTranslate();
 		<div class="w-full">
 			<div class="relative mb-2">
 				<div class="absolute top-1/2 md:-top-full w-[calc(100%-2.5rem-1rem)] md:w-[calc(50%-2.5rem-1rem)] md:left-1/2 flex align-center items-center align-middle content-center -translate-x-1/2 -translate-y-1/2 md:rotate-90">
-					<div class="w-full bg-muted rounded items-center align-middle align-center flex-1">
+					<div class="items-center flex-1 w-full align-middle rounded bg-muted align-center">
 						<div
-							class="bg-primary py-1 rounded"
+							class="py-1 rounded bg-primary"
 							:class="step > 1 ? 'w-full' : 'w-0'"
 						/>
 					</div>
 				</div>
 
 				<div
-					class="w-10 h-10 mx-auto flex justify-center items-center rounded-full"
+					class="flex items-center justify-center w-10 h-10 mx-auto rounded-full"
 					:class="{
 						'border-2 border-muted text-muted': step < 2,
 						'border-2 border-primary text-primary': step === 2,
@@ -53,6 +67,8 @@ const $pt = usePageTranslate();
 					<TheIcon
 						icon="cart-outline"
 						size="2xl"
+						class="cursor-pointer"
+						@click="updateStep(step, 2)"
 					/>
 				</div>
 			</div>
@@ -64,7 +80,7 @@ const $pt = usePageTranslate();
 					'text-primary': step === 2,
 				}"
 			>
-				{{ $pt('step.cart') }}
+				{{ $pt('step.cart.title') }}
 			</div>
 		</div>
 
@@ -73,25 +89,27 @@ const $pt = usePageTranslate();
 				<div
 					class="absolute top-1/2 md:-top-full w-[calc(100%-2.5rem-1rem)] md:w-[calc(50%-2.5rem-1rem)] md:left-1/2 flex align-center items-center align-middle content-center -translate-x-1/2 -translate-y-1/2 md:rotate-90"
 				>
-					<div class="w-full bg-muted rounded items-center align-middle align-center flex-1">
+					<div class="items-center flex-1 w-full align-middle rounded bg-muted align-center">
 						<div
-							class="bg-primary py-1 rounded"
+							class="py-1 rounded bg-primary"
 							:class="step > 2 ? 'w-full' : 'w-0'"
 						/>
 					</div>
 				</div>
 
 				<div
-					class="w-10 h-10 mx-auto flex justify-center items-center rounded-full"
+					class="flex items-center justify-center w-10 h-10 mx-auto rounded-full"
 					:class="{
 						'border-2 border-muted text-muted': step < 3,
-						'bg-muted border-2 border-primary text-primary': step === 3,
-						'bg-primary text-white': step > 3,
+						'border-2 border-primary text-primary': step === 3,
+						'bg-primary text-white': step === 3,
 					}"
 				>
 					<TheIcon
-						icon="credit-card-outline"
+						:icon="paymentState === 'success' ? 'check-bold' : 'close-thick'"
 						size="2xl"
+						class="cursor-pointer"
+						@click="updateStep(step, 3)"
 					/>
 				</div>
 			</div>
@@ -103,7 +121,7 @@ const $pt = usePageTranslate();
 					'text-primary': step === 3,
 				}"
 			>
-				{{ $pt('step.payment') }}
+				{{ paymentState === 'success' ? $pt('step.success') : $pt('step.error') }}
 			</div>
 		</div>
 	</div>

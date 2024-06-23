@@ -84,6 +84,14 @@ services:
       - 1080:1080
       - 1025:1025
 
+  stripe-installer:
+    image: stripe/stripe-cli
+    env_file: ./duplo/.env.local
+    volumes:
+      - ./stripe:/home
+    entrypoint: /bin/sh
+    command: /home/cp.sh
+    
 volumes:
   postgres_data:
   mongo_data:

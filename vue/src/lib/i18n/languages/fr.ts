@@ -66,9 +66,34 @@ export default {
 			emptyTitle: "Votre panier est vide.",
 			emptySubtitle: "Commencez à ajouter des produits pour les retrouver ici.",
 			browseButton: "Parcourir les produits",
+			orderButton: "Passer la commande",
 			popup: {
 				title: "Voulez-vous vraiment supprimer ce produit ?",
 				content: "Si vous validez, ce produit sera retiré de votre panier."
+			}
+		},
+		[routerPageName.ORDER_PAGE]: {
+			title: "Ma commande",
+			stepTitle: {
+				orderInfos: "Informations de la commande",
+				cart: "Panier",
+				payment: "Paiement",
+				success: "Paiement réussi",
+				failed: "Echec du paiement",
+			},
+			step: {
+				successMessage: "Votre commande a bien été enregistrée.",
+				failedMessage: "Votre commande n'a pas pu être enregistrée.",
+				info: "Vos informations",
+				cart: {
+					title: "Votre panier",
+					productName: "Nom du produit : {value}",
+					price: "Prix : {value} €",
+					quantity: "Quantité : {value}",
+					total: "Prix total : {value} €",
+				},
+				success: "Paiement réussi",
+				error: "Echec du paiement",
 			}
 		},
 		[routerPageName.ADMIN_PANEL_ORGANIZATIONS]: {
@@ -450,6 +475,7 @@ export default {
 		firstname: "Prénom",
 		birthDate: "Date de naissance",
 		address: "Adresse",
+		delivreryAddress: "Adresse de livraison",
 		addressDefault: "Chercher votre adresse",
 		empty: "Aucun résultat",
 		terms: "J'accepte les conditions générales d'utilisation",
@@ -478,7 +504,9 @@ export default {
 		save: "Enregister",
 		send: "Envoyer",
 		add: "Ajouter",
+		pay: "Payer",
 		edit: "Modifier",
+		retry: "Réessayer",
 		clear: "Effacer",
 		remove: "Retirer",
 		delete: "Supprimer",
@@ -551,6 +579,9 @@ export default {
 			sku: {
 				alreadyUse: "Ce sku est déjà utilisé.",
 			}
+		},
+		products: {
+			unavailable: "Un ou plusieur produit dans votre panier n'est plus disponible dans les quantité que vous souhté acheter.",
 		},
 		article: {
 			created: "Les article on bien étais ajouter au panier.",

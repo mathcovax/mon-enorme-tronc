@@ -1,7 +1,7 @@
 import "./setup";
 import { FindSlice } from "@utils/findSlice";
-import { mongoose } from "./mongoose";
-import { prisma } from "./prismaClient";
+import { mongoose } from "./setup/mongoose";
+import { prisma } from "./setup/prismaClient";
 import { fullProductSheetModel } from "@mongoose/model";
 import { FullProductSheetSchema } from "@schemas/fullProductSheet";
 import { facetTypeTuple } from "@schemas/facet";

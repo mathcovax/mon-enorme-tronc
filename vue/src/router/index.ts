@@ -5,6 +5,7 @@ import product from "@/domains/product/router";
 import admin from "@/domains/admin/router";
 import content from "@/domains/content/router";
 import organization from "@/domains/organization/router";
+import payment from "@/domains/payment/router";
 import { loaderPush, type LoaderItem } from "@/lib/loader";
 import user from "@/domains/user/router";
 
@@ -19,6 +20,7 @@ const router = createRouter({
 				...product(),
 				...auth(),
 				...user(),
+				...payment(),
 			]
 		},
 		...organization(),

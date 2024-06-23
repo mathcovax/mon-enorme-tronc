@@ -4,6 +4,7 @@ import { useGetCart } from "../composables/useGetCart";
 
 const { 
 	CATEGORIES_PAGE,
+	ORDER_PAGE,
 } = routerPageName;
 const $pt = usePageTranslate();
 
@@ -31,14 +32,25 @@ const removeArticle = (productSheetId: string) =>
 </script>
 
 <template>
-	<section class="container mt-12 lg:mt-16 flex flex-col gap-12 mb-12">
-		<h1 class="text-2xl lg:text-3xl font-bold">
-			{{ $pt("title") }}
-		</h1>
+	<section class="container flex flex-col gap-12 mt-12 mb-12 lg:mt-16">
+		<div class="flex justify-between items-center">
+			<h1 class="text-2xl font-bold lg:text-3xl">
+				{{ $pt("title") }}
+			</h1>
+
+			<PrimaryButton
+				v-if="cart.length > 0"
+				as-child
+			>
+				<RouterLink :to="{ name: ORDER_PAGE }">
+					{{ $pt("orderButton") }}
+				</RouterLink>
+			</PrimaryButton>
+		</div>
 
 		<div
 			v-if="cart.length === 0"
-			class="flex flex-col justify-center items-center gap-1 text-center h-[60vh]"
+			class="flex flex-col items-center gap-1 text-center"
 		>
 			<h2 class="text-2xl font-bold tracking-tight">
 				{{ $pt("emptyTitle") }}
