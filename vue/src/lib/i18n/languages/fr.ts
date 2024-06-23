@@ -506,6 +506,7 @@ export default {
 		add: "Ajouter",
 		pay: "Payer",
 		edit: "Modifier",
+		retry: "Réessayer",
 		clear: "Effacer",
 		remove: "Retirer",
 		delete: "Supprimer",

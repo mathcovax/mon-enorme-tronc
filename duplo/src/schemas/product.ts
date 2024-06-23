@@ -3,11 +3,11 @@ import { productSheetSchema } from "./productSheet";
 import { warehouseSchema } from "./warehouseSchema";
 
 export const productStatusTuple: TuplifyUnion<product_status> = [
+	"WAITING_PAYMENT",
 	"ORDER",
 	"WRONG",
 	"SOLD",
-	"IN_STOCK",
-	"WAITING_PAYMENT"
+	"IN_STOCK"
 ];
 
 export const productStatusEnum: UninonToEnum<product_status> = {

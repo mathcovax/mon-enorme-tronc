@@ -117,11 +117,11 @@ export type Product = GetResponseByInfo<
 export type ProductStatus = Product["status"]
 
 export const productStatus: TuplifyUnion<ProductStatus> = [
+	"WAITING_PAYMENT",
 	"ORDER",
 	"WRONG",
 	"SOLD",
-	"IN_STOCK",
-	"WAITING_PAYMENT"
+	"IN_STOCK"
 ];
 
 export type ProductSheet = GetResponseByInfo<

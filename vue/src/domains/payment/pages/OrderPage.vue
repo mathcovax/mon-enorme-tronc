@@ -12,12 +12,16 @@ const $pt = usePageTranslate();
 
 const { cart } = useGetCart();
 const step = ref(1);
-const paymentState = ref("waiting");
-const query = useRouteQuery({ sessionId: zod.string().optional() });
+const paymentState = ref("success");
 
-if (query.value.sessionId) {
+const query = useRouteQuery({
+	sessionId: zod.string().optional(),
+	commandId: zod.string().optional(),
+});
+
+if (query.value.sessionId || query.value.commandId) {
 	step.value = 3;
-	paymentState.value = query.value.sessionId === "canceled" ? "failed" : "success";
+	paymentState.value = query.value.commandId ? "failed" : "success";
 }
 
 interface CommandInfo {
@@ -67,6 +71,22 @@ function submitPayment() {
 		.result;
 }
 
+function retryOrder() {
+	if (!query.value.commandId) {
+		return;
+	}
+
+	duploTo.enriched
+		.post(
+			"/retry-command",
+			{
+				commandId: query.value.commandId,
+			}
+		).info("session", (data) => {
+			window.location.href = data.sessionUrl;
+		});
+}
+
 const totalPriceCart = computed(() => {
 	return products.value.reduce((acc, product) => acc + (product.price * product.quantity), 0).toFixed(2);
 });
@@ -74,7 +94,7 @@ const totalPriceCart = computed(() => {
 
 <template>
 	<section class="h-screen-no-header">
-		<div class="container h-[calc(100%-3rem)] mt-12 lg:mt-16 flex flex-col gap-12">
+		<div class="container flex flex-col gap-12 my-12 lg:my-16">
 			<h1 class="text-2xl font-bold lg:text-3xl">
 				{{ $pt("title") }}
 			</h1>
@@ -83,7 +103,7 @@ const totalPriceCart = computed(() => {
 				<aside class="p-4 mb-12 rounded shadow md:mb-0">
 					<OrderSteps
 						:step="step"
-						payment-state="paymentState"
+						:payment-state="paymentState"
 						@update:step="v => step = v"
 					/>
 				</aside>
@@ -167,21 +187,22 @@ const totalPriceCart = computed(() => {
 
 					<template v-if="step === 3">
 						<h2 class="mb-4 text-xl font-bold lg:text-2xl">
-							{{ paymentState === "success" ? $pt("stepTitle.success") : $pt("stepTitle.failed") }}
+							{{ query.commandId ? $pt("stepTitle.failed") : $pt("stepTitle.success") }}
 						</h2>
 
 						<div class="flex flex-col items-center justify-center flex-1 gap-4">
 							<TheIcon
-								:icon="paymentState === 'success' ? 'check-circle' : 'close-circle'"
+								:icon="query.commandId ? 'close-circle' : 'check-circle'"
 								size="4xl"
 								class="text-[96px] flex items-center justify-center"
 							/>
 
 							<p>
-								{{ paymentState === "success" ? $pt("step.successMessage") : $pt("step.failedMessage") }}
+								{{ query.commandId ? $pt("step.failedMessage") : $pt("step.successMessage") }}
 							</p>
 
-							<TheButton
+							<PrimaryButton
+								v-if="!query.commandId"
 								as-child
 								size="lg"
 								class="mt-8 w-min"
@@ -189,7 +210,16 @@ const totalPriceCart = computed(() => {
 								<RouterLink :to="{ name: EDITO_HOME }">
 									{{ $t("button.backToHome") }}
 								</RouterLink>
-							</TheButton>
+							</PrimaryButton>
+
+							<PrimaryButton
+								v-else
+								type="submit"
+								class="col-span-12"
+								@click="retryOrder"
+							>
+								{{ $t("button.retry") }}
+							</PrimaryButton>
 						</div>
 					</template>
 				</div>
