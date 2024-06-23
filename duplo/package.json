@@ -12,7 +12,7 @@
 		"generate:types": "tsx src/main --generate-types --only-generate",
 		"migrate:dev": "prisma migrate dev",
 		"studio": "prisma studio -n 0.0.0.0",
-		"indexing": "tsx src/scripts/indexing",
+		"indexing:product": "tsx src/scripts/indexingProduct",
 		"fixture": "tsx src/fixtures"
 	},
 	"prisma": {
