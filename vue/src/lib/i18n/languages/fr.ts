@@ -66,21 +66,24 @@ export default {
 			emptyTitle: "Votre panier est vide.",
 			emptySubtitle: "Commencez à ajouter des produits pour les retrouver ici.",
 			browseButton: "Parcourir les produits",
+			orderButton: "Passer la commande",
 			popup: {
 				title: "Voulez-vous vraiment supprimer ce produit ?",
 				content: "Si vous validez, ce produit sera retiré de votre panier."
 			}
 		},
-		[routerPageName.USER_ORDER]: {
-			title: "Mes commandes",
+		[routerPageName.ORDER_PAGE]: {
+			title: "Ma commande",
 			stepTitle: {
 				orderInfos: "Informations de la commande",
 				cart: "Panier",
 				payment: "Paiement",
-				success: "Succès",
+				success: "Paiement réussi",
+				failed: "Echec du paiement",
 			},
 			step: {
 				successMessage: "Votre commande a bien été enregistrée.",
+				failedMessage: "Votre commande n'a pas pu être enregistrée.",
 				info: "Vos informations",
 				cart: {
 					title: "Votre panier",
@@ -89,7 +92,8 @@ export default {
 					quantity: "Quantité : {value}",
 					total: "Prix total : {value} €",
 				},
-				payment: "Paiement",
+				success: "Paiement réussi",
+				error: "Echec du paiement",
 			}
 		},
 		[routerPageName.ADMIN_PANEL_ORGANIZATIONS]: {

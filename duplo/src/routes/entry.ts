@@ -200,7 +200,7 @@ export const authEntry = duplo
 export const selfEntry = mustBeConnected({ pickup: ["accessTokenContent"] })
 	.declareRoute(
 		"GET",
-		["/entry/edit-profile", "/entry/my-organizations", "/entry/orders"]
+		["/entry/edit-profile", "/entry/my-organizations", "/entry/order"]
 	)
 	.handler(
 		async () => {

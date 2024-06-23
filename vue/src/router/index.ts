@@ -20,6 +20,7 @@ const router = createRouter({
 				...product(),
 				...auth(),
 				...user(),
+				...payment(),
 			]
 		},
 		...organization(),
@@ -27,7 +28,6 @@ const router = createRouter({
 		...organization(),
 		...admin(),
 		...organization(),
-		...payment(),
 		notFound(),
 	],
 });

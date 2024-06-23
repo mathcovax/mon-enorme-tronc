@@ -1,13 +1,13 @@
 import type { RouteRecordRaw } from "vue-router";
 
 export const routerPageNamePayment = Object.freeze({
-	USER_ORDER: "orders",
+	ORDER_PAGE: "order",
 });
 
 export default (): RouteRecordRaw[] => [
 	{
-		name: routerPageNamePayment.USER_ORDER,
-		path: "/orders",
+		name: routerPageNamePayment.ORDER_PAGE,
+		path: "/order",
 		component: () => import("./pages/OrderPage.vue"),
 	}
 ];

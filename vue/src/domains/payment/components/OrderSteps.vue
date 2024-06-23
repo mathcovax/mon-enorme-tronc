@@ -1,6 +1,7 @@
 <script setup lang="ts">
 defineProps<{
   step: number;
+  paymentState: string;
 }>();
 
 const $pt = usePageTranslate();
@@ -100,12 +101,12 @@ function updateStep(currentStep: number, step: number) {
 					class="flex items-center justify-center w-10 h-10 mx-auto rounded-full"
 					:class="{
 						'border-2 border-muted text-muted': step < 3,
-						'bg-muted border-2 border-primary text-primary': step === 3,
-						'bg-primary text-white': step > 3,
+						'border-2 border-primary text-primary': step === 3,
+						'bg-primary text-white': step === 3,
 					}"
 				>
 					<TheIcon
-						icon="credit-card-outline"
+						:icon="paymentState === 'success' ? 'check-bold' : 'close-thick'"
 						size="2xl"
 						class="cursor-pointer"
 						@click="updateStep(step, 3)"
@@ -120,7 +121,7 @@ function updateStep(currentStep: number, step: number) {
 					'text-primary': step === 3,
 				}"
 			>
-				{{ $pt('step.payment') }}
+				{{ paymentState === 'success' ? $pt('step.success') : $pt('step.error') }}
 			</div>
 		</div>
 	</div>

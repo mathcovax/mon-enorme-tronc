@@ -4,10 +4,21 @@ import OrderCard from "../components/OrderCard.vue";
 import { useUserCommandForm } from "../../user/composables/useUserCommandForm";
 import { useGetCart } from "../../user/composables/useGetCart";
 
+const { 
+	EDITO_HOME,
+	USER_CART
+} = routerPageName;
 const $pt = usePageTranslate();
 
 const { cart } = useGetCart();
 const step = ref(1);
+const paymentState = ref("waiting");
+const query = useRouteQuery({ sessionId: zod.string().optional() });
+
+if (query.value.sessionId) {
+	step.value = 3;
+	paymentState.value = query.value.sessionId === "canceled" ? "failed" : "success";
+}
 
 interface CommandInfo {
 	firstname: string;
@@ -59,7 +70,6 @@ function submitPayment() {
 const totalPriceCart = computed(() => {
 	return products.value.reduce((acc, product) => acc + (product.price * product.quantity), 0).toFixed(2);
 });
-
 </script>
 
 <template>
@@ -73,6 +83,7 @@ const totalPriceCart = computed(() => {
 				<aside class="p-4 mb-12 rounded shadow md:mb-0">
 					<OrderSteps
 						:step="step"
+						payment-state="paymentState"
 						@update:step="v => step = v"
 					/>
 				</aside>
@@ -81,7 +92,7 @@ const totalPriceCart = computed(() => {
 					class="flex flex-col h-full gap-6"
 				>
 					<div
-						v-if="step > 1 && step < 4"
+						v-if="step > 1 && step < 3"
 						@click="step--"
 						class="cursor-pointer"
 					>
@@ -135,57 +146,47 @@ const totalPriceCart = computed(() => {
 							</div>
 
 							<SecondaryButton
+								as-child
 								type="submit"
 								class="col-span-12"
 							>
-								{{ $t("button.edit") }}
+								<RouterLink :to="{ name: USER_CART }">
+									{{ $t("button.edit") }}
+								</RouterLink>
 							</SecondaryButton>
 
 							<PrimaryButton
 								type="submit"
 								class="col-span-12"
-								@click="step = 3"
+								@click="submitPayment"
 							>
-								{{ $t("button.validate") }}
+								{{ $t("button.pay") }}
 							</PrimaryButton>
 						</div>
 					</template>
 
 					<template v-if="step === 3">
 						<h2 class="mb-4 text-xl font-bold lg:text-2xl">
-							{{ $pt("stepTitle.payment") }}
-						</h2>
-
-						<PrimaryButton
-							type="submit"
-							class="col-span-12"
-							@click="submitPayment"
-						>
-							{{ $t("button.pay") }}
-						</PrimaryButton>
-					</template>
-
-					<template v-if="step === 4">
-						<h2 class="mb-4 text-xl font-bold lg:text-2xl">
-							{{ $pt("stepTitle.success") }}
+							{{ paymentState === "success" ? $pt("stepTitle.success") : $pt("stepTitle.failed") }}
 						</h2>
 
 						<div class="flex flex-col items-center justify-center flex-1 gap-4">
 							<TheIcon
-								icon="check-circle"
-								class="w-24 h-24 text-[96px] flex items-center justify-center "
+								:icon="paymentState === 'success' ? 'check-circle' : 'close-circle'"
+								size="4xl"
+								class="text-[96px] flex items-center justify-center"
 							/>
 
 							<p>
-								{{ $pt("step.successMessage") }}
+								{{ paymentState === "success" ? $pt("step.successMessage") : $pt("step.failedMessage") }}
 							</p>
 
 							<TheButton
+								as-child
 								size="lg"
 								class="mt-8 w-min"
-								as-child
 							>
-								<RouterLink to="/">
+								<RouterLink :to="{ name: EDITO_HOME }">
 									{{ $t("button.backToHome") }}
 								</RouterLink>
 							</TheButton>
