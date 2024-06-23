@@ -78,7 +78,8 @@ export const POST = (method: Methods, path: string) =>
 					customer_email: user.email,
 					metadata: {
 						commandId
-					}
+					},
+					expires_at: Math.floor(Date.now() / 1000) + MetConfig.stripe.timestampSession
 				});
 				
 				await prisma.command.create({
