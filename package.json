@@ -14,7 +14,7 @@
 		"migrate:dev": "docker compose exec duplo npm -w duplo run migrate:dev",
 		"prepare": "husky",
 		"studio": "docker compose exec duplo npm -w duplo run studio",
-		"indexing:product": "docker compose exec duplo npm -w duplo run indexing:product",
+		"indexing:productSheet": "docker compose exec duplo npm -w duplo run indexing:productSheet",
 		"fixture": "docker compose exec duplo npm -w duplo run fixture",
 		"stripe:listen": "bash stripe/listen.sh",
 		"stripe:trigger": "bash stripe/trigger.sh"
