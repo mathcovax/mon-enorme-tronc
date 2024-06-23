@@ -74,12 +74,12 @@ export const POST = (method: Methods, path: string) =>
 					mode: "payment",
 					line_items: [{ price: price.id, quantity: 1 }],
 					success_url: `${ENV.ORIGIN}/order?sessionId={CHECKOUT_SESSION_ID}`,
-					cancel_url: `${ENV.ORIGIN}/order?sessionId=canceled`,
+					cancel_url: `${ENV.ORIGIN}/order?commandId=${commandId}`,
 					customer_email: user.email,
+					expires_at: Math.floor(Date.now() / 1000) + MetConfig.stripe.timestampSession,
 					metadata: {
 						commandId
 					},
-					expires_at: Math.floor(Date.now() / 1000) + MetConfig.stripe.timestampSession
 				});
 				
 				await prisma.command.create({

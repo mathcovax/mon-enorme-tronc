@@ -49,46 +49,41 @@ const removeArticle = (productSheetId: string) =>
 		</div>
 
 		<div
-			class="flex justify-center flex-1 mb-12 border rounded-lg shadow-sm"
-			:class="{ 'items-center border-dashed': cart.length === 0 }"
+			v-if="cart.length === 0"
+			class="flex flex-col items-center gap-1 text-center"
 		>
-			<div
-				v-if="cart.length === 0"
-				class="flex flex-col items-center gap-1 text-center"
+			<h2 class="text-2xl font-bold tracking-tight">
+				{{ $pt("emptyTitle") }}
+			</h2>
+
+			<p class="text-sm text-muted-foreground">
+				{{ $pt("emptySubtitle") }}
+			</p>
+
+			<TheButton
+				class="mt-4"
+				as-child
 			>
-				<h2 class="text-2xl font-bold tracking-tight">
-					{{ $pt("emptyTitle") }}
-				</h2>
-
-				<p class="text-sm text-muted-foreground">
-					{{ $pt("emptySubtitle") }}
-				</p>
-
-				<TheButton
-					class="mt-4"
-					as-child
-				>
-					<RouterLink :to="{ name: CATEGORIES_PAGE }">
-						{{ $pt("browseButton") }}
-					</RouterLink>
-				</TheButton>
-			</div>
-
-			<ul
-				v-else
-				class="border-dashed flex flex-col rounded-lg border shadow-sm p-4 gap-4 min-h-[60vh]"
-			>
-				<li
-					v-for="article in cart"
-					:key="article.productSheetId"
-				>
-					<ArticleCard 
-						:article="article"
-						@add-article="addArticle(article.productSheetId)"
-						@remove-article="removeArticle(article.productSheetId)"
-					/>
-				</li>
-			</ul>
+				<RouterLink :to="{ name: CATEGORIES_PAGE }">
+					{{ $pt("browseButton") }}
+				</RouterLink>
+			</TheButton>
 		</div>
+
+		<ul
+			v-else
+			class="border-dashed flex flex-col rounded-lg border shadow-sm p-4 gap-4 min-h-[60vh]"
+		>
+			<li
+				v-for="article in cart"
+				:key="article.productSheetId"
+			>
+				<ArticleCard 
+					:article="article"
+					@add-article="addArticle(article.productSheetId)"
+					@remove-article="removeArticle(article.productSheetId)"
+				/>
+			</li>
+		</ul>
 	</section>
 </template>
