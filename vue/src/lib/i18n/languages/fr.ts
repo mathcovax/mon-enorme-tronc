@@ -74,7 +74,7 @@ export default {
 		[routerPageName.USER_ORDER]: {
 			title: "Mes commandes",
 			stepTitle: {
-				address: "Adresse",
+				orderInfos: "Informations de la commande",
 				cart: "Panier",
 				payment: "Paiement",
 				success: "Succès",
@@ -471,6 +471,7 @@ export default {
 		firstname: "Prénom",
 		birthDate: "Date de naissance",
 		address: "Adresse",
+		delivreryAddress: "Adresse de livraison",
 		addressDefault: "Chercher votre adresse",
 		empty: "Aucun résultat",
 		terms: "J'accepte les conditions générales d'utilisation",

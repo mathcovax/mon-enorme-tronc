@@ -94,7 +94,7 @@ const totalPriceCart = computed(() => {
 
 					<template v-if="step === 1">
 						<h2 class="mb-4 text-xl font-bold lg:text-2xl">
-							{{ $pt("stepTitle.address") }}
+							{{ $pt("stepTitle.orderInfos") }}
 						</h2>
 
 						<UserCommandForm

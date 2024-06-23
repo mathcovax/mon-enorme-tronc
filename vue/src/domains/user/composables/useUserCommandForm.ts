@@ -23,7 +23,7 @@ export function useUserCommandForm() {
 			items: addresses.value.map(v => ({ label: v, identifier: v })),
 			placeholder: $t("placeholder.address"),
 			emptyLabel: $t("label.empty"),
-			label: $t("label.address"),
+			label: $t("label.delivreryAddress"),
 			zodSchema: zod.object(
 				{ label: zod.string() }, 
 				{ message: $t("form.rule.required") }
