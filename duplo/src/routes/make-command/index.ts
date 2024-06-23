@@ -88,7 +88,7 @@ export const POST = (method: Methods, path: string) =>
 						lastname,
 						address,
 						userId: user.id,
-						sessionId: session.id,
+						stripeSessionId: session.id,
 					}
 				});
 
