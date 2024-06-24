@@ -33,30 +33,32 @@ const $pt = usePageTranslate();
 </script>
 
 <template>
-	<section class="h-screen-nh container mb-12 lg:mb-16 flex flex-col lg:flex-row gap-12 lg:gap-24 bg-whiteless">
-		<div class="h-1/2 lg:h-full flex flex-col justify-center">
-			<h1 class="text-3xl lg:text-5xl font-bold">
-				{{ $pt("heroTitle") }}
-			</h1>
+	<section class="h-screen-nh mb-12 lg:mb-16 bg-whiteless">
+		<div class="h-full container flex flex-col lg:flex-row gap-12 lg:gap-24">
+			<div class="h-1/2 lg:h-full flex flex-col justify-center">
+				<h1 class="text-3xl lg:text-5xl font-bold">
+					{{ $pt("heroTitle") }}
+				</h1>
 
-			<p class="mt-4 text-base lg:text-lg font-medium opacity-50">
-				{{ $pt("heroSubtitle") }}
-			</p>
+				<p class="mt-4 text-base lg:text-lg font-medium opacity-50">
+					{{ $pt("heroSubtitle") }}
+				</p>
 
-			<TheButton
-				size="lg"
-				class="mt-8 w-min"
-			>
-				{{ $pt("button.discover") }}
-			</TheButton>
-		</div>
+				<TheButton
+					size="lg"
+					class="mt-8 w-min"
+				>
+					{{ $pt("button.discover") }}
+				</TheButton>
+			</div>
 
-		<div class="h-1/2 lg:h-full">
-			<img
-				src="https://via.placeholder.com/250"
-				alt="placeholder"
-				class="w-full h-full object-cover"
-			>
+			<div class="h-1/2 lg:h-full">
+				<img
+					src="https://via.placeholder.com/250"
+					alt="placeholder"
+					class="w-full h-full object-cover"
+				>
+			</div>
 		</div>
 	</section>
 
