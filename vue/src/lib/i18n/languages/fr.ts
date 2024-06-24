@@ -55,8 +55,8 @@ export default {
 			return {
 				...this[routerPageName.CATEGORY_PAGE],
 				emptyTitle: "Aucun produit trouvé.",
-				buttonBack: "Revenir a l'acceil.",
-				title: "Resultas \"{value}\".",
+				buttonBack: "Revenir a l'acceil",
+				title: "Resultat pour \"{value}\"",
 			};
 		},
 		[routerPageName.PRODUCT_PAGE]: {
