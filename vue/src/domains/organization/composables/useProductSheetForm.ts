@@ -1,4 +1,5 @@
 import { facetType, type Facet, type FacetType } from "@/lib/utils";
+import { useGetWarehouses } from "./useGetWarehouses";
 
 interface ItemMultiComBox {
 	label: string,
@@ -19,9 +20,10 @@ export interface FacetItem{
 	value: string | undefined
 }
 
-export function useProductSheetForm(productSheetId?: string) {
+export function useProductSheetForm(organizationId: string, productSheetId?: string) {
 	const $pt = usePageTranslate();
 	const suggestedCategories = ref<ItemMultiComBox[]>([]);
+	const { getWarehouses, warehouses } = useGetWarehouses(organizationId);
 	
 	function onSearchCategories(categoryName?: string) {
 		duploTo.enriched.
@@ -49,6 +51,9 @@ export function useProductSheetForm(productSheetId?: string) {
 			label: $pt("price"),
 			cols: 6,
 			defaultValue: 0,
+			inputProps: {
+				step: "0.01"
+			},
 			zodSchema: zod.number({ message: $t("form.rule.required") })
 				.min(0.01, { message: $t("form.rule.minLength", { value: 0.01 }) })
 		},
@@ -105,7 +110,20 @@ export function useProductSheetForm(productSheetId?: string) {
 					.optional(),
 				id: zod.string().optional()
 			}).array()
-		}
+		},
+		warehouse: computed(() => ({
+			type: "combo",
+			items: warehouses.value.map(v => ({ label: v.name, identifier: v.id })),
+			placeholder: $pt("form.warehousePlaceholder"),
+			emptyLabel: $t("label.empty"),
+			label: $pt("form.warehouseLabel"),
+			zodSchema: zod.object(
+				{ identifier: zod.string() }, 
+				{ message: $t("form.rule.required") }
+			).transform(item => item.identifier),
+			textButton: $t("button.add"),
+			onUpdateSearchTerm: (name: string) => getWarehouses(undefined, name),
+		})),
 	});
 
 	if (productSheetId) {
@@ -119,6 +137,15 @@ export function useProductSheetForm(productSheetId?: string) {
 				values.description.value = data.description;
 				values.shortDescription.value = data.shortDescription;
 				values.price.value = data.price;
+			});
+
+		duploTo.enriched
+			.get(
+				"/product-sheet/{productSheetId}/warehouse",
+				{ params: { productSheetId } }
+			)
+			.info("productSheet.warehouse", (data) => {
+				values.warehouse.value = { label: data.name, identifier: data.id };
 			});
 	
 		duploTo.enriched

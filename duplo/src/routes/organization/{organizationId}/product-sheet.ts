@@ -15,7 +15,7 @@ export const POST = (method: Methods, path: string) =>
 				description: zod.string(),
 				shortDescription: zod.string().min(3).max(255),
 				price: zod.number().min(0.01),
-				warehouseId: zod.string()
+				warehouseId: zod.string(),
 			}).strip(),
 		})
 		.check(

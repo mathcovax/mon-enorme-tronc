@@ -11,13 +11,14 @@ export const PATCH = (method: Methods, path: string) =>
 				description: zod.string().optional(),
 				shortDescription: zod.string().min(3).max(255).optional(),
 				price: zod.number().min(0.01).optional(),
+				warehouseId: zod.string().optional(),
 			}).strip().default({}),
 		})
 		.handler(
 			async ({ pickup }) => {
 				const { id: productSheetId } = pickup("productSheet");
-				const { name, description, shortDescription, price } = pickup("body");
-				const { id } = await prisma.product_sheet.update({
+				const { name, description, shortDescription, price, warehouseId } = pickup("body");
+				const productSheet = await prisma.product_sheet.update({
 					where: {
 						id: productSheetId,
 					},
@@ -26,12 +27,13 @@ export const PATCH = (method: Methods, path: string) =>
 						description,
 						shortDescription,
 						price,
+						warehouseId,
 						status: "UNVERIFIED",
 					},
 				});
-				throw new CreatedHttpException("productSheet.edited", id);
+				throw new CreatedHttpException("productSheet.edited", productSheet);
 			},
-			new IHaveSentThis(CreatedHttpException.code, "productSheet.edited", zod.string())
+			new IHaveSentThis(CreatedHttpException.code, "productSheet.edited", productSheetSchema)
 		);
 
 /* METHOD : GET, PATH : /product-sheet/{productSheetId} */

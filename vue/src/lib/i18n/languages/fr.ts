@@ -191,29 +191,24 @@ export default {
 				placeholder: "Chercher des catégories",
 				image: "Image du produit",
 				addImage: "Ajouter une image",
+				warehouseLabel: "Entrepôt",
+				warehousePlaceholder: "Entrer un entrepôt",
 				facet: {
 					add: "Ajouter une Facet",
 				}
 			}
+		},
+		get [routerPageName.ORGANIZATION_CREATE_PRODUCT_SHEET]() {
+			return {
+				...this[routerPageName.ORGANIZATION_EDIT_PRODUCT_SHEET],
+				title: "Créer une fiche produit",
+			};
 		},
 		[routerPageName.ORGANIZATION_EDIT]: {
 			form: {
 				logo: "Logo",
 				addLogo: "Ajouter un logo",
 				organizationLabel: "Label de l'organisation",
-			}
-		},
-		[routerPageName.ORGANIZATION_CREATE_PRODUCT_SHEET]: {
-			title: "Créer une fiche produit",
-			shortDescription: "Description courte",
-			price: "Prix",
-			form: {
-				placeholder: "Chercher des catégories",
-				image: "Image du produit",
-				addImage: "Ajouter une image",
-				facet: {
-					add: "Ajouter une Facet",
-				}
 			}
 		},
 		[routerPageName.ORGANIZATION_GET_WAREHOUSE]: {
@@ -277,9 +272,7 @@ export default {
 				sku: "Référence",
 				skuPlaceholder: "Entrer une référence",
 				productSheetLabel: "Fiche produit",
-				warehouseLabel: "Entrepôt",
 				productSheetPlaceholder: "Entrer une fiche produit",
-				warehousePlaceholder: "Entrer un entrepôt",
 			},
 			searchPlaceholder: "Chercher un produit",
 			popupWrongMessage: "Êtes-vous sur de vouloir changer le status de cette réference ?"

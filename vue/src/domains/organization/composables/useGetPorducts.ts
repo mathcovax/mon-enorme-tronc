@@ -11,9 +11,7 @@ export function useGetProducts(organizationId: string) {
 					params: { organizationId }, 
 					query: {
 						page, 
-						sku, 
-						withProductSheet: "true", 
-						withWarehouse: "true" 
+						sku,
 					} 
 				},
 				{ disabledLoader: true }

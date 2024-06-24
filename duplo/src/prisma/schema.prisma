@@ -147,7 +147,7 @@ model warehouse {
     address        String          @db.Text
     organization   organization    @relation(fields: [organizationId], references: [id])
     organizationId String
-    product_sheet  product_sheet[]
+    productSheet   product_sheet[]
 }
 
 model navigation_item {
