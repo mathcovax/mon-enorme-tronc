@@ -1,7 +1,12 @@
 import { MockPrisma } from "@test/mocks/providers";
 import { PATCH } from "./{sku}";
 import { duploTesting } from "@test/setup";
-import { productData } from "@test/data/product";
+import { productData, productEntityData } from "@test/data/product";
+
+vi.mock(
+	"@utils/prisma/product", 
+	() => ({ productEntityformater: () => productData, productSelect: {} })
+);
 
 describe("PATCH /product/{sku}", () => {
 	beforeEach(() => {
@@ -9,12 +14,12 @@ describe("PATCH /product/{sku}", () => {
 	});
 
 	it("update porduct", async () => {
-		const spy = vi.fn(() => productData);
+		const spy = vi.fn(async () => undefined);
 		MockPrisma.set("product", "update", spy);
 	
 		const res = await duploTesting
 			.testRoute(PATCH("PATCH", "/product-sheet/1234"))
-			.setDefaultFloorValue({ product: productData })
+			.setDefaultFloorValue({ product: productEntityData })
 			.setRequestProperties({
 				body: {
 					status: "WRONG",
@@ -30,6 +35,7 @@ describe("PATCH /product/{sku}", () => {
 			data: {
 				status: "WRONG",
 			},
+			select: {}
 		});
 	});
 });

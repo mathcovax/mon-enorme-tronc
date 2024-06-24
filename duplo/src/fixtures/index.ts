@@ -83,6 +83,7 @@ for (let round = 0; round < numberOf.productSheetRound; round++) {
 			
 			return makeProductSheet(
 				organizations[index % organizations.length].id,
+				currentWarehouses[index % currentWarehouses.length],
 				{ name: `${productSheet} ${round}-${index}` }
 			).then((productSheet) => Promise.all([
 				addProductSheetToCategory(productSheet.id, categoryName),
@@ -92,7 +93,7 @@ for (let round = 0; round < numberOf.productSheetRound; round++) {
 				),
 				repeater(
 					Math.floor(Math.random() * 500), 
-					(index) => makeProduct(productSheet, currentWarehouses[index % currentWarehouses.length])
+					() => makeProduct(productSheet)
 				),
 				mapAsync(
 					facetType.slice(

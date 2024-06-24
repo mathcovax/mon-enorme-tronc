@@ -34,6 +34,7 @@ export type parameters_1 = {
         page?: number;
     } | undefined;
 }
+<<<<<<< HEAD
 
 export type response_1_0 = {
     code: 404;
@@ -41,6 +42,15 @@ export type response_1_0 = {
     info: "category.notfound";
 } & {body: undefined};
 
+=======
+
+export type response_1_0 = {
+    code: 404;
+    ok: false;
+    info: "category.notfound";
+} & {body: undefined};
+
+>>>>>>> 5cabb00 (feat(115): refacto product)
 export type response_body_1_1 = {
     id: string;
     name: string;
@@ -50,6 +60,10 @@ export type response_body_1_1 = {
     createdAt?: string;
     updatedAt?: string;
     organizationId: string;
+<<<<<<< HEAD
+=======
+    warehouseId: string;
+>>>>>>> 5cabb00 (feat(115): refacto product)
 }[]
 
 export type response_1_1 = {
@@ -57,44 +71,47 @@ export type response_1_1 = {
     ok: true;
     info: "category.products";
 } & {body: response_body_1_1};
+<<<<<<< HEAD
+=======
+
+export type parameters_2 = {
+    query?: {
+        address?: string | undefined;
+    } | undefined;
+}
+
+export type response_body_2_0 = string[]
+>>>>>>> 5cabb00 (feat(115): refacto product)
 
 export type response_2_0 = {
-    code: 401;
-    ok: false;
-    info: "access.token.invalid";
-} & {body: undefined};
-
-export type response_2_1 = {
-    code: 404;
-    ok: false;
-    info: "user.notfound";
-} & {body: undefined};
-
-export type response_2_2 = {
-    code: 403;
-    ok: false;
-    info: "user.role.invalid";
-} & {body: undefined};
-
-export type response_2_3 = {
-    code: 204;
+    code: 200;
     ok: true;
-    info: "entry.accepted";
-} & {body: undefined};
+    info?: undefined;
+} & {body: response_body_2_0};
 
+<<<<<<< HEAD
+=======
+export type parameters_3 = {
+    headers: {
+        "stripe-signature": string;
+    };
+}
+
+>>>>>>> 5cabb00 (feat(115): refacto product)
 export type response_3_0 = {
     code: 401;
     ok: false;
-    info: "access.token.invalid";
+    info: "stripeSignature.invalide";
 } & {body: undefined};
 
 export type response_3_1 = {
-    code: 404;
+    code: 400;
     ok: false;
-    info: "user.notfound";
+    info: "stripeEvent.invalide.type";
 } & {body: undefined};
 
 export type response_3_2 = {
+<<<<<<< HEAD
     code: 403;
     ok: false;
     info: "user.role.invalid";
@@ -111,6 +128,18 @@ export type parameters_4 = {
         organizationId: string;
     };
 }
+=======
+    code: 400;
+    ok: false;
+    info: "stripeEvent.missing.commandId";
+} & {body: undefined};
+
+export type response_3_3 = {
+    code: 200;
+    ok: true;
+    info: "webhook.success";
+} & {body: undefined};
+>>>>>>> 5cabb00 (feat(115): refacto product)
 
 export type response_4_0 = {
     code: 401;
@@ -125,11 +154,21 @@ export type response_4_1 = {
 } & {body: undefined};
 
 export type response_4_2 = {
+<<<<<<< HEAD
+=======
+    code: 403;
+    ok: false;
+    info: "user.role.invalid";
+} & {body: undefined};
+
+export type response_4_3 = {
+>>>>>>> 5cabb00 (feat(115): refacto product)
     code: 204;
     ok: true;
     info: "entry.accepted";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_4_3 = {
     code: 406;
     ok: false;
@@ -149,6 +188,8 @@ export type parameters_5 = {
     };
 }
 
+=======
+>>>>>>> 5cabb00 (feat(115): refacto product)
 export type response_5_0 = {
     code: 401;
     ok: false;
@@ -162,27 +203,15 @@ export type response_5_1 = {
 } & {body: undefined};
 
 export type response_5_2 = {
-    code: 401;
+    code: 403;
     ok: false;
-    info: "entry.refuse";
+    info: "user.role.invalid";
 } & {body: undefined};
 
 export type response_5_3 = {
     code: 204;
     ok: true;
     info: "entry.accepted";
-} & {body: undefined};
-
-export type response_5_4 = {
-    code: 406;
-    ok: false;
-    info: "organization.hasNotUser";
-} & {body: undefined};
-
-export type response_5_5 = {
-    code: 403;
-    ok: false;
-    info: "user.role.organization.invalid";
 } & {body: undefined};
 
 export type parameters_6 = {
@@ -205,17 +234,55 @@ export type response_6_1 = {
 } & {body: undefined};
 
 export type response_6_2 = {
-    code: 401;
-    ok: false;
-    info: "entry.refuse";
-} & {body: undefined};
-
-export type response_6_3 = {
     code: 204;
     ok: true;
     info: "entry.accepted";
 } & {body: undefined};
 
+export type response_6_3 = {
+    code: 406;
+    ok: false;
+    info: "organization.hasNotUser";
+} & {body: undefined};
+
+export type response_6_4 = {
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+} & {body: undefined};
+
+export type parameters_7 = {
+    params: {
+        organizationId: string;
+        warehouseId?: string | undefined;
+    };
+}
+
+export type response_7_0 = {
+    code: 401;
+    ok: false;
+    info: "access.token.invalid";
+} & {body: undefined};
+
+export type response_7_1 = {
+    code: 404;
+    ok: false;
+    info: "user.notfound";
+} & {body: undefined};
+
+export type response_7_2 = {
+    code: 401;
+    ok: false;
+    info: "entry.refuse";
+} & {body: undefined};
+
+export type response_7_3 = {
+    code: 204;
+    ok: true;
+    info: "entry.accepted";
+} & {body: undefined};
+
+<<<<<<< HEAD
 export type response_6_4 = {
     code: 406;
     ok: false;
@@ -256,26 +323,53 @@ export type response_7_3 = {
     code: 204;
     ok: true;
     info: "entry.accepted";
+=======
+export type response_7_4 = {
+    code: 406;
+    ok: false;
+    info: "organization.hasNotUser";
+>>>>>>> 5cabb00 (feat(115): refacto product)
 } & {body: undefined};
 
+export type response_7_5 = {
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+} & {body: undefined};
+
+export type parameters_8 = {
+    params: {
+        organizationId: string;
+        productSheetId?: string | undefined;
+    };
+}
+
 export type response_8_0 = {
+<<<<<<< HEAD
     code: 204;
     ok: true;
     info: "entry.accepted";
 } & {body: undefined};
 
 export type response_9_0 = {
+=======
+>>>>>>> 5cabb00 (feat(115): refacto product)
     code: 401;
     ok: false;
     info: "access.token.invalid";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_9_1 = {
+=======
+export type response_8_1 = {
+>>>>>>> 5cabb00 (feat(115): refacto product)
     code: 404;
     ok: false;
     info: "user.notfound";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_9_2 = {
     code: 204;
     ok: true;
@@ -309,27 +403,90 @@ export type parameters_12 = {
 }
 
 export type response_12_0 = {
+=======
+export type response_8_2 = {
+>>>>>>> 5cabb00 (feat(115): refacto product)
     code: 401;
     ok: false;
-    info: "stripeSignature.invalide";
+    info: "entry.refuse";
 } & {body: undefined};
 
-export type response_12_1 = {
-    code: 400;
-    ok: false;
-    info: "stripeEvent.invalide.type";
-} & {body: undefined};
-
-export type response_12_2 = {
-    code: 400;
-    ok: false;
-    info: "stripeEvent.missing.commandId";
-} & {body: undefined};
-
-export type response_12_3 = {
-    code: 200;
+export type response_8_3 = {
+    code: 204;
     ok: true;
-    info: "webhook.success";
+    info: "entry.accepted";
+} & {body: undefined};
+
+export type response_8_4 = {
+    code: 406;
+    ok: false;
+    info: "organization.hasNotUser";
+} & {body: undefined};
+
+export type response_8_5 = {
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+} & {body: undefined};
+
+export type parameters_9 = {
+    params: {
+        organizationId: string;
+    };
+}
+
+export type response_9_0 = {
+    code: 401;
+    ok: false;
+    info: "access.token.invalid";
+} & {body: undefined};
+
+export type response_9_1 = {
+    code: 404;
+    ok: false;
+    info: "user.notfound";
+} & {body: undefined};
+
+export type response_9_2 = {
+    code: 401;
+    ok: false;
+    info: "entry.refuse";
+} & {body: undefined};
+
+export type response_9_3 = {
+    code: 204;
+    ok: true;
+    info: "entry.accepted";
+} & {body: undefined};
+
+export type response_10_0 = {
+    code: 204;
+    ok: true;
+    info: "entry.accepted";
+} & {body: undefined};
+
+export type response_11_0 = {
+    code: 401;
+    ok: false;
+    info: "access.token.invalid";
+} & {body: undefined};
+
+export type response_11_1 = {
+    code: 404;
+    ok: false;
+    info: "user.notfound";
+} & {body: undefined};
+
+export type response_11_2 = {
+    code: 204;
+    ok: true;
+    info: "entry.accepted";
+} & {body: undefined};
+
+export type response_12_0 = {
+    code: 204;
+    ok: true;
+    info: "entry.accepted";
 } & {body: undefined};
 
 export type response_body_13_0 = ({
@@ -401,6 +558,23 @@ export type response_15_2 = {
     ok: false;
     info: "user.address.invalid";
 } & {body: undefined};
+<<<<<<< HEAD
+=======
+
+export type response_15_3 = {
+    code: 400;
+    ok: false;
+    info: "user.dateOfBirth.invalid";
+} & {body: undefined};
+
+export type response_body_15_4 = string
+
+export type response_15_4 = {
+    code: 201;
+    ok: true;
+    info: "user.registered";
+} & {body: response_body_15_4};
+>>>>>>> 5cabb00 (feat(115): refacto product)
 
 export type response_15_3 = {
     code: 400;
@@ -444,12 +618,6 @@ export type response_16_2 = {
     info: "cart.fetched";
 } & {body: response_body_16_2};
 
-export type parameters_17 = {
-    params: {
-        imageProductSheetId: string;
-    };
-}
-
 export type response_17_0 = {
     code: 401;
     ok: false;
@@ -462,33 +630,29 @@ export type response_17_1 = {
     info: "user.notfound";
 } & {body: undefined};
 
+export type response_body_17_2 = {
+    productSheetId: string;
+    quantity: number;
+    name: string;
+    description: string;
+    shortDescription: string;
+    price: number;
+    imageUrl: string;
+}[]
+
 export type response_17_2 = {
-    code: 404;
-    ok: false;
-    info: "imageProductSheet.notfound";
-} & {body: undefined};
-
-export type response_17_3 = {
-    code: 204;
+    code: 200;
     ok: true;
-    info: "imageProductSheet.deleted";
-} & {body: undefined};
-
-export type response_17_4 = {
-    code: 406;
-    ok: false;
-    info: "organization.hasNotUser";
-} & {body: undefined};
-
-export type response_17_5 = {
-    code: 403;
-    ok: false;
-    info: "user.role.organization.invalid";
-} & {body: undefined};
+    info: "cart.fetched";
+} & {body: response_body_17_2};
 
 export type parameters_18 = {
     params: {
+<<<<<<< HEAD
         productSheetId: string;
+=======
+        imageProductSheetId: string;
+>>>>>>> 5cabb00 (feat(115): refacto product)
     };
 }
 
@@ -506,14 +670,36 @@ export type response_18_1 = {
 
 export type response_18_2 = {
     code: 404;
+<<<<<<< HEAD
+=======
+    ok: false;
+    info: "imageProductSheet.notfound";
+} & {body: undefined};
+
+export type response_18_3 = {
+    code: 204;
+    ok: true;
+    info: "imageProductSheet.deleted";
+} & {body: undefined};
+
+export type response_18_4 = {
+    code: 406;
+>>>>>>> 5cabb00 (feat(115): refacto product)
     ok: false;
     info: "productSheet.notfound";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_18_3 = {
     code: 200;
     ok: true;
     info: "article.deleted";
+=======
+export type response_18_5 = {
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+>>>>>>> 5cabb00 (feat(115): refacto product)
 } & {body: undefined};
 
 export type parameters_19 = {
@@ -615,6 +801,13 @@ export type response_20_7 = {
     info: "organization.user.add";
 } & {body: undefined};
 
+<<<<<<< HEAD
+=======
+export type request_body_21 = {
+    organizationRole?: ("STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT") | undefined;
+}
+
+>>>>>>> 5cabb00 (feat(115): refacto product)
 export type parameters_21 = {
     query?: {
         page?: number;
@@ -652,8 +845,32 @@ export type response_body_21_3 = {
 export type response_21_3 = {
     code: 200;
     ok: true;
+<<<<<<< HEAD
     info: "user.organizations";
 } & {body: response_body_21_3};
+=======
+    info: "organization.user.edited";
+} & {body: undefined};
+
+export type response_21_5 = {
+    code: 406;
+    ok: false;
+    info: "organization.hasNotUser";
+} & {body: undefined};
+
+export type response_21_6 = {
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+} & {body: undefined};
+
+export type parameters_22 = {
+    params: {
+        organizationId: string;
+        userId: string;
+    };
+}
+>>>>>>> 5cabb00 (feat(115): refacto product)
 
 export type response_22_0 = {
     code: 401;
@@ -668,11 +885,12 @@ export type response_22_1 = {
 } & {body: undefined};
 
 export type response_22_2 = {
-    code: 404;
+    code: 406;
     ok: false;
-    info: "user.notfound";
+    info: "organization.hasNotUser";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_body_22_3 = {
     id: string;
     email: string;
@@ -685,11 +903,42 @@ export type response_body_22_3 = {
     hasOrganization: boolean;
 }
 
+=======
+>>>>>>> 5cabb00 (feat(115): refacto product)
 export type response_22_3 = {
-    code: 200;
+    code: 401;
+    ok: false;
+    info: "organization.user.organizationRole.owner";
+} & {body: undefined};
+
+export type response_22_4 = {
+    code: 204;
     ok: true;
+<<<<<<< HEAD
     info: "user";
 } & {body: response_body_22_3};
+=======
+    info: "organization.user.deleted";
+} & {body: undefined};
+
+export type response_22_5 = {
+    code: 406;
+    ok: false;
+    info: "organization.hasNotUser";
+} & {body: undefined};
+
+export type response_22_6 = {
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+} & {body: undefined};
+
+export type parameters_23 = {
+    query?: {
+        page?: number;
+    } | undefined;
+}
+>>>>>>> 5cabb00 (feat(115): refacto product)
 
 export type request_body_23 = {
     lastname?: string | undefined;
@@ -710,6 +959,7 @@ export type response_23_1 = {
 } & {body: undefined};
 
 export type response_23_2 = {
+<<<<<<< HEAD
     code: 400;
     ok: false;
     info: "user.address.invalid";
@@ -732,6 +982,31 @@ export type parameters_24 = {
         organizationId: string;
         userId: string;
     };
+=======
+    code: 404;
+    ok: false;
+    info: "user.notfound";
+} & {body: undefined};
+
+export type response_body_23_3 = {
+    id: string;
+    name: string;
+    label: string | null;
+    ownerId: string;
+    suspended: boolean;
+    logoKey: string | null;
+    logoUrl: string | null;
+}[]
+
+export type response_23_3 = {
+    code: 200;
+    ok: true;
+    info: "user.organizations";
+} & {body: response_body_23_3};
+
+export type request_body_24 = {
+    commandId: string;
+>>>>>>> 5cabb00 (feat(115): refacto product)
 }
 
 export type response_24_0 = {
@@ -749,12 +1024,17 @@ export type response_24_1 = {
 export type response_24_2 = {
     code: 406;
     ok: false;
+<<<<<<< HEAD
     info: "organization.hasNotUser";
+=======
+    info: "command.notfound";
+>>>>>>> 5cabb00 (feat(115): refacto product)
 } & {body: undefined};
 
 export type response_24_3 = {
     code: 401;
     ok: false;
+<<<<<<< HEAD
     info: "organization.user.organizationRole.owner";
 } & {body: undefined};
 
@@ -781,7 +1061,20 @@ export type parameters_25 = {
         organizationId: string;
         userId: string;
     };
+=======
+    info: "command.wrong.user";
+} & {body: undefined};
+
+export type response_body_24_4 = {
+    sessionUrl: string;
+>>>>>>> 5cabb00 (feat(115): refacto product)
 }
+
+export type response_24_4 = {
+    code: 201;
+    ok: true;
+    info: "session";
+} & {body: response_body_24_4};
 
 export type response_25_0 = {
     code: 401;
@@ -796,6 +1089,7 @@ export type response_25_1 = {
 } & {body: undefined};
 
 export type response_25_2 = {
+<<<<<<< HEAD
     code: 406;
     ok: false;
     info: "organization.hasNotUser";
@@ -824,9 +1118,35 @@ export type response_25_6 = {
     ok: false;
     info: "user.role.organization.invalid";
 } & {body: undefined};
+=======
+    code: 404;
+    ok: false;
+    info: "user.notfound";
+} & {body: undefined};
+
+export type response_body_25_3 = {
+    id: string;
+    email: string;
+    lastname: string;
+    firstname: string;
+    dateOfBirth?: string;
+    address: string;
+    primordialRole: "CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN";
+    muted: boolean;
+    hasOrganization: boolean;
+}
+
+export type response_25_3 = {
+    code: 200;
+    ok: true;
+    info: "user";
+} & {body: response_body_25_3};
+>>>>>>> 5cabb00 (feat(115): refacto product)
 
 export type request_body_26 = {
-    commandId: string;
+    lastname?: string | undefined;
+    firstname?: string | undefined;
+    address?: string | undefined;
 }
 
 export type response_26_0 = {
@@ -842,30 +1162,32 @@ export type response_26_1 = {
 } & {body: undefined};
 
 export type response_26_2 = {
-    code: 404;
+    code: 400;
     ok: false;
-    info: "command.notfound";
+    info: "user.address.invalid";
 } & {body: undefined};
+
+export type response_body_26_3 = string
 
 export type response_26_3 = {
-    code: 401;
-    ok: false;
-    info: "command.wrong.user";
-} & {body: undefined};
-
-export type response_body_26_4 = {
-    sessionUrl: string;
-}
-
-export type response_26_4 = {
     code: 201;
     ok: true;
+<<<<<<< HEAD
     info: "session";
 } & {body: response_body_26_4};
 
 export type request_body_27 = {
     name: string;
     disabled: boolean;
+=======
+    info: "user.edited";
+} & {body: response_body_26_3};
+
+export type parameters_27 = {
+    params: {
+        productSheetId: string;
+    };
+>>>>>>> 5cabb00 (feat(115): refacto product)
 }
 
 export type response_27_0 = {
@@ -881,15 +1203,21 @@ export type response_27_1 = {
 } & {body: undefined};
 
 export type response_27_2 = {
-    code: 403;
+    code: 404;
     ok: false;
-    info: "user.role.invalid";
+    info: "productSheet.notfound";
 } & {body: undefined};
 
 export type response_27_3 = {
+<<<<<<< HEAD
     code: 409;
     ok: false;
     info: "category.alreadyExist";
+=======
+    code: 406;
+    ok: false;
+    info: "organization.hasNotUser";
+>>>>>>> 5cabb00 (feat(115): refacto product)
 } & {body: undefined};
 
 export type response_body_27_4 = {
@@ -900,19 +1228,38 @@ export type response_body_27_4 = {
 }
 
 export type response_27_4 = {
+<<<<<<< HEAD
     code: 201;
     ok: true;
     info: "category.created";
 } & {body: response_body_27_4};
+=======
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+} & {body: undefined};
+>>>>>>> 5cabb00 (feat(115): refacto product)
+
+export type response_body_27_5 = {
+    name: string;
+    disabled: boolean;
+    imageKey: string | null;
+    imageUrl: string | null;
+}[]
+
+export type response_27_5 = {
+    code: 200;
+    ok: true;
+    info: "productSheet.categories";
+} & {body: response_body_27_5};
 
 export type request_body_28 = {
-    name?: string | undefined;
-    disabled?: boolean | undefined;
-} | undefined
+    categoryName: string;
+}
 
 export type parameters_28 = {
     params: {
-        categoryName: string;
+        productSheetId: string;
     };
 }
 
@@ -929,32 +1276,52 @@ export type response_28_1 = {
 } & {body: undefined};
 
 export type response_28_2 = {
-    code: 403;
+    code: 404;
     ok: false;
-    info: "user.role.invalid";
+    info: "productSheet.notfound";
 } & {body: undefined};
 
 export type response_28_3 = {
+    code: 406;
+    ok: false;
+    info: "organization.hasNotUser";
+} & {body: undefined};
+
+export type response_28_4 = {
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+} & {body: undefined};
+
+export type response_28_5 = {
     code: 404;
     ok: false;
     info: "category.notfound";
 } & {body: undefined};
 
-export type response_28_4 = {
+export type response_28_6 = {
     code: 409;
     ok: false;
-    info: "category.alreadyExist";
+    info: "productSheet.categories.limit";
 } & {body: undefined};
 
-export type response_28_5 = {
-    code: 204;
+export type response_28_7 = {
+    code: 200;
     ok: true;
-    info: "category.edited";
+    info: "productSheet.category.linked";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type request_body_29 = {
     name: string;
     ownerId: string;
+=======
+export type parameters_29 = {
+    params: {
+        productSheetId: string;
+        categoryName: string;
+    };
+>>>>>>> 5cabb00 (feat(115): refacto product)
 }
 
 export type response_29_0 = {
@@ -970,17 +1337,34 @@ export type response_29_1 = {
 } & {body: undefined};
 
 export type response_29_2 = {
-    code: 403;
+    code: 404;
     ok: false;
-    info: "user.role.invalid";
+    info: "productSheet.notfound";
 } & {body: undefined};
 
 export type response_29_3 = {
+<<<<<<< HEAD
     code: 409;
+=======
+    code: 406;
+    ok: false;
+    info: "organization.hasNotUser";
+} & {body: undefined};
+
+export type response_29_4 = {
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+} & {body: undefined};
+
+export type response_29_5 = {
+    code: 404;
+>>>>>>> 5cabb00 (feat(115): refacto product)
     ok: false;
     info: "organization.alreadyExist";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_29_4 = {
     code: 404;
     ok: false;
@@ -1006,6 +1390,22 @@ export type parameters_30 = {
     };
     params: {
         categoryName: string;
+=======
+export type response_29_6 = {
+    code: 200;
+    ok: true;
+    info: "productSheet.category.untied";
+} & {body: undefined};
+
+export type request_body_30 = {
+    type: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
+    value: string;
+}
+
+export type parameters_30 = {
+    params: {
+        productSheetId: string;
+>>>>>>> 5cabb00 (feat(115): refacto product)
     };
 }
 
@@ -1022,12 +1422,13 @@ export type response_30_1 = {
 } & {body: undefined};
 
 export type response_30_2 = {
-    code: 403;
+    code: 404;
     ok: false;
-    info: "user.role.invalid";
+    info: "productSheet.notfound";
 } & {body: undefined};
 
 export type response_30_3 = {
+<<<<<<< HEAD
     code: 404;
     ok: false;
     info: "category.notfound";
@@ -1051,6 +1452,41 @@ export type parameters_31 = {
         name?: string | undefined;
         withCategories?: ("true" | "false") | undefined;
     } | undefined;
+=======
+    code: 406;
+    ok: false;
+    info: "organization.hasNotUser";
+} & {body: undefined};
+
+export type response_30_4 = {
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+} & {body: undefined};
+
+export type response_30_5 = {
+    code: 409;
+    ok: false;
+    info: "productSheet.facet.alreadyExist";
+} & {body: undefined};
+
+export type response_body_30_6 = {
+    type: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
+    productSheetId: string;
+    value: string;
+}
+
+export type response_30_6 = {
+    code: 201;
+    ok: true;
+    info: "facet.created";
+} & {body: response_body_30_6};
+
+export type parameters_31 = {
+    params: {
+        productSheetId: string;
+    };
+>>>>>>> 5cabb00 (feat(115): refacto product)
 }
 
 export type response_31_0 = {
@@ -1066,11 +1502,12 @@ export type response_31_1 = {
 } & {body: undefined};
 
 export type response_31_2 = {
-    code: 403;
+    code: 404;
     ok: false;
-    info: "user.role.invalid";
+    info: "productSheet.notfound";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_body_31_3 = {
     name: string;
     categories?: {
@@ -1091,6 +1528,35 @@ export type request_body_32 = {
 export type parameters_32 = {
     params: {
         organizationId: string;
+=======
+export type response_31_3 = {
+    code: 406;
+    ok: false;
+    info: "organization.hasNotUser";
+} & {body: undefined};
+
+export type response_31_4 = {
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+} & {body: undefined};
+
+export type response_body_31_5 = {
+    type: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
+    productSheetId: string;
+    value: string;
+}[]
+
+export type response_31_5 = {
+    code: 200;
+    ok: true;
+    info: "productSheet.facets";
+} & {body: response_body_31_5};
+
+export type parameters_32 = {
+    params: {
+        productSheetId: string;
+>>>>>>> 5cabb00 (feat(115): refacto product)
     };
 }
 
@@ -1107,12 +1573,13 @@ export type response_32_1 = {
 } & {body: undefined};
 
 export type response_32_2 = {
-    code: 403;
+    code: 404;
     ok: false;
-    info: "user.role.invalid";
+    info: "productSheet.notfound";
 } & {body: undefined};
 
 export type response_32_3 = {
+<<<<<<< HEAD
     code: 404;
     ok: false;
     info: "organization.notfound";
@@ -1139,6 +1606,50 @@ export type request_body_33 = {
     title: string;
 }
 
+=======
+    code: 406;
+    ok: false;
+    info: "organization.hasNotUser";
+} & {body: undefined};
+
+export type response_32_4 = {
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+} & {body: undefined};
+
+export type response_body_32_5 = {
+    id: string;
+    name: string;
+    description: string;
+    shortDescription: string;
+    price: number;
+    createdAt?: string;
+    updatedAt?: string;
+    organizationId: string;
+    warehouseId: string;
+}
+
+export type response_32_5 = {
+    code: 200;
+    ok: true;
+    info: "productSheet.found";
+} & {body: response_body_32_5};
+
+export type request_body_33 = {
+    name?: string | undefined;
+    description?: string | undefined;
+    shortDescription?: string | undefined;
+    price?: number | undefined;
+}
+
+export type parameters_33 = {
+    params: {
+        productSheetId: string;
+    };
+}
+
+>>>>>>> 5cabb00 (feat(115): refacto product)
 export type response_33_0 = {
     code: 401;
     ok: false;
@@ -1152,15 +1663,21 @@ export type response_33_1 = {
 } & {body: undefined};
 
 export type response_33_2 = {
-    code: 403;
+    code: 404;
     ok: false;
-    info: "user.role.invalid";
+    info: "productSheet.notfound";
 } & {body: undefined};
 
 export type response_33_3 = {
+<<<<<<< HEAD
     code: 409;
     ok: false;
     info: "navigationItem.limit";
+=======
+    code: 406;
+    ok: false;
+    info: "organization.hasNotUser";
+>>>>>>> 5cabb00 (feat(115): refacto product)
 } & {body: undefined};
 
 export type response_body_33_4 = {
@@ -1182,6 +1699,7 @@ export type response_body_33_4 = {
 }
 
 export type response_33_4 = {
+<<<<<<< HEAD
     code: 201;
     ok: true;
     info: "navigationItem.created";
@@ -1189,6 +1707,30 @@ export type response_33_4 = {
 
 export type request_body_34 = {
     name: string;
+=======
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+} & {body: undefined};
+
+export type response_body_33_5 = string
+
+export type response_33_5 = {
+    code: 201;
+    ok: true;
+    info: "productSheet.edited";
+} & {body: response_body_33_5};
+
+export type request_body_34 = {
+    value?: string | undefined;
+}
+
+export type parameters_34 = {
+    params: {
+        productSheetId: string;
+        facetType: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
+    };
+>>>>>>> 5cabb00 (feat(115): refacto product)
 }
 
 export type response_34_0 = {
@@ -1204,15 +1746,21 @@ export type response_34_1 = {
 } & {body: undefined};
 
 export type response_34_2 = {
-    code: 403;
+    code: 404;
     ok: false;
-    info: "user.role.invalid";
+    info: "productSheet.notfound";
 } & {body: undefined};
 
 export type response_34_3 = {
+<<<<<<< HEAD
     code: 409;
     ok: false;
     info: "parentCategory.name.alreadyUse";
+=======
+    code: 406;
+    ok: false;
+    info: "organization.hasNotUser";
+>>>>>>> 5cabb00 (feat(115): refacto product)
 } & {body: undefined};
 
 export type response_body_34_4 = {
@@ -1220,10 +1768,36 @@ export type response_body_34_4 = {
 }
 
 export type response_34_4 = {
+<<<<<<< HEAD
     code: 201;
     ok: true;
     info: "parentCategory.created";
 } & {body: response_body_34_4};
+=======
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+} & {body: undefined};
+
+export type response_34_5 = {
+    code: 404;
+    ok: false;
+    info: "facet.notfound";
+} & {body: undefined};
+
+export type response_34_6 = {
+    code: 204;
+    ok: true;
+    info: "facet.edited";
+} & {body: undefined};
+
+export type parameters_35 = {
+    params: {
+        productSheetId: string;
+        facetType: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
+    };
+}
+>>>>>>> 5cabb00 (feat(115): refacto product)
 
 export type response_35_0 = {
     code: 401;
@@ -1238,9 +1812,9 @@ export type response_35_1 = {
 } & {body: undefined};
 
 export type response_35_2 = {
-    code: 403;
+    code: 404;
     ok: false;
-    info: "user.role.invalid";
+    info: "productSheet.notfound";
 } & {body: undefined};
 
 export type response_body_35_3 = ({
@@ -1262,6 +1836,7 @@ export type response_body_35_3 = ({
 })[]
 
 export type response_35_3 = {
+<<<<<<< HEAD
     code: 200;
     ok: true;
     info: "navigationItems";
@@ -1270,10 +1845,42 @@ export type response_35_3 = {
 export type request_body_36 = {
     name?: string | undefined;
 }
+=======
+    code: 406;
+    ok: false;
+    info: "organization.hasNotUser";
+} & {body: undefined};
+
+export type response_35_4 = {
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+} & {body: undefined};
+
+export type response_35_5 = {
+    code: 404;
+    ok: false;
+    info: "facet.notfound";
+} & {body: undefined};
+
+export type response_35_6 = {
+    code: 204;
+    ok: true;
+    info: "facet.deleted";
+} & {body: undefined};
+>>>>>>> 5cabb00 (feat(115): refacto product)
 
 export type parameters_36 = {
+    headers: {
+        "content-type": string;
+        "content-length": number;
+    };
     params: {
+<<<<<<< HEAD
         parentCategoryName: string;
+=======
+        productSheetId: string;
+>>>>>>> 5cabb00 (feat(115): refacto product)
     };
 }
 
@@ -1290,18 +1897,19 @@ export type response_36_1 = {
 } & {body: undefined};
 
 export type response_36_2 = {
-    code: 403;
+    code: 404;
     ok: false;
-    info: "user.role.invalid";
+    info: "productSheet.notfound";
 } & {body: undefined};
 
 export type response_36_3 = {
-    code: 404;
+    code: 406;
     ok: false;
-    info: "parentCategory.notfound";
+    info: "organization.hasNotUser";
 } & {body: undefined};
 
 export type response_36_4 = {
+<<<<<<< HEAD
     code: 409;
     ok: false;
     info: "parentCategory.name.alreadyUse";
@@ -1312,10 +1920,43 @@ export type response_36_5 = {
     ok: true;
     info: "parentCategory.edited";
 } & {body: undefined};
+=======
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+} & {body: undefined};
+
+export type response_36_5 = {
+    code: 409;
+    ok: false;
+    info: "product.images.limit";
+} & {body: undefined};
+
+export type response_36_6 = {
+    code: 400;
+    ok: false;
+    info: "productSheet.image.missing";
+} & {body: undefined};
+
+export type response_body_36_7 = {
+    id: string;
+    productSheetId: string;
+    organizationId: string;
+    url: string;
+    key: string;
+    alt: string | null;
+}
+>>>>>>> 5cabb00 (feat(115): refacto product)
+
+export type response_36_7 = {
+    code: 201;
+    ok: true;
+    info: "productSheet.image.create";
+} & {body: response_body_36_7};
 
 export type parameters_37 = {
     params: {
-        parentCategoryName: string;
+        productSheetId: string;
     };
 }
 
@@ -1332,17 +1973,18 @@ export type response_37_1 = {
 } & {body: undefined};
 
 export type response_37_2 = {
-    code: 403;
+    code: 404;
     ok: false;
-    info: "user.role.invalid";
+    info: "productSheet.notfound";
 } & {body: undefined};
 
 export type response_37_3 = {
-    code: 404;
+    code: 406;
     ok: false;
-    info: "parentCategory.notfound";
+    info: "organization.hasNotUser";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_body_37_4 = {
     name: string;
     disabled: boolean;
@@ -1358,11 +2000,40 @@ export type response_37_4 = {
 
 export type request_body_38 = {
     categoryName: string;
+=======
+export type response_37_4 = {
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+} & {body: undefined};
+
+export type response_body_37_5 = {
+    id: string;
+    productSheetId: string;
+    organizationId: string;
+    url: string;
+    key: string;
+    alt: string | null;
+}[]
+
+export type response_37_5 = {
+    code: 200;
+    ok: true;
+    info: "productSheet.images";
+} & {body: response_body_37_5};
+
+export type request_body_38 = {
+    sku: string;
+>>>>>>> 5cabb00 (feat(115): refacto product)
 }
 
 export type parameters_38 = {
     params: {
+<<<<<<< HEAD
         parentCategoryName: string;
+=======
+        productSheetId: string;
+>>>>>>> 5cabb00 (feat(115): refacto product)
     };
 }
 
@@ -1379,12 +2050,13 @@ export type response_38_1 = {
 } & {body: undefined};
 
 export type response_38_2 = {
-    code: 403;
+    code: 404;
     ok: false;
-    info: "user.role.invalid";
+    info: "productSheet.notfound";
 } & {body: undefined};
 
 export type response_38_3 = {
+<<<<<<< HEAD
     code: 404;
     ok: false;
     info: "parentCategory.notfound";
@@ -1412,6 +2084,51 @@ export type parameters_39 = {
     params: {
         parentCategoryName: string;
         categoryName: string;
+=======
+    code: 406;
+    ok: false;
+    info: "organization.hasNotUser";
+} & {body: undefined};
+
+export type response_38_4 = {
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+} & {body: undefined};
+
+export type response_38_5 = {
+    code: 409;
+    ok: false;
+    info: "product.sku.alreadyUse";
+} & {body: undefined};
+
+export type response_body_38_6 = {
+    sku: string;
+    status: "WAITING_PAYMENT" | "ORDER" | "WRONG" | "SOLD" | "IN_STOCK";
+    organizationId: string;
+    productSheetId: string;
+    productSheetName: string;
+    productSheetFirstImageUrl?: string | undefined;
+    warehouseId: string;
+    warehouseName: string;
+    createdAt: string;
+    updatedAt: string;
+}
+
+export type response_38_6 = {
+    code: 201;
+    ok: true;
+    info: "product.created";
+} & {body: response_body_38_6};
+
+export type request_body_39 = {
+    status?: ("IN_STOCK" | "WRONG") | undefined;
+}
+
+export type parameters_39 = {
+    params: {
+        sku: string;
+>>>>>>> 5cabb00 (feat(115): refacto product)
     };
 }
 
@@ -1428,12 +2145,13 @@ export type response_39_1 = {
 } & {body: undefined};
 
 export type response_39_2 = {
-    code: 403;
+    code: 404;
     ok: false;
-    info: "user.role.invalid";
+    info: "product.notfound";
 } & {body: undefined};
 
 export type response_39_3 = {
+<<<<<<< HEAD
     code: 404;
     ok: false;
     info: "parentCategory.notfound";
@@ -1450,6 +2168,41 @@ export type parameters_40 = {
         page?: number;
         name?: string | undefined;
     } | undefined;
+=======
+    code: 406;
+    ok: false;
+    info: "organization.hasNotUser";
+} & {body: undefined};
+
+export type response_39_4 = {
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+} & {body: undefined};
+
+export type response_body_39_5 = {
+    sku: string;
+    status: "WAITING_PAYMENT" | "ORDER" | "WRONG" | "SOLD" | "IN_STOCK";
+    organizationId: string;
+    productSheetId: string;
+    productSheetName: string;
+    productSheetFirstImageUrl?: string | undefined;
+    warehouseId: string;
+    warehouseName: string;
+    createdAt: string;
+    updatedAt: string;
+}
+
+export type response_39_5 = {
+    code: 200;
+    ok: true;
+    info: "product.edited";
+} & {body: response_body_39_5};
+
+export type request_body_40 = {
+    name: string;
+    disabled: boolean;
+>>>>>>> 5cabb00 (feat(115): refacto product)
 }
 
 export type response_40_0 = {
@@ -1470,6 +2223,7 @@ export type response_40_2 = {
     info: "user.role.invalid";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_body_40_3 = {
     id: string;
     name: string;
@@ -1485,13 +2239,44 @@ export type response_40_3 = {
     ok: true;
     info: "organizations";
 } & {body: response_body_40_3};
+=======
+export type response_40_3 = {
+    code: 409;
+    ok: false;
+    info: "category.alreadyExist";
+} & {body: undefined};
+
+export type response_body_40_4 = {
+    name: string;
+    disabled: boolean;
+    imageKey: string | null;
+    imageUrl: string | null;
+}
+
+export type response_40_4 = {
+    code: 201;
+    ok: true;
+    info: "category.created";
+} & {body: response_body_40_4};
+>>>>>>> 5cabb00 (feat(115): refacto product)
+
+export type request_body_41 = {
+    name?: string | undefined;
+    disabled?: boolean | undefined;
+} | undefined
 
 export type parameters_41 = {
+<<<<<<< HEAD
     query?: {
         page?: number;
         email?: string | undefined;
         primordialRole?: (("CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN") | ("CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN")[]) | undefined;
     } | undefined;
+=======
+    params: {
+        categoryName: string;
+    };
+>>>>>>> 5cabb00 (feat(115): refacto product)
 }
 
 export type response_41_0 = {
@@ -1512,6 +2297,7 @@ export type response_41_2 = {
     info: "user.role.invalid";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_body_41_3 = {
     id: string;
     email: string;
@@ -1523,11 +2309,30 @@ export type response_body_41_3 = {
     muted: boolean;
 }[]
 
+=======
+>>>>>>> 5cabb00 (feat(115): refacto product)
 export type response_41_3 = {
-    code: 200;
+    code: 404;
+    ok: false;
+    info: "category.notfound";
+} & {body: undefined};
+
+export type response_41_4 = {
+    code: 409;
+    ok: false;
+    info: "category.alreadyExist";
+} & {body: undefined};
+
+export type response_41_5 = {
+    code: 204;
     ok: true;
+<<<<<<< HEAD
     info: "users";
 } & {body: response_body_41_3};
+=======
+    info: "category.edited";
+} & {body: undefined};
+>>>>>>> 5cabb00 (feat(115): refacto product)
 
 export type request_body_42 = {
     id: string;
@@ -1549,7 +2354,11 @@ export type request_body_42 = {
 
 export type parameters_42 = {
     params: {
+<<<<<<< HEAD
         navigationItemId: string;
+=======
+        categoryName: string;
+>>>>>>> 5cabb00 (feat(115): refacto product)
     };
 }
 
@@ -1574,6 +2383,7 @@ export type response_42_2 = {
 export type response_42_3 = {
     code: 404;
     ok: false;
+<<<<<<< HEAD
     info: "navigationItem.notfound";
 } & {body: undefined};
 
@@ -1599,6 +2409,26 @@ export type parameters_43 = {
     params: {
         navigationItemId: string;
     };
+=======
+    info: "category.notfound";
+} & {body: undefined};
+
+export type response_42_4 = {
+    code: 400;
+    ok: false;
+    info: "category.image.missing";
+} & {body: undefined};
+
+export type response_42_5 = {
+    code: 204;
+    ok: true;
+    info: "category.image.updated";
+} & {body: undefined};
+
+export type request_body_43 = {
+    name: string;
+    ownerId: string;
+>>>>>>> 5cabb00 (feat(115): refacto product)
 }
 
 export type response_43_0 = {
@@ -1622,6 +2452,7 @@ export type response_43_2 = {
 export type response_43_3 = {
     code: 404;
     ok: false;
+<<<<<<< HEAD
     info: "navigationItem.notfound";
 } & {body: undefined};
 
@@ -1634,6 +2465,31 @@ export type response_43_4 = {
 export type request_body_44 = {
     primordialRole?: ("CUSTOMER" | "CONTENTS_MASTER" | "MODERATOR") | undefined;
     muted?: boolean | undefined;
+=======
+    info: "organization.alreadyExist";
+} & {body: undefined};
+
+export type response_43_4 = {
+    code: 404;
+    ok: false;
+    info: "user.notfound";
+} & {body: undefined};
+
+export type response_43_5 = {
+    code: 409;
+    ok: false;
+    info: "user.alreadyOwner";
+} & {body: undefined};
+
+export type response_43_6 = {
+    code: 201;
+    ok: true;
+    info: "organization.created";
+} & {body: undefined};
+
+export type request_body_44 = {
+    suspended?: boolean | undefined;
+>>>>>>> 5cabb00 (feat(115): refacto product)
 }
 
 export type parameters_44 = {
@@ -1656,10 +2512,20 @@ export type response_44_1 = {
 
 export type response_44_2 = {
     code: 403;
+<<<<<<< HEAD
+=======
     ok: false;
     info: "user.role.invalid";
 } & {body: undefined};
 
+export type response_44_3 = {
+    code: 404;
+>>>>>>> 5cabb00 (feat(115): refacto product)
+    ok: false;
+    info: "user.role.invalid";
+} & {body: undefined};
+
+<<<<<<< HEAD
 export type response_44_3 = {
     code: 404;
     ok: false;
@@ -1686,6 +2552,27 @@ export type parameters_45 = {
     params: {
         sku: string;
     };
+=======
+export type response_44_4 = {
+    code: 204;
+    ok: true;
+    info: "organization.edited";
+} & {body: undefined};
+
+export type request_body_45 = {
+    priority: number;
+    type: "PARENT_CATEGORY";
+    parentCategoryName: string;
+} | {
+    priority: number;
+    type: "CATEGORY";
+    categoryName: string;
+} | {
+    priority: number;
+    type: "LINK";
+    url: string;
+    title: string;
+>>>>>>> 5cabb00 (feat(115): refacto product)
 }
 
 export type response_45_0 = {
@@ -1701,18 +2588,41 @@ export type response_45_1 = {
 } & {body: undefined};
 
 export type response_45_2 = {
-    code: 404;
+    code: 403;
     ok: false;
+<<<<<<< HEAD
     info: "product.notfound";
+=======
+    info: "user.role.invalid";
+>>>>>>> 5cabb00 (feat(115): refacto product)
 } & {body: undefined};
 
 export type response_45_3 = {
-    code: 406;
+    code: 409;
     ok: false;
-    info: "organization.hasNotUser";
+    info: "navigationItem.limit";
 } & {body: undefined};
 
+export type response_body_45_4 = {
+    id: string;
+    priority: number;
+    type: "PARENT_CATEGORY";
+    parentCategoryName: string;
+} | {
+    id: string;
+    priority: number;
+    type: "CATEGORY";
+    categoryName: string;
+} | {
+    id: string;
+    priority: number;
+    type: "LINK";
+    url: string;
+    title: string;
+}
+
 export type response_45_4 = {
+<<<<<<< HEAD
     code: 403;
     ok: false;
     info: "user.role.organization.invalid";
@@ -1729,6 +2639,12 @@ export type parameters_46 = {
         productSheetId: string;
     };
 }
+=======
+    code: 201;
+    ok: true;
+    info: "navigationItem.created";
+} & {body: response_body_45_4};
+>>>>>>> 5cabb00 (feat(115): refacto product)
 
 export type response_46_0 = {
     code: 401;
@@ -1743,6 +2659,7 @@ export type response_46_1 = {
 } & {body: undefined};
 
 export type response_46_2 = {
+<<<<<<< HEAD
     code: 404;
     ok: false;
     info: "productSheet.notfound";
@@ -1755,21 +2672,44 @@ export type response_46_3 = {
 } & {body: undefined};
 
 export type response_46_4 = {
+=======
+>>>>>>> 5cabb00 (feat(115): refacto product)
     code: 403;
     ok: false;
-    info: "user.role.organization.invalid";
+    info: "user.role.invalid";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_body_46_5 = {
     name: string;
     disabled: boolean;
     imageKey: string | null;
     imageUrl: string | null;
 }[]
+=======
+export type response_body_46_3 = ({
+    id: string;
+    priority: number;
+    type: "PARENT_CATEGORY";
+    parentCategoryName: string;
+} | {
+    id: string;
+    priority: number;
+    type: "CATEGORY";
+    categoryName: string;
+} | {
+    id: string;
+    priority: number;
+    type: "LINK";
+    url: string;
+    title: string;
+})[]
+>>>>>>> 5cabb00 (feat(115): refacto product)
 
-export type response_46_5 = {
+export type response_46_3 = {
     code: 200;
     ok: true;
+<<<<<<< HEAD
     info: "productSheet.categories";
 } & {body: response_body_46_5};
 
@@ -1780,6 +2720,15 @@ export type request_body_47 = {
 export type parameters_47 = {
     params: {
         productSheetId: string;
+=======
+    info: "navigationItems";
+} & {body: response_body_46_3};
+
+export type parameters_47 = {
+    params: {
+        parentCategoryName: string;
+        categoryName: string;
+>>>>>>> 5cabb00 (feat(115): refacto product)
     };
 }
 
@@ -1796,18 +2745,23 @@ export type response_47_1 = {
 } & {body: undefined};
 
 export type response_47_2 = {
-    code: 404;
+    code: 403;
     ok: false;
+<<<<<<< HEAD
     info: "productSheet.notfound";
+=======
+    info: "user.role.invalid";
+>>>>>>> 5cabb00 (feat(115): refacto product)
 } & {body: undefined};
 
 export type response_47_3 = {
-    code: 406;
+    code: 404;
     ok: false;
-    info: "organization.hasNotUser";
+    info: "parentCategory.notfound";
 } & {body: undefined};
 
 export type response_47_4 = {
+<<<<<<< HEAD
     code: 403;
     ok: false;
     info: "user.role.organization.invalid";
@@ -1834,6 +2788,34 @@ export type response_47_7 = {
 export type parameters_48 = {
     params: {
         productSheetId: string;
+=======
+    code: 200;
+    ok: true;
+    info: "parentCategory.category.untied";
+} & {body: undefined};
+
+export type request_body_48 = {
+    id: string;
+    priority: number;
+    type: "PARENT_CATEGORY";
+    parentCategoryName: string;
+} | {
+    id: string;
+    priority: number;
+    type: "CATEGORY";
+    categoryName: string;
+} | {
+    id: string;
+    priority: number;
+    type: "LINK";
+    url: string;
+    title: string;
+}
+
+export type parameters_48 = {
+    params: {
+        navigationItemId: string;
+>>>>>>> 5cabb00 (feat(115): refacto product)
     };
 }
 
@@ -1850,23 +2832,28 @@ export type response_48_1 = {
 } & {body: undefined};
 
 export type response_48_2 = {
-    code: 404;
+    code: 403;
     ok: false;
+<<<<<<< HEAD
     info: "productSheet.notfound";
+=======
+    info: "user.role.invalid";
+>>>>>>> 5cabb00 (feat(115): refacto product)
 } & {body: undefined};
 
 export type response_48_3 = {
-    code: 406;
+    code: 404;
     ok: false;
-    info: "organization.hasNotUser";
+    info: "navigationItem.notfound";
 } & {body: undefined};
 
 export type response_48_4 = {
-    code: 403;
+    code: 404;
     ok: false;
-    info: "user.role.organization.invalid";
+    info: "category.notfound";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_body_48_5 = {
     id: string;
     name: string;
@@ -1890,10 +2877,23 @@ export type request_body_49 = {
     shortDescription?: string | undefined;
     price?: number | undefined;
 }
+=======
+export type response_48_5 = {
+    code: 404;
+    ok: false;
+    info: "parentCategory.notfound";
+} & {body: undefined};
+
+export type response_48_6 = {
+    code: 204;
+    ok: true;
+    info: "navigationItem.edited";
+} & {body: undefined};
+>>>>>>> 5cabb00 (feat(115): refacto product)
 
 export type parameters_49 = {
     params: {
-        productSheetId: string;
+        navigationItemId: string;
     };
 }
 
@@ -1910,18 +2910,19 @@ export type response_49_1 = {
 } & {body: undefined};
 
 export type response_49_2 = {
-    code: 404;
+    code: 403;
     ok: false;
-    info: "productSheet.notfound";
+    info: "user.role.invalid";
 } & {body: undefined};
 
 export type response_49_3 = {
-    code: 406;
+    code: 404;
     ok: false;
-    info: "organization.hasNotUser";
+    info: "navigationItem.notfound";
 } & {body: undefined};
 
 export type response_49_4 = {
+<<<<<<< HEAD
     code: 403;
     ok: false;
     info: "user.role.organization.invalid";
@@ -1934,11 +2935,25 @@ export type response_49_5 = {
     ok: true;
     info: "productSheet.edited";
 } & {body: response_body_49_5};
+=======
+    code: 204;
+    ok: true;
+    info: "navigationItem.delete";
+} & {body: undefined};
+>>>>>>> 5cabb00 (feat(115): refacto product)
+
+export type request_body_50 = {
+    categoryName: string;
+}
 
 export type parameters_50 = {
     params: {
+<<<<<<< HEAD
         productSheetId: string;
         categoryName: string;
+=======
+        parentCategoryName: string;
+>>>>>>> 5cabb00 (feat(115): refacto product)
     };
 }
 
@@ -1955,24 +2970,25 @@ export type response_50_1 = {
 } & {body: undefined};
 
 export type response_50_2 = {
-    code: 404;
+    code: 403;
     ok: false;
-    info: "productSheet.notfound";
+    info: "user.role.invalid";
 } & {body: undefined};
 
 export type response_50_3 = {
-    code: 406;
+    code: 404;
     ok: false;
-    info: "organization.hasNotUser";
+    info: "parentCategory.notfound";
 } & {body: undefined};
 
 export type response_50_4 = {
-    code: 403;
+    code: 404;
     ok: false;
-    info: "user.role.organization.invalid";
+    info: "category.notfound";
 } & {body: undefined};
 
 export type response_50_5 = {
+<<<<<<< HEAD
     code: 404;
     ok: false;
     info: "category.notfound";
@@ -1987,11 +3003,26 @@ export type response_50_6 = {
 export type request_body_51 = {
     type: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
     value: string;
+=======
+    code: 409;
+    ok: false;
+    info: "parentCategory.categories.limit";
+} & {body: undefined};
+
+export type response_50_6 = {
+    code: 204;
+    ok: true;
+    info: "parentCategory.category.linked";
+} & {body: undefined};
+
+export type request_body_51 = {
+    name?: string | undefined;
+>>>>>>> 5cabb00 (feat(115): refacto product)
 }
 
 export type parameters_51 = {
     params: {
-        productSheetId: string;
+        parentCategoryName: string;
     };
 }
 
@@ -2008,24 +3039,25 @@ export type response_51_1 = {
 } & {body: undefined};
 
 export type response_51_2 = {
-    code: 404;
+    code: 403;
     ok: false;
-    info: "productSheet.notfound";
+    info: "user.role.invalid";
 } & {body: undefined};
 
 export type response_51_3 = {
-    code: 406;
+    code: 404;
     ok: false;
-    info: "organization.hasNotUser";
+    info: "parentCategory.notfound";
 } & {body: undefined};
 
 export type response_51_4 = {
-    code: 403;
+    code: 409;
     ok: false;
-    info: "user.role.organization.invalid";
+    info: "parentCategory.name.alreadyUse";
 } & {body: undefined};
 
 export type response_51_5 = {
+<<<<<<< HEAD
     code: 409;
     ok: false;
     info: "productSheet.facet.alreadyExist";
@@ -2036,6 +3068,12 @@ export type response_body_51_6 = {
     productSheetId: string;
     value: string;
 }
+=======
+    code: 204;
+    ok: true;
+    info: "parentCategory.edited";
+} & {body: undefined};
+>>>>>>> 5cabb00 (feat(115): refacto product)
 
 export type response_51_6 = {
     code: 201;
@@ -2044,9 +3082,10 @@ export type response_51_6 = {
 } & {body: response_body_51_6};
 
 export type parameters_52 = {
-    params: {
-        productSheetId: string;
-    };
+    query?: {
+        page?: number;
+        name?: string | undefined;
+    } | undefined;
 }
 
 export type response_52_0 = {
@@ -2062,23 +3101,12 @@ export type response_52_1 = {
 } & {body: undefined};
 
 export type response_52_2 = {
-    code: 404;
-    ok: false;
-    info: "productSheet.notfound";
-} & {body: undefined};
-
-export type response_52_3 = {
-    code: 406;
-    ok: false;
-    info: "organization.hasNotUser";
-} & {body: undefined};
-
-export type response_52_4 = {
     code: 403;
     ok: false;
-    info: "user.role.organization.invalid";
+    info: "user.role.invalid";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_body_52_5 = {
     id: string;
     productSheetId: string;
@@ -2093,6 +3121,23 @@ export type response_52_5 = {
     ok: true;
     info: "productSheet.images";
 } & {body: response_body_52_5};
+=======
+export type response_body_52_3 = {
+    id: string;
+    name: string;
+    label: string | null;
+    ownerId: string;
+    suspended: boolean;
+    logoKey: string | null;
+    logoUrl: string | null;
+}[]
+
+export type response_52_3 = {
+    code: 200;
+    ok: true;
+    info: "organizations";
+} & {body: response_body_52_3};
+>>>>>>> 5cabb00 (feat(115): refacto product)
 
 export type request_body_53 = {
     sku: string;
@@ -2101,7 +3146,11 @@ export type request_body_53 = {
 
 export type parameters_53 = {
     params: {
+<<<<<<< HEAD
         productSheetId: string;
+=======
+        parentCategoryName: string;
+>>>>>>> 5cabb00 (feat(115): refacto product)
     };
 }
 
@@ -2118,26 +3167,15 @@ export type response_53_1 = {
 } & {body: undefined};
 
 export type response_53_2 = {
-    code: 404;
+    code: 403;
     ok: false;
-    info: "productSheet.notfound";
+    info: "user.role.invalid";
 } & {body: undefined};
 
 export type response_53_3 = {
-    code: 406;
-    ok: false;
-    info: "organization.hasNotUser";
-} & {body: undefined};
-
-export type response_53_4 = {
-    code: 403;
-    ok: false;
-    info: "user.role.organization.invalid";
-} & {body: undefined};
-
-export type response_53_5 = {
     code: 404;
     ok: false;
+<<<<<<< HEAD
     info: "warehouse.notfound";
 } & {body: undefined};
 
@@ -2146,6 +3184,23 @@ export type response_53_6 = {
     ok: false;
     info: "product.sku.alreadyUse";
 } & {body: undefined};
+=======
+    info: "parentCategory.notfound";
+} & {body: undefined};
+
+export type response_body_53_4 = {
+    name: string;
+    disabled: boolean;
+    imageKey: string | null;
+    imageUrl: string | null;
+}[]
+
+export type response_53_4 = {
+    code: 200;
+    ok: true;
+    info: "parentCategory.categories";
+} & {body: response_body_53_4};
+>>>>>>> 5cabb00 (feat(115): refacto product)
 
 export type response_body_53_7 = {
     sku: string;
@@ -2164,6 +3219,7 @@ export type response_53_7 = {
 } & {body: response_body_53_7};
 
 export type request_body_54 = {
+<<<<<<< HEAD
     value?: string | undefined;
 }
 
@@ -2172,6 +3228,9 @@ export type parameters_54 = {
         productSheetId: string;
         facetType: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
     };
+=======
+    name: string;
+>>>>>>> 5cabb00 (feat(115): refacto product)
 }
 
 export type response_54_0 = {
@@ -2187,12 +3246,13 @@ export type response_54_1 = {
 } & {body: undefined};
 
 export type response_54_2 = {
-    code: 404;
+    code: 403;
     ok: false;
-    info: "productSheet.notfound";
+    info: "user.role.invalid";
 } & {body: undefined};
 
 export type response_54_3 = {
+<<<<<<< HEAD
     code: 406;
     ok: false;
     info: "organization.hasNotUser";
@@ -2215,12 +3275,29 @@ export type response_54_6 = {
     ok: true;
     info: "facet.edited";
 } & {body: undefined};
+=======
+    code: 409;
+    ok: false;
+    info: "parentCategory.name.alreadyUse";
+} & {body: undefined};
+
+export type response_body_54_4 = {
+    name: string;
+}
+
+export type response_54_4 = {
+    code: 201;
+    ok: true;
+    info: "parentCategory.created";
+} & {body: response_body_54_4};
+>>>>>>> 5cabb00 (feat(115): refacto product)
 
 export type parameters_55 = {
-    params: {
-        productSheetId: string;
-        facetType: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
-    };
+    query?: {
+        page?: number;
+        name?: string | undefined;
+        withCategories?: ("true" | "false") | undefined;
+    } | undefined;
 }
 
 export type response_55_0 = {
@@ -2236,34 +3313,33 @@ export type response_55_1 = {
 } & {body: undefined};
 
 export type response_55_2 = {
-    code: 404;
-    ok: false;
-    info: "productSheet.notfound";
-} & {body: undefined};
-
-export type response_55_3 = {
-    code: 406;
-    ok: false;
-    info: "organization.hasNotUser";
-} & {body: undefined};
-
-export type response_55_4 = {
     code: 403;
     ok: false;
-    info: "user.role.organization.invalid";
+    info: "user.role.invalid";
 } & {body: undefined};
 
-export type response_55_5 = {
-    code: 404;
-    ok: false;
-    info: "facet.notfound";
-} & {body: undefined};
+export type response_body_55_3 = {
+    name: string;
+    categories?: {
+        categoryName: string;
+    }[] | undefined;
+}[]
 
-export type response_55_6 = {
-    code: 204;
+export type response_55_3 = {
+    code: 200;
     ok: true;
+<<<<<<< HEAD
     info: "facet.deleted";
 } & {body: undefined};
+=======
+    info: "parentCategories";
+} & {body: response_body_55_3};
+
+export type request_body_56 = {
+    primordialRole?: ("CUSTOMER" | "CONTENTS_MASTER" | "MODERATOR") | undefined;
+    muted?: boolean | undefined;
+}
+>>>>>>> 5cabb00 (feat(115): refacto product)
 
 export type parameters_56 = {
     headers: {
@@ -2271,7 +3347,11 @@ export type parameters_56 = {
         "content-length": number;
     };
     params: {
+<<<<<<< HEAD
         productSheetId: string;
+=======
+        userId: string;
+>>>>>>> 5cabb00 (feat(115): refacto product)
     };
 }
 
@@ -2288,24 +3368,25 @@ export type response_56_1 = {
 } & {body: undefined};
 
 export type response_56_2 = {
-    code: 404;
+    code: 403;
     ok: false;
-    info: "productSheet.notfound";
+    info: "user.role.invalid";
 } & {body: undefined};
 
 export type response_56_3 = {
-    code: 406;
+    code: 404;
     ok: false;
-    info: "organization.hasNotUser";
+    info: "user.notfound";
 } & {body: undefined};
 
 export type response_56_4 = {
-    code: 403;
+    code: 401;
     ok: false;
-    info: "user.role.organization.invalid";
+    info: "user.primordialRole.admin";
 } & {body: undefined};
 
 export type response_56_5 = {
+<<<<<<< HEAD
     code: 409;
     ok: false;
     info: "product.images.limit";
@@ -2315,6 +3396,11 @@ export type response_56_6 = {
     code: 400;
     ok: false;
     info: "productSheet.image.missing";
+=======
+    code: 204;
+    ok: true;
+    info: "user.edited";
+>>>>>>> 5cabb00 (feat(115): refacto product)
 } & {body: undefined};
 
 export type response_body_56_7 = {
@@ -2333,6 +3419,7 @@ export type response_56_7 = {
 } & {body: response_body_56_7};
 
 export type parameters_57 = {
+<<<<<<< HEAD
     headers: {
         "content-type": string;
         "content-length": number;
@@ -2340,6 +3427,13 @@ export type parameters_57 = {
     params: {
         organizationId: string;
     };
+=======
+    query?: {
+        page?: number;
+        email?: string | undefined;
+        primordialRole?: (("CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN") | ("CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN")[]) | undefined;
+    } | undefined;
+>>>>>>> 5cabb00 (feat(115): refacto product)
 }
 
 export type response_57_0 = {
@@ -2355,6 +3449,7 @@ export type response_57_1 = {
 } & {body: undefined};
 
 export type response_57_2 = {
+<<<<<<< HEAD
     code: 404;
     ok: false;
     info: "organization.notfound";
@@ -2367,11 +3462,14 @@ export type response_57_3 = {
 } & {body: undefined};
 
 export type response_57_4 = {
+=======
+>>>>>>> 5cabb00 (feat(115): refacto product)
     code: 403;
     ok: false;
-    info: "user.role.organization.invalid";
+    info: "user.role.invalid";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_57_5 = {
     code: 400;
     ok: false;
@@ -2390,6 +3488,24 @@ export type request_body_58 = {
     shortDescription: string;
     price: number;
 }
+=======
+export type response_body_57_3 = {
+    id: string;
+    email: string;
+    lastname: string;
+    firstname: string;
+    dateOfBirth?: string;
+    address: string;
+    primordialRole: "CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN";
+    muted: boolean;
+}[]
+
+export type response_57_3 = {
+    code: 200;
+    ok: true;
+    info: "users";
+} & {body: response_body_57_3};
+>>>>>>> 5cabb00 (feat(115): refacto product)
 
 export type parameters_58 = {
     params: {
@@ -2427,12 +3543,29 @@ export type response_58_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_body_58_5 = {
     id: string;
+=======
+export type response_58_5 = {
+    code: 400;
+    ok: false;
+    info: "organization.logo.missing";
+} & {body: undefined};
+
+export type response_58_6 = {
+    code: 204;
+    ok: true;
+    info: "organization.logo.edited";
+} & {body: undefined};
+
+export type request_body_59 = {
+>>>>>>> 5cabb00 (feat(115): refacto product)
     name: string;
     description: string;
     shortDescription: string;
     price: number;
+<<<<<<< HEAD
     createdAt?: string;
     updatedAt?: string;
     organizationId: string;
@@ -2444,9 +3577,14 @@ export type response_58_5 = {
     info: "productSheet.created";
 } & {body: response_body_58_5};
 
+=======
+    warehouseId: string;
+}
+
+>>>>>>> 5cabb00 (feat(115): refacto product)
 export type parameters_59 = {
     params: {
-        productSheetId: string;
+        organizationId: string;
     };
 }
 
@@ -2465,7 +3603,7 @@ export type response_59_1 = {
 export type response_59_2 = {
     code: 404;
     ok: false;
-    info: "productSheet.notfound";
+    info: "organization.notfound";
 } & {body: undefined};
 
 export type response_59_3 = {
@@ -2480,6 +3618,7 @@ export type response_59_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_body_59_5 = {
     type: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
     productSheetId: string;
@@ -2492,13 +3631,43 @@ export type response_59_5 = {
     info: "productSheet.facets";
 } & {body: response_body_59_5};
 
+=======
+export type response_59_5 = {
+    code: 404;
+    ok: false;
+    info: "warehouse.notfound";
+} & {body: undefined};
+
+export type response_body_59_6 = {
+    id: string;
+    name: string;
+    description: string;
+    shortDescription: string;
+    price: number;
+    createdAt?: string;
+    updatedAt?: string;
+    organizationId: string;
+    warehouseId: string;
+}
+
+export type response_59_6 = {
+    code: 201;
+    ok: true;
+    info: "productSheet.created";
+} & {body: response_body_59_6};
+
+>>>>>>> 5cabb00 (feat(115): refacto product)
 export type parameters_60 = {
     params: {
         organizationId: string;
     };
     query?: {
         page?: number;
+<<<<<<< HEAD
         name?: string | undefined;
+=======
+        email?: string | undefined;
+>>>>>>> 5cabb00 (feat(115): refacto product)
     } | undefined;
 }
 
@@ -2534,6 +3703,7 @@ export type response_60_4 = {
 
 export type response_body_60_5 = {
     id: string;
+<<<<<<< HEAD
     name: string;
     description: string;
     shortDescription: string;
@@ -2541,12 +3711,22 @@ export type response_body_60_5 = {
     createdAt?: string;
     updatedAt?: string;
     organizationId: string;
+=======
+    email: string;
+    lastname: string;
+    firstname: string;
+    organizationRole: "STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT" | "OWNER";
+>>>>>>> 5cabb00 (feat(115): refacto product)
 }[]
 
 export type response_60_5 = {
     code: 200;
     ok: true;
+<<<<<<< HEAD
     info: "productSheets.found";
+=======
+    info: "organization.users";
+>>>>>>> 5cabb00 (feat(115): refacto product)
 } & {body: response_body_60_5};
 
 export type parameters_61 = {
@@ -2592,6 +3772,7 @@ export type response_61_4 = {
 } & {body: undefined};
 
 export type response_body_61_5 = {
+<<<<<<< HEAD
     sku: string;
     productSheetId: string;
     organizationId: string;
@@ -2616,12 +3797,31 @@ export type response_body_61_5 = {
         organizationId: string;
     } | undefined;
 }[]
+=======
+    id: string;
+    name: string;
+    label: string | null;
+    ownerId: string;
+    suspended: boolean;
+    logoKey: string | null;
+    logoUrl: string | null;
+}
+>>>>>>> 5cabb00 (feat(115): refacto product)
 
 export type response_61_5 = {
     code: 200;
     ok: true;
+<<<<<<< HEAD
     info: "products.found";
 } & {body: response_body_61_5};
+=======
+    info: "organization.found";
+} & {body: response_body_61_5};
+
+export type request_body_62 = {
+    label?: (string | null) | undefined;
+}
+>>>>>>> 5cabb00 (feat(115): refacto product)
 
 export type parameters_62 = {
     params: {
@@ -2671,10 +3871,22 @@ export type response_body_62_5 = {
 }[]
 
 export type response_62_5 = {
+<<<<<<< HEAD
     code: 200;
     ok: true;
     info: "warehouses.found";
 } & {body: response_body_62_5};
+=======
+    code: 204;
+    ok: true;
+    info: "organization.edited";
+} & {body: undefined};
+
+export type request_body_63 = {
+    name: string;
+    address: string;
+}
+>>>>>>> 5cabb00 (feat(115): refacto product)
 
 export type parameters_63 = {
     params: {
@@ -2725,15 +3937,42 @@ export type response_body_63_5 = {
 }[]
 
 export type response_63_5 = {
+<<<<<<< HEAD
     code: 200;
     ok: true;
     info: "organization.users";
 } & {body: response_body_63_5};
+=======
+    code: 400;
+    ok: false;
+    info: "warehouse.address.invalid";
+} & {body: undefined};
+>>>>>>> 5cabb00 (feat(115): refacto product)
+
+export type response_body_63_6 = {
+    id: string;
+    name: string;
+    address: string;
+    organizationId: string;
+}
+
+export type response_63_6 = {
+    code: 201;
+    ok: true;
+    info: "warehouse.created";
+} & {body: response_body_63_6};
 
 export type parameters_64 = {
     params: {
         organizationId: string;
     };
+<<<<<<< HEAD
+=======
+    query?: {
+        page?: number;
+        name?: string | undefined;
+    } | undefined;
+>>>>>>> 5cabb00 (feat(115): refacto product)
 }
 
 export type response_64_0 = {
@@ -2769,16 +4008,28 @@ export type response_64_4 = {
 export type response_body_64_5 = {
     id: string;
     name: string;
+<<<<<<< HEAD
     label: string | null;
     ownerId: string;
     suspended: boolean;
     logoKey: string | null;
     logoUrl: string | null;
 }
+=======
+    description: string;
+    shortDescription: string;
+    price: number;
+    createdAt?: string;
+    updatedAt?: string;
+    organizationId: string;
+    warehouseId: string;
+}[]
+>>>>>>> 5cabb00 (feat(115): refacto product)
 
 export type response_64_5 = {
     code: 200;
     ok: true;
+<<<<<<< HEAD
     info: "organization.found";
 } & {body: response_body_64_5};
 
@@ -2786,10 +4037,22 @@ export type request_body_65 = {
     label?: (string | null) | undefined;
 }
 
+=======
+    info: "productSheets.found";
+} & {body: response_body_64_5};
+
+>>>>>>> 5cabb00 (feat(115): refacto product)
 export type parameters_65 = {
     params: {
         organizationId: string;
     };
+<<<<<<< HEAD
+=======
+    query?: {
+        page?: number;
+        name?: string | undefined;
+    } | undefined;
+>>>>>>> 5cabb00 (feat(115): refacto product)
 }
 
 export type response_65_0 = {
@@ -2822,7 +4085,15 @@ export type response_65_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
+export type response_body_65_5 = {
+    id: string;
+    name: string;
+    address: string;
+    organizationId: string;
+}[]
+
 export type response_65_5 = {
+<<<<<<< HEAD
     code: 204;
     ok: true;
     info: "organization.edited";
@@ -2832,11 +4103,24 @@ export type request_body_66 = {
     name: string;
     address: string;
 }
+=======
+    code: 200;
+    ok: true;
+    info: "warehouses.found";
+} & {body: response_body_65_5};
+>>>>>>> 5cabb00 (feat(115): refacto product)
 
 export type parameters_66 = {
     params: {
         organizationId: string;
     };
+<<<<<<< HEAD
+=======
+    query?: {
+        page?: number;
+        sku?: string | undefined;
+    } | undefined;
+>>>>>>> 5cabb00 (feat(115): refacto product)
 }
 
 export type response_66_0 = {
@@ -2869,6 +4153,22 @@ export type response_66_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
+<<<<<<< HEAD
+=======
+export type response_body_66_5 = {
+    sku: string;
+    status: "WAITING_PAYMENT" | "ORDER" | "WRONG" | "SOLD" | "IN_STOCK";
+    organizationId: string;
+    productSheetId: string;
+    productSheetName: string;
+    productSheetFirstImageUrl?: string | undefined;
+    warehouseId: string;
+    warehouseName: string;
+    createdAt: string;
+    updatedAt: string;
+}[]
+
+>>>>>>> 5cabb00 (feat(115): refacto product)
 export type response_66_5 = {
     code: 400;
     ok: false;
@@ -2885,8 +4185,18 @@ export type response_body_66_6 = {
 export type response_66_6 = {
     code: 201;
     ok: true;
+<<<<<<< HEAD
     info: "warehouse.created";
 } & {body: response_body_66_6};
+
+export type request_body_67 = {
+    name?: string | undefined;
+    address?: string | undefined;
+}
+=======
+    info: "products.found";
+} & {body: response_body_66_5};
+>>>>>>> 5cabb00 (feat(115): refacto product)
 
 export type request_body_67 = {
     name?: string | undefined;
@@ -2995,6 +4305,7 @@ export type response_68_6 = {
     info: "article.created";
 } & {body: response_body_68_6};
 
+<<<<<<< HEAD
 export type request_body_69 = {
     lastname: string;
     firstname: string;
@@ -3042,6 +4353,9 @@ export type response_69_5 = {
 } & {body: response_body_69_5};
 
 export type parameters_70 = {
+=======
+export type parameters_69 = {
+>>>>>>> 5cabb00 (feat(115): refacto product)
     query?: ({} & {
         color?: (string | string[]) | undefined;
         size?: string | undefined;
@@ -3061,6 +4375,7 @@ export type parameters_70 = {
     };
 }
 
+<<<<<<< HEAD
 export type response_body_70_0 = string
 
 export type response_70_0 = {
@@ -3112,6 +4427,126 @@ export type response_71_0 = {
     ok: true;
     info: "filters";
 } & {body: response_body_71_0};
+=======
+export type response_body_69_0 = ({
+    type: "CHECKBOX" | "RADIO";
+    name: string;
+    values: {
+        value: string;
+        quantity: number;
+    }[];
+} | {
+    type: "TOGGLE";
+    name: string;
+    quantity: number;
+} | {
+    type: "RANGE";
+    name: string;
+    min: number;
+    max: number;
+})[]
+
+export type response_69_0 = {
+    code: 200;
+    ok: true;
+    info: "filters";
+} & {body: response_body_69_0};
+
+export type parameters_70 = {
+    query?: ({} & {
+        color?: (string | string[]) | undefined;
+        size?: string | undefined;
+        diameter?: string | undefined;
+        target?: string | undefined;
+        accessory?: ("true" | "false") | undefined;
+        material?: (string | string[]) | undefined;
+        stimulation?: (string | string[]) | undefined;
+        price?: [
+            number,
+            number
+        ] | undefined;
+    }) & {
+        search?: string | undefined;
+        searchByRegex?: string | undefined;
+        categoryName?: string | undefined;
+    };
+}
+
+export type response_body_70_0 = string
+
+export type response_70_0 = {
+    code: 200;
+    ok: true;
+    info: "fullProductSheetCount";
+} & {body: response_body_70_0};
+
+export type parameters_71 = {
+    query?: ({
+        page?: number;
+        take?: number;
+    } & {
+        color?: (string | string[]) | undefined;
+        size?: string | undefined;
+        diameter?: string | undefined;
+        target?: string | undefined;
+        accessory?: ("true" | "false") | undefined;
+        material?: (string | string[]) | undefined;
+        stimulation?: (string | string[]) | undefined;
+        price?: [
+            number,
+            number
+        ] | undefined;
+    }) & {
+        search?: string | undefined;
+        searchByRegex?: string | undefined;
+        categoryName?: string | undefined;
+    };
+}
+
+export type response_71_0 = {
+    code: 404;
+    ok: false;
+    info: "category.notfound";
+} & {body: undefined};
+
+export type response_71_1 = {
+    code: 403;
+    ok: false;
+    info: "category.disabled";
+} & {body: undefined};
+
+export type response_body_71_2 = {
+    id: string;
+    name: string;
+    price: number;
+    shortDescription: string;
+    description: string;
+    quantity: number;
+    categories: string[];
+    images: string[];
+    organization: {
+        id: string;
+        name: string;
+        label?: string | undefined;
+        logoUrl?: string | undefined;
+    };
+    facets: {
+        ACCESSORY?: string | undefined;
+        COLOR?: string | undefined;
+        DIAMETER?: string | undefined;
+        MATERIAL?: string | undefined;
+        SIZE?: string | undefined;
+        STIMULATION?: string | undefined;
+        TARGET?: string | undefined;
+    };
+}[]
+
+export type response_71_2 = {
+    code: 200;
+    ok: true;
+    info: "fullProductSheets";
+} & {body: response_body_71_2};
+>>>>>>> 5cabb00 (feat(115): refacto product)
 
 export type parameters_72 = {
     params: {
@@ -3283,17 +4718,23 @@ export type DefEnrichedDuplojsTo = {
 	response: response_1_0
 		| response_1_1,
 } | {
+<<<<<<< HEAD
 	path: "/entry/admin-panel*",
+=======
+	path: "/geocoder",
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	method: "GET",
 	body: unknown,
-	parameters: undefined,
-	response: response_2_0
-		| response_2_1
-		| response_2_2
-		| response_2_3,
+	parameters: parameters_2,
+	response: response_2_0,
 } | {
+<<<<<<< HEAD
 	path: "/entry/content-panel*",
 	method: "GET",
+=======
+	path: "/stripe-webhook/checkout",
+	method: "POST",
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	body: unknown,
 	parameters: undefined,
 	response: response_3_0
@@ -3301,28 +4742,40 @@ export type DefEnrichedDuplojsTo = {
 		| response_3_2
 		| response_3_3,
 } | {
+<<<<<<< HEAD
 	path: "/entry/organization-panel/{organizationId}/manage-user" | "/entry/organization-panel/{organizationId}/manage",
+=======
+	path: "/entry/admin-panel*",
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	method: "GET",
 	body: unknown,
-	parameters: parameters_4,
+	parameters: undefined,
 	response: response_4_0
 		| response_4_1
 		| response_4_2
+<<<<<<< HEAD
 		| response_4_3
 		| response_4_4,
 } | {
 	path: "/entry/organization-panel/{organizationId}/warehouses" | "/entry/organization-panel/{organizationId}/create-warehouse" | "/entry/organization-panel/{organizationId}/edited-warehouse/{warehouseId}",
+=======
+		| response_4_3,
+} | {
+	path: "/entry/content-panel*",
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	method: "GET",
 	body: unknown,
-	parameters: parameters_5,
+	parameters: undefined,
 	response: response_5_0
 		| response_5_1
 		| response_5_2
-		| response_5_3
-		| response_5_4
-		| response_5_5,
+		| response_5_3,
 } | {
+<<<<<<< HEAD
 	path: "/entry/organization-panel/{organizationId}/product-sheets" | "/entry/organization-panel/{organizationId}/edit-product-sheet/{productSheetId}" | "/entry/organization-panel/{organizationId}/create-product-sheet",
+=======
+	path: "/entry/organization-panel/{organizationId}/manage-user" | "/entry/organization-panel/{organizationId}/manage",
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	method: "GET",
 	body: unknown,
 	parameters: parameters_6,
@@ -3330,36 +4783,79 @@ export type DefEnrichedDuplojsTo = {
 		| response_6_1
 		| response_6_2
 		| response_6_3
+<<<<<<< HEAD
 		| response_6_4
 		| response_6_5,
 } | {
 	path: "/entry/organization-panel/{organizationId}*",
+=======
+		| response_6_4,
+} | {
+	path: "/entry/organization-panel/{organizationId}/warehouses" | "/entry/organization-panel/{organizationId}/create-warehouse" | "/entry/organization-panel/{organizationId}/edited-warehouse/{warehouseId}",
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	method: "GET",
 	body: unknown,
 	parameters: parameters_7,
 	response: response_7_0
 		| response_7_1
 		| response_7_2
+<<<<<<< HEAD
 		| response_7_3,
+=======
+		| response_7_3
+		| response_7_4
+		| response_7_5,
+} | {
+	path: "/entry/organization-panel/{organizationId}/product-sheets" | "/entry/organization-panel/{organizationId}/edit-product-sheet/{productSheetId}" | "/entry/organization-panel/{organizationId}/create-product-sheet",
+	method: "GET",
+	body: unknown,
+	parameters: parameters_8,
+	response: response_8_0
+		| response_8_1
+		| response_8_2
+		| response_8_3
+		| response_8_4
+		| response_8_5,
+} | {
+	path: "/entry/organization-panel/{organizationId}*",
+	method: "GET",
+	body: unknown,
+	parameters: parameters_9,
+	response: response_9_0
+		| response_9_1
+		| response_9_2
+		| response_9_3,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 } | {
 	path: "/entry/login" | "/entry/register",
 	method: "GET",
 	body: unknown,
 	parameters: undefined,
+<<<<<<< HEAD
 	response: response_8_0,
+=======
+	response: response_10_0,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 } | {
 	path: "/entry/edit-profile" | "/entry/my-organizations" | "/entry/order",
 	method: "GET",
 	body: unknown,
 	parameters: undefined,
+<<<<<<< HEAD
 	response: response_9_0
 		| response_9_1
 		| response_9_2,
+=======
+	response: response_11_0
+		| response_11_1
+		| response_11_2,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 } | {
 	path: "/entry*",
 	method: "GET",
 	body: unknown,
 	parameters: undefined,
+<<<<<<< HEAD
 	response: response_10_0,
 } | {
 	path: "/geocoder",
@@ -3376,6 +4872,9 @@ export type DefEnrichedDuplojsTo = {
 		| response_12_1
 		| response_12_2
 		| response_12_3,
+=======
+	response: response_12_0,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 } | {
 	path: "/navigation-bar",
 	method: "GET",
@@ -3409,25 +4908,28 @@ export type DefEnrichedDuplojsTo = {
 		| response_16_1
 		| response_16_2,
 } | {
-	path: "/image-product-sheet/{imageProductSheetId}",
-	method: "DELETE",
+	path: "/cart",
+	method: "GET",
 	body: unknown,
-	parameters: parameters_17,
+	parameters: undefined,
 	response: response_17_0
 		| response_17_1
-		| response_17_2
-		| response_17_3
-		| response_17_4
-		| response_17_5,
+		| response_17_2,
 } | {
+<<<<<<< HEAD
 	path: "/article/{productSheetId}",
+=======
+	path: "/image-product-sheet/{imageProductSheetId}",
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	method: "DELETE",
 	body: unknown,
 	parameters: parameters_18,
 	response: response_18_0
 		| response_18_1
 		| response_18_2
-		| response_18_3,
+		| response_18_3
+		| response_18_4
+		| response_18_5,
 } | {
 	path: "/organization/{organizationId}/user",
 	method: "GET",
@@ -3451,41 +4953,70 @@ export type DefEnrichedDuplojsTo = {
 		| response_20_6
 		| response_20_7,
 } | {
+<<<<<<< HEAD
 	path: "/user/organizations",
 	method: "GET",
 	body: unknown,
+=======
+	path: "/organization/{organizationId}/user/{userId}",
+	method: "PATCH",
+	body: request_body_21,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	parameters: parameters_21,
 	response: response_21_0
 		| response_21_1
 		| response_21_2
 		| response_21_3,
 } | {
+<<<<<<< HEAD
 	path: "/user",
 	method: "GET",
+=======
+	path: "/organization/{organizationId}/user/{userId}",
+	method: "DELETE",
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	body: unknown,
 	parameters: undefined,
 	response: response_22_0
 		| response_22_1
 		| response_22_2
-		| response_22_3,
+		| response_22_3
+		| response_22_4
+		| response_22_5
+		| response_22_6,
 } | {
+<<<<<<< HEAD
 	path: "/user",
 	method: "PATCH",
 	body: request_body_23,
 	parameters: undefined,
+=======
+	path: "/user/organizations",
+	method: "GET",
+	body: unknown,
+	parameters: parameters_23,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	response: response_23_0
 		| response_23_1
 		| response_23_2
 		| response_23_3,
 } | {
+<<<<<<< HEAD
 	path: "/organization/{organizationId}/user/{userId}",
 	method: "PATCH",
 	body: request_body_24,
 	parameters: parameters_24,
+=======
+	path: "/retry-command",
+	method: "POST",
+	body: request_body_24,
+	parameters: undefined,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	response: response_24_0
 		| response_24_1
 		| response_24_2
 		| response_24_3
+<<<<<<< HEAD
 		| response_24_4
 		| response_24_5
 		| response_24_6,
@@ -3494,6 +5025,14 @@ export type DefEnrichedDuplojsTo = {
 	method: "DELETE",
 	body: unknown,
 	parameters: parameters_25,
+=======
+		| response_24_4,
+} | {
+	path: "/user",
+	method: "GET",
+	body: unknown,
+	parameters: undefined,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	response: response_25_0
 		| response_25_1
 		| response_25_2
@@ -3502,28 +5041,35 @@ export type DefEnrichedDuplojsTo = {
 		| response_25_5
 		| response_25_6,
 } | {
-	path: "/retry-command",
-	method: "POST",
+	path: "/user",
+	method: "PATCH",
 	body: request_body_26,
 	parameters: undefined,
 	response: response_26_0
 		| response_26_1
 		| response_26_2
-		| response_26_3
-		| response_26_4,
+		| response_26_3,
 } | {
+<<<<<<< HEAD
 	path: "/category",
 	method: "POST",
 	body: request_body_27,
 	parameters: undefined,
+=======
+	path: "/product-sheet/{productSheetId}/categories",
+	method: "GET",
+	body: unknown,
+	parameters: parameters_27,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	response: response_27_0
 		| response_27_1
 		| response_27_2
 		| response_27_3
-		| response_27_4,
+		| response_27_4
+		| response_27_5,
 } | {
-	path: "/category/{categoryName}",
-	method: "PATCH",
+	path: "/product-sheet/{productSheetId}/category",
+	method: "POST",
 	body: request_body_28,
 	parameters: parameters_28,
 	response: response_28_0
@@ -3531,12 +5077,21 @@ export type DefEnrichedDuplojsTo = {
 		| response_28_2
 		| response_28_3
 		| response_28_4
-		| response_28_5,
+		| response_28_5
+		| response_28_6
+		| response_28_7,
 } | {
+<<<<<<< HEAD
 	path: "/organization",
 	method: "POST",
 	body: request_body_29,
 	parameters: undefined,
+=======
+	path: "/product-sheet/{productSheetId}/category/{categoryName}",
+	method: "DELETE",
+	body: unknown,
+	parameters: parameters_29,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	response: response_29_0
 		| response_29_1
 		| response_29_2
@@ -3545,9 +5100,15 @@ export type DefEnrichedDuplojsTo = {
 		| response_29_5
 		| response_29_6,
 } | {
+<<<<<<< HEAD
 	path: "/category/{categoryName}/image",
 	method: "PUT",
 	body: unknown,
+=======
+	path: "/product-sheet/{productSheetId}/facet",
+	method: "POST",
+	body: request_body_30,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	parameters: parameters_30,
 	response: response_30_0
 		| response_30_1
@@ -3556,66 +5117,121 @@ export type DefEnrichedDuplojsTo = {
 		| response_30_4
 		| response_30_5,
 } | {
+<<<<<<< HEAD
 	path: "/parent-categories",
+=======
+	path: "/product-sheet/{productSheetId}/facets",
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	method: "GET",
 	body: unknown,
 	parameters: parameters_31,
 	response: response_31_0
 		| response_31_1
 		| response_31_2
+<<<<<<< HEAD
 		| response_31_3,
 } | {
 	path: "/organization/{organizationId}@admin",
 	method: "PATCH",
 	body: request_body_32,
+=======
+		| response_31_3
+		| response_31_4
+		| response_31_5,
+} | {
+	path: "/product-sheet/{productSheetId}",
+	method: "GET",
+	body: unknown,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	parameters: parameters_32,
 	response: response_32_0
 		| response_32_1
 		| response_32_2
 		| response_32_3
+<<<<<<< HEAD
 		| response_32_4,
 } | {
 	path: "/navigation-item",
 	method: "POST",
+=======
+		| response_32_4
+		| response_32_5,
+} | {
+	path: "/product-sheet/{productSheetId}",
+	method: "PATCH",
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	body: request_body_33,
 	parameters: undefined,
 	response: response_33_0
 		| response_33_1
 		| response_33_2
 		| response_33_3
+<<<<<<< HEAD
 		| response_33_4,
 } | {
 	path: "/parent-category",
 	method: "POST",
 	body: request_body_34,
 	parameters: undefined,
+=======
+		| response_33_4
+		| response_33_5,
+} | {
+	path: "/product-sheet/{productSheetId}/facet/{facetType}",
+	method: "PATCH",
+	body: request_body_34,
+	parameters: parameters_34,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	response: response_34_0
 		| response_34_1
 		| response_34_2
 		| response_34_3
-		| response_34_4,
+		| response_34_4
+		| response_34_5
+		| response_34_6,
 } | {
+<<<<<<< HEAD
 	path: "/navigation-items",
 	method: "GET",
 	body: unknown,
 	parameters: undefined,
+=======
+	path: "/product-sheet/{productSheetId}/facet/{facetType}",
+	method: "DELETE",
+	body: unknown,
+	parameters: parameters_35,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	response: response_35_0
 		| response_35_1
 		| response_35_2
 		| response_35_3,
 } | {
+<<<<<<< HEAD
 	path: "/parent-category/{parentCategoryName}",
 	method: "PATCH",
 	body: request_body_36,
+=======
+	path: "/product-sheet/{productSheetId}/image",
+	method: "POST",
+	body: unknown,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	parameters: parameters_36,
 	response: response_36_0
 		| response_36_1
 		| response_36_2
 		| response_36_3
 		| response_36_4
+<<<<<<< HEAD
 		| response_36_5,
 } | {
 	path: "/parent-category/{parentCategoryName}/categories",
+=======
+		| response_36_5
+		| response_36_6
+		| response_36_7,
+} | {
+	path: "/product-sheet/{productSheetId}/images",
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	method: "GET",
 	body: unknown,
 	parameters: parameters_37,
@@ -3625,7 +5241,11 @@ export type DefEnrichedDuplojsTo = {
 		| response_37_3
 		| response_37_4,
 } | {
+<<<<<<< HEAD
 	path: "/parent-category/{parentCategoryName}/category",
+=======
+	path: "/product-sheet/{productSheetId}/product",
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	method: "POST",
 	body: request_body_38,
 	parameters: parameters_38,
@@ -3637,57 +5257,97 @@ export type DefEnrichedDuplojsTo = {
 		| response_38_5
 		| response_38_6,
 } | {
+<<<<<<< HEAD
 	path: "/parent-category/{parentCategoryName}/category/{categoryName}",
 	method: "DELETE",
 	body: unknown,
+=======
+	path: "/product/{sku}",
+	method: "PATCH",
+	body: request_body_39,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	parameters: parameters_39,
 	response: response_39_0
 		| response_39_1
 		| response_39_2
 		| response_39_3
-		| response_39_4,
+		| response_39_4
+		| response_39_5,
 } | {
+<<<<<<< HEAD
 	path: "/organizations",
 	method: "GET",
 	body: unknown,
 	parameters: parameters_40,
+=======
+	path: "/category",
+	method: "POST",
+	body: request_body_40,
+	parameters: undefined,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	response: response_40_0
 		| response_40_1
 		| response_40_2
 		| response_40_3,
 } | {
+<<<<<<< HEAD
 	path: "/users",
 	method: "GET",
 	body: unknown,
+=======
+	path: "/category/{categoryName}",
+	method: "PATCH",
+	body: request_body_41,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	parameters: parameters_41,
 	response: response_41_0
 		| response_41_1
 		| response_41_2
-		| response_41_3,
+		| response_41_3
+		| response_41_4
+		| response_41_5,
 } | {
+<<<<<<< HEAD
 	path: "/navigation-item/{navigationItemId}",
 	method: "PATCH",
 	body: request_body_42,
+=======
+	path: "/category/{categoryName}/image",
+	method: "PUT",
+	body: unknown,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	parameters: parameters_42,
 	response: response_42_0
 		| response_42_1
 		| response_42_2
 		| response_42_3
 		| response_42_4
-		| response_42_5
-		| response_42_6,
+		| response_42_5,
 } | {
+<<<<<<< HEAD
 	path: "/navigation-item/{navigationItemId}",
 	method: "DELETE",
 	body: unknown,
 	parameters: parameters_43,
+=======
+	path: "/organization",
+	method: "POST",
+	body: request_body_43,
+	parameters: undefined,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	response: response_43_0
 		| response_43_1
 		| response_43_2
 		| response_43_3
-		| response_43_4,
+		| response_43_4
+		| response_43_5
+		| response_43_6,
 } | {
+<<<<<<< HEAD
 	path: "/user/{userId}@admin",
+=======
+	path: "/organization/{organizationId}@admin",
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	method: "PATCH",
 	body: request_body_44,
 	parameters: parameters_44,
@@ -3695,39 +5355,53 @@ export type DefEnrichedDuplojsTo = {
 		| response_44_1
 		| response_44_2
 		| response_44_3
-		| response_44_4
-		| response_44_5,
+		| response_44_4,
 } | {
+<<<<<<< HEAD
 	path: "/product/{sku}",
 	method: "PATCH",
 	body: request_body_45,
 	parameters: parameters_45,
+=======
+	path: "/navigation-item",
+	method: "POST",
+	body: request_body_45,
+	parameters: undefined,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	response: response_45_0
 		| response_45_1
 		| response_45_2
 		| response_45_3
-		| response_45_4
-		| response_45_5,
+		| response_45_4,
 } | {
+<<<<<<< HEAD
 	path: "/product-sheet/{productSheetId}/categories",
+=======
+	path: "/navigation-items",
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	method: "GET",
 	body: unknown,
-	parameters: parameters_46,
+	parameters: undefined,
 	response: response_46_0
 		| response_46_1
 		| response_46_2
-		| response_46_3
-		| response_46_4
-		| response_46_5,
+		| response_46_3,
 } | {
+<<<<<<< HEAD
 	path: "/product-sheet/{productSheetId}/category",
 	method: "POST",
 	body: request_body_47,
+=======
+	path: "/parent-category/{parentCategoryName}/category/{categoryName}",
+	method: "DELETE",
+	body: unknown,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	parameters: parameters_47,
 	response: response_47_0
 		| response_47_1
 		| response_47_2
 		| response_47_3
+<<<<<<< HEAD
 		| response_47_4
 		| response_47_5
 		| response_47_6
@@ -3736,28 +5410,50 @@ export type DefEnrichedDuplojsTo = {
 	path: "/product-sheet/{productSheetId}",
 	method: "GET",
 	body: unknown,
+=======
+		| response_47_4,
+} | {
+	path: "/navigation-item/{navigationItemId}",
+	method: "PATCH",
+	body: request_body_48,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	parameters: parameters_48,
 	response: response_48_0
 		| response_48_1
 		| response_48_2
 		| response_48_3
 		| response_48_4
-		| response_48_5,
+		| response_48_5
+		| response_48_6,
 } | {
+<<<<<<< HEAD
 	path: "/product-sheet/{productSheetId}",
 	method: "PATCH",
 	body: request_body_49,
+=======
+	path: "/navigation-item/{navigationItemId}",
+	method: "DELETE",
+	body: unknown,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	parameters: parameters_49,
 	response: response_49_0
 		| response_49_1
 		| response_49_2
 		| response_49_3
+<<<<<<< HEAD
 		| response_49_4
 		| response_49_5,
 } | {
 	path: "/product-sheet/{productSheetId}/category/{categoryName}",
 	method: "DELETE",
 	body: unknown,
+=======
+		| response_49_4,
+} | {
+	path: "/parent-category/{parentCategoryName}/category",
+	method: "POST",
+	body: request_body_50,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	parameters: parameters_50,
 	response: response_50_0
 		| response_50_1
@@ -3767,8 +5463,13 @@ export type DefEnrichedDuplojsTo = {
 		| response_50_5
 		| response_50_6,
 } | {
+<<<<<<< HEAD
 	path: "/product-sheet/{productSheetId}/facet",
 	method: "POST",
+=======
+	path: "/parent-category/{parentCategoryName}",
+	method: "PATCH",
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	body: request_body_51,
 	parameters: parameters_51,
 	response: response_51_0
@@ -3779,25 +5480,34 @@ export type DefEnrichedDuplojsTo = {
 		| response_51_5
 		| response_51_6,
 } | {
+<<<<<<< HEAD
 	path: "/product-sheet/{productSheetId}/images",
+=======
+	path: "/organizations",
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	method: "GET",
 	body: unknown,
 	parameters: parameters_52,
 	response: response_52_0
 		| response_52_1
 		| response_52_2
-		| response_52_3
-		| response_52_4
-		| response_52_5,
+		| response_52_3,
 } | {
+<<<<<<< HEAD
 	path: "/product-sheet/{productSheetId}/product",
 	method: "POST",
 	body: request_body_53,
+=======
+	path: "/parent-category/{parentCategoryName}/categories",
+	method: "GET",
+	body: unknown,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	parameters: parameters_53,
 	response: response_53_0
 		| response_53_1
 		| response_53_2
 		| response_53_3
+<<<<<<< HEAD
 		| response_53_4
 		| response_53_5
 		| response_53_6
@@ -3805,48 +5515,68 @@ export type DefEnrichedDuplojsTo = {
 } | {
 	path: "/product-sheet/{productSheetId}/facet/{facetType}",
 	method: "PATCH",
+=======
+		| response_53_4,
+} | {
+	path: "/parent-category",
+	method: "POST",
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	body: request_body_54,
-	parameters: parameters_54,
+	parameters: undefined,
 	response: response_54_0
 		| response_54_1
 		| response_54_2
 		| response_54_3
-		| response_54_4
-		| response_54_5
-		| response_54_6,
+		| response_54_4,
 } | {
+<<<<<<< HEAD
 	path: "/product-sheet/{productSheetId}/facet/{facetType}",
 	method: "DELETE",
+=======
+	path: "/parent-categories",
+	method: "GET",
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	body: unknown,
 	parameters: parameters_55,
 	response: response_55_0
 		| response_55_1
 		| response_55_2
-		| response_55_3
-		| response_55_4
-		| response_55_5
-		| response_55_6,
+		| response_55_3,
 } | {
+<<<<<<< HEAD
 	path: "/product-sheet/{productSheetId}/image",
 	method: "POST",
 	body: unknown,
+=======
+	path: "/user/{userId}@admin",
+	method: "PATCH",
+	body: request_body_56,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	parameters: parameters_56,
 	response: response_56_0
 		| response_56_1
 		| response_56_2
 		| response_56_3
 		| response_56_4
+<<<<<<< HEAD
 		| response_56_5
 		| response_56_6
 		| response_56_7,
 } | {
 	path: "/organization/{organizationId}/logo",
 	method: "PUT",
+=======
+		| response_56_5,
+} | {
+	path: "/users",
+	method: "GET",
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	body: unknown,
 	parameters: parameters_57,
 	response: response_57_0
 		| response_57_1
 		| response_57_2
+<<<<<<< HEAD
 		| response_57_3
 		| response_57_4
 		| response_57_5
@@ -3855,26 +5585,47 @@ export type DefEnrichedDuplojsTo = {
 	path: "/organization/{organizationId}/product-sheet",
 	method: "POST",
 	body: request_body_58,
+=======
+		| response_57_3,
+} | {
+	path: "/organization/{organizationId}/logo",
+	method: "PUT",
+	body: unknown,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	parameters: parameters_58,
 	response: response_58_0
 		| response_58_1
 		| response_58_2
 		| response_58_3
 		| response_58_4
+<<<<<<< HEAD
 		| response_58_5,
 } | {
 	path: "/product-sheet/{productSheetId}/facets",
 	method: "GET",
 	body: unknown,
+=======
+		| response_58_5
+		| response_58_6,
+} | {
+	path: "/organization/{organizationId}/product-sheet",
+	method: "POST",
+	body: request_body_59,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	parameters: parameters_59,
 	response: response_59_0
 		| response_59_1
 		| response_59_2
 		| response_59_3
 		| response_59_4
-		| response_59_5,
+		| response_59_5
+		| response_59_6,
 } | {
+<<<<<<< HEAD
 	path: "/organization/{organizationId}/product-sheets",
+=======
+	path: "/organization/{organizationId}/users",
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	method: "GET",
 	body: unknown,
 	parameters: parameters_60,
@@ -3885,7 +5636,11 @@ export type DefEnrichedDuplojsTo = {
 		| response_60_4
 		| response_60_5,
 } | {
+<<<<<<< HEAD
 	path: "/organization/{organizationId}/products",
+=======
+	path: "/organization/{organizationId}",
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	method: "GET",
 	body: unknown,
 	parameters: parameters_61,
@@ -3896,9 +5651,15 @@ export type DefEnrichedDuplojsTo = {
 		| response_61_4
 		| response_61_5,
 } | {
+<<<<<<< HEAD
 	path: "/organization/{organizationId}/warehouses",
 	method: "GET",
 	body: unknown,
+=======
+	path: "/organization/{organizationId}",
+	method: "PATCH",
+	body: request_body_62,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	parameters: parameters_62,
 	response: response_62_0
 		| response_62_1
@@ -3907,18 +5668,29 @@ export type DefEnrichedDuplojsTo = {
 		| response_62_4
 		| response_62_5,
 } | {
+<<<<<<< HEAD
 	path: "/organization/{organizationId}/users",
 	method: "GET",
 	body: unknown,
+=======
+	path: "/organization/{organizationId}/warehouse",
+	method: "POST",
+	body: request_body_63,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	parameters: parameters_63,
 	response: response_63_0
 		| response_63_1
 		| response_63_2
 		| response_63_3
 		| response_63_4
-		| response_63_5,
+		| response_63_5
+		| response_63_6,
 } | {
+<<<<<<< HEAD
 	path: "/organization/{organizationId}",
+=======
+	path: "/organization/{organizationId}/product-sheets",
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	method: "GET",
 	body: unknown,
 	parameters: parameters_64,
@@ -3929,9 +5701,15 @@ export type DefEnrichedDuplojsTo = {
 		| response_64_4
 		| response_64_5,
 } | {
+<<<<<<< HEAD
 	path: "/organization/{organizationId}",
 	method: "PATCH",
 	body: request_body_65,
+=======
+	path: "/organization/{organizationId}/warehouses",
+	method: "GET",
+	body: unknown,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	parameters: parameters_65,
 	response: response_65_0
 		| response_65_1
@@ -3940,9 +5718,15 @@ export type DefEnrichedDuplojsTo = {
 		| response_65_4
 		| response_65_5,
 } | {
+<<<<<<< HEAD
 	path: "/organization/{organizationId}/warehouse",
 	method: "POST",
 	body: request_body_66,
+=======
+	path: "/organization/{organizationId}/products",
+	method: "GET",
+	body: unknown,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	parameters: parameters_66,
 	response: response_66_0
 		| response_66_1
@@ -3988,16 +5772,27 @@ export type DefEnrichedDuplojsTo = {
 		| response_69_5,
 } | {
 	path: "/full-product-sheets-count",
+<<<<<<< HEAD
 	method: "GET",
 	body: unknown,
 	parameters: parameters_70,
 	response: response_70_0,
 } | {
 	path: "/computed-filters",
+=======
+>>>>>>> 5cabb00 (feat(115): refacto product)
+	method: "GET",
+	body: unknown,
+	parameters: parameters_70,
+	response: response_70_0,
+} | {
+	path: "/full-product-sheets",
 	method: "GET",
 	body: unknown,
 	parameters: parameters_71,
-	response: response_71_0,
+	response: response_71_0
+		| response_71_1
+		| response_71_2,
 } | {
 	path: "/full-product-sheet/{productSheetId}",
 	method: "GET",
@@ -4122,19 +5917,28 @@ export interface EnrichedDuploTo<
 	>
 
 	get(
+<<<<<<< HEAD
 		path: "/entry/admin-panel*", 
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+=======
+		path: "/geocoder", 
+		parameters ?: parameters_2 & BaseRequestParameters,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_2_0
-		| response_2_1
-		| response_2_2
-		| response_2_3
 	>
 
+<<<<<<< HEAD
 	get(
 		path: "/entry/content-panel*", 
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+=======
+	post(
+		path: "/stripe-webhook/checkout", 
+		body: unknown,
+		parameters : parameters_3 & BaseRequestParameters,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_3_0
@@ -4144,32 +5948,47 @@ export interface EnrichedDuploTo<
 	>
 
 	get(
+<<<<<<< HEAD
 		path: "/entry/organization-panel/{organizationId}/manage-user" | "/entry/organization-panel/{organizationId}/manage", 
 		parameters : parameters_4 & BaseRequestParameters,
+=======
+		path: "/entry/admin-panel*", 
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_4_0
 		| response_4_1
 		| response_4_2
 		| response_4_3
+<<<<<<< HEAD
 		| response_4_4
 	>
 
 	get(
 		path: "/entry/organization-panel/{organizationId}/warehouses" | "/entry/organization-panel/{organizationId}/create-warehouse" | "/entry/organization-panel/{organizationId}/edited-warehouse/{warehouseId}", 
 		parameters : parameters_5 & BaseRequestParameters,
+=======
+	>
+
+	get(
+		path: "/entry/content-panel*", 
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_5_0
 		| response_5_1
 		| response_5_2
 		| response_5_3
-		| response_5_4
-		| response_5_5
 	>
 
 	get(
+<<<<<<< HEAD
 		path: "/entry/organization-panel/{organizationId}/product-sheets" | "/entry/organization-panel/{organizationId}/edit-product-sheet/{productSheetId}" | "/entry/organization-panel/{organizationId}/create-product-sheet", 
+=======
+		path: "/entry/organization-panel/{organizationId}/manage-user" | "/entry/organization-panel/{organizationId}/manage", 
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		parameters : parameters_6 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -4178,11 +5997,18 @@ export interface EnrichedDuploTo<
 		| response_6_2
 		| response_6_3
 		| response_6_4
+<<<<<<< HEAD
 		| response_6_5
 	>
 
 	get(
 		path: "/entry/organization-panel/{organizationId}*", 
+=======
+	>
+
+	get(
+		path: "/entry/organization-panel/{organizationId}/warehouses" | "/entry/organization-panel/{organizationId}/create-warehouse" | "/entry/organization-panel/{organizationId}/edited-warehouse/{warehouseId}", 
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		parameters : parameters_7 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -4190,6 +6016,35 @@ export interface EnrichedDuploTo<
 		| response_7_1
 		| response_7_2
 		| response_7_3
+<<<<<<< HEAD
+=======
+		| response_7_4
+		| response_7_5
+	>
+
+	get(
+		path: "/entry/organization-panel/{organizationId}/product-sheets" | "/entry/organization-panel/{organizationId}/edit-product-sheet/{productSheetId}" | "/entry/organization-panel/{organizationId}/create-product-sheet", 
+		parameters : parameters_8 & BaseRequestParameters,
+		interceptorParams?: interceptorParameter
+	): EnrichedRequestor<
+		response_8_0
+		| response_8_1
+		| response_8_2
+		| response_8_3
+		| response_8_4
+		| response_8_5
+	>
+
+	get(
+		path: "/entry/organization-panel/{organizationId}*", 
+		parameters : parameters_9 & BaseRequestParameters,
+		interceptorParams?: interceptorParameter
+	): EnrichedRequestor<
+		response_9_0
+		| response_9_1
+		| response_9_2
+		| response_9_3
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	>
 
 	get(
@@ -4197,7 +6052,11 @@ export interface EnrichedDuploTo<
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
+<<<<<<< HEAD
 		response_8_0
+=======
+		response_10_0
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	>
 
 	get(
@@ -4205,9 +6064,15 @@ export interface EnrichedDuploTo<
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
+<<<<<<< HEAD
 		response_9_0
 		| response_9_1
 		| response_9_2
+=======
+		response_11_0
+		| response_11_1
+		| response_11_2
+>>>>>>> 5cabb00 (feat(115): refacto product)
 	>
 
 	get(
@@ -4215,6 +6080,7 @@ export interface EnrichedDuploTo<
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
+<<<<<<< HEAD
 		response_10_0
 	>
 
@@ -4232,10 +6098,9 @@ export interface EnrichedDuploTo<
 		parameters : parameters_12 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
+=======
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		response_12_0
-		| response_12_1
-		| response_12_2
-		| response_12_3
 	>
 
 	get(
@@ -4280,21 +6145,22 @@ export interface EnrichedDuploTo<
 		| response_16_2
 	>
 
-	delete(
-		path: "/image-product-sheet/{imageProductSheetId}", 
-		parameters : parameters_17 & BaseRequestParameters,
+	get(
+		path: "/cart", 
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_17_0
 		| response_17_1
 		| response_17_2
-		| response_17_3
-		| response_17_4
-		| response_17_5
 	>
 
 	delete(
+<<<<<<< HEAD
 		path: "/article/{productSheetId}", 
+=======
+		path: "/image-product-sheet/{imageProductSheetId}", 
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		parameters : parameters_18 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -4302,6 +6168,8 @@ export interface EnrichedDuploTo<
 		| response_18_1
 		| response_18_2
 		| response_18_3
+		| response_18_4
+		| response_18_5
 	>
 
 	get(
@@ -4331,9 +6199,16 @@ export interface EnrichedDuploTo<
 		| response_20_7
 	>
 
+<<<<<<< HEAD
 	get(
 		path: "/user/organizations", 
 		parameters ?: parameters_21 & BaseRequestParameters,
+=======
+	patch(
+		path: "/organization/{organizationId}/user/{userId}", 
+		body: request_body_21,
+		parameters : parameters_21 & BaseRequestParameters,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_21_0
@@ -4342,21 +6217,36 @@ export interface EnrichedDuploTo<
 		| response_21_3
 	>
 
+<<<<<<< HEAD
 	get(
 		path: "/user", 
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+=======
+	delete(
+		path: "/organization/{organizationId}/user/{userId}", 
+		parameters : parameters_22 & BaseRequestParameters,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_22_0
 		| response_22_1
 		| response_22_2
 		| response_22_3
+		| response_22_4
+		| response_22_5
+		| response_22_6
 	>
 
+<<<<<<< HEAD
 	patch(
 		path: "/user", 
 		body: request_body_23,
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+=======
+	get(
+		path: "/user/organizations", 
+		parameters ?: parameters_23 & BaseRequestParameters,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_23_0
@@ -4365,10 +6255,17 @@ export interface EnrichedDuploTo<
 		| response_23_3
 	>
 
+<<<<<<< HEAD
 	patch(
 		path: "/organization/{organizationId}/user/{userId}", 
 		body: request_body_24,
 		parameters : parameters_24 & BaseRequestParameters,
+=======
+	post(
+		path: "/retry-command", 
+		body: request_body_24,
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_24_0
@@ -4376,6 +6273,7 @@ export interface EnrichedDuploTo<
 		| response_24_2
 		| response_24_3
 		| response_24_4
+<<<<<<< HEAD
 		| response_24_5
 		| response_24_6
 	>
@@ -4383,6 +6281,13 @@ export interface EnrichedDuploTo<
 	delete(
 		path: "/organization/{organizationId}/user/{userId}", 
 		parameters : parameters_25 & BaseRequestParameters,
+=======
+	>
+
+	get(
+		path: "/user", 
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_25_0
@@ -4394,8 +6299,8 @@ export interface EnrichedDuploTo<
 		| response_25_6
 	>
 
-	post(
-		path: "/retry-command", 
+	patch(
+		path: "/user", 
 		body: request_body_26,
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
@@ -4404,13 +6309,18 @@ export interface EnrichedDuploTo<
 		| response_26_1
 		| response_26_2
 		| response_26_3
-		| response_26_4
 	>
 
+<<<<<<< HEAD
 	post(
 		path: "/category", 
 		body: request_body_27,
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+=======
+	get(
+		path: "/product-sheet/{productSheetId}/categories", 
+		parameters : parameters_27 & BaseRequestParameters,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_27_0
@@ -4418,10 +6328,11 @@ export interface EnrichedDuploTo<
 		| response_27_2
 		| response_27_3
 		| response_27_4
+		| response_27_5
 	>
 
-	patch(
-		path: "/category/{categoryName}", 
+	post(
+		path: "/product-sheet/{productSheetId}/category", 
 		body: request_body_28,
 		parameters : parameters_28 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
@@ -4432,12 +6343,20 @@ export interface EnrichedDuploTo<
 		| response_28_3
 		| response_28_4
 		| response_28_5
+		| response_28_6
+		| response_28_7
 	>
 
+<<<<<<< HEAD
 	post(
 		path: "/organization", 
 		body: request_body_29,
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+=======
+	delete(
+		path: "/product-sheet/{productSheetId}/category/{categoryName}", 
+		parameters : parameters_29 & BaseRequestParameters,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_29_0
@@ -4449,9 +6368,15 @@ export interface EnrichedDuploTo<
 		| response_29_6
 	>
 
+<<<<<<< HEAD
 	put(
 		path: "/category/{categoryName}/image", 
 		body: unknown,
+=======
+	post(
+		path: "/product-sheet/{productSheetId}/facet", 
+		body: request_body_30,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		parameters : parameters_30 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -4464,19 +6389,33 @@ export interface EnrichedDuploTo<
 	>
 
 	get(
+<<<<<<< HEAD
 		path: "/parent-categories", 
 		parameters ?: parameters_31 & BaseRequestParameters,
+=======
+		path: "/product-sheet/{productSheetId}/facets", 
+		parameters : parameters_31 & BaseRequestParameters,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_31_0
 		| response_31_1
 		| response_31_2
 		| response_31_3
+<<<<<<< HEAD
 	>
 
 	patch(
 		path: "/organization/{organizationId}@admin", 
 		body: request_body_32,
+=======
+		| response_31_4
+		| response_31_5
+	>
+
+	get(
+		path: "/product-sheet/{productSheetId}", 
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		parameters : parameters_32 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -4485,10 +6424,18 @@ export interface EnrichedDuploTo<
 		| response_32_2
 		| response_32_3
 		| response_32_4
+<<<<<<< HEAD
 	>
 
 	post(
 		path: "/navigation-item", 
+=======
+		| response_32_5
+	>
+
+	patch(
+		path: "/product-sheet/{productSheetId}", 
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		body: request_body_33,
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
@@ -4498,12 +6445,22 @@ export interface EnrichedDuploTo<
 		| response_33_2
 		| response_33_3
 		| response_33_4
+<<<<<<< HEAD
 	>
 
 	post(
 		path: "/parent-category", 
 		body: request_body_34,
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+=======
+		| response_33_5
+	>
+
+	patch(
+		path: "/product-sheet/{productSheetId}/facet/{facetType}", 
+		body: request_body_34,
+		parameters : parameters_34 & BaseRequestParameters,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_34_0
@@ -4511,11 +6468,19 @@ export interface EnrichedDuploTo<
 		| response_34_2
 		| response_34_3
 		| response_34_4
+		| response_34_5
+		| response_34_6
 	>
 
+<<<<<<< HEAD
 	get(
 		path: "/navigation-items", 
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+=======
+	delete(
+		path: "/product-sheet/{productSheetId}/facet/{facetType}", 
+		parameters : parameters_35 & BaseRequestParameters,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_35_0
@@ -4524,9 +6489,15 @@ export interface EnrichedDuploTo<
 		| response_35_3
 	>
 
+<<<<<<< HEAD
 	patch(
 		path: "/parent-category/{parentCategoryName}", 
 		body: request_body_36,
+=======
+	post(
+		path: "/product-sheet/{productSheetId}/image", 
+		body: unknown,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		parameters : parameters_36 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -4536,10 +6507,19 @@ export interface EnrichedDuploTo<
 		| response_36_3
 		| response_36_4
 		| response_36_5
+<<<<<<< HEAD
 	>
 
 	get(
 		path: "/parent-category/{parentCategoryName}/categories", 
+=======
+		| response_36_6
+		| response_36_7
+	>
+
+	get(
+		path: "/product-sheet/{productSheetId}/images", 
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		parameters : parameters_37 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -4551,7 +6531,11 @@ export interface EnrichedDuploTo<
 	>
 
 	post(
+<<<<<<< HEAD
 		path: "/parent-category/{parentCategoryName}/category", 
+=======
+		path: "/product-sheet/{productSheetId}/product", 
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		body: request_body_38,
 		parameters : parameters_38 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
@@ -4565,8 +6549,14 @@ export interface EnrichedDuploTo<
 		| response_38_6
 	>
 
+<<<<<<< HEAD
 	delete(
 		path: "/parent-category/{parentCategoryName}/category/{categoryName}", 
+=======
+	patch(
+		path: "/product/{sku}", 
+		body: request_body_39,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		parameters : parameters_39 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -4575,11 +6565,19 @@ export interface EnrichedDuploTo<
 		| response_39_2
 		| response_39_3
 		| response_39_4
+		| response_39_5
 	>
 
+<<<<<<< HEAD
 	get(
 		path: "/organizations", 
 		parameters ?: parameters_40 & BaseRequestParameters,
+=======
+	post(
+		path: "/category", 
+		body: request_body_40,
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_40_0
@@ -4588,20 +6586,35 @@ export interface EnrichedDuploTo<
 		| response_40_3
 	>
 
+<<<<<<< HEAD
 	get(
 		path: "/users", 
 		parameters ?: parameters_41 & BaseRequestParameters,
+=======
+	patch(
+		path: "/category/{categoryName}", 
+		body: request_body_41,
+		parameters : parameters_41 & BaseRequestParameters,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_41_0
 		| response_41_1
 		| response_41_2
 		| response_41_3
+		| response_41_4
+		| response_41_5
 	>
 
+<<<<<<< HEAD
 	patch(
 		path: "/navigation-item/{navigationItemId}", 
 		body: request_body_42,
+=======
+	put(
+		path: "/category/{categoryName}/image", 
+		body: unknown,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		parameters : parameters_42 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -4611,12 +6624,18 @@ export interface EnrichedDuploTo<
 		| response_42_3
 		| response_42_4
 		| response_42_5
-		| response_42_6
 	>
 
+<<<<<<< HEAD
 	delete(
 		path: "/navigation-item/{navigationItemId}", 
 		parameters : parameters_43 & BaseRequestParameters,
+=======
+	post(
+		path: "/organization", 
+		body: request_body_43,
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_43_0
@@ -4624,10 +6643,16 @@ export interface EnrichedDuploTo<
 		| response_43_2
 		| response_43_3
 		| response_43_4
+		| response_43_5
+		| response_43_6
 	>
 
 	patch(
+<<<<<<< HEAD
 		path: "/user/{userId}@admin", 
+=======
+		path: "/organization/{organizationId}@admin", 
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		body: request_body_44,
 		parameters : parameters_44 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
@@ -4637,13 +6662,19 @@ export interface EnrichedDuploTo<
 		| response_44_2
 		| response_44_3
 		| response_44_4
-		| response_44_5
 	>
 
+<<<<<<< HEAD
 	patch(
 		path: "/product/{sku}", 
 		body: request_body_45,
 		parameters : parameters_45 & BaseRequestParameters,
+=======
+	post(
+		path: "/navigation-item", 
+		body: request_body_45,
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_45_0
@@ -4651,25 +6682,32 @@ export interface EnrichedDuploTo<
 		| response_45_2
 		| response_45_3
 		| response_45_4
-		| response_45_5
 	>
 
 	get(
+<<<<<<< HEAD
 		path: "/product-sheet/{productSheetId}/categories", 
 		parameters : parameters_46 & BaseRequestParameters,
+=======
+		path: "/navigation-items", 
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_46_0
 		| response_46_1
 		| response_46_2
 		| response_46_3
-		| response_46_4
-		| response_46_5
 	>
 
+<<<<<<< HEAD
 	post(
 		path: "/product-sheet/{productSheetId}/category", 
 		body: request_body_47,
+=======
+	delete(
+		path: "/parent-category/{parentCategoryName}/category/{categoryName}", 
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		parameters : parameters_47 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -4678,6 +6716,7 @@ export interface EnrichedDuploTo<
 		| response_47_2
 		| response_47_3
 		| response_47_4
+<<<<<<< HEAD
 		| response_47_5
 		| response_47_6
 		| response_47_7
@@ -4685,6 +6724,13 @@ export interface EnrichedDuploTo<
 
 	get(
 		path: "/product-sheet/{productSheetId}", 
+=======
+	>
+
+	patch(
+		path: "/navigation-item/{navigationItemId}", 
+		body: request_body_48,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		parameters : parameters_48 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -4694,11 +6740,17 @@ export interface EnrichedDuploTo<
 		| response_48_3
 		| response_48_4
 		| response_48_5
+		| response_48_6
 	>
 
+<<<<<<< HEAD
 	patch(
 		path: "/product-sheet/{productSheetId}", 
 		body: request_body_49,
+=======
+	delete(
+		path: "/navigation-item/{navigationItemId}", 
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		parameters : parameters_49 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -4707,11 +6759,19 @@ export interface EnrichedDuploTo<
 		| response_49_2
 		| response_49_3
 		| response_49_4
+<<<<<<< HEAD
 		| response_49_5
 	>
 
 	delete(
 		path: "/product-sheet/{productSheetId}/category/{categoryName}", 
+=======
+	>
+
+	post(
+		path: "/parent-category/{parentCategoryName}/category", 
+		body: request_body_50,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		parameters : parameters_50 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -4724,8 +6784,13 @@ export interface EnrichedDuploTo<
 		| response_50_6
 	>
 
+<<<<<<< HEAD
 	post(
 		path: "/product-sheet/{productSheetId}/facet", 
+=======
+	patch(
+		path: "/parent-category/{parentCategoryName}", 
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		body: request_body_51,
 		parameters : parameters_51 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
@@ -4740,21 +6805,29 @@ export interface EnrichedDuploTo<
 	>
 
 	get(
+<<<<<<< HEAD
 		path: "/product-sheet/{productSheetId}/images", 
 		parameters : parameters_52 & BaseRequestParameters,
+=======
+		path: "/organizations", 
+		parameters ?: parameters_52 & BaseRequestParameters,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_52_0
 		| response_52_1
 		| response_52_2
 		| response_52_3
-		| response_52_4
-		| response_52_5
 	>
 
+<<<<<<< HEAD
 	post(
 		path: "/product-sheet/{productSheetId}/product", 
 		body: request_body_53,
+=======
+	get(
+		path: "/parent-category/{parentCategoryName}/categories", 
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		parameters : parameters_53 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -4763,6 +6836,7 @@ export interface EnrichedDuploTo<
 		| response_53_2
 		| response_53_3
 		| response_53_4
+<<<<<<< HEAD
 		| response_53_5
 		| response_53_6
 		| response_53_7
@@ -4770,8 +6844,14 @@ export interface EnrichedDuploTo<
 
 	patch(
 		path: "/product-sheet/{productSheetId}/facet/{facetType}", 
+=======
+	>
+
+	post(
+		path: "/parent-category", 
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		body: request_body_54,
-		parameters : parameters_54 & BaseRequestParameters,
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_54_0
@@ -4779,27 +6859,34 @@ export interface EnrichedDuploTo<
 		| response_54_2
 		| response_54_3
 		| response_54_4
-		| response_54_5
-		| response_54_6
 	>
 
+<<<<<<< HEAD
 	delete(
 		path: "/product-sheet/{productSheetId}/facet/{facetType}", 
 		parameters : parameters_55 & BaseRequestParameters,
+=======
+	get(
+		path: "/parent-categories", 
+		parameters ?: parameters_55 & BaseRequestParameters,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_55_0
 		| response_55_1
 		| response_55_2
 		| response_55_3
-		| response_55_4
-		| response_55_5
-		| response_55_6
 	>
 
+<<<<<<< HEAD
 	post(
 		path: "/product-sheet/{productSheetId}/image", 
 		body: unknown,
+=======
+	patch(
+		path: "/user/{userId}@admin", 
+		body: request_body_56,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		parameters : parameters_56 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -4809,6 +6896,7 @@ export interface EnrichedDuploTo<
 		| response_56_3
 		| response_56_4
 		| response_56_5
+<<<<<<< HEAD
 		| response_56_6
 		| response_56_7
 	>
@@ -4817,12 +6905,20 @@ export interface EnrichedDuploTo<
 		path: "/organization/{organizationId}/logo", 
 		body: unknown,
 		parameters : parameters_57 & BaseRequestParameters,
+=======
+	>
+
+	get(
+		path: "/users", 
+		parameters ?: parameters_57 & BaseRequestParameters,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_57_0
 		| response_57_1
 		| response_57_2
 		| response_57_3
+<<<<<<< HEAD
 		| response_57_4
 		| response_57_5
 		| response_57_6
@@ -4831,6 +6927,13 @@ export interface EnrichedDuploTo<
 	post(
 		path: "/organization/{organizationId}/product-sheet", 
 		body: request_body_58,
+=======
+	>
+
+	put(
+		path: "/organization/{organizationId}/logo", 
+		body: unknown,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		parameters : parameters_58 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -4840,10 +6943,19 @@ export interface EnrichedDuploTo<
 		| response_58_3
 		| response_58_4
 		| response_58_5
+<<<<<<< HEAD
 	>
 
 	get(
 		path: "/product-sheet/{productSheetId}/facets", 
+=======
+		| response_58_6
+	>
+
+	post(
+		path: "/organization/{organizationId}/product-sheet", 
+		body: request_body_59,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		parameters : parameters_59 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -4853,10 +6965,15 @@ export interface EnrichedDuploTo<
 		| response_59_3
 		| response_59_4
 		| response_59_5
+		| response_59_6
 	>
 
 	get(
+<<<<<<< HEAD
 		path: "/organization/{organizationId}/product-sheets", 
+=======
+		path: "/organization/{organizationId}/users", 
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		parameters : parameters_60 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -4869,7 +6986,11 @@ export interface EnrichedDuploTo<
 	>
 
 	get(
+<<<<<<< HEAD
 		path: "/organization/{organizationId}/products", 
+=======
+		path: "/organization/{organizationId}", 
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		parameters : parameters_61 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -4881,8 +7002,14 @@ export interface EnrichedDuploTo<
 		| response_61_5
 	>
 
+<<<<<<< HEAD
 	get(
 		path: "/organization/{organizationId}/warehouses", 
+=======
+	patch(
+		path: "/organization/{organizationId}", 
+		body: request_body_62,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		parameters : parameters_62 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -4894,8 +7021,14 @@ export interface EnrichedDuploTo<
 		| response_62_5
 	>
 
+<<<<<<< HEAD
 	get(
 		path: "/organization/{organizationId}/users", 
+=======
+	post(
+		path: "/organization/{organizationId}/warehouse", 
+		body: request_body_63,
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		parameters : parameters_63 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -4905,10 +7038,15 @@ export interface EnrichedDuploTo<
 		| response_63_3
 		| response_63_4
 		| response_63_5
+		| response_63_6
 	>
 
 	get(
+<<<<<<< HEAD
 		path: "/organization/{organizationId}", 
+=======
+		path: "/organization/{organizationId}/product-sheets", 
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		parameters : parameters_64 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -4920,9 +7058,14 @@ export interface EnrichedDuploTo<
 		| response_64_5
 	>
 
+<<<<<<< HEAD
 	patch(
 		path: "/organization/{organizationId}", 
 		body: request_body_65,
+=======
+	get(
+		path: "/organization/{organizationId}/warehouses", 
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		parameters : parameters_65 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -4934,9 +7077,14 @@ export interface EnrichedDuploTo<
 		| response_65_5
 	>
 
+<<<<<<< HEAD
 	post(
 		path: "/organization/{organizationId}/warehouse", 
 		body: request_body_66,
+=======
+	get(
+		path: "/organization/{organizationId}/products", 
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		parameters : parameters_66 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -4986,6 +7134,7 @@ export interface EnrichedDuploTo<
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_69_0
+<<<<<<< HEAD
 		| response_69_1
 		| response_69_2
 		| response_69_3
@@ -5003,10 +7152,26 @@ export interface EnrichedDuploTo<
 
 	get(
 		path: "/computed-filters", 
+=======
+	>
+
+	get(
+		path: "/full-product-sheets-count", 
+		parameters ?: parameters_70 & BaseRequestParameters,
+		interceptorParams?: interceptorParameter
+	): EnrichedRequestor<
+		response_70_0
+	>
+
+	get(
+		path: "/full-product-sheets", 
+>>>>>>> 5cabb00 (feat(115): refacto product)
 		parameters ?: parameters_71 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_71_0
+		| response_71_1
+		| response_71_2
 	>
 
 	get(

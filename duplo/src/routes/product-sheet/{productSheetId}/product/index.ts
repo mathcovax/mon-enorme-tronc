@@ -1,7 +1,7 @@
 import { productExistCheck } from "@checkers/product";
-import { inputWarehouse, warehouseExistCheck } from "@checkers/warehouse";
 import { productSchema } from "@schemas/product";
 import { hasOrganizationRoleByProductSheetId } from "@security/hasOrganizationRole/byProductSheetId";
+import { productEntityformater, productSelect } from "@utils/prisma/product";
 
 /* METHOD : POST, PATH : /product-sheet/{productSheetId}/product */
 export const POST = (method: Methods, path: string) =>
@@ -12,18 +12,9 @@ export const POST = (method: Methods, path: string) =>
 		.declareRoute(method, path)
 		.extract({
 			body: zod.object({
-				sku: zod.string().min(2).max(255),
-				warehouseId: zod.string()
+				sku: zod.string().min(2).max(255)
 			}).strip(),
 		})
-		.check(
-			warehouseExistCheck,
-			{
-				input: (p) => inputWarehouse.id(p("body").warehouseId),
-				...warehouseExistCheck.preCompletions.mustExist
-			},
-			new IHaveSentThis(NotFoundHttpException.code, "warehouse.notfound")
-		)
 		.check(
 			productExistCheck,
 			{
@@ -38,16 +29,16 @@ export const POST = (method: Methods, path: string) =>
 		.handler(
 			async ({ pickup }) => {
 				const { id: productSheetId, organizationId } = pickup("productSheet");
-				const { sku, warehouseId } = pickup("body");
+				const { sku } = pickup("body");
 
 				const product = await prisma.product.create({
 					data: {
 						sku,
 						productSheetId,
 						organizationId,
-						warehouseId,
-					}
-				});
+					},
+					select: productSelect
+				}).then(productEntityformater);
 
 				throw new CreatedHttpException("product.created", product);
 			},

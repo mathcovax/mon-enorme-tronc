@@ -2,24 +2,38 @@ import { MockPrisma } from "@test/mocks/providers";
 import { POST } from "./product-sheet";
 import { duploTesting } from "@test/setup";
 import { organizationData } from "@test/data/organization";
+import { productSheetData } from "@test/data/productSheet";
+import { warehouseData } from "@test/data/warehouse";
 
 describe("POST /organization/{organizationId}/product-sheet", () => {
 	beforeEach(() => {
 		MockPrisma.reset();
 	});
 
+	it("warehouse notfound", async () => {
+		const res = await duploTesting
+			.testRoute(POST("POST", ""))
+			.setDefaultFloorValue({ organization: organizationData })
+			.setRequestProperties({
+				body: {
+					name: "test",
+					description: "test",
+					shortDescription: "test",
+					price: 10,
+					warehouseId: "toto"
+				}
+			})
+			.mockChecker(
+				0,
+				{ info: "warehouse.notfound", data: null }
+			)
+			.launch();
+
+		expect(res.information).toBe("warehouse.notfound");
+	});
+
 	it("post product sheet created", async () => {
-		const productSheet = {
-			id: "",
-			name: "",
-			description: "",
-			shortDescription: "",
-			price: 0,
-			createdAt: new Date(),
-			updatedAt: new Date(),
-			organizationId: ""
-		};
-		const spy = vi.fn(() => productSheet);
+		const spy = vi.fn(() => productSheetData);
 		MockPrisma.set("product_sheet", "create", spy);
 
 		const res = await duploTesting
@@ -31,19 +45,25 @@ describe("POST /organization/{organizationId}/product-sheet", () => {
 					description: "test",
 					shortDescription: "test",
 					price: 10,
+					warehouseId: "toto"
 				}
 			})
+			.mockChecker(
+				0,
+				{ info: "warehouse.exist", data: warehouseData }
+			)
 			.launch();
 
+		expect(res.information).toBe("productSheet.created");
 		expect(spy).lastCalledWith({
 			data: {
 				description: "test",
 				name: "test",
 				organizationId: "eee",
 				shortDescription: "test",
-				price: 10
+				price: 10,
+				warehouseId: "toto",
 			}
 		});
-		expect(res.information).toBe("productSheet.created");
 	});
 });

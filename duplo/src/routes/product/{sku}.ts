@@ -1,5 +1,6 @@
-import { productStatusEnum } from "@schemas/product";
+import { productSchema, productStatusEnum } from "@schemas/product";
 import { hasOrganizationRoleBySku } from "@security/hasOrganizationRole/bySku";
+import { productEntityformater, productSelect } from "@utils/prisma/product";
 
 /* METHOD : PATCH, PATH : /product/{sku} */
 export const PATCH = (method: Methods, path: string) =>
@@ -18,15 +19,17 @@ export const PATCH = (method: Methods, path: string) =>
 				const { sku: productSku } = pickup("product");
 				const { status } = pickup("body");
 
-				await prisma.product.update({
+				const product = await prisma.product.update({
 					where: {
 						sku: productSku
 					},
 					data: {
 						status,
-					}
-				});
-				throw new NoContentHttpException("product.edited");
+					},
+					select: productSelect,
+				}).then(productEntityformater);
+
+				throw new OkHttpException("product.edited", product);
 			},
-			new IHaveSentThis(NoContentHttpException.code, "product.edited")
+			new IHaveSentThis(OkHttpException.code, "product.edited", productSchema)
 		);

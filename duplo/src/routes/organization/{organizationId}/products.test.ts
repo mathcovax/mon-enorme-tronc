@@ -2,6 +2,12 @@ import { MockPrisma } from "@test/mocks/providers";
 import { duploTesting } from "@test/setup";
 import { GET } from "./products";
 import { organizationData } from "@test/data/organization";
+import { productData } from "@test/data/product";
+
+vi.mock(
+	"@utils/prisma/product", 
+	() => ({ productEntityformater: () => productData, productSelect: {} })
+);
 
 describe("GET /organization/{organizationId}/products", () => {
 	beforeEach(() => {
@@ -9,7 +15,7 @@ describe("GET /organization/{organizationId}/products", () => {
 	});
 
 	it("get products", async () => {
-		const spy = vi.fn(() => []);
+		const spy = vi.fn(async () => []);
 		MockPrisma.set("product", "findMany", spy);
 
 		const res = await duploTesting
@@ -34,10 +40,7 @@ describe("GET /organization/{organizationId}/products", () => {
 			},
 			skip: 0,
 			take: 10,
-			include: {
-				productSheet: true,
-				warehouse: false,
-			},
+			select: {},
 		});
 		expect(res.information).toBe("products.found");
 	});
