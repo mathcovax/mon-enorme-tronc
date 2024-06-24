@@ -9,18 +9,19 @@ const params = useRouteParams({
 });
 
 const { getCategoryProductSheets, productSheets } = useGetCategoryProductSheets({
+	available: true,
 	searchByRegex: params.value.productSheetName,
 });
 
 const search = ref(params.value.productSheetName ?? "");
 const suggestions = ref(false);
-const filteredProductSheets = computed(() => {
-	if (!productSheets.value) {
-		return null;
-	}
+// const filteredProductSheets = computed(() => {
+// 	if (!productSheets.value) {
+// 		return null;
+// 	}
 
-	return productSheets.value.filter((productSheet: FullProductSheet) => productSheet.quantity > 0);
-});
+// 	return productSheets.value.filter((productSheet: FullProductSheet) => productSheet.quantity > 0);
+// });
 
 function openSuggestions() {
 	suggestions.value = true;
@@ -48,7 +49,7 @@ watch(
 			return;
 		}
 
-		getCategoryProductSheets({ searchByRegex: search.value });
+		getCategoryProductSheets({ available: true, searchByRegex: search.value });
 	}
 );
 </script>
@@ -74,7 +75,7 @@ watch(
 			class="absolute top-[calc(100%+0.5rem)] left-0 hidden lg:flex flex-col gap-2 bg-whiteless rounded-lg p-4 shadow-lg w-full max-h-96 overflow-y-auto"
 		>
 			<li
-				v-for="productSheet in filteredProductSheets"
+				v-for="productSheet in productSheets"
 				:key="productSheet.id"
 			>
 				<RouterLink

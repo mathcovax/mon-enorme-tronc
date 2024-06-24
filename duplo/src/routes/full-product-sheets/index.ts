@@ -10,6 +10,7 @@ export const GET = (method: Methods, path: string) =>
 		.declareRoute(method, path)
 		.extract({
 			query: zod.object({
+				available: zod.coerce.boolean().default(true),
 				page: zod.coerce.number().default(1).transform(v => v < 1 ? 0 : v - 1),
 				take: zod.coerce.number().min(1).max(40).default(40),
 			})
@@ -41,13 +42,14 @@ export const GET = (method: Methods, path: string) =>
 		)
 		.handler(
 			async ({ pickup }) => {
-				const { page, take, categoryName, search, searchByRegex, ...filtersValue } = pickup("query");
+				const { available, page, take, categoryName, search, searchByRegex, ...filtersValue } = pickup("query");
 				const filters = FilterService.makePipelinesStage(filtersValue);
 				const searchs = SearchService.makePipelinesStage({ categoryName, search, searchByRegex });
 				
 				const fullProductSheets = await fullProductSheetModel.aggregate([
 					...searchs,
 					...filters,
+					...(available ? [{ $match: { quantity: { $gt: 0 } } }] : []),
 					{ $skip: page * take },
 					{ $limit: take },
 				]);
