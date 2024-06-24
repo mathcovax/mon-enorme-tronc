@@ -93,136 +93,134 @@ const totalPriceCart = computed(() => {
 </script>
 
 <template>
-	<section class="h-screen-no-header">
-		<div class="container flex flex-col gap-12 my-12 lg:my-16">
-			<h1 class="text-2xl font-bold lg:text-3xl">
-				{{ $pt("title") }}
-			</h1>
+	<section class="min-h-screen-nhm-mobile lg:min-h-screen-nhm-desktop container my-12 lg:my-16 flex flex-col gap-12">
+		<h1 class="text-2xl font-bold lg:text-3xl">
+			{{ $pt("title") }}
+		</h1>
 
-			<div class="mx-auto grid w-full items-start gap-6 md:grid-cols-[180px_1fr] lg:grid-cols-[250px_1fr]">
-				<aside class="p-4 mb-12 rounded shadow md:mb-0">
-					<OrderSteps
-						:step="step"
-						:payment-state="paymentState"
-						@update:step="v => step = v"
-					/>
-				</aside>
+		<div class="mx-auto grid w-full items-start gap-6 md:grid-cols-[180px_1fr] lg:grid-cols-[250px_1fr]">
+			<aside class="p-4 mb-12 rounded shadow md:mb-0">
+				<OrderSteps
+					:step="step"
+					:payment-state="paymentState"
+					@update:step="v => step = v"
+				/>
+			</aside>
 
+			<div
+				class="flex flex-col h-full gap-6"
+			>
 				<div
-					class="flex flex-col h-full gap-6"
+					v-if="step > 1 && step < 3"
+					@click="step--"
+					class="cursor-pointer"
 				>
-					<div
-						v-if="step > 1 && step < 3"
-						@click="step--"
-						class="cursor-pointer"
-					>
-						<TheIcon
-							icon="arrow-left"
-							class="inline-block"
-						/>
-						{{ $t("button.back") }}
-					</div>
-
-					<template v-if="step === 1">
-						<h2 class="mb-4 text-xl font-bold lg:text-2xl">
-							{{ $pt("stepTitle.orderInfos") }}
-						</h2>
-
-						<UserCommandForm
-							@submit="submitForm"
-						>
-							<PrimaryButton
-								type="submit"
-								class="col-span-12"
-							>
-								{{ $t("button.validate") }}
-							</PrimaryButton>
-						</UserCommandForm>
-					</template>
-
-					<template v-if="step === 2">
-						<h2 class="mb-4 text-xl font-bold lg:text-2xl">
-							{{ $pt("stepTitle.cart") }}
-						</h2>
-
-						<div class="flex flex-col gap-4">
-							<div
-								v-for="product in products"
-								:key="product.productSheetId"
-							>	
-								<OrderCard
-									:article="product"
-								/>
-							</div>
-
-							<div
-								class="flex justify-end col-span-12"
-							>
-								<span
-									class="p-2 text-right bg-gray-100 border border-gray-200 rounded-sm"
-								>
-									{{ $pt("step.cart.total", { value: totalPriceCart }) }}
-								</span>
-							</div>
-
-							<SecondaryButton
-								as-child
-								type="submit"
-								class="col-span-12"
-							>
-								<RouterLink :to="{ name: USER_CART }">
-									{{ $t("button.edit") }}
-								</RouterLink>
-							</SecondaryButton>
-
-							<PrimaryButton
-								type="submit"
-								class="col-span-12"
-								@click="submitPayment"
-							>
-								{{ $t("button.pay") }}
-							</PrimaryButton>
-						</div>
-					</template>
-
-					<template v-if="step === 3">
-						<h2 class="mb-4 text-xl font-bold lg:text-2xl">
-							{{ query.commandId ? $pt("stepTitle.failed") : $pt("stepTitle.success") }}
-						</h2>
-
-						<div class="flex flex-col items-center justify-center flex-1 gap-4">
-							<TheIcon
-								:icon="query.commandId ? 'close-circle' : 'check-circle'"
-								size="4xl"
-								class="text-[96px] flex items-center justify-center"
-							/>
-
-							<p>
-								{{ query.commandId ? $pt("step.failedMessage") : $pt("step.successMessage") }}
-							</p>
-
-							<PrimaryButton
-								v-if="!query.commandId"
-								as-child
-								size="lg"
-								class="mt-8 w-min"
-							>
-								<RouterLink :to="{ name: EDITO_HOME }">
-									{{ $t("button.backToHome") }}
-								</RouterLink>
-							</PrimaryButton>
-
-							<PrimaryButton
-								v-else
-								type="submit"
-								class="col-span-12"
-								@click="retryOrder"
-							>
-								{{ $t("button.retry") }}
-							</PrimaryButton>
-						</div>
-					</template>
+					<TheIcon
+						icon="arrow-left"
+						class="inline-block"
+					/>
+					{{ $t("button.back") }}
 				</div>
+
+				<template v-if="step === 1">
+					<h2 class="mb-4 text-xl font-bold lg:text-2xl">
+						{{ $pt("stepTitle.orderInfos") }}
+					</h2>
+
+					<UserCommandForm
+						@submit="submitForm"
+					>
+						<PrimaryButton
+							type="submit"
+							class="col-span-12"
+						>
+							{{ $t("button.validate") }}
+						</PrimaryButton>
+					</UserCommandForm>
+				</template>
+
+				<template v-if="step === 2">
+					<h2 class="mb-4 text-xl font-bold lg:text-2xl">
+						{{ $pt("stepTitle.cart") }}
+					</h2>
+
+					<div class="flex flex-col gap-4">
+						<div
+							v-for="product in products"
+							:key="product.productSheetId"
+						>	
+							<OrderCard
+								:article="product"
+							/>
+						</div>
+
+						<div
+							class="flex justify-end col-span-12"
+						>
+							<span
+								class="p-2 text-right bg-gray-100 border border-gray-200 rounded-sm"
+							>
+								{{ $pt("step.cart.total", { value: totalPriceCart }) }}
+							</span>
+						</div>
+
+						<SecondaryButton
+							as-child
+							type="submit"
+							class="col-span-12"
+						>
+							<RouterLink :to="{ name: USER_CART }">
+								{{ $t("button.edit") }}
+							</RouterLink>
+						</SecondaryButton>
+
+						<PrimaryButton
+							type="submit"
+							class="col-span-12"
+							@click="submitPayment"
+						>
+							{{ $t("button.pay") }}
+						</PrimaryButton>
+					</div>
+				</template>
+
+				<template v-if="step === 3">
+					<h2 class="mb-4 text-xl font-bold lg:text-2xl">
+						{{ query.commandId ? $pt("stepTitle.failed") : $pt("stepTitle.success") }}
+					</h2>
+
+					<div class="flex flex-col items-center justify-center flex-1 gap-4">
+						<TheIcon
+							:icon="query.commandId ? 'close-circle' : 'check-circle'"
+							size="4xl"
+							class="text-[96px] flex items-center justify-center"
+						/>
+
+						<p>
+							{{ query.commandId ? $pt("step.failedMessage") : $pt("step.successMessage") }}
+						</p>
+
+						<PrimaryButton
+							v-if="!query.commandId"
+							as-child
+							size="lg"
+							class="mt-8 w-min"
+						>
+							<RouterLink :to="{ name: EDITO_HOME }">
+								{{ $t("button.backToHome") }}
+							</RouterLink>
+						</PrimaryButton>
+
+						<PrimaryButton
+							v-else
+							type="submit"
+							class="col-span-12"
+							@click="retryOrder"
+						>
+							{{ $t("button.retry") }}
+						</PrimaryButton>
+					</div>
+				</template>
 			</div>
 		</div>
 	</section>

@@ -31,8 +31,8 @@ async function googleSign() {
 </script>
 
 <template>
-	<section class="flex items-center justify-center h-screen-no-header">
-		<div class="container flex items-center justify-center w-full h-full lg:grid lg:items-stretch lg:justify-normal lg:grid-cols-2">
+	<section class="h-screen-nh flex items-center justify-center container">
+		<div class="w-full h-full flex items-center justify-center lg:grid lg:items-stretch lg:justify-normal lg:grid-cols-2">
 			<div class="flex items-center justify-center py-12">
 				<div class="mx-auto grid w-[350px] gap-6">
 					<div class="grid gap-2 text-center">

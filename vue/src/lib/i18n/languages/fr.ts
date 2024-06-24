@@ -38,6 +38,12 @@ export default {
 				}
 			},
 		},
+		[routerPageName.CATEGORIES_PAGE]: {
+			title: "Catégories",
+			emptyTitle: "Aucune catégorie n'a été trouvée.",
+			emptySubtitle: "Revenez plus tard pour voir les nouveautés.",
+			buttonBack: "Revenir à l'accueil",
+		},
 		[routerPageName.CATEGORY_PAGE]: {
 			emptyTitle: "Cette catégorie n'a pas encore de produits.",
 			emptySubtitle: "Revenez plus tard pour voir les nouveautés.",

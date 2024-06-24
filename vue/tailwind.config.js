@@ -30,10 +30,12 @@ module.exports = {
 			},
 			height: {
 				"192": "48rem",
-				"screen-no-header": "calc(100vh - 6rem)",
+				"screen-nh": "calc(100vh - 6rem)", // screen - header
 			},
 			minHeight: {
-				"screen-no-header": "calc(100vh - 6rem)",
+				"screen-nh": "calc(100vh - 6rem)", // screen - header
+				"screen-nhm-mobile": "calc(100vh - 6rem - 6rem)", // screen - header - margin
+				"screen-nhm-desktop": "calc(100vh - 6rem - 8rem)", // screen - header - margin
 			},
 			aspectRatio:{
 				portrait: "3 / 4",
