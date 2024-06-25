@@ -26,11 +26,16 @@ function closeSuggestions(instant = false) {
 	}, instant ? 0 : 300);
 }
 
+function clearSearch() {
+	search.value = "";
+}
+
 function submit() {
 	if (!search.value) {
 		return;
 	}
 
+	clearSearch();
 	closeSuggestions();
 	router.push({ name: SEARCH_PAGE, params: { productSheetName: search.value.trim() } });
 }
@@ -73,7 +78,7 @@ watch(
 					<RouterLink
 						:to="{ name: PRODUCT_PAGE, params: { productSheetId: productSheet.id } }"
 						class="flex items-center gap-2"
-						@click="closeSuggestions(true)"
+						@click="closeSuggestions(true); clearSearch()"
 					>
 						<div class="flex items-center gap-2">
 							<img

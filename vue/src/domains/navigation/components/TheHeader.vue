@@ -3,6 +3,7 @@ import TheNavbar from "./TheNavbar.vue";
 import TheSearch from "./TheSearch.vue";
 import AccountDropdown from "../components/AccountDropdown.vue";
 import MobileNavbar from "../components/MobileNavbar.vue";
+import MobileSearch from "../components/MobileSearch.vue";
 import { useGetNavigationBar } from "../composables/useGetNavigationBar";
 
 const { EDITO_HOME, AUTH_LOGIN } = routerPageName;
@@ -32,12 +33,7 @@ const { items } = useGetNavigationBar();
 					<TheSearch />
 
 					<div class="flex gap-6 items-center">
-						<button class="lg:hidden">
-							<TheIcon
-								icon="magnify"
-								size="2xl"
-							/>
-						</button>
+						<MobileSearch />
 
 						<RouterLink to="/cart">
 							<TheIcon
