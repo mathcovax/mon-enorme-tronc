@@ -53,6 +53,8 @@ const renderDescription = computed(() => {
 });
 
 getProductData();
+
+watch(() => params.value.productSheetId, () => { getProductData(); });
 </script>
 
 <template>

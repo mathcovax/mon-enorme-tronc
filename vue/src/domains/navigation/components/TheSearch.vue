@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useGetCategoryProductSheets } from "@/domains/product/composables/useGetCategoryProductSheets";
-import type { FullProductSheet } from "@/lib/utils";
 
 const { SEARCH_PAGE, PRODUCT_PAGE } = routerPageName;
 const router = useRouter();
@@ -9,19 +8,12 @@ const params = useRouteParams({
 });
 
 const { getCategoryProductSheets, productSheets } = useGetCategoryProductSheets({
-	available: true,
+	available: "true",
 	searchByRegex: params.value.productSheetName,
 });
 
 const search = ref(params.value.productSheetName ?? "");
 const suggestions = ref(false);
-// const filteredProductSheets = computed(() => {
-// 	if (!productSheets.value) {
-// 		return null;
-// 	}
-
-// 	return productSheets.value.filter((productSheet: FullProductSheet) => productSheet.quantity > 0);
-// });
 
 function openSuggestions() {
 	suggestions.value = true;
@@ -49,7 +41,7 @@ watch(
 			return;
 		}
 
-		getCategoryProductSheets({ available: true, searchByRegex: search.value });
+		getCategoryProductSheets({ available: "true", searchByRegex: search.value });
 	}
 );
 </script>
@@ -75,7 +67,7 @@ watch(
 			class="absolute top-[calc(100%+0.5rem)] left-0 hidden lg:flex flex-col gap-2 bg-whiteless rounded-lg p-4 shadow-lg w-full max-h-96 overflow-y-auto"
 		>
 			<li
-				v-for="productSheet in productSheets"
+				v-for="productSheet in productSheets.slice(0, 3)"
 				:key="productSheet.id"
 			>
 				<RouterLink
@@ -83,9 +75,61 @@ watch(
 					class="flex items-center gap-2"
 					@click="closeSuggestions(true)"
 				>
-					{{ productSheet.name }}
+					<div class="flex items-center gap-2">
+						<img
+							v-if="productSheet.images.length > 0"
+							:src="productSheet.images[0]"
+							:alt="productSheet.name"
+							class="w-12 h-12 object-cover rounded-lg"
+						>
+
+						<div
+							v-else
+							class="shrink-0 w-12 h-12 flex justify-center items-center bg-white"
+						>
+							<TheIcon
+								icon="image-outline"
+								size="3xl"
+								class="text-muted-foreground"
+							/>
+						</div>
+
+						<div>
+							<span
+								class="title-ellipsis font-semibold"
+								:title="productSheet.name"
+							>
+								{{ productSheet.name }}
+							</span>
+
+							<p
+								class="short-description-ellipsis opacity-50"
+								:title="productSheet.shortDescription"
+							>
+								{{ productSheet.shortDescription }}
+							</p>
+						</div>
+					</div>
 				</RouterLink>
 			</li>
 		</ul>
 	</div>
 </template>
+
+<style scoped>
+.title-ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 1; /* number of lines to show */
+	-webkit-box-orient: vertical;
+}
+
+.short-description-ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2; /* number of lines to show */
+	-webkit-box-orient: vertical;
+}
+</style>
