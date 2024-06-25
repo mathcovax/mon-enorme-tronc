@@ -127,3 +127,21 @@ watch(
 		</SheetContent>
 	</TheSheet>
 </template>
+
+<style scoped>
+.title-ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2; /* number of lines to show */
+	-webkit-box-orient: vertical;
+}
+
+.short-description-ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 4; /* number of lines to show */
+	-webkit-box-orient: vertical;
+}
+</style>
