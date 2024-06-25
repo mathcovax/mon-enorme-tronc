@@ -10,6 +10,7 @@ const params = useRouteParams({
 const { getCategoryProductSheets, productSheets } = useGetCategoryProductSheets({
 	available: "true",
 	searchByRegex: params.value.productSheetName,
+	take: 3,
 });
 
 const search = ref(params.value.productSheetName ?? "");
@@ -41,16 +42,16 @@ watch(
 			return;
 		}
 
-		getCategoryProductSheets({ available: "true", searchByRegex: search.value });
+		getCategoryProductSheets({ available: "true", searchByRegex: search.value, take: 3 });
 	}
 );
 </script>
 
 <template>
-	<div class="relative lg:flex-1 flex gap-3 justify-end items-center">
+	<div class="lg:flex-1 flex gap-3 justify-end items-center">
 		<form
 			@submit="$event.preventDefault(); submit()"
-			class="hidden lg:block grow max-w-144"
+			class="hidden relative lg:block grow max-w-144"
 		>
 			<input
 				type="text"
@@ -60,59 +61,59 @@ watch(
 				@focus="openSuggestions"
 				@blur="closeSuggestions()"
 			>
-		</form>
 
-		<ul
-			v-if="search && productSheets && productSheets.length > 0 && suggestions"
-			class="absolute top-[calc(100%+0.5rem)] left-0 hidden lg:flex flex-col gap-2 bg-whiteless rounded-lg p-4 shadow-lg w-full max-h-96 overflow-y-auto"
-		>
-			<li
-				v-for="productSheet in productSheets.slice(0, 3)"
-				:key="productSheet.id"
+			<ul
+				v-if="search && productSheets && productSheets.length > 0 && suggestions"
+				class="absolute top-[calc(100%+0.5rem)] left-0 hidden lg:flex flex-col gap-2 bg-whiteless rounded-lg p-4 shadow-lg w-full max-h-96 overflow-y-auto"
 			>
-				<RouterLink
-					:to="{ name: PRODUCT_PAGE, params: { productSheetId: productSheet.id } }"
-					class="flex items-center gap-2"
-					@click="closeSuggestions(true)"
+				<li
+					v-for="productSheet in productSheets"
+					:key="productSheet.id"
 				>
-					<div class="flex items-center gap-2">
-						<img
-							v-if="productSheet.images.length > 0"
-							:src="productSheet.images[0]"
-							:alt="productSheet.name"
-							class="w-12 h-12 object-cover rounded-lg"
-						>
-
-						<div
-							v-else
-							class="shrink-0 w-12 h-12 flex justify-center items-center bg-white"
-						>
-							<TheIcon
-								icon="image-outline"
-								size="3xl"
-								class="text-muted-foreground"
-							/>
-						</div>
-
-						<div>
-							<span
-								class="title-ellipsis font-semibold"
-								:title="productSheet.name"
+					<RouterLink
+						:to="{ name: PRODUCT_PAGE, params: { productSheetId: productSheet.id } }"
+						class="flex items-center gap-2"
+						@click="closeSuggestions(true)"
+					>
+						<div class="flex items-center gap-2">
+							<img
+								v-if="productSheet.images.length > 0"
+								:src="productSheet.images[0]"
+								:alt="productSheet.name"
+								class="w-12 h-12 object-cover rounded-lg"
 							>
-								{{ productSheet.name }}
-							</span>
 
-							<p
-								class="short-description-ellipsis opacity-50"
-								:title="productSheet.shortDescription"
+							<div
+								v-else
+								class="shrink-0 w-12 h-12 flex justify-center items-center bg-white"
 							>
-								{{ productSheet.shortDescription }}
-							</p>
+								<TheIcon
+									icon="image-outline"
+									size="3xl"
+									class="text-muted-foreground"
+								/>
+							</div>
+
+							<div>
+								<span
+									class="title-ellipsis font-semibold"
+									:title="productSheet.name"
+								>
+									{{ productSheet.name }}
+								</span>
+
+								<p
+									class="short-description-ellipsis opacity-50"
+									:title="productSheet.shortDescription"
+								>
+									{{ productSheet.shortDescription }}
+								</p>
+							</div>
 						</div>
-					</div>
-				</RouterLink>
-			</li>
-		</ul>
+					</RouterLink>
+				</li>
+			</ul>
+		</form>
 	</div>
 </template>
 
