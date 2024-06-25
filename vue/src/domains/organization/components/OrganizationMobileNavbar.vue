@@ -41,139 +41,155 @@ getOrganization();
 			class="flex flex-col"
 		>
 			<nav class="grid gap-2 text-lg font-medium">
-				<RouterLink
-					:to="{ name: ORGANIZATION_HOME }"
-					class="mb-6 flex flex-col items-center text-center text-2xl font-bold"
-				>
-					<img
-						v-if="organization.logoUrl"
-						width="48"
-						height="48"
-						:src="organization.logoUrl"
-						alt="logo"
-						class="rounded-full"
+				<SheetClose as-child>
+					<RouterLink
+						:to="{ name: ORGANIZATION_HOME }"
+						class="mb-6 flex flex-col items-center text-center text-2xl font-bold"
 					>
+						<img
+							v-if="organization.logoUrl"
+							width="48"
+							height="48"
+							:src="organization.logoUrl"
+							alt="logo"
+							class="rounded-full"
+						>
 
-					<span>{{ $t("layout.organization.title") }}</span>
-				</RouterLink>
+						<span>{{ $t("layout.organization.title") }}</span>
+					</RouterLink>
+				</SheetClose>
 
-				<RouterLink
-					:to="{ name: ORGANIZATION_HOME }"
-					class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
-					:class="
-						route.name === ORGANIZATION_HOME ?
-							'bg-muted text-foreground'
-							:
-							'text-muted-foreground'
-					"
-				>
-					<TheIcon
-						icon="home-outline"
-						size="2xl"
-					/>
-					{{ $t("layout.organization.nav.dashboard") }}
-				</RouterLink>
+				<SheetClose as-child>
+					<RouterLink
+						:to="{ name: ORGANIZATION_HOME }"
+						class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
+						:class="
+							route.name === ORGANIZATION_HOME ?
+								'bg-muted text-foreground'
+								:
+								'text-muted-foreground'
+						"
+					>
+						<TheIcon
+							icon="home-outline"
+							size="2xl"
+						/>
+						{{ $t("layout.organization.nav.dashboard") }}
+					</RouterLink>
+				</SheetClose>
 
-				<RouterLink
-					v-if="organizationUserStore.hasRole('OWNER')"
-					:to="{ name: ORGANIZATION_EDIT }"
-					class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
-					:class="
-						route.name === ORGANIZATION_EDIT ?
-							'bg-muted text-foreground'
-							:
-							'text-muted-foreground'
-					"
-				>
-					<TheIcon
-						icon="store-edit"
-						size="2xl"
-					/>
-					{{ $t("layout.organization.nav.organizationEdit") }}
-				</RouterLink>
+				<SheetClose as-child>
+					<RouterLink
+						v-if="organizationUserStore.hasRole('OWNER')"
+						:to="{ name: ORGANIZATION_EDIT }"
+						class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
+						:class="
+							route.name === ORGANIZATION_EDIT ?
+								'bg-muted text-foreground'
+								:
+								'text-muted-foreground'
+						"
+					>
+						<TheIcon
+							icon="store-edit"
+							size="2xl"
+						/>
+						{{ $t("layout.organization.nav.organizationEdit") }}
+					</RouterLink>
+				</SheetClose>
 
-				<RouterLink
-					v-if="organizationUserStore.hasRole('STORE_KEEPER')"
-					to="#"
-					class="mx-[-0.65rem] flex items-center gap-4 rounded-xl bg-muted px-3 py-2 text-foreground hover:text-foreground"
-				>
-					<TheIcon
-						icon="cart-outline"
-						size="2xl"
-					/>
-					{{ $t("layout.organization.nav.orders") }}
-				</RouterLink>
+				<SheetClose as-child>
+					<RouterLink
+						v-if="organizationUserStore.hasRole('STORE_KEEPER')"
+						to="#"
+						class="mx-[-0.65rem] flex items-center gap-4 rounded-xl bg-muted px-3 py-2 text-foreground hover:text-foreground"
+					>
+						<TheIcon
+							icon="cart-outline"
+							size="2xl"
+						/>
+						{{ $t("layout.organization.nav.orders") }}
+					</RouterLink>
+				</SheetClose>
+				
+				<SheetClose as-child>
+					<RouterLink
+						v-if="organizationUserStore.hasRole('PRODUCT_SHEET_MANAGER')"
+						:to="{ name: ORGANIZATION_GET_PRODUCT_SHEET }"
+						class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
+						:class="
+							route.name === ORGANIZATION_GET_PRODUCT_SHEET ?
+								'bg-muted text-foreground'
+								:
+								'text-muted-foreground'
+						"
+					>
+						<TheIcon
+							icon="text-box-multiple-outline"
+							size="2xl"
+						/>
+						{{ $t("layout.organization.nav.productSheets") }}
+					</RouterLink>
+				</SheetClose>
+				
+				<SheetClose as-child>
+					<RouterLink
+						v-if="organizationUserStore.hasRole('STORE_KEEPER')"
+						:to="{ name: ORGANIZATION_MANAGE_PRODUCT }"
+						class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
+						:class="
+							route.name === ORGANIZATION_MANAGE_PRODUCT ?
+								'bg-muted text-foreground'
+								:
+								'text-muted-foreground'
+						"
+					>
+						<TheIcon
+							icon="package-variant-closed"
+							size="2xl"
+						/>
+						{{ $t("layout.organization.nav.products") }}
+					</RouterLink>
+				</SheetClose>
+				
+				<SheetClose as-child>
+					<RouterLink
+						:to="{ name: ORGANIZATION_MANAGE_USER }"
+						class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
+						:class="
+							route.name === ORGANIZATION_MANAGE_USER ?
+								'bg-muted text-foreground'
+								:
+								'text-muted-foreground'
+						"
+					>
+						<TheIcon
+							icon="account"
+							size="2xl"
+						/>
+						{{ $t("layout.organization.nav.users") }}
+					</RouterLink>
+				</SheetClose>
 
-				<RouterLink
-					v-if="organizationUserStore.hasRole('PRODUCT_SHEET_MANAGER')"
-					:to="{ name: ORGANIZATION_GET_PRODUCT_SHEET }"
-					class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
-					:class="
-						route.name === ORGANIZATION_GET_PRODUCT_SHEET ?
-							'bg-muted text-foreground'
-							:
-							'text-muted-foreground'
-					"
-				>
-					<TheIcon
-						icon="text-box-multiple-outline"
-						size="2xl"
-					/>
-					{{ $t("layout.organization.nav.productSheets") }}
-				</RouterLink>
-
-				<RouterLink
-					v-if="organizationUserStore.hasRole('STORE_KEEPER')"
-					:to="{ name: ORGANIZATION_MANAGE_PRODUCT }"
-					class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
-					:class="
-						route.name === ORGANIZATION_MANAGE_PRODUCT ?
-							'bg-muted text-foreground'
-							:
-							'text-muted-foreground'
-					"
-				>
-					<TheIcon
-						icon="package-variant-closed"
-						size="2xl"
-					/>
-					{{ $t("layout.organization.nav.products") }}
-				</RouterLink>
-
-				<RouterLink
-					:to="{ name: ORGANIZATION_MANAGE_USER }"
-					class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
-					:class="
-						route.name === ORGANIZATION_MANAGE_USER ?
-							'bg-muted text-foreground'
-							:
-							'text-muted-foreground'
-					"
-				>
-					<TheIcon
-						icon="account"
-						size="2xl"
-					/>
-					{{ $t("layout.organization.nav.users") }}
-				</RouterLink>
-
-				<RouterLink
-					v-if="organizationUserStore.hasRole('OWNER')"
-					:to="{ name: ORGANIZATION_GET_WAREHOUSE }"
-					class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
-					:class="
-						route.name === ORGANIZATION_GET_WAREHOUSE ?
-							'bg-muted text-foreground'
-							:
-							'text-muted-foreground'
-					"
-				>
-					<TheIcon
-						icon="warehouse"
-						size="2xl"
-					/>
-					{{ $t("layout.organization.nav.warehouse") }}
-				</RouterLink>
+				<SheetClose as-child>
+					<RouterLink
+						v-if="organizationUserStore.hasRole('OWNER')"
+						:to="{ name: ORGANIZATION_GET_WAREHOUSE }"
+						class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
+						:class="
+							route.name === ORGANIZATION_GET_WAREHOUSE ?
+								'bg-muted text-foreground'
+								:
+								'text-muted-foreground'
+						"
+					>
+						<TheIcon
+							icon="warehouse"
+							size="2xl"
+						/>
+						{{ $t("layout.organization.nav.warehouse") }}
+					</RouterLink>
+				</SheetClose>
 			</nav>
 		</SheetContent>
 	</TheSheet>

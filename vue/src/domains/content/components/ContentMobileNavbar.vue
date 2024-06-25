@@ -28,80 +28,90 @@ const route = useRoute();
 			class="flex flex-col"
 		>
 			<nav class="grid gap-2 text-lg font-medium">
-				<RouterLink
-					:to="{ name: CONTENT_PANEL_HOME }"
-					class="mb-6 text-center text-2xl font-bold"
-				>
-					<span>{{ $t("layout.admin.title") }}</span>
-				</RouterLink>
+				<SheetClose as-child>
+					<RouterLink
+						:to="{ name: CONTENT_PANEL_HOME }"
+						class="mb-6 text-center text-2xl font-bold"
+					>
+						<span>{{ $t("layout.admin.title") }}</span>
+					</RouterLink>
+				</SheetClose>
 
-				<RouterLink
-					:to="{ name: CONTENT_PANEL_HOME }"
-					class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
-					:class="
-						route.name === CONTENT_PANEL_HOME ?
-							'bg-muted text-foreground'
-							:
-							'text-muted-foreground'
-					"
-				>
-					<TheIcon
-						icon="home-outline"
-						size="2xl"
-					/>
-					{{ $t("layout.admin.nav.home") }}
-				</RouterLink>
-
-				<RouterLink
-					:to="{ name: CONTENT_PANEL_NAVIGATION_BAR }"
-					class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
-					:class="
-						route.name === CONTENT_PANEL_NAVIGATION_BAR ?
-							'bg-muted text-foreground'
-							:
-							'text-muted-foreground'
-					"
-				>
-					<TheIcon
-						icon="magnify"
-						size="2xl"
-					/>
-					{{ $t("layout.content.nav.navbar") }}
-				</RouterLink>
-
-				<RouterLink
-					:to="{ name: CONTENT_PANEL_PARENT_CATEGORIES }"
-					class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
-					:class="
-						route.name === CONTENT_PANEL_PARENT_CATEGORIES ?
-							'bg-muted text-foreground'
-							:
-							'text-muted-foreground'
-					"
-				>
-					<TheIcon
-						icon="shape-outline"
-						size="2xl"
-					/>
-					{{ $t("layout.content.nav.parentCategories") }}
-				</RouterLink>
-
-				<RouterLink
-					:to="{ name: CONTENT_PANEL_CATEGORIES }"
-					class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
-					:class="
-						route.name === CONTENT_PANEL_CATEGORIES ?
-							'bg-muted text-foreground'
-							:
-							'text-muted-foreground'
-					"
-				>
-					<TheIcon
-						icon="shape-plus-outline"
-						size="2xl"
-					/>
-					{{ $t("layout.content.nav.categories") }}
-				</RouterLink>
+				<SheetClose as-child>
+					<RouterLink
+						:to="{ name: CONTENT_PANEL_HOME }"
+						class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
+						:class="
+							route.name === CONTENT_PANEL_HOME ?
+								'bg-muted text-foreground'
+								:
+								'text-muted-foreground'
+						"
+					>
+						<TheIcon
+							icon="home-outline"
+							size="2xl"
+						/>
+						{{ $t("layout.admin.nav.home") }}
+					</RouterLink>
+				</SheetClose>
+				
+				<SheetClose as-child>
+					<RouterLink
+						:to="{ name: CONTENT_PANEL_NAVIGATION_BAR }"
+						class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
+						:class="
+							route.name === CONTENT_PANEL_NAVIGATION_BAR ?
+								'bg-muted text-foreground'
+								:
+								'text-muted-foreground'
+						"
+					>
+						<TheIcon
+							icon="magnify"
+							size="2xl"
+						/>
+						{{ $t("layout.content.nav.navbar") }}
+					</RouterLink>
+				</SheetClose>
+				
+				<SheetClose as-child>
+					<RouterLink
+						:to="{ name: CONTENT_PANEL_PARENT_CATEGORIES }"
+						class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
+						:class="
+							route.name === CONTENT_PANEL_PARENT_CATEGORIES ?
+								'bg-muted text-foreground'
+								:
+								'text-muted-foreground'
+						"
+					>
+						<TheIcon
+							icon="shape-outline"
+							size="2xl"
+						/>
+						{{ $t("layout.content.nav.parentCategories") }}
+					</RouterLink>
+				</SheetClose>
+				
+				<SheetClose as-child>
+					<RouterLink
+						:to="{ name: CONTENT_PANEL_CATEGORIES }"
+						class="mx-[-0.65rem] px-3 py-2 flex items-center gap-4 rounded-xl hover:text-foreground"
+						:class="
+							route.name === CONTENT_PANEL_CATEGORIES ?
+								'bg-muted text-foreground'
+								:
+								'text-muted-foreground'
+						"
+					>
+						<TheIcon
+							icon="shape-plus-outline"
+							size="2xl"
+						/>
+						{{ $t("layout.content.nav.categories") }}
+					</RouterLink>
+				</SheetClose>
 			</nav>
 		</SheetContent>
 	</TheSheet>
