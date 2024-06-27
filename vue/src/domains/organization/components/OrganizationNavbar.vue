@@ -8,7 +8,8 @@ const {
 	ORGANIZATION_EDIT,
 	ORGANIZATION_MANAGE_PRODUCT,
 	ORGANIZATION_GET_PRODUCT_SHEET,
-	ORGANIZATION_GET_WAREHOUSE
+	ORGANIZATION_GET_WAREHOUSE,
+	ORGANIZATION_COMMANDS,
 } = routerPageName;
 const route = useRoute();
 const organizationUserStore = useOrganizationUserStore();
@@ -81,7 +82,7 @@ getOrganization();
 
 					<RouterLink
 						v-if="organizationUserStore.hasRole('STORE_KEEPER')"
-						to="#"
+						:to="{ name: ORGANIZATION_COMMANDS }"
 						class="flex items-center gap-3 px-3 py-2 transition-all rounded-lg hover:text-primary"
 						:class="
 							!route.name ?

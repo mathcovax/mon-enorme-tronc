@@ -9,6 +9,7 @@ export const routerPageNameOrganization = Object.freeze({
 	ORGANIZATION_EDIT_PRODUCT_SHEET: "organization-panel-edit-product-sheet",
 	ORGANIZATION_GET_PRODUCT_SHEET: "organization-panel-get-product-sheet",
 	ORGANIZATION_GET_WAREHOUSE: "organization-panel-get-warehouse",
+	ORGANIZATION_COMMANDS: "organization-commands",
 });
 
 export default (): RouteRecordRaw[] => [
@@ -55,6 +56,11 @@ export default (): RouteRecordRaw[] => [
 				name: routerPageNameOrganization.ORGANIZATION_MANAGE_PRODUCT,
 				path: "/organization-panel/:organizationId/products",
 				component: () => import("./pages/ProductsOrganization.vue")
+			},
+			{
+				name: routerPageNameOrganization.ORGANIZATION_COMMANDS,
+				path: "/organization-panel/:organizationId/commands",
+				component: () => import("./pages/CommandsOrganization.vue")
 			},
 		]
 	}

@@ -13,6 +13,7 @@
 		"migrate:dev": "prisma migrate dev",
 		"studio": "prisma studio -n 0.0.0.0",
 		"indexing:productSheet": "tsx src/scripts/indexingProductSheet",
+		"readNotifications": "tsx src/scripts/readNotifications",
 		"fixture": "tsx src/fixtures"
 	},
 	"prisma": {

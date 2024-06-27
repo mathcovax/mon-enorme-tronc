@@ -186,7 +186,6 @@ enum product_status {
     WRONG
     SOLD
     IN_STOCK
-    WAITING_PAYMENT
 }
 
 model facet {
@@ -229,6 +228,8 @@ model command {
     product                    product[]
     commandItems               command_item[]
     stripeNotificationCheckout stripe_notification_checkout[]
+    createdAt                  DateTime                       @default(now())
+    updatedAt                  DateTime                       @updatedAt
 }
 
 enum command_status {
@@ -249,12 +250,15 @@ model command_item {
     quantity           Int
     processQuantity    Int           @default(0)
     freezeProductSheet String
+    createdAt          DateTime      @default(now())
+    updatedAt          DateTime      @updatedAt
 }
 
 model stripe_notification_checkout {
-    id              Int     @id @default(autoincrement())
+    id              Int      @id @default(autoincrement())
     type            String
-    stripeSessionId String  @db.VarChar(255)
-    command         command @relation(fields: [commandId], references: [id])
+    stripeSessionId String   @db.VarChar(255)
+    command         command  @relation(fields: [commandId], references: [id])
     commandId       String
+    createdAt       DateTime @default(now())
 }
