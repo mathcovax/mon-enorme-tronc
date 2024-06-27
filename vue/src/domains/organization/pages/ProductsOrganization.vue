@@ -14,11 +14,9 @@ const searchName = ref("");
 const $pt = usePageTranslate();
 const toggleBtnCreateForm = ref(false);
 const statusToColor: Record<ProductStatus, string> = {
-	ORDER: "orange",
 	WRONG: "red",
 	SOLD: "green",
 	IN_STOCK: "purple",
-	WAITING_PAYMENT: "blue"
 };
 const cols: BigTableColDef<Product>[] = [
 	{

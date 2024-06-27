@@ -277,6 +277,18 @@ export default {
 			searchPlaceholder: "Chercher un produit",
 			popupWrongMessage: "Êtes-vous sur de vouloir changer le status de cette réference ?"
 		},
+		[routerPageName.ORGANIZATION_COMMANDS]: {
+			title: "Liste des commandes a traité",
+			table: {
+				date: "Date de la commande",
+				quantity: "Quantité de produit",
+				id: "ID de la commande",
+			},
+			cb: {
+				textButton: "Selectioner un entrepot",
+				placeholder: "mon super entrepot..."
+			}
+		}
 	},
 	filters: {
 		title: "Filtres",

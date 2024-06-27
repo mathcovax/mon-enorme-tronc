@@ -182,7 +182,6 @@ model product {
 }
 
 enum product_status {
-    ORDER
     WRONG
     SOLD
     IN_STOCK

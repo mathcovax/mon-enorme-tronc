@@ -1,5 +1,5 @@
 import { duploTesting } from "@test/setup";
-import { adminPanelEntry, authEntry, basicEntry, contentPanelEntry, organizationOwnerEntry, organizationEntry, organizationProductSheetManagerEntry, organizationWarehouseManagerEntry, selfEntry } from "./entry";
+import { adminPanelEntry, authEntry, basicEntry, contentPanelEntry, organizationOwnerEntry, organizationEntry, organizationProductSheetManagerEntry, selfEntry } from "./entry";
 
 describe("entry", () => {
 	it("basic", async () => {
@@ -134,44 +134,6 @@ describe("entry", () => {
 			.launch();
 
 		expect(res.information).toBe("entry.accepted");
-	});
-
-	it("warehouse", async () => {
-		const res = await duploTesting
-			.testRoute(organizationWarehouseManagerEntry)
-			.setDefaultFloorValue({ accessTokenContent: {} })
-			.setRequestProperties({
-				params: {
-					organizationId: "tete",
-				}
-			})
-			.mockChecker(
-				0,
-				{ info: "warehouse.exist", data: "1234" }
-			)
-			.mockProcess(
-				1,
-				{}
-			)
-			.launch();
-
-		expect(res.information).toBe("entry.accepted");
-
-		const res1 = await duploTesting
-			.testRoute(organizationWarehouseManagerEntry)
-			.setDefaultFloorValue({ accessTokenContent: {} })
-			.setRequestProperties({
-				params: {
-					organizationId: "audit tete",
-					warehouseId: "tttt"
-				}
-			})
-			.mockChecker(
-				0,
-				{ info: "warehouse.notfound", data: "1234" }
-			)
-			.launch();
-		expect(res1.information).toBe("entry.refuse");
 	});
 
 	it("selfEntry", async () => {

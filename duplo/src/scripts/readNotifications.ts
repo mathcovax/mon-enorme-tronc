@@ -1,3 +1,4 @@
+import "./setup";
 import { FindSlice } from "@utils/findSlice";
 import { LastTime } from "./setup/lastTime";
 import { prisma } from "./setup/prismaClient";

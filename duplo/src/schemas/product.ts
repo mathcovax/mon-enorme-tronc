@@ -1,19 +1,15 @@
 import { product_status } from "@prisma/client";
 
 export const productStatusTuple: TuplifyUnion<product_status> = [
-	"WAITING_PAYMENT",
-	"ORDER",
-	"WRONG",
-	"SOLD",
+	"WRONG", 
+	"SOLD", 
 	"IN_STOCK"
 ];
 
 export const productStatusEnum: UninonToEnum<product_status> = {
-	ORDER: "ORDER",
 	WRONG: "WRONG",
 	SOLD: "SOLD",
 	IN_STOCK: "IN_STOCK",
-	WAITING_PAYMENT: "WAITING_PAYMENT",
 };
 
 export type ProductSchema = Zod.infer<typeof productSchema>

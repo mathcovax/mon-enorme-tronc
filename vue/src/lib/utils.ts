@@ -116,13 +116,7 @@ export type Product = GetResponseByInfo<
 
 export type ProductStatus = Product["status"]
 
-export const productStatus: TuplifyUnion<ProductStatus> = [
-	"WAITING_PAYMENT",
-	"ORDER",
-	"WRONG",
-	"SOLD",
-	"IN_STOCK"
-];
+export const productStatus: TuplifyUnion<ProductStatus> = ["WRONG", "SOLD", "IN_STOCK"];
 
 export type ProductSheet = GetResponseByInfo<
 	GetDef<"GET", "/organization/{organizationId}/product-sheets">,
@@ -165,3 +159,8 @@ export type QueryFilters = Exclude<
 	GetDef<"GET", "/computed-filters">["parameters"]["query"], 
 	undefined
 >
+
+export type OrganizationCommandCollection = GetResponseByInfo<
+GetDef<"GET", "/organization/{organizationId}/commands">,
+"organizationCommandCollection"
+>["body"]
