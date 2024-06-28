@@ -613,6 +613,13 @@ export default {
 			edited: "La fiche a correctement été éditée.",
 			created: "La fiche a correctement été créée."
 		},
+		promotion: {
+			created: "La promotion a correctement été créée.",
+			deleted: "La promotion a correctement été supprimée.",
+			date: {
+				invalid: "La date de début doit être inférieur à la date de fin."
+			}
+		},
 		warehouse: {
 			notfound: "l'entrepôt n'existe pas.",
 			edited: "l'entrepôt a correctement été édité",

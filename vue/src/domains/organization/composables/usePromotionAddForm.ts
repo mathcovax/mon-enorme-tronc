@@ -7,9 +7,7 @@ export function usePromotionAddForm(organizationId: string) {
 	const { Form, checkForm, resetForm } = useFormBuilder({
 		productSheet: computed(() => ({
 			type: "combo",
-			items: productSheets.value.filter(
-				p => p.promotionId === null
-			)
+			items: productSheets.value
 				.map(
 					v => ({ label: v.name, identifier: v.id })
 				),
@@ -21,8 +19,7 @@ export function usePromotionAddForm(organizationId: string) {
 				{ message: $t("form.rule.required") }
 			).transform(item => item.identifier),
 			textButton: $t("button.search"),
-			onUpdateSearchTerm: (value: string) => getProductSheets(undefined, value),
-			onClick: () => getProductSheets(undefined),
+			onUpdateSearchTerm: (value: string) => getProductSheets(undefined, value)
 		})),
 		percentage: {
 			type: "number",

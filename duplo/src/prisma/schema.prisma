@@ -288,7 +288,7 @@ model product_to_bundle {
 model promotion {
     id             Int           @id @default(autoincrement())
     productSheet   product_sheet @relation(fields: [productSheetId], references: [id])
-    productSheetId String        @unique
+    productSheetId String
     organization   organization  @relation(fields: [organizationId], references: [id])
     organizationId String
     percentage     Float

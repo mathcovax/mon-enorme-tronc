@@ -75,6 +75,7 @@ export type response_1_1 = {
 <<<<<<< HEAD
 =======
 
+<<<<<<< HEAD
 export type parameters_2 = {
     query?: {
         address?: string | undefined;
@@ -84,9 +85,30 @@ export type parameters_2 = {
 export type response_body_2_0 = string[]
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 
+=======
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 export type response_2_0 = {
-    code: 200;
+    code: 401;
+    ok: false;
+    info: "access.token.invalid";
+} & {body: undefined};
+
+export type response_2_1 = {
+    code: 404;
+    ok: false;
+    info: "user.notfound";
+} & {body: undefined};
+
+export type response_2_2 = {
+    code: 403;
+    ok: false;
+    info: "user.role.invalid";
+} & {body: undefined};
+
+export type response_2_3 = {
+    code: 204;
     ok: true;
+<<<<<<< HEAD
 <<<<<<< HEAD
     info: "entry.accepted";
 } & {body: undefined};
@@ -94,6 +116,10 @@ export type response_2_0 = {
     info?: undefined;
 } & {body: response_body_2_0};
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+    info: "entry.accepted";
+} & {body: undefined};
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 
 export type response_3_0 = {
     code: 401;
@@ -120,14 +146,20 @@ export type response_3_3 = {
 } & {body: undefined};
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 export type parameters_4 = {
     params: {
         organizationId: string;
     };
 }
 
+<<<<<<< HEAD
 =======
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 export type response_4_0 = {
     code: 401;
     ok: false;
@@ -142,6 +174,7 @@ export type response_4_1 = {
 
 export type response_4_2 = {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     code: 403;
     ok: false;
@@ -150,12 +183,17 @@ export type response_4_2 = {
 
 export type response_4_3 = {
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
     code: 204;
     ok: true;
     info: "entry.accepted";
 } & {body: undefined};
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 export type response_4_3 = {
     code: 406;
     ok: false;
@@ -168,11 +206,15 @@ export type response_4_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
+<<<<<<< HEAD
 =======
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 export type parameters_5 = {
     params: {
         organizationId: string;
+        warehouseId?: string | undefined;
     };
 }
 
@@ -189,18 +231,24 @@ export type response_5_1 = {
 } & {body: undefined};
 
 export type response_5_2 = {
+    code: 401;
+    ok: false;
+    info: "entry.refuse";
+} & {body: undefined};
+
+export type response_5_3 = {
     code: 204;
     ok: true;
     info: "entry.accepted";
 } & {body: undefined};
 
-export type response_5_3 = {
+export type response_5_4 = {
     code: 406;
     ok: false;
     info: "organization.hasNotUser";
 } & {body: undefined};
 
-export type response_5_4 = {
+export type response_5_5 = {
     code: 403;
     ok: false;
     info: "user.role.organization.invalid";
@@ -209,7 +257,7 @@ export type response_5_4 = {
 export type parameters_6 = {
     params: {
         organizationId: string;
-        warehouseId?: string | undefined;
+        productSheetId?: string | undefined;
     };
 }
 
@@ -255,9 +303,12 @@ export type parameters_7 = {
     params: {
         organizationId: string;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         productSheetId?: string | undefined;
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
     };
 }
 
@@ -285,25 +336,8 @@ export type response_7_3 = {
     info: "entry.accepted";
 } & {body: undefined};
 
-export type response_7_4 = {
-    code: 406;
-    ok: false;
-    info: "organization.hasNotUser";
-} & {body: undefined};
-
-export type response_7_5 = {
-    code: 403;
-    ok: false;
-    info: "user.role.organization.invalid";
-} & {body: undefined};
-
-export type parameters_8 = {
-    params: {
-        organizationId: string;
-    };
-}
-
 export type response_8_0 = {
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     code: 401;
@@ -325,6 +359,8 @@ export type response_8_2 = {
 
 export type response_8_3 = {
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
     code: 204;
     ok: true;
     info: "entry.accepted";
@@ -350,6 +386,7 @@ export type response_9_2 = {
 
 export type response_10_0 = {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     code: 401;
     ok: false;
@@ -364,6 +401,8 @@ export type response_10_1 = {
 
 export type response_10_2 = {
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
     code: 204;
     ok: true;
     info: "entry.accepted";
@@ -380,9 +419,18 @@ export type response_body_11_0 = string[]
 =======
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 
+export type parameters_11 = {
+    query?: {
+        address?: string | undefined;
+    } | undefined;
+}
+
+export type response_body_11_0 = string[]
+
 export type response_11_0 = {
-    code: 204;
+    code: 200;
     ok: true;
+<<<<<<< HEAD
 <<<<<<< HEAD
     info?: undefined;
 } & {body: response_body_11_0};
@@ -390,6 +438,10 @@ export type response_11_0 = {
     info: "entry.accepted";
 } & {body: undefined};
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+    info?: undefined;
+} & {body: response_body_11_0};
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 
 export type parameters_12 = {
     headers: {
@@ -522,11 +574,14 @@ export type response_15_4 = {
     info: "user.registered";
 } & {body: response_body_15_4};
 
+<<<<<<< HEAD
 export type request_body_16 = {
     productSheetId: string;
     quantity?: number;
 }
 
+=======
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 export type response_16_0 = {
     code: 401;
     ok: false;
@@ -539,17 +594,29 @@ export type response_16_1 = {
     info: "user.notfound";
 } & {body: undefined};
 
-export type response_16_2 = {
-    code: 404;
-    ok: false;
-    info: "productSheet.notfound";
-} & {body: undefined};
+export type response_body_16_2 = {
+    productSheetId: string;
+    quantity: number;
+    name: string;
+    description: string;
+    shortDescription: string;
+    price: number;
+    imageUrl: string;
+}[]
 
+<<<<<<< HEAD
 export type response_16_3 = {
     code: 401;
     ok: false;
     info: "cart.article.limit";
 } & {body: undefined};
+=======
+export type response_16_2 = {
+    code: 200;
+    ok: true;
+    info: "cart.fetched";
+} & {body: response_body_16_2};
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 
 export type response_16_4 = {
     code: 401;
@@ -606,6 +673,7 @@ export type response_17_3 = {
     info: "article.deleted";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type request_body_18 = {
     organizationRole?: ("STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT") | undefined;
 }
@@ -618,6 +686,11 @@ export type parameters_18 = {
         organizationId: string;
         userId: string;
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+export type parameters_18 = {
+    params: {
+        imageProductSheetId: string;
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
     };
 }
 
@@ -635,10 +708,28 @@ export type response_18_1 = {
 
 export type response_18_2 = {
     code: 404;
+<<<<<<< HEAD
     ok: false;
     info: "imageProductSheet.notfound";
 } & {body: undefined};
 
+export type response_18_3 = {
+    code: 204;
+    ok: true;
+    info: "imageProductSheet.deleted";
+} & {body: undefined};
+
+export type response_18_4 = {
+    code: 406;
+=======
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
+    ok: false;
+    info: "imageProductSheet.notfound";
+} & {body: undefined};
+
+<<<<<<< HEAD
+export type response_18_5 = {
+=======
 export type response_18_3 = {
     code: 204;
     ok: true;
@@ -652,28 +743,11 @@ export type response_18_4 = {
 } & {body: undefined};
 
 <<<<<<< HEAD
-export type response_18_5 = {
-=======
-export type response_18_3 = {
-    code: 401;
-    ok: false;
-    info: "organization.user.organizationRole.owner";
-} & {body: undefined};
-
-export type response_18_4 = {
-    code: 204;
-    ok: true;
-    info: "organization.user.edited";
-} & {body: undefined};
-
-export type response_18_5 = {
-    code: 406;
-    ok: false;
-    info: "organization.hasNotUser";
-} & {body: undefined};
-
 export type response_18_6 = {
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+export type response_18_5 = {
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
     code: 403;
     ok: false;
     info: "user.role.organization.invalid";
@@ -681,6 +755,7 @@ export type response_18_6 = {
 <<<<<<< HEAD
 =======
 
+<<<<<<< HEAD
 export type parameters_19 = {
     params: {
         organizationId: string;
@@ -689,6 +764,8 @@ export type parameters_19 = {
 }
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 
+=======
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 export type response_19_0 = {
     code: 401;
     ok: false;
@@ -713,6 +790,7 @@ export type response_body_19_2 = {
 
 export type response_19_2 = {
 <<<<<<< HEAD
+<<<<<<< HEAD
     code: 200;
     ok: true;
     info: "cart.fetched";
@@ -725,22 +803,32 @@ export type parameters_20 = {
 }
 =======
     code: 406;
+=======
+    code: 404;
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
     ok: false;
-    info: "organization.hasNotUser";
+    info: "user.notfound";
 } & {body: undefined};
+
+export type response_body_19_3 = {
+    id: string;
+    email: string;
+    lastname: string;
+    firstname: string;
+    dateOfBirth?: string;
+    address: string;
+    primordialRole: "CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN";
+    muted: boolean;
+    hasOrganization: boolean;
+}
 
 export type response_19_3 = {
-    code: 401;
-    ok: false;
-    info: "organization.user.organizationRole.owner";
-} & {body: undefined};
-
-export type response_19_4 = {
-    code: 204;
+    code: 200;
     ok: true;
-    info: "organization.user.deleted";
-} & {body: undefined};
+    info: "user";
+} & {body: response_body_19_3};
 
+<<<<<<< HEAD
 export type response_19_5 = {
     code: 406;
     ok: false;
@@ -753,6 +841,13 @@ export type response_19_6 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+export type request_body_20 = {
+    lastname?: string | undefined;
+    firstname?: string | undefined;
+    address?: string | undefined;
+}
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 
 export type response_20_0 = {
     code: 401;
@@ -766,17 +861,8 @@ export type response_20_1 = {
     info: "user.notfound";
 } & {body: undefined};
 
-export type response_body_20_2 = {
-    productSheetId: string;
-    quantity: number;
-    name: string;
-    description: string;
-    shortDescription: string;
-    price: number;
-    imageUrl: string;
-}[]
-
 export type response_20_2 = {
+<<<<<<< HEAD
 <<<<<<< HEAD
     code: 406;
     ok: false;
@@ -819,6 +905,23 @@ export type parameters_21 = {
         page?: number;
     } | undefined;
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+    code: 400;
+    ok: false;
+    info: "user.address.invalid";
+} & {body: undefined};
+
+export type response_body_20_3 = string
+
+export type response_20_3 = {
+    code: 201;
+    ok: true;
+    info: "user.edited";
+} & {body: response_body_20_3};
+
+export type request_body_21 = {
+    commandId: string;
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 }
 
 export type response_21_0 = {
@@ -837,23 +940,18 @@ export type response_21_2 = {
     code: 404;
     ok: false;
 <<<<<<< HEAD
+<<<<<<< HEAD
     info: "organization.notfound";
 =======
     info: "user.notfound";
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+    info: "command.notfound";
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 } & {body: undefined};
 
-export type response_body_21_3 = {
-    id: string;
-    name: string;
-    label: string | null;
-    ownerId: string;
-    suspended: boolean;
-    logoKey: string | null;
-    logoUrl: string | null;
-}[]
-
 export type response_21_3 = {
+<<<<<<< HEAD
 <<<<<<< HEAD
     code: 406;
     ok: false;
@@ -888,14 +986,31 @@ export type request_body_22 = {
     commandId: string;
 =======
     code: 200;
+=======
+    code: 401;
+    ok: false;
+    info: "command.wrong.user";
+} & {body: undefined};
+
+export type response_body_21_4 = {
+    sessionUrl: string;
+}
+
+export type response_21_4 = {
+    code: 201;
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
     ok: true;
-    info: "user.organizations";
-} & {body: response_body_21_3};
+    info: "session";
+} & {body: response_body_21_4};
+
+export type request_body_22 = {
+    organizationRole?: ("STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT") | undefined;
+}
 
 export type parameters_22 = {
     params: {
         organizationId: string;
-        page?: number;
+        userId: string;
     };
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 }
@@ -923,6 +1038,7 @@ export type response_22_2 = {
     info: "organization.hasNotUser";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_body_22_3 = {
     id: number;
     percentage: number;
@@ -962,10 +1078,36 @@ export type parameters_23 = {
     info: "organization.promotions";
 } & {body: response_body_22_3};
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+export type response_22_3 = {
+    code: 401;
+    ok: false;
+    info: "organization.user.organizationRole.owner";
+} & {body: undefined};
+
+export type response_22_4 = {
+    code: 204;
+    ok: true;
+    info: "organization.user.edited";
+} & {body: undefined};
+
+export type response_22_5 = {
+    code: 406;
+    ok: false;
+    info: "organization.hasNotUser";
+} & {body: undefined};
+
+export type response_22_6 = {
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+} & {body: undefined};
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 
 export type parameters_23 = {
     params: {
         organizationId: string;
+        userId: string;
     };
 }
 
@@ -993,6 +1135,7 @@ export type response_23_2 = {
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_body_23_3 = {
     id: string;
 <<<<<<< HEAD
@@ -1031,6 +1174,31 @@ export type request_body_24 = {
     organizationRole: "STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT";
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 }
+=======
+export type response_23_3 = {
+    code: 401;
+    ok: false;
+    info: "organization.user.organizationRole.owner";
+} & {body: undefined};
+
+export type response_23_4 = {
+    code: 204;
+    ok: true;
+    info: "organization.user.deleted";
+} & {body: undefined};
+
+export type response_23_5 = {
+    code: 406;
+    ok: false;
+    info: "organization.hasNotUser";
+} & {body: undefined};
+
+export type response_23_6 = {
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+} & {body: undefined};
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 
 export type parameters_24 = {
     params: {
@@ -1055,6 +1223,7 @@ export type response_24_1 = {
 } & {body: undefined};
 
 export type response_24_2 = {
+<<<<<<< HEAD
     code: 406;
     ok: false;
 <<<<<<< HEAD
@@ -1096,35 +1265,45 @@ export type parameters_25 = {
 } & {body: undefined};
 
 export type response_24_3 = {
+=======
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
     code: 406;
     ok: false;
     info: "organization.hasNotUser";
 } & {body: undefined};
 
-export type response_24_4 = {
-    code: 403;
-    ok: false;
-    info: "user.role.organization.invalid";
-} & {body: undefined};
+export type response_body_24_3 = {
+    id: string;
+    email: string;
+    lastname: string;
+    firstname: string;
+    organizationRole: "STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT" | "OWNER";
+}
 
-export type response_24_5 = {
-    code: 404;
-    ok: false;
-    info: "user.notfound";
-} & {body: undefined};
-
-export type response_24_6 = {
-    code: 409;
-    ok: false;
-    info: "organization.hasAlreadyUser";
-} & {body: undefined};
-
-export type response_24_7 = {
-    code: 201;
+export type response_24_3 = {
+    code: 200;
     ok: true;
+<<<<<<< HEAD
     info: "organization.user.add";
 } & {body: undefined};
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+    info: "organization.user";
+} & {body: response_body_24_3};
+
+export type request_body_25 = {
+    email: string;
+    firstname: string;
+    lastname: string;
+    organizationRole: "STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT";
+}
+
+export type parameters_25 = {
+    params: {
+        organizationId: string;
+    };
+}
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 
 export type response_25_0 = {
     code: 401;
@@ -1171,31 +1350,43 @@ export type response_25_6 = {
 =======
     code: 404;
     ok: false;
+    info: "organization.notfound";
+} & {body: undefined};
+
+export type response_25_3 = {
+    code: 406;
+    ok: false;
+    info: "organization.hasNotUser";
+} & {body: undefined};
+
+export type response_25_4 = {
+    code: 403;
+    ok: false;
+    info: "user.role.organization.invalid";
+} & {body: undefined};
+
+export type response_25_5 = {
+    code: 404;
+    ok: false;
     info: "user.notfound";
 } & {body: undefined};
 
-export type response_body_25_3 = {
-    id: string;
-    email: string;
-    lastname: string;
-    firstname: string;
-    dateOfBirth?: string;
-    address: string;
-    primordialRole: "CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN";
-    muted: boolean;
-    hasOrganization: boolean;
-}
+export type response_25_6 = {
+    code: 409;
+    ok: false;
+    info: "organization.hasAlreadyUser";
+} & {body: undefined};
 
-export type response_25_3 = {
-    code: 200;
+export type response_25_7 = {
+    code: 201;
     ok: true;
-    info: "user";
-} & {body: response_body_25_3};
+    info: "organization.user.add";
+} & {body: undefined};
 
-export type request_body_26 = {
-    lastname?: string | undefined;
-    firstname?: string | undefined;
-    address?: string | undefined;
+export type parameters_26 = {
+    query?: {
+        page?: number;
+    } | undefined;
 }
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 
@@ -1212,8 +1403,9 @@ export type response_26_1 = {
 } & {body: undefined};
 
 export type response_26_2 = {
-    code: 400;
+    code: 404;
     ok: false;
+<<<<<<< HEAD
 <<<<<<< HEAD
     info: "user.notfound";
 } & {body: undefined};
@@ -1242,14 +1434,25 @@ export type request_body_27 = {
     address?: string | undefined;
 =======
     info: "user.address.invalid";
+=======
+    info: "user.notfound";
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 } & {body: undefined};
 
-export type response_body_26_3 = string
+export type response_body_26_3 = {
+    id: string;
+    name: string;
+    label: string | null;
+    ownerId: string;
+    suspended: boolean;
+    logoKey: string | null;
+    logoUrl: string | null;
+}[]
 
 export type response_26_3 = {
-    code: 201;
+    code: 200;
     ok: true;
-    info: "user.edited";
+    info: "user.organizations";
 } & {body: response_body_26_3};
 
 export type request_body_27 = {
@@ -1304,8 +1507,11 @@ export type response_27_4 = {
 } & {body: response_body_27_4};
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 
-export type request_body_28 = {
-    commandId: string;
+export type parameters_28 = {
+    params: {
+        organizationId: string;
+        page?: number;
+    };
 }
 
 export type response_28_0 = {
@@ -1321,30 +1527,44 @@ export type response_28_1 = {
 } & {body: undefined};
 
 export type response_28_2 = {
-    code: 404;
+    code: 406;
     ok: false;
-    info: "command.notfound";
+    info: "organization.hasNotUser";
 } & {body: undefined};
+
+export type response_body_28_3 = {
+    id: number;
+    percentage: number;
+    startDate: Date;
+    endDate: Date;
+    productSheet?: {
+        id: string;
+        name: string;
+    } | undefined;
+    productSheetId?: string | undefined;
+}[]
 
 export type response_28_3 = {
-    code: 401;
-    ok: false;
-    info: "command.wrong.user";
-} & {body: undefined};
-
-export type response_body_28_4 = {
-    sessionUrl: string;
-}
-
-export type response_28_4 = {
-    code: 201;
+    code: 200;
     ok: true;
-    info: "session";
-} & {body: response_body_28_4};
+    info: "organization.promotions";
+} & {body: response_body_28_3};
 
+export type request_body_29 = {
+    name?: string | undefined;
+    disabled?: boolean | undefined;
+} | undefined
+
+<<<<<<< HEAD
 export type request_body_29 = {
     name: string;
     disabled: boolean;
+=======
+export type parameters_29 = {
+    params: {
+        categoryName: string;
+    };
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 }
 
 export type response_29_0 = {
@@ -1379,6 +1599,7 @@ export type response_body_29_4 = {
 }
 
 export type response_29_4 = {
+<<<<<<< HEAD
     code: 201;
     ok: true;
     info: "category.created";
@@ -1401,6 +1622,26 @@ export type parameters_30 = {
     params: {
         categoryName: string;
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+    code: 409;
+    ok: false;
+    info: "category.alreadyExist";
+} & {body: undefined};
+
+export type response_29_5 = {
+    code: 204;
+    ok: true;
+    info: "category.edited";
+} & {body: undefined};
+
+export type request_body_30 = {
+    suspended?: boolean | undefined;
+}
+
+export type parameters_30 = {
+    params: {
+        organizationId: string;
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
     };
 }
 
@@ -1426,6 +1667,7 @@ export type response_30_3 = {
     code: 404;
     ok: false;
 <<<<<<< HEAD
+<<<<<<< HEAD
     info: "organization.notfound";
 } & {body: undefined};
 
@@ -1444,21 +1686,19 @@ export type parameters_31 = {
         categoryName: string;
 =======
     info: "category.notfound";
+=======
+    info: "organization.notfound";
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 } & {body: undefined};
 
 export type response_30_4 = {
-    code: 409;
-    ok: false;
-    info: "category.alreadyExist";
-} & {body: undefined};
-
-export type response_30_5 = {
     code: 204;
     ok: true;
-    info: "category.edited";
+    info: "organization.edited";
 } & {body: undefined};
 
 export type request_body_31 = {
+<<<<<<< HEAD
     suspended?: boolean | undefined;
 }
 
@@ -1467,6 +1707,20 @@ export type parameters_31 = {
         organizationId: string;
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
     };
+=======
+    priority: number;
+    type: "PARENT_CATEGORY";
+    parentCategoryName: string;
+} | {
+    priority: number;
+    type: "CATEGORY";
+    categoryName: string;
+} | {
+    priority: number;
+    type: "LINK";
+    url: string;
+    title: string;
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 }
 
 export type response_31_0 = {
@@ -1488,8 +1742,9 @@ export type response_31_2 = {
 } & {body: undefined};
 
 export type response_31_3 = {
-    code: 404;
+    code: 409;
     ok: false;
+<<<<<<< HEAD
 <<<<<<< HEAD
     info: "category.notfound";
 } & {body: undefined};
@@ -1516,18 +1771,43 @@ export type response_31_4 = {
 } & {body: undefined};
 
 export type request_body_32 = {
+=======
+    info: "navigationItem.limit";
+} & {body: undefined};
+
+export type response_body_31_4 = {
+    id: string;
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
     priority: number;
     type: "PARENT_CATEGORY";
     parentCategoryName: string;
 } | {
+    id: string;
     priority: number;
     type: "CATEGORY";
     categoryName: string;
 } | {
+    id: string;
     priority: number;
     type: "LINK";
     url: string;
     title: string;
+}
+
+export type response_31_4 = {
+    code: 201;
+    ok: true;
+    info: "navigationItem.created";
+} & {body: response_body_31_4};
+
+export type parameters_32 = {
+    headers: {
+        "content-type": string;
+        "content-length": number;
+    };
+    params: {
+        categoryName: string;
+    };
 }
 
 export type response_32_0 = {
@@ -1549,36 +1829,29 @@ export type response_32_2 = {
 } & {body: undefined};
 
 export type response_32_3 = {
-    code: 409;
+    code: 404;
     ok: false;
-    info: "navigationItem.limit";
+    info: "category.notfound";
 } & {body: undefined};
 
-export type response_body_32_4 = {
-    id: string;
-    priority: number;
-    type: "PARENT_CATEGORY";
-    parentCategoryName: string;
-} | {
-    id: string;
-    priority: number;
-    type: "CATEGORY";
-    categoryName: string;
-} | {
-    id: string;
-    priority: number;
-    type: "LINK";
-    url: string;
-    title: string;
-}
-
 export type response_32_4 = {
-    code: 201;
+    code: 400;
+    ok: false;
+    info: "category.image.missing";
+} & {body: undefined};
+
+export type response_32_5 = {
+    code: 204;
     ok: true;
+<<<<<<< HEAD
     info: "navigationItem.created";
 } & {body: response_body_32_4};
 <<<<<<< HEAD
 =======
+=======
+    info: "category.image.updated";
+} & {body: undefined};
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 
 export type request_body_33 = {
     name: string;
@@ -1721,12 +1994,23 @@ export type request_body_35 = {
     info: "navigationItems";
 } & {body: response_body_34_3};
 
+export type request_body_35 = {
+    primordialRole?: ("CUSTOMER" | "CONTENTS_MASTER" | "MODERATOR") | undefined;
+    muted?: boolean | undefined;
+}
+
 export type parameters_35 = {
+<<<<<<< HEAD
     query?: {
         page?: number;
         name?: string | undefined;
     } | undefined;
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+    params: {
+        userId: string;
+    };
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 }
 
 export type response_35_0 = {
@@ -1747,17 +2031,8 @@ export type response_35_2 = {
     info: "user.role.invalid";
 } & {body: undefined};
 
-export type response_body_35_3 = {
-    id: string;
-    name: string;
-    label: string | null;
-    ownerId: string;
-    suspended: boolean;
-    logoKey: string | null;
-    logoUrl: string | null;
-}[]
-
 export type response_35_3 = {
+<<<<<<< HEAD
 <<<<<<< HEAD
     code: 409;
     ok: false;
@@ -1765,11 +2040,14 @@ export type response_35_3 = {
 } & {body: undefined};
 
 export type response_35_4 = {
+=======
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
     code: 404;
     ok: false;
     info: "user.notfound";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_35_5 = {
     code: 409;
     ok: false;
@@ -1783,26 +2061,22 @@ export type response_35_6 = {
 } & {body: undefined};
 =======
     code: 200;
+=======
+export type response_35_4 = {
+    code: 401;
+    ok: false;
+    info: "user.primordialRole.admin";
+} & {body: undefined};
+
+export type response_35_5 = {
+    code: 204;
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
     ok: true;
-    info: "organizations";
-} & {body: response_body_35_3};
+    info: "user.edited";
+} & {body: undefined};
 
 export type request_body_36 = {
-    id: string;
-    priority: number;
-    type: "PARENT_CATEGORY";
-    parentCategoryName: string;
-} | {
-    id: string;
-    priority: number;
-    type: "CATEGORY";
     categoryName: string;
-} | {
-    id: string;
-    priority: number;
-    type: "LINK";
-    url: string;
-    title: string;
 }
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 
@@ -1826,7 +2100,7 @@ export type request_body_36 = {
 
 export type parameters_36 = {
     params: {
-        navigationItemId: string;
+        parentCategoryName: string;
     };
 }
 
@@ -1851,7 +2125,7 @@ export type response_36_2 = {
 export type response_36_3 = {
     code: 404;
     ok: false;
-    info: "navigationItem.notfound";
+    info: "parentCategory.notfound";
 } & {body: undefined};
 
 export type response_36_4 = {
@@ -1861,20 +2135,20 @@ export type response_36_4 = {
 } & {body: undefined};
 
 export type response_36_5 = {
-    code: 404;
+    code: 409;
     ok: false;
-    info: "parentCategory.notfound";
+    info: "parentCategory.categories.limit";
 } & {body: undefined};
 
 export type response_36_6 = {
     code: 204;
     ok: true;
-    info: "navigationItem.edited";
+    info: "parentCategory.category.linked";
 } & {body: undefined};
 
 export type parameters_37 = {
     params: {
-        navigationItemId: string;
+        parentCategoryName: string;
     };
 }
 
@@ -1899,14 +2173,21 @@ export type response_37_2 = {
 export type response_37_3 = {
     code: 404;
     ok: false;
-    info: "navigationItem.notfound";
+    info: "parentCategory.notfound";
 } & {body: undefined};
 
+export type response_body_37_4 = {
+    name: string;
+    disabled: boolean;
+    imageKey: string | null;
+    imageUrl: string | null;
+}[]
+
 export type response_37_4 = {
-    code: 204;
+    code: 200;
     ok: true;
-    info: "navigationItem.delete";
-} & {body: undefined};
+    info: "parentCategory.categories";
+} & {body: response_body_37_4};
 
 <<<<<<< HEAD
 export type request_body_38 = {
@@ -1969,9 +2250,10 @@ export type response_38_4 = {
 
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 export type parameters_39 = {
-    params: {
-        parentCategoryName: string;
-    };
+    query?: {
+        page?: number;
+        name?: string | undefined;
+    } | undefined;
 }
 
 export type response_39_0 = {
@@ -1992,27 +2274,24 @@ export type response_39_2 = {
     info: "user.role.invalid";
 } & {body: undefined};
 
-export type response_39_3 = {
-    code: 404;
-    ok: false;
-    info: "parentCategory.notfound";
-} & {body: undefined};
-
-export type response_body_39_4 = {
+export type response_body_39_3 = {
+    id: string;
     name: string;
-    disabled: boolean;
-    imageKey: string | null;
-    imageUrl: string | null;
+    label: string | null;
+    ownerId: string;
+    suspended: boolean;
+    logoKey: string | null;
+    logoUrl: string | null;
 }[]
 
-export type response_39_4 = {
+export type response_39_3 = {
     code: 200;
     ok: true;
-    info: "parentCategory.categories";
-} & {body: response_body_39_4};
+    info: "organizations";
+} & {body: response_body_39_3};
 
 export type request_body_40 = {
-    categoryName: string;
+    name?: string | undefined;
 }
 
 export type parameters_40 = {
@@ -2047,20 +2326,15 @@ export type response_40_3 = {
 } & {body: undefined};
 
 export type response_40_4 = {
-    code: 404;
+    code: 409;
     ok: false;
-    info: "category.notfound";
+    info: "parentCategory.name.alreadyUse";
 } & {body: undefined};
 
 export type response_40_5 = {
-    code: 409;
-    ok: false;
-    info: "parentCategory.categories.limit";
-} & {body: undefined};
-
-export type response_40_6 = {
     code: 204;
     ok: true;
+<<<<<<< HEAD
 <<<<<<< HEAD
     info: "parentCategory.category.untied";
 } & {body: undefined};
@@ -2076,10 +2350,17 @@ export type request_body_41 = {
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 }
 
+=======
+    info: "parentCategory.edited";
+} & {body: undefined};
+
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 export type parameters_41 = {
-    params: {
-        parentCategoryName: string;
-    };
+    query?: {
+        page?: number;
+        email?: string | undefined;
+        primordialRole?: (("CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN") | ("CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN")[]) | undefined;
+    } | undefined;
 }
 
 export type response_41_0 = {
@@ -2100,7 +2381,19 @@ export type response_41_2 = {
     info: "user.role.invalid";
 } & {body: undefined};
 
+export type response_body_41_3 = {
+    id: string;
+    email: string;
+    lastname: string;
+    firstname: string;
+    dateOfBirth?: string;
+    address: string;
+    primordialRole: "CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN";
+    muted: boolean;
+}[]
+
 export type response_41_3 = {
+<<<<<<< HEAD
     code: 404;
     ok: false;
     info: "parentCategory.notfound";
@@ -2143,13 +2436,25 @@ export type response_41_4 = {
 
 export type response_41_5 = {
     code: 204;
+=======
+    code: 200;
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
     ok: true;
-    info: "parentCategory.edited";
-} & {body: undefined};
+    info: "users";
+} & {body: response_body_41_3};
 
+<<<<<<< HEAD
 export type request_body_42 = {
     name: string;
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+export type parameters_42 = {
+    query?: {
+        page?: number;
+        name?: string | undefined;
+        withCategories?: ("true" | "false") | undefined;
+    } | undefined;
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 }
 
 export type response_42_0 = {
@@ -2170,6 +2475,7 @@ export type response_42_2 = {
     info: "user.role.invalid";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_42_3 = {
 <<<<<<< HEAD
     code: 404;
@@ -2183,9 +2489,16 @@ export type response_42_3 = {
 } & {body: undefined};
 
 export type response_body_42_4 = {
+=======
+export type response_body_42_3 = {
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
     name: string;
-}
+    categories?: {
+        categoryName: string;
+    }[] | undefined;
+}[]
 
+<<<<<<< HEAD
 export type response_42_4 = {
 <<<<<<< HEAD
     code: 409;
@@ -2214,6 +2527,16 @@ export type parameters_43 = {
         withCategories?: ("true" | "false") | undefined;
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
     } | undefined;
+=======
+export type response_42_3 = {
+    code: 200;
+    ok: true;
+    info: "parentCategories";
+} & {body: response_body_42_3};
+
+export type request_body_43 = {
+    name: string;
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 }
 
 export type response_43_0 = {
@@ -2234,6 +2557,7 @@ export type response_43_2 = {
     info: "user.role.invalid";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_body_43_3 = {
 <<<<<<< HEAD
     id: string;
@@ -2251,9 +2575,22 @@ export type response_body_43_3 = {
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 }[]
 
+=======
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 export type response_43_3 = {
-    code: 200;
+    code: 409;
+    ok: false;
+    info: "parentCategory.name.alreadyUse";
+} & {body: undefined};
+
+export type response_body_43_4 = {
+    name: string;
+}
+
+export type response_43_4 = {
+    code: 201;
     ok: true;
+<<<<<<< HEAD
 <<<<<<< HEAD
     info: "organizations";
 } & {body: response_body_43_3};
@@ -2278,6 +2615,33 @@ export type parameters_44 = {
         primordialRole?: (("CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN") | ("CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN")[]) | undefined;
     } | undefined;
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+    info: "parentCategory.created";
+} & {body: response_body_43_4};
+
+export type request_body_44 = {
+    id: string;
+    priority: number;
+    type: "PARENT_CATEGORY";
+    parentCategoryName: string;
+} | {
+    id: string;
+    priority: number;
+    type: "CATEGORY";
+    categoryName: string;
+} | {
+    id: string;
+    priority: number;
+    type: "LINK";
+    url: string;
+    title: string;
+}
+
+export type parameters_44 = {
+    params: {
+        navigationItemId: string;
+    };
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 }
 
 export type response_44_0 = {
@@ -2328,31 +2692,33 @@ export type parameters_45 = {
     info: "user.role.invalid";
 } & {body: undefined};
 
-export type response_body_44_3 = {
-    id: string;
-    email: string;
-    lastname: string;
-    firstname: string;
-    dateOfBirth?: string;
-    address: string;
-    primordialRole: "CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN";
-    muted: boolean;
-}[]
-
 export type response_44_3 = {
-    code: 200;
-    ok: true;
-    info: "users";
-} & {body: response_body_44_3};
+    code: 404;
+    ok: false;
+    info: "navigationItem.notfound";
+} & {body: undefined};
 
-export type request_body_45 = {
-    primordialRole?: ("CUSTOMER" | "CONTENTS_MASTER" | "MODERATOR") | undefined;
-    muted?: boolean | undefined;
-}
+export type response_44_4 = {
+    code: 404;
+    ok: false;
+    info: "category.notfound";
+} & {body: undefined};
+
+export type response_44_5 = {
+    code: 404;
+    ok: false;
+    info: "parentCategory.notfound";
+} & {body: undefined};
+
+export type response_44_6 = {
+    code: 204;
+    ok: true;
+    info: "navigationItem.edited";
+} & {body: undefined};
 
 export type parameters_45 = {
     params: {
-        userId: string;
+        navigationItemId: string;
     };
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 }
@@ -2400,23 +2766,21 @@ export type response_45_3 = {
 export type response_45_3 = {
     code: 404;
     ok: false;
-    info: "user.notfound";
+    info: "navigationItem.notfound";
 } & {body: undefined};
 
 export type response_45_4 = {
-    code: 401;
-    ok: false;
-    info: "user.primordialRole.admin";
-} & {body: undefined};
-
-export type response_45_5 = {
     code: 204;
     ok: true;
-    info: "user.edited";
+    info: "navigationItem.delete";
 } & {body: undefined};
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 
 export type parameters_46 = {
+    headers: {
+        "content-type": string;
+        "content-length": number;
+    };
     params: {
         organizationId: string;
     };
@@ -2460,6 +2824,7 @@ export type response_46_4 = {
 } & {body: undefined};
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export type response_46_5 = {
     code: 404;
     ok: false;
@@ -2497,6 +2862,19 @@ export type request_body_47 = {
     label?: (string | null) | undefined;
 }
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+export type response_46_5 = {
+    code: 400;
+    ok: false;
+    info: "organization.logo.missing";
+} & {body: undefined};
+
+export type response_46_6 = {
+    code: 204;
+    ok: true;
+    info: "organization.logo.edited";
+} & {body: undefined};
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 
 export type parameters_47 = {
     headers: {
@@ -2506,6 +2884,10 @@ export type parameters_47 = {
     params: {
         organizationId: string;
     };
+    query?: {
+        page?: number;
+        name?: string | undefined;
+    } | undefined;
 }
 
 export type response_47_0 = {
@@ -2538,7 +2920,20 @@ export type response_47_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
+export type response_body_47_5 = {
+    id: string;
+    name: string;
+    description: string;
+    shortDescription: string;
+    price: number;
+    createdAt?: string;
+    updatedAt?: string;
+    organizationId: string;
+    promotionId: number | null;
+}[]
+
 export type response_47_5 = {
+<<<<<<< HEAD
 <<<<<<< HEAD
     code: 400;
     ok: false;
@@ -2561,16 +2956,22 @@ export type request_body_48 = {
 
 =======
     code: 204;
+=======
+    code: 200;
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
     ok: true;
-    info: "organization.edited";
-} & {body: undefined};
+    info: "productSheets.found";
+} & {body: response_body_47_5};
+
+export type request_body_48 = {
+    name: string;
+    description: string;
+    shortDescription: string;
+    price: number;
+}
 
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 export type parameters_48 = {
-    headers: {
-        "content-type": string;
-        "content-length": number;
-    };
     params: {
         organizationId: string;
         commandId: string;
@@ -2607,6 +3008,7 @@ export type response_48_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_48_5 = {
     code: 400;
     ok: false;
@@ -2666,15 +3068,32 @@ export type response_48_6 = {
 } & {body: undefined};
 
 export type request_body_49 = {
+=======
+export type response_body_48_5 = {
+    id: string;
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
     name: string;
     description: string;
     shortDescription: string;
     price: number;
 <<<<<<< HEAD
+<<<<<<< HEAD
     warehouseId: string;
 =======
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+    createdAt?: string;
+    updatedAt?: string;
+    organizationId: string;
+    promotionId: number | null;
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 }
+
+export type response_48_5 = {
+    code: 201;
+    ok: true;
+    info: "productSheet.created";
+} & {body: response_body_48_5};
 
 export type parameters_49 = {
     params: {
@@ -2715,16 +3134,15 @@ export type response_49_4 = {
 export type response_body_49_5 = {
     id: string;
     name: string;
-    description: string;
-    shortDescription: string;
-    price: number;
-    createdAt?: string;
-    updatedAt?: string;
-    organizationId: string;
-    promotionId: number | null;
+    label: string | null;
+    ownerId: string;
+    suspended: boolean;
+    logoKey: string | null;
+    logoUrl: string | null;
 }
 
 export type response_49_5 = {
+<<<<<<< HEAD
 <<<<<<< HEAD
     code: 404;
     ok: false;
@@ -2750,19 +3168,22 @@ export type response_49_6 = {
 } & {body: response_body_49_6};
 =======
     code: 201;
+=======
+    code: 200;
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
     ok: true;
-    info: "productSheet.created";
+    info: "organization.found";
 } & {body: response_body_49_5};
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+
+export type request_body_50 = {
+    label?: (string | null) | undefined;
+}
 
 export type parameters_50 = {
     params: {
         organizationId: string;
     };
-    query?: {
-        page?: number;
-        name?: string | undefined;
-    } | undefined;
 }
 
 export type response_50_0 = {
@@ -2795,6 +3216,7 @@ export type response_50_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_body_50_5 = {
     id: string;
     name: string;
@@ -2811,11 +3233,13 @@ export type response_body_50_5 = {
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 }[]
 
+=======
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 export type response_50_5 = {
-    code: 200;
+    code: 204;
     ok: true;
-    info: "productSheets.found";
-} & {body: response_body_50_5};
+    info: "organization.edited";
+} & {body: undefined};
 
 export type parameters_51 = {
     params: {
@@ -2909,15 +3333,14 @@ export type response_51_5 = {
     info: "products.found";
 } & {body: response_body_51_5};
 
-export type request_body_52 = {
-    name: string;
-    address: string;
-}
-
 export type parameters_52 = {
     params: {
         organizationId: string;
     };
+    query?: {
+        page?: number;
+        email?: string | undefined;
+    } | undefined;
 }
 
 export type response_52_0 = {
@@ -2950,29 +3373,30 @@ export type response_52_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
-export type response_52_5 = {
-    code: 400;
-    ok: false;
-    info: "warehouse.address.invalid";
-} & {body: undefined};
-
-export type response_body_52_6 = {
+export type response_body_52_5 = {
     id: string;
+    email: string;
+    lastname: string;
+    firstname: string;
+    organizationRole: "STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT" | "OWNER";
+}[]
+
+export type response_52_5 = {
+    code: 200;
+    ok: true;
+    info: "organization.users";
+} & {body: response_body_52_5};
+
+export type request_body_53 = {
     name: string;
     address: string;
-    organizationId: string;
 }
-
-export type response_52_6 = {
-    code: 201;
-    ok: true;
-    info: "warehouse.created";
-} & {body: response_body_52_6};
 
 export type parameters_53 = {
     params: {
         organizationId: string;
     };
+<<<<<<< HEAD
     query?: {
         page?: number;
 <<<<<<< HEAD
@@ -2981,6 +3405,8 @@ export type parameters_53 = {
         email?: string | undefined;
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
     } | undefined;
+=======
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 }
 
 export type response_53_0 = {
@@ -3013,6 +3439,7 @@ export type response_53_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_body_53_5 = {
     id: string;
 <<<<<<< HEAD
@@ -3027,9 +3454,25 @@ export type response_body_53_5 = {
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 }[]
 
+=======
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 export type response_53_5 = {
-    code: 200;
+    code: 400;
+    ok: false;
+    info: "warehouse.address.invalid";
+} & {body: undefined};
+
+export type response_body_53_6 = {
+    id: string;
+    name: string;
+    address: string;
+    organizationId: string;
+}
+
+export type response_53_6 = {
+    code: 201;
     ok: true;
+<<<<<<< HEAD
 <<<<<<< HEAD
     info: "warehouses.found";
 } & {body: response_body_53_5};
@@ -3049,11 +3492,16 @@ export type parameters_54 = {
     params: {
         organizationId: string;
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+    info: "warehouse.created";
+} & {body: response_body_53_6};
+
+export type parameters_54 = {
+    params: {
+        productSheetId: string;
+        categoryName: string;
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
     };
-    query?: {
-        page?: number;
-        name?: string | undefined;
-    } | undefined;
 }
 
 export type response_54_0 = {
@@ -3072,10 +3520,14 @@ export type response_54_2 = {
     code: 404;
     ok: false;
 <<<<<<< HEAD
+<<<<<<< HEAD
     info: "product.notfound";
 =======
     info: "organization.notfound";
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+    info: "productSheet.notfound";
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 } & {body: undefined};
 
 export type response_54_3 = {
@@ -3090,6 +3542,7 @@ export type response_54_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_body_54_5 = {
 <<<<<<< HEAD
     sku: string;
@@ -3111,9 +3564,18 @@ export type response_body_54_5 = {
 }[]
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 
+=======
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 export type response_54_5 = {
+    code: 404;
+    ok: false;
+    info: "category.notfound";
+} & {body: undefined};
+
+export type response_54_6 = {
     code: 200;
     ok: true;
+<<<<<<< HEAD
 <<<<<<< HEAD
     info: "product.edited";
 } & {body: response_body_54_5};
@@ -3137,6 +3599,14 @@ export type parameters_55 = {
 =======
         sku: string;
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+    info: "productSheet.category.untied";
+} & {body: undefined};
+
+export type parameters_55 = {
+    params: {
+        productSheetId: string;
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
     };
 }
 
@@ -3156,10 +3626,14 @@ export type response_55_2 = {
     code: 404;
     ok: false;
 <<<<<<< HEAD
+<<<<<<< HEAD
     info: "warehouse.notfound";
 =======
     info: "product.notfound";
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+    info: "productSheet.notfound";
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 } & {body: undefined};
 
 export type response_55_3 = {
@@ -3174,6 +3648,7 @@ export type response_55_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
+<<<<<<< HEAD
 export type response_55_5 = {
 <<<<<<< HEAD
     code: 400;
@@ -3191,13 +3666,20 @@ export type response_55_6 = {
     info: "product.edited";
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 } & {body: undefined};
+=======
+export type response_body_55_5 = {
+    name: string;
+    disabled: boolean;
+    imageKey: string | null;
+    imageUrl: string | null;
+}[]
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 
-export type request_body_56 = {
-    percentage: number;
-    startDate: Date;
-    endDate: Date;
-    organizationId: string;
-}
+export type response_55_5 = {
+    code: 200;
+    ok: true;
+    info: "productSheet.categories";
+} & {body: response_body_55_5};
 
 export type parameters_56 = {
     params: {
@@ -3235,6 +3717,7 @@ export type response_56_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 export type response_body_56_5 = {
     name: string;
@@ -3276,16 +3759,31 @@ export type response_body_56_7 = {
         name: string;
     } | undefined;
     productSheetId?: string | undefined;
+=======
+export type response_body_56_5 = {
+    id: string;
+    name: string;
+    description: string;
+    shortDescription: string;
+    price: number;
+    createdAt?: string;
+    updatedAt?: string;
+    organizationId: string;
+    promotionId: number | null;
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 }
 
-export type response_56_7 = {
-    code: 201;
+export type response_56_5 = {
+    code: 200;
     ok: true;
-    info: "promotion.created";
-} & {body: response_body_56_7};
+    info: "productSheet.found";
+} & {body: response_body_56_5};
 
 export type request_body_57 = {
-    categoryName: string;
+    name?: string | undefined;
+    description?: string | undefined;
+    shortDescription?: string | undefined;
+    price?: number | undefined;
 }
 
 export type parameters_57 = {
@@ -3324,29 +3822,27 @@ export type response_57_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
+export type response_body_57_5 = string
+
 export type response_57_5 = {
-    code: 404;
-    ok: false;
-    info: "category.notfound";
-} & {body: undefined};
-
-export type response_57_6 = {
-    code: 409;
-    ok: false;
-    info: "productSheet.categories.limit";
-} & {body: undefined};
-
-export type response_57_7 = {
-    code: 200;
+    code: 201;
     ok: true;
-    info: "productSheet.category.linked";
-} & {body: undefined};
+    info: "productSheet.edited";
+} & {body: response_body_57_5};
 
 export type parameters_58 = {
     params: {
+<<<<<<< HEAD
         productSheetId: string;
         categoryName: string;
+=======
+        organizationId: string;
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
     };
+    query?: {
+        page?: number;
+        name?: string | undefined;
+    } | undefined;
 }
 
 export type response_58_0 = {
@@ -3364,7 +3860,7 @@ export type response_58_1 = {
 export type response_58_2 = {
     code: 404;
     ok: false;
-    info: "productSheet.notfound";
+    info: "organization.notfound";
 } & {body: undefined};
 
 export type response_58_3 = {
@@ -3401,32 +3897,25 @@ export type request_body_59 = {
 export type response_body_58_5 = {
     id: string;
     name: string;
-    description: string;
-    shortDescription: string;
-    price: number;
-    createdAt?: string;
-    updatedAt?: string;
+    address: string;
     organizationId: string;
-    promotionId: number | null;
-}
+}[]
 
 export type response_58_5 = {
     code: 200;
     ok: true;
-    info: "productSheet.found";
+    info: "warehouses.found";
 } & {body: response_body_58_5};
 
 export type request_body_59 = {
-    name?: string | undefined;
-    description?: string | undefined;
-    shortDescription?: string | undefined;
-    price?: number | undefined;
+    value?: string | undefined;
 }
 
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 export type parameters_59 = {
     params: {
         productSheetId: string;
+        facetType: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
     };
 }
 
@@ -3461,6 +3950,7 @@ export type response_59_4 = {
 } & {body: undefined};
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export type response_59_5 = {
     code: 409;
     ok: false;
@@ -3486,11 +3976,19 @@ export type request_body_60 = {
 =======
 export type response_body_59_5 = string
 
+=======
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 export type response_59_5 = {
-    code: 201;
+    code: 404;
+    ok: false;
+    info: "facet.notfound";
+} & {body: undefined};
+
+export type response_59_6 = {
+    code: 204;
     ok: true;
-    info: "productSheet.edited";
-} & {body: response_body_59_5};
+    info: "facet.edited";
+} & {body: undefined};
 
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 export type parameters_60 = {
@@ -3530,15 +4028,11 @@ export type response_60_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
-export type response_body_60_5 = {
-    name: string;
-    disabled: boolean;
-    imageKey: string | null;
-    imageUrl: string | null;
-}[]
-
 export type response_60_5 = {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
     code: 404;
     ok: false;
     info: "facet.notfound";
@@ -3546,6 +4040,7 @@ export type response_60_5 = {
 
 export type response_60_6 = {
     code: 204;
+<<<<<<< HEAD
     ok: true;
     info: "facet.edited";
 } & {body: undefined};
@@ -3555,6 +4050,16 @@ export type response_60_6 = {
     info: "productSheet.categories";
 } & {body: response_body_60_5};
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+    ok: true;
+    info: "facet.deleted";
+} & {body: undefined};
+
+export type request_body_61 = {
+    type: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
+    value: string;
+}
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 
 export type parameters_61 = {
     params: {
@@ -3596,16 +4101,8 @@ export type response_61_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
-export type response_body_61_5 = {
-    id: string;
-    productSheetId: string;
-    organizationId: string;
-    url: string;
-    key: string;
-    alt: string | null;
-}[]
-
 export type response_61_5 = {
+<<<<<<< HEAD
 <<<<<<< HEAD
     code: 404;
     ok: false;
@@ -3623,12 +4120,26 @@ export type response_61_6 = {
     info: "productSheet.images";
 } & {body: response_body_61_5};
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+    code: 409;
+    ok: false;
+    info: "productSheet.facet.alreadyExist";
+} & {body: undefined};
+
+export type response_body_61_6 = {
+    type: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
+    productSheetId: string;
+    value: string;
+}
+
+export type response_61_6 = {
+    code: 201;
+    ok: true;
+    info: "facet.created";
+} & {body: response_body_61_6};
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 
 export type parameters_62 = {
-    headers: {
-        "content-type": string;
-        "content-length": number;
-    };
     params: {
         productSheetId: string;
     };
@@ -3666,6 +4177,7 @@ export type response_62_4 = {
 
 export type response_body_62_5 = {
     type: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
+<<<<<<< HEAD
     productSheetId: string;
     value: string;
 }[]
@@ -3690,22 +4202,20 @@ export type response_62_6 = {
 
 export type response_body_62_7 = {
     id: string;
+=======
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
     productSheetId: string;
-    organizationId: string;
-    url: string;
-    key: string;
-    alt: string | null;
-}
+    value: string;
+}[]
 
-export type response_62_7 = {
-    code: 201;
+export type response_62_5 = {
+    code: 200;
     ok: true;
-    info: "productSheet.image.create";
-} & {body: response_body_62_7};
+    info: "productSheet.facets";
+} & {body: response_body_62_5};
 
 export type request_body_63 = {
-    type: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
-    value: string;
+    categoryName: string;
 }
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 
@@ -3750,8 +4260,9 @@ export type response_63_4 = {
 } & {body: undefined};
 
 export type response_63_5 = {
-    code: 409;
+    code: 404;
     ok: false;
+<<<<<<< HEAD
 <<<<<<< HEAD
     info: "product.images.limit";
 } & {body: undefined};
@@ -3778,27 +4289,36 @@ export type response_63_7 = {
 } & {body: response_body_63_7};
 =======
     info: "productSheet.facet.alreadyExist";
+=======
+    info: "category.notfound";
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 } & {body: undefined};
 
-export type response_body_63_6 = {
-    type: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
-    productSheetId: string;
-    value: string;
-}
-
 export type response_63_6 = {
-    code: 201;
-    ok: true;
-    info: "facet.created";
-} & {body: response_body_63_6};
+    code: 409;
+    ok: false;
+    info: "productSheet.categories.limit";
+} & {body: undefined};
 
+<<<<<<< HEAD
 export type request_body_64 = {
     sku: string;
     warehouseId: string;
 }
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+export type response_63_7 = {
+    code: 200;
+    ok: true;
+    info: "productSheet.category.linked";
+} & {body: undefined};
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 
 export type parameters_64 = {
+    headers: {
+        "content-type": string;
+        "content-length": number;
+    };
     params: {
         productSheetId: string;
     };
@@ -3855,42 +4375,47 @@ export type parameters_65 = {
         productSheetId: string;
 =======
 export type response_64_5 = {
-    code: 404;
+    code: 409;
     ok: false;
-    info: "warehouse.notfound";
+    info: "product.images.limit";
 } & {body: undefined};
 
 export type response_64_6 = {
-    code: 409;
+    code: 400;
     ok: false;
-    info: "product.sku.alreadyUse";
+    info: "productSheet.image.missing";
 } & {body: undefined};
 
 export type response_body_64_7 = {
-    sku: string;
+    id: string;
     productSheetId: string;
     organizationId: string;
-    warehouseId: string;
-    createdAt?: string;
-    updatedAt?: string;
-    status: "WAITING_PAYMENT" | "ORDER" | "WRONG" | "SOLD" | "IN_STOCK";
+    url: string;
+    key: string;
+    alt: string | null;
 }
 
 export type response_64_7 = {
     code: 201;
     ok: true;
-    info: "product.created";
+    info: "productSheet.image.create";
 } & {body: response_body_64_7};
 
 export type request_body_65 = {
-    value?: string | undefined;
+    percentage: number;
+    startDate: Date;
+    endDate: Date;
+    organizationId: string;
 }
 
 export type parameters_65 = {
     params: {
         productSheetId: string;
+<<<<<<< HEAD
         facetType: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
     };
 }
 
@@ -3939,25 +4464,47 @@ export type response_65_5 = {
 } & {body: response_body_65_5};
 =======
 export type response_65_5 = {
-    code: 404;
+    code: 409;
     ok: false;
-    info: "facet.notfound";
+    info: "organization.alreadyExist";
 } & {body: undefined};
 
 export type response_65_6 = {
-    code: 204;
-    ok: true;
-    info: "facet.edited";
+    code: 400;
+    ok: false;
+    info: "promotion.date.invalid";
 } & {body: undefined};
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+
+export type response_body_65_7 = {
+    id: number;
+    percentage: number;
+    startDate: Date;
+    endDate: Date;
+    productSheet?: {
+        id: string;
+        name: string;
+    } | undefined;
+    productSheetId?: string | undefined;
+}
+
+export type response_65_7 = {
+    code: 201;
+    ok: true;
+    info: "promotion.created";
+} & {body: response_body_65_7};
 
 export type parameters_66 = {
     params: {
         productSheetId: string;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         facetType: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+        promotionId: number;
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
     };
 }
 
@@ -4009,17 +4556,21 @@ export type response_body_66_5 = {
 export type response_66_5 = {
     code: 404;
     ok: false;
-    info: "facet.notfound";
+    info: "promotion.notfound";
 } & {body: undefined};
 
 export type response_66_6 = {
     code: 204;
     ok: true;
 <<<<<<< HEAD
+<<<<<<< HEAD
     info: "productSheet.found";
 } & {body: response_body_66_5};
 =======
     info: "facet.deleted";
+=======
+    info: "promotion.deleted";
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 } & {body: undefined};
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 
@@ -4069,6 +4620,7 @@ export type response_67_4 = {
 
 export type response_body_67_5 = {
 <<<<<<< HEAD
+<<<<<<< HEAD
     id: string;
     name: string;
     description: string;
@@ -4081,14 +4633,21 @@ export type response_body_67_5 = {
 }
 =======
     type: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
+=======
+    id: string;
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
     productSheetId: string;
-    value: string;
+    organizationId: string;
+    url: string;
+    key: string;
+    alt: string | null;
 }[]
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 
 export type response_67_5 = {
     code: 201;
     ok: true;
+<<<<<<< HEAD
 <<<<<<< HEAD
     info: "productSheet.edited";
 } & {body: response_body_67_5};
@@ -4103,15 +4662,26 @@ export type request_body_68 = {
     name?: string | undefined;
     address?: string | undefined;
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+    info: "productSheet.images";
+} & {body: response_body_67_5};
+
+export type request_body_68 = {
+    status?: ("IN_STOCK" | "WRONG") | undefined;
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 }
 
 export type parameters_68 = {
     params: {
 <<<<<<< HEAD
+<<<<<<< HEAD
         productSheetId: string;
 =======
         warehouseId: string;
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+        sku: string;
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
     };
 }
 
@@ -4131,10 +4701,14 @@ export type response_68_2 = {
     code: 404;
     ok: false;
 <<<<<<< HEAD
+<<<<<<< HEAD
     info: "productSheet.notfound";
 =======
     info: "warehouse.notfound";
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+    info: "product.notfound";
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 } & {body: undefined};
 
 export type response_68_3 = {
@@ -4150,6 +4724,7 @@ export type response_68_4 = {
 } & {body: undefined};
 
 export type response_68_5 = {
+<<<<<<< HEAD
 <<<<<<< HEAD
     code: 409;
     ok: false;
@@ -4174,11 +4749,26 @@ export type response_68_6 = {
     ok: true;
     info: "product.created";
 } & {body: response_body_68_6};
+=======
+    code: 204;
+    ok: true;
+    info: "product.edited";
+} & {body: undefined};
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
+
+export type request_body_69 = {
+    sku: string;
+    warehouseId: string;
+}
 
 export type parameters_69 = {
     params: {
+<<<<<<< HEAD
         organizationId: string;
         commandId: string;
+=======
+        productSheetId: string;
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
     };
 }
 
@@ -4215,6 +4805,7 @@ export type response_69_4 = {
 export type response_69_5 = {
     code: 404;
     ok: false;
+<<<<<<< HEAD
     info: "command.notfound";
 } & {body: undefined};
 
@@ -4436,18 +5027,41 @@ export type response_69_5 = {
     code: 404;
     ok: false;
     info: "promotion.notfound";
+=======
+    info: "warehouse.notfound";
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 } & {body: undefined};
 
 export type response_69_6 = {
-    code: 204;
-    ok: true;
-    info: "promotion.deleted";
+    code: 409;
+    ok: false;
+    info: "product.sku.alreadyUse";
 } & {body: undefined};
+
+export type response_body_69_7 = {
+    sku: string;
+    productSheetId: string;
+    organizationId: string;
+    warehouseId: string;
+    createdAt?: string;
+    updatedAt?: string;
+    status: "WAITING_PAYMENT" | "ORDER" | "WRONG" | "SOLD" | "IN_STOCK";
+}
+
+export type response_69_7 = {
+    code: 201;
+    ok: true;
+    info: "product.created";
+} & {body: response_body_69_7};
+
+export type request_body_70 = {
+    name?: string | undefined;
+    address?: string | undefined;
+}
 
 export type parameters_70 = {
     params: {
-        productSheetId: string;
-        categoryName: string;
+        warehouseId: string;
     };
 }
 
@@ -4466,7 +5080,7 @@ export type response_70_1 = {
 export type response_70_2 = {
     code: 404;
     ok: false;
-    info: "productSheet.notfound";
+    info: "warehouse.notfound";
 } & {body: undefined};
 
 export type response_70_3 = {
@@ -4482,15 +5096,15 @@ export type response_70_4 = {
 } & {body: undefined};
 
 export type response_70_5 = {
-    code: 404;
+    code: 400;
     ok: false;
-    info: "category.notfound";
+    info: "warehouse.address.invalid";
 } & {body: undefined};
 
 export type response_70_6 = {
-    code: 200;
+    code: 204;
     ok: true;
-    info: "productSheet.category.untied";
+    info: "warehouse.edited";
 } & {body: undefined};
 
 export type request_body_71 = {
@@ -4677,8 +5291,58 @@ export type response_73_0 = {
     info: "fullProductSheetCount";
 } & {body: response_body_73_0};
 
+<<<<<<< HEAD
 export type parameters_74 = {
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+export type request_body_74 = {
+    lastname: string;
+    firstname: string;
+    address: string;
+}
+
+export type response_74_0 = {
+    code: 401;
+    ok: false;
+    info: "access.token.invalid";
+} & {body: undefined};
+
+export type response_74_1 = {
+    code: 404;
+    ok: false;
+    info: "user.notfound";
+} & {body: undefined};
+
+export type response_74_2 = {
+    code: 400;
+    ok: false;
+    info: "user.address.invalid";
+} & {body: undefined};
+
+export type response_74_3 = {
+    code: 409;
+    ok: false;
+    info: "cart.empty";
+} & {body: undefined};
+
+export type response_74_4 = {
+    code: 409;
+    ok: false;
+    info: "products.unavailable";
+} & {body: undefined};
+
+export type response_body_74_5 = {
+    sessionUrl: string;
+}
+
+export type response_74_5 = {
+    code: 201;
+    ok: true;
+    info: "session";
+} & {body: response_body_74_5};
+
+export type parameters_75 = {
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
     query?: ({
         available?: ("true" | "false") | undefined;
         page?: number;
@@ -4703,30 +5367,42 @@ export type parameters_74 = {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export type response_75_0 = {
 =======
 export type response_74_0 = {
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+export type response_75_0 = {
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
     code: 404;
     ok: false;
     info: "category.notfound";
 } & {body: undefined};
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export type response_75_1 = {
 =======
 export type response_74_1 = {
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+export type response_75_1 = {
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
     code: 403;
     ok: false;
     info: "category.disabled";
 } & {body: undefined};
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export type response_body_75_2 = {
 =======
 export type response_body_74_2 = {
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+export type response_body_75_2 = {
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
     id: string;
     name: string;
     price: number;
@@ -4735,6 +5411,7 @@ export type response_body_74_2 = {
     quantity: number;
     categories: string[];
     images: string[];
+    promotionPercentage?: number | undefined;
     organization: {
         id: string;
         name: string;
@@ -4752,6 +5429,7 @@ export type response_body_74_2 = {
     };
 }[]
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 export type response_75_2 = {
     code: 200;
@@ -4872,6 +5550,13 @@ export type response_75_5 = {
     ok: true;
     info: "session";
 } & {body: response_body_75_5};
+=======
+export type response_75_2 = {
+    code: 200;
+    ok: true;
+    info: "fullProductSheets";
+} & {body: response_body_75_2};
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 
 export type parameters_76 = {
     params: {
@@ -4894,6 +5579,7 @@ export type response_body_76_1 = {
     quantity: number;
     categories: string[];
     images: string[];
+    promotionPercentage?: number | undefined;
     organization: {
         id: string;
         name: string;
@@ -4981,13 +5667,16 @@ export type DefEnrichedDuplojsTo = {
 	response: response_1_0
 		| response_1_1,
 } | {
-	path: "/geocoder",
+	path: "/entry/admin-panel*",
 	method: "GET",
 	body: unknown,
-	parameters: parameters_2,
-	response: response_2_0,
+	parameters: undefined,
+	response: response_2_0
+		| response_2_1
+		| response_2_2
+		| response_2_3,
 } | {
-	path: "/entry/admin-panel*",
+	path: "/entry/content-panel*",
 	method: "GET",
 	body: unknown,
 	parameters: undefined,
@@ -5007,9 +5696,10 @@ export type DefEnrichedDuplojsTo = {
 		| response_2_2
 		| response_2_3,
 } | {
-	path: "/entry/content-panel*",
+	path: "/entry/organization-panel/{organizationId}/manage-user" | "/entry/organization-panel/{organizationId}/manage",
 	method: "GET",
 	body: unknown,
+<<<<<<< HEAD
 	parameters: undefined,
 	response: response_3_0
 		| response_3_1
@@ -5031,8 +5721,16 @@ export type DefEnrichedDuplojsTo = {
 		| response_4_2
 		| response_4_3,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+	parameters: parameters_4,
+	response: response_4_0
+		| response_4_1
+		| response_4_2
+		| response_4_3
+		| response_4_4,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 } | {
-	path: "/entry/organization-panel/{organizationId}/manage-user" | "/entry/organization-panel/{organizationId}/manage",
+	path: "/entry/organization-panel/{organizationId}/warehouses" | "/entry/organization-panel/{organizationId}/create-warehouse" | "/entry/organization-panel/{organizationId}/edited-warehouse/{warehouseId}",
 	method: "GET",
 	body: unknown,
 	parameters: parameters_5,
@@ -5040,13 +5738,18 @@ export type DefEnrichedDuplojsTo = {
 		| response_5_1
 		| response_5_2
 		| response_5_3
-		| response_5_4,
+		| response_5_4
+		| response_5_5,
 } | {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	path: "/organization-panel/{organizationId}/products" | "/organization-panel/{organizationId}/commands",
 =======
 	path: "/entry/organization-panel/{organizationId}/warehouses" | "/entry/organization-panel/{organizationId}/create-warehouse" | "/entry/organization-panel/{organizationId}/edited-warehouse/{warehouseId}",
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+	path: "/entry/organization-panel/{organizationId}/product-sheets" | "/entry/organization-panel/{organizationId}/edit-product-sheet/{productSheetId}" | "/entry/organization-panel/{organizationId}/create-product-sheet",
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	method: "GET",
 	body: unknown,
 	parameters: parameters_6,
@@ -5062,14 +5765,19 @@ export type DefEnrichedDuplojsTo = {
 		| response_6_4
 		| response_6_5,
 } | {
+<<<<<<< HEAD
 	path: "/entry/organization-panel/{organizationId}/product-sheets" | "/entry/organization-panel/{organizationId}/edit-product-sheet/{productSheetId}" | "/entry/organization-panel/{organizationId}/create-product-sheet",
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+	path: "/entry/organization-panel/{organizationId}*",
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	method: "GET",
 	body: unknown,
 	parameters: parameters_7,
 	response: response_7_0
 		| response_7_1
 		| response_7_2
+<<<<<<< HEAD
 <<<<<<< HEAD
 		| response_7_3,
 =======
@@ -5086,21 +5794,29 @@ export type DefEnrichedDuplojsTo = {
 		| response_8_2
 		| response_8_3,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+		| response_7_3,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 } | {
 	path: "/entry/login" | "/entry/register",
 	method: "GET",
 	body: unknown,
 	parameters: undefined,
 <<<<<<< HEAD
+<<<<<<< HEAD
 	response: response_8_0,
 =======
 	response: response_9_0,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+	response: response_8_0,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 } | {
 	path: "/entry/edit-profile" | "/entry/my-organizations" | "/entry/order",
 	method: "GET",
 	body: unknown,
 	parameters: undefined,
+<<<<<<< HEAD
 <<<<<<< HEAD
 	response: response_9_0
 		| response_9_1
@@ -5110,20 +5826,31 @@ export type DefEnrichedDuplojsTo = {
 		| response_10_1
 		| response_10_2,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+	response: response_9_0
+		| response_9_1
+		| response_9_2,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 } | {
 	path: "/entry*",
 	method: "GET",
 	body: unknown,
 	parameters: undefined,
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	response: response_10_0,
 } | {
 	path: "/geocoder",
 	method: "GET",
 	body: unknown,
 	parameters: parameters_11,
+<<<<<<< HEAD
 =======
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	response: response_11_0,
 } | {
 	path: "/stripe-webhook/checkout",
@@ -5159,6 +5886,7 @@ export type DefEnrichedDuplojsTo = {
 		| response_15_3
 		| response_15_4,
 } | {
+<<<<<<< HEAD
 	path: "/article",
 	method: "POST",
 	body: request_body_16,
@@ -5170,6 +5898,15 @@ export type DefEnrichedDuplojsTo = {
 		| response_16_4
 		| response_16_5
 		| response_16_6,
+=======
+	path: "/cart",
+	method: "GET",
+	body: unknown,
+	parameters: undefined,
+	response: response_16_0
+		| response_16_1
+		| response_16_2,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 } | {
 	path: "/article/{productSheetId}",
 	method: "DELETE",
@@ -5181,6 +5918,7 @@ export type DefEnrichedDuplojsTo = {
 		| response_17_3,
 } | {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	path: "/image-product-sheet/{imageProductSheetId}",
 	method: "DELETE",
 	body: unknown,
@@ -5189,12 +5927,18 @@ export type DefEnrichedDuplojsTo = {
 	method: "PATCH",
 	body: request_body_18,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+	path: "/image-product-sheet/{imageProductSheetId}",
+	method: "DELETE",
+	body: unknown,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	parameters: parameters_18,
 	response: response_18_0
 		| response_18_1
 		| response_18_2
 		| response_18_3
 		| response_18_4
+<<<<<<< HEAD
 <<<<<<< HEAD
 		| response_18_5,
 } | {
@@ -5221,27 +5965,29 @@ export type DefEnrichedDuplojsTo = {
 =======
 		| response_18_5
 		| response_18_6,
+=======
+		| response_18_5,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 } | {
-	path: "/organization/{organizationId}/user/{userId}",
-	method: "DELETE",
-	body: unknown,
-	parameters: parameters_19,
-	response: response_19_0
-		| response_19_1
-		| response_19_2
-		| response_19_3
-		| response_19_4
-		| response_19_5
-		| response_19_6,
-} | {
-	path: "/cart",
+	path: "/user",
 	method: "GET",
 	body: unknown,
 	parameters: undefined,
+	response: response_19_0
+		| response_19_1
+		| response_19_2
+		| response_19_3,
+} | {
+	path: "/user",
+	method: "PATCH",
+	body: request_body_20,
+	parameters: undefined,
 	response: response_20_0
 		| response_20_1
-		| response_20_2,
+		| response_20_2
+		| response_20_3,
 } | {
+<<<<<<< HEAD
 	path: "/user/organizations",
 	method: "GET",
 	body: unknown,
@@ -5275,34 +6021,61 @@ export type DefEnrichedDuplojsTo = {
 	body: unknown,
 <<<<<<< HEAD
 =======
+=======
+	path: "/retry-command",
+	method: "POST",
+	body: request_body_21,
+	parameters: undefined,
+	response: response_21_0
+		| response_21_1
+		| response_21_2
+		| response_21_3
+		| response_21_4,
+} | {
+	path: "/organization/{organizationId}/user/{userId}",
+	method: "PATCH",
+	body: request_body_22,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	parameters: parameters_22,
 	response: response_22_0
 		| response_22_1
 		| response_22_2
-		| response_22_3,
+		| response_22_3
+		| response_22_4
+		| response_22_5
+		| response_22_6,
 } | {
-	path: "/organization/{organizationId}/user",
-	method: "GET",
+	path: "/organization/{organizationId}/user/{userId}",
+	method: "DELETE",
 	body: unknown,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 	parameters: parameters_23,
 	response: response_23_0
 		| response_23_1
 		| response_23_2
-		| response_23_3,
+		| response_23_3
+		| response_23_4
+		| response_23_5
+		| response_23_6,
 } | {
 <<<<<<< HEAD
 	path: "/organization/{organizationId}/user/{userId}",
 	method: "PATCH",
 =======
 	path: "/organization/{organizationId}/user",
+<<<<<<< HEAD
 	method: "POST",
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 	body: request_body_24,
+=======
+	method: "GET",
+	body: unknown,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	parameters: parameters_24,
 	response: response_24_0
 		| response_24_1
 		| response_24_2
+<<<<<<< HEAD
 		| response_24_3
 		| response_24_4
 		| response_24_5
@@ -5322,12 +6095,21 @@ export type DefEnrichedDuplojsTo = {
 	body: unknown,
 	parameters: undefined,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+		| response_24_3,
+} | {
+	path: "/organization/{organizationId}/user",
+	method: "POST",
+	body: request_body_25,
+	parameters: parameters_25,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	response: response_25_0
 		| response_25_1
 		| response_25_2
 		| response_25_3
 		| response_25_4
 		| response_25_5
+<<<<<<< HEAD
 		| response_25_6,
 } | {
 	path: "/user",
@@ -5339,6 +6121,15 @@ export type DefEnrichedDuplojsTo = {
 	body: request_body_26,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 	parameters: undefined,
+=======
+		| response_25_6
+		| response_25_7,
+} | {
+	path: "/user/organizations",
+	method: "GET",
+	body: unknown,
+	parameters: parameters_26,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	response: response_26_0
 		| response_26_1
 		| response_26_2
@@ -5358,20 +6149,26 @@ export type DefEnrichedDuplojsTo = {
 		| response_27_2
 		| response_27_3,
 } | {
-	path: "/retry-command",
-	method: "POST",
-	body: request_body_28,
-	parameters: undefined,
+	path: "/organization/{organizationId}/promotions",
+	method: "GET",
+	body: unknown,
+	parameters: parameters_28,
 	response: response_28_0
 		| response_28_1
 		| response_28_2
-		| response_28_3
-		| response_28_4,
+		| response_28_3,
 } | {
+<<<<<<< HEAD
 	path: "/category",
 	method: "POST",
 	body: request_body_29,
 	parameters: undefined,
+=======
+	path: "/category/{categoryName}",
+	method: "PATCH",
+	body: request_body_29,
+	parameters: parameters_29,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	response: response_29_0
 		| response_29_1
 		| response_29_2
@@ -5379,10 +6176,14 @@ export type DefEnrichedDuplojsTo = {
 		| response_29_4,
 } | {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	path: "/organization/{organizationId}@admin",
 =======
 	path: "/category/{categoryName}",
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+	path: "/organization/{organizationId}@admin",
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	method: "PATCH",
 	body: request_body_30,
 	parameters: parameters_30,
@@ -5390,6 +6191,7 @@ export type DefEnrichedDuplojsTo = {
 		| response_30_1
 		| response_30_2
 		| response_30_3
+<<<<<<< HEAD
 <<<<<<< HEAD
 		| response_30_4,
 } | {
@@ -5399,12 +6201,19 @@ export type DefEnrichedDuplojsTo = {
 =======
 		| response_30_4
 		| response_30_5,
+=======
+		| response_30_4,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 } | {
-	path: "/organization/{organizationId}@admin",
-	method: "PATCH",
+	path: "/navigation-item",
+	method: "POST",
 	body: request_body_31,
+<<<<<<< HEAD
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 	parameters: parameters_31,
+=======
+	parameters: undefined,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	response: response_31_0
 		| response_31_1
 		| response_31_2
@@ -5412,15 +6221,16 @@ export type DefEnrichedDuplojsTo = {
 		| response_31_4
 		| response_31_5,
 } | {
-	path: "/navigation-item",
-	method: "POST",
-	body: request_body_32,
-	parameters: undefined,
+	path: "/category/{categoryName}/image",
+	method: "PUT",
+	body: unknown,
+	parameters: parameters_32,
 	response: response_32_0
 		| response_32_1
 		| response_32_2
 		| response_32_3
-		| response_32_4,
+		| response_32_4
+		| response_32_5,
 } | {
 	path: "/navigation-item",
 	method: "POST",
@@ -5458,6 +6268,7 @@ export type DefEnrichedDuplojsTo = {
 		| response_34_3,
 } | {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	path: "/organization",
 	method: "POST",
 	body: request_body_35,
@@ -5466,15 +6277,22 @@ export type DefEnrichedDuplojsTo = {
 	path: "/organizations",
 	method: "GET",
 	body: unknown,
+=======
+	path: "/user/{userId}@admin",
+	method: "PATCH",
+	body: request_body_35,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	parameters: parameters_35,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 	response: response_35_0
 		| response_35_1
 		| response_35_2
-		| response_35_3,
+		| response_35_3
+		| response_35_4
+		| response_35_5,
 } | {
-	path: "/navigation-item/{navigationItemId}",
-	method: "PATCH",
+	path: "/parent-category/{parentCategoryName}/category",
+	method: "POST",
 	body: request_body_36,
 	parameters: parameters_36,
 	response: response_36_0
@@ -5485,8 +6303,8 @@ export type DefEnrichedDuplojsTo = {
 		| response_36_5
 		| response_36_6,
 } | {
-	path: "/navigation-item/{navigationItemId}",
-	method: "DELETE",
+	path: "/parent-category/{parentCategoryName}/categories",
+	method: "GET",
 	body: unknown,
 	parameters: parameters_37,
 	response: response_37_0
@@ -5512,16 +6330,16 @@ export type DefEnrichedDuplojsTo = {
 		| response_38_3
 		| response_38_4,
 } | {
-	path: "/parent-category/{parentCategoryName}/categories",
+	path: "/organizations",
 	method: "GET",
 	body: unknown,
 	parameters: parameters_39,
 	response: response_39_0
 		| response_39_1
 		| response_39_2
-		| response_39_3
-		| response_39_4,
+		| response_39_3,
 } | {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	path: "/parent-category/{parentCategoryName}/category/{categoryName}",
 	method: "DELETE",
@@ -5529,6 +6347,10 @@ export type DefEnrichedDuplojsTo = {
 =======
 	path: "/parent-category/{parentCategoryName}/category",
 	method: "POST",
+=======
+	path: "/parent-category/{parentCategoryName}",
+	method: "PATCH",
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	body: request_body_40,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 	parameters: parameters_40,
@@ -5537,6 +6359,7 @@ export type DefEnrichedDuplojsTo = {
 		| response_40_2
 		| response_40_3
 		| response_40_4
+<<<<<<< HEAD
 		| response_40_5
 		| response_40_6,
 } | {
@@ -5591,6 +6414,9 @@ export type DefEnrichedDuplojsTo = {
 		| response_43_1
 		| response_43_2
 		| response_43_3,
+=======
+		| response_40_5,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 } | {
 <<<<<<< HEAD
 	path: "/user/{userId}@admin",
@@ -5600,13 +6426,48 @@ export type DefEnrichedDuplojsTo = {
 	path: "/users",
 	method: "GET",
 	body: unknown,
+<<<<<<< HEAD
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+	parameters: parameters_41,
+	response: response_41_0
+		| response_41_1
+		| response_41_2
+		| response_41_3,
+} | {
+	path: "/parent-categories",
+	method: "GET",
+	body: unknown,
+	parameters: parameters_42,
+	response: response_42_0
+		| response_42_1
+		| response_42_2
+		| response_42_3,
+} | {
+	path: "/parent-category",
+	method: "POST",
+	body: request_body_43,
+	parameters: undefined,
+	response: response_43_0
+		| response_43_1
+		| response_43_2
+		| response_43_3
+		| response_43_4,
+} | {
+	path: "/navigation-item/{navigationItemId}",
+	method: "PATCH",
+	body: request_body_44,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	parameters: parameters_44,
 	response: response_44_0
 		| response_44_1
 		| response_44_2
-		| response_44_3,
+		| response_44_3
+		| response_44_4
+		| response_44_5
+		| response_44_6,
 } | {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	path: "/users",
 	method: "GET",
@@ -5616,10 +6477,16 @@ export type DefEnrichedDuplojsTo = {
 	method: "PATCH",
 	body: request_body_45,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+	path: "/navigation-item/{navigationItemId}",
+	method: "DELETE",
+	body: unknown,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	parameters: parameters_45,
 	response: response_45_0
 		| response_45_1
 		| response_45_2
+<<<<<<< HEAD
 		| response_45_3,
 } | {
 <<<<<<< HEAD
@@ -5628,6 +6495,13 @@ export type DefEnrichedDuplojsTo = {
 	path: "/organization/{organizationId}",
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 	method: "GET",
+=======
+		| response_45_3
+		| response_45_4,
+} | {
+	path: "/organization/{organizationId}/logo",
+	method: "PUT",
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	body: unknown,
 	parameters: parameters_46,
 	response: response_46_0
@@ -5639,6 +6513,7 @@ export type DefEnrichedDuplojsTo = {
 		| response_46_6,
 } | {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	path: "/organization/{organizationId}/logo",
 	method: "PUT",
 	body: unknown,
@@ -5647,6 +6522,11 @@ export type DefEnrichedDuplojsTo = {
 	method: "PATCH",
 	body: request_body_47,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+	path: "/organization/{organizationId}/product-sheets",
+	method: "GET",
+	body: unknown,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	parameters: parameters_47,
 	response: response_47_0
 		| response_47_1
@@ -5656,6 +6536,7 @@ export type DefEnrichedDuplojsTo = {
 		| response_47_5,
 } | {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	path: "/organization/{organizationId}/commands/{commandId}/make-bundle",
 	method: "POST",
 	body: request_body_48,
@@ -5664,12 +6545,18 @@ export type DefEnrichedDuplojsTo = {
 	method: "PUT",
 	body: unknown,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+	path: "/organization/{organizationId}/product-sheet",
+	method: "POST",
+	body: request_body_48,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	parameters: parameters_48,
 	response: response_48_0
 		| response_48_1
 		| response_48_2
 		| response_48_3
 		| response_48_4
+<<<<<<< HEAD
 		| response_48_5
 <<<<<<< HEAD
 		| response_48_6
@@ -5682,10 +6569,13 @@ export type DefEnrichedDuplojsTo = {
 =======
 		| response_48_6,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+		| response_48_5,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 } | {
-	path: "/organization/{organizationId}/product-sheet",
-	method: "POST",
-	body: request_body_49,
+	path: "/organization/{organizationId}",
+	method: "GET",
+	body: unknown,
 	parameters: parameters_49,
 	response: response_49_0
 		| response_49_1
@@ -5699,9 +6589,9 @@ export type DefEnrichedDuplojsTo = {
 		| response_49_5,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 } | {
-	path: "/organization/{organizationId}/product-sheets",
-	method: "GET",
-	body: unknown,
+	path: "/organization/{organizationId}",
+	method: "PATCH",
+	body: request_body_50,
 	parameters: parameters_50,
 	response: response_50_0
 		| response_50_1
@@ -5721,18 +6611,18 @@ export type DefEnrichedDuplojsTo = {
 		| response_51_4
 		| response_51_5,
 } | {
-	path: "/organization/{organizationId}/warehouse",
-	method: "POST",
-	body: request_body_52,
+	path: "/organization/{organizationId}/users",
+	method: "GET",
+	body: unknown,
 	parameters: parameters_52,
 	response: response_52_0
 		| response_52_1
 		| response_52_2
 		| response_52_3
 		| response_52_4
-		| response_52_5
-		| response_52_6,
+		| response_52_5,
 } | {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	path: "/organization/{organizationId}/warehouses",
 =======
@@ -5740,14 +6630,21 @@ export type DefEnrichedDuplojsTo = {
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 	method: "GET",
 	body: unknown,
+=======
+	path: "/organization/{organizationId}/warehouse",
+	method: "POST",
+	body: request_body_53,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	parameters: parameters_53,
 	response: response_53_0
 		| response_53_1
 		| response_53_2
 		| response_53_3
 		| response_53_4
-		| response_53_5,
+		| response_53_5
+		| response_53_6,
 } | {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	path: "/product/{sku}",
 	method: "PATCH",
@@ -5755,6 +6652,10 @@ export type DefEnrichedDuplojsTo = {
 =======
 	path: "/organization/{organizationId}/warehouses",
 	method: "GET",
+=======
+	path: "/product-sheet/{productSheetId}/category/{categoryName}",
+	method: "DELETE",
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	body: unknown,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 	parameters: parameters_54,
@@ -5763,8 +6664,10 @@ export type DefEnrichedDuplojsTo = {
 		| response_54_2
 		| response_54_3
 		| response_54_4
-		| response_54_5,
+		| response_54_5
+		| response_54_6,
 } | {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	path: "/warehouse/{warehouseId}",
 =======
@@ -5772,6 +6675,11 @@ export type DefEnrichedDuplojsTo = {
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 	method: "PATCH",
 	body: request_body_55,
+=======
+	path: "/product-sheet/{productSheetId}/categories",
+	method: "GET",
+	body: unknown,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	parameters: parameters_55,
 	response: response_55_0
 		| response_55_1
@@ -5781,6 +6689,7 @@ export type DefEnrichedDuplojsTo = {
 		| response_55_5,
 } | {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	path: "/product-sheet/{productSheetId}/categories",
 	method: "GET",
 	body: unknown,
@@ -5789,6 +6698,11 @@ export type DefEnrichedDuplojsTo = {
 	method: "POST",
 	body: request_body_56,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+	path: "/product-sheet/{productSheetId}",
+	method: "GET",
+	body: unknown,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	parameters: parameters_56,
 	response: response_56_0
 		| response_56_1
@@ -5796,15 +6710,19 @@ export type DefEnrichedDuplojsTo = {
 		| response_56_3
 		| response_56_4
 <<<<<<< HEAD
+<<<<<<< HEAD
 		| response_56_5,
 =======
 		| response_56_5
 		| response_56_6
 		| response_56_7,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+		| response_56_5,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 } | {
-	path: "/product-sheet/{productSheetId}/category",
-	method: "POST",
+	path: "/product-sheet/{productSheetId}",
+	method: "PATCH",
 	body: request_body_57,
 	parameters: parameters_57,
 	response: response_57_0
@@ -5812,15 +6730,17 @@ export type DefEnrichedDuplojsTo = {
 		| response_57_2
 		| response_57_3
 		| response_57_4
-		| response_57_5
-		| response_57_6
-		| response_57_7,
+		| response_57_5,
 } | {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	path: "/product-sheet/{productSheetId}/category/{categoryName}",
 	method: "DELETE",
 =======
 	path: "/product-sheet/{productSheetId}",
+=======
+	path: "/organization/{organizationId}/warehouses",
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	method: "GET",
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 	body: unknown,
@@ -5839,7 +6759,7 @@ export type DefEnrichedDuplojsTo = {
 =======
 		| response_58_5,
 } | {
-	path: "/product-sheet/{productSheetId}",
+	path: "/product-sheet/{productSheetId}/facet/{facetType}",
 	method: "PATCH",
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 	body: request_body_59,
@@ -5853,12 +6773,17 @@ export type DefEnrichedDuplojsTo = {
 		| response_59_6,
 } | {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	path: "/product-sheet/{productSheetId}/facet/{facetType}",
 	method: "PATCH",
 	body: request_body_60,
 =======
 	path: "/product-sheet/{productSheetId}/categories",
 	method: "GET",
+=======
+	path: "/product-sheet/{productSheetId}/facet/{facetType}",
+	method: "DELETE",
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	body: unknown,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 	parameters: parameters_60,
@@ -5867,6 +6792,7 @@ export type DefEnrichedDuplojsTo = {
 		| response_60_2
 		| response_60_3
 		| response_60_4
+<<<<<<< HEAD
 <<<<<<< HEAD
 		| response_60_5
 		| response_60_6,
@@ -5880,6 +6806,14 @@ export type DefEnrichedDuplojsTo = {
 	method: "GET",
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 	body: unknown,
+=======
+		| response_60_5
+		| response_60_6,
+} | {
+	path: "/product-sheet/{productSheetId}/facet",
+	method: "POST",
+	body: request_body_61,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	parameters: parameters_61,
 	response: response_61_0
 		| response_61_1
@@ -5890,12 +6824,17 @@ export type DefEnrichedDuplojsTo = {
 		| response_61_6,
 } | {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	path: "/product-sheet/{productSheetId}/facets",
 	method: "GET",
 =======
 	path: "/product-sheet/{productSheetId}/image",
 	method: "POST",
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+	path: "/product-sheet/{productSheetId}/facets",
+	method: "GET",
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	body: unknown,
 	parameters: parameters_62,
 	response: response_62_0
@@ -5903,6 +6842,7 @@ export type DefEnrichedDuplojsTo = {
 		| response_62_2
 		| response_62_3
 		| response_62_4
+<<<<<<< HEAD
 <<<<<<< HEAD
 		| response_62_5,
 } | {
@@ -5913,8 +6853,11 @@ export type DefEnrichedDuplojsTo = {
 		| response_62_5
 		| response_62_6
 		| response_62_7,
+=======
+		| response_62_5,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 } | {
-	path: "/product-sheet/{productSheetId}/facet",
+	path: "/product-sheet/{productSheetId}/category",
 	method: "POST",
 	body: request_body_63,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
@@ -5926,6 +6869,7 @@ export type DefEnrichedDuplojsTo = {
 		| response_63_4
 		| response_63_5
 <<<<<<< HEAD
+<<<<<<< HEAD
 		| response_63_6
 		| response_63_7,
 } | {
@@ -5934,11 +6878,19 @@ export type DefEnrichedDuplojsTo = {
 	body: unknown,
 =======
 		| response_63_6,
+=======
+		| response_63_6
+		| response_63_7,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 } | {
-	path: "/product-sheet/{productSheetId}/product",
+	path: "/product-sheet/{productSheetId}/image",
 	method: "POST",
+<<<<<<< HEAD
 	body: request_body_64,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+	body: unknown,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	parameters: parameters_64,
 	response: response_64_0
 		| response_64_1
@@ -5956,8 +6908,8 @@ export type DefEnrichedDuplojsTo = {
 		| response_64_6
 		| response_64_7,
 } | {
-	path: "/product-sheet/{productSheetId}/facet/{facetType}",
-	method: "PATCH",
+	path: "/product-sheet/{productSheetId}/promotion",
+	method: "POST",
 	body: request_body_65,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 	parameters: parameters_65,
@@ -5966,6 +6918,7 @@ export type DefEnrichedDuplojsTo = {
 		| response_65_2
 		| response_65_3
 		| response_65_4
+<<<<<<< HEAD
 		| response_65_5,
 } | {
 <<<<<<< HEAD
@@ -5973,6 +6926,13 @@ export type DefEnrichedDuplojsTo = {
 	method: "GET",
 =======
 	path: "/product-sheet/{productSheetId}/facet/{facetType}",
+=======
+		| response_65_5
+		| response_65_6
+		| response_65_7,
+} | {
+	path: "/product-sheet/{productSheetId}/promotion/{promotionId}",
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	method: "DELETE",
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 	body: unknown,
@@ -5986,11 +6946,15 @@ export type DefEnrichedDuplojsTo = {
 		| response_66_6,
 } | {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	path: "/product-sheet/{productSheetId}",
 	method: "PATCH",
 	body: request_body_67,
 =======
 	path: "/product-sheet/{productSheetId}/facets",
+=======
+	path: "/product-sheet/{productSheetId}/images",
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	method: "GET",
 	body: unknown,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
@@ -6003,10 +6967,14 @@ export type DefEnrichedDuplojsTo = {
 		| response_67_5,
 } | {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	path: "/product-sheet/{productSheetId}/product",
 	method: "POST",
 =======
 	path: "/warehouse/{warehouseId}",
+=======
+	path: "/product/{sku}",
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	method: "PATCH",
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 	body: request_body_68,
@@ -6016,9 +6984,9 @@ export type DefEnrichedDuplojsTo = {
 		| response_68_2
 		| response_68_3
 		| response_68_4
-		| response_68_5
-		| response_68_6,
+		| response_68_5,
 } | {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	path: "/organization/{organizationId}/commands/{commandId}/details",
 	method: "GET",
@@ -6027,6 +6995,11 @@ export type DefEnrichedDuplojsTo = {
 	method: "DELETE",
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 	body: unknown,
+=======
+	path: "/product-sheet/{productSheetId}/product",
+	method: "POST",
+	body: request_body_69,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	parameters: parameters_69,
 	response: response_69_0
 		| response_69_1
@@ -6034,6 +7007,7 @@ export type DefEnrichedDuplojsTo = {
 		| response_69_3
 		| response_69_4
 		| response_69_5
+<<<<<<< HEAD
 <<<<<<< HEAD
 		| response_69_6
 		| response_69_7,
@@ -6047,6 +7021,14 @@ export type DefEnrichedDuplojsTo = {
 	method: "DELETE",
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 	body: unknown,
+=======
+		| response_69_6
+		| response_69_7,
+} | {
+	path: "/warehouse/{warehouseId}",
+	method: "PATCH",
+	body: request_body_70,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	parameters: parameters_70,
 	response: response_70_0
 		| response_70_1
@@ -6104,20 +7086,24 @@ export type DefEnrichedDuplojsTo = {
 	parameters: parameters_73,
 	response: response_73_0,
 } | {
+	path: "/make-command",
+	method: "POST",
+	body: request_body_74,
+	parameters: undefined,
+	response: response_74_0
+		| response_74_1
+		| response_74_2
+		| response_74_3
+		| response_74_4
+		| response_74_5,
+} | {
 	path: "/full-product-sheets",
 	method: "GET",
 	body: unknown,
-	parameters: parameters_74,
-	response: response_74_0
-		| response_74_1
-		| response_74_2,
-} | {
-	path: "/make-command",
-	method: "POST",
-	body: request_body_75,
-	parameters: undefined,
+	parameters: parameters_75,
 	response: response_75_0
 		| response_75_1
+<<<<<<< HEAD
 		| response_75_2
 		| response_75_3
 		| response_75_4
@@ -6130,6 +7116,9 @@ export type DefEnrichedDuplojsTo = {
 <<<<<<< HEAD
 	parameters: parameters_73,
 	response: response_73_0,
+=======
+		| response_75_2,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 } | {
 	path: "/full-product-sheet/{productSheetId}",
 	method: "GET",
@@ -6278,15 +7267,18 @@ export interface EnrichedDuploTo<
 	>
 
 	get(
-		path: "/geocoder", 
-		parameters ?: parameters_2 & BaseRequestParameters,
+		path: "/entry/admin-panel*", 
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_2_0
+		| response_2_1
+		| response_2_2
+		| response_2_3
 	>
 
 	get(
-		path: "/entry/admin-panel*", 
+		path: "/entry/content-panel*", 
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -6310,8 +7302,8 @@ export interface EnrichedDuploTo<
 	>
 
 	get(
-		path: "/entry/content-panel*", 
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+		path: "/entry/organization-panel/{organizationId}/manage-user" | "/entry/organization-panel/{organizationId}/manage", 
+		parameters : parameters_4 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_3_0
@@ -6332,13 +7324,17 @@ export interface EnrichedDuploTo<
 		| response_4_2
 		| response_4_3
 <<<<<<< HEAD
+<<<<<<< HEAD
 		| response_4_4
 =======
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+		| response_4_4
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	>
 
 	get(
-		path: "/entry/organization-panel/{organizationId}/manage-user" | "/entry/organization-panel/{organizationId}/manage", 
+		path: "/entry/organization-panel/{organizationId}/warehouses" | "/entry/organization-panel/{organizationId}/create-warehouse" | "/entry/organization-panel/{organizationId}/edited-warehouse/{warehouseId}", 
 		parameters : parameters_5 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -6347,14 +7343,19 @@ export interface EnrichedDuploTo<
 		| response_5_2
 		| response_5_3
 		| response_5_4
+		| response_5_5
 	>
 
 	get(
+<<<<<<< HEAD
 <<<<<<< HEAD
 		path: "/organization-panel/{organizationId}/products" | "/organization-panel/{organizationId}/commands", 
 =======
 		path: "/entry/organization-panel/{organizationId}/warehouses" | "/entry/organization-panel/{organizationId}/create-warehouse" | "/entry/organization-panel/{organizationId}/edited-warehouse/{warehouseId}", 
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+		path: "/entry/organization-panel/{organizationId}/product-sheets" | "/entry/organization-panel/{organizationId}/edit-product-sheet/{productSheetId}" | "/entry/organization-panel/{organizationId}/create-product-sheet", 
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		parameters : parameters_6 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -6373,8 +7374,12 @@ export interface EnrichedDuploTo<
 	>
 
 	get(
+<<<<<<< HEAD
 		path: "/entry/organization-panel/{organizationId}/product-sheets" | "/entry/organization-panel/{organizationId}/edit-product-sheet/{productSheetId}" | "/entry/organization-panel/{organizationId}/create-product-sheet", 
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+		path: "/entry/organization-panel/{organizationId}*", 
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		parameters : parameters_7 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -6382,6 +7387,7 @@ export interface EnrichedDuploTo<
 		| response_7_1
 		| response_7_2
 		| response_7_3
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 		| response_7_4
@@ -6398,6 +7404,8 @@ export interface EnrichedDuploTo<
 		| response_8_2
 		| response_8_3
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	>
 
 	get(
@@ -6406,10 +7414,14 @@ export interface EnrichedDuploTo<
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 <<<<<<< HEAD
+<<<<<<< HEAD
 		response_8_0
 =======
 		response_9_0
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+		response_8_0
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	>
 
 	get(
@@ -6417,6 +7429,7 @@ export interface EnrichedDuploTo<
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
+<<<<<<< HEAD
 <<<<<<< HEAD
 		response_9_0
 		| response_9_1
@@ -6426,6 +7439,11 @@ export interface EnrichedDuploTo<
 		| response_10_1
 		| response_10_2
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+		response_9_0
+		| response_9_1
+		| response_9_2
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	>
 
 	get(
@@ -6434,6 +7452,9 @@ export interface EnrichedDuploTo<
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		response_10_0
 	>
 
@@ -6442,8 +7463,11 @@ export interface EnrichedDuploTo<
 		parameters ?: parameters_11 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
+<<<<<<< HEAD
 =======
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		response_11_0
 	>
 
@@ -6491,19 +7515,27 @@ export interface EnrichedDuploTo<
 		| response_15_4
 	>
 
+<<<<<<< HEAD
 	post(
 		path: "/article", 
 		body: request_body_16,
+=======
+	get(
+		path: "/cart", 
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_16_0
 		| response_16_1
 		| response_16_2
+<<<<<<< HEAD
 		| response_16_3
 		| response_16_4
 		| response_16_5
 		| response_16_6
+=======
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	>
 
 	delete(
@@ -6518,6 +7550,7 @@ export interface EnrichedDuploTo<
 	>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	delete(
 		path: "/image-product-sheet/{imageProductSheetId}", 
 =======
@@ -6525,6 +7558,10 @@ export interface EnrichedDuploTo<
 		path: "/organization/{organizationId}/user/{userId}", 
 		body: request_body_18,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+	delete(
+		path: "/image-product-sheet/{imageProductSheetId}", 
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		parameters : parameters_18 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -6534,6 +7571,7 @@ export interface EnrichedDuploTo<
 		| response_18_3
 		| response_18_4
 		| response_18_5
+<<<<<<< HEAD
 <<<<<<< HEAD
 	>
 
@@ -6548,6 +7586,13 @@ export interface EnrichedDuploTo<
 		path: "/organization/{organizationId}/user/{userId}", 
 		parameters : parameters_19 & BaseRequestParameters,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+	>
+
+	get(
+		path: "/user", 
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_19_0
@@ -6561,13 +7606,11 @@ export interface EnrichedDuploTo<
 		parameters : parameters_20 & BaseRequestParameters,
 =======
 		| response_19_3
-		| response_19_4
-		| response_19_5
-		| response_19_6
 	>
 
-	get(
-		path: "/cart", 
+	patch(
+		path: "/user", 
+		body: request_body_20,
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 		interceptorParams?: interceptorParameter
@@ -6575,6 +7618,7 @@ export interface EnrichedDuploTo<
 		response_20_0
 		| response_20_1
 		| response_20_2
+<<<<<<< HEAD
 <<<<<<< HEAD
 		| response_20_3
 	>
@@ -6590,12 +7634,22 @@ export interface EnrichedDuploTo<
 		path: "/user/organizations", 
 		parameters ?: parameters_21 & BaseRequestParameters,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+		| response_20_3
+	>
+
+	post(
+		path: "/retry-command", 
+		body: request_body_21,
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_21_0
 		| response_21_1
 		| response_21_2
 		| response_21_3
+<<<<<<< HEAD
 <<<<<<< HEAD
 		| response_21_4
 		| response_21_5
@@ -6608,10 +7662,14 @@ export interface EnrichedDuploTo<
 		body: request_body_22,
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 =======
+=======
+		| response_21_4
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	>
 
-	get(
-		path: "/organization/{organizationId}/promotions", 
+	patch(
+		path: "/organization/{organizationId}/user/{userId}", 
+		body: request_body_22,
 		parameters : parameters_22 & BaseRequestParameters,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 		interceptorParams?: interceptorParameter
@@ -6621,6 +7679,7 @@ export interface EnrichedDuploTo<
 		| response_22_2
 		| response_22_3
 		| response_22_4
+<<<<<<< HEAD
 	>
 
 	get(
@@ -6629,6 +7688,14 @@ export interface EnrichedDuploTo<
 		parameters ?: parameters_23 & BaseRequestParameters,
 =======
 		path: "/organization/{organizationId}/user", 
+=======
+		| response_22_5
+		| response_22_6
+	>
+
+	delete(
+		path: "/organization/{organizationId}/user/{userId}", 
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		parameters : parameters_23 & BaseRequestParameters,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 		interceptorParams?: interceptorParameter
@@ -6637,8 +7704,12 @@ export interface EnrichedDuploTo<
 		| response_23_1
 		| response_23_2
 		| response_23_3
+		| response_23_4
+		| response_23_5
+		| response_23_6
 	>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	patch(
 		path: "/organization/{organizationId}/user/{userId}", 
@@ -6647,6 +7718,10 @@ export interface EnrichedDuploTo<
 		path: "/organization/{organizationId}/user", 
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 		body: request_body_24,
+=======
+	get(
+		path: "/organization/{organizationId}/user", 
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		parameters : parameters_24 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -6654,6 +7729,7 @@ export interface EnrichedDuploTo<
 		| response_24_1
 		| response_24_2
 		| response_24_3
+<<<<<<< HEAD
 		| response_24_4
 		| response_24_5
 		| response_24_6
@@ -6671,6 +7747,14 @@ export interface EnrichedDuploTo<
 		path: "/user", 
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+	>
+
+	post(
+		path: "/organization/{organizationId}/user", 
+		body: request_body_25,
+		parameters : parameters_25 & BaseRequestParameters,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_25_0
@@ -6680,6 +7764,7 @@ export interface EnrichedDuploTo<
 		| response_25_4
 		| response_25_5
 		| response_25_6
+<<<<<<< HEAD
 	>
 
 <<<<<<< HEAD
@@ -6691,6 +7776,14 @@ export interface EnrichedDuploTo<
 		body: request_body_26,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+=======
+		| response_25_7
+	>
+
+	get(
+		path: "/user/organizations", 
+		parameters ?: parameters_26 & BaseRequestParameters,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_26_0
@@ -6716,23 +7809,28 @@ export interface EnrichedDuploTo<
 		| response_27_3
 	>
 
-	post(
-		path: "/retry-command", 
-		body: request_body_28,
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+	get(
+		path: "/organization/{organizationId}/promotions", 
+		parameters : parameters_28 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_28_0
 		| response_28_1
 		| response_28_2
 		| response_28_3
-		| response_28_4
 	>
 
+<<<<<<< HEAD
 	post(
 		path: "/category", 
 		body: request_body_29,
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+=======
+	patch(
+		path: "/category/{categoryName}", 
+		body: request_body_29,
+		parameters : parameters_29 & BaseRequestParameters,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_29_0
@@ -6744,10 +7842,14 @@ export interface EnrichedDuploTo<
 
 	patch(
 <<<<<<< HEAD
+<<<<<<< HEAD
 		path: "/organization/{organizationId}@admin", 
 =======
 		path: "/category/{categoryName}", 
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+		path: "/organization/{organizationId}@admin", 
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		body: request_body_30,
 		parameters : parameters_30 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
@@ -6758,6 +7860,7 @@ export interface EnrichedDuploTo<
 		| response_30_3
 		| response_30_4
 <<<<<<< HEAD
+<<<<<<< HEAD
 	>
 
 	put(
@@ -6765,13 +7868,19 @@ export interface EnrichedDuploTo<
 		body: unknown,
 =======
 		| response_30_5
+=======
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	>
 
-	patch(
-		path: "/organization/{organizationId}@admin", 
+	post(
+		path: "/navigation-item", 
 		body: request_body_31,
+<<<<<<< HEAD
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 		parameters : parameters_31 & BaseRequestParameters,
+=======
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_31_0
@@ -6782,10 +7891,10 @@ export interface EnrichedDuploTo<
 		| response_31_5
 	>
 
-	post(
-		path: "/navigation-item", 
-		body: request_body_32,
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+	put(
+		path: "/category/{categoryName}/image", 
+		body: unknown,
+		parameters : parameters_32 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_32_0
@@ -6793,6 +7902,7 @@ export interface EnrichedDuploTo<
 		| response_32_2
 		| response_32_3
 		| response_32_4
+		| response_32_5
 	>
 
 <<<<<<< HEAD
@@ -6829,6 +7939,7 @@ export interface EnrichedDuploTo<
 	>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	post(
 		path: "/organization", 
 		body: request_body_35,
@@ -6838,16 +7949,24 @@ export interface EnrichedDuploTo<
 		path: "/organizations", 
 		parameters ?: parameters_35 & BaseRequestParameters,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+	patch(
+		path: "/user/{userId}@admin", 
+		body: request_body_35,
+		parameters : parameters_35 & BaseRequestParameters,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_35_0
 		| response_35_1
 		| response_35_2
 		| response_35_3
+		| response_35_4
+		| response_35_5
 	>
 
-	patch(
-		path: "/navigation-item/{navigationItemId}", 
+	post(
+		path: "/parent-category/{parentCategoryName}/category", 
 		body: request_body_36,
 		parameters : parameters_36 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
@@ -6861,8 +7980,8 @@ export interface EnrichedDuploTo<
 		| response_36_6
 	>
 
-	delete(
-		path: "/navigation-item/{navigationItemId}", 
+	get(
+		path: "/parent-category/{parentCategoryName}/categories", 
 		parameters : parameters_37 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -6893,23 +8012,27 @@ export interface EnrichedDuploTo<
 	>
 
 	get(
-		path: "/parent-category/{parentCategoryName}/categories", 
-		parameters : parameters_39 & BaseRequestParameters,
+		path: "/organizations", 
+		parameters ?: parameters_39 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_39_0
 		| response_39_1
 		| response_39_2
 		| response_39_3
-		| response_39_4
 	>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	delete(
 		path: "/parent-category/{parentCategoryName}/category/{categoryName}", 
 =======
 	post(
 		path: "/parent-category/{parentCategoryName}/category", 
+=======
+	patch(
+		path: "/parent-category/{parentCategoryName}", 
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		body: request_body_40,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 		parameters : parameters_40 & BaseRequestParameters,
@@ -6921,9 +8044,9 @@ export interface EnrichedDuploTo<
 		| response_40_3
 		| response_40_4
 		| response_40_5
-		| response_40_6
 	>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	post(
 		path: "/parent-category/{parentCategoryName}/category", 
@@ -6933,12 +8056,18 @@ export interface EnrichedDuploTo<
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 		body: request_body_41,
 		parameters : parameters_41 & BaseRequestParameters,
+=======
+	get(
+		path: "/users", 
+		parameters ?: parameters_41 & BaseRequestParameters,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_41_0
 		| response_41_1
 		| response_41_2
 		| response_41_3
+<<<<<<< HEAD
 		| response_41_4
 		| response_41_5
 <<<<<<< HEAD
@@ -6957,12 +8086,20 @@ export interface EnrichedDuploTo<
 		body: request_body_42,
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+	>
+
+	get(
+		path: "/parent-categories", 
+		parameters ?: parameters_42 & BaseRequestParameters,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_42_0
 		| response_42_1
 		| response_42_2
 		| response_42_3
+<<<<<<< HEAD
 		| response_42_4
 <<<<<<< HEAD
 		| response_42_5
@@ -6977,14 +8114,24 @@ export interface EnrichedDuploTo<
 		path: "/parent-categories", 
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 		parameters ?: parameters_43 & BaseRequestParameters,
+=======
+	>
+
+	post(
+		path: "/parent-category", 
+		body: request_body_43,
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_43_0
 		| response_43_1
 		| response_43_2
 		| response_43_3
+		| response_43_4
 	>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	patch(
 		path: "/user/{userId}@admin", 
@@ -6995,14 +8142,24 @@ export interface EnrichedDuploTo<
 		path: "/users", 
 		parameters ?: parameters_44 & BaseRequestParameters,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+	patch(
+		path: "/navigation-item/{navigationItemId}", 
+		body: request_body_44,
+		parameters : parameters_44 & BaseRequestParameters,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_44_0
 		| response_44_1
 		| response_44_2
 		| response_44_3
+		| response_44_4
+		| response_44_5
+		| response_44_6
 	>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	get(
 		path: "/users", 
@@ -7011,6 +8168,10 @@ export interface EnrichedDuploTo<
 	patch(
 		path: "/user/{userId}@admin", 
 		body: request_body_45,
+=======
+	delete(
+		path: "/navigation-item/{navigationItemId}", 
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		parameters : parameters_45 & BaseRequestParameters,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 		interceptorParams?: interceptorParameter
@@ -7019,6 +8180,7 @@ export interface EnrichedDuploTo<
 		| response_45_1
 		| response_45_2
 		| response_45_3
+<<<<<<< HEAD
 	>
 
 	get(
@@ -7027,6 +8189,14 @@ export interface EnrichedDuploTo<
 =======
 		path: "/organization/{organizationId}", 
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+		| response_45_4
+	>
+
+	put(
+		path: "/organization/{organizationId}/logo", 
+		body: unknown,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		parameters : parameters_46 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -7040,6 +8210,7 @@ export interface EnrichedDuploTo<
 	>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	put(
 		path: "/organization/{organizationId}/logo", 
 		body: unknown,
@@ -7048,6 +8219,10 @@ export interface EnrichedDuploTo<
 		path: "/organization/{organizationId}", 
 		body: request_body_47,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+	get(
+		path: "/organization/{organizationId}/product-sheets", 
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		parameters : parameters_47 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -7060,6 +8235,7 @@ export interface EnrichedDuploTo<
 	>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	post(
 		path: "/organization/{organizationId}/commands/{commandId}/make-bundle", 
 		body: request_body_48,
@@ -7068,6 +8244,11 @@ export interface EnrichedDuploTo<
 		path: "/organization/{organizationId}/logo", 
 		body: unknown,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+	post(
+		path: "/organization/{organizationId}/product-sheet", 
+		body: request_body_48,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		parameters : parameters_48 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -7077,6 +8258,7 @@ export interface EnrichedDuploTo<
 		| response_48_3
 		| response_48_4
 		| response_48_5
+<<<<<<< HEAD
 		| response_48_6
 <<<<<<< HEAD
 		| response_48_7
@@ -7087,11 +8269,12 @@ export interface EnrichedDuploTo<
 		| response_48_12
 =======
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	>
 
-	post(
-		path: "/organization/{organizationId}/product-sheet", 
-		body: request_body_49,
+	get(
+		path: "/organization/{organizationId}", 
 		parameters : parameters_49 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -7107,8 +8290,9 @@ export interface EnrichedDuploTo<
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 	>
 
-	get(
-		path: "/organization/{organizationId}/product-sheets", 
+	patch(
+		path: "/organization/{organizationId}", 
+		body: request_body_50,
 		parameters : parameters_50 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -7133,9 +8317,8 @@ export interface EnrichedDuploTo<
 		| response_51_5
 	>
 
-	post(
-		path: "/organization/{organizationId}/warehouse", 
-		body: request_body_52,
+	get(
+		path: "/organization/{organizationId}/users", 
 		parameters : parameters_52 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -7145,15 +8328,20 @@ export interface EnrichedDuploTo<
 		| response_52_3
 		| response_52_4
 		| response_52_5
-		| response_52_6
 	>
 
+<<<<<<< HEAD
 	get(
 <<<<<<< HEAD
 		path: "/organization/{organizationId}/warehouses", 
 =======
 		path: "/organization/{organizationId}/users", 
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+	post(
+		path: "/organization/{organizationId}/warehouse", 
+		body: request_body_53,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		parameters : parameters_53 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -7163,8 +8351,10 @@ export interface EnrichedDuploTo<
 		| response_53_3
 		| response_53_4
 		| response_53_5
+		| response_53_6
 	>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	patch(
 		path: "/product/{sku}", 
@@ -7173,6 +8363,10 @@ export interface EnrichedDuploTo<
 	get(
 		path: "/organization/{organizationId}/warehouses", 
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+	delete(
+		path: "/product-sheet/{productSheetId}/category/{categoryName}", 
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		parameters : parameters_54 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -7182,8 +8376,10 @@ export interface EnrichedDuploTo<
 		| response_54_3
 		| response_54_4
 		| response_54_5
+		| response_54_6
 	>
 
+<<<<<<< HEAD
 	patch(
 <<<<<<< HEAD
 		path: "/warehouse/{warehouseId}", 
@@ -7191,6 +8387,10 @@ export interface EnrichedDuploTo<
 		path: "/product/{sku}", 
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 		body: request_body_55,
+=======
+	get(
+		path: "/product-sheet/{productSheetId}/categories", 
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		parameters : parameters_55 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -7203,6 +8403,7 @@ export interface EnrichedDuploTo<
 	>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	get(
 		path: "/product-sheet/{productSheetId}/categories", 
 =======
@@ -7210,6 +8411,10 @@ export interface EnrichedDuploTo<
 		path: "/product-sheet/{productSheetId}/promotion", 
 		body: request_body_56,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+	get(
+		path: "/product-sheet/{productSheetId}", 
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		parameters : parameters_56 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -7220,14 +8425,17 @@ export interface EnrichedDuploTo<
 		| response_56_4
 		| response_56_5
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 		| response_56_6
 		| response_56_7
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	>
 
-	post(
-		path: "/product-sheet/{productSheetId}/category", 
+	patch(
+		path: "/product-sheet/{productSheetId}", 
 		body: request_body_57,
 		parameters : parameters_57 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
@@ -7238,8 +8446,6 @@ export interface EnrichedDuploTo<
 		| response_57_3
 		| response_57_4
 		| response_57_5
-		| response_57_6
-		| response_57_7
 	>
 
 <<<<<<< HEAD
@@ -7247,8 +8453,12 @@ export interface EnrichedDuploTo<
 		path: "/product-sheet/{productSheetId}/category/{categoryName}", 
 =======
 	get(
+<<<<<<< HEAD
 		path: "/product-sheet/{productSheetId}", 
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+		path: "/organization/{organizationId}/warehouses", 
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		parameters : parameters_58 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -7268,8 +8478,12 @@ export interface EnrichedDuploTo<
 	>
 
 	patch(
+<<<<<<< HEAD
 		path: "/product-sheet/{productSheetId}", 
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+		path: "/product-sheet/{productSheetId}/facet/{facetType}", 
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		body: request_body_59,
 		parameters : parameters_59 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
@@ -7284,6 +8498,7 @@ export interface EnrichedDuploTo<
 	>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	patch(
 		path: "/product-sheet/{productSheetId}/facet/{facetType}", 
 		body: request_body_60,
@@ -7291,6 +8506,10 @@ export interface EnrichedDuploTo<
 	get(
 		path: "/product-sheet/{productSheetId}/categories", 
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+	delete(
+		path: "/product-sheet/{productSheetId}/facet/{facetType}", 
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		parameters : parameters_60 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -7300,6 +8519,7 @@ export interface EnrichedDuploTo<
 		| response_60_3
 		| response_60_4
 		| response_60_5
+<<<<<<< HEAD
 <<<<<<< HEAD
 		| response_60_6
 	>
@@ -7312,6 +8532,14 @@ export interface EnrichedDuploTo<
 	get(
 		path: "/product-sheet/{productSheetId}/images", 
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+		| response_60_6
+	>
+
+	post(
+		path: "/product-sheet/{productSheetId}/facet", 
+		body: request_body_61,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		parameters : parameters_61 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -7325,6 +8553,7 @@ export interface EnrichedDuploTo<
 	>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	get(
 		path: "/product-sheet/{productSheetId}/facets", 
 =======
@@ -7332,6 +8561,10 @@ export interface EnrichedDuploTo<
 		path: "/product-sheet/{productSheetId}/image", 
 		body: unknown,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+	get(
+		path: "/product-sheet/{productSheetId}/facets", 
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		parameters : parameters_62 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -7342,6 +8575,7 @@ export interface EnrichedDuploTo<
 		| response_62_4
 		| response_62_5
 <<<<<<< HEAD
+<<<<<<< HEAD
 	>
 
 	post(
@@ -7350,10 +8584,12 @@ export interface EnrichedDuploTo<
 =======
 		| response_62_6
 		| response_62_7
+=======
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	>
 
 	post(
-		path: "/product-sheet/{productSheetId}/facet", 
+		path: "/product-sheet/{productSheetId}/category", 
 		body: request_body_63,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 		parameters : parameters_63 & BaseRequestParameters,
@@ -7367,6 +8603,7 @@ export interface EnrichedDuploTo<
 		| response_63_5
 		| response_63_6
 <<<<<<< HEAD
+<<<<<<< HEAD
 		| response_63_7
 	>
 
@@ -7379,6 +8616,14 @@ export interface EnrichedDuploTo<
 		path: "/product-sheet/{productSheetId}/product", 
 		body: request_body_64,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+		| response_63_7
+	>
+
+	post(
+		path: "/product-sheet/{productSheetId}/image", 
+		body: unknown,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		parameters : parameters_64 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -7398,8 +8643,8 @@ export interface EnrichedDuploTo<
 		| response_64_7
 	>
 
-	patch(
-		path: "/product-sheet/{productSheetId}/facet/{facetType}", 
+	post(
+		path: "/product-sheet/{productSheetId}/promotion", 
 		body: request_body_65,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
 		parameters : parameters_65 & BaseRequestParameters,
@@ -7411,6 +8656,11 @@ export interface EnrichedDuploTo<
 		| response_65_3
 		| response_65_4
 		| response_65_5
+<<<<<<< HEAD
+=======
+		| response_65_6
+		| response_65_7
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 	>
 
 <<<<<<< HEAD
@@ -7418,8 +8668,12 @@ export interface EnrichedDuploTo<
 		path: "/product-sheet/{productSheetId}", 
 =======
 	delete(
+<<<<<<< HEAD
 		path: "/product-sheet/{productSheetId}/facet/{facetType}", 
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+		path: "/product-sheet/{productSheetId}/promotion/{promotionId}", 
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		parameters : parameters_66 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -7438,8 +8692,12 @@ export interface EnrichedDuploTo<
 		body: request_body_67,
 =======
 	get(
+<<<<<<< HEAD
 		path: "/product-sheet/{productSheetId}/facets", 
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+		path: "/product-sheet/{productSheetId}/images", 
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		parameters : parameters_67 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -7456,8 +8714,12 @@ export interface EnrichedDuploTo<
 		path: "/product-sheet/{productSheetId}/product", 
 =======
 	patch(
+<<<<<<< HEAD
 		path: "/warehouse/{warehouseId}", 
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+		path: "/product/{sku}", 
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		body: request_body_68,
 		parameters : parameters_68 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
@@ -7468,9 +8730,9 @@ export interface EnrichedDuploTo<
 		| response_68_3
 		| response_68_4
 		| response_68_5
-		| response_68_6
 	>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	get(
 		path: "/organization/{organizationId}/commands/{commandId}/details", 
@@ -7478,6 +8740,11 @@ export interface EnrichedDuploTo<
 	delete(
 		path: "/product-sheet/{productSheetId}/promotion/{promotionId}", 
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+	post(
+		path: "/product-sheet/{productSheetId}/product", 
+		body: request_body_69,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		parameters : parameters_69 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -7488,6 +8755,7 @@ export interface EnrichedDuploTo<
 		| response_69_4
 		| response_69_5
 		| response_69_6
+<<<<<<< HEAD
 <<<<<<< HEAD
 		| response_69_7
 	>
@@ -7500,6 +8768,14 @@ export interface EnrichedDuploTo<
 	delete(
 		path: "/product-sheet/{productSheetId}/category/{categoryName}", 
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+		| response_69_7
+	>
+
+	patch(
+		path: "/warehouse/{warehouseId}", 
+		body: request_body_70,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		parameters : parameters_70 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -7564,29 +8840,36 @@ export interface EnrichedDuploTo<
 		response_73_0
 	>
 
-	get(
-		path: "/full-product-sheets", 
-		parameters ?: parameters_74 & BaseRequestParameters,
+	post(
+		path: "/make-command", 
+		body: request_body_74,
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_74_0
 		| response_74_1
 		| response_74_2
+		| response_74_3
+		| response_74_4
+		| response_74_5
 	>
 
+<<<<<<< HEAD
 	post(
 		path: "/make-command", 
 		body: request_body_75,
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 >>>>>>> 206af83 (feat(112): add promotions without displaying info on productCard.vue)
+=======
+	get(
+		path: "/full-product-sheets", 
+		parameters ?: parameters_75 & BaseRequestParameters,
+>>>>>>> 98cb90a (feat(112): add oneToMany for promotion on product-sheet)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_75_0
 		| response_75_1
 		| response_75_2
-		| response_75_3
-		| response_75_4
-		| response_75_5
 	>
 
 	get(
