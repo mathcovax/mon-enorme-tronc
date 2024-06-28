@@ -5,7 +5,7 @@ import { onUseDuplose } from "@duplojs/editor-tools";
 import { Route } from "@duplojs/duplojs";
 
 export const hasOrganizationRoleByOrganizationId = 
-	mustBeConnected({ pickup: ["accessTokenContent"] })
+	mustBeConnected({ pickup: ["accessTokenContent", "user"] })
 		.declareAbstractRoute("hasOrganizationRoleByOrganizationId")
 		.options<OptionsHasOrganizationRole>({
 			organizationRole: "OWNER"
@@ -33,7 +33,7 @@ export const hasOrganizationRoleByOrganizationId =
 				options: p => ({ organizationRole: p("options").organizationRole })
 			}
 		)
-		.build(["accessTokenContent", "organization"]);
+		.build(["accessTokenContent", "organization", "user"]);
 
 /* istanbul ignore if -- @preserve */
 if (duplo.config.environment !== "TEST") {

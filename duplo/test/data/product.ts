@@ -6,7 +6,6 @@ export const productEntityData: product = {
 	status: "WRONG",
 	organizationId: "",
 	productSheetId: "",
-	commandId: null,
 	createdAt: new Date(),
 	updatedAt: new Date(),
 };

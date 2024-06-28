@@ -27,6 +27,7 @@ model user {
     article            article[]
     command            command[]
     commandItems       command_item[]
+    bundle             bundle[]
 }
 
 enum primordial_role {
@@ -169,16 +170,15 @@ enum navigation_item_type {
 }
 
 model product {
-    sku            String         @unique @db.VarChar(255)
-    productSheet   product_sheet  @relation(fields: [productSheetId], references: [id])
-    productSheetId String
-    organization   organization   @relation(fields: [organizationId], references: [id])
-    organizationId String
-    status         product_status @default(IN_STOCK)
-    command        command?       @relation(fields: [commandId], references: [id])
-    commandId      String?
-    createdAt      DateTime       @default(now())
-    updatedAt      DateTime       @updatedAt
+    sku              String              @unique @db.VarChar(255)
+    productSheet     product_sheet       @relation(fields: [productSheetId], references: [id])
+    productSheetId   String
+    organization     organization        @relation(fields: [organizationId], references: [id])
+    organizationId   String
+    status           product_status      @default(IN_STOCK)
+    productToBundles product_to_bundle[]
+    createdAt        DateTime            @default(now())
+    updatedAt        DateTime            @updatedAt
 }
 
 enum product_status {
@@ -224,11 +224,11 @@ model command {
     address                    String                         @db.VarChar(400)
     stripeSessionId            String                         @db.VarChar(255)
     status                     command_status                 @default(WAITING_PAYMENT)
-    product                    product[]
     commandItems               command_item[]
     stripeNotificationCheckout stripe_notification_checkout[]
     createdAt                  DateTime                       @default(now())
     updatedAt                  DateTime                       @updatedAt
+    bundle                     bundle[]
 }
 
 enum command_status {
@@ -260,4 +260,25 @@ model stripe_notification_checkout {
     command         command  @relation(fields: [commandId], references: [id])
     commandId       String
     createdAt       DateTime @default(now())
+}
+
+model bundle {
+    id        Int                 @id @default(autoincrement())
+    command   command             @relation(fields: [commandId], references: [id])
+    commandId String
+    idShip    String
+    product   product_to_bundle[]
+    status    String
+    creator   user                @relation(fields: [creatorId], references: [id])
+    creatorId String
+    createdAt DateTime            @default(now())
+}
+
+model product_to_bundle {
+    bundle     bundle  @relation(fields: [bundleId], references: [id])
+    bundleId   Int
+    product    product @relation(fields: [productSku], references: [sku])
+    productSku String  @db.VarChar(255)
+
+    @@id([bundleId, productSku])
 }

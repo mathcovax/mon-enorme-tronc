@@ -161,6 +161,11 @@ export type QueryFilters = Exclude<
 >
 
 export type OrganizationCommandCollection = GetResponseByInfo<
-GetDef<"GET", "/organization/{organizationId}/commands">,
-"organizationCommandCollection"
+	GetDef<"GET", "/organization/{organizationId}/commands">,
+	"organizationCommandCollection"
+>["body"]
+
+export type OrganizationCommandDetailes = GetResponseByInfo<
+	GetDef<"GET", "/organization/{organizationId}/commands/{commandId}/details">,
+	"organizationCommandDetailes"
 >["body"]

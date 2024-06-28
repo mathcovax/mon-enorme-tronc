@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import type { OrganizationCommandCollection, Warehouse } from "@/lib/utils";
+import type { OrganizationCommandCollection, OrganizationCommandDetailes, Warehouse } from "@/lib/utils";
 import { useGetCommands } from "../composables/useGetCommands";
 import { useGetWarehouses } from "../composables/useGetWarehouses";
 import { effect } from "vue";
+import type ThePopup from "@/components/ThePopup.vue";
 
 const params = useRouteParams({ 
 	organizationId: zod.string(), 
@@ -30,6 +31,7 @@ const cols: BigTableColDef<OrganizationCommandCollection[number]>[] = [
 		getter: i => i.createdAt?.split("T")[0]
 	},
 ];
+const popup = ref<InstanceType<typeof ThePopup>>();
 const selectWareHouse = ref<Warehouse | null>(null);
 const currentPage = computed({
 	get: () => commandRefQuery.value.page ?? 1,
@@ -55,6 +57,25 @@ function previous() {
 effect(() => {
 	commandRefQuery.value.warehouseId = selectWareHouse.value?.id ?? "0";
 });
+
+const commandDetailes = ref<OrganizationCommandDetailes>([]);
+function openPopup(commandId: string) {
+	popup.value?.open();
+
+	duploTo.enriched
+		.get(
+			"/organization/{organizationId}/commands/{commandId}/details",
+			{
+				params: {
+					organizationId: params.value.organizationId,
+					commandId,
+				}
+			}
+		)
+		.info("organizationCommandDetailes", (data) => {
+			commandDetailes.value = data;
+		});
+}
 
 </script>
 
@@ -84,7 +105,47 @@ effect(() => {
 				:current-page="currentPage + 1"
 				@click-next="next"
 				@click-previous="previous"
+				@click-on-row="i => openPopup(i.commandId)"
 			/>
 		</div>
 	</section>
+
+	<ThePopup
+		ref="popup"
+		class="w-[90%]"
+	>
+		<template #popupContent>
+			<BigTable
+				:items="commandDetailes"
+				:cols="[
+					{
+						title: $pt('table.image'),
+						slotName: 'img'
+					},
+					{
+						title: $pt('table.productSheetName'),
+						getter: i => i.productSheetName
+					},
+					{
+						title: $pt('table.productSheetId'),
+						getter: i => i.productSheetId
+					},
+					{
+						title: $pt('table.quantityRest'),
+						getter: i => i.quantity - i.processQuantity
+					},
+					{
+						title: $pt('table.quantity'),
+						getter: i => i.quantity
+					},
+				]"
+			>
+				<template #img="{item}">
+					<div class="aspect-square w-[100px] flex justify-center items-center col-span-2">
+						<img :src="item.productSheetFirstImageUrl">
+					</div>
+				</template>
+			</BigTable>
+		</template>
+	</ThePopup>
 </template>

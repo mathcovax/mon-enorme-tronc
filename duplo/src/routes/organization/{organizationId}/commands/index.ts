@@ -31,7 +31,7 @@ export const GET = (method: Methods, path: string) =>
 				const organizationCommandCollection = await prisma.$queryRaw`
 					WITH organizationCommandItems ("commandId", quantity) AS (
 						SELECT
-							ci."commandId" as "commandId",
+							ci."commandId" AS "commandId",
 							ci.quantity - ci."processQuantity" AS quantity
 						FROM
 							command_item AS ci
@@ -43,17 +43,17 @@ export const GET = (method: Methods, path: string) =>
 					)
 
 					SELECT 
-						oci."commandId" as "commandId",
-						SUM(oci.quantity)::INT as quantity,
+						oci."commandId" AS "commandId",
+						SUM(oci.quantity)::INT AS quantity,
 						c."createdAt"
-					FROM organizationCommandItems as oci
-					INNER JOIN command as c ON c.id = oci."commandId"
+					FROM organizationCommandItems AS oci
+					INNER JOIN command AS c ON c.id = oci."commandId"
 					WHERE c.status = 'IN_PROGESS'
 					GROUP BY oci."commandId", c."createdAt"
 					ORDER BY c."createdAt"
 					OFFSET ${page * 10}
 					LIMIT 10
-				`;
+				` as Zod.infer<typeof organizationCommandCollectionSchema>;
 
 				throw new OkHttpException("organizationCommandCollection", organizationCommandCollection);
 			},
