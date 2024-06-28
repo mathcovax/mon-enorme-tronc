@@ -7,6 +7,7 @@ const {
 	ORGANIZATION_MANAGE_USER,
 	ORGANIZATION_EDIT,
 	ORGANIZATION_MANAGE_PRODUCT,
+	ORGANIZATION_MANAGE_PROMOTION,
 	ORGANIZATION_GET_PRODUCT_SHEET,
 	ORGANIZATION_GET_WAREHOUSE,
 	ORGANIZATION_COMMANDS,
@@ -28,7 +29,7 @@ getOrganization();
 			<div class="flex items-center justify-center h-24 px-4 border-b lg:px-6">
 				<RouterLink
 					:to="{ name: ORGANIZATION_HOME }"
-					class="flex items-center gap-2 text-center font-semibold"
+					class="flex items-center gap-2 font-semibold text-center"
 				>
 					<img
 						v-if="organization.logoUrl"
@@ -47,7 +48,7 @@ getOrganization();
 				<nav class="grid items-start px-2 text-sm font-medium lg:px-4">
 					<RouterLink
 						:to="{ name: ORGANIZATION_HOME }"
-						class="px-3 py-2 flex items-center gap-3 rounded-lg transition-all hover:text-primary"
+						class="flex items-center gap-3 px-3 py-2 transition-all rounded-lg hover:text-primary"
 						:class="
 							route.name === ORGANIZATION_HOME ?
 								'bg-muted text-primary'
@@ -118,7 +119,7 @@ getOrganization();
 					<RouterLink
 						v-if="organizationUserStore.hasRole('STORE_KEEPER')"
 						:to="{name: ORGANIZATION_MANAGE_PRODUCT}"
-						class="px-3 py-2 flex items-center gap-3 rounded-lg transition-all hover:text-primary"
+						class="flex items-center gap-3 px-3 py-2 transition-all rounded-lg hover:text-primary"
 						:class="
 							route.name === ORGANIZATION_MANAGE_PRODUCT 
 								? 'bg-muted text-primary'
@@ -130,6 +131,23 @@ getOrganization();
 							size="2xl"
 						/>
 						{{ $t("layout.organization.nav.products") }}
+					</RouterLink>
+
+					<RouterLink
+						v-if="organizationUserStore.hasRole('PRODUCT_SHEET_MANAGER')"
+						:to="{name: ORGANIZATION_MANAGE_PROMOTION}"
+						class="flex items-center gap-3 px-3 py-2 transition-all rounded-lg hover:text-primary"
+						:class="
+							route.name === ORGANIZATION_MANAGE_PROMOTION 
+								? 'bg-muted text-primary'
+								: 'text-muted-foreground'
+						"
+					>
+						<TheIcon
+							icon="brightness-percent"
+							size="2xl"
+						/>
+						{{ $t("layout.organization.nav.promotions") }}
 					</RouterLink>
 
 					<RouterLink
@@ -170,7 +188,7 @@ getOrganization();
 					<RouterLink
 						v-if="organizationUserStore.hasRole('OWNER')"
 						:to="{ name: ORGANIZATION_GET_WAREHOUSE }"
-						class="px-3 py-2 flex items-center gap-3 rounded-lg transition-all hover:text-primary"
+						class="flex items-center gap-3 px-3 py-2 transition-all rounded-lg hover:text-primary"
 						:class="
 							route.name === ORGANIZATION_GET_WAREHOUSE ?
 								'bg-muted text-primary'

@@ -44,6 +44,28 @@ export default {
 			emptySubtitle: "Revenez plus tard pour voir les nouveautés.",
 			buttonBack: "Revenir à l'accueil",
 		},
+		[routerPageName.ORGANIZATION_MANAGE_PROMOTION]: {
+			title: "Liste des promotions",
+			table: {
+				searchPlaceholder: "Chercher une promotion",
+				percentage: "{value} %",
+				col: {
+					percentage: "Pourcentage (%)",
+					startDate: "Date de début",
+					endDate: "Date de fin",
+					productSheetName: "Nom de la fiche produit",
+					actions: "Actions"
+				},
+				action: {
+					edit: "Editer",
+					delete: "Supprimer",
+				}
+			},
+			popup: {
+				title: "Voulez-vous vraiment supprimer cette promotion ?",
+				content: "Si vous validez, cette promotion sera retirée de votre organisation."
+			}
+		},
 		[routerPageName.CATEGORY_PAGE]: {
 			emptyTitle: "Cette catégorie n'a pas encore de produits.",
 			emptySubtitle: "Revenez plus tard pour voir les nouveautés.",
@@ -429,6 +451,7 @@ export default {
 				organizationEdit: "Modifier l'organisation",
 				orders: "Commandes",
 				products: "Produits",
+				promotions: "Promotions",
 				users: "Utilisateurs",
 				analytics: "Analytiques",
 				warehouse: "Entrepôts",
@@ -480,6 +503,9 @@ export default {
 		submit: "Valider",
 		rule: {
 			required: "Champ obligatoire.",
+			positive: "Doit être un nombre positif.",
+			max: "Doit être au plus {max}.",
+			min: "Doit être au moins {min}.",
 			maxLength: "Doit faire au plus {value} caractères.",
 			minLength: "Doit faire au moins {value} caractères.",
 			invalidEmail: "Cet email est invalide.",
@@ -497,6 +523,10 @@ export default {
 		firstname: "Prénom",
 		birthDate: "Date de naissance",
 		address: "Adresse",
+		productSheet: "Fiche produit",
+		percentage: "Pourcentage (format: 10 pour 10%)",
+		startDate: "Date de début",
+		endDate: "Date de fin",
 		delivreryAddress: "Adresse de livraison",
 		addressDefault: "Chercher votre adresse",
 		empty: "Aucun résultat",
@@ -514,6 +544,7 @@ export default {
 	},
 	placeholder: {
 		address: "Cherchez votre adresse",
+		productSheet: "Chercher une fiche produit",
 		search: "Chercher",
 	},
 	button: {
@@ -526,6 +557,7 @@ export default {
 		save: "Enregister",
 		send: "Envoyer",
 		add: "Ajouter",
+		search: "Rechercher",
 		pay: "Payer",
 		edit: "Modifier",
 		retry: "Réessayer",
