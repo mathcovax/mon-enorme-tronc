@@ -3,7 +3,7 @@
 </script>
 
 <template>
-	<section class="h-screen-no-header flex flex-col items-center justify-center">
+	<section class="h-screen-nh flex flex-col items-center justify-center">
 		<h1 class="text-3xl lg:text-5xl font-bold">
 			{{ $t("page.notFound.title") }}
 		</h1>

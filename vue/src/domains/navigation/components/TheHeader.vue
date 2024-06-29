@@ -1,27 +1,14 @@
 <script setup lang="ts">
 import TheNavbar from "./TheNavbar.vue";
+import TheSearch from "./TheSearch.vue";
 import AccountDropdown from "../components/AccountDropdown.vue";
 import MobileNavbar from "../components/MobileNavbar.vue";
+import MobileSearch from "../components/MobileSearch.vue";
 import { useGetNavigationBar } from "../composables/useGetNavigationBar";
 
-const { EDITO_HOME, AUTH_LOGIN, SEARCH_PAGE } = routerPageName;
+const { EDITO_HOME, AUTH_LOGIN } = routerPageName;
 const userStore = useUserStore();
-const router = useRouter();
-const params = useRouteParams({ 
-	productSheetName: zod.string().optional(),
-});
 const { items } = useGetNavigationBar();
-const search = ref(params.value.productSheetName ?? "");
-
-function submit() {
-	console.log(search.value);
-	
-	if (!search.value) {
-		return;
-	}
-
-	router.push({ name: SEARCH_PAGE, params: { productSheetName: search.value.trim() } });
-}
 </script>
 
 <template>
@@ -43,27 +30,10 @@ function submit() {
 						:navigation-items="items"
 					/>
 
-					<div class="lg:flex-1 flex gap-3 justify-end items-center">
-						<form
-							@submit="$event.preventDefault(); submit()"
-							class="hidden lg:block grow max-w-144"
-						>
-							<input
-								type="text"
-								placeholder="Rechercher un produit..."
-								class="w-full px-4 py-3 bg-whiteless rounded-full"
-								v-model="search"
-							>
-						</form>
-					</div>
+					<TheSearch />
 
 					<div class="flex gap-6 items-center">
-						<button class="lg:hidden">
-							<TheIcon
-								icon="magnify"
-								size="2xl"
-							/>
-						</button>
+						<MobileSearch />
 
 						<RouterLink to="/cart">
 							<TheIcon

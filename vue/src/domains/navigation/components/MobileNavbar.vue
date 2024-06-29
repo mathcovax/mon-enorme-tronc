@@ -30,12 +30,14 @@ const { CATEGORY_PAGE } = routerPageName;
 			class="flex flex-col"
 		>
 			<nav class="grid gap-2 text-lg font-medium">
-				<RouterLink
-					to="/"
-					class="text-center text-2xl font-bold"
-				>
-					<span>MET</span>
-				</RouterLink>
+				<SheetClose as-child>
+					<RouterLink
+						to="/"
+						class="text-center text-2xl font-bold"
+					>
+						<span>MET</span>
+					</RouterLink>
+				</SheetClose>
 
 				<template
 					v-for="item in navigationItems"
@@ -62,37 +64,47 @@ const { CATEGORY_PAGE } = routerPageName;
 										:key="category.categoryName"
 										class="px-3 py-2 rounded-md bg-gradient-to-b from-muted/50 to-muted no-underline outline-none focus:shadow-md text-muted-foreground hover:text-foreground"
 									>
-										<RouterLink
-											:to="{ name: CATEGORY_PAGE, params: { categoryName: category.categoryName } }"
-											class="flex items-center gap-4"
-										>
-											<img
-												:src="category.categoryImageUrl"
-												class="w-24 aspect-video object-cover"
+										<SheetClose as-child>
+											<RouterLink
+												:to="{ name: CATEGORY_PAGE, params: { categoryName: category.categoryName } }"
+												class="flex items-center gap-4"
 											>
-											{{ category.categoryName }}
-										</RouterLink>
+												<img
+													:src="category.categoryImageUrl"
+													class="w-24 aspect-video object-cover"
+												>
+												{{ category.categoryName }}
+											</RouterLink>
+										</SheetClose>
 									</li>
 								</ul>
 							</AccordionContent>
 						</AccordionItem>
 					</TheAccordion>
 
-					<RouterLink
+					<SheetClose
 						v-else-if="item.type === 'CATEGORY'"
-						:to="{ name: CATEGORY_PAGE, params: { categoryName: item.categoryName } }"
-						class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+						as-child
 					>
-						{{ item.categoryName }}
-					</RouterLink>
+						<RouterLink
+							:to="{ name: CATEGORY_PAGE, params: { categoryName: item.categoryName } }"
+							class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+						>
+							{{ item.categoryName }}
+						</RouterLink>
+					</SheetClose>
 
-					<RouterLink
+					<SheetClose
 						v-else
-						:to="item.url"
-						class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+						as-child
 					>
-						{{ item.title }}
-					</RouterLink>
+						<RouterLink
+							:to="item.url"
+							class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+						>
+							{{ item.title }}
+						</RouterLink>
+					</SheetClose>
 				</template>
 			</nav>
 		</SheetContent>

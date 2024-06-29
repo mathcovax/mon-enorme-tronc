@@ -33,8 +33,8 @@ const $pt = usePageTranslate();
 </script>
 
 <template>
-	<section class="h-screen-no-header mb-12 lg:mb-16 bg-whiteless">
-		<div class="container h-full flex flex-col lg:flex-row gap-12 lg:gap-24">
+	<section class="h-screen-nh mb-12 lg:mb-16 bg-whiteless">
+		<div class="h-full container flex flex-col lg:flex-row gap-12 lg:gap-24">
 			<div class="h-1/2 lg:h-full flex flex-col justify-center">
 				<h1 class="text-3xl lg:text-5xl font-bold">
 					{{ $pt("heroTitle") }}
@@ -62,69 +62,65 @@ const $pt = usePageTranslate();
 		</div>
 	</section>
 
-	<section>
-		<div class="container mb-12 lg:mb-16 flex flex-col gap-8 lg:gap-12 items-center">
-			<h2 class="text-2xl lg:text-3xl font-bold">
-				{{ $pt("sectionNewTitle") }}
-			</h2>
+	<section class="container mb-12 lg:mb-16 flex flex-col gap-8 lg:gap-12 items-center">
+		<h2 class="text-2xl lg:text-3xl font-bold">
+			{{ $pt("sectionNewTitle") }}
+		</h2>
 
-			<ScrollArea class="w-full">
-				<div class="flex gap-6 justify-center">
-					<!-- <ProductCard
+		<ScrollArea class="w-full">
+			<div class="flex gap-6 justify-center">
+				<!-- <ProductCard
 						v-for="product in products"
 						:key="product.name"
 						:product="product"
 						class="w-44 lg:w-64"
 					/> -->
-				</div>
+			</div>
 
-				<ScrollBar orientation="horizontal" />
-			</ScrollArea>
+			<ScrollBar orientation="horizontal" />
+		</ScrollArea>
 
-			<TheButton
-				size="lg"
-				variant="outline"
-				class="w-min"
-			>
-				{{ $pt("button.more") }}
-			</TheButton>
-		</div>
+		<TheButton
+			size="lg"
+			variant="outline"
+			class="w-min"
+		>
+			{{ $pt("button.more") }}
+		</TheButton>
 	</section>
 
 	<hr class="max-w-screen-xl h-px mx-auto my-16 border-0 bg-black opacity-10">
 
-	<section>
-		<div class="container mb-12 lg:mb-16 flex flex-col gap-8 lg:gap-12 items-center">
-			<h2 class="text-2xl lg:text-3xl font-bold">
-				{{ $pt("sectionBestSellerTitle") }}
-			</h2>
+	<section class="container mb-12 lg:mb-16 flex flex-col gap-8 lg:gap-12 items-center">
+		<h2 class="text-2xl lg:text-3xl font-bold">
+			{{ $pt("sectionBestSellerTitle") }}
+		</h2>
 
-			<ScrollArea class="w-full">
-				<div class="flex gap-6 justify-center">
-					<!-- <ProductCard
+		<ScrollArea class="w-full">
+			<div class="flex gap-6 justify-center">
+				<!-- <ProductCard
 						v-for="product in products"
 						:key="product.name"
 						:product="product"
 						class="w-44 lg:w-64"
 					/> -->
-				</div>
+			</div>
 
-				<ScrollBar orientation="horizontal" />
-			</ScrollArea>
+			<ScrollBar orientation="horizontal" />
+		</ScrollArea>
 
-			<TheButton
-				size="lg"
-				variant="outline"
-				class="w-min"
-			>
-				{{ $pt("button.more") }}
-			</TheButton>
-		</div>
+		<TheButton
+			size="lg"
+			variant="outline"
+			class="w-min"
+		>
+			{{ $pt("button.more") }}
+		</TheButton>
 	</section>
 
-	<section class="mb-12 lg:mb-16">
+	<section class="container mb-12 lg:mb-16">
 		<div
-			class="container max-w-240 lg:h-192 px-6 lg:px-16 py-10 lg:py-20 flex flex-col gap-8 lg:gap-12 items-center bg-whiteless rounded-3xl"
+			class="max-w-240 lg:h-192 mx-auto px-6 lg:px-16 py-10 lg:py-20 flex flex-col gap-8 lg:gap-12 items-center bg-whiteless rounded-3xl"
 		>
 			<h2 class="text-2xl lg:text-3xl font-bold">
 				{{ $pt("sectionPackTitle") }}

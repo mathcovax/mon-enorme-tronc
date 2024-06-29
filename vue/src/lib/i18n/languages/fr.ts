@@ -38,6 +38,12 @@ export default {
 				}
 			},
 		},
+		[routerPageName.CATEGORIES_PAGE]: {
+			title: "Catégories",
+			emptyTitle: "Aucune catégorie n'a été trouvée.",
+			emptySubtitle: "Revenez plus tard pour voir les nouveautés.",
+			buttonBack: "Revenir à l'accueil",
+		},
 		[routerPageName.CATEGORY_PAGE]: {
 			emptyTitle: "Cette catégorie n'a pas encore de produits.",
 			emptySubtitle: "Revenez plus tard pour voir les nouveautés.",
@@ -49,8 +55,8 @@ export default {
 			return {
 				...this[routerPageName.CATEGORY_PAGE],
 				emptyTitle: "Aucun produit trouvé.",
-				buttonBack: "Revenir a l'acceil.",
-				title: "Resultas \"{value}\".",
+				buttonBack: "Revenir à l'accueil",
+				title: "Resultat pour \"{value}\"",
 			};
 		},
 		[routerPageName.PRODUCT_PAGE]: {
@@ -111,7 +117,7 @@ export default {
 				},
 			},
 			table: {
-				searchPlaceholder: "Chercher une organization",
+				searchPlaceholder: "Chercher une organisation",
 				col: {
 					name: "Nom",
 					active: "Actif",
@@ -182,7 +188,7 @@ export default {
 			shortDescription: "Description courte",
 			price: "Prix",
 			form: {
-				placeholder: "Chercher des catégories.",
+				placeholder: "Chercher des catégories",
 				image: "Image du produit",
 				addImage: "Ajouter une image",
 				facet: {
@@ -192,7 +198,7 @@ export default {
 		},
 		[routerPageName.ORGANIZATION_EDIT]: {
 			form: {
-				logo: "Image du logo",
+				logo: "Logo",
 				addLogo: "Ajouter un logo",
 				organizationLabel: "Label de l'organisation",
 			}
@@ -202,7 +208,7 @@ export default {
 			shortDescription: "Description courte",
 			price: "Prix",
 			form: {
-				placeholder: "Chercher des catégories.",
+				placeholder: "Chercher des catégories",
 				image: "Image du produit",
 				addImage: "Ajouter une image",
 				facet: {
@@ -242,13 +248,13 @@ export default {
 			},
 			label: {
 				priority: "Priorité",
-				select: "Selectioner",
+				select: "Selectionner",
 			},
 			table: {
 				linked: "Lier",
 			},
 			popup: {
-				title: "Voulez-vous vraiment le supprimer ?",
+				title: "Voulez-vous vraiment supprimer cet élément ?",
 				content: "Si vous validez, cet élément de la barre de navigation sera supprimé définitivement."
 			}
 		},
@@ -268,15 +274,15 @@ export default {
 			},
 			form: {
 				title: "Ajouter un produit",
-				sku: "Reference",
-				skuPlaceholder: "Entrer une reference",
+				sku: "Référence",
+				skuPlaceholder: "Entrer une référence",
 				productSheetLabel: "Fiche produit",
 				warehouseLabel: "Entrepôt",
 				productSheetPlaceholder: "Entrer une fiche produit",
 				warehousePlaceholder: "Entrer un entrepôt",
 			},
 			searchPlaceholder: "Chercher un produit",
-			popupWrongMessage: "Etes-vous sur de vouloir changer le status de cette reference ?"
+			popupWrongMessage: "Êtes-vous sur de vouloir changer le status de cette réference ?"
 		},
 	},
 	filters: {
@@ -288,7 +294,7 @@ export default {
 			diameter: "Diamètre",
 			target: "Cible",
 			accessory: "Accessoire",
-			material: "Matériaux",
+			material: "Matériau",
 			stimulation: "Stimulation",
 		},
 		type: {
@@ -354,7 +360,7 @@ export default {
 					support: "Support",
 					management: "Gestion",
 					admin: "Administration",
-					organizations: "Oorganisations",
+					organizations: "Organisations",
 					content: "Contenu",
 					login: "Connexion",
 					logout: "Déconnexion"
@@ -433,15 +439,15 @@ export default {
 		}
 	},
 	productStatus: {
-		WRONG: "SUPPRIME",
+		WRONG: "SUPPRIMÉ",
 		IN_STOCK: "EN STOCK",
 		SOLD: "VENDU",
-		ORDER: "COMMANDE",
+		ORDER: "COMMANDÉ",
 	},
 	role: {
 		CUSTOMER: "Client",
 		MODERATOR: "Modérateur",
-		CONTENTS_MASTER: "Gestionaire",
+		CONTENTS_MASTER: "Gestionnaire",
 		ADMIN: "Administrateur"
 	},
 	organizationRole: {
@@ -464,7 +470,7 @@ export default {
 			invalidEmail: "Cet email est invalide.",
 			minAge: "Vous devez avoir au moins {value} ans.",
 			maxItems: "Vous pouvez selectionner au plus {value} éléments.",
-			blobToLarge: "L'image est superirére a {value}.",
+			blobToLarge: "L'image est supérieure à {value} Mo.",
 			url: "Doit être sous la forme /path/to/page",
 		}
 	},
@@ -519,12 +525,12 @@ export default {
 		LINK: "Lien",
 	},
 	facetType: {
-		COLOR: "Couler",
-		SIZE: "Taile",
-		DIAMETER: "Diamétre",
+		COLOR: "Couleur",
+		SIZE: "Taille",
+		DIAMETER: "Diamètre",
 		TARGET: "Cible",
 		ACCESSORY: "Accessoire",
-		MATERIAL: "Marértiaux",
+		MATERIAL: "Marértiau",
 		STIMULATION: "Stimulation",
 	},
 	response: {
@@ -566,7 +572,7 @@ export default {
 		},
 		parentCategory: {
 			name: {
-				alreadyUse: "Une catégorie parent portant ce nom éxiste déjà."
+				alreadyUse: "Une catégorie parent avec ce nom existe déjà."
 			},
 			created: "La catégorie parent a correctement été créée.",
 			edited: "La catégorie parent a correctement été modifiée.",
@@ -575,20 +581,20 @@ export default {
 			notfound: "Le produit n'existe pas.",
 			edited: "Le produit a correctement été modifié.",
 			created: "Le produit a correctement été créé.",
-			unavailable: "Le produit n'est pas disponible quand la quantité souéter.",
+			unavailable: "Le produit n'est pas disponible duans la quantité souhaitée.",
 			sku: {
 				alreadyUse: "Ce sku est déjà utilisé.",
 			}
 		},
 		products: {
-			unavailable: "Un ou plusieur produit dans votre panier n'est plus disponible dans les quantité que vous souhté acheter.",
+			unavailable: "Un ou plusieurs produits dans votre panier ne sont plus disponibles dans les quantités souhaitées.",
 		},
 		article: {
-			created: "Les article on bien étais ajouter au panier.",
+			created: "Les articles ont bien été ajoutés au panier.",
 		},
 		cart: {
 			quantity: {
-				limit: "Vous ne pouver pas avoir plus de 15 fois le même produit dans votre panier."
+				limit: "Vous ne pouvez pas avoir plus de 15 fois le même produit dans votre panier."
 			},
 			article: {
 				limit: "Vous ne pouvez pas avoir plus de 10 article dans votre panier."

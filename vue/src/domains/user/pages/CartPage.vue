@@ -32,7 +32,7 @@ const removeArticle = (productSheetId: string) =>
 </script>
 
 <template>
-	<section class="container flex flex-col gap-12 mt-12 mb-12 lg:mt-16">
+	<section class="min-h-screen-nhm-mobile lg:min-h-screen-nhm-desktop container my-12 lg:my-16 flex flex-col gap-12">
 		<div class="flex justify-between items-center">
 			<h1 class="text-2xl font-bold lg:text-3xl">
 				{{ $pt("title") }}
@@ -50,7 +50,7 @@ const removeArticle = (productSheetId: string) =>
 
 		<div
 			v-if="cart.length === 0"
-			class="flex flex-col items-center gap-1 text-center"
+			class="flex-1 flex flex-col justify-center items-center gap-1 text-center"
 		>
 			<h2 class="text-2xl font-bold tracking-tight">
 				{{ $pt("emptyTitle") }}

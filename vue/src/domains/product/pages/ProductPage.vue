@@ -53,124 +53,122 @@ const renderDescription = computed(() => {
 });
 
 getProductData();
+
+watch(() => params.value.productSheetId, () => { getProductData(); });
 </script>
 
 <template>
-	<section>
-		<div class="container my-12 lg:my-16">
-			<div
-				v-if="product"
-				class="flex flex-col gap-10 sm:flex-row"
-			>
-				<div class="w-full lg:shrink-0 max-w-80 aspect-square sm:aspect-portrait">
-					<ProductSlider
-						v-if="product.images.length > 0"
-						:image-urls="product.images"
-					/>
+	<section class="container my-12 lg:my-16">
+		<div
+			v-if="product"
+			class="flex flex-col gap-10 sm:flex-row"
+		>
+			<div class="w-full lg:shrink-0 max-w-80 aspect-square sm:aspect-portrait">
+				<ProductSlider
+					v-if="product.images.length > 0"
+					:image-urls="product.images"
+				/>
 
-					<div
-						v-else
-						class="flex items-center justify-center w-full h-full bg-muted/80"
+				<div
+					v-else
+					class="flex items-center justify-center w-full h-full bg-muted/80"
+				>
+					<TheIcon
+						icon="image-outline"
+						size="3xl"
+						class="text-muted-foreground"
+					/>
+				</div>
+			</div>
+
+			<div class="flex flex-col gap-4">
+				<h1 class="text-2xl font-bold lg:text-4xl">
+					{{ product.name }}
+				</h1>
+
+				<div class="flex flex-wrap gap-4">
+					<RouterLink
+						v-for="category in product.categories"
+						:key="category"
+						:to="{ name: CATEGORY_PAGE, params: { categoryName: category } }"
 					>
-						<TheIcon
-							icon="image-outline"
-							size="3xl"
-							class="text-muted-foreground"
-						/>
-					</div>
+						<TheBadge>
+							{{ category }}
+						</TheBadge>
+					</RouterLink>
 				</div>
 
-				<div class="flex flex-col gap-4">
-					<h1 class="text-2xl font-bold lg:text-4xl">
-						{{ product.name }}
-					</h1>
+				<span class="text-xl font-semibold">
+					{{ product.price }} €
+					(<span :class="{ 'text-red-600' : product.quantity < 10 }">{{ product.quantity < 10 ? "Plus que " : "" }}{{ product.quantity }}{{ product.quantity < 10 ? " !" : "" }}</span>)
+				</span>
 
-					<div class="flex flex-wrap gap-4">
-						<RouterLink
-							v-for="category in product.categories"
-							:key="category"
-							:to="{ name: CATEGORY_PAGE, params: { categoryName: category } }"
+				<p class="mt-1 opacity-50">
+					{{ product.shortDescription }}
+				</p>
+
+				<div class="flex items-center gap-12 mt-4">
+					<productSheetQuantity
+						:quantity="productQuantity"
+						:max="product.quantity"
+						@increment="productQuantity++"
+						@decrement="productQuantity--"
+					/>
+
+					<PrimaryButton @click="createArticle">
+						{{ $pt("addCartButton") }}
+					</PrimaryButton>
+				</div>
+
+				<div class="flex items-center self-end gap-2 mt-auto">
+					<span class="inline-block opacity-50">Vendu par :</span>
+
+					<div class="flex items-center gap-1">
+						<span class="inline-block opacity-50">{{ product.organization.name }}</span>
+
+						<img
+							v-if="product.organization.logoUrl"
+							:src="product.organization.logoUrl"
+							alt="seller"
+							class="object-cover w-8 h-8 rounded-full"
 						>
-							<TheBadge>
-								{{ category }}
-							</TheBadge>
-						</RouterLink>
-					</div>
 
-					<span class="text-xl font-semibold">
-						{{ product.price }} €
-						(<span :class="{ 'text-red-600' : product.quantity < 10 }">{{ product.quantity < 10 ? "Plus que " : "" }}{{ product.quantity }}{{ product.quantity < 10 ? " !" : "" }}</span>)
-					</span>
-
-					<p class="mt-1 opacity-50">
-						{{ product.shortDescription }}
-					</p>
-
-					<div class="flex items-center gap-12 mt-4">
-						<productSheetQuantity
-							:quantity="productQuantity"
-							:max="product.quantity"
-							@increment="productQuantity++"
-							@decrement="productQuantity--"
+						<TheIcon
+							v-else
+							icon="storefront-outline"
+							size="lg"
+							class="flex items-center justify-center w-8 h-8 p-1 rounded-full bg-muted/80 text-muted-foreground"
 						/>
-
-						<PrimaryButton @click="createArticle">
-							{{ $pt("addCartButton") }}
-						</PrimaryButton>
-					</div>
-
-					<div class="flex items-center self-end gap-2 mt-auto">
-						<span class="inline-block opacity-50">Vendu par :</span>
-
-						<div class="flex items-center gap-1">
-							<span class="inline-block opacity-50">{{ product.organization.name }}</span>
-
-							<img
-								v-if="product.organization.logoUrl"
-								:src="product.organization.logoUrl"
-								alt="seller"
-								class="object-cover w-8 h-8 rounded-full"
-							>
-
-							<TheIcon
-								v-else
-								icon="storefront-outline"
-								size="lg"
-								class="flex items-center justify-center w-8 h-8 p-1 rounded-full bg-muted/80 text-muted-foreground"
-							/>
-						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<section>
-		<div class="container mb-12 lg:mb-16">
-			<TheTabs
-				default-value="product-details"
-			>
-				<TabsList class="grid w-full grid-cols-2 mb-6">
-					<TabsTrigger value="product-details">
-						{{ $pt("label.productDetails") }}
-					</TabsTrigger>
+	<section class="container my-12 lg:my-16">
+		<TheTabs
+			default-value="product-details"
+		>
+			<TabsList class="grid w-full grid-cols-2 mb-6">
+				<TabsTrigger value="product-details">
+					{{ $pt("label.productDetails") }}
+				</TabsTrigger>
 
-					<TabsTrigger value="client-rates">
-						{{ $pt("label.comments") }}
-					</TabsTrigger>
-				</TabsList>
+				<TabsTrigger value="client-rates">
+					{{ $pt("label.comments") }}
+				</TabsTrigger>
+			</TabsList>
 
-				<TabsContent value="product-details">
-					<div 
-						class="prose" 
-						v-html="renderDescription"
-					/>
-				</TabsContent>
+			<TabsContent value="product-details">
+				<div 
+					class="prose" 
+					v-html="renderDescription"
+				/>
+			</TabsContent>
 
-				<TabsContent value="client-rates">
-					Les commentaires arrivent bientôt !
-				</TabsContent>
-			</TheTabs>
-		</div>
+			<TabsContent value="client-rates">
+				Les commentaires arrivent bientôt !
+			</TabsContent>
+		</TheTabs>
 	</section>
 </template>
