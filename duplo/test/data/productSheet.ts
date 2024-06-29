@@ -7,6 +7,7 @@ export const productSheetData: product_sheet = {
 	shortDescription: "",
 	price: 0,
 	organizationId: "",
+	warehouseId: "50",
 	status: "VERIFIED",
 	createdAt: new Date(),
 	updatedAt: new Date(),

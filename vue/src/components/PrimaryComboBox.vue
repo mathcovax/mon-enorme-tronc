@@ -28,6 +28,7 @@ interface Props {
 	searchTerm?: string
 	filterFunction?: (items: T[], term: string) => T[]
 	id?: string
+	disabled?: boolean
 }
 
 const props = defineProps<Props>();
@@ -54,6 +55,7 @@ function onSelect(value: T) {
 				role="combobox"
 				:aria-expanded="open"
 				:class="`${props.class} justify-between font-normal`"
+				:disabled="disabled"
 			>
 				{{ modelValue ? getLabel(modelValue as T) : textButton }}
 				<ChevronsUpDown class="ml-2 h-4 w-4 shrink-0 opacity-50" />

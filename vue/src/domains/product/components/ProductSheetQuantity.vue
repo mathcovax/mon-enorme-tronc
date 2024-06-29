@@ -5,23 +5,19 @@ interface TheQuantityProps {
 }
 const props = defineProps<TheQuantityProps>();
 
-const quantity = ref(props.quantity || 1);
-
 const emit = defineEmits<{
 	increment: [];
 	decrement: [];
 }>();
 
 const increment = () => {
-	if (props.max === undefined || props.max > quantity.value) {
-		quantity.value++;
+	if (props.max === undefined || props.max > props.quantity) {
 		emit("increment");
 	}
 };
 
 const decrement = () => {
-	if (quantity.value > 1) {
-		quantity.value--;
+	if (props.quantity > 1) {
 		emit("decrement");
 	}
 };
@@ -43,8 +39,8 @@ const decrement = () => {
 
 		<PrimaryButton
 			@click="increment"
-			:disabled="props.max !== undefined && props.max <= quantity"
-			:class="props.max !== undefined && props.max <= quantity ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'"
+			:disabled="max !== undefined && max <= quantity"
+			:class="max !== undefined && max <= quantity ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'"
 			class="w-[40px] h-[40px] flex items-center justify-center rounded-full bg-primary text-white"
 			as-child
 		>

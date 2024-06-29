@@ -6,19 +6,11 @@ import { fullProductSheetModel } from "@mongoose/model";
 import { FullProductSheetSchema } from "@schemas/fullProductSheet";
 import { facetTypeTuple } from "@schemas/facet";
 import { facet_type } from "@prisma/client";
-import { JsonDB, Config } from "node-json-db";
+import { LastTime } from "./setup/lastTime";
 
-const newLastIndexing = Date.now();
-
-const lastIndexingDB = new JsonDB(
-	new Config("src/filesDB/lastIndexing.json"),
-);
-
-if (!await lastIndexingDB.exists("/timestamp")) {
-	lastIndexingDB.push("/timestamp", 0);
-}
-
-const lastIndexing = new Date(await lastIndexingDB.getData("/timestamp"));
+const newLastIndexing = new Date();
+const lastTime = new LastTime("indexingProductSheet");
+const lastIndexing = await lastTime.get();
 
 const generator = FindSlice(
 	500, 
@@ -119,7 +111,7 @@ for await (const productSheet of generator) {
 }
 
 await Promise.all(promiseList);
-lastIndexingDB.push("/timestamp", newLastIndexing);
+lastTime.set(newLastIndexing);
 
 mongoose.connection.close();
 

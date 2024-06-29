@@ -4,7 +4,6 @@ import { productSheetExistCheck, inputProductSheet } from "@checkers/productShee
 import { hasOrganizationRole } from "@security/hasOrganizationRole";
 import { hasPrimordialRole } from "@security/hasPrimordialRole";
 import { mustBeConnected } from "@security/mustBeConnected";
-import { inputWarehouse, warehouseExistCheck } from "@checkers/warehouse";
 
 export const adminPanelEntry = hasPrimordialRole({ options: { primordialRole: "ADMIN" } })
 	.declareRoute("GET", "/entry/admin-panel*")
@@ -31,7 +30,8 @@ export const organizationOwnerEntry = mustBeConnected({ pickup: ["accessTokenCon
 		"GET", 
 		[
 			"/entry/organization-panel/{organizationId}/manage-user", 
-			"/entry/organization-panel/{organizationId}/manage"
+			"/entry/organization-panel/{organizationId}/manage",
+			"/entry/organization-panel/{organizationId}/warehouses"
 		]
 	)
 	.extract({
@@ -43,52 +43,6 @@ export const organizationOwnerEntry = mustBeConnected({ pickup: ["accessTokenCon
 		hasOrganizationRole,
 		{
 			input: p => ({ organizationId: p("organizationId"), userId: p("accessTokenContent").id }),
-			options: { organizationRole: "OWNER" }
-		}
-	)
-	.handler(
-		async () => {
-			throw new NoContentHttpException("entry.accepted");
-		},
-		new IHaveSentThis(NoContentHttpException.code, "entry.accepted"),
-		new SwaggerIgnore(),
-	);
-
-export const organizationWarehouseManagerEntry = mustBeConnected({ pickup: ["accessTokenContent"] })
-	.declareRoute(
-		"GET", 
-		[
-			"/entry/organization-panel/{organizationId}/warehouses",
-			"/entry/organization-panel/{organizationId}/create-warehouse",
-			"/entry/organization-panel/{organizationId}/edited-warehouse/{warehouseId}",
-		]
-	)
-	.extract({
-		params: {
-			organizationId: zod.string(),
-			warehouseId: zod.string().optional(),
-		}
-	})
-	.check(
-		warehouseExistCheck,
-		{
-			input: (p) => inputWarehouse.id(p("warehouseId") ?? ""),
-			result: "warehouse.exist",
-			catch: () => {
-				throw new UnauthorizedHttpException("entry.refuse");
-			},
-			indexing: "warehouse",
-			skip: p => !p("warehouseId"),
-		},
-		new IHaveSentThis(UnauthorizedHttpException.code, "entry.refuse")
-	)
-	.process(
-		hasOrganizationRole,
-		{
-			input: p => ({ 
-				organizationId: p("warehouse")?.organizationId ?? p("organizationId"), 
-				userId: p("accessTokenContent").id
-			}),
 			options: { organizationRole: "OWNER" }
 		}
 	)
@@ -136,6 +90,37 @@ export const organizationProductSheetManagerEntry = mustBeConnected({ pickup: ["
 				userId: p("accessTokenContent").id 
 			}),
 			options: { organizationRole: "PRODUCT_SHEET_MANAGER" }
+		}
+	)
+	.handler(
+		async () => {
+			throw new NoContentHttpException("entry.accepted");
+		},
+		new IHaveSentThis(NoContentHttpException.code, "entry.accepted"),
+		new SwaggerIgnore(),
+	);
+
+export const organizationStoreKeeperEntry = mustBeConnected({ pickup: ["accessTokenContent"] })
+	.declareRoute(
+		"GET", 
+		[
+			"/organization-panel/{organizationId}/products",
+			"/organization-panel/{organizationId}/commands",
+		]
+	)
+	.extract({
+		params: {
+			organizationId: zod.string()
+		}
+	})
+	.process(
+		hasOrganizationRole,
+		{
+			input: p => ({ 
+				organizationId: p("organizationId"), 
+				userId: p("accessTokenContent").id 
+			}),
+			options: { organizationRole: "STORE_KEEPER" }
 		}
 	)
 	.handler(

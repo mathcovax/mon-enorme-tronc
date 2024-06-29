@@ -1,10 +1,8 @@
-import { useGetWarehouses } from "./useGetWarehouses";
 import { useGetProductSheets } from "./useGetProductSheets";
 
 export function useProductForm(organizationId: string) {
 
 	const { productSheets, getProductSheets } = useGetProductSheets(organizationId);
-	const { getWarehouses, warehouses } = useGetWarehouses(organizationId);
 	const $pt = usePageTranslate();
 
 	const { Form, checkForm, resetForm, values } = useFormBuilder({
@@ -29,19 +27,6 @@ export function useProductForm(organizationId: string) {
 			).transform(item => item.identifier),
 			textButton: $t("button.add"),
 			onUpdateSearchTerm: name => getProductSheets(undefined, name),
-		})),
-		warehouse: computed(() => ({
-			type: "combo",
-			items: warehouses.value.map(v => ({ label: v.name, identifier: v.id })),
-			placeholder: $pt("form.warehousePlaceholder"),
-			emptyLabel: $t("label.empty"),
-			label: $pt("form.warehouseLabel"),
-			zodSchema: zod.object(
-				{ identifier: zod.string() }, 
-				{ message: $t("form.rule.required") }
-			).transform(item => item.identifier),
-			textButton: $t("button.add"),
-			onUpdateSearchTerm: (name: string) => getWarehouses(undefined, name),
 		})),
 	});
 

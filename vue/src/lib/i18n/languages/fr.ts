@@ -191,29 +191,24 @@ export default {
 				placeholder: "Chercher des catégories",
 				image: "Image du produit",
 				addImage: "Ajouter une image",
+				warehouseLabel: "Entrepôt",
+				warehousePlaceholder: "Entrer un entrepôt",
 				facet: {
 					add: "Ajouter une Facet",
 				}
 			}
+		},
+		get [routerPageName.ORGANIZATION_CREATE_PRODUCT_SHEET]() {
+			return {
+				...this[routerPageName.ORGANIZATION_EDIT_PRODUCT_SHEET],
+				title: "Créer une fiche produit",
+			};
 		},
 		[routerPageName.ORGANIZATION_EDIT]: {
 			form: {
 				logo: "Logo",
 				addLogo: "Ajouter un logo",
 				organizationLabel: "Label de l'organisation",
-			}
-		},
-		[routerPageName.ORGANIZATION_CREATE_PRODUCT_SHEET]: {
-			title: "Créer une fiche produit",
-			shortDescription: "Description courte",
-			price: "Prix",
-			form: {
-				placeholder: "Chercher des catégories",
-				image: "Image du produit",
-				addImage: "Ajouter une image",
-				facet: {
-					add: "Ajouter une Facet",
-				}
 			}
 		},
 		[routerPageName.ORGANIZATION_GET_WAREHOUSE]: {
@@ -277,13 +272,33 @@ export default {
 				sku: "Référence",
 				skuPlaceholder: "Entrer une référence",
 				productSheetLabel: "Fiche produit",
-				warehouseLabel: "Entrepôt",
 				productSheetPlaceholder: "Entrer une fiche produit",
-				warehousePlaceholder: "Entrer un entrepôt",
 			},
 			searchPlaceholder: "Chercher un produit",
 			popupWrongMessage: "Êtes-vous sur de vouloir changer le status de cette réference ?"
 		},
+		[routerPageName.ORGANIZATION_COMMANDS]: {
+			title: "Liste des commandes a traité",
+			table: {
+				date: "Date de la commande",
+				quantity: "Quantité de produit",
+				id: "ID de la commande",
+				quantityRest: "produit a trétais",
+				productSheetId: "ID de la fiche produit",
+				productSheetName: "Nom du produit",
+				image: "Image du produit",
+			},
+			cb: {
+				textButton: "Selectioner un entrepot",
+				placeholder: "mon super entrepot..."
+			},
+			form: {
+				idShip: "idShip la poste",
+				addItem: "Ajouter un produit dans le Bundle",
+				butonSku: "Selectioner un produit",
+				placeholderSku: "Mon super sku",
+			}
+		}
 	},
 	filters: {
 		title: "Filtres",
@@ -471,6 +486,7 @@ export default {
 			minAge: "Vous devez avoir au moins {value} ans.",
 			maxItems: "Vous pouvez selectionner au plus {value} éléments.",
 			blobToLarge: "L'image est supérieure à {value} Mo.",
+			minItems: "Vous devez selectionner minimume {value} éléments.",
 			url: "Doit être sous la forme /path/to/page",
 		}
 	},
@@ -600,6 +616,7 @@ export default {
 				limit: "Vous ne pouvez pas avoir plus de 10 article dans votre panier."
 			}
 		},
+		makeBundle: "Le bundle a correctement étais créer.",
 		TYPE_ERROR: "L'une des données envoyées est erronée. (Erreur provenant du site)",
 		NOTFOUND: "La route utilisée n'existe pas. (Erreur provenant du site)",
 		INTERNAL_SERVER_ERROR: "Le serveur a eu un problème. (Erreur provenant du site)",

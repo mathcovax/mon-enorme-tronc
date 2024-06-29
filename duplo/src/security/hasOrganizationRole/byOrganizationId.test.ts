@@ -21,7 +21,7 @@ describe("hasOrganizationRoleByOrganizationId", () => {
 	it("pass" , async () => {
 		const res = await duploTesting
 			.testAbstractRoute(hasOrganizationRoleByOrganizationId.abstractRoute)
-			.setDefaultFloorValue({ accessTokenContent: {} })
+			.setDefaultFloorValue({ accessTokenContent: {}, user: {} })
 			.setRequestProperties({
 				params: {
 					organizationId: "zzz"
@@ -33,6 +33,7 @@ describe("hasOrganizationRoleByOrganizationId", () => {
 		expect(res).toStrictEqual({
 			accessTokenContent: {},
 			organization: organizationData,
+			user: {},
 		});
 	});
 });

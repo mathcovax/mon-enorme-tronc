@@ -14,11 +14,9 @@ const searchName = ref("");
 const $pt = usePageTranslate();
 const toggleBtnCreateForm = ref(false);
 const statusToColor: Record<ProductStatus, string> = {
-	ORDER: "orange",
 	WRONG: "red",
 	SOLD: "green",
 	IN_STOCK: "purple",
-	WAITING_PAYMENT: "blue"
 };
 const cols: BigTableColDef<Product>[] = [
 	{
@@ -27,15 +25,15 @@ const cols: BigTableColDef<Product>[] = [
 	},
 	{
 		title: $pt("table.productSheetName"),
-		getter: i => i.productSheet?.name
+		getter: i => i.productSheetName
 	},
 	{
 		title: $pt("table.warehouseName"),
-		getter: i => i.warehouse?.name
+		getter: i => i.warehouseName
 	},
 	{
 		title: $pt("table.lastEdit"),
-		getter: i => i.updatedAt?.split("T")[0]
+		getter: i => i.updatedAt.split("T")[0]
 	},
 	{
 		title: $pt("table.status"),
@@ -70,10 +68,7 @@ async function submitPost() {
 	await duploTo.enriched
 		.post(
 			"/product-sheet/{productSheetId}/product",
-			{
-				sku: formFields.sku,
-				warehouseId: formFields.warehouse
-			},
+			{ sku: formFields.sku, },
 			{ params: { productSheetId: formFields.productSheet } }
 		)
 		.info("product.created", () => {

@@ -15,13 +15,12 @@ const {
 	suggestedCategories,
 	onSearchCategories,
 	ProductSheetValues 
-} = useProductSheetForm();
+} = useProductSheetForm(params.value.organizationId);
 
 const router = useRouter();
 const $pt = usePageTranslate();
 
 async function submit() {
-
 	const formFields = await checkProductSheetForm();
 
 	if (!formFields) {
@@ -36,6 +35,7 @@ async function submit() {
 				description: formFields.description,
 				shortDescription: formFields.shortDescription,
 				price: formFields.price,
+				warehouseId: formFields.warehouse,
 			},
 			{ params: { organizationId: params.value.organizationId } }
 		)

@@ -10,9 +10,9 @@ global.prisma = prisma.$extends({
 								id: args.data.productSheetId
 							},
 							data: {
-								updatedAt: new Date()
+								id: args.data.productSheetId
 							}
-						});
+						}).then(() => undefined);
 						return result;
 					});
 				}
@@ -38,9 +38,9 @@ global.prisma = prisma.$extends({
 								id: result.productSheetId
 							},
 							data: {
-								updatedAt: new Date()
+								id: result.productSheetId
 							}
-						});
+						}).then(() => undefined);
 						return result;
 					});
 				}

@@ -17,9 +17,13 @@ defineSlots<{
 	trigger(prop: { open: () => void }): unknown;
 	popupContent(prop: { close: () => void }): unknown;
 }>();
+const emits = defineEmits<{close: []}>();
 
 const open = () => isOpen.value = true;
-const close = () => isOpen.value = false;
+const close = () => {
+	isOpen.value = false;
+	emits("close");
+};
 
 defineExpose({ isOpen, open, close });
 </script>
