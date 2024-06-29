@@ -1,5 +1,5 @@
 import { hasOrganizationRoleByOrganizationId } from "@security/hasOrganizationRole/byOrganizationId";
-import { ProductSchema, productSchema } from "@schemas/product";
+import { ProductSchema, productSchema, productStatusTuple } from "@schemas/product";
 import { productEntityformater, productSelect } from "@utils/prisma/product";
 
 /* METHOD : GET, PATH : /organization/{organizationId}/products */
@@ -13,6 +13,8 @@ export const GET = (method: Methods, path: string) =>
 			query: {
 				page: zod.coerce.number().default(0),
 				sku: zod.string().optional(),
+				productSheetId: zod.string().optional(),
+				status: zod.enum(productStatusTuple).optional(),
 			}
 		})
 		.handler(
@@ -20,6 +22,8 @@ export const GET = (method: Methods, path: string) =>
 				const { id: organizationId } = pickup("organization");
 				const page = pickup("page");
 				const sku = pickup("sku");
+				const productSheetId = pickup("productSheetId");
+				const status = pickup("status");
 				
 				const products = await prisma.product.findMany({
 					where: {
@@ -29,7 +33,9 @@ export const GET = (method: Methods, path: string) =>
 								contains: sku,
 								mode: "insensitive"
 							}
-							: undefined
+							: undefined,
+						productSheetId,
+						status,
 					},
 					take: 10,
 					skip: page * 10,

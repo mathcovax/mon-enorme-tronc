@@ -1,9 +1,9 @@
-import type { Product } from "@/lib/utils";
+import type { Product, ProductStatus } from "@/lib/utils";
 
 export function useGetProducts(organizationId: string) {
 	const products = ref<Product[]>([]);
 
-	function getProducts(page: number, sku: string) {
+	function getProducts(page: number, sku: string, productSheetId?: string, status?: ProductStatus) {
 		return duploTo.enriched
 			.get(
 				"/organization/{organizationId}/products",
@@ -12,6 +12,8 @@ export function useGetProducts(organizationId: string) {
 					query: {
 						page, 
 						sku,
+						productSheetId,
+						status,
 					} 
 				},
 				{ disabledLoader: true }

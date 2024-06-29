@@ -34,7 +34,6 @@ export type parameters_1 = {
         page?: number;
     } | undefined;
 }
-<<<<<<< HEAD
 
 export type response_1_0 = {
     code: 404;
@@ -42,24 +41,7 @@ export type response_1_0 = {
     info: "category.notfound";
 } & {body: undefined};
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
-export type response_1_0 = {
-    code: 404;
-    ok: false;
-    info: "category.notfound";
-} & {body: undefined};
-
->>>>>>> 5cabb00 (feat(115): refacto product)
 export type response_body_1_1 = {
-=======
-export type response_body_0_1 = {
->>>>>>> 796a9ff (feat(115): get command)
-=======
-export type response_body_1_1 = {
->>>>>>> cf3a372 (feat(115): commande table)
     id: string;
     name: string;
     description: string;
@@ -68,92 +50,21 @@ export type response_body_1_1 = {
     createdAt?: string;
     updatedAt?: string;
     organizationId: string;
-<<<<<<< HEAD
-=======
     warehouseId: string;
->>>>>>> 5cabb00 (feat(115): refacto product)
 }[]
 
 export type response_1_1 = {
     code: 200;
     ok: true;
     info: "category.products";
-<<<<<<< HEAD
-<<<<<<< HEAD
 } & {body: response_body_1_1};
-<<<<<<< HEAD
-=======
-=======
-} & {body: response_body_0_1};
 
-export type parameters_1 = {
-    query?: {
-        name?: string | undefined;
-        page?: number;
-        withDisabled?: boolean | undefined;
-    };
-}
-
-export type response_body_1_0 = {
-    name: string;
-    disabled: boolean;
-    imageKey: string | null;
-    imageUrl: string | null;
-}[]
-
-export type response_1_0 = {
-    code: 200;
-    ok: true;
-    info: "categories";
-} & {body: response_body_1_0};
-=======
-} & {body: response_body_1_1};
->>>>>>> cf3a372 (feat(115): commande table)
-
-<<<<<<< HEAD
-export type parameters_2 = {
-    query?: {
-        address?: string | undefined;
-    } | undefined;
-}
-
-export type response_body_2_0 = string[]
->>>>>>> 796a9ff (feat(115): get command)
-
-<<<<<<< HEAD
-export type parameters_2 = {
-    query?: {
-        address?: string | undefined;
-    } | undefined;
-}
-
-export type response_body_2_0 = string[]
->>>>>>> 5cabb00 (feat(115): refacto product)
-
-=======
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 export type response_2_0 = {
-<<<<<<< HEAD
-=======
-export type response_2_0 = {
->>>>>>> 63fe2d6 (feat(115): make bundle)
     code: 401;
     ok: false;
     info: "access.token.invalid";
 } & {body: undefined};
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-export type parameters_3 = {
-    headers: {
-        "stripe-signature": string;
-    };
-}
-=======
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
 export type response_2_1 = {
     code: 404;
     ok: false;
@@ -168,24 +79,10 @@ export type response_2_2 = {
 
 export type response_2_3 = {
     code: 204;
-<<<<<<< HEAD
     ok: true;
     info: "entry.accepted";
 } & {body: undefined};
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-    code: 200;
-    ok: true;
-    info?: undefined;
-} & {body: response_body_2_0};
->>>>>>> 796a9ff (feat(115): get command)
-=======
-    ok: true;
-    info: "entry.accepted";
-} & {body: undefined};
->>>>>>> 63fe2d6 (feat(115): make bundle)
 
->>>>>>> 5cabb00 (feat(115): refacto product)
 export type response_3_0 = {
     code: 401;
     ok: false;
@@ -199,8 +96,6 @@ export type response_3_1 = {
 } & {body: undefined};
 
 export type response_3_2 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
     code: 403;
     ok: false;
     info: "user.role.invalid";
@@ -212,42 +107,12 @@ export type response_3_3 = {
     info: "entry.accepted";
 } & {body: undefined};
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-export type parameters_4 = {
-    params: {
-        organizationId: string;
-    };
-}
-=======
-    code: 400;
-=======
-    code: 403;
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-    ok: false;
-    info: "user.role.invalid";
-} & {body: undefined};
-
-export type response_3_3 = {
-    code: 204;
-    ok: true;
-    info: "entry.accepted";
-} & {body: undefined};
->>>>>>> 5cabb00 (feat(115): refacto product)
-
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
 export type parameters_4 = {
     params: {
         organizationId: string;
     };
 }
 
-<<<<<<< HEAD
-=======
->>>>>>> 796a9ff (feat(115): get command)
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
 export type response_4_0 = {
     code: 401;
     ok: false;
@@ -261,40 +126,11 @@ export type response_4_1 = {
 } & {body: undefined};
 
 export type response_4_2 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 796a9ff (feat(115): get command)
-    code: 403;
-    ok: false;
-    info: "user.role.invalid";
-} & {body: undefined};
-
-export type response_4_3 = {
-<<<<<<< HEAD
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
->>>>>>> 796a9ff (feat(115): get command)
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
     code: 204;
     ok: true;
     info: "entry.accepted";
 } & {body: undefined};
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
 export type response_4_3 = {
     code: 406;
     ok: false;
@@ -307,11 +143,6 @@ export type response_4_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
-<<<<<<< HEAD
-=======
->>>>>>> 796a9ff (feat(115): get command)
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
 export type parameters_5 = {
     params: {
         organizationId: string;
@@ -319,11 +150,6 @@ export type parameters_5 = {
     };
 }
 
-<<<<<<< HEAD
-=======
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 export type response_5_0 = {
     code: 401;
     ok: false;
@@ -415,46 +241,6 @@ export type response_7_1 = {
 } & {body: undefined};
 
 export type response_7_2 = {
-<<<<<<< HEAD
-    code: 204;
-    ok: true;
-    info: "entry.accepted";
-} & {body: undefined};
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-export type response_6_4 = {
-    code: 406;
-    ok: false;
-    info: "organization.hasNotUser";
-} & {body: undefined};
-
-export type response_6_5 = {
-    code: 403;
-    ok: false;
-    info: "user.role.organization.invalid";
-} & {body: undefined};
-
-export type parameters_7 = {
-    params: {
-        organizationId: string;
-    };
-}
-
-export type response_7_0 = {
-    code: 401;
-    ok: false;
-    info: "access.token.invalid";
-} & {body: undefined};
-
-export type response_7_1 = {
-    code: 404;
-    ok: false;
-    info: "user.notfound";
-} & {body: undefined};
-
-export type response_7_2 = {
     code: 401;
     ok: false;
     info: "entry.refuse";
@@ -464,136 +250,9 @@ export type response_7_3 = {
     code: 204;
     ok: true;
     info: "entry.accepted";
-=======
-export type response_7_4 = {
-    code: 406;
-    ok: false;
-    info: "organization.hasNotUser";
->>>>>>> 5cabb00 (feat(115): refacto product)
-} & {body: undefined};
-
-export type response_7_5 = {
-=======
-export type response_7_3 = {
-    code: 406;
-    ok: false;
-    info: "organization.hasNotUser";
-} & {body: undefined};
-
-export type response_7_4 = {
->>>>>>> 796a9ff (feat(115): get command)
-    code: 403;
-    ok: false;
-    info: "user.role.organization.invalid";
-} & {body: undefined};
-
-export type parameters_8 = {
-    params: {
-        organizationId: string;
-<<<<<<< HEAD
-        productSheetId?: string | undefined;
-=======
->>>>>>> 796a9ff (feat(115): get command)
-    };
-}
-
-export type response_8_0 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    code: 204;
-    ok: true;
-    info: "entry.accepted";
-} & {body: undefined};
-
-export type response_9_0 = {
-=======
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
->>>>>>> 796a9ff (feat(115): get command)
-    code: 401;
-    ok: false;
-    info: "access.token.invalid";
-} & {body: undefined};
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-export type response_9_1 = {
-=======
-export type response_8_1 = {
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-export type response_8_1 = {
->>>>>>> 796a9ff (feat(115): get command)
-    code: 404;
-    ok: false;
-    info: "user.notfound";
-} & {body: undefined};
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-export type response_9_2 = {
-    code: 204;
-    ok: true;
-    info: "entry.accepted";
-} & {body: undefined};
-
-export type response_10_0 = {
-    code: 204;
-    ok: true;
-    info: "entry.accepted";
-} & {body: undefined};
-
-export type parameters_11 = {
-    query?: {
-        address?: string | undefined;
-    } | undefined;
-}
-
-export type response_body_11_0 = string[]
-
-export type response_11_0 = {
-    code: 200;
-    ok: true;
-    info?: undefined;
-} & {body: response_body_11_0};
-
-export type parameters_12 = {
-    headers: {
-        "stripe-signature": string;
-    };
-}
-
-export type response_12_0 = {
-=======
-export type response_8_2 = {
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-export type response_8_2 = {
->>>>>>> 796a9ff (feat(115): get command)
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
-    code: 401;
-    ok: false;
-    info: "entry.refuse";
-} & {body: undefined};
-
-<<<<<<< HEAD
-export type response_8_3 = {
-<<<<<<< HEAD
-=======
-export type response_8_0 = {
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
->>>>>>> 796a9ff (feat(115): get command)
-=======
-export type response_7_3 = {
-    code: 204;
-    ok: true;
-    info: "entry.accepted";
 } & {body: undefined};
 
 export type response_8_0 = {
->>>>>>> 63fe2d6 (feat(115): make bundle)
     code: 204;
     ok: true;
     info: "entry.accepted";
@@ -751,99 +410,14 @@ export type response_15_4 = {
     info: "user.registered";
 } & {body: response_body_15_4};
 
-export type response_16_0 = {
-    code: 401;
-    ok: false;
-    info: "access.token.invalid";
-} & {body: undefined};
-
-export type response_16_1 = {
-    code: 404;
-    ok: false;
-    info: "user.notfound";
-} & {body: undefined};
-
-export type response_body_16_2 = {
-    productSheetId: string;
-    quantity: number;
-    name: string;
-    description: string;
-    shortDescription: string;
-    price: number;
-    imageUrl: string;
-}[]
-
-export type response_16_2 = {
-    code: 200;
-    ok: true;
-    info: "cart.fetched";
-<<<<<<< HEAD
-} & {body: response_body_15_2};
-
 export type request_body_16 = {
-    fireBaseIdToken: string;
-    lastname: string;
-    firstname: string;
-    address: string;
-    dateOfBirth: Date;
+    productSheetId: string;
+    quantity?: number;
 }
 
 export type response_16_0 = {
     code: 401;
     ok: false;
-    info: "firebase.token.invalid";
-} & {body: undefined};
-
-export type response_16_1 = {
-    code: 409;
-    ok: false;
-    info: "user.alreadyExist";
-} & {body: undefined};
-
-export type response_16_2 = {
-    code: 400;
-    ok: false;
-    info: "user.address.invalid";
-} & {body: undefined};
-<<<<<<< HEAD
-=======
-
-export type response_15_3 = {
-    code: 400;
-    ok: false;
-    info: "user.dateOfBirth.invalid";
-} & {body: undefined};
-
-export type response_body_15_4 = string
-
-export type response_15_4 = {
-    code: 201;
-    ok: true;
-    info: "user.registered";
-} & {body: response_body_15_4};
->>>>>>> 5cabb00 (feat(115): refacto product)
-
-export type response_16_3 = {
-    code: 400;
-    ok: false;
-    info: "user.dateOfBirth.invalid";
-} & {body: undefined};
-
-export type response_body_16_4 = string
-
-export type response_16_4 = {
-    code: 201;
-    ok: true;
-    info: "user.registered";
-} & {body: response_body_16_4};
-=======
-} & {body: response_body_16_2};
->>>>>>> 796a9ff (feat(115): get command)
-
-<<<<<<< HEAD
-export type response_16_0 = {
-    code: 401;
-    ok: false;
     info: "access.token.invalid";
 } & {body: undefined};
 
@@ -853,28 +427,48 @@ export type response_16_1 = {
     info: "user.notfound";
 } & {body: undefined};
 
-export type response_body_16_2 = {
+export type response_16_2 = {
+    code: 404;
+    ok: false;
+    info: "productSheet.notfound";
+} & {body: undefined};
+
+export type response_16_3 = {
+    code: 401;
+    ok: false;
+    info: "cart.article.limit";
+} & {body: undefined};
+
+export type response_16_4 = {
+    code: 401;
+    ok: false;
+    info: "cart.quantity.limit";
+} & {body: undefined};
+
+export type response_16_5 = {
+    code: 409;
+    ok: false;
+    info: "product.unavailable";
+} & {body: undefined};
+
+export type response_body_16_6 = {
+    userId: string;
     productSheetId: string;
     quantity: number;
-    name: string;
-    description: string;
-    shortDescription: string;
-    price: number;
-    imageUrl: string;
-}[]
+    createdAt?: string;
+}
 
-export type response_16_2 = {
-    code: 200;
+export type response_16_6 = {
+    code: 201;
     ok: true;
-    info: "cart.fetched";
-} & {body: response_body_16_2};
-=======
+    info: "article.created";
+} & {body: response_body_16_6};
+
 export type parameters_17 = {
     params: {
         productSheetId: string;
     };
 }
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 
 export type response_17_0 = {
     code: 401;
@@ -902,23 +496,7 @@ export type response_17_3 = {
 
 export type parameters_18 = {
     params: {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        productSheetId: string;
-=======
         imageProductSheetId: string;
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-        productSheetId: string;
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-        organizationId: string;
->>>>>>> 796a9ff (feat(115): get command)
-=======
-        imageProductSheetId: string;
->>>>>>> cf3a372 (feat(115): commande table)
     };
 }
 
@@ -936,54 +514,20 @@ export type response_18_1 = {
 
 export type response_18_2 = {
     code: 404;
-<<<<<<< HEAD
-=======
     ok: false;
     info: "imageProductSheet.notfound";
 } & {body: undefined};
 
 export type response_18_3 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    code: 200;
-    ok: true;
-<<<<<<< HEAD
-=======
     code: 204;
     ok: true;
->>>>>>> cf3a372 (feat(115): commande table)
     info: "imageProductSheet.deleted";
 } & {body: undefined};
 
 export type response_18_4 = {
-<<<<<<< HEAD
-    code: 406;
->>>>>>> 5cabb00 (feat(115): refacto product)
-    ok: false;
-    info: "productSheet.notfound";
-} & {body: undefined};
-
-<<<<<<< HEAD
-export type response_18_3 = {
-    code: 200;
-    ok: true;
-    info: "article.deleted";
-=======
-export type response_18_5 = {
-    code: 403;
-    ok: false;
-    info: "user.role.organization.invalid";
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-    info: "article.deleted";
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-=======
->>>>>>> cf3a372 (feat(115): commande table)
     code: 406;
     ok: false;
     info: "organization.hasNotUser";
->>>>>>> 796a9ff (feat(115): get command)
 } & {body: undefined};
 
 export type response_18_5 = {
@@ -991,10 +535,6 @@ export type response_18_5 = {
     ok: false;
     info: "user.role.organization.invalid";
 } & {body: undefined};
-
-export type request_body_19 = {
-    commandId: string;
-}
 
 export type response_19_0 = {
     code: 401;
@@ -1008,27 +548,21 @@ export type response_19_1 = {
     info: "user.notfound";
 } & {body: undefined};
 
+export type response_body_19_2 = {
+    productSheetId: string;
+    quantity: number;
+    name: string;
+    description: string;
+    shortDescription: string;
+    price: number;
+    imageUrl: string;
+}[]
+
 export type response_19_2 = {
-    code: 404;
-    ok: false;
-    info: "command.notfound";
-} & {body: undefined};
-
-export type response_19_3 = {
-    code: 401;
-    ok: false;
-    info: "command.wrong.user";
-} & {body: undefined};
-
-export type response_body_19_4 = {
-    sessionUrl: string;
-}
-
-export type response_19_4 = {
-    code: 201;
+    code: 200;
     ok: true;
-    info: "session";
-} & {body: response_body_19_4};
+    info: "cart.fetched";
+} & {body: response_body_19_2};
 
 export type parameters_20 = {
     params: {
@@ -1063,61 +597,22 @@ export type response_body_20_3 = {
 }
 
 export type response_20_3 = {
-<<<<<<< HEAD
-    code: 401;
-    ok: false;
-    info: "organization.user.organizationRole.owner";
-} & {body: undefined};
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-export type request_body_21 = {
-    organizationRole?: ("STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT") | undefined;
-}
-=======
-export type response_20_4 = {
-    code: 204;
-=======
     code: 200;
->>>>>>> 63fe2d6 (feat(115): make bundle)
     ok: true;
     info: "organization.user";
 } & {body: response_body_20_3};
 
-<<<<<<< HEAD
-export type response_20_5 = {
-    code: 406;
-    ok: false;
-    info: "organization.hasNotUser";
-} & {body: undefined};
-
-export type response_20_6 = {
-    code: 403;
-    ok: false;
-    info: "user.role.organization.invalid";
-} & {body: undefined};
->>>>>>> cf3a372 (feat(115): commande table)
-=======
 export type request_body_21 = {
     email: string;
     firstname: string;
     lastname: string;
     organizationRole: "STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT";
 }
->>>>>>> 63fe2d6 (feat(115): make bundle)
 
->>>>>>> 5cabb00 (feat(115): refacto product)
 export type parameters_21 = {
-<<<<<<< HEAD
-    query?: {
-        page?: number;
-    } | undefined;
-=======
     params: {
         organizationId: string;
     };
->>>>>>> 63fe2d6 (feat(115): make bundle)
 }
 
 export type response_21_0 = {
@@ -1135,41 +630,10 @@ export type response_21_1 = {
 export type response_21_2 = {
     code: 404;
     ok: false;
-<<<<<<< HEAD
-    info: "user.notfound";
-=======
     info: "organization.notfound";
->>>>>>> 63fe2d6 (feat(115): make bundle)
 } & {body: undefined};
-
-export type response_body_21_3 = {
-    id: string;
-    name: string;
-    label: string | null;
-    ownerId: string;
-    suspended: boolean;
-    logoKey: string | null;
-    logoUrl: string | null;
-}[]
 
 export type response_21_3 = {
-<<<<<<< HEAD
-    code: 200;
-    ok: true;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    info: "user.organizations";
-} & {body: response_body_21_3};
-=======
-    info: "organization.user.edited";
-=======
-    info: "organization.user.deleted";
->>>>>>> cf3a372 (feat(115): commande table)
-} & {body: undefined};
-
-export type response_21_5 = {
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
     code: 406;
     ok: false;
     info: "organization.hasNotUser";
@@ -1200,16 +664,8 @@ export type response_21_7 = {
 } & {body: undefined};
 
 export type request_body_22 = {
-    organizationRole?: ("STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT") | undefined;
+    commandId: string;
 }
-
-export type parameters_22 = {
-    params: {
-        organizationId: string;
-        userId: string;
-    };
-}
->>>>>>> 5cabb00 (feat(115): refacto product)
 
 export type response_22_0 = {
     code: 401;
@@ -1224,98 +680,32 @@ export type response_22_1 = {
 } & {body: undefined};
 
 export type response_22_2 = {
-    code: 406;
+    code: 404;
     ok: false;
-    info: "organization.hasNotUser";
+    info: "command.notfound";
 } & {body: undefined};
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-export type response_body_22_3 = {
-    id: string;
-    email: string;
-    lastname: string;
-    firstname: string;
-    dateOfBirth?: string;
-    address: string;
-    primordialRole: "CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN";
-    muted: boolean;
-    hasOrganization: boolean;
-}
-
-=======
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-export type response_body_22_3 = {
-    id: string;
-    name: string;
-    label: string | null;
-    ownerId: string;
-    suspended: boolean;
-    logoKey: string | null;
-    logoUrl: string | null;
-}[]
-
->>>>>>> cf3a372 (feat(115): commande table)
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
 export type response_22_3 = {
     code: 401;
     ok: false;
-    info: "organization.user.organizationRole.owner";
+    info: "command.wrong.user";
 } & {body: undefined};
+
+export type response_body_22_4 = {
+    sessionUrl: string;
+}
 
 export type response_22_4 = {
-    code: 204;
+    code: 201;
     ok: true;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    info: "user";
-} & {body: response_body_22_3};
-=======
-    info: "organization.user.deleted";
-=======
-    info: "organization.user.edited";
->>>>>>> 63fe2d6 (feat(115): make bundle)
-} & {body: undefined};
+    info: "session";
+} & {body: response_body_22_4};
 
-export type response_22_5 = {
-    code: 406;
-    ok: false;
-    info: "organization.hasNotUser";
-} & {body: undefined};
-
-export type response_22_6 = {
-    code: 403;
-    ok: false;
-    info: "user.role.organization.invalid";
-} & {body: undefined};
-
-<<<<<<< HEAD
-export type request_body_23 = {
-    commandId: string;
-}
->>>>>>> 5cabb00 (feat(115): refacto product)
-
-export type request_body_23 = {
-    lastname?: string | undefined;
-    firstname?: string | undefined;
-    address?: string | undefined;
-}
-=======
-    info: "user.organizations";
-} & {body: response_body_22_3};
->>>>>>> cf3a372 (feat(115): commande table)
-=======
 export type parameters_23 = {
-    params: {
-        organizationId: string;
-        userId: string;
-    };
+    query?: {
+        page?: number;
+    } | undefined;
 }
->>>>>>> 63fe2d6 (feat(115): make bundle)
 
 export type response_23_0 = {
     code: 401;
@@ -1330,19 +720,25 @@ export type response_23_1 = {
 } & {body: undefined};
 
 export type response_23_2 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    code: 400;
+    code: 404;
     ok: false;
-    info: "user.address.invalid";
+    info: "user.notfound";
 } & {body: undefined};
 
-export type response_body_23_3 = string
+export type response_body_23_3 = {
+    id: string;
+    name: string;
+    label: string | null;
+    ownerId: string;
+    suspended: boolean;
+    logoKey: string | null;
+    logoUrl: string | null;
+}[]
 
 export type response_23_3 = {
-    code: 201;
+    code: 200;
     ok: true;
-    info: "user.edited";
+    info: "user.organizations";
 } & {body: response_body_23_3};
 
 export type request_body_24 = {
@@ -1354,86 +750,8 @@ export type parameters_24 = {
         organizationId: string;
         userId: string;
     };
-=======
-    code: 404;
-=======
-    code: 406;
->>>>>>> 63fe2d6 (feat(115): make bundle)
-    ok: false;
-    info: "organization.hasNotUser";
-} & {body: undefined};
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-export type response_23_3 = {
-    code: 401;
-    ok: false;
-    info: "command.wrong.user";
-} & {body: undefined};
-
-<<<<<<< HEAD
-export type request_body_24 = {
-    commandId: string;
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-export type response_body_23_4 = {
-    sessionUrl: string;
-=======
-export type response_body_23_3 = {
-    id: string;
-    email: string;
-    lastname: string;
-    firstname: string;
-    dateOfBirth?: string;
-    address: string;
-    primordialRole: "CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN";
-    muted: boolean;
-    hasOrganization: boolean;
->>>>>>> cf3a372 (feat(115): commande table)
 }
 
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
-export type response_23_3 = {
-    code: 401;
-    ok: false;
-    info: "organization.user.organizationRole.owner";
-} & {body: undefined};
-
-export type response_23_4 = {
-    code: 204;
-    ok: true;
-    info: "organization.user.deleted";
-} & {body: undefined};
-
-export type response_23_5 = {
-    code: 406;
-    ok: false;
-    info: "organization.hasNotUser";
-} & {body: undefined};
-
-export type response_23_6 = {
-    code: 403;
-    ok: false;
-    info: "user.role.organization.invalid";
-} & {body: undefined};
-
-export type parameters_24 = {
-    query?: {
-        page?: number;
-    } | undefined;
-}
-
-<<<<<<< HEAD
-export type parameters_24 = {
-    query?: {
-        page?: number;
-    } | undefined;
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-}
-
-=======
->>>>>>> 796a9ff (feat(115): get command)
 export type response_24_0 = {
     code: 401;
     ok: false;
@@ -1447,48 +765,14 @@ export type response_24_1 = {
 } & {body: undefined};
 
 export type response_24_2 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
     code: 406;
     ok: false;
-<<<<<<< HEAD
-<<<<<<< HEAD
     info: "organization.hasNotUser";
-=======
-    info: "command.notfound";
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-    info: "user.notfound";
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-    code: 400;
-    ok: false;
-    info: "user.address.invalid";
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-    code: 404;
-    ok: false;
-    info: "user.notfound";
->>>>>>> 63fe2d6 (feat(115): make bundle)
 } & {body: undefined};
 
-export type response_body_24_3 = {
-    id: string;
-    name: string;
-    label: string | null;
-    ownerId: string;
-    suspended: boolean;
-    logoKey: string | null;
-    logoUrl: string | null;
-}[]
-
 export type response_24_3 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     code: 401;
     ok: false;
-<<<<<<< HEAD
     info: "organization.user.organizationRole.owner";
 } & {body: undefined};
 
@@ -1515,29 +799,7 @@ export type parameters_25 = {
         organizationId: string;
         userId: string;
     };
-=======
-    info: "command.wrong.user";
-} & {body: undefined};
-
-export type response_body_24_4 = {
-    sessionUrl: string;
->>>>>>> 5cabb00 (feat(115): refacto product)
 }
-
-export type response_24_4 = {
-    code: 201;
-=======
-    code: 200;
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-    code: 201;
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-    code: 200;
->>>>>>> 63fe2d6 (feat(115): make bundle)
-    ok: true;
-    info: "user.organizations";
-} & {body: response_body_24_3};
 
 export type response_25_0 = {
     code: 401;
@@ -1552,16 +814,9 @@ export type response_25_1 = {
 } & {body: undefined};
 
 export type response_25_2 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     code: 406;
-=======
-    code: 404;
->>>>>>> 63fe2d6 (feat(115): make bundle)
     ok: false;
-    info: "user.notfound";
+    info: "organization.hasNotUser";
 } & {body: undefined};
 
 export type response_25_3 = {
@@ -1587,42 +842,6 @@ export type response_25_6 = {
     ok: false;
     info: "user.role.organization.invalid";
 } & {body: undefined};
-=======
-    code: 404;
-=======
-    code: 400;
->>>>>>> 796a9ff (feat(115): get command)
-=======
-    code: 406;
->>>>>>> cf3a372 (feat(115): commande table)
-    ok: false;
-    info: "organization.hasNotUser";
-} & {body: undefined};
-
-export type response_body_25_3 = {
-    id: string;
-    email: string;
-    lastname: string;
-    firstname: string;
-    dateOfBirth?: string;
-    address: string;
-    primordialRole: "CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN";
-    muted: boolean;
-    hasOrganization: boolean;
-}
-
-export type response_25_3 = {
-    code: 200;
-    ok: true;
-    info: "user";
-} & {body: response_body_25_3};
->>>>>>> 5cabb00 (feat(115): refacto product)
-
-export type request_body_26 = {
-    lastname?: string | undefined;
-    firstname?: string | undefined;
-    address?: string | undefined;
-}
 
 export type response_26_0 = {
     code: 401;
@@ -1637,88 +856,33 @@ export type response_26_1 = {
 } & {body: undefined};
 
 export type response_26_2 = {
-    code: 400;
-    ok: false;
-    info: "user.address.invalid";
-} & {body: undefined};
-
-export type response_body_26_3 = string
-
-export type response_26_3 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    code: 201;
-    ok: true;
-<<<<<<< HEAD
-    info: "session";
-} & {body: response_body_26_4};
-
-export type request_body_27 = {
-    name: string;
-    disabled: boolean;
-=======
-    info: "user.edited";
-} & {body: response_body_26_3};
-
-<<<<<<< HEAD
-=======
-    code: 404;
-=======
-    code: 406;
->>>>>>> cf3a372 (feat(115): commande table)
-    ok: false;
-    info: "organization.hasNotUser";
-} & {body: undefined};
-
-export type response_26_4 = {
-    code: 403;
-    ok: false;
-    info: "user.role.organization.invalid";
-} & {body: undefined};
-
-export type response_26_5 = {
     code: 404;
     ok: false;
     info: "user.notfound";
 } & {body: undefined};
 
-<<<<<<< HEAD
->>>>>>> 796a9ff (feat(115): get command)
-=======
-export type response_26_6 = {
-    code: 409;
-    ok: false;
-    info: "organization.hasAlreadyUser";
-} & {body: undefined};
+export type response_body_26_3 = {
+    id: string;
+    email: string;
+    lastname: string;
+    firstname: string;
+    dateOfBirth?: string;
+    address: string;
+    primordialRole: "CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN";
+    muted: boolean;
+    hasOrganization: boolean;
+}
 
-export type response_26_7 = {
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
-    code: 201;
+export type response_26_3 = {
+    code: 200;
     ok: true;
-    info: "user.edited";
+    info: "user";
 } & {body: response_body_26_3};
 
 export type request_body_27 = {
-    name?: string | undefined;
-    disabled?: boolean | undefined;
-} | undefined
-
->>>>>>> cf3a372 (feat(115): commande table)
-export type parameters_27 = {
-    params: {
-        categoryName: string;
-    };
-<<<<<<< HEAD
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-export type request_body_27 = {
-    name: string;
-    disabled: boolean;
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
->>>>>>> 796a9ff (feat(115): get command)
+    lastname?: string | undefined;
+    firstname?: string | undefined;
+    address?: string | undefined;
 }
 
 export type response_27_0 = {
@@ -1734,108 +898,28 @@ export type response_27_1 = {
 } & {body: undefined};
 
 export type response_27_2 = {
-    code: 403;
+    code: 400;
     ok: false;
-    info: "user.role.invalid";
+    info: "user.address.invalid";
 } & {body: undefined};
+
+export type response_body_27_3 = string
 
 export type response_27_3 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    code: 409;
-    ok: false;
-    info: "category.alreadyExist";
-=======
-    code: 406;
-    ok: false;
-    info: "organization.hasNotUser";
->>>>>>> 5cabb00 (feat(115): refacto product)
-} & {body: undefined};
-
-export type response_body_27_4 = {
-    name: string;
-    disabled: boolean;
-    imageKey: string | null;
-    imageUrl: string | null;
-}
-
-export type response_27_4 = {
-<<<<<<< HEAD
     code: 201;
     ok: true;
-    info: "category.created";
-} & {body: response_body_27_4};
-=======
-    code: 403;
-    ok: false;
-    info: "user.role.organization.invalid";
-} & {body: undefined};
->>>>>>> 5cabb00 (feat(115): refacto product)
-
-export type response_body_27_5 = {
-=======
-    code: 409;
-    ok: false;
-    info: "category.alreadyExist";
-} & {body: undefined};
-
-export type response_body_27_4 = {
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-    name: string;
-    disabled: boolean;
-    imageKey: string | null;
-    imageUrl: string | null;
-}
-
-export type response_27_4 = {
-    code: 201;
-    ok: true;
-    info: "category.created";
-} & {body: response_body_27_4};
+    info: "user.edited";
+} & {body: response_body_27_3};
 
 export type request_body_28 = {
-    suspended?: boolean | undefined;
-}
+    name?: string | undefined;
+    disabled?: boolean | undefined;
+} | undefined
 
-=======
-    code: 200;
-    ok: true;
-    info: "article.deleted";
-} & {body: undefined};
-
->>>>>>> 796a9ff (feat(115): get command)
 export type parameters_28 = {
-    headers: {
-        "content-type": string;
-        "content-length": number;
-    };
     params: {
         categoryName: string;
     };
-=======
-    code: 404;
-    ok: false;
-    info: "category.notfound";
-} & {body: undefined};
-
-export type response_27_4 = {
-    code: 409;
-    ok: false;
-    info: "category.alreadyExist";
-} & {body: undefined};
-
-export type response_27_5 = {
-    code: 204;
-    ok: true;
-    info: "category.edited";
-} & {body: undefined};
-
-export type request_body_28 = {
-    name: string;
-    disabled: boolean;
->>>>>>> cf3a372 (feat(115): commande table)
 }
 
 export type response_28_0 = {
@@ -1857,63 +941,26 @@ export type response_28_2 = {
 } & {body: undefined};
 
 export type response_28_3 = {
+    code: 404;
+    ok: false;
+    info: "category.notfound";
+} & {body: undefined};
+
+export type response_28_4 = {
     code: 409;
     ok: false;
     info: "category.alreadyExist";
 } & {body: undefined};
 
-<<<<<<< HEAD
-export type response_28_4 = {
-    code: 400;
-    ok: false;
-    info: "category.image.missing";
-} & {body: undefined};
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-export type request_body_29 = {
-    name: string;
-    ownerId: string;
-=======
-=======
 export type response_28_5 = {
     code: 204;
     ok: true;
-    info: "category.image.updated";
+    info: "category.edited";
 } & {body: undefined};
 
 export type request_body_29 = {
-    suspended?: boolean | undefined;
-}
-
->>>>>>> 796a9ff (feat(115): get command)
-=======
-export type response_body_28_4 = {
     name: string;
     disabled: boolean;
-    imageKey: string | null;
-    imageUrl: string | null;
-}
-
-export type response_28_4 = {
-    code: 201;
-    ok: true;
-    info: "category.created";
-} & {body: response_body_28_4};
-
-<<<<<<< HEAD
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-export type request_body_29 = {
-    suspended?: boolean | undefined;
-}
-
->>>>>>> 63fe2d6 (feat(115): make bundle)
-export type parameters_29 = {
-    params: {
-        organizationId: string;
-    };
->>>>>>> 5cabb00 (feat(115): refacto product)
 }
 
 export type response_29_0 = {
@@ -1935,123 +982,25 @@ export type response_29_2 = {
 } & {body: undefined};
 
 export type response_29_3 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    code: 409;
-=======
-    code: 406;
-    ok: false;
-<<<<<<< HEAD
-    info: "organization.hasNotUser";
-} & {body: undefined};
-
-export type response_29_4 = {
-    code: 403;
-    ok: false;
-    info: "user.role.organization.invalid";
-} & {body: undefined};
-
-export type response_29_5 = {
-=======
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-    code: 404;
->>>>>>> 5cabb00 (feat(115): refacto product)
-    ok: false;
-    info: "organization.alreadyExist";
-} & {body: undefined};
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-export type response_29_4 = {
-    code: 404;
-    ok: false;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    info: "user.notfound";
-} & {body: undefined};
-
-export type response_29_5 = {
     code: 409;
     ok: false;
-    info: "user.alreadyOwner";
+    info: "category.alreadyExist";
 } & {body: undefined};
 
-export type response_29_6 = {
-    code: 201;
-    ok: true;
-    info: "organization.created";
-} & {body: undefined};
-
-export type parameters_30 = {
-    headers: {
-        "content-type": string;
-        "content-length": number;
-    };
-    params: {
-        categoryName: string;
-=======
-export type response_29_6 = {
-    code: 200;
-=======
-export type response_29_4 = {
-    code: 400;
-    ok: false;
-    info: "category.image.missing";
-} & {body: undefined};
-
-export type response_29_5 = {
-=======
-    info: "organization.notfound";
-} & {body: undefined};
-
-export type response_29_4 = {
->>>>>>> 796a9ff (feat(115): get command)
-=======
-    info: "category.notfound";
-} & {body: undefined};
-
-export type response_29_4 = {
-    code: 400;
-    ok: false;
-    info: "category.image.missing";
-} & {body: undefined};
-
-export type response_29_5 = {
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-    info: "organization.notfound";
-} & {body: undefined};
-
-export type response_29_4 = {
->>>>>>> 63fe2d6 (feat(115): make bundle)
-    code: 204;
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-    ok: true;
-    info: "organization.edited";
-} & {body: undefined};
-
-export type request_body_30 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    name?: string | undefined;
-    disabled?: boolean | undefined;
-} | undefined
-
-export type parameters_30 = {
-    params: {
-<<<<<<< HEAD
-        productSheetId: string;
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-        categoryName: string;
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-    };
-=======
+export type response_body_29_4 = {
     name: string;
     disabled: boolean;
->>>>>>> 796a9ff (feat(115): get command)
-=======
+    imageKey: string | null;
+    imageUrl: string | null;
+}
+
+export type response_29_4 = {
+    code: 201;
+    ok: true;
+    info: "category.created";
+} & {body: response_body_29_4};
+
+export type request_body_30 = {
     suspended?: boolean | undefined;
 }
 
@@ -2059,11 +1008,6 @@ export type parameters_30 = {
     params: {
         organizationId: string;
     };
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-    name: string;
-    ownerId: string;
->>>>>>> 63fe2d6 (feat(115): make bundle)
 }
 
 export type response_30_0 = {
@@ -2085,115 +1029,25 @@ export type response_30_2 = {
 } & {body: undefined};
 
 export type response_30_3 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     code: 404;
-    ok: false;
-    info: "category.notfound";
-} & {body: undefined};
-
-export type response_30_4 = {
-    code: 400;
-    ok: false;
-    info: "category.image.missing";
-} & {body: undefined};
-
-export type response_30_5 = {
-    code: 204;
-    ok: true;
-    info: "category.image.updated";
-} & {body: undefined};
-
-export type parameters_31 = {
-    query?: {
-        page?: number;
-        name?: string | undefined;
-        withCategories?: ("true" | "false") | undefined;
-    } | undefined;
-=======
-    code: 406;
-=======
-    code: 404;
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-    ok: false;
-    info: "category.notfound";
-} & {body: undefined};
-
-export type response_30_4 = {
-=======
->>>>>>> 796a9ff (feat(115): get command)
-    code: 409;
-=======
-    code: 404;
->>>>>>> cf3a372 (feat(115): commande table)
     ok: false;
     info: "organization.notfound";
-=======
-    code: 409;
-    ok: false;
-    info: "organization.alreadyExist";
->>>>>>> 63fe2d6 (feat(115): make bundle)
 } & {body: undefined};
 
 export type response_30_4 = {
-    code: 404;
-    ok: false;
-    info: "user.notfound";
-} & {body: undefined};
-
-export type response_30_5 = {
-    code: 409;
-    ok: false;
-    info: "user.alreadyOwner";
-} & {body: undefined};
-
-export type response_30_6 = {
-    code: 201;
+    code: 204;
     ok: true;
-    info: "organization.created";
+    info: "organization.edited";
 } & {body: undefined};
-
-<<<<<<< HEAD
-export type response_body_30_6 = {
-    type: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
-    productSheetId: string;
-    value: string;
-}
-
-export type response_30_6 = {
-    code: 201;
-    ok: true;
-    info: "facet.created";
-} & {body: response_body_30_6};
 
 export type parameters_31 = {
-    params: {
-        productSheetId: string;
+    headers: {
+        "content-type": string;
+        "content-length": number;
     };
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-export type request_body_31 = {
-<<<<<<< HEAD
-    name: string;
-    ownerId: string;
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-    priority: number;
-    type: "PARENT_CATEGORY";
-    parentCategoryName: string;
-} | {
-    priority: number;
-    type: "CATEGORY";
-    categoryName: string;
-} | {
-    priority: number;
-    type: "LINK";
-    url: string;
-    title: string;
->>>>>>> 63fe2d6 (feat(115): make bundle)
+    params: {
+        categoryName: string;
+    };
 }
 
 export type response_31_0 = {
@@ -2214,96 +1068,37 @@ export type response_31_2 = {
     info: "user.role.invalid";
 } & {body: undefined};
 
-<<<<<<< HEAD
-export type response_body_31_3 = {
-    name: string;
-    categories?: {
-        categoryName: string;
-    }[] | undefined;
-}[]
-
 export type response_31_3 = {
-    code: 200;
-    ok: true;
-    info: "parentCategories";
-} & {body: response_body_31_3};
-
-export type request_body_32 = {
-    suspended?: boolean | undefined;
-}
-
-export type parameters_32 = {
-    params: {
-        organizationId: string;
-=======
-export type response_31_3 = {
-    code: 409;
-    ok: false;
-    info: "navigationItem.limit";
-} & {body: undefined};
-
-<<<<<<< HEAD
-export type response_31_4 = {
     code: 404;
     ok: false;
-    info: "user.notfound";
+    info: "category.notfound";
+} & {body: undefined};
+
+export type response_31_4 = {
+    code: 400;
+    ok: false;
+    info: "category.image.missing";
 } & {body: undefined};
 
 export type response_31_5 = {
-    code: 409;
-    ok: false;
-    info: "user.alreadyOwner";
-} & {body: undefined};
-
-<<<<<<< HEAD
-export type parameters_32 = {
-    params: {
-        productSheetId: string;
->>>>>>> 5cabb00 (feat(115): refacto product)
-    };
-=======
-export type response_31_6 = {
-    code: 201;
+    code: 204;
     ok: true;
-    info: "organization.created";
+    info: "category.image.updated";
 } & {body: undefined};
 
 export type request_body_32 = {
-=======
-export type response_body_31_4 = {
-    id: string;
->>>>>>> 63fe2d6 (feat(115): make bundle)
     priority: number;
     type: "PARENT_CATEGORY";
     parentCategoryName: string;
 } | {
-    id: string;
     priority: number;
     type: "CATEGORY";
     categoryName: string;
 } | {
-    id: string;
     priority: number;
     type: "LINK";
     url: string;
     title: string;
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-}
-
-export type response_31_4 = {
-    code: 201;
-    ok: true;
-    info: "navigationItem.created";
-} & {body: response_body_31_4};
-
-export type parameters_32 = {
-    headers: {
-        "content-type": string;
-        "content-length": number;
-    };
-    params: {
-        categoryName: string;
-    };
 }
 
 export type response_32_0 = {
@@ -2325,60 +1120,35 @@ export type response_32_2 = {
 } & {body: undefined};
 
 export type response_32_3 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    code: 404;
+    code: 409;
     ok: false;
-    info: "organization.notfound";
+    info: "navigationItem.limit";
 } & {body: undefined};
 
-export type response_32_4 = {
-    code: 204;
-    ok: true;
-    info: "organization.edited";
-} & {body: undefined};
-
-export type request_body_33 = {
+export type response_body_32_4 = {
+    id: string;
     priority: number;
     type: "PARENT_CATEGORY";
     parentCategoryName: string;
 } | {
+    id: string;
     priority: number;
     type: "CATEGORY";
     categoryName: string;
 } | {
+    id: string;
     priority: number;
     type: "LINK";
     url: string;
     title: string;
 }
 
-=======
-    code: 406;
-=======
-    code: 409;
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-    code: 404;
->>>>>>> 63fe2d6 (feat(115): make bundle)
-    ok: false;
-    info: "category.notfound";
-} & {body: undefined};
-
 export type response_32_4 = {
-    code: 400;
-    ok: false;
-    info: "category.image.missing";
-} & {body: undefined};
-
-export type response_32_5 = {
-    code: 204;
+    code: 201;
     ok: true;
-    info: "category.image.updated";
-} & {body: undefined};
+    info: "navigationItem.created";
+} & {body: response_body_32_4};
 
->>>>>>> 5cabb00 (feat(115): refacto product)
 export type response_33_0 = {
     code: 401;
     ok: false;
@@ -2392,54 +1162,6 @@ export type response_33_1 = {
 } & {body: undefined};
 
 export type response_33_2 = {
-<<<<<<< HEAD
-    code: 404;
-    ok: false;
-    info: "productSheet.notfound";
-} & {body: undefined};
-
-export type response_33_3 = {
-<<<<<<< HEAD
-    code: 409;
-    ok: false;
-    info: "navigationItem.limit";
-=======
-    code: 406;
-    ok: false;
-    info: "organization.hasNotUser";
->>>>>>> 5cabb00 (feat(115): refacto product)
-} & {body: undefined};
-
-export type response_body_33_4 = {
-    id: string;
-    priority: number;
-    type: "PARENT_CATEGORY";
-    parentCategoryName: string;
-} | {
-    id: string;
-    priority: number;
-    type: "CATEGORY";
-    categoryName: string;
-} | {
-    id: string;
-    priority: number;
-    type: "LINK";
-    url: string;
-    title: string;
-}
-
-export type response_33_4 = {
-<<<<<<< HEAD
-    code: 201;
-    ok: true;
-    info: "navigationItem.created";
-} & {body: response_body_33_4};
-
-export type request_body_34 = {
-    name: string;
-=======
-=======
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
     code: 403;
     ok: false;
     info: "user.role.invalid";
@@ -2469,29 +1191,12 @@ export type response_33_3 = {
     info: "navigationItems";
 } & {body: response_body_33_3};
 
-export type request_body_34 = {
-    id: string;
-    priority: number;
-    type: "PARENT_CATEGORY";
-    parentCategoryName: string;
-} | {
-    id: string;
-    priority: number;
-    type: "CATEGORY";
-    categoryName: string;
-} | {
-    id: string;
-    priority: number;
-    type: "LINK";
-    url: string;
-    title: string;
-}
-
 export type parameters_34 = {
-    params: {
-        navigationItemId: string;
-    };
->>>>>>> 5cabb00 (feat(115): refacto product)
+    query?: {
+        page?: number;
+        name?: string | undefined;
+        withCategories?: ("true" | "false") | undefined;
+    } | undefined;
 }
 
 export type response_34_0 = {
@@ -2512,76 +1217,23 @@ export type response_34_2 = {
     info: "user.role.invalid";
 } & {body: undefined};
 
-export type response_34_3 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    code: 409;
-    ok: false;
-    info: "parentCategory.name.alreadyUse";
-=======
-    code: 406;
-    ok: false;
-    info: "organization.hasNotUser";
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-    code: 404;
-    ok: false;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    info: "navigationItem.notfound";
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-} & {body: undefined};
-
-export type response_body_34_4 = {
+export type response_body_34_3 = {
     name: string;
-}
+    categories?: {
+        categoryName: string;
+    }[] | undefined;
+}[]
 
-export type response_34_4 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    code: 201;
+export type response_34_3 = {
+    code: 200;
     ok: true;
-    info: "parentCategory.created";
-} & {body: response_body_34_4};
-=======
-    code: 403;
-=======
-    code: 404;
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-    info: "navigationItem.notfound";
-} & {body: undefined};
+    info: "parentCategories";
+} & {body: response_body_34_3};
 
-export type response_34_4 = {
-    code: 404;
->>>>>>> 63fe2d6 (feat(115): make bundle)
-    ok: false;
-    info: "category.notfound";
-} & {body: undefined};
-
-export type response_34_5 = {
-    code: 404;
-    ok: false;
-<<<<<<< HEAD
-=======
->>>>>>> cf3a372 (feat(115): commande table)
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
-    info: "parentCategory.notfound";
-} & {body: undefined};
-
-export type response_34_6 = {
-    code: 204;
-    ok: true;
-    info: "navigationItem.edited";
-} & {body: undefined};
-
-export type parameters_35 = {
-    params: {
-        navigationItemId: string;
-    };
+export type request_body_35 = {
+    name: string;
+    ownerId: string;
 }
->>>>>>> 5cabb00 (feat(115): refacto product)
 
 export type response_35_0 = {
     code: 401;
@@ -2601,7 +1253,31 @@ export type response_35_2 = {
     info: "user.role.invalid";
 } & {body: undefined};
 
-export type response_body_35_3 = ({
+export type response_35_3 = {
+    code: 409;
+    ok: false;
+    info: "organization.alreadyExist";
+} & {body: undefined};
+
+export type response_35_4 = {
+    code: 404;
+    ok: false;
+    info: "user.notfound";
+} & {body: undefined};
+
+export type response_35_5 = {
+    code: 409;
+    ok: false;
+    info: "user.alreadyOwner";
+} & {body: undefined};
+
+export type response_35_6 = {
+    code: 201;
+    ok: true;
+    info: "organization.created";
+} & {body: undefined};
+
+export type request_body_36 = {
     id: string;
     priority: number;
     type: "PARENT_CATEGORY";
@@ -2617,54 +1293,11 @@ export type response_body_35_3 = ({
     type: "LINK";
     url: string;
     title: string;
-})[]
-
-export type response_35_3 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    code: 200;
-    ok: true;
-    info: "navigationItems";
-} & {body: response_body_35_3};
-
-export type request_body_36 = {
-    name?: string | undefined;
 }
-=======
-    code: 406;
-=======
-    code: 404;
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-    ok: false;
-    info: "navigationItem.notfound";
-} & {body: undefined};
-
-export type response_35_4 = {
-    code: 204;
-    ok: true;
-    info: "navigationItem.delete";
-} & {body: undefined};
->>>>>>> 5cabb00 (feat(115): refacto product)
 
 export type parameters_36 = {
     params: {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        parentCategoryName: string;
-=======
-        productSheetId: string;
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-        parentCategoryName: string;
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
         navigationItemId: string;
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-        parentCategoryName: string;
->>>>>>> 63fe2d6 (feat(115): make bundle)
     };
 }
 
@@ -2689,85 +1322,30 @@ export type response_36_2 = {
 export type response_36_3 = {
     code: 404;
     ok: false;
+    info: "navigationItem.notfound";
+} & {body: undefined};
+
+export type response_36_4 = {
+    code: 404;
+    ok: false;
+    info: "category.notfound";
+} & {body: undefined};
+
+export type response_36_5 = {
+    code: 404;
+    ok: false;
     info: "parentCategory.notfound";
 } & {body: undefined};
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
-export type response_body_36_4 = {
-    name: string;
-    disabled: boolean;
-    imageKey: string | null;
-    imageUrl: string | null;
-}[]
-
-export type response_36_4 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    code: 409;
-    ok: false;
-    info: "parentCategory.name.alreadyUse";
-} & {body: undefined};
-
-export type response_36_5 = {
-    code: 204;
-    ok: true;
-    info: "parentCategory.edited";
-} & {body: undefined};
-=======
-    code: 403;
-    ok: false;
-    info: "user.role.organization.invalid";
-} & {body: undefined};
-
-export type response_36_5 = {
-    code: 409;
-    ok: false;
-    info: "product.images.limit";
-} & {body: undefined};
-
-export type response_36_6 = {
-    code: 400;
-    ok: false;
-    info: "productSheet.image.missing";
-} & {body: undefined};
-
-export type response_body_36_7 = {
-    id: string;
-    productSheetId: string;
-    organizationId: string;
-    url: string;
-    key: string;
-    alt: string | null;
-}
->>>>>>> 5cabb00 (feat(115): refacto product)
-
-export type response_36_7 = {
-    code: 201;
-=======
-    code: 200;
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
 export type response_36_6 = {
     code: 204;
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-    code: 200;
->>>>>>> 63fe2d6 (feat(115): make bundle)
     ok: true;
-    info: "parentCategory.categories";
-} & {body: response_body_36_4};
-
-export type request_body_37 = {
-    categoryName: string;
-}
+    info: "navigationItem.edited";
+} & {body: undefined};
 
 export type parameters_37 = {
     params: {
-        parentCategoryName: string;
+        navigationItemId: string;
     };
 }
 
@@ -2792,82 +1370,17 @@ export type response_37_2 = {
 export type response_37_3 = {
     code: 404;
     ok: false;
-    info: "parentCategory.notfound";
+    info: "navigationItem.notfound";
 } & {body: undefined};
-
-<<<<<<< HEAD
-export type response_body_37_4 = {
-    name: string;
-    disabled: boolean;
-    imageKey: string | null;
-    imageUrl: string | null;
-}[]
 
 export type response_37_4 = {
-    code: 200;
-    ok: true;
-    info: "parentCategory.categories";
-} & {body: response_body_37_4};
-
-export type request_body_38 = {
-    categoryName: string;
-=======
-export type response_37_4 = {
-    code: 404;
-    ok: false;
-    info: "category.notfound";
-} & {body: undefined};
-
-export type response_37_5 = {
-    code: 409;
-    ok: false;
-    info: "parentCategory.categories.limit";
-} & {body: undefined};
-
-export type response_37_6 = {
     code: 204;
     ok: true;
-    info: "parentCategory.category.linked";
+    info: "navigationItem.delete";
 } & {body: undefined};
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 export type request_body_38 = {
-<<<<<<< HEAD
-    sku: string;
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-    categoryName: string;
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-}
-
-=======
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-export type request_body_38 = {
-    name?: string | undefined;
-}
-
->>>>>>> 63fe2d6 (feat(115): make bundle)
-export type parameters_38 = {
-    params: {
-<<<<<<< HEAD
-<<<<<<< HEAD
-        parentCategoryName: string;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-        productSheetId: string;
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-        parentCategoryName: string;
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-        categoryName: string;
->>>>>>> cf3a372 (feat(115): commande table)
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
-    };
+    name: string;
 }
 
 export type response_38_0 = {
@@ -2889,74 +1402,24 @@ export type response_38_2 = {
 } & {body: undefined};
 
 export type response_38_3 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    code: 404;
-    ok: false;
-    info: "parentCategory.notfound";
-} & {body: undefined};
-
-export type response_38_4 = {
     code: 409;
     ok: false;
     info: "parentCategory.name.alreadyUse";
 } & {body: undefined};
 
-<<<<<<< HEAD
-export type parameters_39 = {
-    params: {
-        parentCategoryName: string;
-        categoryName: string;
-=======
-    code: 406;
-=======
-    code: 404;
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-    ok: false;
-    info: "parentCategory.notfound";
-} & {body: undefined};
+export type response_body_38_4 = {
+    name: string;
+}
 
 export type response_38_4 = {
-    code: 404;
-    ok: false;
-    info: "category.notfound";
-} & {body: undefined};
-
-export type response_38_5 = {
-    code: 409;
-    ok: false;
-    info: "parentCategory.categories.limit";
-} & {body: undefined};
-
-export type response_38_6 = {
-    code: 204;
+    code: 201;
     ok: true;
-    info: "parentCategory.category.linked";
-} & {body: undefined};
-
-export type request_body_39 = {
-    name?: string | undefined;
-}
-=======
-export type response_38_5 = {
-    code: 204;
-    ok: true;
-    info: "parentCategory.edited";
-} & {body: undefined};
->>>>>>> 63fe2d6 (feat(115): make bundle)
+    info: "parentCategory.created";
+} & {body: response_body_38_4};
 
 export type parameters_39 = {
     params: {
-<<<<<<< HEAD
-        sku: string;
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
         parentCategoryName: string;
-<<<<<<< HEAD
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-        categoryName: string;
->>>>>>> 63fe2d6 (feat(115): make bundle)
     };
 }
 
@@ -2979,63 +1442,29 @@ export type response_39_2 = {
 } & {body: undefined};
 
 export type response_39_3 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
     code: 404;
     ok: false;
     info: "parentCategory.notfound";
 } & {body: undefined};
+
+export type response_body_39_4 = {
+    name: string;
+    disabled: boolean;
+    imageKey: string | null;
+    imageUrl: string | null;
+}[]
 
 export type response_39_4 = {
     code: 200;
-<<<<<<< HEAD
     ok: true;
-    info: "parentCategory.category.untied";
-} & {body: undefined};
+    info: "parentCategory.categories";
+} & {body: response_body_39_4};
 
 export type parameters_40 = {
-    query?: {
-        page?: number;
-        name?: string | undefined;
-    } | undefined;
-=======
-    code: 406;
-=======
-    code: 404;
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-    ok: false;
-    info: "parentCategory.notfound";
-} & {body: undefined};
-
-export type response_39_4 = {
-    code: 409;
-    ok: false;
-    info: "parentCategory.name.alreadyUse";
-} & {body: undefined};
-
-export type response_39_5 = {
-    code: 204;
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
-    ok: true;
-    info: "parentCategory.category.untied";
-} & {body: undefined};
-
-<<<<<<< HEAD
-export type request_body_40 = {
-    name: string;
-<<<<<<< HEAD
-    disabled: boolean;
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-export type parameters_40 = {
-    query?: {
-        page?: number;
-        name?: string | undefined;
-    } | undefined;
->>>>>>> 63fe2d6 (feat(115): make bundle)
+    params: {
+        parentCategoryName: string;
+        categoryName: string;
+    };
 }
 
 export type response_40_0 = {
@@ -3056,77 +1485,26 @@ export type response_40_2 = {
     info: "user.role.invalid";
 } & {body: undefined};
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-export type response_body_40_3 = {
-    id: string;
-    name: string;
-    label: string | null;
-    ownerId: string;
-    suspended: boolean;
-    logoKey: string | null;
-    logoUrl: string | null;
-}[]
-
 export type response_40_3 = {
-    code: 200;
-    ok: true;
-    info: "organizations";
-} & {body: response_body_40_3};
-=======
-export type response_40_3 = {
-    code: 409;
+    code: 404;
     ok: false;
-    info: "parentCategory.name.alreadyUse";
+    info: "parentCategory.notfound";
 } & {body: undefined};
 
-export type response_body_40_4 = {
-=======
-export type response_body_40_3 = {
-    id: string;
->>>>>>> 63fe2d6 (feat(115): make bundle)
-    name: string;
-    label: string | null;
-    ownerId: string;
-    suspended: boolean;
-    logoKey: string | null;
-    logoUrl: string | null;
-}[]
-
-export type response_40_3 = {
+export type response_40_4 = {
     code: 200;
     ok: true;
-<<<<<<< HEAD
-    info: "parentCategory.created";
-} & {body: response_body_40_4};
->>>>>>> 5cabb00 (feat(115): refacto product)
-
-export type parameters_41 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    query?: {
-        page?: number;
-        email?: string | undefined;
-        primordialRole?: (("CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN") | ("CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN")[]) | undefined;
-    } | undefined;
-=======
-    params: {
-        categoryName: string;
-    };
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-    query?: {
-        page?: number;
-        name?: string | undefined;
-    } | undefined;
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-    info: "organizations";
-} & {body: response_body_40_3};
+    info: "parentCategory.category.untied";
+} & {body: undefined};
 
 export type request_body_41 = {
-    name: string;
->>>>>>> 63fe2d6 (feat(115): make bundle)
+    categoryName: string;
+}
+
+export type parameters_41 = {
+    params: {
+        parentCategoryName: string;
+    };
 }
 
 export type response_41_0 = {
@@ -3147,118 +1525,38 @@ export type response_41_2 = {
     info: "user.role.invalid";
 } & {body: undefined};
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-export type response_body_41_3 = {
-    id: string;
-    email: string;
-    lastname: string;
-    firstname: string;
-    dateOfBirth?: string;
-    address: string;
-    primordialRole: "CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN";
-    muted: boolean;
-}[]
-
-=======
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-export type response_body_41_3 = {
-    id: string;
-    name: string;
-    label: string | null;
-    ownerId: string;
-    suspended: boolean;
-    logoKey: string | null;
-    logoUrl: string | null;
-}[]
-
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
 export type response_41_3 = {
-    code: 409;
+    code: 404;
     ok: false;
-    info: "parentCategory.name.alreadyUse";
+    info: "parentCategory.notfound";
 } & {body: undefined};
-
-export type response_body_41_4 = {
-    name: string;
-}
 
 export type response_41_4 = {
-    code: 201;
-    ok: true;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    info: "users";
-} & {body: response_body_41_3};
-=======
-    info: "category.edited";
+    code: 404;
+    ok: false;
+    info: "category.notfound";
 } & {body: undefined};
->>>>>>> 5cabb00 (feat(115): refacto product)
+
+export type response_41_5 = {
+    code: 409;
+    ok: false;
+    info: "parentCategory.categories.limit";
+} & {body: undefined};
+
+export type response_41_6 = {
+    code: 204;
+    ok: true;
+    info: "parentCategory.category.linked";
+} & {body: undefined};
 
 export type request_body_42 = {
-    id: string;
-    priority: number;
-    type: "PARENT_CATEGORY";
-    parentCategoryName: string;
-} | {
-    id: string;
-    priority: number;
-    type: "CATEGORY";
-    categoryName: string;
-} | {
-    id: string;
-    priority: number;
-    type: "LINK";
-    url: string;
-    title: string;
+    name?: string | undefined;
 }
 
 export type parameters_42 = {
     params: {
-<<<<<<< HEAD
-        navigationItemId: string;
-=======
-        categoryName: string;
->>>>>>> 5cabb00 (feat(115): refacto product)
+        parentCategoryName: string;
     };
-=======
-    info: "organizations";
-=======
-    info: "parentCategories";
->>>>>>> 796a9ff (feat(115): get command)
-=======
-    info: "organizations";
->>>>>>> cf3a372 (feat(115): commande table)
-} & {body: response_body_41_3};
-
-export type parameters_42 = {
-    query?: {
-        page?: number;
-        name?: string | undefined;
-        withCategories?: ("true" | "false") | undefined;
-    } | undefined;
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-    info: "parentCategory.created";
-} & {body: response_body_41_4};
-
-export type request_body_42 = {
-    primordialRole?: ("CUSTOMER" | "CONTENTS_MASTER" | "MODERATOR") | undefined;
-    muted?: boolean | undefined;
-}
-
-export type parameters_42 = {
-    params: {
-        userId: string;
-    };
->>>>>>> 63fe2d6 (feat(115): make bundle)
 }
 
 export type response_42_0 = {
@@ -3279,98 +1577,29 @@ export type response_42_2 = {
     info: "user.role.invalid";
 } & {body: undefined};
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 export type response_42_3 = {
-    code: 404;
-    ok: false;
-<<<<<<< HEAD
-    info: "navigationItem.notfound";
-} & {body: undefined};
-
-export type response_42_4 = {
-    code: 404;
-    ok: false;
-    info: "category.notfound";
-} & {body: undefined};
-
-export type response_42_5 = {
     code: 404;
     ok: false;
     info: "parentCategory.notfound";
 } & {body: undefined};
 
-export type response_42_6 = {
-    code: 204;
-    ok: true;
-    info: "navigationItem.edited";
-} & {body: undefined};
-
-export type parameters_43 = {
-    params: {
-        navigationItemId: string;
-    };
-=======
-    info: "category.notfound";
-} & {body: undefined};
-
 export type response_42_4 = {
-    code: 400;
+    code: 409;
     ok: false;
-    info: "category.image.missing";
+    info: "parentCategory.name.alreadyUse";
 } & {body: undefined};
 
 export type response_42_5 = {
     code: 204;
     ok: true;
-    info: "category.image.updated";
-} & {body: undefined};
-
-export type request_body_43 = {
-    name: string;
-    ownerId: string;
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-export type response_body_42_3 = {
-    name: string;
-    categories?: {
-        categoryName: string;
-    }[] | undefined;
-}[]
-
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
-export type response_42_3 = {
-    code: 404;
-    ok: false;
-    info: "user.notfound";
-} & {body: undefined};
-
-export type response_42_4 = {
-    code: 401;
-    ok: false;
-    info: "user.primordialRole.admin";
-} & {body: undefined};
-
-export type response_42_5 = {
-    code: 204;
-    ok: true;
-    info: "user.edited";
+    info: "parentCategory.edited";
 } & {body: undefined};
 
 export type parameters_43 = {
-<<<<<<< HEAD
-    params: {
-        userId: string;
-    };
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
     query?: {
         page?: number;
         name?: string | undefined;
-        withCategories?: ("true" | "false") | undefined;
     } | undefined;
->>>>>>> 63fe2d6 (feat(115): make bundle)
 }
 
 export type response_43_0 = {
@@ -3392,86 +1621,30 @@ export type response_43_2 = {
 } & {body: undefined};
 
 export type response_body_43_3 = {
+    id: string;
     name: string;
-    categories?: {
-        categoryName: string;
-    }[] | undefined;
+    label: string | null;
+    ownerId: string;
+    suspended: boolean;
+    logoKey: string | null;
+    logoUrl: string | null;
 }[]
 
 export type response_43_3 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    code: 404;
-    ok: false;
-<<<<<<< HEAD
-    info: "navigationItem.notfound";
-} & {body: undefined};
-
-export type response_43_4 = {
-    code: 204;
+    code: 200;
     ok: true;
-    info: "navigationItem.delete";
-} & {body: undefined};
+    info: "organizations";
+} & {body: response_body_43_3};
 
 export type request_body_44 = {
     primordialRole?: ("CUSTOMER" | "CONTENTS_MASTER" | "MODERATOR") | undefined;
     muted?: boolean | undefined;
-=======
-    info: "organization.alreadyExist";
-=======
-    code: 406;
-    ok: false;
-    info: "organization.hasNotUser";
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-    code: 404;
-    ok: false;
-    info: "user.notfound";
->>>>>>> 796a9ff (feat(115): get command)
-} & {body: undefined};
-
-export type response_43_4 = {
-    code: 401;
-    ok: false;
-    info: "user.primordialRole.admin";
-} & {body: undefined};
-
-export type response_43_5 = {
-    code: 204;
-=======
-    code: 200;
->>>>>>> 63fe2d6 (feat(115): make bundle)
-    ok: true;
-    info: "parentCategories";
-} & {body: response_body_43_3};
-
-<<<<<<< HEAD
-export type request_body_44 = {
-<<<<<<< HEAD
-    suspended?: boolean | undefined;
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-    name: string;
-    description: string;
-    shortDescription: string;
-    price: number;
-    warehouseId: string;
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 }
 
 export type parameters_44 = {
     params: {
         userId: string;
     };
-=======
-export type parameters_44 = {
-    query?: {
-        page?: number;
-        email?: string | undefined;
-        primordialRole?: (("CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN") | ("CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN")[]) | undefined;
-    } | undefined;
->>>>>>> 796a9ff (feat(115): get command)
 }
 
 export type response_44_0 = {
@@ -3487,26 +1660,11 @@ export type response_44_1 = {
 } & {body: undefined};
 
 export type response_44_2 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
     code: 403;
-<<<<<<< HEAD
-=======
     ok: false;
     info: "user.role.invalid";
 } & {body: undefined};
 
-export type response_44_3 = {
-=======
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-    code: 404;
->>>>>>> 5cabb00 (feat(115): refacto product)
-    ok: false;
-    info: "user.role.invalid";
-} & {body: undefined};
-
-<<<<<<< HEAD
-<<<<<<< HEAD
 export type response_44_3 = {
     code: 404;
     ok: false;
@@ -3525,83 +1683,12 @@ export type response_44_5 = {
     info: "user.edited";
 } & {body: undefined};
 
-export type request_body_45 = {
-    status?: ("IN_STOCK" | "WRONG") | undefined;
-}
-
 export type parameters_45 = {
-    params: {
-        sku: string;
-    };
-=======
-export type response_44_4 = {
-    code: 204;
-    ok: true;
-    info: "organization.edited";
-} & {body: undefined};
-
-export type request_body_45 = {
-    priority: number;
-    type: "PARENT_CATEGORY";
-    parentCategoryName: string;
-} | {
-    priority: number;
-    type: "CATEGORY";
-    categoryName: string;
-} | {
-    priority: number;
-    type: "LINK";
-    url: string;
-    title: string;
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-export type response_44_3 = {
-    code: 406;
-    ok: false;
-    info: "organization.hasNotUser";
-} & {body: undefined};
-
-export type response_44_4 = {
-=======
->>>>>>> 796a9ff (feat(115): get command)
-    code: 403;
-    ok: false;
-    info: "user.role.invalid";
-} & {body: undefined};
-
-export type response_body_44_3 = {
-    id: string;
-    email: string;
-    lastname: string;
-    firstname: string;
-    dateOfBirth?: string;
-    address: string;
-    primordialRole: "CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN";
-    muted: boolean;
-}[]
-
-export type response_44_3 = {
-    code: 200;
-    ok: true;
-    info: "users";
-} & {body: response_body_44_3};
-
-export type parameters_45 = {
-    params: {
-        organizationId: string;
-    };
-    query: {
-        warehouseId: string;
-        page?: number;
-    };
-<<<<<<< HEAD
     query?: {
         page?: number;
-        name?: string | undefined;
+        email?: string | undefined;
+        primordialRole?: (("CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN") | ("CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN")[]) | undefined;
     } | undefined;
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
->>>>>>> 796a9ff (feat(115): get command)
 }
 
 export type response_45_0 = {
@@ -3617,133 +1704,37 @@ export type response_45_1 = {
 } & {body: undefined};
 
 export type response_45_2 = {
-    code: 404;
-    ok: false;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    info: "product.notfound";
-=======
-    info: "user.role.invalid";
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-    info: "organization.notfound";
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-    info: "product.notfound";
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-    info: "organization.notfound";
->>>>>>> 63fe2d6 (feat(115): make bundle)
-} & {body: undefined};
-
-export type response_45_3 = {
-    code: 406;
-    ok: false;
-    info: "organization.hasNotUser";
-} & {body: undefined};
-
-export type response_45_4 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
     code: 403;
     ok: false;
-    info: "user.role.organization.invalid";
+    info: "user.role.invalid";
 } & {body: undefined};
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-export type response_45_5 = {
-    code: 204;
-    ok: true;
-    info: "product.edited";
-} & {body: undefined};
-
-export type parameters_46 = {
-    params: {
-        productSheetId: string;
-    };
-}
-=======
-    code: 201;
-    ok: true;
-    info: "navigationItem.created";
-} & {body: response_body_45_4};
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-export type response_body_45_5 = {
+export type response_body_45_3 = {
     id: string;
-    name: string;
-    description: string;
-    shortDescription: string;
-    price: number;
-    createdAt?: string;
-    updatedAt?: string;
-    organizationId: string;
-    warehouseId: string;
+    email: string;
+    lastname: string;
+    firstname: string;
+    dateOfBirth?: string;
+    address: string;
+    primordialRole: "CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN";
+    muted: boolean;
 }[]
 
-=======
->>>>>>> 796a9ff (feat(115): get command)
-export type response_45_5 = {
-    code: 400;
-    ok: false;
-    info: "organization.logo.missing";
-} & {body: undefined};
-=======
-export type response_body_45_5 = {
-    sku: string;
-    status: "WRONG" | "SOLD" | "IN_STOCK";
-    organizationId: string;
-    productSheetId: string;
-    productSheetName: string;
-    productSheetFirstImageUrl?: string | undefined;
-    warehouseId: string;
-    warehouseName: string;
-    createdAt: string;
-    updatedAt: string;
-}
->>>>>>> cf3a372 (feat(115): commande table)
-
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
-export type response_45_5 = {
-    code: 404;
-    ok: false;
-    info: "warehouse.notfound";
-} & {body: undefined};
-
-export type response_body_45_6 = {
-    commandId: string;
-    quantity: number;
-    createdAt?: string;
-}[]
-
-export type response_45_6 = {
+export type response_45_3 = {
     code: 200;
     ok: true;
-    info: "organizationCommandCollection";
-} & {body: response_body_45_6};
-
-export type request_body_46 = {
-    name: string;
-    description: string;
-    shortDescription: string;
-    price: number;
-    warehouseId: string;
-}
+    info: "users";
+} & {body: response_body_45_3};
 
 export type parameters_46 = {
     params: {
         organizationId: string;
     };
+    query: {
+        warehouseId: string;
+        page?: number;
+    };
 }
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 
 export type response_46_0 = {
     code: 401;
@@ -3758,67 +1749,11 @@ export type response_46_1 = {
 } & {body: undefined};
 
 export type response_46_2 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
     code: 404;
     ok: false;
-<<<<<<< HEAD
-    info: "productSheet.notfound";
-<<<<<<< HEAD
-=======
     info: "organization.notfound";
->>>>>>> 63fe2d6 (feat(115): make bundle)
 } & {body: undefined};
 
-export type response_46_3 = {
-    code: 406;
-    ok: false;
-    info: "organization.hasNotUser";
-} & {body: undefined};
-
-export type response_46_4 = {
-=======
->>>>>>> 5cabb00 (feat(115): refacto product)
-    code: 403;
-=======
-    code: 404;
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-    ok: false;
-    info: "organization.notfound";
-=======
->>>>>>> cf3a372 (feat(115): commande table)
-} & {body: undefined};
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-export type response_body_46_5 = {
-    name: string;
-    disabled: boolean;
-    imageKey: string | null;
-    imageUrl: string | null;
-}[]
-=======
-export type response_body_46_3 = ({
-    id: string;
-    priority: number;
-    type: "PARENT_CATEGORY";
-    parentCategoryName: string;
-} | {
-    id: string;
-    priority: number;
-    type: "CATEGORY";
-    categoryName: string;
-} | {
-    id: string;
-    priority: number;
-    type: "LINK";
-    url: string;
-    title: string;
-})[]
->>>>>>> 5cabb00 (feat(115): refacto product)
-
-=======
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 export type response_46_3 = {
     code: 406;
     ok: false;
@@ -3838,70 +1773,16 @@ export type response_46_5 = {
 } & {body: undefined};
 
 export type response_body_46_6 = {
-    id: string;
-    name: string;
-    description: string;
-    shortDescription: string;
-    price: number;
+    commandId: string;
+    quantity: number;
     createdAt?: string;
-    updatedAt?: string;
-    organizationId: string;
-    warehouseId: string;
-}
+}[]
 
 export type response_46_6 = {
-    code: 201;
+    code: 200;
     ok: true;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    info: "productSheet.categories";
-} & {body: response_body_46_5};
-
-export type request_body_47 = {
-    categoryName: string;
-}
-
-export type parameters_47 = {
-    params: {
-        productSheetId: string;
-=======
-    info: "navigationItems";
-} & {body: response_body_46_3};
-
-export type parameters_47 = {
-    params: {
-        parentCategoryName: string;
-        categoryName: string;
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-    info: "organization.found";
-=======
-    info: "productSheets.found";
->>>>>>> 796a9ff (feat(115): get command)
-} & {body: response_body_46_5};
-
-export type request_body_47 = {
-    name: string;
-    description: string;
-    shortDescription: string;
-    price: number;
-    warehouseId: string;
-}
-
-export type parameters_47 = {
-    params: {
-        organizationId: string;
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-    info: "productSheet.category.untied";
-} & {body: undefined};
-=======
-    info: "productSheet.created";
+    info: "organizationCommandCollection";
 } & {body: response_body_46_6};
->>>>>>> 63fe2d6 (feat(115): make bundle)
 
 export type parameters_47 = {
     headers: {
@@ -3909,12 +1790,7 @@ export type parameters_47 = {
         "content-length": number;
     };
     params: {
-<<<<<<< HEAD
-        productSheetId: string;
->>>>>>> cf3a372 (feat(115): commande table)
-=======
         organizationId: string;
->>>>>>> 63fe2d6 (feat(115): make bundle)
     };
 }
 
@@ -3933,23 +1809,7 @@ export type response_47_1 = {
 export type response_47_2 = {
     code: 404;
     ok: false;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    info: "productSheet.notfound";
-=======
-    info: "user.role.invalid";
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
     info: "organization.notfound";
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-    info: "productSheet.notfound";
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-    info: "organization.notfound";
->>>>>>> 63fe2d6 (feat(115): make bundle)
 } & {body: undefined};
 
 export type response_47_3 = {
@@ -3959,70 +1819,11 @@ export type response_47_3 = {
 } & {body: undefined};
 
 export type response_47_4 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
     code: 403;
     ok: false;
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-export type response_47_5 = {
-    code: 404;
-    ok: false;
-<<<<<<< HEAD
-    info: "category.notfound";
-} & {body: undefined};
-
-export type response_47_6 = {
-    code: 409;
-    ok: false;
-    info: "productSheet.categories.limit";
-} & {body: undefined};
-
-export type response_47_7 = {
-    code: 200;
-    ok: true;
-    info: "productSheet.category.linked";
-} & {body: undefined};
-
-export type parameters_48 = {
-    params: {
-        productSheetId: string;
-=======
-    code: 200;
-    ok: true;
-    info: "parentCategory.category.untied";
-=======
-    code: 403;
-    ok: false;
-    info: "user.role.organization.invalid";
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-} & {body: undefined};
-
-export type response_47_5 = {
-    code: 204;
-    ok: true;
-    info: "organization.edited";
-=======
-    info: "warehouse.notfound";
->>>>>>> 796a9ff (feat(115): get command)
-} & {body: undefined};
-
-export type response_body_47_6 = {
-    id: string;
-=======
-export type response_body_47_5 = {
->>>>>>> cf3a372 (feat(115): commande table)
-    name: string;
-    disabled: boolean;
-    imageKey: string | null;
-    imageUrl: string | null;
-}[]
-
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
 export type response_47_5 = {
     code: 400;
     ok: false;
@@ -4035,31 +1836,19 @@ export type response_47_6 = {
     info: "organization.logo.edited";
 } & {body: undefined};
 
+export type request_body_48 = {
+    idShip: string;
+    bundleItems: {
+        commandItemId: number;
+        sku: string;
+    }[];
+}
+
 export type parameters_48 = {
     params: {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        navigationItemId: string;
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
         organizationId: string;
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
+        commandId: string;
     };
-    query: {
-        warehouseId: string;
-        page?: number;
-=======
-        productSheetId: string;
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-        organizationId: string;
->>>>>>> 63fe2d6 (feat(115): make bundle)
-    };
-    query?: {
-        page?: number;
-        name?: string | undefined;
-    } | undefined;
 }
 
 export type response_48_0 = {
@@ -4077,23 +1866,7 @@ export type response_48_1 = {
 export type response_48_2 = {
     code: 404;
     ok: false;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    info: "productSheet.notfound";
-=======
-    info: "user.role.invalid";
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
     info: "organization.notfound";
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-    info: "productSheet.notfound";
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-    info: "organization.notfound";
->>>>>>> 63fe2d6 (feat(115): make bundle)
 } & {body: undefined};
 
 export type response_48_3 = {
@@ -4108,95 +1881,65 @@ export type response_48_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
-export type response_body_48_5 = {
-    id: string;
+export type response_48_5 = {
+    code: 400;
+    ok: false;
+    info: "commandItem.wrong.product";
+} & {body: undefined};
+
+export type response_48_6 = {
+    code: 400;
+    ok: false;
+    info: "organization.wrong.product";
+} & {body: undefined};
+
+export type response_48_7 = {
+    code: 400;
+    ok: false;
+    info: "commandItem.wrong.commandId";
+} & {body: undefined};
+
+export type response_48_8 = {
+    code: 404;
+    ok: false;
+    info: "commandItem.missing";
+} & {body: undefined};
+
+export type response_48_9 = {
+    code: 404;
+    ok: false;
+    info: "product.missing";
+} & {body: undefined};
+
+export type response_48_10 = {
+    code: 409;
+    ok: false;
+    info: "commandItem.alreadyCompleted";
+} & {body: undefined};
+
+export type response_48_11 = {
+    code: 409;
+    ok: false;
+    info: "commandItem.tooMuch.product";
+} & {body: undefined};
+
+export type response_48_12 = {
+    code: 200;
+    ok: true;
+    info: "makeBundle";
+} & {body: undefined};
+
+export type request_body_49 = {
     name: string;
     description: string;
     shortDescription: string;
     price: number;
-    createdAt?: string;
-    updatedAt?: string;
-    organizationId: string;
-<<<<<<< HEAD
-}
-
-export type response_48_5 = {
-    code: 200;
-    ok: true;
-    info: "productSheet.found";
-} & {body: response_body_48_5};
-
-export type request_body_49 = {
-    name?: string | undefined;
-    description?: string | undefined;
-    shortDescription?: string | undefined;
-    price?: number | undefined;
-}
-=======
-=======
-export type response_body_48_5 = {
-    sku: string;
-    status: "WAITING_PAYMENT" | "ORDER" | "WRONG" | "SOLD" | "IN_STOCK";
-    organizationId: string;
-    productSheetId: string;
-    productSheetName: string;
-    productSheetFirstImageUrl?: string | undefined;
     warehouseId: string;
-    warehouseName: string;
-    createdAt: string;
-    updatedAt: string;
-}[]
-
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-export type response_48_5 = {
-    code: 200;
-    ok: true;
-<<<<<<< HEAD
-    info: "navigationItem.edited";
-} & {body: undefined};
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-    info: "products.found";
-} & {body: response_body_48_5};
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-=======
-    warehouseId: string;
-}[]
-
->>>>>>> 63fe2d6 (feat(115): make bundle)
-export type response_48_5 = {
-    code: 200;
-    ok: true;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    info: "organizationCommandCollection";
-} & {body: response_body_48_6};
-
-export type request_body_49 = {
-    name: string;
-    address: string;
 }
->>>>>>> 796a9ff (feat(115): get command)
-=======
-    info: "productSheet.category.linked";
-} & {body: undefined};
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-    info: "productSheets.found";
-} & {body: response_body_48_5};
->>>>>>> 63fe2d6 (feat(115): make bundle)
 
 export type parameters_49 = {
     params: {
         organizationId: string;
-        commandId: string;
     };
 }
 
@@ -4225,55 +1968,18 @@ export type response_49_3 = {
 } & {body: undefined};
 
 export type response_49_4 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
     code: 403;
     ok: false;
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-export type response_body_49_5 = string
-
 export type response_49_5 = {
-    code: 201;
-    ok: true;
-    info: "productSheet.edited";
-} & {body: response_body_49_5};
-=======
-    code: 204;
-    ok: true;
-    info: "navigationItem.delete";
-=======
-    code: 403;
+    code: 404;
     ok: false;
-    info: "user.role.organization.invalid";
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-} & {body: undefined};
->>>>>>> 5cabb00 (feat(115): refacto product)
-
-export type response_body_49_5 = {
-    id: string;
-    email: string;
-    lastname: string;
-    firstname: string;
-    organizationRole: "STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT" | "OWNER";
-}[]
-
-=======
->>>>>>> 796a9ff (feat(115): get command)
-export type response_49_5 = {
-    code: 400;
-    ok: false;
-    info: "warehouse.address.invalid";
+    info: "warehouse.notfound";
 } & {body: undefined};
 
 export type response_body_49_6 = {
-=======
-export type response_body_49_5 = {
->>>>>>> cf3a372 (feat(115): commande table)
     id: string;
     name: string;
     description: string;
@@ -4285,70 +1991,20 @@ export type response_body_49_5 = {
     warehouseId: string;
 }
 
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
-export type response_49_5 = {
-    code: 404;
-    ok: false;
-    info: "command.notfound";
-} & {body: undefined};
-
 export type response_49_6 = {
-    code: 404;
-    ok: false;
-    info: "commandItem.missing";
-} & {body: undefined};
-
-export type response_body_49_7 = {
-    commandItemId: number;
-    commandId: string;
-    quantity: number;
-    processQuantity: number;
-    productSheetName: string;
-    productSheetId: string;
-    productSheetFirstImageUrl: string;
-}[]
-
-export type response_49_7 = {
-    code: 200;
+    code: 201;
     ok: true;
-    info: "organizationCommandDetailes";
-} & {body: response_body_49_7};
-
-export type request_body_50 = {
-    idShip: string;
-    bundleItems: {
-        commandItemId: number;
-        sku: string;
-    }[];
-}
+    info: "productSheet.created";
+} & {body: response_body_49_6};
 
 export type parameters_50 = {
     params: {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        productSheetId: string;
-        categoryName: string;
-=======
-        parentCategoryName: string;
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-        sku: string;
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
         organizationId: string;
->>>>>>> 796a9ff (feat(115): get command)
-=======
-        productSheetId: string;
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-        organizationId: string;
-        commandId: string;
->>>>>>> 63fe2d6 (feat(115): make bundle)
     };
+    query?: {
+        page?: number;
+        name?: string | undefined;
+    } | undefined;
 }
 
 export type response_50_0 = {
@@ -4381,98 +2037,23 @@ export type response_50_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
+export type response_body_50_5 = {
+    id: string;
+    name: string;
+    description: string;
+    shortDescription: string;
+    price: number;
+    createdAt?: string;
+    updatedAt?: string;
+    organizationId: string;
+    warehouseId: string;
+}[]
+
 export type response_50_5 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    code: 404;
-    ok: false;
-    info: "category.notfound";
-} & {body: undefined};
-
-export type response_50_6 = {
     code: 200;
     ok: true;
-    info: "productSheet.category.untied";
-} & {body: undefined};
-
-export type request_body_51 = {
-    type: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
-    value: string;
-=======
-    code: 409;
-    ok: false;
-    info: "parentCategory.categories.limit";
-} & {body: undefined};
-
-export type response_50_6 = {
-    code: 204;
-    ok: true;
-    info: "parentCategory.category.linked";
-} & {body: undefined};
-
-export type request_body_51 = {
-    name?: string | undefined;
->>>>>>> 5cabb00 (feat(115): refacto product)
-}
-=======
-    code: 200;
-=======
-    code: 201;
->>>>>>> cf3a372 (feat(115): commande table)
-    ok: true;
-    info: "productSheet.edited";
+    info: "productSheets.found";
 } & {body: response_body_50_5};
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-    code: 400;
-    ok: false;
-    info: "commandItem.wrong.product";
-} & {body: undefined};
-
-export type response_50_6 = {
-    code: 400;
-    ok: false;
-    info: "organization.wrong.product";
-} & {body: undefined};
-
-export type response_50_7 = {
-    code: 400;
-    ok: false;
-    info: "commandItem.wrong.commandId";
-} & {body: undefined};
-
-export type response_50_8 = {
-    code: 404;
-    ok: false;
-    info: "commandItem.missing";
-} & {body: undefined};
-
-export type response_50_9 = {
-    code: 404;
-    ok: false;
-    info: "product.missing";
-} & {body: undefined};
-
-export type response_50_10 = {
-    code: 409;
-    ok: false;
-    info: "commandItem.alreadyCompleted";
-} & {body: undefined};
-
-export type response_50_11 = {
-    code: 409;
-    ok: false;
-    info: "commandItem.tooMuch.product";
-} & {body: undefined};
-
-export type response_50_12 = {
-    code: 200;
-    ok: true;
-    info: "makeBundle";
-} & {body: undefined};
->>>>>>> 63fe2d6 (feat(115): make bundle)
 
 export type parameters_51 = {
     params: {
@@ -4480,7 +2061,9 @@ export type parameters_51 = {
     };
     query?: {
         page?: number;
-        email?: string | undefined;
+        sku?: string | undefined;
+        productSheetId?: string | undefined;
+        status?: ("WRONG" | "SOLD" | "IN_STOCK") | undefined;
     } | undefined;
 }
 
@@ -4515,44 +2098,28 @@ export type response_51_4 = {
 } & {body: undefined};
 
 export type response_body_51_5 = {
-    id: string;
-    email: string;
-    lastname: string;
-    firstname: string;
-    organizationRole: "STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT" | "OWNER";
+    sku: string;
+    status: "WRONG" | "SOLD" | "IN_STOCK";
+    organizationId: string;
+    productSheetId: string;
+    productSheetName: string;
+    productSheetFirstImageUrl?: string | undefined;
+    warehouseId: string;
+    warehouseName: string;
+    createdAt: string;
+    updatedAt: string;
 }[]
 
 export type response_51_5 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    code: 409;
-    ok: false;
-    info: "productSheet.facet.alreadyExist";
-} & {body: undefined};
-
-export type response_body_51_6 = {
-    type: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
-    productSheetId: string;
-    value: string;
-}
-=======
-    code: 204;
-    ok: true;
-    info: "parentCategory.edited";
-} & {body: undefined};
->>>>>>> 5cabb00 (feat(115): refacto product)
-
-export type response_51_6 = {
-    code: 201;
-    ok: true;
-    info: "facet.created";
-} & {body: response_body_51_6};
-=======
     code: 200;
     ok: true;
-    info: "organization.users";
+    info: "products.found";
 } & {body: response_body_51_5};
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
+
+export type request_body_52 = {
+    name: string;
+    address: string;
+}
 
 export type parameters_52 = {
     params: {
@@ -4578,26 +2145,6 @@ export type response_52_2 = {
     info: "organization.notfound";
 } & {body: undefined};
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-export type response_body_52_5 = {
-    id: string;
-    productSheetId: string;
-    organizationId: string;
-    url: string;
-    key: string;
-    alt: string | null;
-}[]
-
-export type response_52_5 = {
-    code: 200;
-    ok: true;
-    info: "productSheet.images";
-} & {body: response_body_52_5};
-=======
-export type response_body_52_3 = {
-    id: string;
-=======
 export type response_52_3 = {
     code: 406;
     ok: false;
@@ -4610,100 +2157,33 @@ export type response_52_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
-export type response_body_52_5 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-    id: string;
->>>>>>> 796a9ff (feat(115): get command)
-=======
-    id: string;
->>>>>>> 63fe2d6 (feat(115): make bundle)
-    name: string;
-    label: string | null;
-    ownerId: string;
-    suspended: boolean;
-    logoKey: string | null;
-    logoUrl: string | null;
-}
-<<<<<<< HEAD
-=======
-    type: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
-    productSheetId: string;
-    value: string;
-}[]
->>>>>>> cf3a372 (feat(115): commande table)
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
-
 export type response_52_5 = {
-    code: 200;
-    ok: true;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    info: "organizations";
-} & {body: response_body_52_3};
->>>>>>> 5cabb00 (feat(115): refacto product)
+    code: 400;
+    ok: false;
+    info: "warehouse.address.invalid";
+} & {body: undefined};
 
-export type request_body_53 = {
-    sku: string;
-    warehouseId: string;
-=======
-    info: "productSheet.categories";
-} & {body: response_body_52_5};
-
-export type request_body_53 = {
+export type response_body_52_6 = {
+    id: string;
     name: string;
     address: string;
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-    info: "organization.found";
-} & {body: response_body_52_5};
-
-export type request_body_53 = {
-    label?: (string | null) | undefined;
->>>>>>> 796a9ff (feat(115): get command)
-=======
-    info: "productSheet.facets";
-} & {body: response_body_52_5};
-
-export type request_body_53 = {
-    type: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
-    value: string;
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-    info: "organization.found";
-} & {body: response_body_52_5};
-
-export type request_body_53 = {
-    label?: (string | null) | undefined;
->>>>>>> 63fe2d6 (feat(115): make bundle)
+    organizationId: string;
 }
+
+export type response_52_6 = {
+    code: 201;
+    ok: true;
+    info: "warehouse.created";
+} & {body: response_body_52_6};
 
 export type parameters_53 = {
     params: {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        productSheetId: string;
-=======
-        parentCategoryName: string;
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
         organizationId: string;
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-        productSheetId: string;
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-        organizationId: string;
->>>>>>> 63fe2d6 (feat(115): make bundle)
     };
+    query?: {
+        page?: number;
+        name?: string | undefined;
+    } | undefined;
 }
 
 export type response_53_0 = {
@@ -4727,87 +2207,36 @@ export type response_53_2 = {
 export type response_53_3 = {
     code: 406;
     ok: false;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    info: "warehouse.notfound";
-} & {body: undefined};
-
-export type response_53_6 = {
-    code: 409;
-    ok: false;
-    info: "product.sku.alreadyUse";
-} & {body: undefined};
-=======
-    info: "parentCategory.notfound";
-=======
     info: "organization.hasNotUser";
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 } & {body: undefined};
 
 export type response_53_4 = {
-<<<<<<< HEAD
-    code: 200;
-    ok: true;
-    info: "parentCategory.categories";
-} & {body: response_body_53_4};
->>>>>>> 5cabb00 (feat(115): refacto product)
-
-export type response_body_53_7 = {
-    sku: string;
-    productSheetId: string;
-    organizationId: string;
-    warehouseId: string;
-    createdAt?: string;
-    updatedAt?: string;
-    status: "WAITING_PAYMENT" | "ORDER" | "WRONG" | "SOLD" | "IN_STOCK";
-}
-
-export type response_53_7 = {
-    code: 201;
-    ok: true;
-    info: "product.created";
-} & {body: response_body_53_7};
-
-export type request_body_54 = {
-<<<<<<< HEAD
-    value?: string | undefined;
-}
-
-export type parameters_54 = {
-    params: {
-        productSheetId: string;
-        facetType: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
-    };
-=======
-    name: string;
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
     code: 403;
     ok: false;
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
+export type response_body_53_5 = {
+    id: string;
+    name: string;
+    address: string;
+    organizationId: string;
+}[]
+
 export type response_53_5 = {
-    code: 204;
+    code: 200;
     ok: true;
-    info: "organization.edited";
-} & {body: undefined};
+    info: "warehouses.found";
+} & {body: response_body_53_5};
+
+export type request_body_54 = {
+    status?: ("IN_STOCK" | "WRONG") | undefined;
+}
 
 export type parameters_54 = {
     params: {
-        productSheetId: string;
+        sku: string;
     };
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-    query?: {
-        page?: number;
-        email?: string | undefined;
-    } | undefined;
->>>>>>> 796a9ff (feat(115): get command)
-=======
->>>>>>> cf3a372 (feat(115): commande table)
 }
 
 export type response_54_0 = {
@@ -4825,12 +2254,10 @@ export type response_54_1 = {
 export type response_54_2 = {
     code: 404;
     ok: false;
-    info: "productSheet.notfound";
+    info: "product.notfound";
 } & {body: undefined};
 
 export type response_54_3 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
     code: 406;
     ok: false;
     info: "organization.hasNotUser";
@@ -4842,97 +2269,33 @@ export type response_54_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-export type response_54_5 = {
-    code: 404;
-    ok: false;
-    info: "facet.notfound";
-} & {body: undefined};
-
-export type response_54_6 = {
-    code: 204;
-    ok: true;
-    info: "facet.edited";
-} & {body: undefined};
-=======
-    code: 409;
-=======
-    code: 406;
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-    ok: false;
-    info: "organization.hasNotUser";
-} & {body: undefined};
-
-export type response_54_4 = {
-    code: 403;
-    ok: false;
-    info: "user.role.organization.invalid";
-} & {body: undefined};
-
-export type response_54_5 = {
-    code: 404;
-    ok: false;
-    info: "category.notfound";
-} & {body: undefined};
-=======
 export type response_body_54_5 = {
-    id: string;
-    email: string;
-    lastname: string;
-    firstname: string;
-    organizationRole: "STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT" | "OWNER";
-}[]
->>>>>>> 796a9ff (feat(115): get command)
-
-=======
->>>>>>> cf3a372 (feat(115): commande table)
-export type response_54_5 = {
-    code: 404;
-    ok: false;
-    info: "facet.notfound";
-} & {body: undefined};
-=======
-export type response_body_54_5 = {
-    name: string;
-    disabled: boolean;
-    imageKey: string | null;
-    imageUrl: string | null;
-}[]
->>>>>>> 63fe2d6 (feat(115): make bundle)
+    sku: string;
+    status: "WRONG" | "SOLD" | "IN_STOCK";
+    organizationId: string;
+    productSheetId: string;
+    productSheetName: string;
+    productSheetFirstImageUrl?: string | undefined;
+    warehouseId: string;
+    warehouseName: string;
+    createdAt: string;
+    updatedAt: string;
+}
 
 export type response_54_5 = {
     code: 200;
     ok: true;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    info: "parentCategory.created";
-} & {body: response_body_54_4};
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-    info: "productSheet.category.untied";
-} & {body: undefined};
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-    info: "organization.users";
+    info: "product.edited";
 } & {body: response_body_54_5};
->>>>>>> 796a9ff (feat(115): get command)
-=======
-    info: "facet.edited";
-} & {body: undefined};
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-    info: "productSheet.categories";
-} & {body: response_body_54_5};
->>>>>>> 63fe2d6 (feat(115): make bundle)
+
+export type request_body_55 = {
+    name?: string | undefined;
+    address?: string | undefined;
+}
 
 export type parameters_55 = {
     params: {
-        productSheetId: string;
-        categoryName: string;
+        warehouseId: string;
     };
 }
 
@@ -4951,7 +2314,7 @@ export type response_55_1 = {
 export type response_55_2 = {
     code: 404;
     ok: false;
-    info: "productSheet.notfound";
+    info: "warehouse.notfound";
 } & {body: undefined};
 
 export type response_55_3 = {
@@ -4967,69 +2330,20 @@ export type response_55_4 = {
 } & {body: undefined};
 
 export type response_55_5 = {
-<<<<<<< HEAD
-    code: 200;
-    ok: true;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    info: "facet.deleted";
-} & {body: undefined};
-=======
-    info: "parentCategories";
-} & {body: response_body_55_3};
-=======
-    info: "productSheet.images";
-=======
-    info: "productSheet.categories";
->>>>>>> 796a9ff (feat(115): get command)
-} & {body: response_body_55_5};
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-
-export type request_body_56 = {
-    status?: ("IN_STOCK" | "WRONG") | undefined;
-}
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-    code: 404;
+    code: 400;
     ok: false;
-    info: "category.notfound";
+    info: "warehouse.address.invalid";
 } & {body: undefined};
 
 export type response_55_6 = {
-    code: 200;
+    code: 204;
     ok: true;
-    info: "productSheet.category.untied";
+    info: "warehouse.edited";
 } & {body: undefined};
->>>>>>> cf3a372 (feat(115): commande table)
-
-export type request_body_56 = {
-    categoryName: string;
-}
 
 export type parameters_56 = {
-    headers: {
-        "content-type": string;
-        "content-length": number;
-    };
     params: {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
         productSheetId: string;
-=======
-        userId: string;
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-        productSheetId: string;
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-        sku: string;
->>>>>>> 796a9ff (feat(115): get command)
-=======
-        productSheetId: string;
->>>>>>> cf3a372 (feat(115): commande table)
     };
 }
 
@@ -5063,88 +2377,27 @@ export type response_56_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
+export type response_body_56_5 = {
+    name: string;
+    disabled: boolean;
+    imageKey: string | null;
+    imageUrl: string | null;
+}[]
+
 export type response_56_5 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    code: 409;
-    ok: false;
-    info: "product.images.limit";
-} & {body: undefined};
-
-export type response_56_6 = {
-    code: 400;
-    ok: false;
-    info: "productSheet.image.missing";
-=======
-    code: 204;
-    ok: true;
-    info: "user.edited";
->>>>>>> 5cabb00 (feat(115): refacto product)
-} & {body: undefined};
-
-export type response_body_56_7 = {
-    id: string;
-    productSheetId: string;
-    organizationId: string;
-    url: string;
-    key: string;
-    alt: string | null;
-}
-
-export type response_56_7 = {
-    code: 201;
-    ok: true;
-    info: "productSheet.image.create";
-} & {body: response_body_56_7};
-
-export type parameters_57 = {
-<<<<<<< HEAD
-    headers: {
-        "content-type": string;
-        "content-length": number;
-    };
-    params: {
-        organizationId: string;
-    };
-=======
-    query?: {
-        page?: number;
-        email?: string | undefined;
-        primordialRole?: (("CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN") | ("CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN")[]) | undefined;
-    } | undefined;
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
-    code: 404;
-    ok: false;
-    info: "category.notfound";
-} & {body: undefined};
-
-export type response_56_6 = {
-    code: 409;
-    ok: false;
-    info: "productSheet.categories.limit";
-} & {body: undefined};
-
-export type response_56_7 = {
-<<<<<<< HEAD
-=======
->>>>>>> 796a9ff (feat(115): get command)
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
     code: 200;
     ok: true;
-    info: "productSheet.category.linked";
-} & {body: undefined};
+    info: "productSheet.categories";
+} & {body: response_body_56_5};
+
+export type request_body_57 = {
+    categoryName: string;
+}
 
 export type parameters_57 = {
     params: {
         productSheetId: string;
     };
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 }
 
 export type response_57_0 = {
@@ -5160,64 +2413,11 @@ export type response_57_1 = {
 } & {body: undefined};
 
 export type response_57_2 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
     code: 404;
-    ok: false;
-    info: "organization.notfound";
-} & {body: undefined};
-
-export type response_57_3 = {
-    code: 406;
-    ok: false;
-    info: "organization.hasNotUser";
-} & {body: undefined};
-
-export type response_57_4 = {
-=======
->>>>>>> 5cabb00 (feat(115): refacto product)
-    code: 403;
-=======
-    code: 404;
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
     ok: false;
     info: "productSheet.notfound";
 } & {body: undefined};
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-export type response_57_5 = {
-    code: 400;
-    ok: false;
-    info: "organization.logo.missing";
-} & {body: undefined};
-
-export type response_57_6 = {
-    code: 204;
-    ok: true;
-    info: "organization.logo.edited";
-} & {body: undefined};
-
-export type request_body_58 = {
-    name: string;
-    description: string;
-    shortDescription: string;
-    price: number;
-}
-=======
-export type response_body_57_3 = {
-    id: string;
-    email: string;
-    lastname: string;
-    firstname: string;
-    dateOfBirth?: string;
-    address: string;
-    primordialRole: "CUSTOMER" | "MODERATOR" | "CONTENTS_MASTER" | "ADMIN";
-    muted: boolean;
-}[]
-
-=======
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 export type response_57_3 = {
     code: 406;
     ok: false;
@@ -5230,75 +2430,28 @@ export type response_57_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
-<<<<<<< HEAD
 export type response_57_5 = {
+    code: 404;
+    ok: false;
+    info: "category.notfound";
+} & {body: undefined};
+
+export type response_57_6 = {
     code: 409;
     ok: false;
-    info: "product.sku.alreadyUse";
+    info: "productSheet.categories.limit";
 } & {body: undefined};
 
-<<<<<<< HEAD
-export type response_57_6 = {
+export type response_57_7 = {
     code: 200;
     ok: true;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    info: "users";
-} & {body: response_body_57_3};
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-    info: "product.created";
-} & {body: response_body_57_6};
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-    info: "productSheet.category.untied";
+    info: "productSheet.category.linked";
 } & {body: undefined};
-
-export type request_body_58 = {
-    categoryName: string;
-=======
-export type response_body_57_6 = {
-    sku: string;
-    status: "WRONG" | "SOLD" | "IN_STOCK";
-=======
-export type response_body_57_5 = {
-    id: string;
-    name: string;
-    description: string;
-    shortDescription: string;
-    price: number;
-    createdAt?: string;
-    updatedAt?: string;
->>>>>>> 63fe2d6 (feat(115): make bundle)
-    organizationId: string;
-    warehouseId: string;
-<<<<<<< HEAD
-    warehouseName: string;
-    createdAt: string;
-    updatedAt: string;
->>>>>>> cf3a372 (feat(115): commande table)
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
-}
->>>>>>> 796a9ff (feat(115): get command)
-
-export type response_57_5 = {
-    code: 200;
-    ok: true;
-    info: "productSheet.found";
-} & {body: response_body_57_5};
-
-export type request_body_58 = {
-    name?: string | undefined;
-    description?: string | undefined;
-    shortDescription?: string | undefined;
-    price?: number | undefined;
-    warehouseId?: string | undefined;
-}
 
 export type parameters_58 = {
     params: {
         productSheetId: string;
+        categoryName: string;
     };
 }
 
@@ -5332,92 +2485,26 @@ export type response_58_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-export type response_body_58_5 = {
-    id: string;
-=======
 export type response_58_5 = {
-    code: 400;
+    code: 404;
     ok: false;
-    info: "organization.logo.missing";
-} & {body: undefined};
-=======
-export type response_body_58_5 = {
-    id: string;
-    name: string;
-    description: string;
-    shortDescription: string;
-    price: number;
-    createdAt?: string;
-    updatedAt?: string;
-    organizationId: string;
-    warehouseId: string;
-}
->>>>>>> 63fe2d6 (feat(115): make bundle)
-
-export type response_58_5 = {
-    code: 201;
-    ok: true;
-    info: "productSheet.edited";
-} & {body: response_body_58_5};
-
-export type request_body_59 = {
-    name: string;
-    address: string;
-}
-
-export type request_body_59 = {
->>>>>>> 5cabb00 (feat(115): refacto product)
-    name: string;
-    description: string;
-    shortDescription: string;
-    price: number;
-<<<<<<< HEAD
-    createdAt?: string;
-    updatedAt?: string;
-    organizationId: string;
-}
-
-export type response_58_5 = {
-    code: 201;
-    ok: true;
-    info: "productSheet.created";
-} & {body: response_body_58_5};
-
-=======
-    warehouseId: string;
-}
-
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-export type response_body_58_5 = {
-    id: string;
-    name: string;
-    address: string;
-    organizationId: string;
-}
-
-=======
->>>>>>> 796a9ff (feat(115): get command)
-export type response_58_5 = {
-    code: 400;
-    ok: false;
-    info: "organization.logo.missing";
+    info: "category.notfound";
 } & {body: undefined};
 
 export type response_58_6 = {
-    code: 204;
+    code: 200;
     ok: true;
-    info: "organization.logo.edited";
+    info: "productSheet.category.untied";
 } & {body: undefined};
 
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
+export type request_body_59 = {
+    type: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
+    value: string;
+}
+
 export type parameters_59 = {
     params: {
-        organizationId: string;
+        productSheetId: string;
     };
 }
 
@@ -5436,7 +2523,7 @@ export type response_59_1 = {
 export type response_59_2 = {
     code: 404;
     ok: false;
-    info: "organization.notfound";
+    info: "productSheet.notfound";
 } & {body: undefined};
 
 export type response_59_3 = {
@@ -5451,93 +2538,33 @@ export type response_59_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-export type response_body_59_5 = {
+export type response_59_5 = {
+    code: 409;
+    ok: false;
+    info: "productSheet.facet.alreadyExist";
+} & {body: undefined};
+
+export type response_body_59_6 = {
     type: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
     productSheetId: string;
     value: string;
-}[]
-
-export type response_59_5 = {
-    code: 200;
-    ok: true;
-    info: "productSheet.facets";
-} & {body: response_body_59_5};
-
-=======
-export type response_59_5 = {
-    code: 404;
-    ok: false;
-    info: "warehouse.notfound";
-} & {body: undefined};
-
-export type response_body_59_6 = {
-=======
-export type response_body_59_5 = {
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-    id: string;
-    name: string;
-    address: string;
-    organizationId: string;
-}
-
-=======
->>>>>>> cf3a372 (feat(115): commande table)
-export type response_59_5 = {
-    code: 400;
-    ok: false;
-    info: "warehouse.address.invalid";
-} & {body: undefined};
-
-export type response_body_59_6 = {
-    id: string;
-    name: string;
-    address: string;
-    organizationId: string;
 }
 
 export type response_59_6 = {
     code: 201;
     ok: true;
-    info: "warehouse.created";
+    info: "facet.created";
 } & {body: response_body_59_6};
 
-<<<<<<< HEAD
 export type request_body_60 = {
-    name?: string | undefined;
-    description?: string | undefined;
-    shortDescription?: string | undefined;
-    price?: number | undefined;
-    warehouseId?: string | undefined;
+    value?: string | undefined;
 }
 
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
->>>>>>> 796a9ff (feat(115): get command)
 export type parameters_60 = {
     params: {
-        organizationId: string;
+        productSheetId: string;
+        facetType: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
     };
-<<<<<<< HEAD
-<<<<<<< HEAD
-    query?: {
-        page?: number;
-<<<<<<< HEAD
-        name?: string | undefined;
-=======
-        email?: string | undefined;
->>>>>>> 5cabb00 (feat(115): refacto product)
-    } | undefined;
-=======
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-    query?: {
-        page?: number;
-        name?: string | undefined;
-    } | undefined;
->>>>>>> 63fe2d6 (feat(115): make bundle)
 }
 
 export type response_60_0 = {
@@ -5555,7 +2582,7 @@ export type response_60_1 = {
 export type response_60_2 = {
     code: 404;
     ok: false;
-    info: "organization.notfound";
+    info: "productSheet.notfound";
 } & {body: undefined};
 
 export type response_60_3 = {
@@ -5570,98 +2597,23 @@ export type response_60_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
-export type response_body_60_5 = {
-    id: string;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-    productSheetId: string;
-=======
-    name: string;
-    address: string;
->>>>>>> 63fe2d6 (feat(115): make bundle)
-    organizationId: string;
-}[]
-
 export type response_60_5 = {
-    code: 200;
+    code: 404;
+    ok: false;
+    info: "facet.notfound";
+} & {body: undefined};
+
+export type response_60_6 = {
+    code: 204;
     ok: true;
-    info: "warehouses.found";
-} & {body: response_body_60_5};
+    info: "facet.edited";
+} & {body: undefined};
 
-export type request_body_61 = {
-<<<<<<< HEAD
->>>>>>> cf3a372 (feat(115): commande table)
-    name: string;
-    description: string;
-    shortDescription: string;
-    price: number;
-<<<<<<< HEAD
-    createdAt?: string;
-    updatedAt?: string;
-    organizationId: string;
-<<<<<<< HEAD
-=======
-    email: string;
-    lastname: string;
-    firstname: string;
-    organizationRole: "STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT" | "OWNER";
->>>>>>> 5cabb00 (feat(115): refacto product)
-}[]
-=======
-=======
->>>>>>> cf3a372 (feat(115): commande table)
-    warehouseId: string;
-=======
-    value?: string | undefined;
->>>>>>> 63fe2d6 (feat(115): make bundle)
-}
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-
-<<<<<<< HEAD
-export type response_60_5 = {
-    code: 200;
-    ok: true;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    info: "productSheets.found";
-=======
-    info: "organization.users";
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-    info: "productSheet.edited";
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-    info: "productSheet.found";
->>>>>>> 796a9ff (feat(115): get command)
-} & {body: response_body_60_5};
-
-export type request_body_61 = {
-    name?: string | undefined;
-    description?: string | undefined;
-    shortDescription?: string | undefined;
-    price?: number | undefined;
-    warehouseId?: string | undefined;
-}
-
-=======
->>>>>>> cf3a372 (feat(115): commande table)
 export type parameters_61 = {
     params: {
         productSheetId: string;
         facetType: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
     };
-    query?: {
-        page?: number;
-        sku?: string | undefined;
-        withProductSheet?: ("true" | "false") | undefined;
-        withWarehouse?: ("true" | "false") | undefined;
-    } | undefined;
 }
 
 export type response_61_0 = {
@@ -5694,130 +2646,22 @@ export type response_61_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-export type response_body_61_5 = {
-<<<<<<< HEAD
-    sku: string;
-    productSheetId: string;
-    organizationId: string;
-    warehouseId: string;
-    createdAt?: string;
-    updatedAt?: string;
-    status: "WAITING_PAYMENT" | "ORDER" | "WRONG" | "SOLD" | "IN_STOCK";
-    productSheet?: {
-        id: string;
-        name: string;
-        description: string;
-        shortDescription: string;
-        price: number;
-        createdAt?: string;
-        updatedAt?: string;
-        organizationId: string;
-    } | undefined;
-    warehouse?: {
-        id: string;
-        name: string;
-        address: string;
-        organizationId: string;
-    } | undefined;
-}[]
-=======
-=======
-export type response_61_5 = {
-    code: 409;
-    ok: false;
-    info: "product.images.limit";
-} & {body: undefined};
-
-export type response_61_6 = {
-    code: 400;
-    ok: false;
-    info: "productSheet.image.missing";
-} & {body: undefined};
-
-export type response_body_61_7 = {
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-export type response_body_61_5 = {
->>>>>>> 796a9ff (feat(115): get command)
-=======
 export type response_61_5 = {
     code: 404;
     ok: false;
     info: "facet.notfound";
 } & {body: undefined};
 
-<<<<<<< HEAD
-export type response_body_61_6 = {
->>>>>>> cf3a372 (feat(115): commande table)
-    id: string;
-    name: string;
-    description: string;
-    shortDescription: string;
-    price: number;
-    createdAt?: string;
-    updatedAt?: string;
-    organizationId: string;
-    warehouseId: string;
-}
->>>>>>> 5cabb00 (feat(115): refacto product)
-
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
 export type response_61_6 = {
     code: 204;
     ok: true;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    info: "products.found";
-} & {body: response_body_61_5};
-=======
-    info: "organization.found";
-} & {body: response_body_61_5};
-=======
-    info: "productSheet.image.create";
-} & {body: response_body_61_7};
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-
-export type request_body_62 = {
-    type: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
-    value: string;
-}
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-    info: "productSheet.edited";
-} & {body: response_body_61_5};
->>>>>>> 796a9ff (feat(115): get command)
-=======
-    info: "productSheet.created";
-} & {body: response_body_61_6};
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-    info: "facet.edited";
+    info: "facet.deleted";
 } & {body: undefined};
->>>>>>> 63fe2d6 (feat(115): make bundle)
 
 export type parameters_62 = {
     params: {
         productSheetId: string;
-        facetType: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
     };
-<<<<<<< HEAD
-    query?: {
-        page?: number;
-<<<<<<< HEAD
-        name?: string | undefined;
-=======
-        sku?: string | undefined;
->>>>>>> cf3a372 (feat(115): commande table)
-    } | undefined;
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
 }
 
 export type response_62_0 = {
@@ -5850,91 +2694,26 @@ export type response_62_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
-<<<<<<< HEAD
 export type response_body_62_5 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    id: string;
-    name: string;
-    address: string;
-    organizationId: string;
+    type: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
+    productSheetId: string;
+    value: string;
 }[]
 
 export type response_62_5 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
     code: 200;
     ok: true;
-    info: "warehouses.found";
+    info: "productSheet.facets";
 } & {body: response_body_62_5};
-=======
-    code: 204;
-    ok: true;
-    info: "organization.edited";
-=======
-    code: 409;
-    ok: false;
-    info: "productSheet.facet.alreadyExist";
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-} & {body: undefined};
-
-export type response_body_62_6 = {
-    type: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
-    productSheetId: string;
-    value: string;
-}
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-    type: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
-=======
-    sku: string;
-    status: "WRONG" | "SOLD" | "IN_STOCK";
-    organizationId: string;
->>>>>>> cf3a372 (feat(115): commande table)
-    productSheetId: string;
-    productSheetName: string;
-    productSheetFirstImageUrl?: string | undefined;
-    warehouseId: string;
-    warehouseName: string;
-    createdAt: string;
-    updatedAt: string;
-}[]
->>>>>>> 796a9ff (feat(115): get command)
-
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
-export type response_62_5 = {
-    code: 404;
-    ok: false;
-    info: "facet.notfound";
-} & {body: undefined};
-
-export type response_62_6 = {
-    code: 204;
-    ok: true;
-    info: "facet.deleted";
-} & {body: undefined};
-
-export type request_body_63 = {
-    type: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
-    value: string;
-}
 
 export type parameters_63 = {
+    headers: {
+        "content-type": string;
+        "content-length": number;
+    };
     params: {
         productSheetId: string;
     };
-<<<<<<< HEAD
-    query?: {
-        page?: number;
-<<<<<<< HEAD
-        email?: string | undefined;
-=======
-        name?: string | undefined;
->>>>>>> cf3a372 (feat(115): commande table)
-    } | undefined;
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
 }
 
 export type response_63_0 = {
@@ -5967,123 +2746,37 @@ export type response_63_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-export type response_body_63_5 = {
-<<<<<<< HEAD
-    id: string;
-    email: string;
-    lastname: string;
-    firstname: string;
-    organizationRole: "STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT" | "OWNER";
-}[]
-
 export type response_63_5 = {
-<<<<<<< HEAD
-    code: 200;
-    ok: true;
-    info: "organization.users";
-} & {body: response_body_63_5};
-=======
+    code: 409;
+    ok: false;
+    info: "product.images.limit";
+} & {body: undefined};
+
+export type response_63_6 = {
     code: 400;
     ok: false;
-    info: "warehouse.address.invalid";
+    info: "productSheet.image.missing";
 } & {body: undefined};
->>>>>>> 5cabb00 (feat(115): refacto product)
 
-export type response_body_63_6 = {
+export type response_body_63_7 = {
     id: string;
-    name: string;
-    address: string;
-    organizationId: string;
-}
-
-export type response_63_6 = {
-    code: 201;
-=======
-=======
-export type response_63_5 = {
-    code: 409;
-    ok: false;
-    info: "productSheet.facet.alreadyExist";
-} & {body: undefined};
-
-export type response_body_63_6 = {
->>>>>>> 796a9ff (feat(115): get command)
-    type: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
     productSheetId: string;
-    value: string;
-}
-
-<<<<<<< HEAD
-export type response_63_5 = {
-    code: 200;
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-export type response_63_6 = {
-    code: 201;
->>>>>>> 796a9ff (feat(115): get command)
-=======
-export type response_body_63_5 = {
-    id: string;
-    name: string;
-    description: string;
-    shortDescription: string;
-    price: number;
-    createdAt?: string;
-    updatedAt?: string;
     organizationId: string;
-    warehouseId: string;
-}[]
-
-export type response_63_5 = {
-    code: 200;
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-export type response_63_5 = {
-    code: 409;
-    ok: false;
-    info: "productSheet.facet.alreadyExist";
-} & {body: undefined};
-
-export type response_body_63_6 = {
-    type: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
-    productSheetId: string;
-    value: string;
+    url: string;
+    key: string;
+    alt: string | null;
 }
 
-export type response_63_6 = {
+export type response_63_7 = {
     code: 201;
->>>>>>> 63fe2d6 (feat(115): make bundle)
     ok: true;
-    info: "facet.created";
-} & {body: response_body_63_6};
+    info: "productSheet.image.create";
+} & {body: response_body_63_7};
 
 export type parameters_64 = {
     params: {
         productSheetId: string;
     };
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    query?: {
-        page?: number;
-        name?: string | undefined;
-    } | undefined;
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-    query?: {
-        page?: number;
-        email?: string | undefined;
-    } | undefined;
->>>>>>> cf3a372 (feat(115): commande table)
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
 }
 
 export type response_64_0 = {
@@ -6116,92 +2809,25 @@ export type response_64_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 export type response_body_64_5 = {
     id: string;
-    name: string;
-<<<<<<< HEAD
-    label: string | null;
-    ownerId: string;
-    suspended: boolean;
-    logoKey: string | null;
-    logoUrl: string | null;
-}
-=======
-    description: string;
-    shortDescription: string;
-    price: number;
-    createdAt?: string;
-    updatedAt?: string;
-    organizationId: string;
-    warehouseId: string;
-}[]
->>>>>>> 5cabb00 (feat(115): refacto product)
-
-=======
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-export type response_64_5 = {
-    code: 404;
-    ok: false;
-    info: "facet.notfound";
-} & {body: undefined};
-=======
-export type response_body_64_5 = {
-    type: "COLOR" | "SIZE" | "DIAMETER" | "TARGET" | "ACCESSORY" | "MATERIAL" | "STIMULATION";
     productSheetId: string;
-    value: string;
+    organizationId: string;
+    url: string;
+    key: string;
+    alt: string | null;
 }[]
->>>>>>> cf3a372 (feat(115): commande table)
 
 export type response_64_5 = {
     code: 200;
     ok: true;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    info: "organization.found";
-=======
-    info: "productSheet.facets";
->>>>>>> 63fe2d6 (feat(115): make bundle)
+    info: "productSheet.images";
 } & {body: response_body_64_5};
 
-export type request_body_65 = {
-    label?: (string | null) | undefined;
-}
-
-=======
-    info: "productSheets.found";
-} & {body: response_body_64_5};
-=======
-    info: "facet.edited";
-} & {body: undefined};
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-    info: "organization.users";
-} & {body: response_body_64_5};
->>>>>>> cf3a372 (feat(115): commande table)
-
->>>>>>> 5cabb00 (feat(115): refacto product)
 export type parameters_65 = {
-    headers: {
-        "content-type": string;
-        "content-length": number;
-    };
     params: {
         productSheetId: string;
     };
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    query?: {
-        page?: number;
-        name?: string | undefined;
-    } | undefined;
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 }
 
 export type response_65_0 = {
@@ -6234,98 +2860,23 @@ export type response_65_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-export type response_65_5 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    code: 204;
-    ok: true;
-    info: "organization.edited";
-} & {body: undefined};
-
-export type request_body_66 = {
-    name: string;
-    address: string;
-}
-=======
-    code: 200;
-    ok: true;
-    info: "warehouses.found";
-} & {body: response_body_65_5};
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-    code: 404;
-    ok: false;
-    info: "facet.notfound";
-} & {body: undefined};
-=======
 export type response_body_65_5 = {
     id: string;
     name: string;
-    label: string | null;
-    ownerId: string;
-    suspended: boolean;
-    logoKey: string | null;
-    logoUrl: string | null;
-}
->>>>>>> cf3a372 (feat(115): commande table)
-
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
-export type response_65_5 = {
-    code: 409;
-    ok: false;
-    info: "product.images.limit";
-} & {body: undefined};
-
-export type response_65_6 = {
-    code: 400;
-    ok: false;
-    info: "productSheet.image.missing";
-} & {body: undefined};
-
-export type response_body_65_7 = {
-    id: string;
-    productSheetId: string;
+    address: string;
     organizationId: string;
-    url: string;
-    key: string;
-    alt: string | null;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-export type request_body_66 = {
-    primordialRole?: ("CUSTOMER" | "CONTENTS_MASTER" | "MODERATOR") | undefined;
-    muted?: boolean | undefined;
-}
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-
-=======
->>>>>>> 796a9ff (feat(115): get command)
-=======
-export type response_65_7 = {
-    code: 201;
+export type response_65_5 = {
+    code: 200;
     ok: true;
-    info: "productSheet.image.create";
-} & {body: response_body_65_7};
+    info: "productSheet.warehouse";
+} & {body: response_body_65_5};
 
->>>>>>> 63fe2d6 (feat(115): make bundle)
 export type parameters_66 = {
     params: {
         productSheetId: string;
     };
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    query?: {
-        page?: number;
-        sku?: string | undefined;
-    } | undefined;
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 }
 
 export type response_66_0 = {
@@ -6358,97 +2909,31 @@ export type response_66_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 export type response_body_66_5 = {
-    sku: string;
-    status: "WAITING_PAYMENT" | "ORDER" | "WRONG" | "SOLD" | "IN_STOCK";
-    organizationId: string;
-    productSheetId: string;
-    productSheetName: string;
-    productSheetFirstImageUrl?: string | undefined;
-    warehouseId: string;
-    warehouseName: string;
-    createdAt: string;
-    updatedAt: string;
-}[]
-
->>>>>>> 5cabb00 (feat(115): refacto product)
-export type response_66_5 = {
-    code: 400;
-    ok: false;
-    info: "warehouse.address.invalid";
-} & {body: undefined};
-
-export type response_body_66_6 = {
     id: string;
     name: string;
-    address: string;
+    description: string;
+    shortDescription: string;
+    price: number;
+    createdAt?: string;
+    updatedAt?: string;
     organizationId: string;
+    warehouseId: string;
 }
-
-export type response_66_6 = {
-    code: 201;
-    ok: true;
-<<<<<<< HEAD
-    info: "warehouse.created";
-} & {body: response_body_66_6};
-
-export type request_body_67 = {
-    name?: string | undefined;
-    address?: string | undefined;
-}
-=======
-    info: "products.found";
-} & {body: response_body_66_5};
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-export type response_66_5 = {
-<<<<<<< HEAD
-    code: 409;
-    ok: false;
-    info: "product.images.limit";
-} & {body: undefined};
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-
-export type response_66_6 = {
-    code: 400;
-    ok: false;
-    info: "productSheet.image.missing";
-} & {body: undefined};
-
-export type response_body_66_7 = {
-=======
-export type response_body_66_5 = {
->>>>>>> 63fe2d6 (feat(115): make bundle)
-    id: string;
-    productSheetId: string;
-    organizationId: string;
-    url: string;
-    key: string;
-    alt: string | null;
-<<<<<<< HEAD
-}
-
-export type response_66_7 = {
-    code: 201;
-=======
-    code: 204;
->>>>>>> cf3a372 (feat(115): commande table)
-    ok: true;
-    info: "organization.edited";
-} & {body: undefined};
-=======
-}[]
->>>>>>> 63fe2d6 (feat(115): make bundle)
 
 export type response_66_5 = {
     code: 200;
     ok: true;
-    info: "productSheet.images";
+    info: "productSheet.found";
 } & {body: response_body_66_5};
+
+export type request_body_67 = {
+    name?: string | undefined;
+    description?: string | undefined;
+    shortDescription?: string | undefined;
+    price?: number | undefined;
+    warehouseId?: string | undefined;
+}
 
 export type parameters_67 = {
     params: {
@@ -6489,24 +2974,28 @@ export type response_67_4 = {
 export type response_body_67_5 = {
     id: string;
     name: string;
-    address: string;
+    description: string;
+    shortDescription: string;
+    price: number;
+    createdAt?: string;
+    updatedAt?: string;
     organizationId: string;
+    warehouseId: string;
 }
 
 export type response_67_5 = {
-    code: 200;
+    code: 201;
     ok: true;
-    info: "productSheet.warehouse";
+    info: "productSheet.edited";
 } & {body: response_body_67_5};
 
 export type request_body_68 = {
-    name?: string | undefined;
-    address?: string | undefined;
+    sku: string;
 }
 
 export type parameters_68 = {
     params: {
-        warehouseId: string;
+        productSheetId: string;
     };
 }
 
@@ -6525,7 +3014,7 @@ export type response_68_1 = {
 export type response_68_2 = {
     code: 404;
     ok: false;
-    info: "warehouse.notfound";
+    info: "productSheet.notfound";
 } & {body: undefined};
 
 export type response_68_3 = {
@@ -6541,25 +3030,35 @@ export type response_68_4 = {
 } & {body: undefined};
 
 export type response_68_5 = {
-    code: 400;
+    code: 409;
     ok: false;
-    info: "warehouse.address.invalid";
+    info: "product.sku.alreadyUse";
 } & {body: undefined};
 
+export type response_body_68_6 = {
+    sku: string;
+    status: "WRONG" | "SOLD" | "IN_STOCK";
+    organizationId: string;
+    productSheetId: string;
+    productSheetName: string;
+    productSheetFirstImageUrl?: string | undefined;
+    warehouseId: string;
+    warehouseName: string;
+    createdAt: string;
+    updatedAt: string;
+}
+
 export type response_68_6 = {
-    code: 204;
+    code: 201;
     ok: true;
-    info: "warehouse.edited";
-} & {body: undefined};
+    info: "product.created";
+} & {body: response_body_68_6};
 
 export type parameters_69 = {
     params: {
         organizationId: string;
+        commandId: string;
     };
-    query?: {
-        page?: number;
-        sku?: string | undefined;
-    } | undefined;
 }
 
 export type response_69_0 = {
@@ -6592,32 +3091,37 @@ export type response_69_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
-export type response_body_69_5 = {
-    sku: string;
-    status: "WRONG" | "SOLD" | "IN_STOCK";
-    organizationId: string;
-    productSheetId: string;
+export type response_69_5 = {
+    code: 404;
+    ok: false;
+    info: "command.notfound";
+} & {body: undefined};
+
+export type response_69_6 = {
+    code: 404;
+    ok: false;
+    info: "commandItem.missing";
+} & {body: undefined};
+
+export type response_body_69_7 = {
+    commandItemId: number;
+    commandId: string;
+    quantity: number;
+    processQuantity: number;
     productSheetName: string;
-    productSheetFirstImageUrl?: string | undefined;
-    warehouseId: string;
-    warehouseName: string;
-    createdAt: string;
-    updatedAt: string;
+    productSheetId: string;
+    productSheetFirstImageUrl: string;
 }[]
 
-export type response_69_5 = {
+export type response_69_7 = {
     code: 200;
     ok: true;
-    info: "products.found";
-} & {body: response_body_69_5};
-
-export type request_body_70 = {
-    status?: ("IN_STOCK" | "WRONG") | undefined;
-}
+    info: "organizationCommandDetailes";
+} & {body: response_body_69_7};
 
 export type parameters_70 = {
     params: {
-        sku: string;
+        organizationId: string;
     };
 }
 
@@ -6636,7 +3140,7 @@ export type response_70_1 = {
 export type response_70_2 = {
     code: 404;
     ok: false;
-    info: "product.notfound";
+    info: "organization.notfound";
 } & {body: undefined};
 
 export type response_70_3 = {
@@ -6652,27 +3156,29 @@ export type response_70_4 = {
 } & {body: undefined};
 
 export type response_body_70_5 = {
-    sku: string;
-    status: "WRONG" | "SOLD" | "IN_STOCK";
-    organizationId: string;
-    productSheetId: string;
-    productSheetName: string;
-    productSheetFirstImageUrl?: string | undefined;
-    warehouseId: string;
-    warehouseName: string;
-    createdAt: string;
-    updatedAt: string;
+    id: string;
+    name: string;
+    label: string | null;
+    ownerId: string;
+    suspended: boolean;
+    logoKey: string | null;
+    logoUrl: string | null;
 }
 
 export type response_70_5 = {
     code: 200;
     ok: true;
-    info: "product.edited";
+    info: "organization.found";
 } & {body: response_body_70_5};
 
 export type request_body_71 = {
-    productSheetId: string;
-    quantity?: number;
+    label?: (string | null) | undefined;
+}
+
+export type parameters_71 = {
+    params: {
+        organizationId: string;
+    };
 }
 
 export type response_71_0 = {
@@ -6690,133 +3196,35 @@ export type response_71_1 = {
 export type response_71_2 = {
     code: 404;
     ok: false;
-    info: "productSheet.notfound";
+    info: "organization.notfound";
 } & {body: undefined};
 
 export type response_71_3 = {
-    code: 401;
+    code: 406;
     ok: false;
-    info: "cart.article.limit";
+    info: "organization.hasNotUser";
 } & {body: undefined};
 
 export type response_71_4 = {
-    code: 401;
+    code: 403;
     ok: false;
-    info: "cart.quantity.limit";
+    info: "user.role.organization.invalid";
 } & {body: undefined};
 
 export type response_71_5 = {
-    code: 409;
-    ok: false;
-    info: "product.unavailable";
-} & {body: undefined};
-
-export type response_body_71_6 = {
-    userId: string;
-    productSheetId: string;
-    quantity: number;
-    createdAt?: string;
-}
-
-export type response_71_6 = {
-    code: 201;
+    code: 204;
     ok: true;
-    info: "article.created";
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-} & {body: response_body_68_6};
-
-<<<<<<< HEAD
-export type request_body_69 = {
-    lastname: string;
-    firstname: string;
-    address: string;
-}
-
-export type response_69_0 = {
-    code: 401;
-    ok: false;
-    info: "access.token.invalid";
+    info: "organization.edited";
 } & {body: undefined};
-
-export type response_69_1 = {
-    code: 404;
-    ok: false;
-    info: "user.notfound";
-} & {body: undefined};
-
-export type response_69_2 = {
-    code: 400;
-    ok: false;
-    info: "user.address.invalid";
-} & {body: undefined};
-
-export type response_69_3 = {
-    code: 409;
-    ok: false;
-    info: "cart.empty";
-} & {body: undefined};
-
-export type response_69_4 = {
-    code: 409;
-    ok: false;
-    info: "products.unavailable";
-} & {body: undefined};
-
-export type response_body_69_5 = {
-    sessionUrl: string;
-}
-
-export type response_69_5 = {
-    code: 201;
-    ok: true;
-    info: "session";
-} & {body: response_body_69_5};
-
-export type parameters_70 = {
-=======
-export type parameters_69 = {
->>>>>>> 5cabb00 (feat(115): refacto product)
-    query?: ({} & {
-        color?: (string | string[]) | undefined;
-        size?: string | undefined;
-        diameter?: string | undefined;
-        target?: string | undefined;
-        accessory?: ("true" | "false") | undefined;
-        material?: (string | string[]) | undefined;
-        stimulation?: (string | string[]) | undefined;
-        price?: [
-            number,
-            number
-        ] | undefined;
-    }) & {
-        search?: string | undefined;
-        searchByRegex?: string | undefined;
-        categoryName?: string | undefined;
-    };
-}
-
-<<<<<<< HEAD
-export type response_body_70_0 = string
-
-export type response_70_0 = {
-    code: 200;
-    ok: true;
-    info: "fullProductSheetCount";
-} & {body: response_body_70_0};
-=======
-} & {body: response_body_71_6};
->>>>>>> 63fe2d6 (feat(115): make bundle)
-
-export type request_body_72 = {
-    sku: string;
-}
 
 export type parameters_72 = {
     params: {
-        productSheetId: string;
+        organizationId: string;
     };
+    query?: {
+        page?: number;
+        email?: string | undefined;
+    } | undefined;
 }
 
 export type response_72_0 = {
@@ -6834,7 +3242,7 @@ export type response_72_1 = {
 export type response_72_2 = {
     code: 404;
     ok: false;
-    info: "productSheet.notfound";
+    info: "organization.notfound";
 } & {body: undefined};
 
 export type response_72_3 = {
@@ -6849,30 +3257,19 @@ export type response_72_4 = {
     info: "user.role.organization.invalid";
 } & {body: undefined};
 
+export type response_body_72_5 = {
+    id: string;
+    email: string;
+    lastname: string;
+    firstname: string;
+    organizationRole: "STORE_KEEPER" | "PRODUCT_SHEET_MANAGER" | "ACCOUNTANT" | "OWNER";
+}[]
+
 export type response_72_5 = {
-    code: 409;
-    ok: false;
-    info: "product.sku.alreadyUse";
-} & {body: undefined};
-
-export type response_body_72_6 = {
-    sku: string;
-    status: "WRONG" | "SOLD" | "IN_STOCK";
-    organizationId: string;
-    productSheetId: string;
-    productSheetName: string;
-    productSheetFirstImageUrl?: string | undefined;
-    warehouseId: string;
-    warehouseName: string;
-    createdAt: string;
-    updatedAt: string;
-}
-
-export type response_72_6 = {
-    code: 201;
+    code: 200;
     ok: true;
-    info: "product.created";
-} & {body: response_body_72_6};
+    info: "organization.users";
+} & {body: response_body_72_5};
 
 export type parameters_73 = {
     query?: ({} & {
@@ -6916,158 +3313,26 @@ export type response_73_0 = {
     code: 200;
     ok: true;
     info: "filters";
-<<<<<<< HEAD
-} & {body: response_body_71_0};
-=======
-export type response_body_69_0 = ({
-    type: "CHECKBOX" | "RADIO";
-    name: string;
-    values: {
-        value: string;
-        quantity: number;
-    }[];
-} | {
-    type: "TOGGLE";
-    name: string;
-    quantity: number;
-} | {
-    type: "RANGE";
-    name: string;
-    min: number;
-    max: number;
-})[]
+} & {body: response_body_73_0};
 
-export type response_69_0 = {
-    code: 200;
-    ok: true;
-    info: "filters";
-} & {body: response_body_69_0};
-=======
-} & {body: response_body_69_6};
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-
-export type parameters_70 = {
-    query?: ({} & {
-        color?: (string | string[]) | undefined;
-        size?: string | undefined;
-        diameter?: string | undefined;
-        target?: string | undefined;
-        accessory?: ("true" | "false") | undefined;
-        material?: (string | string[]) | undefined;
-        stimulation?: (string | string[]) | undefined;
-        price?: [
-            number,
-            number
-        ] | undefined;
-    }) & {
-        search?: string | undefined;
-        searchByRegex?: string | undefined;
-        categoryName?: string | undefined;
-    };
-}
-
-export type response_body_70_0 = ({
-    type: "CHECKBOX" | "RADIO";
-    name: string;
-    values: {
-        value: string;
-        quantity: number;
-    }[];
-} | {
-    type: "TOGGLE";
-    name: string;
-    quantity: number;
-} | {
-    type: "RANGE";
-    name: string;
-    min: number;
-    max: number;
-})[]
-
-export type response_70_0 = {
-    code: 200;
-    ok: true;
-    info: "filters";
-} & {body: response_body_70_0};
-=======
-} & {body: response_body_70_6};
->>>>>>> 796a9ff (feat(115): get command)
-
-export type parameters_71 = {
-    query?: ({} & {
-        color?: (string | string[]) | undefined;
-        size?: string | undefined;
-        diameter?: string | undefined;
-        target?: string | undefined;
-        accessory?: ("true" | "false") | undefined;
-        material?: (string | string[]) | undefined;
-        stimulation?: (string | string[]) | undefined;
-        price?: [
-            number,
-            number
-        ] | undefined;
-    }) & {
-        search?: string | undefined;
-        searchByRegex?: string | undefined;
-        categoryName?: string | undefined;
-    };
-}
-
-export type response_body_71_0 = ({
-    type: "CHECKBOX" | "RADIO";
-    name: string;
-    values: {
-        value: string;
-        quantity: number;
-    }[];
-} | {
-    type: "TOGGLE";
-    name: string;
-    quantity: number;
-} | {
-    type: "RANGE";
-    name: string;
-    min: number;
-    max: number;
-})[]
-
-export type response_71_0 = {
-    code: 200;
-    ok: true;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    info: "fullProductSheets";
-} & {body: response_body_71_2};
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-    info: "fullProductSheetCount";
-=======
-    info: "filters";
->>>>>>> 796a9ff (feat(115): get command)
-} & {body: response_body_71_0};
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-
-export type parameters_72 = {
-<<<<<<< HEAD
-<<<<<<< HEAD
+export type parameters_74 = {
     params: {
         productSheetId: string;
     };
 }
 
-export type response_72_0 = {
+export type response_74_0 = {
     code: 404;
     ok: false;
     info: "fullProductSheet.notfound";
 } & {body: undefined};
 
-export type response_body_72_1 = {
+export type response_body_74_1 = {
     id: string;
     name: string;
     price: number;
     shortDescription: string;
     description: string;
-    available?: string | undefined;
     quantity: number;
     categories: string[];
     images: string[];
@@ -7088,130 +3353,15 @@ export type response_body_72_1 = {
     };
 }
 
-export type response_72_1 = {
+export type response_74_1 = {
     code: 200;
     ok: true;
     info: "fullProductSheet";
-} & {body: response_body_72_1};
-
-export type parameters_73 = {
-    query?: ({
-        available?: ("true" | "false") | undefined;
-        page?: number;
-        take?: number;
-    } & {
-        color?: (string | string[]) | undefined;
-        size?: string | undefined;
-        diameter?: string | undefined;
-        target?: string | undefined;
-        accessory?: ("true" | "false") | undefined;
-        material?: (string | string[]) | undefined;
-        stimulation?: (string | string[]) | undefined;
-        price?: [
-            number,
-            number
-        ] | undefined;
-    }) & {
-        search?: string | undefined;
-        searchByRegex?: string | undefined;
-        categoryName?: string | undefined;
-    };
-}
-
-export type response_73_0 = {
-    code: 404;
-    ok: false;
-    info: "category.notfound";
-} & {body: undefined};
-
-export type response_73_1 = {
-    code: 403;
-    ok: false;
-    info: "category.disabled";
-} & {body: undefined};
-
-export type response_body_73_2 = {
-    id: string;
-    name: string;
-    price: number;
-    shortDescription: string;
-    description: string;
-    available?: string | undefined;
-    quantity: number;
-    categories: string[];
-    images: string[];
-    organization: {
-        id: string;
-        name: string;
-        label?: string | undefined;
-        logoUrl?: string | undefined;
-    };
-    facets: {
-        ACCESSORY?: string | undefined;
-        COLOR?: string | undefined;
-        DIAMETER?: string | undefined;
-        MATERIAL?: string | undefined;
-        SIZE?: string | undefined;
-        STIMULATION?: string | undefined;
-        TARGET?: string | undefined;
-    };
-}[]
-
-export type response_73_2 = {
-    code: 200;
-    ok: true;
-    info: "fullProductSheets";
-} & {body: response_body_73_2};
-=======
-=======
-} & {body: response_body_73_0};
-
-export type parameters_74 = {
->>>>>>> 63fe2d6 (feat(115): make bundle)
-    query?: ({} & {
-        color?: (string | string[]) | undefined;
-        size?: string | undefined;
-        diameter?: string | undefined;
-        target?: string | undefined;
-        accessory?: ("true" | "false") | undefined;
-        material?: (string | string[]) | undefined;
-        stimulation?: (string | string[]) | undefined;
-        price?: [
-            number,
-            number
-        ] | undefined;
-    }) & {
-        search?: string | undefined;
-        searchByRegex?: string | undefined;
-        categoryName?: string | undefined;
-    };
-}
-
-<<<<<<< HEAD
-export type response_body_72_0 = string
-
-export type response_72_0 = {
-    code: 200;
-    ok: true;
-    info: "fullProductSheetCount";
-} & {body: response_body_72_0};
->>>>>>> 796a9ff (feat(115): get command)
-
-export type parameters_73 = {
-=======
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-export type response_body_74_0 = string
-
-export type response_74_0 = {
-    code: 200;
-    ok: true;
-    info: "fullProductSheetCount";
-} & {body: response_body_74_0};
+} & {body: response_body_74_1};
 
 export type parameters_75 = {
->>>>>>> 63fe2d6 (feat(115): make bundle)
     query?: ({
+        available?: ("true" | "false") | undefined;
         page?: number;
         take?: number;
     } & {
@@ -7278,48 +3428,32 @@ export type response_75_2 = {
 } & {body: response_body_75_2};
 
 export type parameters_76 = {
-    params: {
-        productSheetId: string;
+    query?: ({} & {
+        color?: (string | string[]) | undefined;
+        size?: string | undefined;
+        diameter?: string | undefined;
+        target?: string | undefined;
+        accessory?: ("true" | "false") | undefined;
+        material?: (string | string[]) | undefined;
+        stimulation?: (string | string[]) | undefined;
+        price?: [
+            number,
+            number
+        ] | undefined;
+    }) & {
+        search?: string | undefined;
+        searchByRegex?: string | undefined;
+        categoryName?: string | undefined;
     };
 }
+
+export type response_body_76_0 = string
 
 export type response_76_0 = {
-    code: 404;
-    ok: false;
-    info: "fullProductSheet.notfound";
-} & {body: undefined};
-
-export type response_body_76_1 = {
-    id: string;
-    name: string;
-    price: number;
-    shortDescription: string;
-    description: string;
-    quantity: number;
-    categories: string[];
-    images: string[];
-    organization: {
-        id: string;
-        name: string;
-        label?: string | undefined;
-        logoUrl?: string | undefined;
-    };
-    facets: {
-        ACCESSORY?: string | undefined;
-        COLOR?: string | undefined;
-        DIAMETER?: string | undefined;
-        MATERIAL?: string | undefined;
-        SIZE?: string | undefined;
-        STIMULATION?: string | undefined;
-        TARGET?: string | undefined;
-    };
-}
-
-export type response_76_1 = {
     code: 200;
     ok: true;
-    info: "fullProductSheet";
-} & {body: response_body_76_1};
+    info: "fullProductSheetCount";
+} & {body: response_body_76_0};
 
 export type request_body_77 = {
     lastname: string;
@@ -7410,73 +3544,6 @@ export type GetResponseByCode<
 >;
 
 export type DefEnrichedDuplojsTo = {
-<<<<<<< HEAD
-	path: "/category/{categoryName}/product-sheets",
-	method: "GET",
-	body: unknown,
-	parameters: parameters_0,
-	response: response_0_0
-		| response_0_1,
-} | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/entry/admin-panel*",
-=======
-	path: "/geocoder",
->>>>>>> 5cabb00 (feat(115): refacto product)
-	method: "GET",
-	body: unknown,
-	parameters: parameters_2,
-	response: response_2_0,
-} | {
-<<<<<<< HEAD
-	path: "/entry/content-panel*",
-	method: "GET",
-=======
-	path: "/stripe-webhook/checkout",
-	method: "POST",
->>>>>>> 5cabb00 (feat(115): refacto product)
-	body: unknown,
-	parameters: undefined,
-	response: response_3_0
-		| response_3_1
-		| response_3_2
-		| response_3_3,
-} | {
-<<<<<<< HEAD
-	path: "/entry/organization-panel/{organizationId}/manage-user" | "/entry/organization-panel/{organizationId}/manage",
-=======
-=======
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-	path: "/entry/admin-panel*",
->>>>>>> 5cabb00 (feat(115): refacto product)
-	method: "GET",
-	body: unknown,
-	parameters: undefined,
-<<<<<<< HEAD
-	response: response_4_0
-		| response_4_1
-		| response_4_2
-<<<<<<< HEAD
-		| response_4_3
-		| response_4_4,
-} | {
-	path: "/entry/organization-panel/{organizationId}/warehouses" | "/entry/organization-panel/{organizationId}/create-warehouse" | "/entry/organization-panel/{organizationId}/edited-warehouse/{warehouseId}",
-=======
-		| response_4_3,
-=======
-	response: response_2_0
-		| response_2_1
-		| response_2_2
-		| response_2_3,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-} | {
-	path: "/entry/content-panel*",
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-=======
->>>>>>> cf3a372 (feat(115): commande table)
 	path: "/categories",
 	method: "GET",
 	body: unknown,
@@ -7499,12 +3566,7 @@ export type DefEnrichedDuplojsTo = {
 		| response_2_2
 		| response_2_3,
 } | {
-<<<<<<< HEAD
-	path: "/entry/admin-panel*",
->>>>>>> 796a9ff (feat(115): get command)
-=======
 	path: "/entry/content-panel*",
->>>>>>> 63fe2d6 (feat(115): make bundle)
 	method: "GET",
 	body: unknown,
 	parameters: undefined,
@@ -7534,19 +3596,7 @@ export type DefEnrichedDuplojsTo = {
 		| response_5_4
 		| response_5_5,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/entry/organization-panel/{organizationId}/product-sheets" | "/entry/organization-panel/{organizationId}/edit-product-sheet/{productSheetId}" | "/entry/organization-panel/{organizationId}/create-product-sheet",
-=======
-	path: "/entry/organization-panel/{organizationId}/manage-user" | "/entry/organization-panel/{organizationId}/manage",
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	path: "/entry/organization-panel/{organizationId}/product-sheets" | "/entry/organization-panel/{organizationId}/edit-product-sheet/{productSheetId}" | "/entry/organization-panel/{organizationId}/create-product-sheet",
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
 	path: "/organization-panel/{organizationId}/products" | "/organization-panel/{organizationId}/commands",
->>>>>>> 63fe2d6 (feat(115): make bundle)
 	method: "GET",
 	body: unknown,
 	parameters: parameters_6,
@@ -7554,163 +3604,41 @@ export type DefEnrichedDuplojsTo = {
 		| response_6_1
 		| response_6_2
 		| response_6_3
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-		| response_6_4
-		| response_6_5,
-} | {
-<<<<<<< HEAD
-	path: "/entry/organization-panel/{organizationId}*",
-=======
-		| response_6_4,
-} | {
-	path: "/entry/organization-panel/{organizationId}/warehouses" | "/entry/organization-panel/{organizationId}/create-warehouse" | "/entry/organization-panel/{organizationId}/edited-warehouse/{warehouseId}",
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-		| response_6_4
-		| response_6_5,
-} | {
-	path: "/entry/organization-panel/{organizationId}*",
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-	path: "/organization-panel/{organizationId}/products" | "/organization-panel/{organizationId}/commands",
->>>>>>> 796a9ff (feat(115): get command)
-=======
 		| response_6_4,
 } | {
 	path: "/entry/organization-panel/{organizationId}*",
->>>>>>> 63fe2d6 (feat(115): make bundle)
 	method: "GET",
 	body: unknown,
 	parameters: parameters_7,
 	response: response_7_0
 		| response_7_1
 		| response_7_2
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 		| response_7_3,
-=======
-		| response_7_3
-		| response_7_4
-		| response_7_5,
-} | {
-	path: "/entry/organization-panel/{organizationId}/product-sheets" | "/entry/organization-panel/{organizationId}/edit-product-sheet/{productSheetId}" | "/entry/organization-panel/{organizationId}/create-product-sheet",
-=======
-		| response_7_3
-		| response_7_4,
-} | {
-	path: "/entry/organization-panel/{organizationId}*",
->>>>>>> 796a9ff (feat(115): get command)
-	method: "GET",
-	body: unknown,
-	parameters: parameters_8,
-	response: response_8_0
-		| response_8_1
-		| response_8_2
-<<<<<<< HEAD
-		| response_8_3
-		| response_8_4
-		| response_8_5,
-} | {
-	path: "/entry/organization-panel/{organizationId}*",
-	method: "GET",
-	body: unknown,
-	parameters: parameters_9,
-	response: response_9_0
-		| response_9_1
-		| response_9_2
-		| response_9_3,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-		| response_7_3,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-		| response_8_3,
->>>>>>> 796a9ff (feat(115): get command)
-=======
-		| response_7_3,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 } | {
 	path: "/entry/login" | "/entry/register",
 	method: "GET",
 	body: unknown,
 	parameters: undefined,
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 	response: response_8_0,
-=======
-	response: response_10_0,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	response: response_8_0,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-	response: response_9_0,
->>>>>>> 796a9ff (feat(115): get command)
-=======
-	response: response_8_0,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 } | {
 	path: "/entry/edit-profile" | "/entry/my-organizations" | "/entry/order",
 	method: "GET",
 	body: unknown,
 	parameters: undefined,
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 	response: response_9_0
 		| response_9_1
 		| response_9_2,
-=======
-	response: response_11_0
-		| response_11_1
-		| response_11_2,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	response: response_9_0
-		| response_9_1
-		| response_9_2,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-	response: response_10_0
-		| response_10_1
-		| response_10_2,
->>>>>>> 796a9ff (feat(115): get command)
-=======
-	response: response_9_0
-		| response_9_1
-		| response_9_2,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 } | {
 	path: "/entry*",
 	method: "GET",
 	body: unknown,
 	parameters: undefined,
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
 	response: response_10_0,
 } | {
 	path: "/geocoder",
 	method: "GET",
 	body: unknown,
 	parameters: parameters_11,
-<<<<<<< HEAD
-=======
->>>>>>> 796a9ff (feat(115): get command)
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
 	response: response_11_0,
 } | {
 	path: "/stripe-webhook/checkout",
@@ -7721,12 +3649,6 @@ export type DefEnrichedDuplojsTo = {
 		| response_12_1
 		| response_12_2
 		| response_12_3,
-<<<<<<< HEAD
-=======
-	response: response_12_0,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 } | {
 	path: "/navigation-bar",
 	method: "GET",
@@ -7752,51 +3674,20 @@ export type DefEnrichedDuplojsTo = {
 		| response_15_3
 		| response_15_4,
 } | {
-<<<<<<< HEAD
-	path: "/register",
+	path: "/article",
 	method: "POST",
-	body: request_body_15,
-	parameters: undefined,
-	response: response_15_0
-		| response_15_1
-		| response_15_2
-		| response_15_3
-		| response_15_4,
-} | {
-	path: "/cart",
-	method: "GET",
-	body: unknown,
+	body: request_body_16,
 	parameters: undefined,
 	response: response_16_0
 		| response_16_1
-		| response_16_2,
+		| response_16_2
+		| response_16_3
+		| response_16_4
+		| response_16_5
+		| response_16_6,
 } | {
-<<<<<<< HEAD
-=======
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-	path: "/cart",
-	method: "GET",
-	body: unknown,
-	parameters: undefined,
-	response: response_16_0
-		| response_16_1
-		| response_16_2,
-} | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/article/{productSheetId}",
-=======
-	path: "/image-product-sheet/{imageProductSheetId}",
->>>>>>> 5cabb00 (feat(115): refacto product)
-	method: "DELETE",
-=======
-	path: "/organization/{organizationId}/user",
-	method: "GET",
->>>>>>> 796a9ff (feat(115): get command)
-=======
 	path: "/article/{productSheetId}",
 	method: "DELETE",
->>>>>>> cf3a372 (feat(115): commande table)
 	body: unknown,
 	parameters: parameters_17,
 	response: response_17_0
@@ -7815,15 +3706,13 @@ export type DefEnrichedDuplojsTo = {
 		| response_18_4
 		| response_18_5,
 } | {
-	path: "/retry-command",
-	method: "POST",
-	body: request_body_19,
+	path: "/cart",
+	method: "GET",
+	body: unknown,
 	parameters: undefined,
 	response: response_19_0
 		| response_19_1
-		| response_19_2
-		| response_19_3
-		| response_19_4,
+		| response_19_2,
 } | {
 	path: "/organization/{organizationId}/user",
 	method: "GET",
@@ -7834,117 +3723,46 @@ export type DefEnrichedDuplojsTo = {
 		| response_20_2
 		| response_20_3,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/user/organizations",
-	method: "GET",
-	body: unknown,
-=======
-	path: "/organization/{organizationId}/user/{userId}",
-<<<<<<< HEAD
-	method: "PATCH",
-	body: request_body_21,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	method: "DELETE",
-	body: unknown,
->>>>>>> cf3a372 (feat(115): commande table)
-=======
 	path: "/organization/{organizationId}/user",
 	method: "POST",
 	body: request_body_21,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 	parameters: parameters_21,
 	response: response_21_0
 		| response_21_1
 		| response_21_2
-<<<<<<< HEAD
-		| response_21_3,
-} | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/user",
-	method: "GET",
-=======
-	path: "/organization/{organizationId}/user/{userId}",
-	method: "DELETE",
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	path: "/user/organizations",
-	method: "GET",
->>>>>>> cf3a372 (feat(115): commande table)
-	body: unknown,
-	parameters: undefined,
-	response: response_22_0
-		| response_22_1
-		| response_22_2
-<<<<<<< HEAD
-=======
 		| response_21_3
 		| response_21_4
 		| response_21_5
 		| response_21_6
 		| response_21_7,
 } | {
-	path: "/organization/{organizationId}/user/{userId}",
-	method: "PATCH",
+	path: "/retry-command",
+	method: "POST",
 	body: request_body_22,
-	parameters: parameters_22,
+	parameters: undefined,
 	response: response_22_0
 		| response_22_1
 		| response_22_2
->>>>>>> 63fe2d6 (feat(115): make bundle)
 		| response_22_3
-		| response_22_4
-		| response_22_5
-		| response_22_6,
+		| response_22_4,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/user",
-	method: "PATCH",
-	body: request_body_23,
-	parameters: undefined,
-=======
 	path: "/user/organizations",
 	method: "GET",
 	body: unknown,
 	parameters: parameters_23,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	path: "/retry-command",
-	method: "POST",
-	body: request_body_23,
-	parameters: undefined,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 	response: response_23_0
 		| response_23_1
 		| response_23_2
-		| response_23_3
-		| response_23_4,
-=======
-		| response_22_3,
->>>>>>> cf3a372 (feat(115): commande table)
+		| response_23_3,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 	path: "/organization/{organizationId}/user/{userId}",
 	method: "PATCH",
 	body: request_body_24,
 	parameters: parameters_24,
-=======
-	path: "/retry-command",
-	method: "POST",
-	body: request_body_24,
-	parameters: undefined,
->>>>>>> 5cabb00 (feat(115): refacto product)
 	response: response_24_0
 		| response_24_1
 		| response_24_2
 		| response_24_3
-<<<<<<< HEAD
 		| response_24_4
 		| response_24_5
 		| response_24_6,
@@ -7953,57 +3771,6 @@ export type DefEnrichedDuplojsTo = {
 	method: "DELETE",
 	body: unknown,
 	parameters: parameters_25,
-=======
-		| response_24_4,
-=======
-	path: "/user/organizations",
-=======
-	path: "/user",
->>>>>>> 796a9ff (feat(115): get command)
-	method: "GET",
-=======
-	path: "/organization/{organizationId}/user/{userId}",
-	method: "DELETE",
->>>>>>> 63fe2d6 (feat(115): make bundle)
-	body: unknown,
-	parameters: parameters_23,
-	response: response_23_0
-		| response_23_1
-		| response_23_2
-		| response_23_3
-		| response_23_4
-		| response_23_5
-		| response_23_6,
-} | {
-	path: "/user/organizations",
-	method: "GET",
-	body: unknown,
-	parameters: parameters_24,
-	response: response_24_0
-		| response_24_1
-		| response_24_2
-		| response_24_3,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-} | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/user",
-	method: "PATCH",
-	body: request_body_25,
-	parameters: undefined,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	path: "/organization/{organizationId}/user",
-	method: "GET",
-	body: unknown,
-	parameters: parameters_25,
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-	path: "/user",
-	method: "GET",
-	body: unknown,
-	parameters: undefined,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 	response: response_25_0
 		| response_25_1
 		| response_25_2
@@ -8013,532 +3780,172 @@ export type DefEnrichedDuplojsTo = {
 		| response_25_6,
 } | {
 	path: "/user",
-	method: "PATCH",
-	body: request_body_26,
+	method: "GET",
+	body: unknown,
 	parameters: undefined,
 	response: response_26_0
 		| response_26_1
 		| response_26_2
 		| response_26_3,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-	path: "/category",
-	method: "POST",
-	body: request_body_27,
-	parameters: undefined,
-<<<<<<< HEAD
-=======
-	path: "/product-sheet/{productSheetId}/categories",
-	method: "GET",
-	body: unknown,
-	parameters: parameters_27,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-	path: "/article/{productSheetId}",
-	method: "DELETE",
-	body: unknown,
-=======
-	path: "/category/{categoryName}",
+	path: "/user",
 	method: "PATCH",
 	body: request_body_27,
->>>>>>> cf3a372 (feat(115): commande table)
-	parameters: parameters_27,
->>>>>>> 796a9ff (feat(115): get command)
+	parameters: undefined,
 	response: response_27_0
 		| response_27_1
 		| response_27_2
-		| response_27_3
-		| response_27_4
-		| response_27_5,
+		| response_27_3,
 } | {
-	path: "/category",
-	method: "POST",
+	path: "/category/{categoryName}",
+	method: "PATCH",
 	body: request_body_28,
-	parameters: undefined,
+	parameters: parameters_28,
 	response: response_28_0
 		| response_28_1
 		| response_28_2
 		| response_28_3
-		| response_28_4,
+		| response_28_4
+		| response_28_5,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/organization",
+	path: "/category",
 	method: "POST",
 	body: request_body_29,
 	parameters: undefined,
-=======
-	path: "/product-sheet/{productSheetId}/category/{categoryName}",
-	method: "DELETE",
-=======
-	path: "/category/{categoryName}/image",
-	method: "PUT",
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-	body: unknown,
-=======
-	path: "/organization/{organizationId}@admin",
-	method: "PATCH",
-	body: request_body_29,
->>>>>>> 796a9ff (feat(115): get command)
-=======
-	path: "/category/{categoryName}/image",
-	method: "PUT",
-	body: unknown,
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-	path: "/organization/{organizationId}@admin",
-	method: "PATCH",
-	body: request_body_29,
->>>>>>> 63fe2d6 (feat(115): make bundle)
-	parameters: parameters_29,
->>>>>>> 5cabb00 (feat(115): refacto product)
 	response: response_29_0
 		| response_29_1
 		| response_29_2
 		| response_29_3
 		| response_29_4,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/category/{categoryName}/image",
-	method: "PUT",
-	body: unknown,
-=======
-	path: "/product-sheet/{productSheetId}/facet",
-	method: "POST",
-=======
-	path: "/category/{categoryName}",
-	method: "PATCH",
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-	body: request_body_30,
->>>>>>> 5cabb00 (feat(115): refacto product)
-	parameters: parameters_30,
-=======
-	path: "/category",
-	method: "POST",
-	body: request_body_30,
-	parameters: undefined,
->>>>>>> 796a9ff (feat(115): get command)
-=======
 	path: "/organization/{organizationId}@admin",
 	method: "PATCH",
 	body: request_body_30,
 	parameters: parameters_30,
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-	path: "/organization",
-	method: "POST",
-	body: request_body_30,
-	parameters: undefined,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 	response: response_30_0
 		| response_30_1
 		| response_30_2
 		| response_30_3
-		| response_30_4
-		| response_30_5
-		| response_30_6,
+		| response_30_4,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/parent-categories",
-=======
-	path: "/product-sheet/{productSheetId}/facets",
->>>>>>> 5cabb00 (feat(115): refacto product)
-	method: "GET",
-	body: unknown,
-	parameters: parameters_31,
-=======
-	path: "/organization",
-=======
-	path: "/navigation-item",
->>>>>>> 63fe2d6 (feat(115): make bundle)
-	method: "POST",
-	body: request_body_31,
-	parameters: undefined,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-	response: response_31_0
-		| response_31_1
-		| response_31_2
-<<<<<<< HEAD
-		| response_31_3,
-} | {
-	path: "/organization/{organizationId}@admin",
-	method: "PATCH",
-	body: request_body_32,
-=======
-		| response_31_3
-		| response_31_4,
-} | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/product-sheet/{productSheetId}",
-	method: "GET",
-	body: unknown,
->>>>>>> 5cabb00 (feat(115): refacto product)
-	parameters: parameters_32,
-=======
-	path: "/navigation-item",
-	method: "POST",
-	body: request_body_32,
-	parameters: undefined,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
 	path: "/category/{categoryName}/image",
 	method: "PUT",
 	body: unknown,
-	parameters: parameters_32,
->>>>>>> 63fe2d6 (feat(115): make bundle)
+	parameters: parameters_31,
+	response: response_31_0
+		| response_31_1
+		| response_31_2
+		| response_31_3
+		| response_31_4
+		| response_31_5,
+} | {
+	path: "/navigation-item",
+	method: "POST",
+	body: request_body_32,
+	parameters: undefined,
 	response: response_32_0
 		| response_32_1
 		| response_32_2
 		| response_32_3
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 		| response_32_4,
-} | {
-	path: "/navigation-item",
-	method: "POST",
-=======
-		| response_32_4
-		| response_32_5,
-} | {
-	path: "/product-sheet/{productSheetId}",
-	method: "PATCH",
->>>>>>> 5cabb00 (feat(115): refacto product)
-	body: request_body_33,
-=======
-		| response_32_4,
-=======
-		| response_32_4
-		| response_32_5,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 } | {
 	path: "/navigation-items",
 	method: "GET",
 	body: unknown,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 	parameters: undefined,
 	response: response_33_0
 		| response_33_1
 		| response_33_2
-<<<<<<< HEAD
-		| response_33_3
-<<<<<<< HEAD
-		| response_33_4,
-} | {
-	path: "/parent-category",
-	method: "POST",
-	body: request_body_34,
-	parameters: undefined,
-=======
-		| response_33_4
-		| response_33_5,
-=======
 		| response_33_3,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 } | {
-	path: "/navigation-item/{navigationItemId}",
-	method: "PATCH",
-	body: request_body_34,
+	path: "/parent-categories",
+	method: "GET",
+	body: unknown,
 	parameters: parameters_34,
->>>>>>> 5cabb00 (feat(115): refacto product)
 	response: response_34_0
 		| response_34_1
 		| response_34_2
-		| response_34_3
-		| response_34_4
-		| response_34_5
-		| response_34_6,
+		| response_34_3,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/navigation-items",
-	method: "GET",
-	body: unknown,
-	parameters: undefined,
-=======
-	path: "/product-sheet/{productSheetId}/facet/{facetType}",
-=======
-	path: "/navigation-item/{navigationItemId}",
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-	method: "DELETE",
-	body: unknown,
-=======
-	path: "/parent-category/{parentCategoryName}/category",
+	path: "/organization",
 	method: "POST",
 	body: request_body_35,
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-	path: "/navigation-item/{navigationItemId}",
-	method: "DELETE",
-	body: unknown,
->>>>>>> 63fe2d6 (feat(115): make bundle)
-	parameters: parameters_35,
->>>>>>> 5cabb00 (feat(115): refacto product)
+	parameters: undefined,
 	response: response_35_0
 		| response_35_1
 		| response_35_2
-<<<<<<< HEAD
-		| response_35_3,
-} | {
-<<<<<<< HEAD
-	path: "/parent-category/{parentCategoryName}",
-	method: "PATCH",
-	body: request_body_36,
-=======
-	path: "/product-sheet/{productSheetId}/image",
-	method: "POST",
-=======
 		| response_35_3
-		| response_35_4,
+		| response_35_4
+		| response_35_5
+		| response_35_6,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/parent-category/{parentCategoryName}/categories",
-	method: "GET",
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-	body: unknown,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
 	path: "/navigation-item/{navigationItemId}",
 	method: "PATCH",
 	body: request_body_36,
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-	path: "/parent-category/{parentCategoryName}/categories",
-	method: "GET",
-	body: unknown,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 	parameters: parameters_36,
 	response: response_36_0
 		| response_36_1
 		| response_36_2
 		| response_36_3
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-		| response_36_4
-<<<<<<< HEAD
-		| response_36_5,
-} | {
-	path: "/parent-category/{parentCategoryName}/categories",
-=======
-		| response_36_5
-		| response_36_6
-		| response_36_7,
-} | {
-	path: "/product-sheet/{productSheetId}/images",
->>>>>>> 5cabb00 (feat(115): refacto product)
-	method: "GET",
-=======
-		| response_36_4,
-=======
 		| response_36_4
 		| response_36_5
 		| response_36_6,
->>>>>>> cf3a372 (feat(115): commande table)
 } | {
 	path: "/navigation-item/{navigationItemId}",
 	method: "DELETE",
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 	body: unknown,
-=======
-		| response_36_4,
-} | {
-	path: "/parent-category/{parentCategoryName}/category",
-	method: "POST",
-	body: request_body_37,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 	parameters: parameters_37,
 	response: response_37_0
 		| response_37_1
 		| response_37_2
 		| response_37_3
-		| response_37_4
-		| response_37_5
-		| response_37_6,
+		| response_37_4,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/parent-category/{parentCategoryName}/category",
-=======
-	path: "/product-sheet/{productSheetId}/product",
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	path: "/parent-category/{parentCategoryName}/category",
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
+	path: "/parent-category",
 	method: "POST",
 	body: request_body_38,
-=======
-	path: "/parent-category/{parentCategoryName}/category/{categoryName}",
-	method: "DELETE",
-	body: unknown,
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-	path: "/parent-category/{parentCategoryName}",
-	method: "PATCH",
-	body: request_body_38,
->>>>>>> 63fe2d6 (feat(115): make bundle)
-	parameters: parameters_38,
+	parameters: undefined,
 	response: response_38_0
 		| response_38_1
 		| response_38_2
 		| response_38_3
-		| response_38_4
-		| response_38_5,
+		| response_38_4,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/parent-category/{parentCategoryName}/category/{categoryName}",
-	method: "DELETE",
+	path: "/parent-category/{parentCategoryName}/categories",
+	method: "GET",
 	body: unknown,
-=======
-	path: "/product/{sku}",
-=======
-	path: "/parent-category/{parentCategoryName}",
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-	method: "PATCH",
-	body: request_body_39,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	path: "/parent-category/{parentCategoryName}/category/{categoryName}",
-	method: "DELETE",
-	body: unknown,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 	parameters: parameters_39,
 	response: response_39_0
 		| response_39_1
 		| response_39_2
 		| response_39_3
-<<<<<<< HEAD
-		| response_39_4
-		| response_39_5,
+		| response_39_4,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/organizations",
-=======
-	path: "/parent-category",
-	method: "POST",
-	body: request_body_40,
-	parameters: undefined,
+	path: "/parent-category/{parentCategoryName}/category/{categoryName}",
+	method: "DELETE",
+	body: unknown,
+	parameters: parameters_40,
 	response: response_40_0
 		| response_40_1
 		| response_40_2
 		| response_40_3
 		| response_40_4,
-=======
-		| response_39_4,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 } | {
-<<<<<<< HEAD
-	path: "/parent-categories",
->>>>>>> 796a9ff (feat(115): get command)
-=======
-	path: "/organizations",
->>>>>>> cf3a372 (feat(115): commande table)
-	method: "GET",
-	body: unknown,
-	parameters: parameters_40,
-=======
-	path: "/category",
-=======
-	path: "/parent-category",
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
+	path: "/parent-category/{parentCategoryName}/category",
 	method: "POST",
-	body: request_body_40,
-	parameters: undefined,
->>>>>>> 5cabb00 (feat(115): refacto product)
-	response: response_40_0
-		| response_40_1
-		| response_40_2
-		| response_40_3,
-} | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/users",
-	method: "GET",
-	body: unknown,
-=======
-	path: "/category/{categoryName}",
-	method: "PATCH",
 	body: request_body_41,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	path: "/organizations",
-	method: "GET",
-	body: unknown,
-<<<<<<< HEAD
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 	parameters: parameters_41,
-=======
-	parameters: parameters_40,
-	response: response_40_0
-		| response_40_1
-		| response_40_2
-		| response_40_3,
-} | {
-	path: "/parent-category",
-	method: "POST",
-	body: request_body_41,
-	parameters: undefined,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 	response: response_41_0
 		| response_41_1
 		| response_41_2
 		| response_41_3
-		| response_41_4,
+		| response_41_4
+		| response_41_5
+		| response_41_6,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/navigation-item/{navigationItemId}",
+	path: "/parent-category/{parentCategoryName}",
 	method: "PATCH",
 	body: request_body_42,
-=======
-	path: "/category/{categoryName}/image",
-	method: "PUT",
-=======
-	path: "/parent-categories",
-=======
-	path: "/organizations",
->>>>>>> 796a9ff (feat(115): get command)
-=======
-	path: "/parent-categories",
->>>>>>> cf3a372 (feat(115): commande table)
-	method: "GET",
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-	body: unknown,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	path: "/user/{userId}@admin",
-	method: "PATCH",
-	body: request_body_42,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 	parameters: parameters_42,
 	response: response_42_0
 		| response_42_1
@@ -8547,134 +3954,38 @@ export type DefEnrichedDuplojsTo = {
 		| response_42_4
 		| response_42_5,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/navigation-item/{navigationItemId}",
-	method: "DELETE",
-	body: unknown,
-	parameters: parameters_43,
-=======
-	path: "/organization",
-	method: "POST",
-	body: request_body_43,
-	parameters: undefined,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	path: "/organization/{organizationId}/logo",
-	method: "PUT",
-	body: unknown,
-=======
-	path: "/user/{userId}@admin",
-	method: "PATCH",
-	body: request_body_43,
->>>>>>> 796a9ff (feat(115): get command)
-=======
-	path: "/parent-categories",
+	path: "/organizations",
 	method: "GET",
 	body: unknown,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 	parameters: parameters_43,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 	response: response_43_0
 		| response_43_1
 		| response_43_2
 		| response_43_3,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 	path: "/user/{userId}@admin",
-=======
-	path: "/organization/{organizationId}@admin",
->>>>>>> 5cabb00 (feat(115): refacto product)
 	method: "PATCH",
-=======
-	path: "/organization/{organizationId}/product-sheet",
-	method: "POST",
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 	body: request_body_44,
-=======
-	path: "/users",
-	method: "GET",
-	body: unknown,
->>>>>>> 796a9ff (feat(115): get command)
 	parameters: parameters_44,
 	response: response_44_0
 		| response_44_1
 		| response_44_2
-		| response_44_3,
+		| response_44_3
+		| response_44_4
+		| response_44_5,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/product/{sku}",
-	method: "PATCH",
-	body: request_body_45,
-=======
-	path: "/organization/{organizationId}/commands",
+	path: "/users",
 	method: "GET",
 	body: unknown,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 	parameters: parameters_45,
-=======
-	path: "/navigation-item",
-	method: "POST",
-	body: request_body_45,
-	parameters: undefined,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	path: "/organization/{organizationId}/product-sheets",
-	method: "GET",
-=======
-	path: "/organization/{organizationId}/logo",
-	method: "PUT",
->>>>>>> 796a9ff (feat(115): get command)
-	body: unknown,
-=======
-	path: "/product/{sku}",
-	method: "PATCH",
-	body: request_body_45,
->>>>>>> cf3a372 (feat(115): commande table)
-	parameters: parameters_45,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 	response: response_45_0
 		| response_45_1
 		| response_45_2
-		| response_45_3
-		| response_45_4
-		| response_45_5
-		| response_45_6,
+		| response_45_3,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/product-sheet/{productSheetId}/categories",
-=======
-	path: "/navigation-items",
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	path: "/organization/{organizationId}",
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-	path: "/organization/{organizationId}/product-sheets",
->>>>>>> 796a9ff (feat(115): get command)
+	path: "/organization/{organizationId}/commands",
 	method: "GET",
-=======
-	path: "/product-sheet/{productSheetId}/category/{categoryName}",
-	method: "DELETE",
->>>>>>> cf3a372 (feat(115): commande table)
 	body: unknown,
-=======
-	path: "/organization/{organizationId}/product-sheet",
-	method: "POST",
-	body: request_body_46,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 	parameters: parameters_46,
 	response: response_46_0
 		| response_46_1
@@ -8684,299 +3995,97 @@ export type DefEnrichedDuplojsTo = {
 		| response_46_5
 		| response_46_6,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/product-sheet/{productSheetId}/category",
-	method: "POST",
-	body: request_body_47,
-=======
-	path: "/parent-category/{parentCategoryName}/category/{categoryName}",
-	method: "DELETE",
-	body: unknown,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	path: "/organization/{organizationId}",
-	method: "PATCH",
-=======
-	path: "/organization/{organizationId}/product-sheet",
-	method: "POST",
->>>>>>> 796a9ff (feat(115): get command)
-	body: request_body_47,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-	path: "/product-sheet/{productSheetId}/categories",
-	method: "GET",
-=======
 	path: "/organization/{organizationId}/logo",
 	method: "PUT",
->>>>>>> 63fe2d6 (feat(115): make bundle)
 	body: unknown,
->>>>>>> cf3a372 (feat(115): commande table)
 	parameters: parameters_47,
 	response: response_47_0
 		| response_47_1
 		| response_47_2
 		| response_47_3
-<<<<<<< HEAD
-<<<<<<< HEAD
-		| response_47_4
-		| response_47_5
-		| response_47_6
-		| response_47_7,
-} | {
-	path: "/product-sheet/{productSheetId}",
-	method: "GET",
-	body: unknown,
-=======
-		| response_47_4,
-} | {
-	path: "/navigation-item/{navigationItemId}",
-	method: "PATCH",
-	body: request_body_48,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
 		| response_47_4
 		| response_47_5
 		| response_47_6,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/organization/{organizationId}/commands",
-	method: "GET",
-	body: unknown,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-	path: "/product-sheet/{productSheetId}/category",
+	path: "/organization/{organizationId}/commands/{commandId}/make-bundle",
 	method: "POST",
 	body: request_body_48,
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-	path: "/organization/{organizationId}/product-sheets",
-	method: "GET",
-	body: unknown,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 	parameters: parameters_48,
 	response: response_48_0
 		| response_48_1
 		| response_48_2
 		| response_48_3
 		| response_48_4
-		| response_48_5,
+		| response_48_5
+		| response_48_6
+		| response_48_7
+		| response_48_8
+		| response_48_9
+		| response_48_10
+		| response_48_11
+		| response_48_12,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/product-sheet/{productSheetId}",
-	method: "PATCH",
-	body: request_body_49,
-=======
-	path: "/navigation-item/{navigationItemId}",
-	method: "DELETE",
-=======
-	path: "/organization/{organizationId}/users",
-	method: "GET",
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-	body: unknown,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	path: "/organization/{organizationId}/warehouse",
+	path: "/organization/{organizationId}/product-sheet",
 	method: "POST",
 	body: request_body_49,
->>>>>>> 796a9ff (feat(115): get command)
-=======
-	path: "/product-sheet/{productSheetId}",
-=======
-	path: "/organization/{organizationId}/commands/{commandId}/details",
->>>>>>> 63fe2d6 (feat(115): make bundle)
-	method: "GET",
-	body: unknown,
->>>>>>> cf3a372 (feat(115): commande table)
 	parameters: parameters_49,
 	response: response_49_0
 		| response_49_1
 		| response_49_2
 		| response_49_3
-<<<<<<< HEAD
-<<<<<<< HEAD
 		| response_49_4
 		| response_49_5
-		| response_49_6
-		| response_49_7,
+		| response_49_6,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/product-sheet/{productSheetId}/category/{categoryName}",
-	method: "DELETE",
-	body: unknown,
-=======
-		| response_49_4,
-=======
-		| response_49_4
-		| response_49_5,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-} | {
-	path: "/product/{sku}",
-	method: "PATCH",
-	body: request_body_50,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	path: "/organization/{organizationId}/products",
+	path: "/organization/{organizationId}/product-sheets",
 	method: "GET",
 	body: unknown,
->>>>>>> 796a9ff (feat(115): get command)
-=======
-	path: "/product-sheet/{productSheetId}",
-	method: "PATCH",
-=======
-	path: "/organization/{organizationId}/commands/{commandId}/make-bundle",
-	method: "POST",
->>>>>>> 63fe2d6 (feat(115): make bundle)
-	body: request_body_50,
->>>>>>> cf3a372 (feat(115): commande table)
 	parameters: parameters_50,
 	response: response_50_0
 		| response_50_1
 		| response_50_2
 		| response_50_3
 		| response_50_4
-		| response_50_5
-		| response_50_6
-		| response_50_7
-		| response_50_8
-		| response_50_9
-		| response_50_10
-		| response_50_11
-		| response_50_12,
+		| response_50_5,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/product-sheet/{productSheetId}/facet",
-	method: "POST",
-=======
-	path: "/parent-category/{parentCategoryName}",
-	method: "PATCH",
->>>>>>> 5cabb00 (feat(115): refacto product)
-	body: request_body_51,
-=======
-	path: "/organization/{organizationId}/warehouses",
-=======
-	path: "/product-sheet/{productSheetId}/warehouse",
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-	path: "/organization/{organizationId}/users",
->>>>>>> 63fe2d6 (feat(115): make bundle)
+	path: "/organization/{organizationId}/products",
 	method: "GET",
 	body: unknown,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 	parameters: parameters_51,
 	response: response_51_0
 		| response_51_1
 		| response_51_2
 		| response_51_3
 		| response_51_4
-		| response_51_5
-		| response_51_6,
+		| response_51_5,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/product-sheet/{productSheetId}/images",
-=======
-	path: "/organizations",
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	path: "/product-sheet/{productSheetId}/categories",
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-	path: "/organization/{organizationId}",
->>>>>>> 796a9ff (feat(115): get command)
-=======
-	path: "/product-sheet/{productSheetId}/facets",
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-	path: "/organization/{organizationId}",
->>>>>>> 63fe2d6 (feat(115): make bundle)
-	method: "GET",
-	body: unknown,
+	path: "/organization/{organizationId}/warehouse",
+	method: "POST",
+	body: request_body_52,
 	parameters: parameters_52,
 	response: response_52_0
 		| response_52_1
 		| response_52_2
 		| response_52_3
 		| response_52_4
-		| response_52_5,
+		| response_52_5
+		| response_52_6,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/product-sheet/{productSheetId}/product",
-	method: "POST",
-=======
-	path: "/organization/{organizationId}",
-	method: "PATCH",
->>>>>>> 63fe2d6 (feat(115): make bundle)
-	body: request_body_53,
-=======
-	path: "/parent-category/{parentCategoryName}/categories",
+	path: "/organization/{organizationId}/warehouses",
 	method: "GET",
 	body: unknown,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	path: "/organization/{organizationId}/warehouse",
-	method: "POST",
-=======
-	path: "/organization/{organizationId}",
-	method: "PATCH",
->>>>>>> 796a9ff (feat(115): get command)
-=======
-	path: "/product-sheet/{productSheetId}/facet",
-	method: "POST",
->>>>>>> cf3a372 (feat(115): commande table)
-	body: request_body_53,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 	parameters: parameters_53,
 	response: response_53_0
 		| response_53_1
 		| response_53_2
 		| response_53_3
-<<<<<<< HEAD
-<<<<<<< HEAD
-		| response_53_4
-		| response_53_5
-		| response_53_6
-		| response_53_7,
-} | {
-	path: "/product-sheet/{productSheetId}/facet/{facetType}",
-	method: "PATCH",
-=======
-		| response_53_4,
-} | {
-	path: "/parent-category",
-	method: "POST",
->>>>>>> 5cabb00 (feat(115): refacto product)
-	body: request_body_54,
-	parameters: undefined,
-=======
 		| response_53_4
 		| response_53_5,
 } | {
-	path: "/product-sheet/{productSheetId}/categories",
-	method: "GET",
-	body: unknown,
+	path: "/product/{sku}",
+	method: "PATCH",
+	body: request_body_54,
 	parameters: parameters_54,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 	response: response_54_0
 		| response_54_1
 		| response_54_2
@@ -8984,31 +4093,9 @@ export type DefEnrichedDuplojsTo = {
 		| response_54_4
 		| response_54_5,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/product-sheet/{productSheetId}/facet/{facetType}",
-=======
-	path: "/product-sheet/{productSheetId}/category/{categoryName}",
->>>>>>> 63fe2d6 (feat(115): make bundle)
-	method: "DELETE",
-=======
-	path: "/parent-categories",
-=======
-	path: "/product-sheet/{productSheetId}/images",
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-	path: "/product-sheet/{productSheetId}/categories",
->>>>>>> 796a9ff (feat(115): get command)
-	method: "GET",
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	path: "/product-sheet/{productSheetId}/facet/{facetType}",
-	method: "DELETE",
->>>>>>> cf3a372 (feat(115): commande table)
-	body: unknown,
+	path: "/warehouse/{warehouseId}",
+	method: "PATCH",
+	body: request_body_55,
 	parameters: parameters_55,
 	response: response_55_0
 		| response_55_1
@@ -9018,183 +4105,45 @@ export type DefEnrichedDuplojsTo = {
 		| response_55_5
 		| response_55_6,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/product-sheet/{productSheetId}/image",
-	method: "POST",
-	body: unknown,
-=======
-	path: "/user/{userId}@admin",
-	method: "PATCH",
-=======
-	path: "/product-sheet/{productSheetId}/category",
-	method: "POST",
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-	path: "/product/{sku}",
-	method: "PATCH",
->>>>>>> 796a9ff (feat(115): get command)
-	body: request_body_56,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	path: "/product-sheet/{productSheetId}/images",
+	path: "/product-sheet/{productSheetId}/categories",
 	method: "GET",
 	body: unknown,
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-	path: "/product-sheet/{productSheetId}/category",
-	method: "POST",
-	body: request_body_56,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 	parameters: parameters_56,
 	response: response_56_0
 		| response_56_1
 		| response_56_2
 		| response_56_3
 		| response_56_4
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-		| response_56_5
-		| response_56_6
-		| response_56_7,
-} | {
-	path: "/organization/{organizationId}/logo",
-	method: "PUT",
-=======
 		| response_56_5,
 } | {
-	path: "/users",
-	method: "GET",
->>>>>>> 5cabb00 (feat(115): refacto product)
-	body: unknown,
-=======
-		| response_56_5
-		| response_56_6
-		| response_56_7,
-} | {
-	path: "/product-sheet/{productSheetId}/product",
+	path: "/product-sheet/{productSheetId}/category",
 	method: "POST",
 	body: request_body_57,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-		| response_56_5,
-} | {
-<<<<<<< HEAD
-	path: "/product-sheet/{productSheetId}/category/{categoryName}",
-	method: "DELETE",
-	body: unknown,
->>>>>>> 796a9ff (feat(115): get command)
-=======
-	path: "/product-sheet/{productSheetId}/product",
-	method: "POST",
-	body: request_body_57,
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-		| response_56_5
-		| response_56_6
-		| response_56_7,
-} | {
-	path: "/product-sheet/{productSheetId}",
-	method: "GET",
-	body: unknown,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 	parameters: parameters_57,
 	response: response_57_0
 		| response_57_1
 		| response_57_2
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 		| response_57_3
 		| response_57_4
-<<<<<<< HEAD
 		| response_57_5
-		| response_57_6,
-<<<<<<< HEAD
+		| response_57_6
+		| response_57_7,
 } | {
-<<<<<<< HEAD
-	path: "/organization/{organizationId}/product-sheet",
-	method: "POST",
-	body: request_body_58,
-=======
-		| response_57_3,
-=======
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-} | {
-<<<<<<< HEAD
-	path: "/product-sheet/{productSheetId}/warehouse",
-	method: "GET",
+	path: "/product-sheet/{productSheetId}/category/{categoryName}",
+	method: "DELETE",
 	body: unknown,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	path: "/product-sheet/{productSheetId}/category",
-	method: "POST",
-	body: request_body_58,
->>>>>>> 796a9ff (feat(115): get command)
-=======
-	path: "/organization/{organizationId}/logo",
-	method: "PUT",
-	body: unknown,
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-		| response_57_5,
-} | {
-	path: "/product-sheet/{productSheetId}",
-	method: "PATCH",
-	body: request_body_58,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 	parameters: parameters_58,
 	response: response_58_0
 		| response_58_1
 		| response_58_2
 		| response_58_3
 		| response_58_4
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-		| response_58_5,
-} | {
-	path: "/product-sheet/{productSheetId}/facets",
-	method: "GET",
-	body: unknown,
-=======
 		| response_58_5
 		| response_58_6,
 } | {
-	path: "/organization/{organizationId}/product-sheet",
+	path: "/product-sheet/{productSheetId}/facet",
 	method: "POST",
 	body: request_body_59,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-		| response_58_5,
-=======
-		| response_58_5
-<<<<<<< HEAD
-		| response_58_6
-		| response_58_7,
->>>>>>> 796a9ff (feat(115): get command)
-=======
-		| response_58_6,
->>>>>>> cf3a372 (feat(115): commande table)
-} | {
-	path: "/organization/{organizationId}/commands",
-	method: "GET",
-	body: unknown,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-		| response_58_5,
-} | {
-	path: "/organization/{organizationId}/warehouse",
-	method: "POST",
-	body: request_body_59,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 	parameters: parameters_59,
 	response: response_59_0
 		| response_59_1
@@ -9204,70 +4153,21 @@ export type DefEnrichedDuplojsTo = {
 		| response_59_5
 		| response_59_6,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/organization/{organizationId}/product-sheets",
-=======
-	path: "/organization/{organizationId}/users",
->>>>>>> 5cabb00 (feat(115): refacto product)
-	method: "GET",
-=======
-	path: "/product-sheet/{productSheetId}/image",
-	method: "POST",
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-	path: "/organization/{organizationId}/warehouses",
-	method: "GET",
->>>>>>> 63fe2d6 (feat(115): make bundle)
-	body: unknown,
-=======
-	path: "/product-sheet/{productSheetId}",
-<<<<<<< HEAD
+	path: "/product-sheet/{productSheetId}/facet/{facetType}",
 	method: "PATCH",
 	body: request_body_60,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-	method: "GET",
-	body: unknown,
->>>>>>> 796a9ff (feat(115): get command)
 	parameters: parameters_60,
 	response: response_60_0
 		| response_60_1
 		| response_60_2
 		| response_60_3
 		| response_60_4
-		| response_60_5,
+		| response_60_5
+		| response_60_6,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/organization/{organizationId}/products",
-=======
-	path: "/organization/{organizationId}",
->>>>>>> 5cabb00 (feat(115): refacto product)
-	method: "GET",
-=======
-	path: "/product-sheet/{productSheetId}/image",
-	method: "POST",
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-	body: unknown,
-=======
-	path: "/product-sheet/{productSheetId}",
-	method: "PATCH",
-=======
-	path: "/organization/{organizationId}/product-sheet",
-	method: "POST",
->>>>>>> cf3a372 (feat(115): commande table)
-=======
 	path: "/product-sheet/{productSheetId}/facet/{facetType}",
-	method: "PATCH",
->>>>>>> 63fe2d6 (feat(115): make bundle)
-	body: request_body_61,
->>>>>>> 796a9ff (feat(115): get command)
+	method: "DELETE",
+	body: unknown,
 	parameters: parameters_61,
 	response: response_61_0
 		| response_61_1
@@ -9277,77 +4177,20 @@ export type DefEnrichedDuplojsTo = {
 		| response_61_5
 		| response_61_6,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/organization/{organizationId}/warehouses",
-	method: "GET",
-=======
-	path: "/product-sheet/{productSheetId}/facet/{facetType}",
-	method: "DELETE",
->>>>>>> 63fe2d6 (feat(115): make bundle)
-	body: unknown,
-=======
-	path: "/organization/{organizationId}",
-	method: "PATCH",
-=======
-	path: "/product-sheet/{productSheetId}/facet",
-	method: "POST",
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-	body: request_body_62,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
 	path: "/product-sheet/{productSheetId}/facets",
-=======
-	path: "/organization/{organizationId}/products",
->>>>>>> cf3a372 (feat(115): commande table)
 	method: "GET",
 	body: unknown,
->>>>>>> 796a9ff (feat(115): get command)
 	parameters: parameters_62,
 	response: response_62_0
 		| response_62_1
 		| response_62_2
 		| response_62_3
 		| response_62_4
-		| response_62_5
-		| response_62_6,
+		| response_62_5,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/organization/{organizationId}/users",
-	method: "GET",
-	body: unknown,
-=======
-	path: "/organization/{organizationId}/warehouse",
+	path: "/product-sheet/{productSheetId}/image",
 	method: "POST",
-	body: request_body_63,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	path: "/product-sheet/{productSheetId}/facets",
-	method: "GET",
 	body: unknown,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-	path: "/product-sheet/{productSheetId}/facet",
-	method: "POST",
-	body: request_body_63,
->>>>>>> 796a9ff (feat(115): get command)
-=======
-	path: "/organization/{organizationId}/product-sheets",
-	method: "GET",
-	body: unknown,
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-	path: "/product-sheet/{productSheetId}/facet",
-	method: "POST",
-	body: request_body_63,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 	parameters: parameters_63,
 	response: response_63_0
 		| response_63_1
@@ -9355,31 +4198,12 @@ export type DefEnrichedDuplojsTo = {
 		| response_63_3
 		| response_63_4
 		| response_63_5
-		| response_63_6,
+		| response_63_6
+		| response_63_7,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/organization/{organizationId}",
-=======
-	path: "/organization/{organizationId}/product-sheets",
->>>>>>> 5cabb00 (feat(115): refacto product)
+	path: "/product-sheet/{productSheetId}/images",
 	method: "GET",
 	body: unknown,
-=======
-	path: "/product-sheet/{productSheetId}/facet/{facetType}",
-	method: "PATCH",
-	body: request_body_64,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-	path: "/organization/{organizationId}/users",
-=======
-	path: "/product-sheet/{productSheetId}/facets",
->>>>>>> 63fe2d6 (feat(115): make bundle)
-	method: "GET",
-	body: unknown,
->>>>>>> cf3a372 (feat(115): commande table)
 	parameters: parameters_64,
 	response: response_64_0
 		| response_64_1
@@ -9388,94 +4212,31 @@ export type DefEnrichedDuplojsTo = {
 		| response_64_4
 		| response_64_5,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/organization/{organizationId}",
-	method: "PATCH",
-	body: request_body_65,
-=======
-	path: "/organization/{organizationId}/warehouses",
+	path: "/product-sheet/{productSheetId}/warehouse",
 	method: "GET",
-=======
-	path: "/product-sheet/{productSheetId}/facet/{facetType}",
-	method: "DELETE",
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-	path: "/organization/{organizationId}",
-	method: "GET",
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-	path: "/product-sheet/{productSheetId}/image",
-	method: "POST",
->>>>>>> 63fe2d6 (feat(115): make bundle)
 	body: unknown,
->>>>>>> 5cabb00 (feat(115): refacto product)
 	parameters: parameters_65,
 	response: response_65_0
 		| response_65_1
 		| response_65_2
 		| response_65_3
 		| response_65_4
-		| response_65_5
-		| response_65_6
-		| response_65_7,
+		| response_65_5,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/organization/{organizationId}/warehouse",
-	method: "POST",
-	body: request_body_66,
-=======
-	path: "/organization/{organizationId}/products",
+	path: "/product-sheet/{productSheetId}",
 	method: "GET",
 	body: unknown,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	path: "/user/{userId}@admin",
-	method: "PATCH",
-	body: request_body_66,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-	path: "/product-sheet/{productSheetId}/image",
-	method: "POST",
-	body: unknown,
->>>>>>> 796a9ff (feat(115): get command)
-=======
-	path: "/organization/{organizationId}",
-	method: "PATCH",
-	body: request_body_66,
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-	path: "/product-sheet/{productSheetId}/images",
-	method: "GET",
-	body: unknown,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 	parameters: parameters_66,
 	response: response_66_0
 		| response_66_1
 		| response_66_2
 		| response_66_3
 		| response_66_4
-<<<<<<< HEAD
-		| response_66_5
-<<<<<<< HEAD
-		| response_66_6,
-=======
-		| response_66_6
-		| response_66_7,
->>>>>>> 796a9ff (feat(115): get command)
-=======
 		| response_66_5,
->>>>>>> cf3a372 (feat(115): commande table)
 } | {
-	path: "/product-sheet/{productSheetId}/warehouse",
-	method: "GET",
-	body: unknown,
+	path: "/product-sheet/{productSheetId}",
+	method: "PATCH",
+	body: request_body_67,
 	parameters: parameters_67,
 	response: response_67_0
 		| response_67_1
@@ -9484,8 +4245,8 @@ export type DefEnrichedDuplojsTo = {
 		| response_67_4
 		| response_67_5,
 } | {
-	path: "/warehouse/{warehouseId}",
-	method: "PATCH",
+	path: "/product-sheet/{productSheetId}/product",
+	method: "POST",
 	body: request_body_68,
 	parameters: parameters_68,
 	response: response_68_0
@@ -9496,7 +4257,7 @@ export type DefEnrichedDuplojsTo = {
 		| response_68_5
 		| response_68_6,
 } | {
-	path: "/organization/{organizationId}/products",
+	path: "/organization/{organizationId}/commands/{commandId}/details",
 	method: "GET",
 	body: unknown,
 	parameters: parameters_69,
@@ -9505,119 +4266,42 @@ export type DefEnrichedDuplojsTo = {
 		| response_69_2
 		| response_69_3
 		| response_69_4
-		| response_69_5,
+		| response_69_5
+		| response_69_6
+		| response_69_7,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/make-command",
-	method: "POST",
-	body: request_body_69,
-	parameters: undefined,
-	response: response_69_0
-		| response_69_1
-		| response_69_2
-		| response_69_3
-		| response_69_4
-		| response_69_5,
-} | {
-	path: "/full-product-sheets-count",
-<<<<<<< HEAD
+	path: "/organization/{organizationId}",
 	method: "GET",
 	body: unknown,
-	parameters: parameters_70,
-	response: response_70_0,
-} | {
-	path: "/computed-filters",
-=======
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	path: "/computed-filters",
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-	method: "GET",
-	body: unknown,
-	parameters: parameters_70,
-	response: response_70_0,
-=======
-	path: "/article",
-	method: "POST",
-=======
-	path: "/product/{sku}",
-	method: "PATCH",
->>>>>>> 63fe2d6 (feat(115): make bundle)
-	body: request_body_70,
 	parameters: parameters_70,
 	response: response_70_0
 		| response_70_1
 		| response_70_2
 		| response_70_3
 		| response_70_4
-<<<<<<< HEAD
-		| response_70_5
-		| response_70_6,
->>>>>>> 796a9ff (feat(115): get command)
-=======
 		| response_70_5,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 } | {
-	path: "/article",
-	method: "POST",
+	path: "/organization/{organizationId}",
+	method: "PATCH",
 	body: request_body_71,
-	parameters: undefined,
+	parameters: parameters_71,
 	response: response_71_0
 		| response_71_1
 		| response_71_2
 		| response_71_3
 		| response_71_4
-		| response_71_5
-		| response_71_6,
+		| response_71_5,
 } | {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	path: "/full-product-sheet/{productSheetId}",
+	path: "/organization/{organizationId}/users",
 	method: "GET",
 	body: unknown,
-	parameters: parameters_72,
-	response: response_72_0
-		| response_72_1,
-} | {
-	path: "/full-product-sheets",
-	method: "GET",
-	body: unknown,
-	parameters: parameters_73,
-	response: response_73_0
-<<<<<<< HEAD
-		| response_73_1
-		| response_73_2,
-=======
-		| response_73_1,
-=======
-	path: "/full-product-sheets-count",
-	method: "GET",
-	body: unknown,
-	parameters: parameters_72,
-	response: response_72_0,
->>>>>>> 796a9ff (feat(115): get command)
-} | {
-=======
->>>>>>> cf3a372 (feat(115): commande table)
-	path: "/full-product-sheets",
-	method: "GET",
-	body: unknown,
-=======
-	path: "/product-sheet/{productSheetId}/product",
-	method: "POST",
-	body: request_body_72,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 	parameters: parameters_72,
 	response: response_72_0
 		| response_72_1
 		| response_72_2
 		| response_72_3
 		| response_72_4
-		| response_72_5
-		| response_72_6,
+		| response_72_5,
 } | {
 	path: "/computed-filters",
 	method: "GET",
@@ -9625,52 +4309,26 @@ export type DefEnrichedDuplojsTo = {
 	parameters: parameters_73,
 	response: response_73_0,
 } | {
-	path: "/full-product-sheets-count",
+	path: "/full-product-sheet/{productSheetId}",
 	method: "GET",
 	body: unknown,
 	parameters: parameters_74,
-	response: response_74_0,
+	response: response_74_0
+		| response_74_1,
 } | {
 	path: "/full-product-sheets",
 	method: "GET",
 	body: unknown,
-<<<<<<< HEAD
-	parameters: parameters_74,
-	response: response_74_0
-<<<<<<< HEAD
-		| response_74_1
-		| response_74_2,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-		| response_74_1,
-} | {
-	path: "/make-command",
-	method: "POST",
-	body: request_body_75,
-	parameters: undefined,
-	response: response_75_0
-		| response_75_1
-		| response_75_2
-		| response_75_3
-		| response_75_4
-		| response_75_5,
->>>>>>> 796a9ff (feat(115): get command)
-=======
 	parameters: parameters_75,
 	response: response_75_0
-<<<<<<< HEAD
-		| response_75_1,
->>>>>>> cf3a372 (feat(115): commande table)
-=======
 		| response_75_1
 		| response_75_2,
 } | {
-	path: "/full-product-sheet/{productSheetId}",
+	path: "/full-product-sheets-count",
 	method: "GET",
 	body: unknown,
 	parameters: parameters_76,
-	response: response_76_0
-		| response_76_1,
+	response: response_76_0,
 } | {
 	path: "/make-command",
 	method: "POST",
@@ -9682,7 +4340,6 @@ export type DefEnrichedDuplojsTo = {
 		| response_77_3
 		| response_77_4
 		| response_77_5,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 };
 
 
@@ -9803,51 +4460,10 @@ export interface EnrichedDuploTo<
 	>
 
 	get(
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-		path: "/entry/admin-panel*", 
-=======
 		path: "/entry/content-panel*", 
->>>>>>> 63fe2d6 (feat(115): make bundle)
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
-=======
-		path: "/geocoder", 
-		parameters ?: parameters_2 & BaseRequestParameters,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-		path: "/entry/admin-panel*", 
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
-<<<<<<< HEAD
-		response_2_0
-		| response_2_1
-		| response_2_2
-		| response_2_3
-	>
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-	get(
-		path: "/entry/content-panel*", 
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
-=======
-	post(
-		path: "/stripe-webhook/checkout", 
-		body: unknown,
-		parameters : parameters_3 & BaseRequestParameters,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	get(
-		path: "/entry/content-panel*", 
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-		interceptorParams?: interceptorParameter
-	): EnrichedRequestor<
-=======
->>>>>>> 796a9ff (feat(115): get command)
 		response_3_0
 		| response_3_1
 		| response_3_2
@@ -9855,64 +4471,20 @@ export interface EnrichedDuploTo<
 	>
 
 	get(
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-		path: "/entry/organization-panel/{organizationId}/manage-user" | "/entry/organization-panel/{organizationId}/manage", 
-		parameters : parameters_4 & BaseRequestParameters,
-=======
-		path: "/entry/admin-panel*", 
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-		path: "/entry/organization-panel/{organizationId}/manage-user" | "/entry/organization-panel/{organizationId}/manage", 
-		parameters : parameters_4 & BaseRequestParameters,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-		path: "/entry/content-panel*", 
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
->>>>>>> 796a9ff (feat(115): get command)
-=======
 		path: "/entry/organization-panel/{organizationId}/manage-user" | "/entry/organization-panel/{organizationId}/manage" | "/entry/organization-panel/{organizationId}/warehouses", 
 		parameters : parameters_4 & BaseRequestParameters,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_4_0
 		| response_4_1
 		| response_4_2
 		| response_4_3
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 		| response_4_4
-=======
->>>>>>> 796a9ff (feat(115): get command)
-=======
-		| response_4_4
->>>>>>> 63fe2d6 (feat(115): make bundle)
 	>
 
 	get(
 		path: "/entry/organization-panel/{organizationId}/product-sheets" | "/entry/organization-panel/{organizationId}/edit-product-sheet/{productSheetId}" | "/entry/organization-panel/{organizationId}/create-product-sheet", 
 		parameters : parameters_5 & BaseRequestParameters,
-=======
-	>
-
-	get(
-		path: "/entry/content-panel*", 
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-		| response_4_4
-	>
-
-	get(
-		path: "/entry/organization-panel/{organizationId}/warehouses" | "/entry/organization-panel/{organizationId}/create-warehouse" | "/entry/organization-panel/{organizationId}/edited-warehouse/{warehouseId}", 
-		parameters : parameters_5 & BaseRequestParameters,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_5_0
@@ -9924,19 +4496,7 @@ export interface EnrichedDuploTo<
 	>
 
 	get(
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-		path: "/entry/organization-panel/{organizationId}/product-sheets" | "/entry/organization-panel/{organizationId}/edit-product-sheet/{productSheetId}" | "/entry/organization-panel/{organizationId}/create-product-sheet", 
-=======
-		path: "/entry/organization-panel/{organizationId}/manage-user" | "/entry/organization-panel/{organizationId}/manage", 
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-		path: "/entry/organization-panel/{organizationId}/product-sheets" | "/entry/organization-panel/{organizationId}/edit-product-sheet/{productSheetId}" | "/entry/organization-panel/{organizationId}/create-product-sheet", 
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
 		path: "/organization-panel/{organizationId}/products" | "/organization-panel/{organizationId}/commands", 
->>>>>>> 63fe2d6 (feat(115): make bundle)
 		parameters : parameters_6 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -9945,37 +4505,10 @@ export interface EnrichedDuploTo<
 		| response_6_2
 		| response_6_3
 		| response_6_4
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-		| response_6_5
-	>
-
-	get(
-<<<<<<< HEAD
-		path: "/entry/organization-panel/{organizationId}*", 
-=======
-	>
-
-	get(
-		path: "/entry/organization-panel/{organizationId}/warehouses" | "/entry/organization-panel/{organizationId}/create-warehouse" | "/entry/organization-panel/{organizationId}/edited-warehouse/{warehouseId}", 
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-		| response_6_5
 	>
 
 	get(
 		path: "/entry/organization-panel/{organizationId}*", 
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-		path: "/organization-panel/{organizationId}/products" | "/organization-panel/{organizationId}/commands", 
->>>>>>> 796a9ff (feat(115): get command)
-=======
-	>
-
-	get(
-		path: "/entry/organization-panel/{organizationId}*", 
->>>>>>> 63fe2d6 (feat(115): make bundle)
 		parameters : parameters_7 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -9983,52 +4516,6 @@ export interface EnrichedDuploTo<
 		| response_7_1
 		| response_7_2
 		| response_7_3
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-		| response_7_4
-		| response_7_5
-	>
-
-	get(
-		path: "/entry/organization-panel/{organizationId}/product-sheets" | "/entry/organization-panel/{organizationId}/edit-product-sheet/{productSheetId}" | "/entry/organization-panel/{organizationId}/create-product-sheet", 
-=======
-		| response_7_4
-	>
-
-	get(
-		path: "/entry/organization-panel/{organizationId}*", 
->>>>>>> 796a9ff (feat(115): get command)
-		parameters : parameters_8 & BaseRequestParameters,
-		interceptorParams?: interceptorParameter
-	): EnrichedRequestor<
-		response_8_0
-		| response_8_1
-		| response_8_2
-		| response_8_3
-<<<<<<< HEAD
-		| response_8_4
-		| response_8_5
-	>
-
-	get(
-		path: "/entry/organization-panel/{organizationId}*", 
-		parameters : parameters_9 & BaseRequestParameters,
-		interceptorParams?: interceptorParameter
-	): EnrichedRequestor<
-		response_9_0
-		| response_9_1
-		| response_9_2
-		| response_9_3
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
->>>>>>> 796a9ff (feat(115): get command)
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
 	>
 
 	get(
@@ -10036,23 +4523,7 @@ export interface EnrichedDuploTo<
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 		response_8_0
-=======
-		response_10_0
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-		response_8_0
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-		response_9_0
->>>>>>> 796a9ff (feat(115): get command)
-=======
-		response_8_0
->>>>>>> 63fe2d6 (feat(115): make bundle)
 	>
 
 	get(
@@ -10060,33 +4531,9 @@ export interface EnrichedDuploTo<
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 		response_9_0
 		| response_9_1
 		| response_9_2
-=======
-		response_11_0
-		| response_11_1
-		| response_11_2
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-		response_9_0
-		| response_9_1
-		| response_9_2
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-		response_10_0
-		| response_10_1
-		| response_10_2
->>>>>>> 796a9ff (feat(115): get command)
-=======
-		response_9_0
-		| response_9_1
-		| response_9_2
->>>>>>> 63fe2d6 (feat(115): make bundle)
 	>
 
 	get(
@@ -10094,14 +4541,6 @@ export interface EnrichedDuploTo<
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
 		response_10_0
 	>
 
@@ -10110,11 +4549,6 @@ export interface EnrichedDuploTo<
 		parameters ?: parameters_11 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
-<<<<<<< HEAD
-=======
->>>>>>> 796a9ff (feat(115): get command)
-=======
->>>>>>> 63fe2d6 (feat(115): make bundle)
 		response_11_0
 	>
 
@@ -10124,11 +4558,6 @@ export interface EnrichedDuploTo<
 		parameters : parameters_12 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
-<<<<<<< HEAD
-=======
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 		response_12_0
 		| response_12_1
 		| response_12_2
@@ -10167,41 +4596,19 @@ export interface EnrichedDuploTo<
 		| response_15_4
 	>
 
-	get(
-		path: "/cart", 
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
-		interceptorParams?: interceptorParameter
-	): EnrichedRequestor<
-<<<<<<< HEAD
-		response_15_0
-		| response_15_1
-		| response_15_2
-	>
-
-<<<<<<< HEAD
-	get(
-		path: "/cart", 
-=======
 	post(
-		path: "/register", 
+		path: "/article", 
 		body: request_body_16,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_16_0
 		| response_16_1
 		| response_16_2
-<<<<<<< HEAD
-=======
 		| response_16_3
 		| response_16_4
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-		response_16_0
-		| response_16_1
-		| response_16_2
->>>>>>> 796a9ff (feat(115): get command)
+		| response_16_5
+		| response_16_6
 	>
 
 	delete(
@@ -10215,27 +4622,8 @@ export interface EnrichedDuploTo<
 		| response_17_3
 	>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-	delete(
-<<<<<<< HEAD
-<<<<<<< HEAD
-		path: "/article/{productSheetId}", 
-=======
-		path: "/image-product-sheet/{imageProductSheetId}", 
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-		path: "/article/{productSheetId}", 
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-	post(
-		path: "/organization/{organizationId}/user", 
-		body: request_body_18,
->>>>>>> 796a9ff (feat(115): get command)
-=======
 	delete(
 		path: "/image-product-sheet/{imageProductSheetId}", 
->>>>>>> cf3a372 (feat(115): commande table)
 		parameters : parameters_18 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -10247,17 +4635,14 @@ export interface EnrichedDuploTo<
 		| response_18_5
 	>
 
-	post(
-		path: "/retry-command", 
-		body: request_body_19,
+	get(
+		path: "/cart", 
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_19_0
 		| response_19_1
 		| response_19_2
-		| response_19_3
-		| response_19_4
 	>
 
 	get(
@@ -10271,61 +4656,26 @@ export interface EnrichedDuploTo<
 		| response_20_3
 	>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	get(
-		path: "/user/organizations", 
-		parameters ?: parameters_21 & BaseRequestParameters,
-=======
-	patch(
-=======
-	delete(
->>>>>>> cf3a372 (feat(115): commande table)
-		path: "/organization/{organizationId}/user/{userId}", 
-=======
 	post(
 		path: "/organization/{organizationId}/user", 
 		body: request_body_21,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 		parameters : parameters_21 & BaseRequestParameters,
->>>>>>> 5cabb00 (feat(115): refacto product)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_21_0
 		| response_21_1
 		| response_21_2
 		| response_21_3
-<<<<<<< HEAD
-	>
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-	get(
-		path: "/user", 
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
-=======
-	delete(
-		path: "/organization/{organizationId}/user/{userId}", 
-		parameters : parameters_22 & BaseRequestParameters,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	get(
-		path: "/user/organizations", 
-		parameters ?: parameters_22 & BaseRequestParameters,
->>>>>>> cf3a372 (feat(115): commande table)
-=======
 		| response_21_4
 		| response_21_5
 		| response_21_6
 		| response_21_7
 	>
 
-	patch(
-		path: "/organization/{organizationId}/user/{userId}", 
+	post(
+		path: "/retry-command", 
 		body: request_body_22,
-		parameters : parameters_22 & BaseRequestParameters,
->>>>>>> 63fe2d6 (feat(115): make bundle)
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_22_0
@@ -10333,91 +4683,30 @@ export interface EnrichedDuploTo<
 		| response_22_2
 		| response_22_3
 		| response_22_4
-		| response_22_5
-		| response_22_6
 	>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	patch(
-		path: "/user", 
-		body: request_body_23,
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
-=======
 	get(
 		path: "/user/organizations", 
 		parameters ?: parameters_23 & BaseRequestParameters,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	post(
-		path: "/retry-command", 
-		body: request_body_23,
-=======
-	get(
-		path: "/user", 
->>>>>>> cf3a372 (feat(115): commande table)
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-	delete(
-		path: "/organization/{organizationId}/user/{userId}", 
-		parameters : parameters_23 & BaseRequestParameters,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_23_0
 		| response_23_1
 		| response_23_2
 		| response_23_3
-		| response_23_4
-		| response_23_5
-		| response_23_6
 	>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 	patch(
 		path: "/organization/{organizationId}/user/{userId}", 
 		body: request_body_24,
 		parameters : parameters_24 & BaseRequestParameters,
-=======
-	post(
-		path: "/retry-command", 
-		body: request_body_24,
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	get(
-<<<<<<< HEAD
-		path: "/user/organizations", 
-		parameters ?: parameters_24 & BaseRequestParameters,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-=======
-	patch(
->>>>>>> cf3a372 (feat(115): commande table)
-		path: "/user", 
-		body: request_body_24,
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
->>>>>>> 796a9ff (feat(115): get command)
-=======
-	get(
-		path: "/user/organizations", 
-		parameters ?: parameters_24 & BaseRequestParameters,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_24_0
 		| response_24_1
 		| response_24_2
 		| response_24_3
-<<<<<<< HEAD
 		| response_24_4
-<<<<<<< HEAD
 		| response_24_5
 		| response_24_6
 	>
@@ -10425,27 +4714,6 @@ export interface EnrichedDuploTo<
 	delete(
 		path: "/organization/{organizationId}/user/{userId}", 
 		parameters : parameters_25 & BaseRequestParameters,
-=======
-=======
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-	>
-
-<<<<<<< HEAD
-	patch(
-		path: "/user", 
-		body: request_body_25,
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	get(
-<<<<<<< HEAD
-		path: "/organization/{organizationId}/user", 
-		parameters : parameters_25 & BaseRequestParameters,
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-		path: "/user", 
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_25_0
@@ -10457,9 +4725,8 @@ export interface EnrichedDuploTo<
 		| response_25_6
 	>
 
-	patch(
+	get(
 		path: "/user", 
-		body: request_body_26,
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -10469,48 +4736,22 @@ export interface EnrichedDuploTo<
 		| response_26_3
 	>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-	post(
-		path: "/category", 
+	patch(
+		path: "/user", 
 		body: request_body_27,
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
-<<<<<<< HEAD
-=======
-	get(
-		path: "/product-sheet/{productSheetId}/categories", 
-		parameters : parameters_27 & BaseRequestParameters,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-	delete(
-		path: "/article/{productSheetId}", 
-=======
-	patch(
-		path: "/category/{categoryName}", 
-		body: request_body_27,
->>>>>>> cf3a372 (feat(115): commande table)
-		parameters : parameters_27 & BaseRequestParameters,
->>>>>>> 796a9ff (feat(115): get command)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_27_0
 		| response_27_1
 		| response_27_2
 		| response_27_3
-		| response_27_4
-		| response_27_5
 	>
 
-	post(
-		path: "/category", 
+	patch(
+		path: "/category/{categoryName}", 
 		body: request_body_28,
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
+		parameters : parameters_28 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_28_0
@@ -10518,42 +4759,13 @@ export interface EnrichedDuploTo<
 		| response_28_2
 		| response_28_3
 		| response_28_4
+		| response_28_5
 	>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 	post(
-		path: "/organization", 
+		path: "/category", 
 		body: request_body_29,
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
-=======
-	delete(
-		path: "/product-sheet/{productSheetId}/category/{categoryName}", 
-=======
-	put(
-		path: "/category/{categoryName}/image", 
-		body: unknown,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-	patch(
-		path: "/organization/{organizationId}@admin", 
-		body: request_body_29,
->>>>>>> 796a9ff (feat(115): get command)
-=======
-	put(
-		path: "/category/{categoryName}/image", 
-		body: unknown,
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-	patch(
-		path: "/organization/{organizationId}@admin", 
-		body: request_body_29,
->>>>>>> 63fe2d6 (feat(115): make bundle)
-		parameters : parameters_29 & BaseRequestParameters,
->>>>>>> 5cabb00 (feat(115): refacto product)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_29_0
@@ -10563,42 +4775,10 @@ export interface EnrichedDuploTo<
 		| response_29_4
 	>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	put(
-		path: "/category/{categoryName}/image", 
-		body: unknown,
-=======
-	post(
-		path: "/product-sheet/{productSheetId}/facet", 
-=======
-	patch(
-		path: "/category/{categoryName}", 
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-		body: request_body_30,
->>>>>>> 5cabb00 (feat(115): refacto product)
-		parameters : parameters_30 & BaseRequestParameters,
-=======
-	post(
-		path: "/category", 
-		body: request_body_30,
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
->>>>>>> 796a9ff (feat(115): get command)
-=======
 	patch(
 		path: "/organization/{organizationId}@admin", 
 		body: request_body_30,
 		parameters : parameters_30 & BaseRequestParameters,
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-	post(
-		path: "/organization", 
-		body: request_body_30,
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_30_0
@@ -10606,59 +4786,26 @@ export interface EnrichedDuploTo<
 		| response_30_2
 		| response_30_3
 		| response_30_4
-		| response_30_5
-		| response_30_6
 	>
 
-<<<<<<< HEAD
-	get(
-<<<<<<< HEAD
-		path: "/parent-categories", 
-		parameters ?: parameters_31 & BaseRequestParameters,
-=======
-		path: "/product-sheet/{productSheetId}/facets", 
+	put(
+		path: "/category/{categoryName}/image", 
+		body: unknown,
 		parameters : parameters_31 & BaseRequestParameters,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	post(
-		path: "/navigation-item", 
-		body: request_body_31,
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_31_0
 		| response_31_1
 		| response_31_2
 		| response_31_3
-<<<<<<< HEAD
-	>
-
-	patch(
-		path: "/organization/{organizationId}@admin", 
-		body: request_body_32,
-=======
 		| response_31_4
+		| response_31_5
 	>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-	get(
-		path: "/product-sheet/{productSheetId}", 
->>>>>>> 5cabb00 (feat(115): refacto product)
-		parameters : parameters_32 & BaseRequestParameters,
-=======
 	post(
 		path: "/navigation-item", 
 		body: request_body_32,
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-	put(
-		path: "/category/{categoryName}/image", 
-		body: unknown,
-		parameters : parameters_32 & BaseRequestParameters,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_32_0
@@ -10666,30 +4813,10 @@ export interface EnrichedDuploTo<
 		| response_32_2
 		| response_32_3
 		| response_32_4
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	>
-
-	post(
-		path: "/navigation-item", 
-=======
-		| response_32_5
-	>
-
-	patch(
-		path: "/product-sheet/{productSheetId}", 
->>>>>>> 5cabb00 (feat(115): refacto product)
-		body: request_body_33,
-=======
-=======
-		| response_32_5
->>>>>>> 63fe2d6 (feat(115): make bundle)
 	>
 
 	get(
 		path: "/navigation-items", 
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -10697,93 +4824,37 @@ export interface EnrichedDuploTo<
 		| response_33_1
 		| response_33_2
 		| response_33_3
-<<<<<<< HEAD
-		| response_33_4
-<<<<<<< HEAD
 	>
 
-	post(
-		path: "/parent-category", 
-		body: request_body_34,
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
-=======
-		| response_33_5
-=======
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-	>
-
-	patch(
-		path: "/navigation-item/{navigationItemId}", 
-		body: request_body_34,
-		parameters : parameters_34 & BaseRequestParameters,
->>>>>>> 5cabb00 (feat(115): refacto product)
+	get(
+		path: "/parent-categories", 
+		parameters ?: parameters_34 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_34_0
 		| response_34_1
 		| response_34_2
 		| response_34_3
-		| response_34_4
-		| response_34_5
-		| response_34_6
 	>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	get(
-		path: "/navigation-items", 
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
-=======
-	delete(
-		path: "/navigation-item/{navigationItemId}", 
-=======
 	post(
-		path: "/parent-category/{parentCategoryName}/category", 
+		path: "/organization", 
 		body: request_body_35,
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-	delete(
-		path: "/navigation-item/{navigationItemId}", 
->>>>>>> 63fe2d6 (feat(115): make bundle)
-		parameters : parameters_35 & BaseRequestParameters,
->>>>>>> 5cabb00 (feat(115): refacto product)
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_35_0
 		| response_35_1
 		| response_35_2
 		| response_35_3
-<<<<<<< HEAD
-	>
-
-<<<<<<< HEAD
-	patch(
-		path: "/parent-category/{parentCategoryName}", 
-		body: request_body_36,
-=======
-	post(
-		path: "/product-sheet/{productSheetId}/image", 
-		body: unknown,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
 		| response_35_4
+		| response_35_5
+		| response_35_6
 	>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-	get(
-		path: "/parent-category/{parentCategoryName}/categories", 
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
 	patch(
 		path: "/navigation-item/{navigationItemId}", 
 		body: request_body_36,
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-	get(
-		path: "/parent-category/{parentCategoryName}/categories", 
->>>>>>> 63fe2d6 (feat(115): make bundle)
 		parameters : parameters_36 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -10792,44 +4863,12 @@ export interface EnrichedDuploTo<
 		| response_36_2
 		| response_36_3
 		| response_36_4
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-		| response_36_5
-<<<<<<< HEAD
-	>
-
-	get(
-		path: "/parent-category/{parentCategoryName}/categories", 
-=======
-		| response_36_6
-		| response_36_7
-	>
-
-	get(
-		path: "/product-sheet/{productSheetId}/images", 
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	>
-
-	delete(
-		path: "/parent-category/{parentCategoryName}/category/{categoryName}", 
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
 		| response_36_5
 		| response_36_6
 	>
 
 	delete(
 		path: "/navigation-item/{navigationItemId}", 
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-	>
-
-	post(
-		path: "/parent-category/{parentCategoryName}/category", 
-		body: request_body_37,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 		parameters : parameters_37 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -10838,33 +4877,12 @@ export interface EnrichedDuploTo<
 		| response_37_2
 		| response_37_3
 		| response_37_4
-		| response_37_5
-		| response_37_6
 	>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 	post(
-<<<<<<< HEAD
-<<<<<<< HEAD
-		path: "/parent-category/{parentCategoryName}/category", 
-=======
-		path: "/product-sheet/{productSheetId}/product", 
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-		path: "/parent-category/{parentCategoryName}/category", 
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
+		path: "/parent-category", 
 		body: request_body_38,
-=======
-	delete(
-		path: "/parent-category/{parentCategoryName}/category/{categoryName}", 
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-	patch(
-		path: "/parent-category/{parentCategoryName}", 
-		body: request_body_38,
->>>>>>> 63fe2d6 (feat(115): make bundle)
-		parameters : parameters_38 & BaseRequestParameters,
+		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_38_0
@@ -10872,22 +4890,10 @@ export interface EnrichedDuploTo<
 		| response_38_2
 		| response_38_3
 		| response_38_4
-		| response_38_5
 	>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-	delete(
-		path: "/parent-category/{parentCategoryName}/category/{categoryName}", 
-=======
-	patch(
-		path: "/parent-category/{parentCategoryName}", 
-		body: request_body_39,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	delete(
-		path: "/parent-category/{parentCategoryName}/category/{categoryName}", 
->>>>>>> 63fe2d6 (feat(115): make bundle)
+	get(
+		path: "/parent-category/{parentCategoryName}/categories", 
 		parameters : parameters_39 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -10898,53 +4904,22 @@ export interface EnrichedDuploTo<
 		| response_39_4
 	>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-	get(
-		path: "/organizations", 
-		parameters ?: parameters_40 & BaseRequestParameters,
-=======
-	post(
-		path: "/parent-category", 
-		body: request_body_40,
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	get(
-		path: "/organizations", 
-		parameters ?: parameters_40 & BaseRequestParameters,
->>>>>>> 63fe2d6 (feat(115): make bundle)
+	delete(
+		path: "/parent-category/{parentCategoryName}/category/{categoryName}", 
+		parameters : parameters_40 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_40_0
 		| response_40_1
 		| response_40_2
 		| response_40_3
+		| response_40_4
 	>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	get(
-		path: "/users", 
-		parameters ?: parameters_41 & BaseRequestParameters,
-=======
-	patch(
-		path: "/category/{categoryName}", 
+	post(
+		path: "/parent-category/{parentCategoryName}/category", 
 		body: request_body_41,
 		parameters : parameters_41 & BaseRequestParameters,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	get(
-		path: "/organizations", 
-		parameters ?: parameters_41 & BaseRequestParameters,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-	post(
-		path: "/parent-category", 
-		body: request_body_41,
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_41_0
@@ -10952,31 +4927,14 @@ export interface EnrichedDuploTo<
 		| response_41_2
 		| response_41_3
 		| response_41_4
+		| response_41_5
+		| response_41_6
 	>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 	patch(
-		path: "/navigation-item/{navigationItemId}", 
-		body: request_body_42,
-=======
-	put(
-		path: "/category/{categoryName}/image", 
-		body: unknown,
->>>>>>> 5cabb00 (feat(115): refacto product)
-		parameters : parameters_42 & BaseRequestParameters,
-=======
-	get(
-		path: "/parent-categories", 
-		parameters ?: parameters_42 & BaseRequestParameters,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-	patch(
-		path: "/user/{userId}@admin", 
+		path: "/parent-category/{parentCategoryName}", 
 		body: request_body_42,
 		parameters : parameters_42 & BaseRequestParameters,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_42_0
@@ -10987,35 +4945,9 @@ export interface EnrichedDuploTo<
 		| response_42_5
 	>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	delete(
-		path: "/navigation-item/{navigationItemId}", 
-		parameters : parameters_43 & BaseRequestParameters,
-=======
-	post(
-		path: "/organization", 
-		body: request_body_43,
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	put(
-		path: "/organization/{organizationId}/logo", 
-		body: unknown,
-=======
-	patch(
-		path: "/user/{userId}@admin", 
-		body: request_body_43,
->>>>>>> 796a9ff (feat(115): get command)
-		parameters : parameters_43 & BaseRequestParameters,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
 	get(
-		path: "/parent-categories", 
+		path: "/organizations", 
 		parameters ?: parameters_43 & BaseRequestParameters,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_43_0
@@ -11024,106 +4956,34 @@ export interface EnrichedDuploTo<
 		| response_43_3
 	>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 	patch(
-<<<<<<< HEAD
 		path: "/user/{userId}@admin", 
-=======
-		path: "/organization/{organizationId}@admin", 
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	post(
-		path: "/organization/{organizationId}/product-sheet", 
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 		body: request_body_44,
 		parameters : parameters_44 & BaseRequestParameters,
-=======
-	get(
-		path: "/users", 
-		parameters ?: parameters_44 & BaseRequestParameters,
->>>>>>> 796a9ff (feat(115): get command)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_44_0
 		| response_44_1
 		| response_44_2
 		| response_44_3
+		| response_44_4
+		| response_44_5
 	>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	patch(
-		path: "/product/{sku}", 
-		body: request_body_45,
-=======
 	get(
-		path: "/organization/{organizationId}/commands", 
->>>>>>> 63fe2d6 (feat(115): make bundle)
-		parameters : parameters_45 & BaseRequestParameters,
-=======
-	post(
-		path: "/navigation-item", 
-		body: request_body_45,
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	get(
-		path: "/organization/{organizationId}/product-sheets", 
-=======
-	put(
-		path: "/organization/{organizationId}/logo", 
-		body: unknown,
->>>>>>> 796a9ff (feat(115): get command)
-=======
-	patch(
-		path: "/product/{sku}", 
-		body: request_body_45,
->>>>>>> cf3a372 (feat(115): commande table)
-		parameters : parameters_45 & BaseRequestParameters,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
+		path: "/users", 
+		parameters ?: parameters_45 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_45_0
 		| response_45_1
 		| response_45_2
 		| response_45_3
-		| response_45_4
-		| response_45_5
-		| response_45_6
 	>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 	get(
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-		path: "/product-sheet/{productSheetId}/categories", 
-=======
-	delete(
-		path: "/product-sheet/{productSheetId}/category/{categoryName}", 
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-	post(
-		path: "/organization/{organizationId}/product-sheet", 
-		body: request_body_46,
->>>>>>> 63fe2d6 (feat(115): make bundle)
+		path: "/organization/{organizationId}/commands", 
 		parameters : parameters_46 & BaseRequestParameters,
-=======
-		path: "/navigation-items", 
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-		path: "/organization/{organizationId}", 
-=======
-		path: "/organization/{organizationId}/product-sheets", 
->>>>>>> 796a9ff (feat(115): get command)
-		parameters : parameters_46 & BaseRequestParameters,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_46_0
@@ -11135,36 +4995,9 @@ export interface EnrichedDuploTo<
 		| response_46_6
 	>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	post(
-		path: "/product-sheet/{productSheetId}/category", 
-		body: request_body_47,
-=======
-	delete(
-		path: "/parent-category/{parentCategoryName}/category/{categoryName}", 
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	patch(
-		path: "/organization/{organizationId}", 
-=======
-	post(
-		path: "/organization/{organizationId}/product-sheet", 
->>>>>>> 796a9ff (feat(115): get command)
-		body: request_body_47,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-	get(
-		path: "/product-sheet/{productSheetId}/categories", 
->>>>>>> cf3a372 (feat(115): commande table)
-=======
 	put(
 		path: "/organization/{organizationId}/logo", 
 		body: unknown,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 		parameters : parameters_47 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -11173,45 +5006,13 @@ export interface EnrichedDuploTo<
 		| response_47_2
 		| response_47_3
 		| response_47_4
-<<<<<<< HEAD
-<<<<<<< HEAD
-		| response_47_5
-		| response_47_6
-		| response_47_7
-	>
-
-	get(
-		path: "/product-sheet/{productSheetId}", 
-=======
-	>
-
-	patch(
-		path: "/navigation-item/{navigationItemId}", 
-		body: request_body_48,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
 		| response_47_5
 		| response_47_6
 	>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-	get(
-<<<<<<< HEAD
-		path: "/organization/{organizationId}/products", 
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-		path: "/organization/{organizationId}/commands", 
->>>>>>> 796a9ff (feat(115): get command)
-=======
 	post(
-		path: "/product-sheet/{productSheetId}/category", 
+		path: "/organization/{organizationId}/commands/{commandId}/make-bundle", 
 		body: request_body_48,
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-	get(
-		path: "/organization/{organizationId}/product-sheets", 
->>>>>>> 63fe2d6 (feat(115): make bundle)
 		parameters : parameters_48 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -11221,36 +5022,18 @@ export interface EnrichedDuploTo<
 		| response_48_3
 		| response_48_4
 		| response_48_5
+		| response_48_6
+		| response_48_7
+		| response_48_8
+		| response_48_9
+		| response_48_10
+		| response_48_11
+		| response_48_12
 	>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	patch(
-		path: "/product-sheet/{productSheetId}", 
-		body: request_body_49,
-=======
-	delete(
-		path: "/navigation-item/{navigationItemId}", 
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	get(
-		path: "/organization/{organizationId}/users", 
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
 	post(
-		path: "/organization/{organizationId}/warehouse", 
+		path: "/organization/{organizationId}/product-sheet", 
 		body: request_body_49,
->>>>>>> 796a9ff (feat(115): get command)
-=======
-	get(
-<<<<<<< HEAD
-		path: "/product-sheet/{productSheetId}", 
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-		path: "/organization/{organizationId}/commands/{commandId}/details", 
->>>>>>> 63fe2d6 (feat(115): make bundle)
 		parameters : parameters_49 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -11259,41 +5042,12 @@ export interface EnrichedDuploTo<
 		| response_49_2
 		| response_49_3
 		| response_49_4
-<<<<<<< HEAD
-<<<<<<< HEAD
 		| response_49_5
 		| response_49_6
-		| response_49_7
 	>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	delete(
-		path: "/product-sheet/{productSheetId}/category/{categoryName}", 
-=======
-=======
-		| response_49_5
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-	>
-
-	patch(
-		path: "/product/{sku}", 
-		body: request_body_50,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
 	get(
-		path: "/organization/{organizationId}/products", 
->>>>>>> 796a9ff (feat(115): get command)
-=======
-	patch(
-		path: "/product-sheet/{productSheetId}", 
-=======
-	post(
-		path: "/organization/{organizationId}/commands/{commandId}/make-bundle", 
->>>>>>> 63fe2d6 (feat(115): make bundle)
-		body: request_body_50,
->>>>>>> cf3a372 (feat(115): commande table)
+		path: "/organization/{organizationId}/product-sheets", 
 		parameters : parameters_50 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -11303,36 +5057,10 @@ export interface EnrichedDuploTo<
 		| response_50_3
 		| response_50_4
 		| response_50_5
-		| response_50_6
-		| response_50_7
-		| response_50_8
-		| response_50_9
-		| response_50_10
-		| response_50_11
-		| response_50_12
 	>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-	post(
-		path: "/product-sheet/{productSheetId}/facet", 
-=======
-	patch(
-		path: "/parent-category/{parentCategoryName}", 
->>>>>>> 5cabb00 (feat(115): refacto product)
-		body: request_body_51,
-=======
 	get(
-<<<<<<< HEAD
-<<<<<<< HEAD
-		path: "/organization/{organizationId}/warehouses", 
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-		path: "/product-sheet/{productSheetId}/warehouse", 
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-		path: "/organization/{organizationId}/users", 
->>>>>>> 63fe2d6 (feat(115): make bundle)
+		path: "/organization/{organizationId}/products", 
 		parameters : parameters_51 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -11342,34 +5070,12 @@ export interface EnrichedDuploTo<
 		| response_51_3
 		| response_51_4
 		| response_51_5
-		| response_51_6
 	>
 
-	get(
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-		path: "/product-sheet/{productSheetId}/images", 
-=======
-		path: "/product-sheet/{productSheetId}/facets", 
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-		path: "/organization/{organizationId}", 
->>>>>>> 63fe2d6 (feat(115): make bundle)
+	post(
+		path: "/organization/{organizationId}/warehouse", 
+		body: request_body_52,
 		parameters : parameters_52 & BaseRequestParameters,
-=======
-		path: "/organizations", 
-		parameters ?: parameters_52 & BaseRequestParameters,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-		path: "/product-sheet/{productSheetId}/categories", 
-=======
-		path: "/organization/{organizationId}", 
->>>>>>> 796a9ff (feat(115): get command)
-		parameters : parameters_52 & BaseRequestParameters,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_52_0
@@ -11378,37 +5084,11 @@ export interface EnrichedDuploTo<
 		| response_52_3
 		| response_52_4
 		| response_52_5
+		| response_52_6
 	>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	post(
-		path: "/product-sheet/{productSheetId}/product", 
-		body: request_body_53,
-=======
 	get(
-		path: "/parent-category/{parentCategoryName}/categories", 
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	post(
-		path: "/organization/{organizationId}/warehouse", 
-=======
-	patch(
-		path: "/organization/{organizationId}", 
->>>>>>> 796a9ff (feat(115): get command)
-=======
-	post(
-		path: "/product-sheet/{productSheetId}/facet", 
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-	patch(
-		path: "/organization/{organizationId}", 
->>>>>>> 63fe2d6 (feat(115): make bundle)
-		body: request_body_53,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
+		path: "/organization/{organizationId}/warehouses", 
 		parameters : parameters_53 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -11417,31 +5097,13 @@ export interface EnrichedDuploTo<
 		| response_53_2
 		| response_53_3
 		| response_53_4
-<<<<<<< HEAD
-<<<<<<< HEAD
 		| response_53_5
-		| response_53_6
-		| response_53_7
 	>
 
 	patch(
-		path: "/product-sheet/{productSheetId}/facet/{facetType}", 
-=======
-	>
-
-	post(
-		path: "/parent-category", 
->>>>>>> 5cabb00 (feat(115): refacto product)
+		path: "/product/{sku}", 
 		body: request_body_54,
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
-=======
-		| response_53_5
-	>
-
-	get(
-		path: "/product-sheet/{productSheetId}/categories", 
 		parameters : parameters_54 & BaseRequestParameters,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_54_0
@@ -11452,27 +5114,10 @@ export interface EnrichedDuploTo<
 		| response_54_5
 	>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> cf3a372 (feat(115): commande table)
-	delete(
-		path: "/product-sheet/{productSheetId}/category/{categoryName}", 
+	patch(
+		path: "/warehouse/{warehouseId}", 
+		body: request_body_55,
 		parameters : parameters_55 & BaseRequestParameters,
-=======
-	get(
-<<<<<<< HEAD
-<<<<<<< HEAD
-		path: "/parent-categories", 
-		parameters ?: parameters_55 & BaseRequestParameters,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-		path: "/product-sheet/{productSheetId}/images", 
-=======
-		path: "/product-sheet/{productSheetId}/categories", 
->>>>>>> 796a9ff (feat(115): get command)
-		parameters : parameters_55 & BaseRequestParameters,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_55_0
@@ -11484,36 +5129,8 @@ export interface EnrichedDuploTo<
 		| response_55_6
 	>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	post(
-		path: "/product-sheet/{productSheetId}/image", 
-		body: unknown,
-=======
-	patch(
-		path: "/user/{userId}@admin", 
-=======
-	post(
-		path: "/product-sheet/{productSheetId}/category", 
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-	patch(
-		path: "/product/{sku}", 
->>>>>>> 796a9ff (feat(115): get command)
-		body: request_body_56,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
 	get(
-		path: "/product-sheet/{productSheetId}/images", 
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-	post(
-		path: "/product-sheet/{productSheetId}/category", 
-		body: request_body_56,
->>>>>>> 63fe2d6 (feat(115): make bundle)
+		path: "/product-sheet/{productSheetId}/categories", 
 		parameters : parameters_56 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -11523,89 +5140,26 @@ export interface EnrichedDuploTo<
 		| response_56_3
 		| response_56_4
 		| response_56_5
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-		| response_56_6
-		| response_56_7
 	>
 
-	put(
-		path: "/organization/{organizationId}/logo", 
-		body: unknown,
+	post(
+		path: "/product-sheet/{productSheetId}/category", 
+		body: request_body_57,
 		parameters : parameters_57 & BaseRequestParameters,
-=======
-	>
-
-	get(
-		path: "/users", 
-		parameters ?: parameters_57 & BaseRequestParameters,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-		| response_56_6
-		| response_56_7
-=======
->>>>>>> 796a9ff (feat(115): get command)
-=======
-		| response_56_6
-		| response_56_7
->>>>>>> 63fe2d6 (feat(115): make bundle)
-	>
-
-	get(
-		path: "/product-sheet/{productSheetId}", 
-		parameters : parameters_57 & BaseRequestParameters,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_57_0
 		| response_57_1
 		| response_57_2
 		| response_57_3
-<<<<<<< HEAD
-<<<<<<< HEAD
-		| response_57_4
-		| response_57_5
-	>
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-	post(
-		path: "/organization/{organizationId}/product-sheet", 
-		body: request_body_58,
-=======
-	>
-
-	put(
-		path: "/organization/{organizationId}/logo", 
-		body: unknown,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
 		| response_57_4
 		| response_57_5
 		| response_57_6
+		| response_57_7
 	>
 
-<<<<<<< HEAD
-	get(
-		path: "/product-sheet/{productSheetId}/warehouse", 
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-	post(
-		path: "/product-sheet/{productSheetId}/category", 
-		body: request_body_58,
->>>>>>> 796a9ff (feat(115): get command)
-=======
-	put(
-		path: "/organization/{organizationId}/logo", 
-		body: unknown,
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-	patch(
-		path: "/product-sheet/{productSheetId}", 
-		body: request_body_58,
->>>>>>> 63fe2d6 (feat(115): make bundle)
+	delete(
+		path: "/product-sheet/{productSheetId}/category/{categoryName}", 
 		parameters : parameters_58 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -11615,46 +5169,12 @@ export interface EnrichedDuploTo<
 		| response_58_3
 		| response_58_4
 		| response_58_5
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	>
-
-	get(
-		path: "/product-sheet/{productSheetId}/facets", 
-=======
 		| response_58_6
 	>
 
 	post(
-		path: "/organization/{organizationId}/product-sheet", 
+		path: "/product-sheet/{productSheetId}/facet", 
 		body: request_body_59,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	>
-
-	get(
-		path: "/product-sheet/{productSheetId}", 
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-		| response_58_6
-	>
-
-	get(
-<<<<<<< HEAD
-		path: "/product-sheet/{productSheetId}/warehouse", 
->>>>>>> 796a9ff (feat(115): get command)
-=======
-		path: "/organization/{organizationId}/commands", 
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-	>
-
-	post(
-		path: "/organization/{organizationId}/warehouse", 
-		body: request_body_59,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 		parameters : parameters_59 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -11667,34 +5187,9 @@ export interface EnrichedDuploTo<
 		| response_59_6
 	>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	get(
-<<<<<<< HEAD
-		path: "/organization/{organizationId}/product-sheets", 
-=======
-		path: "/organization/{organizationId}/users", 
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
 	patch(
-		path: "/product-sheet/{productSheetId}", 
+		path: "/product-sheet/{productSheetId}/facet/{facetType}", 
 		body: request_body_60,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-	get(
-		path: "/product-sheet/{productSheetId}", 
->>>>>>> 796a9ff (feat(115): get command)
-=======
-	post(
-		path: "/product-sheet/{productSheetId}/image", 
-		body: unknown,
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-	get(
-		path: "/organization/{organizationId}/warehouses", 
->>>>>>> 63fe2d6 (feat(115): make bundle)
 		parameters : parameters_60 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -11704,36 +5199,11 @@ export interface EnrichedDuploTo<
 		| response_60_3
 		| response_60_4
 		| response_60_5
+		| response_60_6
 	>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	get(
-<<<<<<< HEAD
-		path: "/organization/{organizationId}/products", 
-=======
-		path: "/organization/{organizationId}", 
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	post(
-		path: "/product-sheet/{productSheetId}/image", 
-		body: unknown,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-	patch(
-		path: "/product-sheet/{productSheetId}", 
-=======
-	post(
-		path: "/organization/{organizationId}/product-sheet", 
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-	patch(
+	delete(
 		path: "/product-sheet/{productSheetId}/facet/{facetType}", 
->>>>>>> 63fe2d6 (feat(115): make bundle)
-		body: request_body_61,
->>>>>>> 796a9ff (feat(115): get command)
 		parameters : parameters_61 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -11746,33 +5216,8 @@ export interface EnrichedDuploTo<
 		| response_61_6
 	>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 	get(
-		path: "/organization/{organizationId}/warehouses", 
-=======
-	patch(
-		path: "/organization/{organizationId}", 
-=======
-	post(
-		path: "/product-sheet/{productSheetId}/facet", 
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-		body: request_body_62,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	get(
-<<<<<<< HEAD
 		path: "/product-sheet/{productSheetId}/facets", 
->>>>>>> 796a9ff (feat(115): get command)
-=======
-		path: "/organization/{organizationId}/products", 
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-	delete(
-		path: "/product-sheet/{productSheetId}/facet/{facetType}", 
->>>>>>> 63fe2d6 (feat(115): make bundle)
 		parameters : parameters_62 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -11782,39 +5227,11 @@ export interface EnrichedDuploTo<
 		| response_62_3
 		| response_62_4
 		| response_62_5
-		| response_62_6
 	>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	get(
-		path: "/organization/{organizationId}/users", 
-=======
 	post(
-		path: "/organization/{organizationId}/warehouse", 
-		body: request_body_63,
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	get(
-		path: "/product-sheet/{productSheetId}/facets", 
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-	post(
-		path: "/product-sheet/{productSheetId}/facet", 
-		body: request_body_63,
->>>>>>> 796a9ff (feat(115): get command)
-=======
-	get(
-		path: "/organization/{organizationId}/product-sheets", 
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-	post(
-		path: "/product-sheet/{productSheetId}/facet", 
-		body: request_body_63,
->>>>>>> 63fe2d6 (feat(115): make bundle)
+		path: "/product-sheet/{productSheetId}/image", 
+		body: unknown,
 		parameters : parameters_63 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -11825,29 +5242,11 @@ export interface EnrichedDuploTo<
 		| response_63_4
 		| response_63_5
 		| response_63_6
+		| response_63_7
 	>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 	get(
-<<<<<<< HEAD
-		path: "/organization/{organizationId}", 
-=======
-		path: "/organization/{organizationId}/product-sheets", 
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	patch(
-		path: "/product-sheet/{productSheetId}/facet/{facetType}", 
-		body: request_body_64,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-	get(
-<<<<<<< HEAD
-		path: "/organization/{organizationId}/users", 
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-		path: "/product-sheet/{productSheetId}/facets", 
->>>>>>> 63fe2d6 (feat(115): make bundle)
+		path: "/product-sheet/{productSheetId}/images", 
 		parameters : parameters_64 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -11859,30 +5258,8 @@ export interface EnrichedDuploTo<
 		| response_64_5
 	>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	patch(
-		path: "/organization/{organizationId}", 
-		body: request_body_65,
-=======
 	get(
-		path: "/organization/{organizationId}/warehouses", 
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	delete(
-		path: "/product-sheet/{productSheetId}/facet/{facetType}", 
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-	get(
-		path: "/organization/{organizationId}", 
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-	post(
-		path: "/product-sheet/{productSheetId}/image", 
-		body: unknown,
->>>>>>> 63fe2d6 (feat(115): make bundle)
+		path: "/product-sheet/{productSheetId}/warehouse", 
 		parameters : parameters_65 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -11892,41 +5269,10 @@ export interface EnrichedDuploTo<
 		| response_65_3
 		| response_65_4
 		| response_65_5
-		| response_65_6
-		| response_65_7
 	>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	post(
-		path: "/organization/{organizationId}/warehouse", 
-		body: request_body_66,
-=======
 	get(
-		path: "/organization/{organizationId}/products", 
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-	patch(
-		path: "/user/{userId}@admin", 
-		body: request_body_66,
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
-	post(
-		path: "/product-sheet/{productSheetId}/image", 
-		body: unknown,
->>>>>>> 796a9ff (feat(115): get command)
-=======
-	patch(
-		path: "/organization/{organizationId}", 
-		body: request_body_66,
->>>>>>> cf3a372 (feat(115): commande table)
-=======
-	get(
-		path: "/product-sheet/{productSheetId}/images", 
->>>>>>> 63fe2d6 (feat(115): make bundle)
+		path: "/product-sheet/{productSheetId}", 
 		parameters : parameters_66 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -11936,18 +5282,11 @@ export interface EnrichedDuploTo<
 		| response_66_3
 		| response_66_4
 		| response_66_5
-<<<<<<< HEAD
-		| response_66_6
-<<<<<<< HEAD
-=======
-		| response_66_7
->>>>>>> 796a9ff (feat(115): get command)
-=======
->>>>>>> cf3a372 (feat(115): commande table)
 	>
 
-	get(
-		path: "/product-sheet/{productSheetId}/warehouse", 
+	patch(
+		path: "/product-sheet/{productSheetId}", 
+		body: request_body_67,
 		parameters : parameters_67 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -11959,8 +5298,8 @@ export interface EnrichedDuploTo<
 		| response_67_5
 	>
 
-	patch(
-		path: "/warehouse/{warehouseId}", 
+	post(
+		path: "/product-sheet/{productSheetId}/product", 
 		body: request_body_68,
 		parameters : parameters_68 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
@@ -11975,7 +5314,7 @@ export interface EnrichedDuploTo<
 	>
 
 	get(
-		path: "/organization/{organizationId}/products", 
+		path: "/organization/{organizationId}/commands/{commandId}/details", 
 		parameters : parameters_69 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
@@ -11985,41 +5324,13 @@ export interface EnrichedDuploTo<
 		| response_69_3
 		| response_69_4
 		| response_69_5
-	>
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-	post(
-		path: "/make-command", 
-		body: request_body_69,
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
-		interceptorParams?: interceptorParameter
-	): EnrichedRequestor<
-		response_69_0
-<<<<<<< HEAD
-		| response_69_1
-		| response_69_2
-		| response_69_3
-		| response_69_4
-		| response_69_5
+		| response_69_6
+		| response_69_7
 	>
 
 	get(
-		path: "/full-product-sheets-count", 
-		parameters ?: parameters_70 & BaseRequestParameters,
-=======
-	post(
-		path: "/article", 
-		body: request_body_70,
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
->>>>>>> 796a9ff (feat(115): get command)
-=======
-	patch(
-		path: "/product/{sku}", 
-		body: request_body_70,
+		path: "/organization/{organizationId}", 
 		parameters : parameters_70 & BaseRequestParameters,
->>>>>>> 63fe2d6 (feat(115): make bundle)
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_70_0
@@ -12030,41 +5341,10 @@ export interface EnrichedDuploTo<
 		| response_70_5
 	>
 
-<<<<<<< HEAD
-	get(
-		path: "/computed-filters", 
-<<<<<<< HEAD
-=======
-	>
-
-	get(
-		path: "/full-product-sheets-count", 
-=======
-	get(
-		path: "/computed-filters", 
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-		parameters ?: parameters_70 & BaseRequestParameters,
-		interceptorParams?: interceptorParameter
-	): EnrichedRequestor<
-		response_70_0
-	>
-
-	get(
-<<<<<<< HEAD
-		path: "/full-product-sheets", 
->>>>>>> 5cabb00 (feat(115): refacto product)
-=======
-		path: "/full-product-sheets-count", 
->>>>>>> a889b52 (feat(115): refacto from product and product sheet)
-=======
->>>>>>> 796a9ff (feat(115): get command)
-		parameters ?: parameters_71 & BaseRequestParameters,
-=======
-	post(
-		path: "/article", 
+	patch(
+		path: "/organization/{organizationId}", 
 		body: request_body_71,
-		parameters ?: UndefinedRequestParameters & BaseRequestParameters,
->>>>>>> 63fe2d6 (feat(115): make bundle)
+		parameters : parameters_71 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_71_0
@@ -12073,56 +5353,19 @@ export interface EnrichedDuploTo<
 		| response_71_3
 		| response_71_4
 		| response_71_5
-		| response_71_6
 	>
 
-<<<<<<< HEAD
 	get(
-<<<<<<< HEAD
-<<<<<<< HEAD
-		path: "/full-product-sheet/{productSheetId}", 
-=======
-	post(
-		path: "/product-sheet/{productSheetId}/product", 
-		body: request_body_72,
->>>>>>> 63fe2d6 (feat(115): make bundle)
+		path: "/organization/{organizationId}/users", 
 		parameters : parameters_72 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_72_0
 		| response_72_1
-	>
-
-	get(
-		path: "/full-product-sheets", 
-		parameters ?: parameters_73 & BaseRequestParameters,
-		interceptorParams?: interceptorParameter
-	): EnrichedRequestor<
-		response_73_0
-		| response_73_1
-		| response_73_2
-=======
-		path: "/full-product-sheets-count", 
-=======
-		path: "/full-product-sheets", 
->>>>>>> cf3a372 (feat(115): commande table)
-		parameters ?: parameters_72 & BaseRequestParameters,
-		interceptorParams?: interceptorParameter
-	): EnrichedRequestor<
-		response_72_0
-<<<<<<< HEAD
->>>>>>> 796a9ff (feat(115): get command)
-=======
-		| response_72_1
 		| response_72_2
-<<<<<<< HEAD
->>>>>>> cf3a372 (feat(115): commande table)
-=======
 		| response_72_3
 		| response_72_4
 		| response_72_5
-		| response_72_6
->>>>>>> 63fe2d6 (feat(115): make bundle)
 	>
 
 	get(
@@ -12134,11 +5377,12 @@ export interface EnrichedDuploTo<
 	>
 
 	get(
-		path: "/full-product-sheets-count", 
-		parameters ?: parameters_74 & BaseRequestParameters,
+		path: "/full-product-sheet/{productSheetId}", 
+		parameters : parameters_74 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_74_0
+		| response_74_1
 	>
 
 	get(
@@ -12152,12 +5396,11 @@ export interface EnrichedDuploTo<
 	>
 
 	get(
-		path: "/full-product-sheet/{productSheetId}", 
-		parameters : parameters_76 & BaseRequestParameters,
+		path: "/full-product-sheets-count", 
+		parameters ?: parameters_76 & BaseRequestParameters,
 		interceptorParams?: interceptorParameter
 	): EnrichedRequestor<
 		response_76_0
-		| response_76_1
 	>
 
 	post(

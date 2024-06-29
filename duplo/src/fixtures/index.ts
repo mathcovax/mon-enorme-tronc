@@ -93,7 +93,7 @@ for (let round = 0; round < numberOf.productSheetRound; round++) {
 				),
 				repeater(
 					Math.floor(Math.random() * 500), 
-					() => makeProduct(productSheet)
+					() => makeProduct(productSheet, { status: "IN_STOCK" })
 				),
 				mapAsync(
 					facetType.slice(

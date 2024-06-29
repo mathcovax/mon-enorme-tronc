@@ -104,7 +104,7 @@ watch(
 		</div>
 
 		<div
-			class="flex-1 grid gap-6"
+			class="flex-1 sm:grid gap-6"
 			:class="fullProductSheetCount !== 0 ? 'sm:grid-cols-[180px_1fr] lg:grid-cols-[250px_1fr]' : 'grid-cols-1'"
 		>
 			<aside v-if="fullProductSheetCount !== 0">

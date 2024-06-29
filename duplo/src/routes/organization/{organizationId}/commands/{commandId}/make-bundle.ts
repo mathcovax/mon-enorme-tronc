@@ -13,7 +13,7 @@ export const POST = (method: Methods, path: string) =>
 				bundleItems: zod.object({
 					commandItemId: zod.number(),
 					sku: zod.string(),
-				}).strip().array(),
+				}).strip().array().min(1),
 			})
 		})
 		.cut(

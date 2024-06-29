@@ -6,12 +6,12 @@ const status = Object.values(product_status);
 
 export const makeProduct = async (
 	productSheet: product_sheet,
-	product?: product
+	product?: Partial<product>
 ) => prisma.product.create({
 	data: {
 		sku: product?.sku || uuidv7(),
 		productSheetId: product?.productSheetId || productSheet.id,
 		organizationId: product?.organizationId || productSheet.organizationId,
-		status: status[Math.floor(Math.random() * status.length)]
+		status: product?.status || status[Math.floor(Math.random() * status.length)]
 	}
 });

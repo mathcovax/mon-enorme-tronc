@@ -44,5 +44,6 @@ export function useGetCommands(organizationId: string, query?: Query) {
 		organizationCommandCollection,
 		getCommands,
 		commandRefQuery,
+		refreshCommand: () => getCommands(commandRefQuery.value)
 	};
 }

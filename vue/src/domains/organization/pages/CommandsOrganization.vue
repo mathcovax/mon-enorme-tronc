@@ -4,13 +4,15 @@ import { useGetCommands } from "../composables/useGetCommands";
 import { useGetWarehouses } from "../composables/useGetWarehouses";
 import { effect } from "vue";
 import type ThePopup from "@/components/ThePopup.vue";
+import { useBundleForm } from "../composables/useBundleForm";
 
 const params = useRouteParams({ 
 	organizationId: zod.string(), 
 });
 const { 
 	commandRefQuery, 
-	organizationCommandCollection 
+	organizationCommandCollection,
+	refreshCommand,
 } = useGetCommands(params.value.organizationId, { page: 0, warehouseId: "none" });
 const {
 	warehouses,
@@ -39,6 +41,13 @@ const currentPage = computed({
 		commandRefQuery.value.page = value;
 	}
 });
+const { 
+	BundleForm, 
+	findProducts, 
+	getProducts, 
+	resetBundleForm, 
+	checkBundleForm,
+} = useBundleForm(params.value.organizationId);
 
 function next() {
 	if (organizationCommandCollection.value.length < 10) {
@@ -60,7 +69,6 @@ effect(() => {
 
 const commandDetailes = ref<OrganizationCommandDetailes>([]);
 function openPopup(commandId: string) {
-	popup.value?.open();
 
 	duploTo.enriched
 		.get(
@@ -74,7 +82,36 @@ function openPopup(commandId: string) {
 		)
 		.info("organizationCommandDetailes", (data) => {
 			commandDetailes.value = data;
+			resetBundleForm();
+			popup.value?.open();
+		})
+		.info("commandItem.missing", () => {
+			popup.value?.close();
+			refreshCommand();
 		});
+}
+
+async function createBundle() {
+	const formfield = await checkBundleForm();
+	const commandId = commandDetailes.value[0].commandId;
+
+	if (!formfield || !commandId) {
+		return;
+	}
+
+	duploTo.enriched
+		.post(
+			"/organization/{organizationId}/commands/{commandId}/make-bundle",
+			formfield,
+			{
+				params: {
+					organizationId: params.value.organizationId,
+					commandId,
+				}
+			}
+		)
+		.then(() => openPopup(commandId));
+	
 }
 
 </script>
@@ -112,7 +149,8 @@ function openPopup(commandId: string) {
 
 	<ThePopup
 		ref="popup"
-		class="w-[90%]"
+		class="w-[90%] flex flex-col gap-6"
+		@close="refreshCommand"
 	>
 		<template #popupContent>
 			<BigTable
@@ -146,6 +184,70 @@ function openPopup(commandId: string) {
 					</div>
 				</template>
 			</BigTable>
+
+			<div class="w-[500px] self-center">
+				<BundleForm @submit="createBundle">
+					<template #bundleItems="{onUpdate, modelValue}">
+						<SecondaryButton
+							type="button"
+							@click="onUpdate([...modelValue, {}])"
+						>
+							{{ $pt("form.addItem") }}
+						</SecondaryButton>
+
+						<div
+							v-for="(bundleItem, index) of modelValue"
+							:key="index"
+							class="grid gap-3 grid-cols-12"
+						>
+							<PrimarySelect
+								class="col-span-5"
+								:items="commandDetailes
+									.filter(cd => {
+										const computedProcess = modelValue.reduce((pv, cv) => cv.productSheetId === cd.productSheetId ? pv + 1 : pv, 0);
+										return (cd.processQuantity + computedProcess) < cd.quantity || !!bundleItem.commandItemId
+									})
+									.map(cd => ({label: cd.productSheetName, value: cd.commandItemId}))"
+								:model-value="bundleItem.commandItemId"
+								@update:model-value="value => { 
+									bundleItem.commandItemId = value; 
+									bundleItem.productSheetId = commandDetailes.find(cd => cd.commandItemId.toString() === value)?.productSheetId;
+									onUpdate([...modelValue]);
+								}"
+							/>
+
+							<PrimaryComboBox
+								class="col-span-6"
+								:disabled="!bundleItem.productSheetId"
+								:items="findProducts.filter(i => !modelValue.find(bi => bi.sku === i))"
+								:empty-label="$t('label.empty')"
+								:text-button="$pt('form.butonSku')"
+								:placeholder="$pt('form.placeholderSku')"
+								:get-label="i => i"
+								:get-identifier="i => i"
+								@update:search-term="value => getProducts(value, bundleItem.productSheetId)"
+								:model-value="bundleItem.sku"
+								@update:model-value="value => { 
+									bundleItem.sku = value; 
+									onUpdate([...modelValue]);
+									getProducts('*');
+								}"
+							/>
+							
+							<TheButton
+								variant="destructive"
+								@click="onUpdate(modelValue.filter(v => v !== bundleItem))"
+							>
+								<TheIcon icon="delete" />
+							</TheButton>
+						</div>
+					</template>
+
+					<PrimaryButton class="col-span-12">
+						{{ $t('button.create') }}
+					</PrimaryButton>
+				</BundleForm>
+			</div>
 		</template>
 	</ThePopup>
 </template>

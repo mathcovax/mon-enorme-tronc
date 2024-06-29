@@ -35,7 +35,6 @@ function submit() {
 		return;
 	}
 
-	clearSearch();
 	closeSuggestions();
 	router.push({ name: SEARCH_PAGE, params: { productSheetName: search.value.trim() } });
 }
@@ -81,18 +80,16 @@ watch(
 						@click="closeSuggestions(true); clearSearch()"
 					>
 						<div class="flex items-center gap-2">
-							<img
-								v-if="productSheet.images.length > 0"
-								:src="productSheet.images[0]"
-								:alt="productSheet.name"
-								class="w-12 h-12 object-cover rounded-lg"
-							>
+							<div class="shrink-0 w-12 h-12 flex justify-center items-center bg-white">
+								<img
+									v-if="productSheet.images.length > 0"
+									:src="productSheet.images[0]"
+									:alt="productSheet.name"
+									class="w-12 h-12 object-cover rounded-lg"
+								>
 
-							<div
-								v-else
-								class="shrink-0 w-12 h-12 flex justify-center items-center bg-white"
-							>
 								<TheIcon
+									v-else
 									icon="image-outline"
 									size="3xl"
 									class="text-muted-foreground"
@@ -127,7 +124,8 @@ watch(
 	overflow: hidden;
 	text-overflow: ellipsis;
 	display: -webkit-box;
-	-webkit-line-clamp: 1; /* number of lines to show */
+	-webkit-line-clamp: 1;
+	/* number of lines to show */
 	-webkit-box-orient: vertical;
 }
 
@@ -135,7 +133,8 @@ watch(
 	overflow: hidden;
 	text-overflow: ellipsis;
 	display: -webkit-box;
-	-webkit-line-clamp: 2; /* number of lines to show */
+	-webkit-line-clamp: 2;
+	/* number of lines to show */
 	-webkit-box-orient: vertical;
 }
 </style>

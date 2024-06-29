@@ -283,10 +283,20 @@ export default {
 				date: "Date de la commande",
 				quantity: "Quantité de produit",
 				id: "ID de la commande",
+				quantityRest: "produit a trétais",
+				productSheetId: "ID de la fiche produit",
+				productSheetName: "Nom du produit",
+				image: "Image du produit",
 			},
 			cb: {
 				textButton: "Selectioner un entrepot",
 				placeholder: "mon super entrepot..."
+			},
+			form: {
+				idShip: "idShip la poste",
+				addItem: "Ajouter un produit dans le Bundle",
+				butonSku: "Selectioner un produit",
+				placeholderSku: "Mon super sku",
 			}
 		}
 	},
@@ -476,6 +486,7 @@ export default {
 			minAge: "Vous devez avoir au moins {value} ans.",
 			maxItems: "Vous pouvez selectionner au plus {value} éléments.",
 			blobToLarge: "L'image est supérieure à {value} Mo.",
+			minItems: "Vous devez selectionner minimume {value} éléments.",
 			url: "Doit être sous la forme /path/to/page",
 		}
 	},
@@ -605,6 +616,7 @@ export default {
 				limit: "Vous ne pouvez pas avoir plus de 10 article dans votre panier."
 			}
 		},
+		makeBundle: "Le bundle a correctement étais créer.",
 		TYPE_ERROR: "L'une des données envoyées est erronée. (Erreur provenant du site)",
 		NOTFOUND: "La route utilisée n'existe pas. (Erreur provenant du site)",
 		INTERNAL_SERVER_ERROR: "Le serveur a eu un problème. (Erreur provenant du site)",

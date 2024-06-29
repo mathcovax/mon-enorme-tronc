@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type TheSheet from "@/components/ui/sheet/TheSheet.vue";
 import { useGetCategoryProductSheets } from "@/domains/product/composables/useGetCategoryProductSheets";
 
 const { SEARCH_PAGE, PRODUCT_PAGE } = routerPageName;
@@ -6,7 +7,7 @@ const router = useRouter();
 const params = useRouteParams({ 
 	productSheetName: zod.string().optional(),
 });
-
+const open = ref<boolean>(false);
 const { getCategoryProductSheets, productSheets } = useGetCategoryProductSheets({
 	available: "true",
 	searchByRegex: params.value.productSheetName,
@@ -23,8 +24,7 @@ function submit() {
 	if (!search.value) {
 		return;
 	}
-
-	clearSearch();
+	open.value = false;
 	router.push({ name: SEARCH_PAGE, params: { productSheetName: search.value.trim() } });
 }
 
@@ -41,7 +41,7 @@ watch(
 </script>
 
 <template>
-	<TheSheet>
+	<TheSheet v-model:open="open">
 		<SheetTrigger
 			class="lg:hidden cursor-pointer"
 			as-child
@@ -133,7 +133,8 @@ watch(
 	overflow: hidden;
 	text-overflow: ellipsis;
 	display: -webkit-box;
-	-webkit-line-clamp: 2; /* number of lines to show */
+	-webkit-line-clamp: 2;
+	/* number of lines to show */
 	-webkit-box-orient: vertical;
 }
 
@@ -141,7 +142,8 @@ watch(
 	overflow: hidden;
 	text-overflow: ellipsis;
 	display: -webkit-box;
-	-webkit-line-clamp: 4; /* number of lines to show */
+	-webkit-line-clamp: 4;
+	/* number of lines to show */
 	-webkit-box-orient: vertical;
 }
 </style>

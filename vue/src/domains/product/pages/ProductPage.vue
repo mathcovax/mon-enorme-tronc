@@ -133,23 +133,12 @@ watch(() => params.value.productSheetId, () => { getProductData(); });
 							class="object-cover w-8 h-8 rounded-full"
 						>
 
-						<span class="text-xl font-semibold">
-							{{ product.price }} €
-							(<span :class="{ 'text-red-600' : product.quantity < 10 }">{{ product.quantity < 10 ? "Plus que " : "" }}{{ product.quantity }}{{ product.quantity < 10 ? " !" : "" }}</span>)
-						</span>
-
-						<p class="mt-1 opacity-50">
-							{{ product.shortDescription }}
-						</p>
-
-						<div class="flex items-center gap-12 mt-4">
-							<ProductSheetQuantity
-								:quantity="productQuantity"
-								:max="product.quantity"
-								@increment="productQuantity++"
-								@decrement="productQuantity--"
-							/>
-						</div>
+						<TheIcon
+							v-else
+							icon="storefront-outline"
+							size="lg"
+							class="flex items-center justify-center w-8 h-8 p-1 rounded-full bg-muted/80 text-muted-foreground"
+						/>
 					</div>
 				</div>
 			</div>
