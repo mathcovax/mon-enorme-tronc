@@ -45,6 +45,13 @@ const generator = FindSlice(
 					url: true
 				}
 			},
+			promotion: {
+				select: {
+					percentage: true,
+					startDate: true,
+					endDate: true
+				}
+			},
 			categories: {
 				select: {
 					categoryName: true
@@ -81,6 +88,7 @@ for await (const productSheet of generator) {
 		quantity: productSheet._count.products,
 		categories: productSheet.categories.map(c => c.categoryName),
 		images: productSheet.images.map(i => i.url),
+		promotion: promotionWithClosestStartDate,
 		organization: {
 			id: productSheet.organizationId,
 			name: productSheet.organization.name,

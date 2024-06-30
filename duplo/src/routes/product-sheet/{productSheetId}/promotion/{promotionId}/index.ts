@@ -22,19 +22,21 @@ export const DELETE = (method: Methods, path: string) => hasOrganizationRoleByPr
 			const promotionId = pickup("promotionId");
 			const { id: productSheetId } = pickup("productSheet");
 
-			Promise.all([
-				prisma.promotion.delete({
-					where: {
-						id: promotionId
-					}
-				}),
-				prisma.product_sheet.update({
-					where: { id: productSheetId },
-					data: {
-						promotionId: null
-					}
-				})
-			]);
+			await prisma.promotion.delete({
+				where: {
+					id: promotionId
+				}
+			});
+
+			await prisma.product_sheet.update({
+				where: {
+					id: productSheetId
+				},
+				data: {
+					updatedAt: new Date()
+				}
+			
+			});
 
 			throw new NoContentHttpException("promotion.deleted");
 		},

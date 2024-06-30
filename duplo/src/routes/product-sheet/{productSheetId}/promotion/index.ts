@@ -31,9 +31,12 @@ export const POST = (method: Methods, path: string) =>
 			({ pickup }) => {
 				const { startDate, endDate } = pickup("body");
 
+				const now = new Date(Date.now());
+				const dateNow = new Date(now.toDateString());
+
 				if (startDate > endDate ||
-				startDate.getTime() === endDate.getTime() ||
-				(startDate || endDate) < new Date(Date.now())
+				startDate.toDateString() === endDate.toDateString() ||
+				(startDate || endDate) < dateNow
 				) {
 					throw new BadRequestHttpException("promotion.date.invalid");
 				}
@@ -59,8 +62,13 @@ export const POST = (method: Methods, path: string) =>
 				});
 
 				await prisma.product_sheet.update({
-					where: { id: productSheetId },
-					data: { promotionId: promotion.id }
+					where: {
+						id: productSheetId
+					},
+					data: {
+						updatedAt: new Date()
+					}
+				
 				});
 
 				throw new CreatedHttpException("promotion.created", promotion);

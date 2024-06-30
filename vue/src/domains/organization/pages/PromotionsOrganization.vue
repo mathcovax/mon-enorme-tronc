@@ -66,13 +66,16 @@ async function submit() {
 		return;
 	}
 
+	const now = new Date(Date.now());
+	const dateNow = new Date(now.toDateString());
+
 	if (formFields.startDate > formFields.endDate) {
 		errorDateMessage.value = "La date de début doit être inférieure à la date de fin.";
 		return;
-	} else if (formFields.startDate.getTime() === formFields.endDate.getTime()) {
+	} else if (formFields.startDate.toDateString() === formFields.endDate.toDateString()) {
 		errorDateMessage.value = "La date de début doit être différente de la date de fin.";
 		return;
-	} else if ((formFields.startDate || formFields.endDate) < new Date(Date.now())) {
+	} else if ((formFields.startDate || formFields.endDate) < dateNow) {
 		errorDateMessage.value = "La date de début et la date de fin doivent être supérieures à la date actuelle.";
 		return;
 	} else {

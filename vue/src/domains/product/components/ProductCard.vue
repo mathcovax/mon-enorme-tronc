@@ -6,13 +6,14 @@ const { PRODUCT_PAGE } = routerPageName;
 defineProps<{
 	product: FullProductSheet;
 }>();
+
 </script>
 
 <template>
 	<TheCard class="border-0 rounded-md bg-gradient-to-b from-muted/50 to-muted">
 		<RouterLink
 			:to="{ name: PRODUCT_PAGE, params: { productSheetId: product.id } }"
-			class="h-full flex flex-col"
+			class="flex flex-col h-full"
 		>
 			<CardHeader>
 				<img
@@ -48,7 +49,17 @@ defineProps<{
 			</CardContent>
 
 			<CardFooter class="justify-end">
-				<span>{{ product.price }} €</span>
+				<div class="flex gap-2">
+					<span
+						v-if="product.promotion && product.promotion.percentage"
+					>
+						{{ (product.price * (1 - product.promotion.percentage)).toPrecision(2) }} €
+					</span>
+
+					<span
+						:class="[product.promotion ? 'line-through' : '', product.promotion ? 'text-gray-500' : '']"
+					>{{ product.price }} €</span>
+				</div>
 			</CardFooter>
 		</RouterLink>
 	</TheCard>

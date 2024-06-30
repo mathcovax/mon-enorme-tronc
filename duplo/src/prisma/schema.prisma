@@ -51,7 +51,7 @@ model organization {
     logoKey            String?                @db.VarChar(255)
     logoUrl            String?                @db.VarChar(400)
     products           product[]
-    promotion          promotion[]
+    promotions         promotion[]
 }
 
 model user_to_organization {

@@ -63,7 +63,7 @@ export default {
 			},
 			popup: {
 				title: "Voulez-vous vraiment supprimer cette promotion ?",
-				content: "Si vous validez, cette promotion sera retirée de votre organisation."
+				content: "Si vous validez, cette promotion sera retirée de votre produit."
 			}
 		},
 		[routerPageName.CATEGORY_PAGE]: {
@@ -534,7 +534,7 @@ export default {
 		user: "Utilisateur",
 		role: "Rôle",
 		actions: "Actions",
-		description: "Descritption",
+		description: "Description",
 		createdAt: "Date de création",
 		updatedAt: "Date de modification",
 		categories: "Catégories",
