@@ -23,7 +23,7 @@ describe("GET /full-product-sheet/{fullProductSheetId}", () => {
 	});
 
 	it("find fullProductSheet", async () => {
-		const spy = vi.spyOn(fullProductSheetModel, "findOne").mockResolvedValue(fullProductSheetData);
+		const spy = vi.spyOn(fullProductSheetModel, "findOne").mockResolvedValue({ toJSON: () => fullProductSheetData });
 
 		const res = await duploTesting
 			.testRoute(GET("GET", ""))

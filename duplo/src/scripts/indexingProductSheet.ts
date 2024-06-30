@@ -131,15 +131,20 @@ for await (const productSheet of productSheetGenerator) {
 
 await Promise.all(promiseList);
 promiseList = [];
-lastTime.set(newLastIndexing);
+await lastTime.set(newLastIndexing);
 
 await fullProductSheetModel.updateMany(
 	{
 		"promotion.endDate": {
-			$lte: lastIndexing
+			$lte: newLastIndexing
 		},	
 	},
-	{ $unset: ["promotion", "hasPromotion"] }
+	{
+		$unset: {
+			promotion: true,
+			hasPromotion: true,
+		} 
+	}
 );
 
 const promotionGenerator = FindSlice(
@@ -194,11 +199,12 @@ for await (const promotion of promotionGenerator) {
 					$set: {
 						hasPromotion: true,
 						promotion: {
+							id: promotion.id,
 							originalPrice: promotion.productSheet.price,
 							percentage: promotion.percentage,
 							startDate: promotion.startDate,
 							endDate: promotion.endDate,
-						},
+						} satisfies FullProductSheetSchema["promotion"],
 						price: Number(
 							(promotion.productSheet.price * promotion.percentage / 100).toFixed(2)
 						),
@@ -215,6 +221,7 @@ for await (const promotion of promotionGenerator) {
 }
 
 await Promise.all(promiseList);
+
 
 mongoose.connection.close();
 
