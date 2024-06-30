@@ -49,9 +49,9 @@ export class FilterService {
 					const result = FilterService.filtersValueSchema[filterDef.type]
 						.accelerator?.safeParse(filterValue);
 
-					if (result?.success) {
+					if (result?.success && result.data) {
 						return {
-							$match: { [filterDef.path]: result.data }
+							$match: { [filterDef.path]: filterDef.trueValue ?? true }
 						};
 					}
 				}
@@ -101,7 +101,7 @@ export class FilterService {
 	static filtersValueSchema = contract<{[P in FilterDef["type"]]: Zod.ZodType}>()({
 		CHECKBOX: zodToArray(zod.string()),
 		RADIO: zod.string(),
-		TOGGLE: zod.enum(["true", "false"]),
+		TOGGLE: zod.any().transform(value => !!value),
 		RANGE: zod.tuple([zod.coerce.number(), zod.coerce.number()]),
 	});
 

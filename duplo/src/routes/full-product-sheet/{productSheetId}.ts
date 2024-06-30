@@ -20,7 +20,7 @@ export const GET = (method: Methods, path: string) =>
 				}
 
 				return {
-					fullProductSheet
+					fullProductSheet: fullProductSheet.toJSON()
 				};
 			},
 			["fullProductSheet"],

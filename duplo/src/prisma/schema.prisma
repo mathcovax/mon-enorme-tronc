@@ -51,6 +51,7 @@ model organization {
     logoKey            String?                @db.VarChar(255)
     logoUrl            String?                @db.VarChar(400)
     products           product[]
+    promotions         promotion[]
 }
 
 model user_to_organization {
@@ -81,7 +82,7 @@ model category {
 }
 
 model parent_category {
-    name           String                        @unique @db.VarChar(255)
+    name           String                        @unique @default("UNDEFINED") @db.VarChar(255)
     categories     category_to_parent_category[]
     navigationItem navigation_item[]
 }
@@ -114,6 +115,7 @@ model product_sheet {
     commandItems     command_item[]
     images           image_product_sheet[]
     categories       product_sheet_to_category[]
+    promotions       promotion[]
 }
 
 enum product_sheet_status {
@@ -281,4 +283,15 @@ model product_to_bundle {
     productSku String  @db.VarChar(255)
 
     @@id([bundleId, productSku])
+}
+
+model promotion {
+    id             Int           @id @default(autoincrement())
+    productSheet   product_sheet @relation(fields: [productSheetId], references: [id])
+    productSheetId String
+    organization   organization  @relation(fields: [organizationId], references: [id])
+    organizationId String
+    percentage     Int
+    startDate      DateTime
+    endDate        DateTime
 }

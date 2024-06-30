@@ -84,6 +84,10 @@ watch(() => params.value.productSheetId, () => { getProductData(); });
 			<div class="flex flex-col gap-4">
 				<h1 class="text-2xl font-bold lg:text-4xl">
 					{{ product.name }}
+					
+					<template v-if="product.promotion">
+						-{{ product.promotion.percentage }}%
+					</template>
 				</h1>
 
 				<div class="flex flex-wrap gap-4">
@@ -100,6 +104,14 @@ watch(() => params.value.productSheetId, () => { getProductData(); });
 
 				<span class="text-xl font-semibold">
 					{{ product.price }} €
+
+					<span
+						v-if="product.promotion"
+						class="line-through text-gray-500"
+					>
+						{{ product.promotion.originalPrice }} €
+					</span>
+
 					(<span :class="{ 'text-red-600' : product.quantity < 10 }">{{ product.quantity < 10 ? "Plus que " : "" }}{{ product.quantity }}{{ product.quantity < 10 ? " !" : "" }}</span>)
 				</span>
 

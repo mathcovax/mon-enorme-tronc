@@ -114,6 +114,11 @@ export type Product = GetResponseByInfo<
 	"products.found"
 >["body"][number]
 
+export type Promotion = GetResponseByInfo<
+	GetDef<"GET", "/organization/{organizationId}/promotions">,
+	"organization.promotions"
+>["body"][number]
+
 export type ProductStatus = Product["status"]
 
 export const productStatus: TuplifyUnion<ProductStatus> = ["WRONG", "SOLD", "IN_STOCK"];

@@ -1,5 +1,5 @@
 import { hasOrganizationRoleByOrganizationId } from "@security/hasOrganizationRole/byOrganizationId";
-import { ProductSchema, productSchema, productStatusTuple } from "@schemas/product";
+import { productSchema, productStatusTuple } from "@schemas/product";
 import { productEntityformater, productSelect } from "@utils/prisma/product";
 
 /* METHOD : GET, PATH : /organization/{organizationId}/products */
@@ -41,7 +41,7 @@ export const GET = (method: Methods, path: string) =>
 					skip: page * 10,
 					select: productSelect,
 				}).then(
-					productEntitys => productEntitys.map<ProductSchema>(productEntityformater)
+					productEntitys => productEntitys.map(productEntityformater)
 				);
 				
 				throw new OkHttpException("products.found", products);

@@ -6,13 +6,14 @@ const { PRODUCT_PAGE } = routerPageName;
 defineProps<{
 	product: FullProductSheet;
 }>();
+
 </script>
 
 <template>
 	<TheCard class="border-0 rounded-md bg-gradient-to-b from-muted/50 to-muted">
 		<RouterLink
 			:to="{ name: PRODUCT_PAGE, params: { productSheetId: product.id } }"
-			class="h-full flex flex-col"
+			class="flex flex-col h-full"
 		>
 			<CardHeader>
 				<img
@@ -40,6 +41,10 @@ defineProps<{
 					:title="product.name"
 				>
 					{{ product.name }}
+
+					<template v-if="product.promotion">
+						-{{ product.promotion.percentage }}%
+					</template>
 				</CardTitle>
 
 				<CardDescription class="w-fit description-ellipsis">
@@ -48,26 +53,37 @@ defineProps<{
 			</CardContent>
 
 			<CardFooter class="justify-end">
-				<span>{{ product.price }} €</span>
+				<div class="flex gap-2">
+					<span>{{ product.price }} €</span>
+
+					<span
+						v-if="product.promotion"
+						class="line-through text-gray-500"
+					>
+						{{ product.promotion.originalPrice }} €
+					</span>
+				</div>
 			</CardFooter>
 		</RouterLink>
 	</TheCard>
 </template>
 
 <style scoped>
-	.title-ellipsis {
-		overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 1; /* number of lines to show */
-        -webkit-box-orient: vertical;
-	}
+.title-ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	/* number of lines to show */
+	-webkit-box-orient: vertical;
+}
 
-	.description-ellipsis {
-		overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 5; /* number of lines to show */
-        -webkit-box-orient: vertical;
-	}
+.description-ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 5;
+	/* number of lines to show */
+	-webkit-box-orient: vertical;
+}
 </style>

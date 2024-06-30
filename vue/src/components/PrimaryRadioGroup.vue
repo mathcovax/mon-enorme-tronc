@@ -4,6 +4,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 interface Item{
 	label: string
 	value: string
+	disabled?: boolean
 }
 
 interface Props {
@@ -30,6 +31,7 @@ const emit = defineEmits<{"update:modelValue": [value: string]}>();
 			<RadioGroupItem
 				:id="`radio-${index}`"
 				:value="item.value"
+				:disabled="item.disabled"
 			/>
 
 			<TheLabel :for="`radio-${index}`">

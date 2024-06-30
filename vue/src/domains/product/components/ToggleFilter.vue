@@ -20,6 +20,7 @@ function click() {
 		<label
 			:for="props.name"
 			class="relative inline-flex items-center gap-2 cursor-pointer"
+			:class="{'!cursor-not-allowed': props.quantity === 0}"
 			@click="$event.stopPropagation()"
 		>
 			<input

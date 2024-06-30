@@ -12,7 +12,7 @@ const newLastIndexing = new Date();
 const lastTime = new LastTime("indexingProductSheet");
 const lastIndexing = await lastTime.get();
 
-const generator = FindSlice(
+const productSheetGenerator = FindSlice(
 	500, 
 	(slice, size) => prisma.product_sheet.findMany({
 		where: {
@@ -45,6 +45,25 @@ const generator = FindSlice(
 					url: true
 				}
 			},
+			promotions: {
+				where: {
+					startDate: {
+						lte: newLastIndexing
+					},
+					endDate: {
+						gte: newLastIndexing
+					}
+				},
+				select: {
+					percentage: true,
+					startDate: true,
+					endDate: true
+				},
+				orderBy: {
+					startDate: "desc",
+				},
+				take: 1,
+			},
 			categories: {
 				select: {
 					categoryName: true
@@ -67,7 +86,7 @@ const generator = FindSlice(
 
 let promiseList: unknown[] = [];
 
-for await (const productSheet of generator) {
+for await (const productSheet of productSheetGenerator) {
 	if (productSheet.images.length === 0) {
 		continue;
 	}
@@ -111,7 +130,98 @@ for await (const productSheet of generator) {
 }
 
 await Promise.all(promiseList);
-lastTime.set(newLastIndexing);
+promiseList = [];
+await lastTime.set(newLastIndexing);
+
+await fullProductSheetModel.updateMany(
+	{
+		"promotion.endDate": {
+			$lte: newLastIndexing
+		},	
+	},
+	{
+		$unset: {
+			promotion: true,
+			hasPromotion: true,
+		} 
+	}
+);
+
+const promotionGenerator = FindSlice(
+	500,
+	(slice, size) => {
+		const part = prisma.promotion.groupBy({
+			by: ["productSheetId"],
+			where: {
+				startDate: {
+					lte: newLastIndexing
+				},
+				endDate: {
+					gte: newLastIndexing
+				}
+			},
+			_max: {
+				startDate: true
+			},
+			orderBy: {
+				productSheetId: "asc"
+			},
+			take: size,
+			skip: slice * size
+		});
+
+		return part;
+	}
+);
+
+for await (const promotion of promotionGenerator) {
+	if (!promotion._max.startDate) {
+		continue;
+	}
+
+	promiseList.push(
+		prisma.promotion.findFirstOrThrow({
+			where: {
+				productSheetId: promotion.productSheetId,
+				startDate: promotion._max.startDate
+			},
+			include: {
+				productSheet: {
+					select: {
+						price: true,
+					}
+				}
+			}
+		}).then(
+			promotion => fullProductSheetModel.updateOne(
+				{ id: promotion.productSheetId },
+				{
+					$set: {
+						hasPromotion: true,
+						promotion: {
+							id: promotion.id,
+							originalPrice: promotion.productSheet.price,
+							percentage: promotion.percentage,
+							startDate: promotion.startDate,
+							endDate: promotion.endDate,
+						} satisfies FullProductSheetSchema["promotion"],
+						price: Number(
+							(promotion.productSheet.price * promotion.percentage / 100).toFixed(2)
+						),
+					}
+				}
+			)
+		)
+	);
+
+	if (promiseList.length > 1000) {
+		await Promise.all(promiseList);
+		promiseList = [];
+	}
+}
+
+await Promise.all(promiseList);
+
 
 mongoose.connection.close();
 

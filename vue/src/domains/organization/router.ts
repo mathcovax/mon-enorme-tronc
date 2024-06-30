@@ -5,6 +5,7 @@ export const routerPageNameOrganization = Object.freeze({
 	ORGANIZATION_EDIT: "organization-panel-organization-edit",
 	ORGANIZATION_MANAGE_USER: "organization-panel-manage-user",
 	ORGANIZATION_MANAGE_PRODUCT: "organization-panel-manage-product",
+	ORGANIZATION_MANAGE_PROMOTION: "organization-panel-manage-promotion",
 	ORGANIZATION_CREATE_PRODUCT_SHEET: "organization-panel-create-product-sheet",
 	ORGANIZATION_EDIT_PRODUCT_SHEET: "organization-panel-edit-product-sheet",
 	ORGANIZATION_GET_PRODUCT_SHEET: "organization-panel-get-product-sheet",
@@ -62,6 +63,11 @@ export default (): RouteRecordRaw[] => [
 				path: "/organization-panel/:organizationId/commands",
 				component: () => import("./pages/CommandsOrganization.vue")
 			},
+			{
+				name: routerPageNameOrganization.ORGANIZATION_MANAGE_PROMOTION,
+				path: "/organization-panel/:organizationId/promotions",
+				component: () => import("./pages/PromotionsOrganization.vue")
+			}
 		]
 	}
 ];
