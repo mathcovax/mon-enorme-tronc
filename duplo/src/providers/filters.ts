@@ -17,7 +17,9 @@ declare global {
 		values: string[]
 	}
 	
-	type FilterDefToggle<N extends string = string> = FilterDefBase<"TOGGLE", N>
+	interface FilterDefToggle<N extends string = string> extends FilterDefBase<"TOGGLE", N> {
+		trueValue?: unknown
+	}
 
 	type FilterDefRange<N extends string = string> = FilterDefBase<"RANGE", N>
 
@@ -69,6 +71,7 @@ export const filterDefs = defineFilters([
 		type: "TOGGLE",
 		name: "accessory",
 		path: "facets.ACCESSORY",
+		trueValue: "true",
 	},
 	{
 		type: "CHECKBOX",
@@ -83,6 +86,11 @@ export const filterDefs = defineFilters([
 		values: [
 			"anal", "vaginal", "clitoral", "prostate"
 		]
+	},
+	{
+		type: "TOGGLE",
+		name: "promotion",
+		path: "hasPromotion",
 	},
 	{
 		type: "RANGE",

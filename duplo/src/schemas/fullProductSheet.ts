@@ -9,11 +9,12 @@ export const fullProductSheetSchema = zod.object({
 	quantity: zod.number(),
 	categories: zod.string().array(),
 	images: zod.string().array(),
+	hasPromotion: zod.boolean().optional(),
 	promotion: zod.object({
 		percentage: zod.number().min(0).max(100).optional(),
 		startDate: zod.date().optional(),
 		endDate: zod.date().optional(),
-	}).or(zod.null()),
+	}).optional(),
 	organization: zod.object({
 		id: zod.string(),
 		name: zod.string(),

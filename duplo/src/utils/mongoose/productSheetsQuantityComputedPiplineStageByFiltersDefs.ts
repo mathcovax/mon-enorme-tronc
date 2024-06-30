@@ -54,7 +54,7 @@ export const productSheetsQuantityComputedPiplineStageByFiltersDefs = transform(
 				pv.$project[`${filterDef.name}`] = {
 					$cond: {
 						if: {
-							$eq: [`$${filterDef.path}`, "true"]
+							$eq: [`$${filterDef.path}`, filterDef.trueValue ?? true]
 						},
 						then: 1,
 						else: 0

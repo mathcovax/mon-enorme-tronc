@@ -45,12 +45,24 @@ const generator = FindSlice(
 					url: true
 				}
 			},
-			promotion: {
+			promotions: {
+				where: {
+					startDate: {
+						lte: newLastIndexing
+					},
+					endDate: {
+						gte: newLastIndexing
+					}
+				},
 				select: {
 					percentage: true,
 					startDate: true,
 					endDate: true
-				}
+				},
+				orderBy: {
+					startDate: "desc",
+				},
+				take: 1,
 			},
 			categories: {
 				select: {
@@ -88,7 +100,8 @@ for await (const productSheet of generator) {
 		quantity: productSheet._count.products,
 		categories: productSheet.categories.map(c => c.categoryName),
 		images: productSheet.images.map(i => i.url),
-		promotion: promotionWithClosestStartDate,
+		hasPromotion: !!productSheet.promotions[0],
+		promotion: productSheet.promotions[0],
 		organization: {
 			id: productSheet.organizationId,
 			name: productSheet.organization.name,
