@@ -16,6 +16,7 @@ const items = computed(
 		...props.values.map(({ value, quantity }) => ({
 			label: `${$t(`filters.values.${props.name}.${value}`)} (${quantity})`,
 			value,
+			disabled: quantity === 0
 		})),
 		{
 			label: `${$t("filters.type.radio.undefined")}`,

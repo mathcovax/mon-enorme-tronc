@@ -5,7 +5,6 @@ import { usePromotionAddForm } from "../composables/usePromotionAddForm";
 
 const $pt = usePageTranslate();
 const params = useRouteParams({ organizationId: zod.string() });
-const errorDateMessage = ref("");
 
 const { promotions, getOrganizationPromotions } = useGetOrganizationPromotions(params.value.organizationId);
 
@@ -19,27 +18,24 @@ const currentPage = ref(0);
 const cols: BigTableColDef<Promotion>[] = [
 	{
 		title: $pt("table.col.productSheetName"),
-		getter: i => i.productSheet?.name ? i.productSheet.name : ""
+		getter: i => i.productSheetName
 	},
 	{
 		title: $pt("table.col.percentage"),
-		slotName: "percentage",
-		getter: i => i.percentage
+		getter: i => $pt("table.percentage", { value: i.percentage }),
 	},
 	{
 		title: $pt("table.col.startDate"),
-		slotName: "startDate",
-		getter: i => i.startDate
+		getter: i => i.startDate?.split("T")[0] ?? "",
 	},
 	{
 		title: $pt("table.col.endDate"),
-		slotName: "endDate",
-		getter: i => i.endDate
+		getter: i => i.endDate?.split("T")[0] ?? "",
 	},
 	{
 		title: $pt("table.col.actions"),
-		slotName: "actions", 
-		cols: 2
+		slotName: "actions",
+		cols: 2,
 	}
 ];
 
@@ -66,30 +62,13 @@ async function submit() {
 		return;
 	}
 
-	const now = new Date(Date.now());
-	const dateNow = new Date(now.toDateString());
-
-	if (formFields.startDate > formFields.endDate) {
-		errorDateMessage.value = "La date de début doit être inférieure à la date de fin.";
-		return;
-	} else if (formFields.startDate.toDateString() === formFields.endDate.toDateString()) {
-		errorDateMessage.value = "La date de début doit être différente de la date de fin.";
-		return;
-	} else if ((formFields.startDate || formFields.endDate) < dateNow) {
-		errorDateMessage.value = "La date de début et la date de fin doivent être supérieures à la date actuelle.";
-		return;
-	} else {
-		errorDateMessage.value = "";
-	}
-
 	duploTo.enriched
 		.post(
-			"/product-sheet/{productSheetId}/promotion",
+			"/product-sheet/{productSheetId}/promotions",
 			{
-				percentage: formFields.percentage / 100,
+				percentage: formFields.percentage,
 				startDate: formFields.startDate,
 				endDate: formFields.endDate,
-				organizationId: params.value.organizationId
 			},
 			{ params: { productSheetId: formFields.productSheet } }
 		)
@@ -100,21 +79,15 @@ async function submit() {
 }
 
 function deletePromotion(promotion: Promotion) {
-	if (!promotion.productSheet?.id) {
-		return;
-	}
 	duploTo.enriched
 		.delete(
-			"/product-sheet/{productSheetId}/promotion/{promotionId}",
-			{ params: { productSheetId: promotion.productSheet.id, promotionId: promotion.id } }		
+			"/promotions/{promotionId}",
+			{ params: { promotionId: promotion.id } }		
 		)	
 		.info("promotion.deleted", () => {
-			//popup.value?.close();
 			getOrganizationPromotions(currentPage.value);
 		});
 }
-
-getOrganizationPromotions(currentPage.value);
 </script>
 <template>
 	<section class="h-screen-no-header">
@@ -132,11 +105,6 @@ getOrganizationPromotions(currentPage.value);
 					@submit="submit"
 					class="max-w-[500px] w-[80%]"
 				>
-					<small
-						v-if="errorDateMessage.length > 0"
-						class="col-span-12 text-center text-red-500"
-					>{{ errorDateMessage }}</small>
-
 					<PrimaryButton
 						type="submit"
 						class="col-span-12"
@@ -153,18 +121,6 @@ getOrganizationPromotions(currentPage.value);
 					@click-next="next"
 					@click-previous="previous"
 				>
-					<template #percentage="{item}">
-						{{ $pt("table.percentage", { value: item.percentage * 100 }) }}
-					</template>
-
-					<template #startDate="{item}">
-						{{ $d(item.startDate) }}
-					</template>
-
-					<template #endDate="{item}">
-						{{ $d(item.endDate) }}
-					</template>
-
 					<template #actions="{item}">
 						<WithValidation
 							:title="$pt('popup.title')"

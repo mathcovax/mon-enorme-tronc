@@ -31,12 +31,34 @@ export class CartService {
 					articlesInCart.map(
 						aic => prisma.product_sheet.findUniqueOrThrow({
 							where: { id: aic.productSheetId },
-							select: { price: true },
+							select: { 
+								price: true,
+								promotions: {
+									where: {
+										startDate: {
+											lte: new Date(),
+										},
+										endDate: {
+											gte: new Date(),
+										},
+									},
+									orderBy: {
+										startDate: "desc"
+									},
+									take: 1
+								}
+							},
 						}).then(
-							ps => ({ 
-								quantity: aic.quantity, 
-								price: ps.price
-							})
+							ps => {
+								const promotion = ps.promotions[0];
+
+								return { 
+									quantity: aic.quantity, 
+									price: promotion 
+										? Number((ps.price * promotion.percentage / 100).toFixed(2))
+										: ps.price
+								};
+							}
 						)
 					)
 				)

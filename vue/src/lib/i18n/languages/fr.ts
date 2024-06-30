@@ -61,6 +61,10 @@ export default {
 					delete: "Supprimer",
 				}
 			},
+			form: {
+				endDateGteStartDate: "La date de début doit être inférieure à la date de fin.",
+				endDateEStartDate: "La date de début doit être différente de la date de fin.",
+			},
 			popup: {
 				title: "Voulez-vous vraiment supprimer cette promotion ?",
 				content: "Si vous validez, cette promotion sera retirée de votre produit."
@@ -333,6 +337,7 @@ export default {
 			accessory: "Accessoire",
 			material: "Matériau",
 			stimulation: "Stimulation",
+			promotion: "En promo"
 		},
 		type: {
 			range: {

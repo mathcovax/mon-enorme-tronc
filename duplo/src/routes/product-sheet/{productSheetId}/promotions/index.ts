@@ -1,43 +1,23 @@
-import { inputOrganization, organizationExistCheck } from "@checkers/organization";
 import { promotionSchema } from "@schemas/promotion";
 import { hasOrganizationRoleByProductSheetId } from "@security/hasOrganizationRole/byProductSheetId";
+import { promotionEntityformater, promotionInclude } from "@utils/prisma/promotion";
 
-/* METHOD : POST, PATH : /product-sheet/{productSheetId}/promotion */
+/* METHOD : POST, PATH : /product-sheet/{productSheetId}/promotions */
 export const POST = (method: Methods, path: string) => 
 	hasOrganizationRoleByProductSheetId({ pickup: ["productSheet"]  })
 		.declareRoute(method, path)
 		.extract({
 			body: zod.object({
-				percentage: zod.number().min(0).max(1).positive(),
+				percentage: zod.number().min(1).max(100),
 				startDate: zod.coerce.date(),
 				endDate: zod.coerce.date(),
-				organizationId: zod.string()
 			}).strip(),
 		})
-		.check(
-			organizationExistCheck,
-			{
-				input: p => inputOrganization.name(
-					p("body").organizationId
-				),
-				result: "organization.notfound",
-				catch: () => {
-					throw new ConflictHttpException("organization.alreadyExist");
-				}
-			},
-			new IHaveSentThis(ConflictHttpException.code, "organization.alreadyExist")
-		)
 		.cut(
 			({ pickup }) => {
 				const { startDate, endDate } = pickup("body");
 
-				const now = new Date(Date.now());
-				const dateNow = new Date(now.toDateString());
-
-				if (startDate > endDate ||
-				startDate.toDateString() === endDate.toDateString() ||
-				(startDate || endDate) < dateNow
-				) {
+				if (startDate.getTime() >= endDate.getTime()) {
 					throw new BadRequestHttpException("promotion.date.invalid");
 				}
 
@@ -48,8 +28,8 @@ export const POST = (method: Methods, path: string) =>
 		)
 		.handler(
 			async ({ pickup }) => {
-				const { percentage, startDate, endDate, organizationId } = pickup("body");
-				const { id: productSheetId } = pickup("productSheet");
+				const { percentage, startDate, endDate } = pickup("body");
+				const { id: productSheetId, organizationId } = pickup("productSheet");
 
 				const promotion = await prisma.promotion.create({
 					data: {
@@ -58,18 +38,9 @@ export const POST = (method: Methods, path: string) =>
 						endDate,
 						organizationId: organizationId,
 						productSheetId: productSheetId,
-					}
-				});
-
-				await prisma.product_sheet.update({
-					where: {
-						id: productSheetId
 					},
-					data: {
-						updatedAt: new Date()
-					}
-				
-				});
+					include: promotionInclude
+				}).then(promotionEntityformater);
 
 				throw new CreatedHttpException("promotion.created", promotion);
 			},

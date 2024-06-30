@@ -38,11 +38,11 @@ function onUpdate(valueFilter: string, value: boolean) {
 
 		<label
 			:for="`checkbox-${item.value}`"
+			class="text-sm font-medium"
 			:class="{ 'cursor-not-allowed opacity-50': item.quantity === 0}"
 		>
 			{{ $t(`filters.values.${props.name}.${item.value}`) }}
+			({{ item.quantity }})
 		</label>
-
-		<span :class="item.quantity === 0 ? `text-red-500` : `text-gray-500`">({{ item.quantity }})</span>
 	</div>
 </template>

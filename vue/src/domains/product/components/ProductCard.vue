@@ -41,6 +41,10 @@ defineProps<{
 					:title="product.name"
 				>
 					{{ product.name }}
+
+					<template v-if="product.promotion">
+						-{{ product.promotion.percentage }}%
+					</template>
 				</CardTitle>
 
 				<CardDescription class="w-fit description-ellipsis">
@@ -50,15 +54,14 @@ defineProps<{
 
 			<CardFooter class="justify-end">
 				<div class="flex gap-2">
-					<span
-						v-if="product.promotion && product.promotion.percentage"
-					>
-						{{ (product.price * (1 - product.promotion.percentage)).toPrecision(2) }} €
-					</span>
+					<span>{{ product.price }} €</span>
 
 					<span
-						:class="[product.promotion ? 'line-through' : '', product.promotion ? 'text-gray-500' : '']"
-					>{{ product.price }} €</span>
+						v-if="product.promotion"
+						class="line-through text-gray-500"
+					>
+						{{ product.promotion.originalPrice }} €
+					</span>
 				</div>
 			</CardFooter>
 		</RouterLink>
@@ -66,19 +69,21 @@ defineProps<{
 </template>
 
 <style scoped>
-	.title-ellipsis {
-		overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 1; /* number of lines to show */
-        -webkit-box-orient: vertical;
-	}
+.title-ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	/* number of lines to show */
+	-webkit-box-orient: vertical;
+}
 
-	.description-ellipsis {
-		overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 5; /* number of lines to show */
-        -webkit-box-orient: vertical;
-	}
+.description-ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 5;
+	/* number of lines to show */
+	-webkit-box-orient: vertical;
+}
 </style>

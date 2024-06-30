@@ -11,9 +11,10 @@ export const fullProductSheetSchema = zod.object({
 	images: zod.string().array(),
 	hasPromotion: zod.boolean().optional(),
 	promotion: zod.object({
-		percentage: zod.number().min(0).max(100).optional(),
-		startDate: zod.date().optional(),
-		endDate: zod.date().optional(),
+		originalPrice: zod.number(),
+		percentage: zod.number(),
+		startDate: zod.date(),
+		endDate: zod.date(),
 	}).optional(),
 	organization: zod.object({
 		id: zod.string(),

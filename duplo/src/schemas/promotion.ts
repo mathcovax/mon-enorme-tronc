@@ -1,11 +1,10 @@
 export const promotionSchema = zod.object({
 	id: zod.number(),
-	percentage: zod.number().min(0).max(1),
-	startDate: zod.date(),
-	endDate: zod.date(),
-	productSheet: zod.object({
-		id: zod.string(),
-		name: zod.string()
-	}).optional(),
-	productSheetId: zod.string().optional(),
+	percentage: zod.number(),
+	startDate: zod.coerce.string(),
+	endDate: zod.coerce.string(),
+	productSheetName: zod.string(),
+	productSheetId: zod.string(),
 });
+
+export type PromotionSchema = Zod.infer<typeof promotionSchema>

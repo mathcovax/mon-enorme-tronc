@@ -1,53 +1,34 @@
-import { organizationHasUserCheck } from "@checkers/organization";
 import { promotionSchema } from "@schemas/promotion";
-import { mustBeConnected } from "@security/mustBeConnected";
+import { hasOrganizationRoleByOrganizationId } from "@security/hasOrganizationRole/byOrganizationId";
+import { promotionEntityformater, promotionInclude } from "@utils/prisma/promotion";
 
 /* METHOD : GET, PATH : /organization/{organizationId}/promotions */
-export const GET = (method: Methods, path: string) => mustBeConnected({ pickup: ["accessTokenContent"] })
-	.declareRoute(method, path)
-	.extract({
-		params: {
-			organizationId: zod.string(),
-			page: zod.coerce.number().default(0),
-		}
-	})
-	.check(
-		organizationHasUserCheck,
-		{
-			input: p => ({ organizationId: p("organizationId"), userId: p("accessTokenContent").id }),
-			...organizationHasUserCheck.preCompletions.mustHaveUser,
-			result: "organization.hasUserWithMoreData",
-			options: { selectUser: true }
-		},
-		new IHaveSentThis(NotAcceptableHttpException.code, "organization.hasNotUser")
-	)
-	.handler(
-		async ({ pickup }) => {
-			const organizationId = pickup("organizationId");
-			const page = pickup("page");
+export const GET = (method: Methods, path: string) => 
+	hasOrganizationRoleByOrganizationId({ options: { organizationRole: "PRODUCT_SHEET_MANAGER" }, pickup: ["organization"] })
+		.declareRoute(method, path)
+		.extract({
+			query: {
+				page: zod.coerce.number().default(0),
+			}
+		})
+		.handler(
+			async ({ pickup }) => {
+				const { id: organizationId } = pickup("organization");
+				const page = pickup("page");
 
-			const promotions = await prisma.promotion.findMany({
-				where: {
-					organizationId: organizationId
-				},
-				select: {
-					id: true,
-					percentage: true,
-					startDate: true,
-					endDate: true,
-					productSheet: {
-						select: {
-							id: true,
-							name: true
-						}
-					}
-				},
-				take: 10,
-				skip: page * 10
-			});
+				const promotions = await prisma.promotion.findMany({
+					where: {
+						organizationId: organizationId
+					},
+					include: promotionInclude,
+					take: 10,
+					skip: page * 10
+				}).then(
+					promotionEntitys => promotionEntitys.map(promotionEntityformater)
+				);
 
-			throw new OkHttpException("organization.promotions", promotions);
-		}, 
-		new IHaveSentThis(OkHttpException.code, "organization.promotions", promotionSchema.array())
-	)
+				throw new OkHttpException("organization.promotions", promotions);
+			}, 
+			new IHaveSentThis(OkHttpException.code, "organization.promotions", promotionSchema.array())
+		)
 ;

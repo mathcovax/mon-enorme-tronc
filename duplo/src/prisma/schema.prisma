@@ -291,7 +291,7 @@ model promotion {
     productSheetId String
     organization   organization  @relation(fields: [organizationId], references: [id])
     organizationId String
-    percentage     Float
+    percentage     Int
     startDate      DateTime
     endDate        DateTime
 }

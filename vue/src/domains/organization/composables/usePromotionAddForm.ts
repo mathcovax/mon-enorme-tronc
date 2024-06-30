@@ -1,16 +1,14 @@
 import { useGetProductSheets } from "./useGetProductSheets";
 
 export function usePromotionAddForm(organizationId: string) {
-
 	const { productSheets, getProductSheets } = useGetProductSheets(organizationId);
+	const $pt = usePageTranslate();
 
-	const { Form, checkForm, resetForm } = useFormBuilder({
+	const { Form, checkForm, resetForm, values } = useFormBuilder({
 		productSheet: computed(() => ({
 			type: "combo",
 			items: productSheets.value
-				.map(
-					v => ({ label: v.name, identifier: v.id })
-				),
+				.map(v => ({ label: v.name, identifier: v.id })),
 			placeholder: $t("placeholder.productSheet"),
 			emptyLabel: $t("label.empty"),
 			label: $t("label.productSheet"),
@@ -19,13 +17,13 @@ export function usePromotionAddForm(organizationId: string) {
 				{ message: $t("form.rule.required") }
 			).transform(item => item.identifier),
 			textButton: $t("button.search"),
-			onUpdateSearchTerm: (value: string) => getProductSheets(undefined, value)
+			onUpdateSearchTerm: (value: string) => getProductSheets(0, value)
 		})),
 		percentage: {
 			type: "number",
 			label: $t("label.percentage"),
 			zodSchema: zod.number({ message: $t("form.rule.required") })
-				.min(0, $t("form.rule.min", { min: 0 }))
+				.min(0, $t("form.rule.min", { min: 1 }))
 				.max(100, $t("form.rule.max", { max: 100 }))
 				.positive($t("form.rule.positive"))
 		},
@@ -37,9 +35,20 @@ export function usePromotionAddForm(organizationId: string) {
 		endDate: {
 			type: "date",
 			label: $t("label.endDate"),
-			zodSchema: zod.coerce.date({ message: $t("form.rule.required") })
+			zodSchema: zod.coerce
+				.date({ message: $t("form.rule.required") })
+				.refine(
+					endDate => new Date(startDate.value).getTime() < endDate.getTime(),
+					{ message: $pt("form.endDateGteStartDate") }
+				)
+				.refine(
+					endDate => endDate.getTime() !== new Date(startDate.value).getTime(),
+					{ message: $pt("form.endDateEStartDate") }
+				)
 		}
 	});
+
+	const startDate = values.startDate as Ref<string>;
 
 	return {
 		FormPromotionAdd: Form,
