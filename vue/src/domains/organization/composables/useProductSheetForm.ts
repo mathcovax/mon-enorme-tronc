@@ -109,7 +109,7 @@ export function useProductSheetForm(organizationId: string, productSheetId?: str
 					.refine((blob) => blob.size <= 5000000, { message: $t("form.rule.blobToLarge", { value: "5 Mo" }) })
 					.optional(),
 				id: zod.string().optional()
-			}).array()
+			}).array().min(1, { message: $t("form.rule.minItems", { value: 1 }) })
 		},
 		warehouse: computed(() => ({
 			type: "combo",

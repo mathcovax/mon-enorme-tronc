@@ -24,11 +24,18 @@ export const GET = (method: Methods, path: string) => mustBeConnected({ pickup: 
 						p."productSheetId" as "productSheetId",
 						percentage,
 						ROW_NUMBER() OVER ( PARTITION BY p."productSheetId" ORDER BY p."startDate" DESC ) AS "rowNumber"
-					FROM promotion AS p
-					INNER JOIN userArticle AS ua ON p."productSheetId" = ua."productSheetId"
+					FROM userArticle AS ua
+					INNER JOIN promotion AS p ON p."productSheetId" = ua."productSheetId"
 					WHERE
 						p."startDate" <= CURRENT_DATE
 						AND p."endDate" >= CURRENT_DATE
+				), productSheetImage AS (
+					SELECT
+						psi."productSheetId" AS "productSheetId",
+						url AS "imageUrl",
+						ROW_NUMBER() OVER ( PARTITION BY psi."productSheetId" ORDER BY psi."id" DESC ) AS "rowNumber"
+					FROM userArticle AS ua 
+					INNER JOIN image_product_sheet AS psi ON psi."productSheetId" = ua."productSheetId"
 				)
 
 				SELECT 
@@ -41,10 +48,11 @@ export const GET = (method: Methods, path: string) => mustBeConnected({ pickup: 
 						WHEN p.percentage IS NULL THEN ps."price"
 						ELSE ps."price" * p.percentage / 100
 					END AS price,
-					(SELECT url FROM "image_product_sheet" WHERE "productSheetId" = ua."productSheetId" LIMIT 1) AS "imageUrl"
+					COALESCE((psi."imageUrl"), '') AS "imageUrl"
 				FROM userArticle AS ua
 				INNER JOIN "product_sheet" AS ps ON ps."id" = ua."productSheetId"
 				LEFT JOIN promotions AS p ON p."rowNumber" = 1 AND p."productSheetId" = ua."productSheetId"
+				LEFT JOIN productSheetImage AS psi ON psi."rowNumber" = 1 AND psi."productSheetId" = ua."productSheetId"
 			`;
 
 			throw new OkHttpException("cart.fetched", cart);

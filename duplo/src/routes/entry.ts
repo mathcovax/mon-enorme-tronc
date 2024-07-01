@@ -60,7 +60,8 @@ export const organizationProductSheetManagerEntry = mustBeConnected({ pickup: ["
 		[
 			"/entry/organization-panel/{organizationId}/product-sheets",
 			"/entry/organization-panel/{organizationId}/edit-product-sheet/{productSheetId}",
-			"/entry/organization-panel/{organizationId}/create-product-sheet"
+			"/entry/organization-panel/{organizationId}/create-product-sheet",
+			"/entry/organization-panel/{organizationId}/promotions"
 		]
 	)
 	.extract({
